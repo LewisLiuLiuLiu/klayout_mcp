@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class QObject</p><h1>API reference - Class QObject</h1><property value="QtCore" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_QtCore.html">QtCore</a></p><p><b>Description</b>: Binding of QObject</p><p><b>Class hierarchy</b>: QObject</p><ul><li><a href="#h2-13">Public constructors</a></li><li><a href="#h2-18">Public methods</a></li><li><a href="#h2-105">Public static methods and constants</a></li><li><a href="#h2-124">Protected methods (static, non-static and constructors)</a></li><li><a href="#h2-139">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-148">Detailed description</a></li></ul><p></p><a name="h2-13"></a><h2>Public constructors</h2><table><tr class="row0"><td>new QObject</td><td><b><a href="#method38">new</a></b></td><td>(QObject ptr parent = 0)</td><td>Constructor QObject::QObject(QObject *parent)</td></tr></table><a name="h2-18"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>QObject ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method7">blockSignals</a></b></td><td>(bool b)</td><td>Method bool QObject::blockSignals(bool b)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QObject ptr[]</td><td><b><a href="#method9">children</a></b></td><td></td><td>Method const QList&lt;QObject*&gt; &amp;QObject::children()</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method10">connect</a></b></td><td>(const QObject ptr sender,<br>string signal,<br>string member,<br>const Qt_ConnectionType type = Qt::AutoConnection)</td><td>Method bool QObject::connect(const QObject *sender, const char *signal, const char *member, Qt::ConnectionType type)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method14">deleteLater</a></b></td><td></td><td>Method void QObject::deleteLater()</td></tr><tr class="row1"><td><i>[signal]</i></td><td>void</td><td><b><a href="#method16">destroyed</a></b></td><td>(QObject ptr arg1)</td><td>Signal declaration for QObject::destroyed(QObject *)</td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method17">disconnect</a></b></td><td>(string signal = 0,<br>const QObject ptr receiver = 0,<br>string member = 0)</td><td>Method bool QObject::disconnect(const char *signal, const QObject *receiver, const char *member)</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method18">disconnect</a></b></td><td>(const QObject ptr receiver,<br>string member = 0)</td><td>Method bool QObject::disconnect(const QObject *receiver, const char *member)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method21">dumpObjectInfo</a></b></td><td></td><td>Method void QObject::dumpObjectInfo()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method22">dumpObjectTree</a></b></td><td></td><td>Method void QObject::dumpObjectTree()</td></tr><tr class="row0"><td><i>[const]</i></td><td>bytes[]</td><td><b><a href="#method23">dynamicPropertyNames</a></b></td><td></td><td>Method QList&lt;QByteArray&gt; QObject::dynamicPropertyNames()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method24">emit_destroyed</a></b></td><td>(QObject ptr arg1 = 0)</td><td>Emitter for signal void QObject::destroyed(QObject *)</td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method25">event</a></b></td><td>(QEvent ptr arg1)</td><td>Virtual method bool QObject::event(QEvent *)</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method26">eventFilter</a></b></td><td>(QObject ptr arg1,<br>QEvent ptr arg2)</td><td>Virtual method bool QObject::eventFilter(QObject *, QEvent *)</td></tr><tr class="row0"><td></td><td>QObject ptr</td><td><b><a href="#method27">findChild</a></b></td><td>(string name = null)</td><td>Specialisation for findChild (uses QObject as T).</td></tr><tr class="row1"><td></td><td>QObject ptr[]</td><td><b><a href="#method28">findChildren</a></b></td><td>(string name = null)</td><td>Specialisation for findChildren (uses QObject as T).</td></tr><tr class="row0"><td></td><td>QObject ptr[]</td><td><b><a href="#method29">findChildren</a></b></td><td>(const QRegExp re)</td><td>Specialisation for findChildren (uses QObject as T).</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method30">inherits</a></b></td><td>(string classname)</td><td>Method bool QObject::inherits(const char *classname)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method31">installEventFilter</a></b></td><td>(QObject ptr arg1)</td><td>Method void QObject::installEventFilter(QObject *)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method32">isWidgetType?</a></b></td><td></td><td>Method bool QObject::isWidgetType()</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method34">killTimer</a></b></td><td>(int id)</td><td>Method void QObject::killTimer(int id)</td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method35">method_missing</a></b></td><td>(id,<br>...)</td><td>Maps unknown methods to accessors for child objects</td></tr><tr class="row0"><td></td><td></td><td><b><a href="#method36">method_missing</a></b></td><td>(id,<br>...)</td><td>Maps unknown methods to accessors for child objects</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method37">moveToThread</a></b></td><td>(QThread ptr thread)</td><td>Method void QObject::moveToThread(QThread *thread)</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method39">objectName</a></b></td><td></td><td>Method QString QObject::objectName()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method40">objectName=</a></b></td><td>(string name)</td><td>Method void QObject::setObjectName(const QString &amp;name)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QObject ptr</td><td><b><a href="#method41">parent</a></b></td><td></td><td>Method QObject *QObject::parent()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method42">parent=</a></b></td><td>(QObject ptr arg1)</td><td>Method void QObject::setParent(QObject *)</td></tr><tr class="row0"><td><i>[const]</i></td><td>variant</td><td><b><a href="#method43">property</a></b></td><td>(string name)</td><td>Method QVariant QObject::property(const char *name)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method46">removeEventFilter</a></b></td><td>(QObject ptr arg1)</td><td>Method void QObject::removeEventFilter(QObject *)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method48">setObjectName</a></b></td><td>(string name)</td><td>Method void QObject::setObjectName(const QString &amp;name)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method49">setParent</a></b></td><td>(QObject ptr arg1)</td><td>Method void QObject::setParent(QObject *)</td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method50">setProperty</a></b></td><td>(string name,<br>variant value)</td><td>Method bool QObject::setProperty(const char *name, const QVariant &amp;value)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method51">signalsBlocked</a></b></td><td></td><td>Method bool QObject::signalsBlocked()</td></tr><tr class="row0"><td></td><td>int</td><td><b><a href="#method52">startTimer</a></b></td><td>(int interval)</td><td>Method int QObject::startTimer(int interval)</td></tr><tr class="row1"><td><i>[const]</i></td><td>QThread ptr</td><td><b><a href="#method54">thread</a></b></td><td></td><td>Method QThread *QObject::thread()</td></tr></table><a name="h2-105"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td></td><td>bool</td><td><b><a href="#method11">connect</a></b></td><td>(const QObject ptr sender,<br>string signal,<br>const QObject ptr receiver,<br>string member,<br>const Qt_ConnectionType arg5 = Qt::AutoConnection)</td><td>Static method bool QObject::connect(const QObject *sender, const char *signal, const QObject *receiver, const char *member, Qt::ConnectionType)</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method19">disconnect</a></b></td><td>(const QObject ptr sender,<br>string signal,<br>const QObject ptr receiver,<br>string member)</td><td>Static method bool QObject::disconnect(const QObject *sender, const char *signal, const QObject *receiver, const char *member)</td></tr><tr class="row0"><td></td><td>unsigned int</td><td><b><a href="#method45">registerUserData</a></b></td><td></td><td>Static method unsigned int QObject::registerUserData()</td></tr><tr class="row1"><td></td><td>QMetaObject</td><td><b><a href="#method53">staticMetaObject</a></b></td><td></td><td>Obtains the static MetaObject for this class.</td></tr><tr class="row0"><td></td><td>string</td><td><b><a href="#method56">tr</a></b></td><td>(string s,<br>string c = 0)</td><td>Static method QString QObject::tr(const char *s, const char *c)</td></tr><tr class="row1"><td></td><td>string</td><td><b><a href="#method57">tr</a></b></td><td>(string s,<br>string c,<br>int n)</td><td>Static method QString QObject::tr(const char *s, const char *c, int n)</td></tr><tr class="row0"><td></td><td>string</td><td><b><a href="#method58">trUtf8</a></b></td><td>(string s,<br>string c = 0)</td><td>Static method QString QObject::trUtf8(const char *s, const char *c)</td></tr><tr class="row1"><td></td><td>string</td><td><b><a href="#method59">trUtf8</a></b></td><td>(string s,<br>string c,<br>int n)</td><td>Static method QString QObject::trUtf8(const char *s, const char *c, int n)</td></tr></table><a name="h2-124"></a><h2>Protected methods (static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">childEvent</a></b></td><td>(QChildEvent ptr arg1)</td><td><td>Virtual method void QObject::childEvent(QChildEvent *)</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method13">customEvent</a></b></td><td>(QEvent ptr arg1)</td><td><td>Virtual method void QObject::customEvent(QEvent *)</td></td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method20">disconnectNotify</a></b></td><td>(string signal)</td><td><td>Virtual method void QObject::disconnectNotify(const char *signal)</td></td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method44">receivers</a></b></td><td>(string signal)</td><td><td>Method int QObject::receivers(const char *signal)</td></td></tr><tr class="row0"><td><i>[const]</i></td><td>QObject ptr</td><td><b><a href="#method47">sender</a></b></td><td></td><td><td>Method QObject *QObject::sender()</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method55">timerEvent</a></b></td><td>(QTimerEvent ptr arg1)</td><td><td>Virtual method void QObject::timerEvent(QTimerEvent *)</td></td></tr></table><a name="h2-139"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method12">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method15">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method33">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-148"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-149"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QObject.html">QObject</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-155"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-161"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroy"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-168"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroyed?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-175"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__is_const_object?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-182"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__manage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-188"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__unmanage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-194"></a><h3>blockSignals</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_blockSignals"></a><a name="k_9"></a><p><b>Signature</b>: bool <b> blockSignals </b> (bool b)</p><p><b>Description</b>: Method bool QObject::blockSignals(bool b)</p></td></tr><tr class="bigrow0"><td><a name="h3-198"></a><h3>childEvent</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_childEvent"></a><a name="k_10"></a><p><b>Signature</b>: void <b> childEvent </b> (<a href="class_QChildEvent.html">QChildEvent</a> ptr arg1)</p><p><b>Description</b>: Virtual method void QObject::childEvent(QChildEvent *)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-204"></a><h3>children</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_children"></a><a name="k_11"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QObject.html">QObject</a> ptr[] <b> children </b></p><p><b>Description</b>: Method const QList&lt;QObject*&gt; &amp;QObject::children()</p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-208"></a><h3>connect</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_connect"></a><a name="k_12"></a><p><b>(1) Signature</b>: <i>[const] </i>bool <b> connect </b> (const <a href="class_QObject.html">QObject</a> ptr sender, string signal, string member, const <a href="class_Qt_ConnectionType.html">Qt_ConnectionType</a> type = Qt::AutoConnection)</p><p><b>Description</b>: Method bool QObject::connect(const QObject *sender, const char *signal, const char *member, Qt::ConnectionType type)</p><p><b>Python specific notes: </b><br>This instance method is available as '_inst_connect' in Python.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_connect"></a><a name="k_13"></a><p><b>(2) Signature</b>: <i>[static] </i>bool <b> connect </b> (const <a href="class_QObject.html">QObject</a> ptr sender, string signal, const <a href="class_QObject.html">QObject</a> ptr receiver, string member, const <a href="class_Qt_ConnectionType.html">Qt_ConnectionType</a> arg5 = Qt::AutoConnection)</p><p><b>Description</b>: Static method bool QObject::connect(const QObject *sender, const char *signal, const QObject *receiver, const char *member, Qt::ConnectionType)</p><p><p>
+This method is static and can be called without an instance.</p></p><p><b>Python specific notes: </b><br>This class method is available as '_class_connect' in Python.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-219"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_create"></a><a name="k_14"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-226"></a><h3>customEvent</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_customEvent"></a><a name="k_15"></a><p><b>Signature</b>: void <b> customEvent </b> (<a href="class_QEvent.html">QEvent</a> ptr arg1)</p><p><b>Description</b>: Virtual method void QObject::customEvent(QEvent *)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-232"></a><h3>deleteLater</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_deleteLater"></a><a name="k_16"></a><p><b>Signature</b>: void <b> deleteLater </b></p><p><b>Description</b>: Method void QObject::deleteLater()</p></td></tr><tr class="bigrow0"><td><a name="h3-236"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_destroy"></a><a name="k_17"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-244"></a><h3>destroyed</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_destroyed"></a><a name="k_18"></a><p><b>Signature</b>: <i>[signal] </i>void <b> destroyed </b> (<a href="class_QObject.html">QObject</a> ptr arg1)</p><p><b>Description</b>: Signal declaration for QObject::destroyed(QObject *)</p><p><p>
+You can bind a procedure to this signal.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'destroyed'. This is the getter.<br>The object exposes a writable attribute 'destroyed'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td rowspan="3"><a name="h3-251"></a><h3>disconnect</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_disconnect"></a><a name="k_19"></a><p><b>(1) Signature</b>: bool <b> disconnect </b> (string signal = 0, const <a href="class_QObject.html">QObject</a> ptr receiver = 0, string member = 0)</p><p><b>Description</b>: Method bool QObject::disconnect(const char *signal, const QObject *receiver, const char *member)</p><p><b>Python specific notes: </b><br>This instance method is available as '_inst_disconnect' in Python.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_disconnect"></a><a name="k_20"></a><p><b>(2) Signature</b>: bool <b> disconnect </b> (const <a href="class_QObject.html">QObject</a> ptr receiver, string member = 0)</p><p><b>Description</b>: Method bool QObject::disconnect(const QObject *receiver, const char *member)</p><p><b>Python specific notes: </b><br>This instance method is available as '_inst_disconnect' in Python.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_disconnect"></a><a name="k_21"></a><p><b>(3) Signature</b>: <i>[static] </i>bool <b> disconnect </b> (const <a href="class_QObject.html">QObject</a> ptr sender, string signal, const <a href="class_QObject.html">QObject</a> ptr receiver, string member)</p><p><b>Description</b>: Static method bool QObject::disconnect(const QObject *sender, const char *signal, const QObject *receiver, const char *member)</p><p><p>
+This method is static and can be called without an instance.</p></p><p><b>Python specific notes: </b><br>This class method is available as '_class_disconnect' in Python.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-266"></a><h3>disconnectNotify</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_disconnectNotify"></a><a name="k_22"></a><p><b>Signature</b>: void <b> disconnectNotify </b> (string signal)</p><p><b>Description</b>: Virtual method void QObject::disconnectNotify(const char *signal)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-272"></a><h3>dumpObjectInfo</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_dumpObjectInfo"></a><a name="k_23"></a><p><b>Signature</b>: void <b> dumpObjectInfo </b></p><p><b>Description</b>: Method void QObject::dumpObjectInfo()</p></td></tr><tr class="bigrow1"><td><a name="h3-276"></a><h3>dumpObjectTree</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_dumpObjectTree"></a><a name="k_24"></a><p><b>Signature</b>: void <b> dumpObjectTree </b></p><p><b>Description</b>: Method void QObject::dumpObjectTree()</p></td></tr><tr class="bigrow0"><td><a name="h3-280"></a><h3>dynamicPropertyNames</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_dynamicPropertyNames"></a><a name="k_25"></a><p><b>Signature</b>: <i>[const] </i>bytes[] <b> dynamicPropertyNames </b></p><p><b>Description</b>: Method QList&lt;QByteArray&gt; QObject::dynamicPropertyNames()</p></td></tr><tr class="bigrow1"><td><a name="h3-284"></a><h3>emit_destroyed</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_emit_destroyed"></a><a name="k_26"></a><p><b>Signature</b>: void <b> emit_destroyed </b> (<a href="class_QObject.html">QObject</a> ptr arg1 = 0)</p><p><b>Description</b>: Emitter for signal void QObject::destroyed(QObject *)</p><p><p>
+Call this method to emit this signal.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-290"></a><h3>event</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_event"></a><a name="k_27"></a><p><b>Signature</b>: bool <b> event </b> (<a href="class_QEvent.html">QEvent</a> ptr arg1)</p><p><b>Description</b>: Virtual method bool QObject::event(QEvent *)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-296"></a><h3>eventFilter</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_eventFilter"></a><a name="k_28"></a><p><b>Signature</b>: bool <b> eventFilter </b> (<a href="class_QObject.html">QObject</a> ptr arg1, <a href="class_QEvent.html">QEvent</a> ptr arg2)</p><p><b>Description</b>: Virtual method bool QObject::eventFilter(QObject *, QEvent *)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-302"></a><h3>findChild</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_findChild"></a><a name="k_29"></a><p><b>Signature</b>: <a href="class_QObject.html">QObject</a> ptr <b> findChild </b> (string name = null)</p><p><b>Description</b>: Specialisation for findChild (uses QObject as T).</p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-306"></a><h3>findChildren</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_findChildren"></a><a name="k_30"></a><p><b>(1) Signature</b>: <a href="class_QObject.html">QObject</a> ptr[] <b> findChildren </b> (string name = null)</p><p><b>Description</b>: Specialisation for findChildren (uses QObject as T).</p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_findChildren"></a><a name="k_31"></a><p><b>(2) Signature</b>: <a href="class_QObject.html">QObject</a> ptr[] <b> findChildren </b> (const <a href="class_QRegExp.html">QRegExp</a> re)</p><p><b>Description</b>: Specialisation for findChildren (uses QObject as T).</p></td></tr><tr class="bigrow0"><td><a name="h3-313"></a><h3>inherits</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_inherits"></a><a name="k_32"></a><p><b>Signature</b>: <i>[const] </i>bool <b> inherits </b> (string classname)</p><p><b>Description</b>: Method bool QObject::inherits(const char *classname)</p></td></tr><tr class="bigrow1"><td><a name="h3-317"></a><h3>installEventFilter</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_installEventFilter"></a><a name="k_33"></a><p><b>Signature</b>: void <b> installEventFilter </b> (<a href="class_QObject.html">QObject</a> ptr arg1)</p><p><b>Description</b>: Method void QObject::installEventFilter(QObject *)</p></td></tr><tr class="bigrow0"><td><a name="h3-321"></a><h3>isWidgetType?</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_isWidgetType?"></a><a name="k_34"></a><p><b>Signature</b>: <i>[const] </i>bool <b> isWidgetType? </b></p><p><b>Description</b>: Method bool QObject::isWidgetType()</p></td></tr><tr class="bigrow1"><td><a name="h3-325"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_is_const_object?"></a><a name="k_35"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-333"></a><h3>killTimer</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_killTimer"></a><a name="k_36"></a><p><b>Signature</b>: void <b> killTimer </b> (int id)</p><p><b>Description</b>: Method void QObject::killTimer(int id)</p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-337"></a><h3>method_missing</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_method_missing"></a><a name="k_37"></a><p><b>(1) Signature</b>:  <b> method_missing </b> (id, ...)</p><p><b>Description</b>: Maps unknown methods to accessors for child objects</p><p><p></p><p>This method implements Ruby's fallback mechanism and adds some convenience to 
+QObject: through that implementation, each child object can be accessed through
+its name. That method will deliver a reference to the child object or nil if there
+is no child element with that name.
+For example:</p><p><pre>
+  dialog = MyDialog.new  # has a widget named &quot;button&quot;
+  dialog.button.text = &quot;The button text&quot;
+</pre></p><p>If no child object with the given name exists, an exception is thrown.
+You can use &quot;respond_to?(child_name)&quot; to check whether a child with the
+given name exists.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_method_missing"></a><a name="k_38"></a><p><b>(2) Signature</b>:  <b> method_missing </b> (id, ...)</p><p><b>Description</b>: Maps unknown methods to accessors for child objects</p><p><p></p><p>This method implements Ruby's fallback mechanism and adds some convenience to 
+QObject: through that implementation, each child object can be accessed through
+its name. That method will deliver a reference to the child object or nil if there
+is no child element with that name.
+For example:</p><p><pre>
+  dialog = MyDialog.new  # has a widget named &quot;button&quot;
+  dialog.button.text = &quot;The button text&quot;
+</pre></p><p>If no child object with the given name exists, an exception is thrown.
+You can use &quot;respond_to?(child_name)&quot; to check whether a child with the
+given name exists.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-364"></a><h3>moveToThread</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_moveToThread"></a><a name="k_39"></a><p><b>Signature</b>: void <b> moveToThread </b> (<a href="class_QThread.html">QThread</a> ptr thread)</p><p><b>Description</b>: Method void QObject::moveToThread(QThread *thread)</p></td></tr><tr class="bigrow1"><td><a name="h3-368"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_new"></a><a name="k_40"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_QObject.html">QObject</a><b> new </b> (<a href="class_QObject.html">QObject</a> ptr parent = 0)</p><p><b>Description</b>: Constructor QObject::QObject(QObject *parent)</p><p><p>
+This method creates an object of class QObject.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-375"></a><h3>objectName</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_objectName"></a><a name="k_41"></a><p><b>Signature</b>: <i>[const] </i>string <b> objectName </b></p><p><b>Description</b>: Method QString QObject::objectName()</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'objectName'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-380"></a><h3>objectName=</h3></td><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_objectName="></a><a name="k_42"></a><p><b>Signature</b>: void <b> objectName= </b> (string name)</p><p><b>Description</b>: Method void QObject::setObjectName(const QString &amp;name)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'objectName'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-385"></a><h3>parent</h3></td><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_parent"></a><a name="k_43"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QObject.html">QObject</a> ptr <b> parent </b></p><p><b>Description</b>: Method QObject *QObject::parent()</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'parent'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-390"></a><h3>parent=</h3></td><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_parent="></a><a name="k_44"></a><p><b>Signature</b>: void <b> parent= </b> (<a href="class_QObject.html">QObject</a> ptr arg1)</p><p><b>Description</b>: Method void QObject::setParent(QObject *)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'parent'. This is the setter.<br>The object exposes a writable attribute 'parent'. This is the setter.<br>The object exposes a writable attribute 'parent'. This is the setter.<br>The object exposes a writable attribute 'parent'. This is the setter.<br>The object exposes a writable attribute 'parent'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-395"></a><h3>property</h3></td><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_property"></a><a name="k_45"></a><p><b>Signature</b>: <i>[const] </i>variant <b> property </b> (string name)</p><p><b>Description</b>: Method QVariant QObject::property(const char *name)</p></td></tr><tr class="bigrow1"><td><a name="h3-399"></a><h3>receivers</h3></td><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_receivers"></a><a name="k_46"></a><p><b>Signature</b>: <i>[const] </i>int <b> receivers </b> (string signal)</p><p><b>Description</b>: Method int QObject::receivers(const char *signal)</p><p><p>
+This method is protected and can only be called from inside a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-405"></a><h3>registerUserData</h3></td><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_registerUserData"></a><a name="k_47"></a><p><b>Signature</b>: <i>[static] </i>unsigned int <b> registerUserData </b></p><p><b>Description</b>: Static method unsigned int QObject::registerUserData()</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-411"></a><h3>removeEventFilter</h3></td><td style="padding-bottom: 16px"><a name="method46"></a><a name="m_removeEventFilter"></a><a name="k_48"></a><p><b>Signature</b>: void <b> removeEventFilter </b> (<a href="class_QObject.html">QObject</a> ptr arg1)</p><p><b>Description</b>: Method void QObject::removeEventFilter(QObject *)</p></td></tr><tr class="bigrow0"><td><a name="h3-415"></a><h3>sender</h3></td><td style="padding-bottom: 16px"><a name="method47"></a><a name="m_sender"></a><a name="k_49"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QObject.html">QObject</a> ptr <b> sender </b></p><p><b>Description</b>: Method QObject *QObject::sender()</p><p><p>
+This method is protected and can only be called from inside a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-421"></a><h3>setObjectName</h3></td><td style="padding-bottom: 16px"><a name="method48"></a><a name="m_setObjectName"></a><a name="k_50"></a><p><b>Signature</b>: void <b> setObjectName </b> (string name)</p><p><b>Description</b>: Method void QObject::setObjectName(const QString &amp;name)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'objectName'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-426"></a><h3>setParent</h3></td><td style="padding-bottom: 16px"><a name="method49"></a><a name="m_setParent"></a><a name="k_51"></a><p><b>Signature</b>: void <b> setParent </b> (<a href="class_QObject.html">QObject</a> ptr arg1)</p><p><b>Description</b>: Method void QObject::setParent(QObject *)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'parent'. This is the setter.<br>The object exposes a writable attribute 'parent'. This is the setter.<br>The object exposes a writable attribute 'parent'. This is the setter.<br>The object exposes a writable attribute 'parent'. This is the setter.<br>The object exposes a writable attribute 'parent'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-431"></a><h3>setProperty</h3></td><td style="padding-bottom: 16px"><a name="method50"></a><a name="m_setProperty"></a><a name="k_52"></a><p><b>Signature</b>: bool <b> setProperty </b> (string name, variant value)</p><p><b>Description</b>: Method bool QObject::setProperty(const char *name, const QVariant &amp;value)</p></td></tr><tr class="bigrow0"><td><a name="h3-435"></a><h3>signalsBlocked</h3></td><td style="padding-bottom: 16px"><a name="method51"></a><a name="m_signalsBlocked"></a><a name="k_53"></a><p><b>Signature</b>: <i>[const] </i>bool <b> signalsBlocked </b></p><p><b>Description</b>: Method bool QObject::signalsBlocked()</p></td></tr><tr class="bigrow1"><td><a name="h3-439"></a><h3>startTimer</h3></td><td style="padding-bottom: 16px"><a name="method52"></a><a name="m_startTimer"></a><a name="k_54"></a><p><b>Signature</b>: int <b> startTimer </b> (int interval)</p><p><b>Description</b>: Method int QObject::startTimer(int interval)</p></td></tr><tr class="bigrow0"><td><a name="h3-443"></a><h3>staticMetaObject</h3></td><td style="padding-bottom: 16px"><a name="method53"></a><a name="m_staticMetaObject"></a><a name="k_55"></a><p><b>Signature</b>: <i>[static] </i><a href="class_QMetaObject.html">QMetaObject</a><b> staticMetaObject </b></p><p><b>Description</b>: Obtains the static MetaObject for this class.</p></td></tr><tr class="bigrow1"><td><a name="h3-447"></a><h3>thread</h3></td><td style="padding-bottom: 16px"><a name="method54"></a><a name="m_thread"></a><a name="k_56"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QThread.html">QThread</a> ptr <b> thread </b></p><p><b>Description</b>: Method QThread *QObject::thread()</p></td></tr><tr class="bigrow0"><td><a name="h3-451"></a><h3>timerEvent</h3></td><td style="padding-bottom: 16px"><a name="method55"></a><a name="m_timerEvent"></a><a name="k_57"></a><p><b>Signature</b>: void <b> timerEvent </b> (<a href="class_QTimerEvent.html">QTimerEvent</a> ptr arg1)</p><p><b>Description</b>: Virtual method void QObject::timerEvent(QTimerEvent *)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-457"></a><h3>tr</h3></td><td style="padding-bottom: 16px"><a name="method56"></a><a name="m_tr"></a><a name="k_58"></a><p><b>(1) Signature</b>: <i>[static] </i>string <b> tr </b> (string s, string c = 0)</p><p><b>Description</b>: Static method QString QObject::tr(const char *s, const char *c)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method57"></a><a name="m_tr"></a><a name="k_59"></a><p><b>(2) Signature</b>: <i>[static] </i>string <b> tr </b> (string s, string c, int n)</p><p><b>Description</b>: Static method QString QObject::tr(const char *s, const char *c, int n)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-468"></a><h3>trUtf8</h3></td><td style="padding-bottom: 16px"><a name="method58"></a><a name="m_trUtf8"></a><a name="k_60"></a><p><b>(1) Signature</b>: <i>[static] </i>string <b> trUtf8 </b> (string s, string c = 0)</p><p><b>Description</b>: Static method QString QObject::trUtf8(const char *s, const char *c)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method59"></a><a name="m_trUtf8"></a><a name="k_61"></a><p><b>(2) Signature</b>: <i>[static] </i>string <b> trUtf8 </b> (string s, string c, int n)</p><p><b>Description</b>: Static method QString QObject::trUtf8(const char *s, const char *c, int n)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr></table></body>

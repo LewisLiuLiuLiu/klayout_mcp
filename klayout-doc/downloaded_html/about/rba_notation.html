@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Various Topics</a> » Notation used in Ruby API documentation</p><h1>Notation used in Ruby API documentation</h1><ul><li><a href="#h2-10">Introduction</a></li><li><a href="#h2-68">General layout of the documentatation</a></li><li><a href="#h2-83">Examples</a></li></ul><a name="h2-10"></a><h2>Introduction</h2><p>
+  The documentation of the Ruby API is derived from the C++ declaration of the specific methods.
+  Hence the notation deviates somewhat from the usual documentation of Ruby methods. 
+  In particular the following differences are noteworthy:
+  </p><ul><li><p><b>&quot;Static&quot; methods are &quot;class methods&quot;:</b></p><p>The C++ term &quot;static&quot; refers to methods available within a class
+      without requiring an object. In Ruby, the term &quot;class method&quot; is commonly used to refer to such methods.
+      </p></li><li><p><b>Different flavors of object arguments:</b></p><p>In C++ there are references, pointers and objects passed by
+      value. In Ruby there are only references. RBA maps the C++ concepts to ruby by allowing the &quot;nil&quot; value only
+      for pointer arguments. Pointer arguments are specially marked in the documentation.
+      </p></li><li><p><b>There is &quot;constness&quot;:</b></p><p>C++ has the concept of &quot;const&quot; methods and arguments. In C++, an object reference
+      can be &quot;const&quot;, which means that the object behind such a reference cannot be modified. A &quot;const&quot; method
+      is a method which can be called on &quot;const&quot; object reference and such a method may not alter the state of the
+      object.</p><p>A method can have &quot;const&quot; reference arguments which means that objects passed through such arguments
+      are not modified by the method. Such arguments are also said to have &quot;in&quot; semantics. Hence, &quot;const&quot; references
+      can be passed to such arguments. In Ruby there is no concept of &quot;constness&quot; or &quot;in&quot; parameters. Every method is
+      allowed to alter the state of the object it is called on and pf the objects it gets as arguments. In that sense, 
+      C++ allows specification of a more constraint &quot;contract&quot; between caller and method that is called. RBA emulates constness
+      in Ruby to some extent and it may disallow calling non-const methods on const references or passing const reference
+      to non-const arguments. Return value can also be const pointers which means that the object returned
+      cannot be modified.
+      </p></li><li><p><b>Strong typing:</b></p><p>In C++, arguments and return values are strongly typed. RBA will check the arguments passed
+      to a method and convert them properly. Hence the type of argument is important. &quot;int&quot; type arguments may not be passed
+      strings for example.</p><p>The type system if C++ is also somewhat more restricted: the value range of an integer argument is 
+      limited and for example there are unsigned types which cannot be passed negative values. Hence the type of an 
+      argument is noted in the documentation. A particular return type is &quot;void&quot; which basically means &quot;no value returned&quot;.
+      Strong typing extends to object references and RBA checks if an argument can be converted to the object required.
+      </p></li><li><p><b>Virtual methods:</b></p><p>In C++, a method must be virtual before it can be reimplemented by a derived class. In Ruby
+      all methods are virtual. Since reimplementing a non-virtual method does not have any effect in RBA, virtual methods
+      are marked as such.
+      </p></li></ul><a name="h2-68"></a><h2>General layout of the documentatation</h2><p>The documentation states the following methods (in that order):</p><ul><li>Public constructors</li><li>Public methods</li><li>Public static methods and constants</li><li>Protected methods (static, non-static and constructors)</li><li>Deprecated methods (protected, public, static, non-static and constructors)</li></ul><p>Deprecated methods are listed for reference only. Use of such methods or constants is not recommended because
+  they might be removed in the future.</p><a name="h2-83"></a><h2>Examples</h2><p>Here are some examples for method documentations (signatures):</p><ul><li><p><b><i>[virtual]</i> bool event(QEvent ptr ev)</b>:</p><p>A virtual method called &quot;event&quot; returning a boolean value 
+      (Ruby &quot;true&quot; or &quot;false&quot;) and expecting one argument (a pointer to a QEvent object).
+      &quot;ptr&quot; indicates that the argument is a pointer, &quot;arg1&quot; is the argument name.
+      </p></li><li><p><b>void add_reference(const RdbReference rdb_ref)</b>:</p><p>A method without return value which expects one parameter.
+      The parameter must be a reference to the RdbReference object. The reference must not be nil since it is not a pointer,
+      but can be a reference to a const object. The name of the argument is &quot;rdb_ref&quot;.</p></li><li><p><b><i>[const]</i> unsigned int num_items</b>:</p><p>A parameterless const method called &quot;num_items&quot; that delivers the number of items as an unsigned
+      integer value.</p></li><li><p><b><i>[iter]</i> RdbReference each_reference</b>:</p><p>An iterator called &quot;each_reference&quot; delivering RdbReference objects.</p></li><li><p><b><i>[signal]</i> void layoutAboutToBeChanged</b>:</p><p>A parameterless signal (event) called &quot;layoutAboutToBeChanged&quot; (see <a href="../programming/events.html">Events And Callbacks</a> for details about events or signals).</p></li><li><p><b><i>[signal]</i> void objectNameChanged(string objectName)</b>:</p><p>A signal (event) called &quot;objectNameChanged&quot; with one string argument.</p></li></ul></body>

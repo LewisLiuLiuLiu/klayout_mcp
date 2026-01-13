@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="editor.html">Editing Functions</a> » <a href="editor_basics.html">Basic Principles Of Editor Mode</a> » Basic Editor Options</p><h1>Basic Editor Options</h1><a name="k_1"></a><a name="k_2"></a><a name="k_3"></a><p>
+  Most tools being using in editing mode have certain options, i.e. 
+  when drawing a path, the width and extension mode has to be specified. 
+  There exists a general setup dialog for editing options. It can be 
+  opened using &quot;Editor Options&quot; from the &quot;Edit&quot; menu or using the F3 
+  shortcut (unless overridden).
+  </p><p>
+  In the dialog there is always a generic settings tab and - depending on 
+  the tool chosen - a tool specific tab. On the generic tab, these settings
+  can be changed:
+  </p><a name="k_4"></a><a name="k_5"></a><a name="k_6"></a><a name="k_7"></a><ul><li><b>Editor grid:</b> Every editing operation is confined to that grid.
+      It can be either disabled, aligned with the global grid (used i.e. for rulers and
+      display) or specified explicitly. It can even be anisotropic - i.e. there can be 
+      a different grid in y than in x direction.
+    </li><li><b>Connection angle constraint:</b> When a connection is drawing, i.e. a segment of a path
+      or an edge of a polygon, this mode determines, if the segment or edge is confined to 
+      certain directions. In &quot;Any Angle&quot; mode, there is no such confinement. In &quot;Diagonal&quot; mode, 
+      the edge or segment can be vertical, horizontal or in one of the two diagonal directions. In &quot;Manhattan&quot;
+      mode, only horizontal and vertical edges or segments are allowed. 
+    </li><li><a name="move_ac"></a><b>Movement direction constraint:</b> When something a dragged (i.e. moved), this mode determines
+      if the movement is confined to certain directions. In &quot;Any Direction&quot; mode, there is no such
+      confinement. In &quot;Diagonal&quot; mode, 
+      the movement can be vertical, horizontal or in one of the two diagonal directions. 
+      In &quot;Manhattan&quot; mode, only horizontal and vertical movements are allowed. 
+    </li><li><b>Top level selection mode:</b> In top level selection mode (when the check box is checked), 
+      only elements on the 
+      level of the currently shown cell are selected (&quot;top level&quot; refers to the top level of the 
+      currently shown cell here). That means, that if shapes from a subcell are selected, the whole
+      instance of this subcell is selected.
+      <div>
+      In hierarchical selection mode (when the check box is not checked), elements are selected from 
+      subcells are well. This mode allows in-place editing of subcells which is a powerful feature but 
+      also creates strange side effects if other instances of this cell changes as well.
+      </div></li></ul><p>
+  Whenever you change something in the settings dialog, use &quot;Apply&quot; or &quot;Ok&quot; to apply your changes.
+  </p></body>

@@ -1,0 +1,1291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Various Topics</a> » <a href="drc_ref.html">DRC Reference</a> » DRC Reference: Global Functions</p><h1>DRC Reference: Global Functions</h1><a name="k_1"></a><ul><li><a href="#h2-11">&quot;angle&quot; - In universal DRC context: selects edges based on their orientation</a></li><li><a href="#h2-22">&quot;antenna_check&quot; - Performs an antenna check</a></li><li><a href="#h2-31">&quot;area&quot; - Computes the total area or in universal DRC context: selects the primary shape if the area is meeting the condition</a></li><li><a href="#h2-46">&quot;area_ratio&quot; - Selects primary shapes based on the ratio of bounding box and polygon area</a></li><li><a href="#h2-55">&quot;bbox_aspect_ratio&quot; - Selects primary shapes based on the aspect ratio of their bounding boxes</a></li><li><a href="#h2-64">&quot;bbox_height&quot; - Selects primary shapes based on their bounding box height</a></li><li><a href="#h2-78">&quot;bbox_max&quot; - Selects primary shapes based on their bounding box height or width, whichever is larger</a></li><li><a href="#h2-87">&quot;bbox_min&quot; - Selects primary shapes based on their bounding box height or width, whichever is smaller</a></li><li><a href="#h2-96">&quot;bbox_width&quot; - Selects primary shapes based on their bounding box width</a></li><li><a href="#h2-105">&quot;bjt3&quot; - Supplies the BJT3 transistor extractor class</a></li><li><a href="#h2-119">&quot;bjt4&quot; - Supplies the BJT4 transistor extractor class</a></li><li><a href="#h2-133">&quot;box&quot; - Creates a box object</a></li><li><a href="#h2-143">&quot;capacitor&quot; - Supplies the capacitor extractor class</a></li><li><a href="#h2-157">&quot;capacitor_with_bulk&quot; - Supplies the capacitor extractor class that includes a bulk terminal</a></li><li><a href="#h2-172">&quot;cell&quot; - Selects a cell for input on the default source</a></li><li><a href="#h2-191">&quot;cheat&quot; - Hierarchy cheats</a></li><li><a href="#h2-283">&quot;clear_connections&quot; - Clears all connections stored so far</a></li><li><a href="#h2-292">&quot;clip&quot; - Specifies clipped input on the default source</a></li><li><a href="#h2-312">&quot;connect&quot; - Specifies a connection between two layers</a></li><li><a href="#h2-321">&quot;connect_explicit&quot; - Specifies explicit net connections</a></li><li><a href="#h2-332">&quot;connect_global&quot; - Specifies a connection to a global net</a></li><li><a href="#h2-341">&quot;connect_implicit&quot; - Specifies a label pattern for implicit net connections</a></li><li><a href="#h2-351">&quot;corners&quot; - Selects corners of polygons</a></li><li><a href="#h2-372">&quot;covering&quot; - Selects shapes entirely covering other shapes</a></li><li><a href="#h2-385">&quot;dbu&quot; - Gets or sets the database unit to use</a></li><li><a href="#h2-404">&quot;deep&quot; - Enters deep (hierarchical) mode</a></li><li><a href="#h2-424">&quot;deep_reject_odd_polygons&quot; - Gets or sets a value indicating whether the reject odd polygons in deep mode</a></li><li><a href="#h2-437">&quot;def_output&quot; - Gets an object describing the default output channel</a></li><li><a href="#h2-459">&quot;device_scaling&quot; - Specifies a dimension scale factor for the geometrical device properties</a></li><li><a href="#h2-468">&quot;diode&quot; - Supplies the diode extractor class</a></li><li><a href="#h2-482">&quot;dmos3&quot; - Supplies the DMOS3 transistor extractor class</a></li><li><a href="#h2-498">&quot;dmos4&quot; - Supplies the MOS4 transistor extractor class</a></li><li><a href="#h2-514">&quot;edge&quot; - Creates an edge object</a></li><li><a href="#h2-524">&quot;edge_layer&quot; - Creates an empty edge layer</a></li><li><a href="#h2-534">&quot;edge_pairs&quot; - Gets the edges from an original layer</a></li><li><a href="#h2-543">&quot;edges&quot; - Gets the edges from an original layer</a></li><li><a href="#h2-552">&quot;enc&quot; - Synonym for &quot;enclosing&quot;</a></li><li><a href="#h2-561">&quot;enclosed&quot; - Performs an enclosing check (other enclosing layer)</a></li><li><a href="#h2-640">&quot;enclosing&quot; - Performs an enclosing check</a></li><li><a href="#h2-716">&quot;error&quot; - Prints an error</a></li><li><a href="#h2-725">&quot;evaluate_nets&quot; - Evaluates expressions on nets</a></li><li><a href="#h2-734">&quot;extent&quot; - Creates a new layer with the bounding box of the default source or cell bounding boxes</a></li><li><a href="#h2-744">&quot;extent_refs&quot; - Returns partial references to the boundings boxes of the polygons</a></li><li><a href="#h2-757">&quot;extents&quot; - Returns the bounding box of each input object</a></li><li><a href="#h2-770">&quot;extract_devices&quot; - Extracts devices for a given device extractor and device layer selection</a></li><li><a href="#h2-780">&quot;flat&quot; - Disables tiling mode</a></li><li><a href="#h2-789">&quot;foreign&quot; - Represents all other polygons from primary except the current one</a></li><li><a href="#h2-812">&quot;global_transform&quot; - Gets or sets a global transformation</a></li><li><a href="#h2-823">&quot;holes&quot; - Selects all holes from the input polygons</a></li><li><a href="#h2-836">&quot;hulls&quot; - Selects all hulls from the input polygons</a></li><li><a href="#h2-849">&quot;if_all&quot; - Evaluates to the primary shape when all condition expression results are non-empty</a></li><li><a href="#h2-867">&quot;if_any&quot; - Evaluates to the primary shape when any condition expression results is non-empty</a></li><li><a href="#h2-878">&quot;if_none&quot; - Evaluates to the primary shape when all of the condition expression results are empty</a></li><li><a href="#h2-889">&quot;ignore_extraction_errors&quot; - Specifies whether to ignore extraction errors</a></li><li><a href="#h2-898">&quot;info&quot; - Outputs as message to the logger or progress window</a></li><li><a href="#h2-910">&quot;input&quot; - Fetches the shapes from the specified input from the default source</a></li><li><a href="#h2-921">&quot;inside&quot; - Selects shapes entirely inside other shapes</a></li><li><a href="#h2-933">&quot;interacting&quot; - Selects shapes interacting with other shapes</a></li><li><a href="#h2-946">&quot;is_deep?&quot; - Returns true, if in deep mode</a></li><li><a href="#h2-952">&quot;is_tiled?&quot; - Returns true, if in tiled mode</a></li><li><a href="#h2-958">&quot;iso&quot; - Synonym for &quot;isolated&quot;</a></li><li><a href="#h2-967">&quot;isolated&quot; - Performs an isolation (inter-polygon space) check</a></li><li><a href="#h2-1017">&quot;l2n_data&quot; - Gets the internal LayoutToNetlist object for the default Netter</a></li><li><a href="#h2-1026">&quot;labels&quot; - Gets the labels (text) from an original layer</a></li><li><a href="#h2-1035">&quot;layers&quot; - Gets the layers contained in the default source</a></li><li><a href="#h2-1044">&quot;layout&quot; - Specifies an additional layout for the input source.</a></li><li><a href="#h2-1081">&quot;length&quot; - Computes the total edge length of an edge layer or in universal DRC context: selects edges based on a length condition</a></li><li><a href="#h2-1095">&quot;log&quot; - Outputs as message to the logger window</a></li><li><a href="#h2-1107">&quot;log_file&quot; - Specify the log file where to send to log to</a></li><li><a href="#h2-1117">&quot;make_layer&quot; - Creates an empty polygon layer based on the hierarchical scheme selected</a></li><li><a href="#h2-1135">&quot;max_area_ratio&quot; - Gets or sets the maximum bounding box to polygon area ratio for deep mode fragmentation</a></li><li><a href="#h2-1170">&quot;max_vertex_count&quot; - Gets or sets the maximum vertex count for deep mode fragmentation</a></li><li><a href="#h2-1186">&quot;middle&quot; - Returns the centers of polygon bounding boxes</a></li><li><a href="#h2-1199">&quot;mos3&quot; - Supplies the MOS3 transistor extractor class</a></li><li><a href="#h2-1213">&quot;mos4&quot; - Supplies the MOS4 transistor extractor class</a></li><li><a href="#h2-1227">&quot;name&quot; - Assigns a name to a layer for reference in the LVS database</a></li><li><a href="#h2-1236">&quot;name_prefix&quot; - Specifies the layer name prefix for auto-generated layer names</a></li><li><a href="#h2-1245">&quot;netlist&quot; - Obtains the extracted netlist from the default Netter</a></li><li><a href="#h2-1252">&quot;netter&quot; - Creates a new netter object</a></li><li><a href="#h2-1261">&quot;new_report&quot; - Creates a new report database object for use in &quot;output&quot;</a></li><li><a href="#h2-1276">&quot;new_target&quot; - Creates a new layout target object for use in &quot;output&quot;</a></li><li><a href="#h2-1291">&quot;no_borders&quot; - Reset the tile borders</a></li><li><a href="#h2-1300">&quot;notch&quot; - Performs a notch (intra-polygon space) check</a></li><li><a href="#h2-1346">&quot;output&quot; - Outputs a layer to the report database or output layout</a></li><li><a href="#h2-1355">&quot;output_cell&quot; - Specifies a target cell, but does not change the target layout</a></li><li><a href="#h2-1366">&quot;outside&quot; - Selects shapes entirely outside other shapes</a></li><li><a href="#h2-1378">&quot;overlap&quot; - Performs an overlap check</a></li><li><a href="#h2-1428">&quot;overlapping&quot; - Selects shapes overlapping with other shapes</a></li><li><a href="#h2-1441">&quot;p&quot; - Creates a point object</a></li><li><a href="#h2-1456">&quot;path&quot; - Creates a path object</a></li><li><a href="#h2-1466">&quot;perimeter&quot; - Computes the total perimeter or in universal DRC context: selects the primary shape if the perimeter is meeting the condition</a></li><li><a href="#h2-1481">&quot;polygon&quot; - Creates a polygon object</a></li><li><a href="#h2-1491">&quot;polygon_layer&quot; - Creates an empty polygon layer</a></li><li><a href="#h2-1503">&quot;polygons&quot; - Fetches the polygons (or shapes that can be converted to polygons) from the specified input from the default source</a></li><li><a href="#h2-1512">&quot;primary&quot; - Represents the primary input of the universal DRC function</a></li><li><a href="#h2-1522">&quot;profile&quot; - Profiles the script and provides a runtime + memory statistics</a></li><li><a href="#h2-1537">&quot;props_copy&quot; - Specifies &quot;copy properties&quot; on operations supporting user properties constraints</a></li><li><a href="#h2-1545">&quot;props_eq&quot; - Specifies &quot;same properties&quot; for operations supporting user properties constraints</a></li><li><a href="#h2-1574">&quot;props_ne&quot; - Specifies &quot;different properties&quot; for operations supporting user properties constraints</a></li><li><a href="#h2-1603">&quot;rectangles&quot; - Selects all polygons which are rectangles</a></li><li><a href="#h2-1616">&quot;rectilinear&quot; - Selects all polygons which are rectilinear</a></li><li><a href="#h2-1629">&quot;region_overlap&quot; - Specifies region selected input in &quot;overlap mode&quot;</a></li><li><a href="#h2-1649">&quot;region_touch&quot; - Specifies region selected input in &quot;touch mode&quot;</a></li><li><a href="#h2-1669">&quot;relative_height&quot; - Selects primary shapes based on the ratio of height and width of their bounding boxes</a></li><li><a href="#h2-1678">&quot;report&quot; - Specifies a report database for output</a></li><li><a href="#h2-1704">&quot;report_netlist&quot; - Specifies an extracted netlist report for output</a></li><li><a href="#h2-1721">&quot;resistor&quot; - Supplies the resistor extractor class</a></li><li><a href="#h2-1737">&quot;resistor_with_bulk&quot; - Supplies the resistor extractor class that includes a bulk terminal</a></li><li><a href="#h2-1752">&quot;rounded_corners&quot; - Applies corner rounding</a></li><li><a href="#h2-1765">&quot;secondary&quot; - Provides secondary input for the &quot;drc&quot; universal DRC function</a></li><li><a href="#h2-1782">&quot;select&quot; - Specifies cell filters on the default source</a></li><li><a href="#h2-1799">&quot;sep&quot; - Synonym for &quot;separation&quot;</a></li><li><a href="#h2-1808">&quot;separation&quot; - Performs a separation check</a></li><li><a href="#h2-1874">&quot;silent&quot; - Resets verbose mode</a></li><li><a href="#h2-1883">&quot;sized&quot; - Returns the sized version of the input</a></li><li><a href="#h2-1898">&quot;smoothed&quot; - Applies smoothing</a></li><li><a href="#h2-1911">&quot;soft_connect&quot; - Specifies a soft connection between two layers</a></li><li><a href="#h2-1927">&quot;soft_connect_global&quot; - Specifies a soft connection to a global net</a></li><li><a href="#h2-1941">&quot;source&quot; - Specifies a source layout</a></li><li><a href="#h2-1978">&quot;space&quot; - Performs a space check</a></li><li><a href="#h2-2027">&quot;squares&quot; - Selects all polygons which are squares</a></li><li><a href="#h2-2040">&quot;switch&quot; - A conditional selector for the &quot;drc&quot; universal DRC function</a></li><li><a href="#h2-2066">&quot;target&quot; - Specify the target layout</a></li><li><a href="#h2-2097">&quot;target_netlist&quot; - With this statement, an extracted netlist is finally written to a file</a></li><li><a href="#h2-2113">&quot;threads&quot; - Specifies the number of CPU cores to use in tiling mode</a></li><li><a href="#h2-2128">&quot;tile_borders&quot; - Specifies a minimum tile border</a></li><li><a href="#h2-2149">&quot;tiles&quot; - Specifies tiling</a></li><li><a href="#h2-2174">&quot;top_level&quot; - Specifies that the circuit is a chip top level circuit</a></li><li><a href="#h2-2183">&quot;verbose&quot; - Sets or resets verbose mode</a></li><li><a href="#h2-2193">&quot;verbose?&quot; - Returns true, if verbose mode is enabled</a></li><li><a href="#h2-2202">&quot;warn&quot; - Prints a warning</a></li><li><a href="#h2-2211">&quot;width&quot; - Performs a width check</a></li><li><a href="#h2-2283">&quot;with_holes&quot; - Selects all input polygons according to their number of holes in DRC expressions</a></li><li><a href="#h2-2294">&quot;write_spice&quot; - Defines SPICE output format (with options)</a></li></ul><a name="angle"></a><a name="h2-11"></a><h2>&quot;angle&quot; - In universal DRC context: selects edges based on their orientation</h2><a name="k_2"></a><p>Usage:</p><ul><li><tt>angle (in condition)</tt></li></ul><p>
+&quot;angle&quot; represents the edge orientation filter on the primary shape edges in
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_drc.html#angle">DRC#angle</a> for more details). In this context,
+the operation acts similar to <a href="drc_ref_layer.html#with_angle">Layer#with_angle</a>.
+</p><a name="antenna_check"></a><a name="h2-22"></a><h2>&quot;antenna_check&quot; - Performs an antenna check</h2><a name="k_3"></a><p>Usage:</p><ul><li><tt>antenna_check(gate, metal, ratio, [ diode_specs ... ])</tt></li></ul><p>
+See <a href="drc_ref_netter.html#antenna_check">Netter#antenna_check</a> for a description of that function.
+</p><a name="area"></a><a name="h2-31"></a><h2>&quot;area&quot; - Computes the total area or in universal DRC context: selects the primary shape if the area is meeting the condition</h2><a name="k_4"></a><p>Usage:</p><ul><li><tt>area (in condition)</tt></li><li><tt>area(layer)</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.area&quot; (see <a href="drc_ref_layer.html#area">Layer#area</a>) and returns the total area of the 
+polygons in the layer. 
+</p><p>
+Without a layer argument, &quot;area&quot; represents an area filter for primary shapes in 
+<a href="drc_ref_global.html">global</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_drc.html#area">DRC#area</a> for more details).
+</p><a name="area_ratio"></a><a name="h2-46"></a><h2>&quot;area_ratio&quot; - Selects primary shapes based on the ratio of bounding box and polygon area</h2><a name="k_5"></a><p>Usage:</p><ul><li><tt>area_ratio (in condition)</tt></li></ul><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a>, <a href="#area_ratio">area_ratio</a> and <a href="drc_ref_drc.html#area_ratio">DRC#area_ratio</a> for more details.
+</p><a name="bbox_aspect_ratio"></a><a name="h2-55"></a><h2>&quot;bbox_aspect_ratio&quot; - Selects primary shapes based on the aspect ratio of their bounding boxes</h2><a name="k_6"></a><p>Usage:</p><ul><li><tt>bbox_aspect_ratio (in condition)</tt></li></ul><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a>, <a href="#bbox_aspect_ratio">bbox_aspect_ratio</a> and <a href="drc_ref_drc.html#bbox_aspect_ratio">DRC#bbox_aspect_ratio</a> for more details.
+</p><a name="bbox_height"></a><a name="h2-64"></a><h2>&quot;bbox_height&quot; - Selects primary shapes based on their bounding box height</h2><a name="k_7"></a><p>Usage:</p><ul><li><tt>bbox_height (in condition)</tt></li></ul><p>
+This method creates a universal DRC expression (see <a href="drc_ref_layer.html#drc">Layer#drc</a>) to select primary shapes whose
+bounding box height satisfies the condition. Conditions may be written as arithmetic comparisons
+against numeric values. For example, &quot;bbox_height &lt; 2.0&quot; will select all primary shapes whose
+bounding box height is less than 2 micrometers. See <a href="drc_ref_layer.html#drc">Layer#drc</a> for more details about comparison 
+specs. Plain &quot;bbox_min&quot; is equivalent to &quot;primary.bbox_min&quot; - i.e. it is used on the primary
+shape. Also see <a href="drc_ref_drc.html#bbox_min">DRC#bbox_min</a>.
+</p><a name="bbox_max"></a><a name="h2-78"></a><h2>&quot;bbox_max&quot; - Selects primary shapes based on their bounding box height or width, whichever is larger</h2><a name="k_8"></a><p>Usage:</p><ul><li><tt>bbox_max (in condition)</tt></li></ul><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a>, <a href="#bbox_max">bbox_max</a> and <a href="drc_ref_drc.html#bbox_max">DRC#bbox_max</a> for more details.
+</p><a name="bbox_min"></a><a name="h2-87"></a><h2>&quot;bbox_min&quot; - Selects primary shapes based on their bounding box height or width, whichever is smaller</h2><a name="k_9"></a><p>Usage:</p><ul><li><tt>bbox_max (in condition)</tt></li></ul><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a>, <a href="#bbox_min">bbox_min</a> and <a href="drc_ref_drc.html#bbox_min">DRC#bbox_min</a> for more details.
+</p><a name="bbox_width"></a><a name="h2-96"></a><h2>&quot;bbox_width&quot; - Selects primary shapes based on their bounding box width</h2><a name="k_10"></a><p>Usage:</p><ul><li><tt>bbox_max (in condition)</tt></li></ul><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a>, <a href="#bbox_height">bbox_height</a> and <a href="drc_ref_drc.html#bbox_height">DRC#bbox_height</a> for more details.
+</p><a name="bjt3"></a><a name="h2-105"></a><h2>&quot;bjt3&quot; - Supplies the BJT3 transistor extractor class</h2><a name="k_11"></a><p>Usage:</p><ul><li><tt>bjt3(name)</tt></li><li><tt>bjt3(name, class)</tt></li></ul><p>
+Use this class with <a href="#extract_devices">extract_devices</a> to specify extraction of a 
+bipolar junction transistor
+</p><p>
+See <a href="../code/class_DeviceExtractorBJT3Transistor.html">DeviceExtractorBJT3Transistor</a> for more details
+about this extractor.
+</p><a name="bjt4"></a><a name="h2-119"></a><h2>&quot;bjt4&quot; - Supplies the BJT4 transistor extractor class</h2><a name="k_12"></a><p>Usage:</p><ul><li><tt>bjt4(name)</tt></li><li><tt>bjt4(name, class)</tt></li></ul><p>
+Use this class with <a href="#extract_devices">extract_devices</a> to specify extraction of a 
+bipolar junction transistor with a substrate terminal
+</p><p>
+See <a href="../code/class_DeviceExtractorBJT4Transistor.html">DeviceExtractorBJT4Transistor</a> for more details
+about this extractor.
+</p><a name="box"></a><a name="h2-133"></a><h2>&quot;box&quot; - Creates a box object</h2><a name="k_13"></a><p>Usage:</p><ul><li><tt>box(...)</tt></li></ul><p>
+This function creates a box object. The arguments are the same than for the 
+<a href="../code/class_DBox.html">DBox</a> constructors.
+</p><a name="capacitor"></a><a name="h2-143"></a><h2>&quot;capacitor&quot; - Supplies the capacitor extractor class</h2><a name="k_14"></a><p>Usage:</p><ul><li><tt>capacitor(name, area_cap)</tt></li><li><tt>capacitor(name, area_cap, class)</tt></li></ul><p>
+Use this class with <a href="#extract_devices">extract_devices</a> to specify extraction of a capacitor.
+The area_cap argument is the capacitance in Farad per square micrometer.
+</p><p>
+See <a href="../code/class_DeviceExtractorCapacitor.html">DeviceExtractorCapacitor</a> for more details
+about this extractor.
+</p><a name="capacitor_with_bulk"></a><a name="h2-157"></a><h2>&quot;capacitor_with_bulk&quot; - Supplies the capacitor extractor class that includes a bulk terminal</h2><a name="k_15"></a><p>Usage:</p><ul><li><tt>capacitor_with_bulk(name, area_cap)</tt></li><li><tt>capacitor_with_bulk(name, area_cap, class)</tt></li></ul><p>
+Use this class with <a href="#extract_devices">extract_devices</a> to specify extraction of a capacitor 
+with a bulk terminal.
+The area_cap argument is the capacitance in Farad per square micrometer.
+</p><p>
+See <a href="../code/class_DeviceExtractorCapacitorWithBulk.html">DeviceExtractorCapacitorWithBulk</a> for more details
+about this extractor.
+</p><a name="cell"></a><a name="h2-172"></a><h2>&quot;cell&quot; - Selects a cell for input on the default source</h2><a name="k_16"></a><p>Usage:</p><ul><li><tt>cell(args)</tt></li></ul><p>
+See <a href="drc_ref_source.html#cell">Source#cell</a> for a description of that function.
+In addition to the functionality described there, the global function will also send the output
+to the specified cell.
+</p><p>
+The following code will select cell &quot;MACRO&quot; from the input layout:
+</p><p><pre>
+cell(&quot;MACRO&quot;)
+# shapes now will be taken from cell &quot;MACRO&quot;
+l1 = input(1, 0)
+</pre></p><a name="cheat"></a><a name="h2-191"></a><h2>&quot;cheat&quot; - Hierarchy cheats</h2><a name="k_17"></a><p>Usage:</p><ul><li><tt>cheat(args) { block }</tt></li></ul><p>
+Hierarchy cheats can be used in deep mode to shortcut hierarchy evaluation
+for certain cells and consider their local configuration only.
+Cheats are useful for example when dealing with memory arrays. Often
+such arrays are build from unit cells and those often overlap with their
+neighbors. Now, if the hierarchical engine encounters such a situation, it
+will first analyse all these interactions (which can be expensive) and then
+it may come to the conclusion that boundary instances need to be handled
+differently than inside instances. This in turn might lead to propagation of
+shapes and in an LVS context to device externalisation: because some devices
+might have different parameters for boundary cells than for inside cells, the
+device instances can no longer be kept inside the unit cell. Specifically for
+memory arrays, this is not desired as eventually this leads to flattening
+of the whole array. 
+</p><p>
+The solution is to cheat: provided the unit cell is fully fledged and neighbors
+do not disturb the unit cell's configuration in critical ways, the unit cell 
+can be treated as being isolated and results are put together in the usual way.
+</p><p>
+Cheats can be applied on layout operations - specifically booleans - and device
+extraction operations. Cheats are only effective in <a href="#deep">deep</a> mode.
+</p><p>
+For booleans, a cheat means that the cheating cell's boolean results are computed
+locally and are combined afterwards. A cheat is introduced this way:
+</p><p><pre>
+deep
+
+l1 = input(1, 0)
+l2 = input(2, 0)
+
+# usual booleans
+l1and2 = l1 &amp; l2
+
+# will compute &quot;UNIT_CELL&quot; isolated and everything else in normal hierarchical mode:
+l1minus2 = cheat(&quot;UNIT_CELL) { l1 - l2 }
+</pre></p><p>
+The cheat block can also be wrapped in do .. end statements and can return multiple
+layer objects:
+</p><p><pre>
+deep
+
+l1 = input(1, 0)
+l2 = input(2, 0)
+
+# computes both AND and NOT of l1 and l2 with cheating for &quot;UNIT_CELL&quot;
+l1and2, l1minus2 = cheat(&quot;UNIT_CELL) do
+[ l1 &amp; l2, l1 - l2 ]
+end
+</pre></p><p>
+(Technically, the cheat code block is a Ruby Proc and cannot create variables
+outside its scope. Hence the results of this code block have to be passed
+through the &quot;cheat&quot; method).
+</p><p>
+To apply cheats for device extraction, use the following scheme:
+</p><p><pre>
+deep
+
+poly = input(1, 0)
+active = input(2, 0)
+
+sd = active - poly
+gate = active &amp; poly
+
+# device extraction with cheating for &quot;UNIT_CELL&quot;:
+cheat(&quot;UNIT_CELL&quot;) do
+extract_devices(mos3(&quot;NMOS&quot;), { &quot;SD&quot; =&gt; sd, &quot;G&quot; =&gt; gate, &quot;tS&quot; =&gt; sd, &quot;tD&quot; =&gt; sd, &quot;tG&quot; =&gt; poly }
+end
+</pre></p><p>
+The argument to the cheat method is a list of cell name pattern (glob-style
+pattern). For example:
+</p><p><pre>
+cheat(&quot;UNIT_CELL*&quot;) { ... }
+cheat(&quot;UNIT_CELL1&quot;, &quot;UNIT_CELL2&quot;) { ... }
+cheat(&quot;UNIT_CELL{1,2}&quot;) { ... }
+</pre></p><p>
+For LVS applications, it's usually sufficient to cheat in the device extraction step. 
+Cheats have been introduced in version 0.26.1.
+</p><a name="clear_connections"></a><a name="h2-283"></a><h2>&quot;clear_connections&quot; - Clears all connections stored so far</h2><a name="k_18"></a><p>Usage:</p><ul><li><tt>clear_connections</tt></li></ul><p>
+See <a href="drc_ref_netter.html#clear_connections">Netter#clear_connections</a> for a description of that function.
+</p><a name="clip"></a><a name="h2-292"></a><h2>&quot;clip&quot; - Specifies clipped input on the default source</h2><a name="k_19"></a><p>Usage:</p><ul><li><tt>clip(args)</tt></li></ul><p>
+See <a href="drc_ref_source.html#clip">Source#clip</a> for a description of that function.
+</p><p>
+The following code will select shapes within a 500x600 micron rectangle (lower left corner at 0,0) 
+from the input layout. The shapes will be clipped to that rectangle:
+</p><p><pre>
+clip(0.mm, 0.mm, 0.5.mm, 0.6.mm)
+# shapes now will be taken from the given rectangle and clipped to it
+l1 = input(1, 0)
+</pre></p><p>
+To remove the clip condition, call &quot;clip&quot; without any arguments.
+</p><a name="connect"></a><a name="h2-312"></a><h2>&quot;connect&quot; - Specifies a connection between two layers</h2><a name="k_20"></a><p>Usage:</p><ul><li><tt>connect(a, b)</tt></li></ul><p>
+See <a href="drc_ref_netter.html#connect">Netter#connect</a> for a description of that function.
+</p><a name="connect_explicit"></a><a name="h2-321"></a><h2>&quot;connect_explicit&quot; - Specifies explicit net connections</h2><a name="k_21"></a><p>Usage:</p><ul><li><tt>connect_explicit(net_names)</tt></li><li><tt>connect_explicit(cell_pattern, net_names)</tt></li></ul><p>
+See <a href="drc_ref_netter.html#connect_explicit">Netter#connect_explicit</a> for a description of that function.
+Net names is an array (use square brackets to list the net names).
+</p><a name="connect_global"></a><a name="h2-332"></a><h2>&quot;connect_global&quot; - Specifies a connection to a global net</h2><a name="k_22"></a><p>Usage:</p><ul><li><tt>connect_global(l, name)</tt></li></ul><p>
+See <a href="drc_ref_netter.html#connect_global">Netter#connect_global</a> for a description of that function.
+</p><a name="connect_implicit"></a><a name="h2-341"></a><h2>&quot;connect_implicit&quot; - Specifies a label pattern for implicit net connections</h2><a name="k_23"></a><p>Usage:</p><ul><li><tt>connect_implicit(label_pattern)</tt></li><li><tt>connect_implicit(cell_pattern, label_pattern)</tt></li></ul><p>
+See <a href="drc_ref_netter.html#connect_implicit">Netter#connect_implicit</a> for a description of that function.
+</p><a name="corners"></a><a name="h2-351"></a><h2>&quot;corners&quot; - Selects corners of polygons</h2><a name="k_24"></a><p>Usage:</p><ul><li><tt>corners([ options ]) (in condition)</tt></li><li><tt>corners(layer [, options ])</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.corners&quot; (see <a href="drc_ref_layer.html#corners">Layer#corners</a>). Without a layer
+argument, &quot;corners&quot; represents the corner generator/filter in primary shapes for
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_global.html#corners">corners</a> for more details).
+</p><p>
+Like the layer-based version, the &quot;corners&quot; operator accepts the 
+output type option: &quot;as_dots&quot; for dot-like edges, &quot;as_boxes&quot; for
+small (2x2 DBU) box markers and &quot;as_edge_pairs&quot; for edge pairs.
+The default output type is &quot;as_boxes&quot;.
+</p><p>
+The &quot;corners&quot; operator can be put into a condition which means it's
+applied to corners meeting a particular angle constraint.
+</p><a name="covering"></a><a name="h2-372"></a><h2>&quot;covering&quot; - Selects shapes entirely covering other shapes</h2><a name="k_25"></a><p>Usage:</p><ul><li><tt>covering(other) (optionally in condition)</tt></li></ul><p>
+This operator represents the selector of primary shapes
+which entirely cover shapes from the other layer. This version can be put into
+a condition indicating how many shapes of the other layer need to be covered.
+Use this operator within <a href="drc_ref_drc.html">DRC</a> expressions (also see <a href="drc_ref_layer.html#drc">Layer#drc</a>). If can be used
+as method to an expression. See there for more details: <a href="drc_ref_global.html#covering">covering</a>.
+</p><a name="dbu"></a><a name="h2-385"></a><h2>&quot;dbu&quot; - Gets or sets the database unit to use</h2><a name="k_26"></a><p>Usage:</p><ul><li><tt>dbu(dbu_value)</tt></li><li><tt>dbu</tt></li></ul><p>
+Without any argument, this method gets the database unit
+used inside the DRC engine. 
+</p><p>
+With an argument, sets the database unit used internally in the DRC engine.
+Without using that method, the database unit is automatically
+taken as the database unit of the last input. 
+A specific database unit can be set in order to optimize
+for two layouts (i.e. take the largest common denominator).
+When the database unit is set, it must be set at the beginning
+of the script and before any operation that uses it.
+</p><a name="deep"></a><a name="h2-404"></a><h2>&quot;deep&quot; - Enters deep (hierarchical) mode</h2><a name="k_27"></a><p>Usage:</p><ul><li><tt>deep</tt></li></ul><p>
+In deep mode, the operations will be performed in a hierarchical fashion. 
+Sometimes this reduces the time and memory required for an operation, but this
+will also add some overhead for the hierarchical analysis.
+</p><p>
+&quot;deepness&quot; is a property of layers. Layers created with &quot;input&quot; while in 
+deep mode carry hierarchy. Operations involving such layers at the only
+or the first argument are carried out in hierarchical mode. 
+</p><p>
+Hierarchical mode has some more implications, like &quot;merged_semantics&quot; being
+implied always. Sometimes cell variants will be created.
+</p><p>
+Deep mode can be cancelled with <a href="#tiles">tiles</a> or <a href="#flat">flat</a>.
+</p><a name="deep_reject_odd_polygons"></a><a name="h2-424"></a><h2>&quot;deep_reject_odd_polygons&quot; - Gets or sets a value indicating whether the reject odd polygons in deep mode</h2><a name="k_28"></a><p>Usage:</p><ul><li><tt>deep_reject_odd_polygons(flag)</tt></li><li><tt>deep_reject_odd_polygons</tt></li></ul><p>
+In deep mode, non-orientable (e.g. &quot;8&quot;-shaped) polygons may not be resolved properly.
+By default the interpretation of such polygons is undefined - they may even vanish entirely.
+By setting this flag to true, the deep mode layout processor will reject such polygons with 
+an error. 
+</p><a name="def_output"></a><a name="h2-437"></a><h2>&quot;def_output&quot; - Gets an object describing the default output channel</h2><a name="k_29"></a><p>Usage:</p><ul><li><tt>def_output</tt></li></ul><p>
+The function returns an object describing the current output channel. 
+This channel object can be used like the channels delivered by 
+<a href="drc_ref_global.html#new_target">new_target</a> or <a href="drc_ref_global.html#new_report">new_report</a>.
+</p><p>
+These readonly attributes are supported by the channel object:
+</p><p><ul><li>&quot;layout&quot;: the <a href="../code/class_Layout.html">Layout</a> object if the output is a layout </li><li>&quot;rdb&quot;: the <a href="../code/class_ReportDatabase.html">ReportDatabase</a> object if the output is a report </li><li>&quot;cell&quot;: a <a href="../code/class_Cell.html">Cell</a> object or <a href="../code/class_RdbCell.html">RdbCell</a> object, depending on the type of channel </li></ul></p><p>
+Note, that the channel object will be modified when you use <a href="drc_ref_global.html#output_cell">output_cell</a>,
+<a href="drc_ref_global.html#target">target</a> or <a href="drc_ref_global.html#report">report</a> calls that change the target.
+</p><a name="device_scaling"></a><a name="h2-459"></a><h2>&quot;device_scaling&quot; - Specifies a dimension scale factor for the geometrical device properties</h2><a name="k_30"></a><p>Usage:</p><ul><li><tt>device_scaling(factor)</tt></li></ul><p>
+See <a href="drc_ref_netter.html#device_scaling">Netter#device_scaling</a> for a description of that function.
+</p><a name="diode"></a><a name="h2-468"></a><h2>&quot;diode&quot; - Supplies the diode extractor class</h2><a name="k_31"></a><p>Usage:</p><ul><li><tt>diode(name)</tt></li><li><tt>diode(name, class)</tt></li></ul><p>
+Use this class with <a href="#extract_devices">extract_devices</a> to specify extraction of a 
+planar diode 
+</p><p>
+See <a href="../code/class_DeviceExtractorDiode.html">DeviceExtractorDiode</a> for more details
+about this extractor.
+</p><a name="dmos3"></a><a name="h2-482"></a><h2>&quot;dmos3&quot; - Supplies the DMOS3 transistor extractor class</h2><a name="k_32"></a><p>Usage:</p><ul><li><tt>dmos3(name)</tt></li><li><tt>dmos3(name, class)</tt></li></ul><p>
+Use this class with <a href="#extract_devices">extract_devices</a> to specify extraction of a 
+three-terminal DMOS transistor. A DMOS transistor is essentially
+the same than a MOS transistor, but source and drain are 
+separated.
+</p><p>
+See <a href="../code/class_DeviceExtractorMOS3Transistor.html">DeviceExtractorMOS3Transistor</a> for more details
+about this extractor (strict mode applies for 'dmos3').
+</p><a name="dmos4"></a><a name="h2-498"></a><h2>&quot;dmos4&quot; - Supplies the MOS4 transistor extractor class</h2><a name="k_33"></a><p>Usage:</p><ul><li><tt>dmos4(name)</tt></li><li><tt>dmos4(name, class)</tt></li></ul><p>
+Use this class with <a href="#extract_devices">extract_devices</a> to specify extraction of a 
+four-terminal DMOS transistor. A DMOS transistor is essentially
+the same than a MOS transistor, but source and drain are 
+separated.
+</p><p>
+See <a href="../code/class_DeviceExtractorMOS4Transistor.html">DeviceExtractorMOS4Transistor</a> for more details
+about this extractor (strict mode applies for 'dmos4').
+</p><a name="edge"></a><a name="h2-514"></a><h2>&quot;edge&quot; - Creates an edge object</h2><a name="k_34"></a><p>Usage:</p><ul><li><tt>edge(...)</tt></li></ul><p>
+This function creates an edge object. The arguments are the same than for the 
+<a href="../code/class_DEdge.html">DEdge</a> constructors.
+</p><a name="edge_layer"></a><a name="h2-524"></a><h2>&quot;edge_layer&quot; - Creates an empty edge layer</h2><a name="k_35"></a><p>Usage:</p><ul><li><tt>edge_layer</tt></li></ul><p>
+The intention of that method is to create an empty layer which can be 
+filled with edge objects using <a href="drc_ref_layer.html#insert">Layer#insert</a>.
+</p><a name="edge_pairs"></a><a name="h2-534"></a><h2>&quot;edge_pairs&quot; - Gets the edges from an original layer</h2><a name="k_36"></a><p>Usage:</p><ul><li><tt>edge_pairs(args)</tt></li></ul><p>
+See <a href="drc_ref_source.html#edge_pairs">Source#edge_pairs</a> for a description of that function.
+</p><a name="edges"></a><a name="h2-543"></a><h2>&quot;edges&quot; - Gets the edges from an original layer</h2><a name="k_37"></a><p>Usage:</p><ul><li><tt>edges(args)</tt></li></ul><p>
+See <a href="drc_ref_source.html#edges">Source#edges</a> for a description of that function.
+</p><a name="enc"></a><a name="h2-552"></a><h2>&quot;enc&quot; - Synonym for &quot;enclosing&quot;</h2><a name="k_38"></a><p>Usage:</p><ul><li><tt>enc(...)</tt></li></ul><p>
+&quot;enc&quot; is the short form for <a href="#enclosing">enclosing</a>.
+</p><a name="enclosed"></a><a name="h2-561"></a><h2>&quot;enclosed&quot; - Performs an enclosing check (other enclosing layer)</h2><a name="k_39"></a><p>Usage:</p><ul><li><tt>enclosed(other [, options ]) (in conditions)</tt></li><li><tt>enclosed(layer, other [, options ])</tt></li></ul><p>
+This check verifies if the polygons of the input layer are enclosed by shapes
+of the other input layer by a certain distance.
+It has manifold options. See <a href="drc_ref_layer.html#width">Layer#width</a> for the basic options such
+as metrics, projection and angle constraints etc. This check also features
+opposite and rectangle filtering. See <a href="drc_ref_layer.html#separation">Layer#separation</a> for details about opposite and
+rectangle error filtering.
+</p><p>
+This function is essentially the reverse of <a href="#enclosing">enclosing</a>. In case of
+&quot;enclosed&quot;, the other layer must be bigger than the primary layer.
+</p><p><a name="h3-579"></a><h3>Classic mode </h3></p><p>
+This function can be used in classic mode with a layer argument. In this case it
+is equivalent to &quot;layer.enclosed&quot; (see <a href="drc_ref_layer.html#enclosed">Layer#enclosed</a>). 
+</p><p><pre>
+# classic &quot;enclosed&quot; check for &lt; 0.2 um
+in = layer(1, 0)
+other = layer(2, 0)
+errors = enclosed(in, other, 0.2.um)
+</pre></p><p><a name="h3-591"></a><h3>Universal DRC </h3></p><p>
+The version without a first layer is intended for use within <a href="drc_ref_drc.html">DRC</a> expressions
+together with the &quot;universal DRC&quot; method <a href="drc_ref_layer.html#drc">Layer#drc</a>. In this case, this function needs to be 
+put into a condition to specify the check constraints. The other options
+of <a href="drc_ref_layer.html#enclosed">Layer#enclosed</a> (e.g. metrics, projection constraints, angle limits etc.)
+apply to this version too:
+</p><p><pre>
+# universal DRC &quot;enclosed&quot; check for &lt; 0.2 um
+in = layer(1, 0)
+other = layer(2, 0)
+errors = in.drc(enclosed(other) &lt; 0.2.um)
+</pre></p><p>
+The conditions may involve an upper and lower limit. The following examples
+illustrate the use of this function with conditions:
+</p><p><pre>
+out = in.drc(enclosed(other) &lt; 0.2.um)
+out = in.drc(enclosed(other) &lt;= 0.2.um)
+out = in.drc(enclosed(other) &gt; 0.2.um)
+out = in.drc(enclosed(other) &gt;= 0.2.um)
+out = in.drc(enclosed(other) == 0.2.um)
+out = in.drc(enclosed(other) != 0.2.um)
+out = in.drc(0.1.um &lt;= enclosed(other) &lt; 0.2.um)
+</pre></p><p>
+The result of the enclosed check are edges or edge pairs forming the markers.
+These markers indicate the presence of the specified condition.
+</p><p>
+With a lower and upper limit, the results are edges marking the positions on the 
+primary shape where the condition is met.
+With a lower limit alone, the results are edge pairs which are formed by two identical, but opposite edges attached to 
+the primary shape. Without an upper limit only, the first edge of the marker is attached to the 
+primary shape while the second edge is attached to the shape of the &quot;other&quot; layer.
+</p><p><table><tr><td><img src="../images/drc_encd1u.png"></td><td><img src="../images/drc_encd2u.png"></td></tr></table></p><p>
+When &quot;larger than&quot; constraints are used, this function will produce the edges from the
+first layer only. The result will still be edge pairs for consistency, but each edge pair holds one edge from
+the original polygon plus a reverse copy of that edge in the second member. Use &quot;first_edges&quot; to extract the 
+actual edges from the first input (see <a href="#separation">separation</a> for an example).
+</p><a name="enclosing"></a><a name="h2-640"></a><h2>&quot;enclosing&quot; - Performs an enclosing check</h2><a name="k_40"></a><p>Usage:</p><ul><li><tt>enclosing(other [, options ]) (in conditions)</tt></li><li><tt>enclosing(layer, other [, options ])</tt></li></ul><p>
+This check verifies if the polygons of the input layer are enclosing the shapes
+of the other input layer by a certain distance.
+It has manifold options. See <a href="drc_ref_layer.html#width">Layer#width</a> for the basic options such
+as metrics, projection and angle constraints etc. This check also features
+opposite and rectangle filtering. See <a href="drc_ref_layer.html#separation">Layer#separation</a> for details about opposite and
+rectangle error filtering.
+</p><p><a name="h3-655"></a><h3>Classic mode </h3></p><p>
+This function can be used in classic mode with a layer argument. In this case it
+is equivalent to &quot;layer.enclosing&quot; (see <a href="drc_ref_layer.html#enclosing">Layer#enclosing</a>). 
+</p><p><pre>
+# classic &quot;enclosing&quot; check for &lt; 0.2 um
+in = layer(1, 0)
+other = layer(2, 0)
+errors = enclosing(in, other, 0.2.um)
+</pre></p><p><a name="h3-667"></a><h3>Universal DRC </h3></p><p>
+The version without a first layer is intended for use within <a href="drc_ref_drc.html">DRC</a> expressions
+together with the &quot;universal DRC&quot; method <a href="drc_ref_layer.html#drc">Layer#drc</a>. In this case, this function needs to be 
+put into a condition to specify the check constraints. The other options
+of <a href="drc_ref_layer.html#enclosing">Layer#enclosing</a> (e.g. metrics, projection constraints, angle limits etc.)
+apply to this version too:
+</p><p><pre>
+# universal DRC &quot;enclosing&quot; check for &lt; 0.2 um
+in = layer(1, 0)
+other = layer(2, 0)
+errors = in.drc(enclosing(other) &lt; 0.2.um)
+</pre></p><p>
+The conditions may involve an upper and lower limit. The following examples
+illustrate the use of this function with conditions:
+</p><p><pre>
+out = in.drc(enclosing(other) &lt; 0.2.um)
+out = in.drc(enclosing(other) &lt;= 0.2.um)
+out = in.drc(enclosing(other) &gt; 0.2.um)
+out = in.drc(enclosing(other) &gt;= 0.2.um)
+out = in.drc(enclosing(other) == 0.2.um)
+out = in.drc(enclosing(other) != 0.2.um)
+out = in.drc(0.1.um &lt;= enclosing(other) &lt; 0.2.um)
+</pre></p><p>
+The result of the enclosing check are edges or edge pairs forming the markers.
+These markers indicate the presence of the specified condition.
+</p><p>
+With a lower and upper limit, the results are edges marking the positions on the 
+primary shape where the condition is met.
+With a lower limit alone, the results are edge pairs which are formed by two identical, but opposite edges attached to 
+the primary shape. Without an upper limit only, the first edge of the marker is attached to the 
+primary shape while the second edge is attached to the shape of the &quot;other&quot; layer.
+</p><p><table><tr><td><img src="../images/drc_enc1u.png"></td><td><img src="../images/drc_enc2u.png"></td></tr></table></p><p>
+When &quot;larger than&quot; constraints are used, this function will produce the edges from the
+first layer only. The result will still be edge pairs for consistency, but each edge pair holds one edge from
+the original polygon plus a reverse copy of that edge in the second member. Use &quot;first_edges&quot; to extract the 
+actual edges from the first input (see <a href="#separation">separation</a> for an example).
+</p><a name="error"></a><a name="h2-716"></a><h2>&quot;error&quot; - Prints an error</h2><a name="k_41"></a><p>Usage:</p><ul><li><tt>error(message)</tt></li></ul><p>
+Similar to <a href="#log">log</a>, but the message is printed formatted as an error
+</p><a name="evaluate_nets"></a><a name="h2-725"></a><h2>&quot;evaluate_nets&quot; - Evaluates expressions on nets</h2><a name="k_42"></a><p>Usage:</p><ul><li><tt>evaluate_nets(primary_layer, secondary_layers, expression [, variables])</tt></li></ul><p>
+See <a href="drc_ref_netter.html#evaluate_nets">Netter#evaluate_nets</a> for a description of that function.
+</p><a name="extent"></a><a name="h2-734"></a><h2>&quot;extent&quot; - Creates a new layer with the bounding box of the default source or cell bounding boxes</h2><a name="k_43"></a><p>Usage:</p><ul><li><tt>extent</tt></li><li><tt>extent(cell_filter)</tt></li></ul><p>
+See <a href="drc_ref_source.html#extent">Source#extent</a> for a description of that function.
+</p><a name="extent_refs"></a><a name="h2-744"></a><h2>&quot;extent_refs&quot; - Returns partial references to the boundings boxes of the polygons</h2><a name="k_44"></a><p>Usage:</p><ul><li><tt>extent_refs([ options ])</tt></li><li><tt>extent_refs(layer, [ options ])</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.extent_refs&quot; (see <a href="drc_ref_layer.html#extent_refs">Layer#extent_refs</a>). Without a layer
+argument, &quot;extent_refs&quot; represents the partial extents extractor on primary shapes within
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_global.html#extent_refs">extent_refs</a> for more details).
+</p><a name="extents"></a><a name="h2-757"></a><h2>&quot;extents&quot; - Returns the bounding box of each input object</h2><a name="k_45"></a><p>Usage:</p><ul><li><tt>extents([ enlargement ])</tt></li><li><tt>extents(layer, [ enlargement ])</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.extents&quot; (see <a href="drc_ref_layer.html#extents">Layer#extents</a>). Without a layer
+argument, &quot;extents&quot; represents the extents generator on primary shapes within
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_global.html#extents">extents</a> for more details).
+</p><a name="extract_devices"></a><a name="h2-770"></a><h2>&quot;extract_devices&quot; - Extracts devices for a given device extractor and device layer selection</h2><a name="k_46"></a><p>Usage:</p><ul><li><tt>extract_devices(extractor, layer_hash)</tt></li><li><tt>extract_devices(extractor_class, name, layer_hash)</tt></li></ul><p>
+See <a href="drc_ref_netter.html#extract_devices">Netter#extract_devices</a> for a description of that function.
+</p><a name="flat"></a><a name="h2-780"></a><h2>&quot;flat&quot; - Disables tiling mode</h2><a name="k_47"></a><p>Usage:</p><ul><li><tt>flat</tt></li></ul><p>
+Disables tiling mode. Tiling mode can be enabled again with <a href="#tiles">tiles</a> later.
+</p><a name="foreign"></a><a name="h2-789"></a><h2>&quot;foreign&quot; - Represents all other polygons from primary except the current one</h2><a name="k_48"></a><p>Usage:</p><ul><li><tt>foreign</tt></li></ul><p>
+The primary input of the universal DRC function is the layer the <a href="drc_ref_layer.html#drc">Layer#drc</a> function
+is called on. This operation represents all &quot;other&quot; primary polygons while
+<a href="#primary">primary</a> represents the current polygon.
+</p><p>
+This feature opens new options for processing layouts beyond the 
+abilities of the classical DRC concept. For classic DRC, intra-layer interactions
+are always symmetric: a polygon cannot be considered separated from its neighbors
+on the same layer.
+</p><p>
+The following example computes every part of the input which is closer than
+0.5 micrometers to other (disconnected) polygons on the same layer:
+</p><p><pre>
+out = in.drc(primary &amp; foreign.sized(0.5.um))
+</pre></p><a name="global_transform"></a><a name="h2-812"></a><h2>&quot;global_transform&quot; - Gets or sets a global transformation</h2><a name="k_49"></a><p>Usage:</p><ul><li><tt>global_transform</tt></li><li><tt>global_transform([ transformations ])</tt></li></ul><p>
+Applies a global transformation to the default source layout.
+See <a href="drc_ref_source.html#global_transform">Source#global_transform</a> for a description of this feature.
+</p><a name="holes"></a><a name="h2-823"></a><h2>&quot;holes&quot; - Selects all holes from the input polygons</h2><a name="k_50"></a><p>Usage:</p><ul><li><tt>holes</tt></li><li><tt>holes(layer)</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.holes&quot; (see <a href="drc_ref_layer.html#hulls">Layer#hulls</a>). Without a layer
+argument, &quot;holes&quot; represents a hole extractor for primary shapes in 
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_drc.html#hulls">DRC#hulls</a> for more details).
+</p><a name="hulls"></a><a name="h2-836"></a><h2>&quot;hulls&quot; - Selects all hulls from the input polygons</h2><a name="k_51"></a><p>Usage:</p><ul><li><tt>hulls</tt></li><li><tt>hulls(layer)</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.hulls&quot; (see <a href="drc_ref_layer.html#hulls">Layer#hulls</a>). Without a layer
+argument, &quot;hulls&quot; represents a hull contour extractor for primary shapes in 
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_global.html#hulls">hulls</a> for more details).
+</p><a name="if_all"></a><a name="h2-849"></a><h2>&quot;if_all&quot; - Evaluates to the primary shape when all condition expression results are non-empty</h2><a name="k_52"></a><p>Usage:</p><ul><li><tt>if_all(c1, ... cn)</tt></li></ul><p>
+This function will evaluate the conditions c1 to cn and return the 
+current primary shape if all conditions render a non-empty result.
+The following example selects all shapes which are rectangles and 
+whose area is larger than 0.5 square micrometers:
+</p><p><pre>
+out = in.drc(if_all(area &gt; 0.5, rectangles))
+</pre></p><p>
+The condition expressions may be of any type (edges, edge pairs and polygons).
+</p><a name="if_any"></a><a name="h2-867"></a><h2>&quot;if_any&quot; - Evaluates to the primary shape when any condition expression results is non-empty</h2><a name="k_53"></a><p>Usage:</p><ul><li><tt>if_any(c1, ... cn)</tt></li></ul><p>
+This function will evaluate the conditions c1 to cn and return the 
+current primary shape if at least one condition renders a non-empty result.
+See <a href="#if_all">if_all</a> for an example how to use the if_... functions.
+</p><a name="if_none"></a><a name="h2-878"></a><h2>&quot;if_none&quot; - Evaluates to the primary shape when all of the condition expression results are empty</h2><a name="k_54"></a><p>Usage:</p><ul><li><tt>if_none(c1, ... cn)</tt></li></ul><p>
+This function will evaluate the conditions c1 to cn and return the 
+current primary shape if all conditions renders an empty result.
+See <a href="#if_all">if_all</a> for an example how to use the if_... functions.
+</p><a name="ignore_extraction_errors"></a><a name="h2-889"></a><h2>&quot;ignore_extraction_errors&quot; - Specifies whether to ignore extraction errors</h2><a name="k_55"></a><p>Usage:</p><ul><li><tt>ignore_extraction_errors(value)</tt></li></ul><p>
+See <a href="drc_ref_netter.html#ignore_extraction_errors">Netter#ignore_extraction_errors</a> for a description of that function.
+</p><a name="info"></a><a name="h2-898"></a><h2>&quot;info&quot; - Outputs as message to the logger or progress window</h2><a name="k_56"></a><p>Usage:</p><ul><li><tt>info(message)</tt></li><li><tt>info(message, indent)</tt></li></ul><p>
+Prints the message to the log window in verbose mode.
+In non-verbose more, nothing is printed but a statement is put into the progress window.
+<a href="#log">log</a> is a function that always prints a message.
+</p><a name="input"></a><a name="h2-910"></a><h2>&quot;input&quot; - Fetches the shapes from the specified input from the default source</h2><a name="k_57"></a><p>Usage:</p><ul><li><tt>input(args)</tt></li></ul><p>
+See <a href="drc_ref_source.html#input">Source#input</a> for a description of that function. This method will fetch
+polygons and labels. See <a href="#polygons">polygons</a> and <a href="#labels">labels</a> for more specific versions of
+this method.
+</p><a name="inside"></a><a name="h2-921"></a><h2>&quot;inside&quot; - Selects shapes entirely inside other shapes</h2><a name="k_58"></a><p>Usage:</p><ul><li><tt>inside(other)</tt></li></ul><p>
+This operator represents the selector of primary shapes
+which are inside shapes from the other layer. 
+Use this operator within <a href="drc_ref_drc.html">DRC</a> expressions (also see <a href="drc_ref_layer.html#drc">Layer#drc</a>). If can be used
+as method to an expression. See there for more details: <a href="drc_ref_global.html#inside">inside</a>.
+</p><a name="interacting"></a><a name="h2-933"></a><h2>&quot;interacting&quot; - Selects shapes interacting with other shapes</h2><a name="k_59"></a><p>Usage:</p><ul><li><tt>interacting(other) (optionally in condition)</tt></li></ul><p>
+This operator represents the selector of primary shapes
+which interact with shapes from the other layer. This version can be put into
+a condition indicating how many shapes of the other layer need to be covered.
+Use this operator within <a href="drc_ref_drc.html">DRC</a> expressions (also see <a href="drc_ref_layer.html#drc">Layer#drc</a>). If can be used
+as method to an expression. See there for more details: <a href="drc_ref_global.html#interacting">interacting</a>.
+</p><a name="is_deep?"></a><a name="h2-946"></a><h2>&quot;is_deep?&quot; - Returns true, if in deep mode</h2><a name="k_60"></a><p>Usage:</p><ul><li><tt>is_deep?</tt></li></ul><a name="is_tiled?"></a><a name="h2-952"></a><h2>&quot;is_tiled?&quot; - Returns true, if in tiled mode</h2><a name="k_61"></a><p>Usage:</p><ul><li><tt>is_tiled?</tt></li></ul><a name="iso"></a><a name="h2-958"></a><h2>&quot;iso&quot; - Synonym for &quot;isolated&quot;</h2><a name="k_62"></a><p>Usage:</p><ul><li><tt>iso(...)</tt></li></ul><p>
+&quot;iso&quot; is the short form for <a href="#isolated">isolated</a>.
+</p><a name="isolated"></a><a name="h2-967"></a><h2>&quot;isolated&quot; - Performs an isolation (inter-polygon space) check</h2><a name="k_63"></a><p>Usage:</p><ul><li><tt>isolated([ options ]) (in conditions)</tt></li><li><tt>iso([ options ]) (in conditions)</tt></li><li><tt>isolated(layer [, options ])</tt></li><li><tt>iso(layer [, options ])</tt></li></ul><p>
+Provides a intra-polygon space check for polygons. It is similar to
+<a href="#space">space</a>, but checks inter-polygon space only. &quot;iso&quot; is a synonym for &quot;isolated&quot;.
+This check has manifold options. See <a href="drc_ref_layer.html#width">Layer#width</a> for the basic options such
+as metrics, projection and angle constraints etc. This check also features
+opposite and rectangle filtering. See <a href="drc_ref_layer.html#separation">Layer#separation</a> for details about opposite and
+rectangle error filtering.
+</p><p><a name="h3-984"></a><h3>Classic mode </h3></p><p>
+This function can be used in classic mode with a layer argument. In this case it
+is equivalent to &quot;layer.isolated&quot; (see <a href="drc_ref_layer.html#isolated">Layer#isolated</a>). 
+</p><p><pre>
+# classic &quot;isolated&quot; check for space &lt; 1.2 um
+in = layer(1, 0)
+errors = isolated(in, 1.2.um)
+</pre></p><p><a name="h3-995"></a><h3>Universal DRC </h3></p><p>
+The version without a layer is intended for use within <a href="drc_ref_drc.html">DRC</a> expressions
+together with the &quot;universal DRC&quot; method <a href="drc_ref_layer.html#drc">Layer#drc</a>. In this case, this function needs to be 
+put into a condition to specify the check constraints. The other options
+of <a href="drc_ref_layer.html#isolated">Layer#isolated</a> (e.g. metrics, projection constraints, angle limits etc.)
+apply to this version too:
+</p><p><pre>
+# universal DRC &quot;isolated&quot; check for space &lt; 1.2.um
+in = layer(1, 0)
+errors = in.drc(isolated &lt; 1.2.um)
+</pre></p><p>
+See <a href="#enclosing">enclosing</a> for more details about the various ways to specify conditions.
+</p><p><table><tr><td><img src="../images/drc_space3u.png"></td></tr></table></p><a name="l2n_data"></a><a name="h2-1017"></a><h2>&quot;l2n_data&quot; - Gets the internal <a href="../code/class_LayoutToNetlist.html">LayoutToNetlist</a> object for the default <a href="drc_ref_netter.html">Netter</a></h2><a name="k_64"></a><p>Usage:</p><ul><li><tt>l2n_data</tt></li></ul><p>
+See <a href="drc_ref_netter.html#l2n_data">Netter#l2n_data</a> for a description of that function.
+</p><a name="labels"></a><a name="h2-1026"></a><h2>&quot;labels&quot; - Gets the labels (text) from an original layer</h2><a name="k_65"></a><p>Usage:</p><ul><li><tt>labels(args)</tt></li></ul><p>
+See <a href="drc_ref_source.html#labels">Source#labels</a> for a description of that function.
+</p><a name="layers"></a><a name="h2-1035"></a><h2>&quot;layers&quot; - Gets the layers contained in the default source</h2><a name="k_66"></a><p>Usage:</p><ul><li><tt>layers</tt></li></ul><p>
+See <a href="drc_ref_source.html#layers">Source#layers</a> for a description of that function.
+</p><a name="layout"></a><a name="h2-1044"></a><h2>&quot;layout&quot; - Specifies an additional layout for the input source.</h2><a name="k_67"></a><p>Usage:</p><ul><li><tt>layout</tt></li><li><tt>layout(what)</tt></li></ul><p>
+This function can be used to specify a new layout for input.
+It returns an Source object representing that layout. The &quot;input&quot; method
+of that object can be used to get input layers for that layout.
+</p><p>
+&quot;what&quot; specifies what input to use. &quot;what&quot; be either
+</p><p><ul><li>A string &quot;@n&quot; specifying input from a cellview in the current view </li><li>A layout filename plus an optional cell name </li><li>A <a href="../code/class_Layout.html">Layout</a> object </li><li>A <a href="../code/class_Cell.html">Cell</a> object </li></ul></p><p>
+Without any arguments the default layout is returned.
+</p><p>
+If a file name is given, a cell name can be specified as the second argument.
+If not, the top cell is taken which must be unique in that case.
+</p><p>
+Having specified a layout for input enables to use the input method
+for getting input:
+</p><p><pre>
+# XOR between layers 1 or the default input and &quot;second_layout.gds&quot;:
+l2 = layout(&quot;second_layout.gds&quot;)
+(input(1, 0) ^ l2.input(1, 0)).output(100, 0)
+</pre></p><p>
+For further methods on the source object see <a href="drc_ref_source.html">Source</a>.
+</p><a name="length"></a><a name="h2-1081"></a><h2>&quot;length&quot; - Computes the total edge length of an edge layer or in universal DRC context: selects edges based on a length condition</h2><a name="k_68"></a><p>Usage:</p><ul><li><tt>length (in condition)</tt></li><li><tt>length(layer)</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.length&quot; (see <a href="drc_ref_layer.html#length">Layer#length</a>). Without a layer
+argument, &quot;length&quot; represents the edge length filter on the primary shape edges in 
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_drc.html#length">DRC#length</a> for more details). In this context,
+the operation acts similar to <a href="drc_ref_layer.html#with_length">Layer#with_length</a>.
+</p><a name="log"></a><a name="h2-1095"></a><h2>&quot;log&quot; - Outputs as message to the logger window</h2><a name="k_69"></a><p>Usage:</p><ul><li><tt>log(message)</tt></li><li><tt>log(message, indent)</tt></li></ul><p>
+Prints the message to the log window.
+<a href="#info">info</a> is a function that prints a message only if 
+verbose mode is enabled.
+</p><a name="log_file"></a><a name="h2-1107"></a><h2>&quot;log_file&quot; - Specify the log file where to send to log to</h2><a name="k_70"></a><p>Usage:</p><ul><li><tt>log_file(filename)</tt></li></ul><p>
+After using that method, the log output is sent to the 
+given file instead of the logger window or the terminal.
+</p><a name="make_layer"></a><a name="h2-1117"></a><h2>&quot;make_layer&quot; - Creates an empty polygon layer based on the hierarchical scheme selected</h2><a name="k_71"></a><p>Usage:</p><ul><li><tt>make_layer</tt></li></ul><p>
+The intention of this method is to provide an empty polygon layer based on the
+hierarchical scheme selected. This will create a new layer with the hierarchy
+of the current layout in deep mode and a flat layer in flat mode.
+This method is similar to <a href="#polygon_layer">polygon_layer</a>, but the latter does not create
+a hierarchical layer. Hence the layer created by <a href="#make_layer">make_layer</a> is suitable
+for use in device extraction for example, while the one
+delivered by <a href="#polygon_layer">polygon_layer</a> is not.
+</p><p>
+On the other hand, a layer created by the <a href="#make_layer">make_layer</a> method is not intended to be
+filled with <a href="drc_ref_layer.html#insert">Layer#insert</a>.
+</p><a name="max_area_ratio"></a><a name="h2-1135"></a><h2>&quot;max_area_ratio&quot; - Gets or sets the maximum bounding box to polygon area ratio for deep mode fragmentation</h2><a name="k_72"></a><p>Usage:</p><ul><li><tt>max_area_ratio(ratio)</tt></li><li><tt>max_area_ratio</tt></li></ul><p>
+In deep mode, polygons with a bounding box to polygon area ratio bigger than the given number
+will be split into smaller chunks to optimize performance. Performance gets better if the polygon's
+bounding boxes do not cover too much of empty space.
+</p><p>
+The area ratio is a signed value. Negative values indicate to use the outer
+manhattan approximation of the polygons for the area ratio. Positive values indicate to
+take the polygons as they are.
+The sign of the value indicates the mode - the actual area ratio checked is the absolute value.
+</p><p>
+For manhattan polygons, an area ratio of -3.0 gives the same results than a positive 3.0. 
+For non-manhattan polygons and a negative area ratio, the area taken for the polygon is larger than
+the actual polygon area. So splitting is less likely in this case. This avoids degeneration
+of the polygon assembly, which can otherwise happen for skinny diagonal polygons. These are usually 
+resolved into a large number of small triangles with no benefit for the algorithms.
+</p><p>
+With a negative area ratio, triangles are equivalent to their bounding box and always
+have an area ratio of 1.0.
+</p><p>
+The default value is -3.0 which gives fairly compact polygons and is using their outer
+manhattan approximation. Skinny diagonals will be maintained.
+</p><p>
+Use this method with a numeric 
+argument to set the value and without an argument to get the current maximum area ratio.
+Set the value to zero to disable splitting by area ratio.
+</p><p>
+See also <a href="#max_vertex_count">max_vertex_count</a> for the other option affecting polygon splitting.
+</p><a name="max_vertex_count"></a><a name="h2-1170"></a><h2>&quot;max_vertex_count&quot; - Gets or sets the maximum vertex count for deep mode fragmentation</h2><a name="k_73"></a><p>Usage:</p><ul><li><tt>max_vertex_count(count)</tt></li><li><tt>max_vertex_count</tt></li></ul><p>
+In deep mode, polygons with more than the given number of vertexes will be split into
+smaller chunks to optimize performance (which is better or less complex polygons).
+The default threshold is 16 vertexes. Use this method with a vertex count to set the
+value and without an argument to get the current maximum vertex count.
+Set the value to zero to disable splitting by vertex count.
+</p><p>
+See also <a href="#max_area_ratio">max_area_ratio</a> for the other option affecting polygon splitting.
+</p><a name="middle"></a><a name="h2-1186"></a><h2>&quot;middle&quot; - Returns the centers of polygon bounding boxes</h2><a name="k_74"></a><p>Usage:</p><ul><li><tt>middle([ options ])</tt></li><li><tt>middle(layer, [ options ])</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.middle&quot; (see <a href="drc_ref_layer.html#middle">Layer#middle</a>). Without a layer
+argument, &quot;middle&quot; represents the bounding box center marker generator on primary shapes within
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_global.html#middle">middle</a> for more details).
+</p><a name="mos3"></a><a name="h2-1199"></a><h2>&quot;mos3&quot; - Supplies the MOS3 transistor extractor class</h2><a name="k_75"></a><p>Usage:</p><ul><li><tt>mos3(name)</tt></li><li><tt>mos3(name, class)</tt></li></ul><p>
+Use this class with <a href="#extract_devices">extract_devices</a> to specify extraction of a 
+three-terminal MOS transistor.
+</p><p>
+See <a href="../code/class_DeviceExtractorMOS3Transistor.html">DeviceExtractorMOS3Transistor</a> for more details
+about this extractor (non-strict mode applies for 'mos3').
+</p><a name="mos4"></a><a name="h2-1213"></a><h2>&quot;mos4&quot; - Supplies the MOS4 transistor extractor class</h2><a name="k_76"></a><p>Usage:</p><ul><li><tt>mos4(name)</tt></li><li><tt>mos4(name, class)</tt></li></ul><p>
+Use this class with <a href="#extract_devices">extract_devices</a> to specify extraction of a 
+four-terminal MOS transistor.
+</p><p>
+See <a href="../code/class_DeviceExtractorMOS4Transistor.html">DeviceExtractorMOS4Transistor</a> for more details
+about this extractor (non-strict mode applies for 'mos4').
+</p><a name="name"></a><a name="h2-1227"></a><h2>&quot;name&quot; - Assigns a name to a layer for reference in the LVS database</h2><a name="k_77"></a><p>Usage:</p><ul><li><tt>name(layer, name)</tt></li></ul><p>
+See <a href="drc_ref_netter.html#name">Netter#name</a> for a description of that function.
+</p><a name="name_prefix"></a><a name="h2-1236"></a><h2>&quot;name_prefix&quot; - Specifies the layer name prefix for auto-generated layer names</h2><a name="k_78"></a><p>Usage:</p><ul><li><tt>name_prefix(prefix)</tt></li></ul><p>
+See <a href="drc_ref_netter.html#name_prefix">Netter#name_prefix</a> for a description of that function.
+</p><a name="netlist"></a><a name="h2-1245"></a><h2>&quot;netlist&quot; - Obtains the extracted netlist from the default <a href="drc_ref_netter.html">Netter</a></h2><a name="k_79"></a><p>
+The netlist is a <a href="../code/class_Netlist.html">Netlist</a> object. If no netlist is extracted 
+yet, this method will trigger the extraction process.
+See <a href="drc_ref_netter.html#netlist">Netter#netlist</a> for a description of this function.
+</p><a name="netter"></a><a name="h2-1252"></a><h2>&quot;netter&quot; - Creates a new netter object</h2><a name="k_80"></a><p>Usage:</p><ul><li><tt>netter</tt></li></ul><p>
+See <a href="drc_ref_netter.html">Netter</a> for more details
+</p><a name="new_report"></a><a name="h2-1261"></a><h2>&quot;new_report&quot; - Creates a new report database object for use in &quot;output&quot;</h2><a name="k_81"></a><p>Usage:</p><ul><li><tt>new_report(description [, filename [, cellname ] ])</tt></li></ul><p>
+This method creates an independent report object. This object
+can be used in &quot;output&quot; to send a layer to a different report than
+the default report or target.
+</p><p>
+Arguments are the same than for <a href="drc_ref_global.html#report">report</a>.
+</p><p>
+See <a href="drc_ref_layer.html#output">Layer#output</a> for details about this feature.
+</p><a name="new_target"></a><a name="h2-1276"></a><h2>&quot;new_target&quot; - Creates a new layout target object for use in &quot;output&quot;</h2><a name="k_82"></a><p>Usage:</p><ul><li><tt>new_target(what [, cellname])</tt></li></ul><p>
+This method creates an independent target object. This object
+can be used in &quot;output&quot; to send a layer to a different layout file than
+the default report or target.
+</p><p>
+Arguments are the same than for <a href="drc_ref_global.html#target">target</a>.
+</p><p>
+See <a href="drc_ref_layer.html#output">Layer#output</a> for details about this feature.
+</p><a name="no_borders"></a><a name="h2-1291"></a><h2>&quot;no_borders&quot; - Reset the tile borders</h2><a name="k_83"></a><p>Usage:</p><ul><li><tt>no_borders</tt></li></ul><p>
+Resets the tile borders - see <a href="#tile_borders">tile_borders</a> for a description of tile borders.
+</p><a name="notch"></a><a name="h2-1300"></a><h2>&quot;notch&quot; - Performs a notch (intra-polygon space) check</h2><a name="k_84"></a><p>Usage:</p><ul><li><tt>notch([ options ]) (in conditions)</tt></li><li><tt>notch(layer [, options ])</tt></li></ul><p>
+Provides a intra-polygon space check for polygons. It is similar to
+<a href="#space">space</a>, but checks intra-polygon space only.
+It has manifold options. See <a href="drc_ref_layer.html#width">Layer#width</a> for the basic options such
+as metrics, projection and angle constraints etc.
+</p><p><a name="h3-1313"></a><h3>Classic mode </h3></p><p>
+This function can be used in classic mode with a layer argument. In this case it
+is equivalent to &quot;layer.notch&quot; (see <a href="drc_ref_layer.html#notch">Layer#notch</a>). 
+</p><p><pre>
+# classic &quot;notch&quot; check for space &lt; 1.2 um
+in = layer(1, 0)
+errors = notch(in, 1.2.um)
+</pre></p><p><a name="h3-1324"></a><h3>Universal DRC </h3></p><p>
+The version without a layer is intended for use within <a href="drc_ref_drc.html">DRC</a> expressions
+together with the &quot;universal DRC&quot; method <a href="drc_ref_layer.html#drc">Layer#drc</a>. In this case, this function needs to be 
+put into a condition to specify the check constraints. The other options
+of <a href="drc_ref_layer.html#notch">Layer#notch</a> (e.g. metrics, projection constraints, angle limits etc.)
+apply to this version too:
+</p><p><pre>
+# universal DRC &quot;notch&quot; check for space &lt; 1.2.um
+in = layer(1, 0)
+errors = in.drc(notch &lt; 1.2.um)
+</pre></p><p>
+See <a href="#enclosing">enclosing</a> for more details about the various ways to specify conditions.
+</p><p><table><tr><td><img src="../images/drc_space2u.png"></td></tr></table></p><a name="output"></a><a name="h2-1346"></a><h2>&quot;output&quot; - Outputs a layer to the report database or output layout</h2><a name="k_85"></a><p>Usage:</p><ul><li><tt>output(layer, args)</tt></li></ul><p>
+This function is equivalent to &quot;layer.output(args)&quot;. See <a href="drc_ref_layer.html#output">Layer#output</a> for details about this function.
+</p><a name="output_cell"></a><a name="h2-1355"></a><h2>&quot;output_cell&quot; - Specifies a target cell, but does not change the target layout</h2><a name="k_86"></a><p>Usage:</p><ul><li><tt>output_cell(cellname)</tt></li></ul><p>
+This method switches output to the specified cell, but does not
+change the target layout nor does it switch the output channel to
+layout if is report database. 
+</p><a name="outside"></a><a name="h2-1366"></a><h2>&quot;outside&quot; - Selects shapes entirely outside other shapes</h2><a name="k_87"></a><p>Usage:</p><ul><li><tt>outside(other)</tt></li></ul><p>
+This operator represents the selector of primary shapes
+which are outside shapes from the other layer. 
+Use this operator within <a href="drc_ref_drc.html">DRC</a> expressions (also see <a href="drc_ref_layer.html#drc">Layer#drc</a>). If can be used
+as method to an expression. See there for more details: <a href="drc_ref_global.html#outside">outside</a>.
+</p><a name="overlap"></a><a name="h2-1378"></a><h2>&quot;overlap&quot; - Performs an overlap check</h2><a name="k_88"></a><p>Usage:</p><ul><li><tt>overlap(other [, options ]) (in conditions)</tt></li><li><tt>overlap(layer, other [, options ])</tt></li></ul><p>
+Provides an overlap check (primary layer vs. another layer). 
+This check has manifold options. See <a href="drc_ref_layer.html#width">Layer#width</a> for the basic options such
+as metrics, projection and angle constraints etc. This check also features
+opposite and rectangle filtering. See <a href="drc_ref_layer.html#separation">Layer#separation</a> for details about opposite and
+rectangle error filtering.
+</p><p><a name="h3-1392"></a><h3>Classic mode </h3></p><p>
+Like other checks, this function is available as a classic DRC function with a layer as the first
+argument and as an <a href="drc_ref_drc.html">DRC</a> expression operator for use with <a href="drc_ref_layer.html#drc">Layer#drc</a>.
+</p><p><pre>
+# classic &quot;overlap&quot; check for &lt; 0.2 um
+in = layer(1, 0)
+other = layer(2, 0)
+errors = overlap(in, other, 0.2.um)
+</pre></p><p><a name="h3-1404"></a><h3>Universal DRC </h3></p><p>
+For use with the &quot;unversal DRC&quot; put the separation expression into the &quot;drc&quot;
+function call and use a condition to specify the constraint:
+</p><p><pre>
+# universal DRC &quot;overlap&quot; check for &lt; 0.2 um
+in = layer(1, 0)
+other = layer(2, 0)
+errors = in.drc(overlap(other) &lt; 0.2.um)
+</pre></p><p><table><tr><td><img src="../images/drc_overlap1u.png"></td><td><img src="../images/drc_overlap2u.png"></td></tr></table></p><p>
+When &quot;larger than&quot; constraints are used, this function will produce the edges from the
+first layer only. The result will still be edge pairs for consistency, but each edge pair holds one edge from
+the original polygon plus a reverse copy of that edge in the second member. Use &quot;first_edges&quot; to extract the 
+actual edges from the first input (see <a href="#separation">separation</a> for an example).
+</p><a name="overlapping"></a><a name="h2-1428"></a><h2>&quot;overlapping&quot; - Selects shapes overlapping with other shapes</h2><a name="k_89"></a><p>Usage:</p><ul><li><tt>overlapping(other) (optionally in condition)</tt></li></ul><p>
+This operator represents the selector of primary shapes
+which overlap shapes from the other layer. This version can be put into
+a condition indicating how many shapes of the other layer need to be covered.
+Use this operator within <a href="drc_ref_drc.html">DRC</a> expressions (also see <a href="drc_ref_layer.html#drc">Layer#drc</a>). If can be used
+as method to an expression. See there for more details: <a href="drc_ref_global.html#overlapping">overlapping</a>.
+</p><a name="p"></a><a name="h2-1441"></a><h2>&quot;p&quot; - Creates a point object</h2><a name="k_90"></a><p>Usage:</p><ul><li><tt>p(x, y)</tt></li></ul><p>
+A point is not a valid object by itself, but it is useful for creating 
+paths for polygons:
+</p><p><pre>
+x = polygon_layer
+x.insert(polygon([ p(0, 0), p(16.0, 0), p(8.0, 8.0) ]))
+</pre></p><a name="path"></a><a name="h2-1456"></a><h2>&quot;path&quot; - Creates a path object</h2><a name="k_91"></a><p>Usage:</p><ul><li><tt>path(...)</tt></li></ul><p>
+This function creates a path object. The arguments are the same than for the 
+<a href="../code/class_DPath.html">DPath</a> constructors.
+</p><a name="perimeter"></a><a name="h2-1466"></a><h2>&quot;perimeter&quot; - Computes the total perimeter or in universal DRC context: selects the primary shape if the perimeter is meeting the condition</h2><a name="k_92"></a><p>Usage:</p><ul><li><tt>perimeter (in condition)</tt></li><li><tt>perimeter(layer)</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.perimeter&quot; (see <a href="drc_ref_layer.html#perimeter">Layer#perimeter</a>) and returns the
+total perimeter of all polygons in the layer.
+</p><p>
+Without a layer argument, &quot;perimeter&quot; represents a perimeter filter for primary shapes in 
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_drc.html#perimeter">DRC#perimeter</a> for more details).
+</p><a name="polygon"></a><a name="h2-1481"></a><h2>&quot;polygon&quot; - Creates a polygon object</h2><a name="k_93"></a><p>Usage:</p><ul><li><tt>polygon(...)</tt></li></ul><p>
+This function creates a polygon object. The arguments are the same than for the 
+<a href="../code/class_DPolygon.html">DPolygon</a> constructors.
+</p><a name="polygon_layer"></a><a name="h2-1491"></a><h2>&quot;polygon_layer&quot; - Creates an empty polygon layer</h2><a name="k_94"></a><p>Usage:</p><ul><li><tt>polygon_layer</tt></li></ul><p>
+The intention of that method is to create an empty layer which can be 
+filled with polygon-like objects using <a href="drc_ref_layer.html#insert">Layer#insert</a>.
+A similar method which creates a hierarchical layer in deep mode is 
+<a href="#make_layer">make_layer</a>. This other layer is better suited for use with device extraction.
+</p><a name="polygons"></a><a name="h2-1503"></a><h2>&quot;polygons&quot; - Fetches the polygons (or shapes that can be converted to polygons) from the specified input from the default source</h2><a name="k_95"></a><p>Usage:</p><ul><li><tt>polygons(args)</tt></li></ul><p>
+See <a href="drc_ref_source.html#polygons">Source#polygons</a> for a description of that function.
+</p><a name="primary"></a><a name="h2-1512"></a><h2>&quot;primary&quot; - Represents the primary input of the universal DRC function</h2><a name="k_96"></a><p>Usage:</p><ul><li><tt>primary</tt></li></ul><p>
+The primary input of the universal DRC function is the layer the <a href="drc_ref_layer.html#drc">Layer#drc</a> function
+is called on.
+</p><a name="profile"></a><a name="h2-1522"></a><h2>&quot;profile&quot; - Profiles the script and provides a runtime + memory statistics</h2><a name="k_97"></a><p>Usage:</p><ul><li><tt>profile</tt></li><li><tt>profile(n)</tt></li></ul><p>
+Turns profiling on or off (default). In profiling mode, the 
+system will collect statistics about rules executed, their execution time
+and memory information. The argument specifies how many operations to 
+print at the end of the run. Without an argument, all operations are
+printed. Passing &quot;false&quot; for the argument will disable profiling. This is the
+default.
+</p><a name="props_copy"></a><a name="h2-1537"></a><h2>&quot;props_copy&quot; - Specifies &quot;copy properties&quot; on operations supporting user properties constraints</h2><a name="k_98"></a><p>
+This properties constraint does not constrain the operation, but instructs it to 
+attach the properties from the primary input to the output objects.
+</p><p>
+See also <a href="#props_ne">props_ne</a> and <a href="#props_eq">props_eq</a>.
+</p><a name="props_eq"></a><a name="h2-1545"></a><h2>&quot;props_eq&quot; - Specifies &quot;same properties&quot; for operations supporting user properties constraints</h2><a name="k_99"></a><p>
+Some operations such as boolean AND support properties constraints. By giving 
+a &quot;props_eq&quot; constraint, the operation is performed only on shapes with the same
+properties, where &quot;properties&quot; stands for the full set of key/value pairs.
+</p><p>
+Note that you have to enable properties explicitly or generate properties (e.g. 
+with the <a href="drc_ref_drclayer.html#nets">DRCLayer#nets</a> method).
+</p><p>
+Example:
+</p><p><pre>
+connect(metal1, via1)
+connect(via1, metal2)
+... further connect statements
+
+m1m2_overlap_connected = metal1.nets.and(metal2, props_eq) 
+</pre></p><p>
+&quot;props_eq&quot; can be combined with <a href="#props_copy">props_copy</a>. In this case, properties
+are transferred to the output shapes and can be used in further processing:
+</p><p><pre>
+m1m2_overlap_connected = metal1.nets.and(metal2, props_eq + props_copy) 
+</pre></p><p>
+See also <a href="#props_ne">props_ne</a>.
+</p><a name="props_ne"></a><a name="h2-1574"></a><h2>&quot;props_ne&quot; - Specifies &quot;different properties&quot; for operations supporting user properties constraints</h2><a name="k_100"></a><p>
+Some operations such as boolean AND support properties constraints. By giving 
+a &quot;props_ne&quot; constraint, the operation is performed only on shapes with different
+properties, where &quot;properties&quot; stands for the full set of key/value pairs.
+</p><p>
+Note that you have to enable properties explicitly or generate properties (e.g. 
+with the <a href="drc_ref_drclayer.html#nets">DRCLayer#nets</a> method).
+</p><p>
+Example:
+</p><p><pre>
+connect(metal1, via1)
+connect(via1, metal2)
+... further connect statements
+
+m1m2_overlap_not_connected = metal1.nets.and(metal2, props_ne)
+</pre></p><p>
+&quot;props_ne&quot; can be combined with <a href="#props_copy">props_copy</a>. In this case, properties
+are transferred to the output shapes and can be used in further processing:
+</p><p><pre>
+m1m2_overlap_connected = metal1.nets.and(metal2, props_ne + props_copy) 
+</pre></p><p>
+See also <a href="#props_eq">props_eq</a>.
+</p><a name="rectangles"></a><a name="h2-1603"></a><h2>&quot;rectangles&quot; - Selects all polygons which are rectangles</h2><a name="k_101"></a><p>Usage:</p><ul><li><tt>rectangles</tt></li><li><tt>rectangles(layer)</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.rectangles&quot; (see <a href="drc_ref_layer.html#rectangles">Layer#rectangles</a>). Without a layer
+argument, &quot;rectangles&quot; represents the rectangles filter for primary shapes in 
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_global.html#rectangles">rectangles</a> for more details).
+</p><a name="rectilinear"></a><a name="h2-1616"></a><h2>&quot;rectilinear&quot; - Selects all polygons which are rectilinear</h2><a name="k_102"></a><p>Usage:</p><ul><li><tt>rectilinear</tt></li><li><tt>rectilinear(layer)</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.rectilinear&quot; (see <a href="drc_ref_layer.html#rectilinear">Layer#rectilinear</a>). Without a layer
+argument, &quot;rectilinear&quot; represents the rectilinear polygons filter for primary shapes in 
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_global.html#rectilinear">rectilinear</a> for more details).
+</p><a name="region_overlap"></a><a name="h2-1629"></a><h2>&quot;region_overlap&quot; - Specifies region selected input in &quot;overlap mode&quot;</h2><a name="k_103"></a><p>Usage:</p><ul><li><tt>region_overlap(args)</tt></li></ul><p>
+See <a href="drc_ref_source.html#overlapping">Source#overlapping</a> for a description of that function.
+</p><p>
+The following code will select shapes overlapping a 500x600 micron rectangle (lower left corner at 0,0) 
+from the input layout. The shapes will not be clipped:
+</p><p><pre>
+region_overlapping(0.mm, 0.mm, 0.5.mm, 0.6.mm)
+# shapes will now be the ones overlapping the rectangular region
+l1 = input(1, 0)
+</pre></p><p>
+To remove this condition, call &quot;region_overlapping&quot; without any arguments.
+</p><a name="region_touch"></a><a name="h2-1649"></a><h2>&quot;region_touch&quot; - Specifies region selected input in &quot;touch mode&quot;</h2><a name="k_104"></a><p>Usage:</p><ul><li><tt>region_touch(args)</tt></li></ul><p>
+See <a href="drc_ref_source.html#touching">Source#touching</a> for a description of that function.
+</p><p>
+The following code will select shapes touching a 500x600 micron rectangle (lower left corner at 0,0) 
+from the input layout. The shapes will not be clipped:
+</p><p><pre>
+region_touch(0.mm, 0.mm, 0.5.mm, 0.6.mm)
+# shapes will now be the ones touching the rectangular region
+l1 = input(1, 0)
+</pre></p><p>
+To remove this condition, call &quot;region_touch&quot; without any arguments.
+</p><a name="relative_height"></a><a name="h2-1669"></a><h2>&quot;relative_height&quot; - Selects primary shapes based on the ratio of height and width of their bounding boxes</h2><a name="k_105"></a><p>Usage:</p><ul><li><tt>relative_height (in condition)</tt></li></ul><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a>, <a href="#relative_height">relative_height</a> and <a href="drc_ref_drc.html#relative_height">DRC#relative_height</a> for more details.
+</p><a name="report"></a><a name="h2-1678"></a><h2>&quot;report&quot; - Specifies a report database for output</h2><a name="k_106"></a><p>Usage:</p><ul><li><tt>report(description [, filename [, cellname ] ])</tt></li></ul><p>
+After specifying a report database for output, <a href="#output">output</a> method calls are redirected to
+the report database. The format of the <a href="#output">output</a> calls changes and a category name plus
+description can be specified rather than a layer/datatype number of layer name.
+See the description of the output method for details.
+</p><p>
+If a filename is given, the report database will be written to the specified file name.
+Otherwise it will be shown but not written.
+</p><p>
+If external input is specified with <a href="#source">source</a>, 
+&quot;report&quot; must be called after &quot;source&quot;.
+</p><p>
+The cellname specifies the top cell used for the report file.
+By default this is the cell name of the default source. If there
+is no source layout you'll need to give the cell name in the 
+third parameter.
+</p><p>
+The return value of this method is a channel object of the same
+type that <a href="drc_ref_global.html#new_report">new_report</a> will return.
+</p><a name="report_netlist"></a><a name="h2-1704"></a><h2>&quot;report_netlist&quot; - Specifies an extracted netlist report for output</h2><a name="k_107"></a><p>Usage:</p><ul><li><tt>report_netlist([ filename [, long ] ])</tt></li></ul><p>
+This method applies to runsets creating a netlist through
+extraction. Extraction happens when connections and/or device
+extractions are made. If this statement is used, the extracted
+netlist plus the net and device shapes are turned into a 
+layout-to-netlist report (L2N database) and shown in the 
+netlist browser window. If a file name is given, the report
+will also be written to the given file.
+If a file name is given and &quot;long&quot; is true, a verbose 
+version of the L2N DB format will be used.
+</p><a name="resistor"></a><a name="h2-1721"></a><h2>&quot;resistor&quot; - Supplies the resistor extractor class</h2><a name="k_108"></a><p>Usage:</p><ul><li><tt>resistor(name, sheet_rho)</tt></li><li><tt>resistor(name, sheet_rho, class)</tt></li></ul><p>
+Use this class with <a href="#extract_devices">extract_devices</a> to specify extraction of a resistor.
+</p><p>
+The sheet_rho value is the sheet resistance in ohms/square. It is used
+to compute the resistance from the geometry.
+</p><p>
+See <a href="../code/class_DeviceExtractorResistor.html">DeviceExtractorResistor</a> for more details
+about this extractor.
+</p><a name="resistor_with_bulk"></a><a name="h2-1737"></a><h2>&quot;resistor_with_bulk&quot; - Supplies the resistor extractor class that includes a bulk terminal</h2><a name="k_109"></a><p>Usage:</p><ul><li><tt>resistor_with_bulk(name, sheet_rho)</tt></li><li><tt>resistor_with_bulk(name, sheet_rho, class)</tt></li></ul><p>
+Use this class with <a href="#extract_devices">extract_devices</a> to specify extraction of a resistor 
+with a bulk terminal.
+The sheet_rho value is the sheet resistance in ohms/square.
+</p><p>
+See <a href="../code/class_DeviceExtractorResistorWithBulk.html">DeviceExtractorResistorWithBulk</a> for more details
+about this extractor.
+</p><a name="rounded_corners"></a><a name="h2-1752"></a><h2>&quot;rounded_corners&quot; - Applies corner rounding</h2><a name="k_110"></a><p>Usage:</p><ul><li><tt>rounded_corners(inner, outer, n)</tt></li><li><tt>rounded_corners(layer, inner, outer, n)</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.rounded_corners&quot; (see <a href="drc_ref_layer.html#rounded_corners">Layer#rounded_corners</a>). Without a layer
+argument, &quot;rounded_corners&quot; represents the corner rounding algorithm on primary shapes within
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_global.html#rounded_corners">rounded_corners</a> for more details).
+</p><a name="secondary"></a><a name="h2-1765"></a><h2>&quot;secondary&quot; - Provides secondary input for the &quot;drc&quot; universal DRC function</h2><a name="k_111"></a><p>Usage:</p><ul><li><tt>secondary(layer)</tt></li></ul><p>
+To supply additional input for the universal DRC expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a>), use
+&quot;secondary&quot; with a layer argument. This example provides a boolean AND
+between l1 and l2:
+</p><p><pre>
+l1 = layer(1, 0)
+l2 = layer(2, 0)
+out = l1.drc(primary &amp; secondary(l2))
+</pre></p><a name="select"></a><a name="h2-1782"></a><h2>&quot;select&quot; - Specifies cell filters on the default source</h2><a name="k_112"></a><p>Usage:</p><ul><li><tt>select(args)</tt></li></ul><p>
+See <a href="drc_ref_source.html#select">Source#select</a> for a description of that function.
+Using the global version does not create a new source, but
+modifies the default source.
+</p><p><pre>
+# Selects only B cell instances below the top cell
+select(&quot;-&quot;, &quot;+B*&quot;)
+l1 = input(1, 0)
+</pre></p><a name="sep"></a><a name="h2-1799"></a><h2>&quot;sep&quot; - Synonym for &quot;separation&quot;</h2><a name="k_113"></a><p>Usage:</p><ul><li><tt>sep(...)</tt></li></ul><p>
+&quot;sep&quot; is the short form for <a href="#separation">separation</a>.
+</p><a name="separation"></a><a name="h2-1808"></a><h2>&quot;separation&quot; - Performs a separation check</h2><a name="k_114"></a><p>Usage:</p><ul><li><tt>separation(other [, options ]) (in conditions)</tt></li><li><tt>separation(layer, other [, options ])</tt></li></ul><p>
+Provides a separation check (primary layer vs. another layer). Like <a href="#enclosing">enclosing</a> this 
+function provides a two-layer check, but checking the distance rather than the 
+overlap. 
+This check has manifold options. See <a href="drc_ref_layer.html#width">Layer#width</a> for the basic options such
+as metrics, projection and angle constraints etc. This check also features
+opposite and rectangle filtering. See <a href="drc_ref_layer.html#separation">Layer#separation</a> for details about opposite and
+rectangle error filtering.
+</p><p><a name="h3-1824"></a><h3>Classic mode </h3></p><p>
+Like <a href="#enclosing">enclosing</a>, this function is available as a classic DRC function with a layer as the first
+argument and as an <a href="drc_ref_drc.html">DRC</a> expression operator for use with <a href="drc_ref_layer.html#drc">Layer#drc</a>.
+</p><p><pre>
+# classic &quot;separation&quot; check for distance &lt; 0.2 um
+in = layer(1, 0)
+other = layer(2, 0)
+errors = separation(in, other, 0.2.um)
+</pre></p><p><a name="h3-1836"></a><h3>Universal DRC </h3></p><p>
+For use with the &quot;universal DRC&quot; put the separation expression into the &quot;drc&quot;
+function call and use a condition to specify the constraint:
+</p><p><pre>
+# universal DRC &quot;separation&quot; check for distance &lt; 0.2 um
+in = layer(1, 0)
+other = layer(2, 0)
+errors = in.drc(separation(other) &lt; 0.2.um)
+</pre></p><p><a href="#enclosing">enclosing</a> explains the constraints and how the
+work in generating error markers.
+</p><p><table><tr><td><img src="../images/drc_separation1u.png"></td></tr></table></p><p>
+When &quot;larger than&quot; constraints are used, this function will produce the edges from the
+first layer only. The result will still be edge pairs for consistency, but each edge pair holds one edge from
+the original polygon plus a reverse copy of that edge in the second member. Use &quot;first_edges&quot; to extract the 
+actual edges from the first input:
+</p><p><pre>
+l1_edges_without_l2 = l1.drc((separation(l2) &gt;= 1.0).first_edges)
+</pre></p><p>
+The following image shows the effect of such a negative-output separation check:
+</p><p><table><tr><td><img src="../images/drc_separation1un.png"></td></tr></table></p><a name="silent"></a><a name="h2-1874"></a><h2>&quot;silent&quot; - Resets verbose mode</h2><a name="k_115"></a><p>Usage:</p><ul><li><tt>silent</tt></li></ul><p>
+This function is equivalent to &quot;verbose(false)&quot; (see <a href="#verbose">verbose</a>)
+</p><a name="sized"></a><a name="h2-1883"></a><h2>&quot;sized&quot; - Returns the sized version of the input</h2><a name="k_116"></a><p>Usage:</p><ul><li><tt>sized(d [, mode])</tt></li><li><tt>sized(dx, dy [, mode]))</tt></li><li><tt>sized(layer, d [, mode])</tt></li><li><tt>sized(layer, dx, dy [, mode]))</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.sized&quot; (see <a href="drc_ref_layer.html#sized">Layer#sized</a>). Without a layer
+argument, &quot;sized&quot; represents the polygon sizer on primary shapes within
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_global.html#sized">sized</a> for more details).
+</p><a name="smoothed"></a><a name="h2-1898"></a><h2>&quot;smoothed&quot; - Applies smoothing</h2><a name="k_117"></a><p>Usage:</p><ul><li><tt>smoothed(d)</tt></li><li><tt>smoothed(layer, d)</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.smoothed&quot; (see <a href="drc_ref_layer.html#smoothed">Layer#smoothed</a>). Without a layer
+argument, &quot;smoothed&quot; represents the polygon smoother on primary shapes within
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_global.html#smoothed">smoothed</a> for more details).
+</p><a name="soft_connect"></a><a name="h2-1911"></a><h2>&quot;soft_connect&quot; - Specifies a soft connection between two layers</h2><a name="k_118"></a><p>Usage:</p><ul><li><tt>soft_connect(a, b)</tt></li></ul><p>
+A &quot;soft connection&quot; is made between two layers and
+is a directional connection (like an ideal diode).
+Soft connections allow detecting if nets are connected
+via a high-ohmic substrate or diffusion layer (the
+&quot;lower&quot; layer).
+&quot;b&quot; is the &quot;lower&quot; and &quot;a&quot; the upper layer.
+</p><p>
+See <a href="drc_ref_netter.html#connect">Netter#connect</a> for a more detailed description of that function.
+</p><a name="soft_connect_global"></a><a name="h2-1927"></a><h2>&quot;soft_connect_global&quot; - Specifies a soft connection to a global net</h2><a name="k_119"></a><p>Usage:</p><ul><li><tt>soft_connect_global(l, name)</tt></li></ul><p>
+Like <a href="#soft_connect">soft_connect</a>, a soft connection is made between 
+a layer and a global net (e.g. substrate). The global net
+is always the &quot;lower&quot; net of the soft connection.
+</p><p>
+See <a href="drc_ref_netter.html#soft_connect_global">Netter#soft_connect_global</a> for a more detailed 
+description of that function.
+</p><a name="source"></a><a name="h2-1941"></a><h2>&quot;source&quot; - Specifies a source layout</h2><a name="k_120"></a><p>Usage:</p><ul><li><tt>source</tt></li><li><tt>source(what)</tt></li></ul><p>
+This function replaces the default source layout by the specified
+file. If this function is not used, the currently active layout 
+is used as input. 
+</p><p><a href="#layout">layout</a> is a similar method which specifies <i>an additional </i>input layout.
+</p><p>
+&quot;what&quot; specifies what input to use. &quot;what&quot; be either
+</p><p><ul><li>A string &quot;@n&quot; specifying input from a layout in the current panel </li><li>A layout filename plus an optional cell name</li><li>A <a href="../code/class_Layout.html">Layout</a> object plus an optional cell name</li><li>A <a href="../code/class_Cell.html">Cell</a> object </li></ul></p><p>
+Without any arguments the default layout is returned. If a filename is given, a cell name
+can be specified as the second argument. If none is specified, the top cell is taken which
+must be unique in that case.
+</p><p><pre>
+# XOR between layers 1 of &quot;first_layout.gds&quot; and &quot;second_layout.gds&quot; and sends the results to &quot;xor_layout.gds&quot;:
+target(&quot;xor_layout.gds&quot;)
+source(&quot;first_layout.gds&quot;)
+l2 = layout(&quot;second_layout.gds&quot;)
+(input(1, 0) ^ l2.input(1, 0)).output(100, 0)
+</pre></p><p>
+For further methods on the source object see <a href="drc_ref_source.html">Source</a>.
+</p><a name="space"></a><a name="h2-1978"></a><h2>&quot;space&quot; - Performs a space check</h2><a name="k_121"></a><p>Usage:</p><ul><li><tt>space([ options ]) (in conditions)</tt></li><li><tt>space(layer [, options ])</tt></li></ul><p>
+&quot;space&quot; looks for spacing violations between edges of the same polygon (intra-polygon checks)
+and between different polygons (inter-polygon checks).
+<a href="#notch">notch</a> is similar function that provides only intra-polygon space checks. <a href="#isolated">isolated</a>
+is the version checking inter-polygon distance only.
+The check has manifold options. See <a href="drc_ref_layer.html#width">Layer#width</a> for the basic options such
+as metrics, projection and angle constraints etc.
+</p><p><a name="h3-1993"></a><h3>Classic mode </h3></p><p>
+This function can be used in classic mode with a layer argument. In this case it
+is equivalent to &quot;layer.space&quot; (see <a href="drc_ref_layer.html#space">Layer#space</a>). In this mode, &quot;space&quot; is applicable to edge 
+layers too. 
+</p><p><pre>
+# classic &quot;space&quot; check for space &lt; 0.2 um
+in = layer(1, 0)
+errors = space(in, 0.2.um)
+</pre></p><p><a name="h3-2005"></a><h3>Universal DRC </h3></p><p>
+The version without a layer is intended for use within <a href="drc_ref_drc.html">DRC</a> expressions
+together with the &quot;universal DRC&quot; method <a href="drc_ref_layer.html#drc">Layer#drc</a>. In this case, this function needs to be 
+put into a condition to specify the check constraints. The other options
+of <a href="drc_ref_layer.html#space">Layer#space</a> (e.g. metrics, projection constraints, angle limits etc.)
+apply to this version too:
+</p><p><pre>
+# universal DRC check for space &lt; 0.2.um
+in = layer(1, 0)
+errors = in.drc(space &lt; 0.2.um)
+</pre></p><p>
+See <a href="#enclosing">enclosing</a> for more details about the various ways to specify conditions.
+</p><p><table><tr><td><img src="../images/drc_space1u.png"></td></tr></table></p><a name="squares"></a><a name="h2-2027"></a><h2>&quot;squares&quot; - Selects all polygons which are squares</h2><a name="k_122"></a><p>Usage:</p><ul><li><tt>squares</tt></li><li><tt>squares(layer)</tt></li></ul><p>
+This function can be used with a layer argument. In this case it
+is equivalent to &quot;layer.squares&quot; (see <a href="drc_ref_layer.html#squares">Layer#squares</a>). Without a layer
+argument, &quot;squares&quot; represents the rectangles filter for primary shapes in 
+<a href="drc_ref_drc.html">DRC</a> expressions (see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_global.html#squares">squares</a> for more details).
+</p><a name="switch"></a><a name="h2-2040"></a><h2>&quot;switch&quot; - A conditional selector for the &quot;drc&quot; universal DRC function</h2><a name="k_123"></a><p>Usage:</p><ul><li><tt>switch(...)</tt></li></ul><p>
+This function provides a conditional selector for the &quot;drc&quot; function.
+It is used this way:
+</p><p><pre>
+out = in.drc(switch(c1, r1, c2, r2, ..., cn, rn)
+out = in.drc(switch(c1, r1, c2, r2, ..., cn, rn, rdef)
+</pre></p><p>
+This function will evaluate c1 which is a universal DRC expression (see <a href="drc_ref_layer.html#drc">Layer#drc</a>).
+If the result is not empty, &quot;switch&quot; will evaluate and return r1. Otherwise it
+will continue with c2 and the result of this expression is not empty it will
+return r2. Otherwise it will continue with c3/r3 etc. 
+</p><p>
+If an odd number of arguments is given, the last expression is evaluated if
+none of the conditions c1..cn gives a non-empty result.
+</p><p>
+As a requirement, the result types of all r1..rn expressions and the rdef
+needs to be the same - i.e. all need to render polygons or edges or edge pairs.
+</p><a name="target"></a><a name="h2-2066"></a><h2>&quot;target&quot; - Specify the target layout</h2><a name="k_124"></a><p>Usage:</p><ul><li><tt>target</tt></li><li><tt>target(what [, cellname])</tt></li></ul><p>
+This function can be used to specify a target layout for output.
+Subsequent calls of &quot;output&quot; will send their results to that target
+layout. Using &quot;target&quot; will disable output to a report database.
+If any target was specified before, that target will be closed and 
+a new target will be set up.
+</p><p>
+&quot;what&quot; specifies what input to use. &quot;what&quot; be either
+</p><p><ul><li>A string &quot;@n&quot; (n is an integer) specifying output to a layout in the current panel </li><li>A string &quot;@+&quot; specifying output to a new layout in the current panel </li><li>A layout filename </li><li>A <a href="../code/class_Layout.html">Layout</a> object </li><li>A <a href="../code/class_Cell.html">Cell</a> object </li></ul></p><p>
+Except if the argument is a <a href="../code/class_Cell.html">Cell</a> object, a cellname can be specified 
+stating the cell name under which the results are saved. If no cellname is 
+specified, either the current cell or &quot;TOP&quot; is used.
+</p><p>
+The return value of this method is a channel object of the same
+type that <a href="drc_ref_global.html#new_target">new_target</a> will return.
+</p><a name="target_netlist"></a><a name="h2-2097"></a><h2>&quot;target_netlist&quot; - With this statement, an extracted netlist is finally written to a file</h2><a name="k_125"></a><p>Usage:</p><ul><li><tt>target_netlist(filename [, format [, comment ] ])</tt></li></ul><p>
+This method applies to runsets creating a netlist through
+extraction. Extraction happens when connections and/or device
+extractions are made. If this statement is used, the extracted
+netlist is written to the given file.
+</p><p>
+The format parameter specifies the writer to use. You can use nil
+to use the standard format or produce a SPICE writer with <a href="#write_spice">write_spice</a>.
+See <a href="#write_spice">write_spice</a> for more details.
+</p><a name="threads"></a><a name="h2-2113"></a><h2>&quot;threads&quot; - Specifies the number of CPU cores to use in tiling mode</h2><a name="k_126"></a><p>Usage:</p><ul><li><tt>threads(n)</tt></li><li><tt>threads</tt></li></ul><p>
+If using threads, tiles are distributed on multiple CPU cores for
+parallelization. Still, all tiles must be processed before the 
+operation proceeds with the next statement. 
+</p><p>
+Without an argument, &quot;threads&quot; will return the current number of 
+threads
+</p><a name="tile_borders"></a><a name="h2-2128"></a><h2>&quot;tile_borders&quot; - Specifies a minimum tile border</h2><a name="k_127"></a><p>Usage:</p><ul><li><tt>tile_borders(b)</tt></li><li><tt>tile_borders(bx, by)</tt></li></ul><p>
+The tile border specifies the distance to which shapes are collected into the 
+tile. In order words, when processing a tile, shapes within the border distance
+participate in the operations.
+</p><p>
+For some operations such as booleans (<a href="drc_ref_layer.html#and">Layer#and</a>, <a href="drc_ref_layer.html#or">Layer#or</a>, ...), <a href="drc_ref_layer.html#size">Layer#size</a> and the DRC functions (<a href="drc_ref_layer.html#width">Layer#width</a>, <a href="drc_ref_layer.html#space">Layer#space</a>, ...)
+a tile border is automatically established. For other operations such as <a href="drc_ref_layer.html#with_area">Layer#with_area</a>
+or <a href="drc_ref_layer.html#edges">Layer#edges</a>, the exact distance is unknown, because such operations may have a long range.
+In that cases, no border is used. The tile_borders function may be used to specify a minimum border
+which is used in that case. That allows taking into account at least shapes within the 
+given range, although not necessarily all.
+</p><p>
+To reset the tile borders, use <a href="#no_borders">no_borders</a> or &quot;tile_borders(nil)&quot;.
+</p><a name="tiles"></a><a name="h2-2149"></a><h2>&quot;tiles&quot; - Specifies tiling</h2><a name="k_128"></a><p>Usage:</p><ul><li><tt>tiles(t)</tt></li><li><tt>tiles(w, h)</tt></li></ul><p>
+Specifies tiling mode. In tiling mode, the DRC operations are evaluated in tiles
+with width w and height h. With one argument, square tiles with width and height
+t are used.
+</p><p>
+Special care must be taken when using tiling mode, since some operations may not
+behave as expected at the borders of the tile. Tiles can be made overlapping by
+specifying a tile border dimension with <a href="#tile_borders">tile_borders</a>. Some operations like sizing,
+the DRC functions specify a tile border implicitly. Other operations without a
+defined range won't do so and the consequences of tiling mode can be difficult to
+predict.
+</p><p>
+In tiling mode, the memory requirements are usually smaller (depending on the 
+choice of the tile size) and multi-CPU support is enabled (see <a href="#threads">threads</a>).
+To disable tiling mode use <a href="#flat">flat</a> or <a href="#deep">deep</a>. 
+</p><p>
+Tiling mode will disable deep mode (see <a href="#deep">deep</a>).
+</p><a name="top_level"></a><a name="h2-2174"></a><h2>&quot;top_level&quot; - Specifies that the circuit is a chip top level circuit</h2><a name="k_129"></a><p>Usage:</p><ul><li><tt>top_level(flag)</tt></li></ul><p>
+See <a href="drc_ref_netter.html#top_level">Netter#top_level</a> for a description of that function.
+</p><a name="verbose"></a><a name="h2-2183"></a><h2>&quot;verbose&quot; - Sets or resets verbose mode</h2><a name="k_130"></a><p>Usage:</p><ul><li><tt>verbose</tt></li><li><tt>verbose(m)</tt></li></ul><p>
+In verbose mode, more output is generated in the log file
+</p><a name="verbose?"></a><a name="h2-2193"></a><h2>&quot;verbose?&quot; - Returns true, if verbose mode is enabled</h2><a name="k_131"></a><p>Usage:</p><ul><li><tt>verbose?</tt></li></ul><p>
+In verbose mode, more output is generated in the log file
+</p><a name="warn"></a><a name="h2-2202"></a><h2>&quot;warn&quot; - Prints a warning</h2><a name="k_132"></a><p>Usage:</p><ul><li><tt>warn(message)</tt></li></ul><p>
+Similar to <a href="#log">log</a>, but the message is printed formatted as a warning
+</p><a name="width"></a><a name="h2-2211"></a><h2>&quot;width&quot; - Performs a width check</h2><a name="k_133"></a><p>Usage:</p><ul><li><tt>width([ options ]) (in conditions)</tt></li><li><tt>width(layer [, options ])</tt></li></ul><p>
+A width check is a check for the distance of edges of the same polygon.
+</p><p><a name="h3-2221"></a><h3>Classic mode </h3></p><p>
+This function can be used in classic mode with a layer argument. In this case it
+is equivalent to &quot;layer.width&quot; (see <a href="drc_ref_layer.html#width">Layer#width</a>). 
+</p><p><pre>
+# classic &quot;width&quot; check for width &lt; 2 um
+in = layer(1, 0)
+errors = width(in, 0.2.um)
+</pre></p><p><a name="h3-2232"></a><h3>Universal DRC </h3></p><p>
+The version without a layer is intended for use within <a href="drc_ref_drc.html">DRC</a> expressions
+together with the &quot;universal DRC&quot; method <a href="drc_ref_layer.html#drc">Layer#drc</a>. In this case, this function needs to be 
+put into a condition to specify the check constraints. The other options
+of <a href="drc_ref_layer.html#width">Layer#width</a> (e.g. metrics, projection constraints, angle limits etc.)
+apply to this version too:
+</p><p><pre>
+# universal DRC check for width &lt; 2 um
+in = layer(1, 0)
+errors = in.drc(width &lt; 0.2.um)
+</pre></p><p>
+The conditions may involve an upper and lower limit. The following examples
+illustrate the use of this function with conditions:
+</p><p><pre>
+errors = in.drc(width &lt; 0.2.um)
+errors = in.drc(width &lt;= 0.2.um)
+errors = in.drc(width &gt; 0.2.um)
+errors = in.drc(width &gt;= 0.2.um)
+errors = in.drc(width == 0.2.um)
+errors = in.drc(width != 0.2.um)
+errors = in.drc(0.1.um &lt;= width &lt; 0.2.um)
+</pre></p><p><table><tr><td><img src="../images/drc_width1u.png"></td><td><img src="../images/drc_width2u.png"></td></tr></table></p><p>
+With a lower and upper limit or with the &quot;equal&quot; condition, the results are edges marking the positions on the 
+primary shape where the condition is met.
+With a lower limit alone, the results are edge pairs which are formed by two identical, but opposite edges attached to 
+the primary shape. Without an upper limit only, both edges are attached to different sides of the primary
+shape.
+</p><p><table><tr><td><img src="../images/drc_width3u.png"></td><td><img src="../images/drc_width4u.png"></td></tr><tr><td><img src="../images/drc_width5u.png"></td><td><img src="../images/drc_width6u.png"></td></tr></table></p><a name="with_holes"></a><a name="h2-2283"></a><h2>&quot;with_holes&quot; - Selects all input polygons according to their number of holes in DRC expressions</h2><a name="k_134"></a><p>Usage:</p><ul><li><tt>with_holes (in condition)</tt></li></ul><p>
+&quot;with_holes&quot; represents a polygon selector for
+<a href="drc_ref_drc.html">DRC</a> expressions selecting polygons of the primary by their number of holes
+(see <a href="drc_ref_layer.html#drc">Layer#drc</a> and <a href="drc_ref_global.html#with_holes">with_holes</a> for more details).
+</p><a name="write_spice"></a><a name="h2-2294"></a><h2>&quot;write_spice&quot; - Defines SPICE output format (with options)</h2><a name="k_135"></a><p>Usage:</p><ul><li><tt>write_spice([ use_net_names [, with_comments ] ])</tt></li><li><tt>write_spice(writer_delegate [, use_net_names [, with_comments ] ])</tt></li></ul><p>
+Use this option in <a href="#target_netlist">target_netlist</a> for the format parameter to 
+specify SPICE format.
+&quot;use_net_names&quot; and &quot;with_comments&quot; are boolean parameters indicating
+whether to use named nets (numbers if false) and whether to add 
+information comments such as instance coordinates or pin names.
+</p><p>
+&quot;writer_delegate&quot; allows using a <a href="../code/class_NetlistSpiceWriterDelegate.html">NetlistSpiceWriterDelegate</a> object to 
+control the actual writing.
+</p></body>

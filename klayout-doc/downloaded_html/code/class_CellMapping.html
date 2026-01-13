@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class CellMapping</p><h1>API reference - Class CellMapping</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: A cell mapping (source to target layout)</p><ul><li><a href="#h2-57">Public constructors</a></li><li><a href="#h2-62">Public methods</a></li><li><a href="#h2-125">Public static methods and constants</a></li><li><a href="#h2-130">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-141">Detailed description</a></li></ul><p></p><p>A cell mapping is an association of cells in two layouts forming pairs of cells, i.e. one cell corresponds to another cell in the other layout. The CellMapping object describes the mapping of cells of a source layout B to a target layout A. The cell mapping object is basically a table associating a cell in layout B with a cell in layout A.</p><p>The cell mapping is of particular interest for providing the cell mapping recipe in <a href="class_Cell.html#m_copy_tree_shapes">Cell#copy_tree_shapes</a> or <a href="class_Cell.html#m_move_tree_shapes">Cell#move_tree_shapes</a>.</p><p>The mapping object is used to create and hold that table. There are three basic modes in which a table can be generated:</p><p><ul><li> Top-level identity (<a href="#m_for_single_cell">for_single_cell</a> and <a href="#m_for_single_cell_full">for_single_cell_full</a>) </li><li> Top-level identify for multiple cells (<a href="#m_for_multi_cells_full">for_multi_cells_full</a> and <a href="#m_for_multi_cells_full">for_multi_cells_full</a>) </li><li> Geometrical identity (<a href="#m_from_geometry">from_geometry</a> and <a href="#m_from_geometry_full">from_geometry_full</a>)</li><li> Name identity (<a href="#m_from_names">from_names</a> and <a href="#m_from_names_full">from_names_full</a>) </li></ul></p><p>'full' refers to the way cells are treated which are not mentioned. In the 'full' versions, cells for which no mapping is established explicitly - specifically all child cells in top-level identity modes - are created in the target layout and instantiated according to their source layout hierarchy. Then, these new cells become targets of the respective source cells. In the plain version (without 'full' cells), no additional cells are created. For the case of <a href="class_Layout.html#m_copy_tree_shapes">Layout#copy_tree_shapes</a> cells not explicitly mapped are flattened. Hence for example, <a href="#m_for_single_cell">for_single_cell</a> will flatten all children of the source cell during <a href="class_Layout.html#m_copy_tree_shapes">Layout#copy_tree_shapes</a> or <a href="class_Layout.html#m_move_tree_shapes">Layout#move_tree_shapes</a>.</p><p>Top-level identity means that only one cell (the top cell) is regarded identical. All child cells are not considered identical. In full mode (see below), this will create a new, identical cell tree below the top cell in layout A.</p><p>Geometrical identity is defined by the exact identity of the set of expanded instances in each starting cell. Therefore, when a cell is mapped to another cell, shapes can be transferred from one cell to another while effectively rendering the same flat geometry (in the context of the given starting cells). Location identity is basically the safest way to map cells from one hierarchy into another, because it preserves the flat shape geometry. However in some cases the algorithm may find multiple mapping candidates. In that case it will make a guess about what mapping to choose.</p><p>Name identity means that cells are identified by their names - for a source cell in layer B, a target cell with the same name is looked up in the target layout A and a mapping is created if a cell with the same name is found. However, name identity does not mean that the cells are actually equivalent because they may be placed differently. Hence, cell mapping by name is not a good choice when it is important to preserve the shape geometry of a layer.</p><p>A cell might not be mapped to another cell which basically means that there is no corresponding cell. In this case, flattening to the next mapped cell is an option to transfer geometries despite the missing mapping. You can enforce a mapping by using the mapping generator methods in 'full' mode, i.e. <a href="#m_from_names_full">from_names_full</a> or <a href="#m_from_geometry_full">from_geometry_full</a>. These versions will create new cells and their corresponding instances in the target layout if no suitable target cell is found.</p><p>This is a simple example for a cell mapping preserving the hierarchy of the source cell and creating a hierarchy copy in the top cell of the target layout ('hierarchical merge'):</p><p><pre>
+cell_names = [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ]
+
+source = RBA::Layout::new
+source.read(&quot;input.gds&quot;)
+
+target = RBA::Layout::new
+target_top = target.create_cell(&quot;IMPORTED&quot;)
+
+cm = RBA::CellMapping::new
+# Copies the source layout hierarchy into the target top cell:
+cm.for_single_cell_full(target_top, source.top_cell)
+target.copy_tree_shapes(source, cm)
+</pre></p><p>Without 'full', the effect is move-with-flattening (note we're using 'move' in this example):</p><p><pre>
+cell_names = [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ]
+
+source = RBA::Layout::new
+source.read(&quot;input.gds&quot;)
+
+target = RBA::Layout::new
+target_top = target.create_cell(&quot;IMPORTED&quot;)
+
+cm = RBA::CellMapping::new
+# Flattens the source layout hierarchy into the target top cell:
+cm.for_single_cell(target_top, source.top_cell)
+target.move_tree_shapes(source, cm)
+</pre></p><p>This is another example for using <a href="class_CellMapping.html">CellMapping</a> in multiple top cell identity mode. It extracts cells 'A', 'B' and 'C' from one layout and copies them to another. It will also copy all shapes and all child cells. Child cells which are shared between the three initial cells will be shared in the target layout too.</p><p><pre>
+cell_names = [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ]
+
+source = RBA::Layout::new
+source.read(&quot;input.gds&quot;)
+
+target = RBA::Layout::new
+
+source_cells = cell_names.collect { |n| source.cell_by_name(n) }
+target_cells = cell_names.collect { |n| target.create_cell(n) }
+
+cm = RBA::CellMapping::new
+cm.for_multi_cells_full(target_cells, source_cells)
+target.copy_tree_shapes(source, cm)
+</pre></p><a name="h2-57"></a><h2>Public constructors</h2><table><tr class="row0"><td>new CellMapping ptr</td><td><b><a href="#method34">new</a></b></td><td></td><td>Creates a new object of this class</td></tr></table><a name="h2-62"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>CellMapping ptr</td><td><b><a href="#method1">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method2">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method3">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method5">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method6">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method7">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method8">assign</a></b></td><td>(const CellMapping other)</td><td>Assigns another object to self</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned int</td><td><b><a href="#method9">cell_mapping</a></b></td><td>(unsigned int cell_index_b)</td><td>Determines cell mapping of a layout_b cell to the corresponding layout_a cell.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method10">clear</a></b></td><td></td><td>Clears the mapping.</td></tr><tr class="row0"><td><i>[const]</i></td><td>new CellMapping ptr</td><td><b><a href="#method14">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method15">for_multi_cells</a></b></td><td>(const Layout layout_a,<br>unsigned int[] cell_indexes_a,<br>const Layout layout_b,<br>unsigned int[] cell_indexes_b)</td><td>Initializes the cell mapping for top-level identity</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method16">for_multi_cells</a></b></td><td>(Cell ptr[] cell_a,<br>const Cell ptr[] cell_b)</td><td>Initializes the cell mapping for top-level identity</td></tr><tr class="row1"><td></td><td>unsigned int[]</td><td><b><a href="#method17">for_multi_cells_full</a></b></td><td>(Layout layout_a,<br>unsigned int[] cell_indexes_a,<br>const Layout layout_b,<br>unsigned int[] cell_indexes_b)</td><td>Initializes the cell mapping for top-level identity in full mapping mode</td></tr><tr class="row0"><td></td><td>unsigned int[]</td><td><b><a href="#method18">for_multi_cells_full</a></b></td><td>(Cell ptr[] cell_a,<br>const Cell ptr[] cell_b)</td><td>Initializes the cell mapping for top-level identity in full mapping mode</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method19">for_single_cell</a></b></td><td>(const Layout layout_a,<br>unsigned int cell_index_a,<br>const Layout layout_b,<br>unsigned int cell_index_b)</td><td>Initializes the cell mapping for top-level identity</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method20">for_single_cell</a></b></td><td>(Cell cell_a,<br>const Cell cell_b)</td><td>Initializes the cell mapping for top-level identity</td></tr><tr class="row1"><td></td><td>unsigned int[]</td><td><b><a href="#method21">for_single_cell_full</a></b></td><td>(Layout layout_a,<br>unsigned int cell_index_a,<br>const Layout layout_b,<br>unsigned int cell_index_b)</td><td>Initializes the cell mapping for top-level identity in full mapping mode</td></tr><tr class="row0"><td></td><td>unsigned int[]</td><td><b><a href="#method22">for_single_cell_full</a></b></td><td>(Cell cell_a,<br>const Cell cell_b)</td><td>Initializes the cell mapping for top-level identity in full mapping mode</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method23">from_geometry</a></b></td><td>(const Layout layout_a,<br>unsigned int cell_index_a,<br>const Layout layout_b,<br>unsigned int cell_index_b)</td><td>Initializes the cell mapping using the geometrical identity</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method24">from_geometry</a></b></td><td>(Cell cell_a,<br>const Cell cell_b)</td><td>Initializes the cell mapping using the geometrical identity</td></tr><tr class="row1"><td></td><td>unsigned int[]</td><td><b><a href="#method25">from_geometry_full</a></b></td><td>(Layout layout_a,<br>unsigned int cell_index_a,<br>const Layout layout_b,<br>unsigned int cell_index_b)</td><td>Initializes the cell mapping using the geometrical identity in full mapping mode</td></tr><tr class="row0"><td></td><td>unsigned int[]</td><td><b><a href="#method26">from_geometry_full</a></b></td><td>(Cell cell_a,<br>const Cell cell_b)</td><td>Initializes the cell mapping using the geometrical identity in full mapping mode</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method27">from_names</a></b></td><td>(const Layout layout_a,<br>unsigned int cell_index_a,<br>const Layout layout_b,<br>unsigned int cell_index_b)</td><td>Initializes the cell mapping using the name identity</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method28">from_names</a></b></td><td>(Cell cell_a,<br>const Cell cell_b)</td><td>Initializes the cell mapping using the name identity</td></tr><tr class="row1"><td></td><td>unsigned int[]</td><td><b><a href="#method29">from_names_full</a></b></td><td>(Layout layout_a,<br>unsigned int cell_index_a,<br>const Layout layout_b,<br>unsigned int cell_index_b)</td><td>Initializes the cell mapping using the name identity in full mapping mode</td></tr><tr class="row0"><td></td><td>unsigned int[]</td><td><b><a href="#method30">from_names_full</a></b></td><td>(Cell cell_a,<br>const Cell cell_b)</td><td>Initializes the cell mapping using the name identity in full mapping mode</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method31">has_mapping?</a></b></td><td>(unsigned int cell_index_b)</td><td>Returns as value indicating whether a cell of layout_b has a mapping to a layout_a cell.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method33">map</a></b></td><td>(unsigned int cell_index_b,<br>unsigned int cell_index_a)</td><td>Explicitly specifies a mapping.</td></tr><tr class="row1"><td><i>[const]</i></td><td>map&lt;unsigned int,unsigned int&gt;</td><td><b><a href="#method35">table</a></b></td><td></td><td>Returns the mapping table.</td></tr></table><a name="h2-125"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td></td><td>unsigned int</td><td><b><a href="#method0">DropCell</a></b></td><td></td><td>A constant indicating the request to drop a cell</td></tr></table><a name="h2-130"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method11">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method12">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method13">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method32">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-141"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-142"></a><h3>DropCell</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_DropCell"></a><a name="k_2"></a><p><b>Signature</b>: <i>[static] </i>unsigned int <b> DropCell </b></p><p><b>Description</b>: A constant indicating the request to drop a cell</p><p><p></p><p>If used as a pseudo-target for the cell mapping, this index indicates that the cell shall be dropped rather than created on the target side or skipped by flattening. Instead, all shapes of this cell are discarded and its children are not translated unless explicitly requested or if required are children for other cells.</p><p>This constant has been introduced in version 0.25.</p></p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'DropCell'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-148"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__const_cast"></a><a name="k_3"></a><p><b>Signature</b>: <i>[const] </i><a href="class_CellMapping.html">CellMapping</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-154"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__create"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-160"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroy"></a><a name="k_5"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-167"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__destroyed?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-174"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__is_const_object?"></a><a name="k_7"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-181"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__manage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-187"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__unmanage"></a><a name="k_9"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-193"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_assign"></a><a name="k_10"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_CellMapping.html">CellMapping</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow1"><td><a name="h3-197"></a><h3>cell_mapping</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_cell_mapping"></a><a name="k_11"></a><p><b>Signature</b>: <i>[const] </i>unsigned int <b> cell_mapping </b> (unsigned int cell_index_b)</p><p><b>Description</b>: Determines cell mapping of a layout_b cell to the corresponding layout_a cell.</p><table class="layout-table"><tr><td><b>cell_index_b</b>:</td><td>The index of the cell in layout_b whose mapping is requested.</td></tr><tr><td><b>Returns</b>:</td><td>The cell index in layout_a.</td></tr></table><p><p></p><p>Note that the returned index can be <a href="#m_DropCell">DropCell</a> to indicate the cell shall be dropped.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-206"></a><h3>clear</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_clear"></a><a name="k_12"></a><p><b>Signature</b>: void <b> clear </b></p><p><b>Description</b>: Clears the mapping.</p><p><p></p><p>This method has been introduced in version 0.23.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-211"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_create"></a><a name="k_13"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-218"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_destroy"></a><a name="k_14"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-226"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_destroyed?"></a><a name="k_15"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-234"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_dup"></a><a name="k_16"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_CellMapping.html">CellMapping</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-239"></a><h3>for_multi_cells</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_for_multi_cells"></a><a name="k_17"></a><p><b>(1) Signature</b>: void <b> for_multi_cells </b> (const <a href="class_Layout.html">Layout</a> layout_a, unsigned int[] cell_indexes_a, const <a href="class_Layout.html">Layout</a> layout_b, unsigned int[] cell_indexes_b)</p><p><b>Description</b>: Initializes the cell mapping for top-level identity</p><table class="layout-table"><tr><td><b>layout_a</b>:</td><td>The target layout.</td></tr><tr><td><b>cell_indexes_a</b>:</td><td>A list of cell indexes for the target cells.</td></tr><tr><td><b>layout_b</b>:</td><td>The source layout.</td></tr><tr><td><b>cell_indexes_b</b>:</td><td>A list of cell indexes for the source cells (same number of indexes than cell_indexes_a).</td></tr></table><p><p></p><p>The cell mapping is created for cells from cell_indexes_b to cell from cell_indexes_a in the respective layouts. This method clears the mapping and creates one for each cell pair from cell_indexes_b vs. cell_indexes_a. If used for <a href="class_Layout.html#m_copy_tree_shapes">Layout#copy_tree_shapes</a> or <a href="class_Layout.html#m_move_tree_shapes">Layout#move_tree_shapes</a>, this cell mapping will essentially flatten the source cells in the target layout.</p><p>This method is equivalent to <a href="#m_clear">clear</a>, followed by <a href="#m_map">map</a>(cell_index_a, cell_index_b) for each cell pair.</p><p>This method has been introduced in version 0.27.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_for_multi_cells"></a><a name="k_18"></a><p><b>(2) Signature</b>: void <b> for_multi_cells </b> (<a href="class_Cell.html">Cell</a> ptr[] cell_a, const <a href="class_Cell.html">Cell</a> ptr[] cell_b)</p><p><b>Description</b>: Initializes the cell mapping for top-level identity</p><table class="layout-table"><tr><td><b>cell_a</b>:</td><td>A list of target cells.</td></tr><tr><td><b>cell_b</b>:</td><td>A list of source cells.</td></tr><tr><td><b>Returns</b>:</td><td>A list of indexes of cells created.</td></tr></table><p><p></p><p>This is a convenience version which uses cell references instead of layout/cell index combinations. It has been introduced in version 0.28.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-259"></a><h3>for_multi_cells_full</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_for_multi_cells_full"></a><a name="k_19"></a><p><b>(1) Signature</b>: unsigned int[] <b> for_multi_cells_full </b> (<a href="class_Layout.html">Layout</a> layout_a, unsigned int[] cell_indexes_a, const <a href="class_Layout.html">Layout</a> layout_b, unsigned int[] cell_indexes_b)</p><p><b>Description</b>: Initializes the cell mapping for top-level identity in full mapping mode</p><table class="layout-table"><tr><td><b>layout_a</b>:</td><td>The target layout.</td></tr><tr><td><b>cell_indexes_a</b>:</td><td>A list of cell indexes for the target cells.</td></tr><tr><td><b>layout_b</b>:</td><td>The source layout.</td></tr><tr><td><b>cell_indexes_b</b>:</td><td>A list of cell indexes for the source cells (same number of indexes than cell_indexes_a).</td></tr></table><p><p></p><p>The cell mapping is created for cells from cell_indexes_b to cell from cell_indexes_a in the respective layouts. This method clears the mapping and creates one for each cell pair from cell_indexes_b vs. cell_indexes_a. In addition and in contrast to <a href="#m_for_multi_cells">for_multi_cells</a>, this method completes the mapping by adding all the child cells of all cells in cell_indexes_b to layout_a and creating the proper instances.</p><p>This method has been introduced in version 0.27.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_for_multi_cells_full"></a><a name="k_20"></a><p><b>(2) Signature</b>: unsigned int[] <b> for_multi_cells_full </b> (<a href="class_Cell.html">Cell</a> ptr[] cell_a, const <a href="class_Cell.html">Cell</a> ptr[] cell_b)</p><p><b>Description</b>: Initializes the cell mapping for top-level identity in full mapping mode</p><table class="layout-table"><tr><td><b>cell_a</b>:</td><td>A list of target cells.</td></tr><tr><td><b>cell_b</b>:</td><td>A list of source cells.</td></tr><tr><td><b>Returns</b>:</td><td>A list of indexes of cells created.</td></tr></table><p><p></p><p>This is a convenience version which uses cell references instead of layout/cell index combinations. It has been introduced in version 0.28.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-279"></a><h3>for_single_cell</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_for_single_cell"></a><a name="k_21"></a><p><b>(1) Signature</b>: void <b> for_single_cell </b> (const <a href="class_Layout.html">Layout</a> layout_a, unsigned int cell_index_a, const <a href="class_Layout.html">Layout</a> layout_b, unsigned int cell_index_b)</p><p><b>Description</b>: Initializes the cell mapping for top-level identity</p><table class="layout-table"><tr><td><b>layout_a</b>:</td><td>The target layout.</td></tr><tr><td><b>cell_index_a</b>:</td><td>The index of the target cell.</td></tr><tr><td><b>layout_b</b>:</td><td>The source layout.</td></tr><tr><td><b>cell_index_b</b>:</td><td>The index of the source cell.</td></tr></table><p><p></p><p>The cell mapping is created for cell_b to cell_a in the respective layouts. This method clears the mapping and creates one for the single cell pair. If used for <a href="class_Cell.html#m_copy_tree">Cell#copy_tree</a> or <a href="class_Cell.html#m_move_tree">Cell#move_tree</a>, this cell mapping will essentially flatten the cell.</p><p>This method is equivalent to <a href="#m_clear">clear</a>, followed by <a href="#m_map">map</a>(cell_index_a, cell_index_b).</p><p>This method has been introduced in version 0.23.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_for_single_cell"></a><a name="k_22"></a><p><b>(2) Signature</b>: void <b> for_single_cell </b> (<a href="class_Cell.html">Cell</a> cell_a, const <a href="class_Cell.html">Cell</a> cell_b)</p><p><b>Description</b>: Initializes the cell mapping for top-level identity</p><table class="layout-table"><tr><td><b>cell_a</b>:</td><td>The target cell.</td></tr><tr><td><b>cell_b</b>:</td><td>The source cell.</td></tr><tr><td><b>Returns</b>:</td><td>A list of indexes of cells created.</td></tr></table><p><p></p><p>This is a convenience version which uses cell references instead of layout/cell index combinations. It has been introduced in version 0.28.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-299"></a><h3>for_single_cell_full</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_for_single_cell_full"></a><a name="k_23"></a><p><b>(1) Signature</b>: unsigned int[] <b> for_single_cell_full </b> (<a href="class_Layout.html">Layout</a> layout_a, unsigned int cell_index_a, const <a href="class_Layout.html">Layout</a> layout_b, unsigned int cell_index_b)</p><p><b>Description</b>: Initializes the cell mapping for top-level identity in full mapping mode</p><table class="layout-table"><tr><td><b>layout_a</b>:</td><td>The target layout.</td></tr><tr><td><b>cell_index_a</b>:</td><td>The index of the target cell.</td></tr><tr><td><b>layout_b</b>:</td><td>The source layout.</td></tr><tr><td><b>cell_index_b</b>:</td><td>The index of the source cell.</td></tr></table><p><p></p><p>The cell mapping is created for cell_b to cell_a in the respective layouts. This method clears the mapping and creates one for the single cell pair. In addition and in contrast to <a href="#m_for_single_cell">for_single_cell</a>, this method completes the mapping by adding all the child cells of cell_b to layout_a and creating the proper instances.</p><p>This method has been introduced in version 0.23.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_for_single_cell_full"></a><a name="k_24"></a><p><b>(2) Signature</b>: unsigned int[] <b> for_single_cell_full </b> (<a href="class_Cell.html">Cell</a> cell_a, const <a href="class_Cell.html">Cell</a> cell_b)</p><p><b>Description</b>: Initializes the cell mapping for top-level identity in full mapping mode</p><table class="layout-table"><tr><td><b>cell_a</b>:</td><td>The target cell.</td></tr><tr><td><b>cell_b</b>:</td><td>The source cell.</td></tr><tr><td><b>Returns</b>:</td><td>A list of indexes of cells created.</td></tr></table><p><p></p><p>This is a convenience version which uses cell references instead of layout/cell index combinations. It has been introduced in version 0.28.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-319"></a><h3>from_geometry</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_from_geometry"></a><a name="k_25"></a><p><b>(1) Signature</b>: void <b> from_geometry </b> (const <a href="class_Layout.html">Layout</a> layout_a, unsigned int cell_index_a, const <a href="class_Layout.html">Layout</a> layout_b, unsigned int cell_index_b)</p><p><b>Description</b>: Initializes the cell mapping using the geometrical identity</p><table class="layout-table"><tr><td><b>layout_a</b>:</td><td>The target layout.</td></tr><tr><td><b>cell_index_a</b>:</td><td>The index of the target starting cell.</td></tr><tr><td><b>layout_b</b>:</td><td>The source layout.</td></tr><tr><td><b>cell_index_b</b>:</td><td>The index of the source starting cell.</td></tr></table><p><p></p><p>The cell mapping is created for cells below cell_a and cell_b in the respective layouts. This method employs geometrical identity to derive mappings for the child cells of the starting cell in layout A and B.
+If the geometrical identity is ambiguous, the algorithm will make an arbitrary choice.</p><p>This method has been introduced in version 0.23.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_from_geometry"></a><a name="k_26"></a><p><b>(2) Signature</b>: void <b> from_geometry </b> (<a href="class_Cell.html">Cell</a> cell_a, const <a href="class_Cell.html">Cell</a> cell_b)</p><p><b>Description</b>: Initializes the cell mapping using the geometrical identity</p><table class="layout-table"><tr><td><b>cell_a</b>:</td><td>The target cell.</td></tr><tr><td><b>cell_b</b>:</td><td>The source cell.</td></tr><tr><td><b>Returns</b>:</td><td>A list of indexes of cells created.</td></tr></table><p><p></p><p>This is a convenience version which uses cell references instead of layout/cell index combinations. It has been introduced in version 0.28.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-340"></a><h3>from_geometry_full</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_from_geometry_full"></a><a name="k_27"></a><p><b>(1) Signature</b>: unsigned int[] <b> from_geometry_full </b> (<a href="class_Layout.html">Layout</a> layout_a, unsigned int cell_index_a, const <a href="class_Layout.html">Layout</a> layout_b, unsigned int cell_index_b)</p><p><b>Description</b>: Initializes the cell mapping using the geometrical identity in full mapping mode</p><table class="layout-table"><tr><td><b>layout_a</b>:</td><td>The target layout.</td></tr><tr><td><b>cell_index_a</b>:</td><td>The index of the target starting cell.</td></tr><tr><td><b>layout_b</b>:</td><td>The source layout.</td></tr><tr><td><b>cell_index_b</b>:</td><td>The index of the source starting cell.</td></tr><tr><td><b>Returns</b>:</td><td>A list of indexes of cells created.</td></tr></table><p><p></p><p>The cell mapping is created for cells below cell_a and cell_b in the respective layouts. This method employs geometrical identity to derive mappings for the child cells of the starting cell in layout A and B.
+If the geometrical identity is ambiguous, the algorithm will make an arbitrary choice.</p><p>Full mapping means that cells which are not found in the target layout A are created there plus their corresponding instances are created as well. The returned list will contain the indexes of all cells created for that reason.</p><p>This method has been introduced in version 0.23.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_from_geometry_full"></a><a name="k_28"></a><p><b>(2) Signature</b>: unsigned int[] <b> from_geometry_full </b> (<a href="class_Cell.html">Cell</a> cell_a, const <a href="class_Cell.html">Cell</a> cell_b)</p><p><b>Description</b>: Initializes the cell mapping using the geometrical identity in full mapping mode</p><table class="layout-table"><tr><td><b>cell_a</b>:</td><td>The target cell.</td></tr><tr><td><b>cell_b</b>:</td><td>The source cell.</td></tr><tr><td><b>Returns</b>:</td><td>A list of indexes of cells created.</td></tr></table><p><p></p><p>This is a convenience version which uses cell references instead of layout/cell index combinations. It has been introduced in version 0.28.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-362"></a><h3>from_names</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_from_names"></a><a name="k_29"></a><p><b>(1) Signature</b>: void <b> from_names </b> (const <a href="class_Layout.html">Layout</a> layout_a, unsigned int cell_index_a, const <a href="class_Layout.html">Layout</a> layout_b, unsigned int cell_index_b)</p><p><b>Description</b>: Initializes the cell mapping using the name identity</p><table class="layout-table"><tr><td><b>layout_a</b>:</td><td>The target layout.</td></tr><tr><td><b>cell_index_a</b>:</td><td>The index of the target starting cell.</td></tr><tr><td><b>layout_b</b>:</td><td>The source layout.</td></tr><tr><td><b>cell_index_b</b>:</td><td>The index of the source starting cell.</td></tr></table><p><p></p><p>The cell mapping is created for cells below cell_a and cell_b in the respective layouts.
+This method employs name identity to derive mappings for the child cells of the starting cell in layout A and B.</p><p>This method has been introduced in version 0.23.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_from_names"></a><a name="k_30"></a><p><b>(2) Signature</b>: void <b> from_names </b> (<a href="class_Cell.html">Cell</a> cell_a, const <a href="class_Cell.html">Cell</a> cell_b)</p><p><b>Description</b>: Initializes the cell mapping using the name identity</p><table class="layout-table"><tr><td><b>cell_a</b>:</td><td>The target cell.</td></tr><tr><td><b>cell_b</b>:</td><td>The source cell.</td></tr><tr><td><b>Returns</b>:</td><td>A list of indexes of cells created.</td></tr></table><p><p></p><p>This is a convenience version which uses cell references instead of layout/cell index combinations. It has been introduced in version 0.28.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-383"></a><h3>from_names_full</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_from_names_full"></a><a name="k_31"></a><p><b>(1) Signature</b>: unsigned int[] <b> from_names_full </b> (<a href="class_Layout.html">Layout</a> layout_a, unsigned int cell_index_a, const <a href="class_Layout.html">Layout</a> layout_b, unsigned int cell_index_b)</p><p><b>Description</b>: Initializes the cell mapping using the name identity in full mapping mode</p><table class="layout-table"><tr><td><b>layout_a</b>:</td><td>The target layout.</td></tr><tr><td><b>cell_index_a</b>:</td><td>The index of the target starting cell.</td></tr><tr><td><b>layout_b</b>:</td><td>The source layout.</td></tr><tr><td><b>cell_index_b</b>:</td><td>The index of the source starting cell.</td></tr><tr><td><b>Returns</b>:</td><td>A list of indexes of cells created.</td></tr></table><p><p></p><p>The cell mapping is created for cells below cell_a and cell_b in the respective layouts.
+This method employs name identity to derive mappings for the child cells of the starting cell in layout A and B.</p><p>Full mapping means that cells which are not found in the target layout A are created there plus their corresponding instances are created as well. The returned list will contain the indexes of all cells created for that reason.</p><p>This method has been introduced in version 0.23.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_from_names_full"></a><a name="k_32"></a><p><b>(2) Signature</b>: unsigned int[] <b> from_names_full </b> (<a href="class_Cell.html">Cell</a> cell_a, const <a href="class_Cell.html">Cell</a> cell_b)</p><p><b>Description</b>: Initializes the cell mapping using the name identity in full mapping mode</p><table class="layout-table"><tr><td><b>cell_a</b>:</td><td>The target cell.</td></tr><tr><td><b>cell_b</b>:</td><td>The source cell.</td></tr><tr><td><b>Returns</b>:</td><td>A list of indexes of cells created.</td></tr></table><p><p></p><p>This is a convenience version which uses cell references instead of layout/cell index combinations. It has been introduced in version 0.28.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-405"></a><h3>has_mapping?</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_has_mapping?"></a><a name="k_33"></a><p><b>Signature</b>: <i>[const] </i>bool <b> has_mapping? </b> (unsigned int cell_index_b)</p><p><b>Description</b>: Returns as value indicating whether a cell of layout_b has a mapping to a layout_a cell.</p><table class="layout-table"><tr><td><b>cell_index_b</b>:</td><td>The index of the cell in layout_b whose mapping is requested.</td></tr><tr><td><b>Returns</b>:</td><td>true, if the cell has a mapping</td></tr></table><p><p></p><p>Note that if the cell is supposed to be dropped (see <a href="#m_DropCell">DropCell</a>), the respective source cell will also be regarded &quot;mapped&quot;, so has_mapping? will return true in this case.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-415"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_is_const_object?"></a><a name="k_34"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-423"></a><h3>map</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_map"></a><a name="k_35"></a><p><b>Signature</b>: void <b> map </b> (unsigned int cell_index_b, unsigned int cell_index_a)</p><p><b>Description</b>: Explicitly specifies a mapping.</p><table class="layout-table"><tr><td><b>cell_index_b</b>:</td><td>The index of the cell in layout B (the &quot;source&quot;)</td></tr><tr><td><b>cell_index_a</b>:</td><td>The index of the cell in layout A (the &quot;target&quot;) - this index can be <a href="#m_DropCell">DropCell</a></td></tr></table><p><p></p><p>Beside using the mapping generator algorithms provided through <a href="#m_from_names">from_names</a> and <a href="#m_from_geometry">from_geometry</a>, it is possible to explicitly specify cell mappings using this method.</p><p>This method has been introduced in version 0.23.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-432"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_new"></a><a name="k_36"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_CellMapping.html">CellMapping</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new object of this class</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-437"></a><h3>table</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_table"></a><a name="k_37"></a><p><b>Signature</b>: <i>[const] </i>map&lt;unsigned int,unsigned int&gt; <b> table </b></p><p><b>Description</b>: Returns the mapping table.</p><p><p></p><p>The mapping table is a dictionary where the keys are source layout cell indexes and the values are the target layout cell indexes.
+Note that the target cell index can be <a href="#m_DropCell">DropCell</a> to indicate that a cell is supposed to be dropped.</p><p>This method has been introduced in version 0.25.</p></p></td></tr></table></body>

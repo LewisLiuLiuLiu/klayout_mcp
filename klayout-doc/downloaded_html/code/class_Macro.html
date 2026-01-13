@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class Macro</p><h1>API reference - Class Macro</h1><property value="lay" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_lay.html">lay</a></p><p><b>Description</b>: A macro class</p><p><b>Sub-classes</b>: <a href="class_Macro++Format.html">Format</a>, <a href="class_Macro++Interpreter.html">Interpreter</a></p><ul><li><a href="#h2-16">Public constructors</a></li><li><a href="#h2-21">Public methods</a></li><li><a href="#h2-124">Public static methods and constants</a></li><li><a href="#h2-151">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-162">Detailed description</a></li></ul><p></p><p>This class is provided mainly to support generation of template macros in the DSL interpreter framework provided by <a href="class_MacroInterpreter.html">MacroInterpreter</a>. The implementation may be enhanced in future versions and provide access to macros stored inside KLayout's macro repository.
+But it can be used to execute macro code in a consistent way:</p><p><pre>
+path = &quot;path-to-macro.lym&quot;
+RBA::Macro::new(path).run()
+</pre></p><p>Using the Macro class with <a href="#m_run">run</a> for executing code will chose the right interpreter and is able to execute DRC and LVS scripts in the proper environment. This also provides an option to execute Ruby code from Python and vice versa.</p><p>In this scenario you can pass values to the script using <a href="class_Interpreter.html#m_define_variable">Interpreter#define_variable</a>. The interpreter to choose for DRC and LVS scripts is <a href="class_Interpreter.html#m_ruby_interpreter">Interpreter#ruby_interpreter</a>. For passing values back from the script, wrap the variable value into a <a href="class_Value.html">Value</a> object which can be modified by the called script and read back by the caller.</p><a name="h2-16"></a><h2>Public constructors</h2><table><tr class="row0"><td>new Macro ptr</td><td><b><a href="#method48">new</a></b></td><td>(string path)</td><td>Loads the macro from the given file path</td></tr></table><a name="h2-21"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>Macro ptr</td><td><b><a href="#method8">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method9">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method11">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method12">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method13">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method14">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method15">category</a></b></td><td></td><td>Gets the category tags</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method16">category=</a></b></td><td>(string string)</td><td>Sets the category tags string</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method19">delete_attribute</a></b></td><td>(string name)</td><td>Deletes the attribute with the given name</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method20">description</a></b></td><td></td><td>Gets the description text</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method21">description=</a></b></td><td>(string description)</td><td>Sets the description text</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method24">doc</a></b></td><td></td><td>Gets the macro's documentation string</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method25">doc=</a></b></td><td>(string doc)</td><td>Sets the macro's documentation string</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method26">dsl_interpreter</a></b></td><td></td><td>Gets the macro's DSL interpreter name (if interpreter is DSLInterpreter)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method27">dsl_interpreter=</a></b></td><td>(string dsl_interpreter)</td><td>Sets the macro's DSL interpreter name (if interpreter is DSLInterpreter)</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method28">epilog</a></b></td><td></td><td>Gets the epilog code</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method29">epilog=</a></b></td><td>(string string)</td><td>Sets the epilog</td></tr><tr class="row0"><td><i>[const]</i></td><td>Macro::Format</td><td><b><a href="#method30">format</a></b></td><td></td><td>Gets the macro's storage format</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method31">format=</a></b></td><td>(Macro::Format format)</td><td>Sets the macro's storage format</td></tr><tr class="row0"><td><i>[const]</i></td><td>variant</td><td><b><a href="#method32">get_attribute</a></b></td><td>(string name)</td><td>Gets the value of the attribute with the given name</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method33">group_name</a></b></td><td></td><td>Gets the menu group name</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method34">group_name=</a></b></td><td>(string string)</td><td>Sets the menu group name</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method35">has_attribute</a></b></td><td>(string name)</td><td>Gets a value indicating whether the Macro has an attribute with the given name</td></tr><tr class="row0"><td><i>[const]</i></td><td>Macro::Interpreter</td><td><b><a href="#method36">interpreter</a></b></td><td></td><td>Gets the macro's interpreter</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method37">interpreter=</a></b></td><td>(Macro::Interpreter interpreter)</td><td>Sets the macro's interpreter</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method38">interpreter_name</a></b></td><td></td><td>Gets the macro interpreter name</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method39">is_autorun=</a></b></td><td>(bool flag)</td><td>Sets a flag indicating whether the macro is automatically executed on startup</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method40">is_autorun?</a></b></td><td></td><td>Gets a flag indicating whether the macro is automatically executed on startup</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method41">is_autorun_early=</a></b></td><td>(bool flag)</td><td>Sets a flag indicating whether the macro is automatically executed early on startup</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method42">is_autorun_early?</a></b></td><td></td><td>Gets a flag indicating whether the macro is automatically executed early on startup</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method45">menu_path</a></b></td><td></td><td>Gets the menu path</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method46">menu_path=</a></b></td><td>(string string)</td><td>Sets the menu path</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method47">name</a></b></td><td></td><td>Gets the name of the macro</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method49">path</a></b></td><td></td><td>Gets the path of the macro</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method50">prolog</a></b></td><td></td><td>Gets the prolog code</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method51">prolog=</a></b></td><td>(string string)</td><td>Sets the prolog</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method54">run</a></b></td><td></td><td>Executes the macro</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method55">save_to</a></b></td><td>(string path)</td><td>Saves the macro to the given file</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method56">set_attribute</a></b></td><td>(string name,<br>variant value)</td><td>Gets the attribute with the given name</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method57">shortcut</a></b></td><td></td><td>Gets the macro's keyboard shortcut</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method58">shortcut=</a></b></td><td>(string shortcut)</td><td>Sets the macro's keyboard shortcut</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method59">show_in_menu=</a></b></td><td>(bool flag)</td><td>Sets a value indicating whether the macro shall be shown in the menu</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method60">show_in_menu?</a></b></td><td></td><td>Gets a value indicating whether the macro shall be shown in the menu</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method61">sync_properties_with_text</a></b></td><td></td><td>Synchronizes the macro properties with the text</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method62">sync_text_with_properties</a></b></td><td></td><td>Synchronizes the macro text with the properties</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method63">text</a></b></td><td></td><td>Gets the macro text</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method64">text=</a></b></td><td>(string string)</td><td>Sets the macro text</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method65">version</a></b></td><td></td><td>Gets the macro's version</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method66">version=</a></b></td><td>(string version)</td><td>Sets the macro's version</td></tr></table><a name="h2-124"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td><i>[static,const]</i></td><td>Macro::Interpreter</td><td><b><a href="#method0">DSLInterpreter</a></b></td><td></td><td>A domain-specific interpreter (DSL)</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>Macro::Format</td><td><b><a href="#method1">MacroFormat</a></b></td><td></td><td>The macro has macro (XML) format</td></tr><tr class="row0"><td><i>[static,const]</i></td><td>Macro::Interpreter</td><td><b><a href="#method2">None</a></b></td><td></td><td>No specific interpreter</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>Macro::Format</td><td><b><a href="#method3">PlainTextFormat</a></b></td><td></td><td>The macro has plain text format</td></tr><tr class="row0"><td><i>[static,const]</i></td><td>Macro::Format</td><td><b><a href="#method4">PlainTextWithHashAnnotationsFormat</a></b></td><td></td><td>The macro has plain text format with special pseudo-comment annotations</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>Macro::Interpreter</td><td><b><a href="#method5">Python</a></b></td><td></td><td>The interpreter is Python</td></tr><tr class="row0"><td><i>[static,const]</i></td><td>Macro::Interpreter</td><td><b><a href="#method6">Ruby</a></b></td><td></td><td>The interpreter is Ruby</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>Macro::Interpreter</td><td><b><a href="#method7">Text</a></b></td><td></td><td>Plain text</td></tr><tr class="row0"><td></td><td>Macro ptr</td><td><b><a href="#method18">current</a></b></td><td></td><td>Gets the macro currently executed</td></tr><tr class="row1"><td></td><td>Macro ptr</td><td><b><a href="#method44">macro_by_path</a></b></td><td>(string path)</td><td>Finds the macro by installation path</td></tr><tr class="row0"><td></td><td>int</td><td><b><a href="#method52">real_line</a></b></td><td>(string path,<br>int line)</td><td>Gets the real line number for an include-encoded path and line number</td></tr><tr class="row1"><td></td><td>string</td><td><b><a href="#method53">real_path</a></b></td><td>(string path,<br>int line)</td><td>Gets the real path for an include-encoded path and line number</td></tr></table><a name="h2-151"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method17">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method22">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method23">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method43">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-162"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-163"></a><h3>DSLInterpreter</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_DSLInterpreter"></a><a name="k_2"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_Macro++Interpreter.html">Macro::Interpreter</a><b> DSLInterpreter </b></p><p><b>Description</b>: A domain-specific interpreter (DSL)</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'DSLInterpreter'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-168"></a><h3>MacroFormat</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_MacroFormat"></a><a name="k_3"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_Macro++Format.html">Macro::Format</a><b> MacroFormat </b></p><p><b>Description</b>: The macro has macro (XML) format</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'MacroFormat'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-173"></a><h3>None</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m_None"></a><a name="k_4"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_Macro++Interpreter.html">Macro::Interpreter</a><b> None </b></p><p><b>Description</b>: No specific interpreter</p><p><b>Python specific notes: </b><br>This member is available as 'None_' in Python.<br>The class exposes a readable attribute 'None_'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-178"></a><h3>PlainTextFormat</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m_PlainTextFormat"></a><a name="k_5"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_Macro++Format.html">Macro::Format</a><b> PlainTextFormat </b></p><p><b>Description</b>: The macro has plain text format</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'PlainTextFormat'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-183"></a><h3>PlainTextWithHashAnnotationsFormat</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m_PlainTextWithHashAnnotationsFormat"></a><a name="k_6"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_Macro++Format.html">Macro::Format</a><b> PlainTextWithHashAnnotationsFormat </b></p><p><b>Description</b>: The macro has plain text format with special pseudo-comment annotations</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'PlainTextWithHashAnnotationsFormat'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-188"></a><h3>Python</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m_Python"></a><a name="k_7"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_Macro++Interpreter.html">Macro::Interpreter</a><b> Python </b></p><p><b>Description</b>: The interpreter is Python</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'Python'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-193"></a><h3>Ruby</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m_Ruby"></a><a name="k_8"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_Macro++Interpreter.html">Macro::Interpreter</a><b> Ruby </b></p><p><b>Description</b>: The interpreter is Ruby</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'Ruby'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-198"></a><h3>Text</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_Text"></a><a name="k_9"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_Macro++Interpreter.html">Macro::Interpreter</a><b> Text </b></p><p><b>Description</b>: Plain text</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'Text'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-203"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__const_cast"></a><a name="k_10"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Macro.html">Macro</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-209"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m__create"></a><a name="k_11"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-215"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m__destroy"></a><a name="k_12"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-222"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m__destroyed?"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-229"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m__is_const_object?"></a><a name="k_14"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-236"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m__manage"></a><a name="k_15"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-242"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m__unmanage"></a><a name="k_16"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-248"></a><h3>category</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_category"></a><a name="k_17"></a><p><b>Signature</b>: <i>[const] </i>string <b> category </b></p><p><b>Description</b>: Gets the category tags</p><p><p></p><p>The category tags string indicates to which categories a macro will belong to. This string is only used for templates currently and is a comma-separated list of category names.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'category'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-254"></a><h3>category=</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_category="></a><a name="k_18"></a><p><b>Signature</b>: void <b> category= </b> (string string)</p><p><b>Description</b>: Sets the category tags string</p><p><p>
+See <a href="#m_category">category</a> for details.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'category'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-262"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_create"></a><a name="k_19"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-269"></a><h3>current</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_current"></a><a name="k_20"></a><p><b>Signature</b>: <i>[static] </i><a href="class_Macro.html">Macro</a> ptr <b> current </b></p><p><b>Description</b>: Gets the macro currently executed</p><p><p></p><p>This method can be used inside scripts running in that macro to identify the currently running macro. It returns nil outside the 'run' context. The Macro object can be used to pass information in and out of the script using macro attributes (see <a href="#m_set_attribute">set_attribute</a> and related methods).</p><p><pre>
+macro = RBA::Macro::new
+macro.interpreter = RBA::Macro::Ruby
+
+macro.text = &lt;&lt;&quot;END&quot;
+  macro = RBA::Macro::current
+  x = macro.get_attribute(&quot;x&quot;)
+  macro.set_attribute(&quot;y&quot;, x + 1)
+END
+
+macro.set_attribute(&quot;x&quot;, 17)
+macro.run
+macro.get_attribute(&quot;y&quot;)  # -&gt; 18
+</pre></p><p>This method has been introduced in version 0.30.3.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-288"></a><h3>delete_attribute</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_delete_attribute"></a><a name="k_21"></a><p><b>Signature</b>: void <b> delete_attribute </b> (string name)</p><p><b>Description</b>: Deletes the attribute with the given name</p><p><p></p><p>See <a href="#m_set_attribute">set_attribute</a> for a description of Macro attributes.</p><p>This method has been introduced in version 0.30.3.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-294"></a><h3>description</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_description"></a><a name="k_22"></a><p><b>Signature</b>: <i>[const] </i>string <b> description </b></p><p><b>Description</b>: Gets the description text</p><p><p></p><p>The description text of a macro will appear in the macro list. If used as a macro template, the description text can have the format &quot;Group;;Description&quot;. In that case, the macro will appear in a group with title &quot;Group&quot;.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'description'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-300"></a><h3>description=</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_description="></a><a name="k_23"></a><p><b>Signature</b>: void <b> description= </b> (string description)</p><p><b>Description</b>: Sets the description text</p><table class="layout-table"><tr><td><b>description</b>:</td><td>The description text.</td></tr></table><p><p></p><p>See <a href="#m_description">description</a> for details.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'description'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-310"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_destroy"></a><a name="k_24"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-318"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_destroyed?"></a><a name="k_25"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-326"></a><h3>doc</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_doc"></a><a name="k_26"></a><p><b>Signature</b>: <i>[const] </i>string <b> doc </b></p><p><b>Description</b>: Gets the macro's documentation string</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'doc'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-333"></a><h3>doc=</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_doc="></a><a name="k_27"></a><p><b>Signature</b>: void <b> doc= </b> (string doc)</p><p><b>Description</b>: Sets the macro's documentation string</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'doc'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-340"></a><h3>dsl_interpreter</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_dsl_interpreter"></a><a name="k_28"></a><p><b>Signature</b>: <i>[const] </i>string <b> dsl_interpreter </b></p><p><b>Description</b>: Gets the macro's DSL interpreter name (if interpreter is DSLInterpreter)</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'dsl_interpreter'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-347"></a><h3>dsl_interpreter=</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_dsl_interpreter="></a><a name="k_29"></a><p><b>Signature</b>: void <b> dsl_interpreter= </b> (string dsl_interpreter)</p><p><b>Description</b>: Sets the macro's DSL interpreter name (if interpreter is DSLInterpreter)</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'dsl_interpreter'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-354"></a><h3>epilog</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_epilog"></a><a name="k_30"></a><p><b>Signature</b>: <i>[const] </i>string <b> epilog </b></p><p><b>Description</b>: Gets the epilog code</p><p><p></p><p>The epilog is executed after the actual code is executed. Interpretation depends on the implementation of the DSL interpreter for DSL macros.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'epilog'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-360"></a><h3>epilog=</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_epilog="></a><a name="k_31"></a><p><b>Signature</b>: void <b> epilog= </b> (string string)</p><p><b>Description</b>: Sets the epilog</p><p><p>
+See <a href="#m_epilog">epilog</a> for details.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'epilog'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-368"></a><h3>format</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_format"></a><a name="k_32"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Macro++Format.html">Macro::Format</a><b> format </b></p><p><b>Description</b>: Gets the macro's storage format</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'format'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-375"></a><h3>format=</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_format="></a><a name="k_33"></a><p><b>Signature</b>: void <b> format= </b> (<a href="class_Macro++Format.html">Macro::Format</a> format)</p><p><b>Description</b>: Sets the macro's storage format</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'format'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-382"></a><h3>get_attribute</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_get_attribute"></a><a name="k_34"></a><p><b>Signature</b>: <i>[const] </i>variant <b> get_attribute </b> (string name)</p><p><b>Description</b>: Gets the value of the attribute with the given name</p><p><p></p><p>See <a href="#m_set_attribute">set_attribute</a> for a description of Macro attributes.
+If no attribute is present with the given name, nil is returned.</p><p>This method has been introduced in version 0.30.3.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-389"></a><h3>group_name</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_group_name"></a><a name="k_35"></a><p><b>Signature</b>: <i>[const] </i>string <b> group_name </b></p><p><b>Description</b>: Gets the menu group name</p><p><p></p><p>If a group name is specified and <a href="#m_show_in_menu?">show_in_menu?</a> is true, the macro will appear in a separate group (separated by a separator) together with other macros sharing the same group.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'group_name'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-395"></a><h3>group_name=</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_group_name="></a><a name="k_36"></a><p><b>Signature</b>: void <b> group_name= </b> (string string)</p><p><b>Description</b>: Sets the menu group name</p><p><p>
+See <a href="#m_group_name">group_name</a> for details.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'group_name'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-403"></a><h3>has_attribute</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_has_attribute"></a><a name="k_37"></a><p><b>Signature</b>: <i>[const] </i>bool <b> has_attribute </b> (string name)</p><p><b>Description</b>: Gets a value indicating whether the Macro has an attribute with the given name</p><p><p></p><p>See <a href="#m_set_attribute">set_attribute</a> for a description of Macro attributes.</p><p>This method has been introduced in version 0.30.3.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-409"></a><h3>interpreter</h3></td><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_interpreter"></a><a name="k_38"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Macro++Interpreter.html">Macro::Interpreter</a><b> interpreter </b></p><p><b>Description</b>: Gets the macro's interpreter</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'interpreter'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-416"></a><h3>interpreter=</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_interpreter="></a><a name="k_39"></a><p><b>Signature</b>: void <b> interpreter= </b> (<a href="class_Macro++Interpreter.html">Macro::Interpreter</a> interpreter)</p><p><b>Description</b>: Sets the macro's interpreter</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'interpreter'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-423"></a><h3>interpreter_name</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_interpreter_name"></a><a name="k_40"></a><p><b>Signature</b>: <i>[const] </i>string <b> interpreter_name </b></p><p><b>Description</b>: Gets the macro interpreter name</p><p><p>
+This is the string version of <a href="#m_interpreter">interpreter</a>.</p><p>This method has been introduced in version 0.27.5.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-430"></a><h3>is_autorun=</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_is_autorun="></a><a name="k_41"></a><p><b>Signature</b>: void <b> is_autorun= </b> (bool flag)</p><p><b>Description</b>: Sets a flag indicating whether the macro is automatically executed on startup</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'is_autorun'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-437"></a><h3>is_autorun?</h3></td><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_is_autorun?"></a><a name="k_42"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_autorun? </b></p><p><b>Description</b>: Gets a flag indicating whether the macro is automatically executed on startup</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'is_autorun'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-444"></a><h3>is_autorun_early=</h3></td><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_is_autorun_early="></a><a name="k_43"></a><p><b>Signature</b>: void <b> is_autorun_early= </b> (bool flag)</p><p><b>Description</b>: Sets a flag indicating whether the macro is automatically executed early on startup</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'is_autorun_early'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-451"></a><h3>is_autorun_early?</h3></td><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_is_autorun_early?"></a><a name="k_44"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_autorun_early? </b></p><p><b>Description</b>: Gets a flag indicating whether the macro is automatically executed early on startup</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'is_autorun_early'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-458"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_is_const_object?"></a><a name="k_45"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-466"></a><h3>macro_by_path</h3></td><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_macro_by_path"></a><a name="k_46"></a><p><b>Signature</b>: <i>[static] </i><a href="class_Macro.html">Macro</a> ptr <b> macro_by_path </b> (string path)</p><p><b>Description</b>: Finds the macro by installation path</p><p><p></p><p>Returns nil if no macro with this path can be found.</p><p>This method has been added in version 0.26.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-471"></a><h3>menu_path</h3></td><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_menu_path"></a><a name="k_47"></a><p><b>Signature</b>: <i>[const] </i>string <b> menu_path </b></p><p><b>Description</b>: Gets the menu path</p><p><p></p><p>If a menu path is specified and <a href="#m_show_in_menu?">show_in_menu?</a> is true, the macro will appear in the menu at the specified position.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'menu_path'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-477"></a><h3>menu_path=</h3></td><td style="padding-bottom: 16px"><a name="method46"></a><a name="m_menu_path="></a><a name="k_48"></a><p><b>Signature</b>: void <b> menu_path= </b> (string string)</p><p><b>Description</b>: Sets the menu path</p><p><p>
+See <a href="#m_menu_path">menu_path</a> for details.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'menu_path'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-485"></a><h3>name</h3></td><td style="padding-bottom: 16px"><a name="method47"></a><a name="m_name"></a><a name="k_49"></a><p><b>Signature</b>: <i>[const] </i>string <b> name </b></p><p><b>Description</b>: Gets the name of the macro</p><p><p></p><p>This attribute has been added in version 0.25.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-490"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method48"></a><a name="m_new"></a><a name="k_50"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_Macro.html">Macro</a> ptr <b> new </b> (string path)</p><p><b>Description</b>: Loads the macro from the given file path</p><p><p></p><p>This constructor has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-497"></a><h3>path</h3></td><td style="padding-bottom: 16px"><a name="method49"></a><a name="m_path"></a><a name="k_51"></a><p><b>Signature</b>: <i>[const] </i>string <b> path </b></p><p><b>Description</b>: Gets the path of the macro</p><p><p></p><p>The path is the path where the macro is stored, starting with an abstract group identifier. The path is used to identify the macro in the debugger for example.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-502"></a><h3>prolog</h3></td><td style="padding-bottom: 16px"><a name="method50"></a><a name="m_prolog"></a><a name="k_52"></a><p><b>Signature</b>: <i>[const] </i>string <b> prolog </b></p><p><b>Description</b>: Gets the prolog code</p><p><p></p><p>The prolog is executed before the actual code is executed. Interpretation depends on the implementation of the DSL interpreter for DSL macros.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'prolog'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-508"></a><h3>prolog=</h3></td><td style="padding-bottom: 16px"><a name="method51"></a><a name="m_prolog="></a><a name="k_53"></a><p><b>Signature</b>: void <b> prolog= </b> (string string)</p><p><b>Description</b>: Sets the prolog</p><p><p>
+See <a href="#m_prolog">prolog</a> for details.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'prolog'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-516"></a><h3>real_line</h3></td><td style="padding-bottom: 16px"><a name="method52"></a><a name="m_real_line"></a><a name="k_54"></a><p><b>Signature</b>: <i>[static] </i>int <b> real_line </b> (string path, int line)</p><p><b>Description</b>: Gets the real line number for an include-encoded path and line number</p><p><p></p><p>When using KLayout's include scheme based on '# %include ...', __FILE__ and __LINE__ (Ruby) will not have the proper values but encoded file names. This method allows retrieving the real line number by using</p><p><pre>
+# Ruby
+real_line = RBA::Macro::real_line(__FILE__, __LINE__)
+
+# Python
+real_line = pya::Macro::real_line(__file__, __line__)
+</pre></p><p>This substitution is not required for top-level macros as KLayout's interpreter will automatically use this function instead of __FILE__. Call this function when you need __FILE__ from files included through the languages mechanisms such as 'require' or 'load' where this substitution does not happen.</p><p>For Python there is no equivalent for __LINE__, so you always have to use:</p><p><pre>
+# Pythonimport inspect
+real_line = pya.Macro.real_line(__file__, inspect.currentframe().f_back.f_lineno)
+</pre></p><p>This feature has been introduced in version 0.27.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-530"></a><h3>real_path</h3></td><td style="padding-bottom: 16px"><a name="method53"></a><a name="m_real_path"></a><a name="k_55"></a><p><b>Signature</b>: <i>[static] </i>string <b> real_path </b> (string path, int line)</p><p><b>Description</b>: Gets the real path for an include-encoded path and line number</p><p><p></p><p>When using KLayout's include scheme based on '# %include ...', __FILE__ and __LINE__ (Ruby) will not have the proper values but encoded file names. This method allows retrieving the real file by using</p><p><pre>
+# Ruby
+real_file = RBA::Macro::real_path(__FILE__, __LINE__)
+</pre></p><p>This substitution is not required for top-level macros as KLayout's interpreter will automatically use this function instead of __FILE__. Call this function when you need __FILE__ from files included through the languages mechanisms such as 'require' or 'load' where this substitution does not happen.</p><p>For Python there is no equivalent for __LINE__, so you always have to use:</p><p><pre>
+# Pythonimport inspect
+real_file = pya.Macro.real_path(__file__, inspect.currentframe().f_back.f_lineno)
+</pre></p><p>This feature has been introduced in version 0.27.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-541"></a><h3>run</h3></td><td style="padding-bottom: 16px"><a name="method54"></a><a name="m_run"></a><a name="k_56"></a><p><b>Signature</b>: <i>[const] </i>int <b> run </b></p><p><b>Description</b>: Executes the macro</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-547"></a><h3>save_to</h3></td><td style="padding-bottom: 16px"><a name="method55"></a><a name="m_save_to"></a><a name="k_57"></a><p><b>Signature</b>: void <b> save_to </b> (string path)</p><p><b>Description</b>: Saves the macro to the given file</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-553"></a><h3>set_attribute</h3></td><td style="padding-bottom: 16px"><a name="method56"></a><a name="m_set_attribute"></a><a name="k_58"></a><p><b>Signature</b>: void <b> set_attribute </b> (string name, variant value)</p><p><b>Description</b>: Gets the attribute with the given name</p><p><p></p><p>Attributes are generic key/value pairs that can be added to the Macro object.
+This allows passing information in and out of the macro run (see <a href="#m_current">current</a>).</p><p>This method has been introduced in version 0.30.3.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-560"></a><h3>shortcut</h3></td><td style="padding-bottom: 16px"><a name="method57"></a><a name="m_shortcut"></a><a name="k_59"></a><p><b>Signature</b>: <i>[const] </i>string <b> shortcut </b></p><p><b>Description</b>: Gets the macro's keyboard shortcut</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'shortcut'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-567"></a><h3>shortcut=</h3></td><td style="padding-bottom: 16px"><a name="method58"></a><a name="m_shortcut="></a><a name="k_60"></a><p><b>Signature</b>: void <b> shortcut= </b> (string shortcut)</p><p><b>Description</b>: Sets the macro's keyboard shortcut</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'shortcut'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-574"></a><h3>show_in_menu=</h3></td><td style="padding-bottom: 16px"><a name="method59"></a><a name="m_show_in_menu="></a><a name="k_61"></a><p><b>Signature</b>: void <b> show_in_menu= </b> (bool flag)</p><p><b>Description</b>: Sets a value indicating whether the macro shall be shown in the menu</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'show_in_menu'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-579"></a><h3>show_in_menu?</h3></td><td style="padding-bottom: 16px"><a name="method60"></a><a name="m_show_in_menu?"></a><a name="k_62"></a><p><b>Signature</b>: <i>[const] </i>bool <b> show_in_menu? </b></p><p><b>Description</b>: Gets a value indicating whether the macro shall be shown in the menu</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'show_in_menu'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-584"></a><h3>sync_properties_with_text</h3></td><td style="padding-bottom: 16px"><a name="method61"></a><a name="m_sync_properties_with_text"></a><a name="k_63"></a><p><b>Signature</b>: void <b> sync_properties_with_text </b></p><p><b>Description</b>: Synchronizes the macro properties with the text</p><p><p></p><p>This method performs the reverse process of <a href="#m_sync_text_with_properties">sync_text_with_properties</a>.</p><p>This method has been introduced in version 0.27.5.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-590"></a><h3>sync_text_with_properties</h3></td><td style="padding-bottom: 16px"><a name="method62"></a><a name="m_sync_text_with_properties"></a><a name="k_64"></a><p><b>Signature</b>: void <b> sync_text_with_properties </b></p><p><b>Description</b>: Synchronizes the macro text with the properties</p><p><p></p><p>This method applies to PlainTextWithHashAnnotationsFormat format. The macro text will be enhanced with pseudo-comments reflecting the macro properties. This way, the macro properties can be stored in plain files.</p><p>This method has been introduced in version 0.27.5.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-596"></a><h3>text</h3></td><td style="padding-bottom: 16px"><a name="method63"></a><a name="m_text"></a><a name="k_65"></a><p><b>Signature</b>: <i>[const] </i>string <b> text </b></p><p><b>Description</b>: Gets the macro text</p><p><p></p><p>The text is the code executed by the macro interpreter. Depending on the DSL interpreter, the text can be any kind of code.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'text'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-602"></a><h3>text=</h3></td><td style="padding-bottom: 16px"><a name="method64"></a><a name="m_text="></a><a name="k_66"></a><p><b>Signature</b>: void <b> text= </b> (string string)</p><p><b>Description</b>: Sets the macro text</p><p><p>
+See <a href="#m_text">text</a> for details.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'text'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-610"></a><h3>version</h3></td><td style="padding-bottom: 16px"><a name="method65"></a><a name="m_version"></a><a name="k_67"></a><p><b>Signature</b>: <i>[const] </i>string <b> version </b></p><p><b>Description</b>: Gets the macro's version</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'version'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-617"></a><h3>version=</h3></td><td style="padding-bottom: 16px"><a name="method66"></a><a name="m_version="></a><a name="k_68"></a><p><b>Signature</b>: void <b> version= </b> (string version)</p><p><b>Description</b>: Sets the macro's version</p><p><p></p><p>This method has been introduced in version 0.27.5.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'version'. This is the setter.<br></p></td></tr></table></body>

@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="basic.html">KLayout Basics</a> » Loading A File</p><h1>Loading A File</h1><a name="k_1"></a><p>
+  In the &quot;File&quot; menu, choose
+  </p><ul><li>&quot;Open&quot; to close the current view and open a new layout instead
+        of the currently loaded one</li><li>&quot;Open in Same Panel&quot; to open a new layout in addition to the
+        currently loaded one</li><li>&quot;Open in New Panel&quot; to open a new layout in a new view</li></ul><p>
+  Either way, a file selection dialog will appear where a file can be
+  chosen for loading. After choosing the file and clicking &quot;Ok&quot;, the
+  file is loaded.
+  </p><p>
+  The program will automatically determine the type of the file. Currently,
+  OASIS, GDS2, DXF, CIF, LEF/DEF and a text version of GDS2 are supported.
+  Gerber PCB data can be read with some preparations too (see <a href="import_gerber.html">Import Gerber PCB Files</a>). 
+  If the file is gzip/zlib compressed, it will be uncompressed automatically.
+  </p><p>
+  Certain options can be specified for the file loader using the 
+  reader option pages. To open the reader options dialog, choose
+  &quot;Reader Options&quot; from the &quot;File&quot; menu. This dialog allows specification of
+  certain options for all &quot;Open&quot; actions, for example:
+  </p><ul><li>Confine the reader to a certain set of layers. All other layers are not read.</li><li>Disable reading of text objects. Text objects don't carry geometrical information 
+        for masks and can be discarded this way.</li><li>Disable reading of user properties. If properties are not required, the memory consumption can be reduced by disabling 
+        properties.</li><li>Certain GDS specific options which mainly control the level of compatibility with other tools.</li><li>Other formats may offer other options too. Specifically rich formats such as DXF or LEF/DEF can 
+        be configured in manifold ways. Different tabs show options for different formats or format groups.</li></ul><p>
+  Using &quot;File/Reload&quot;, the currently loaded file can be re-read from disk. 
+  Usually this is not required, because KLayout will automatically check whether
+  the file has changed and offer to load it.
+  </p><p>
+  By picking a file from the &quot;Open Recent&quot; list in the &quot;File&quot; menu, a previous
+  file can be loaded again. 
+  </p><p>
+  Files can be given to KLayout on the command line and are loaded 
+  automatically. Multiple files can be specified. They are shown in different
+  pages by default. To load multiple files into the same page, add a &quot;-s&quot; option
+  to the command line. &quot;http:&quot; or &quot;https:&quot; can be specified on the command line
+  as well. In this case, KLayout will download the files from the given URL.
+  </p><p>
+  Files and URL's can be dragged and dropped on the KLayout main window. 
+  KLayout will then load and show these files.
+  </p><p>
+  Layout files can be associated with technologies. Technologies allow 
+  associating a layout with additional data, such as libraries, macros,
+  net tracer settings, layer properties etc.
+  Read <a href="../about/technology_manager.html">About Technology Management</a> for details.
+  </p></body>

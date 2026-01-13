@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class PCellParameterDeclaration</p><h1>API reference - Class PCellParameterDeclaration</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: A PCell parameter declaration</p><ul><li><a href="#h2-15">Public constructors</a></li><li><a href="#h2-20">Public methods</a></li><li><a href="#h2-89">Public static methods and constants</a></li><li><a href="#h2-110">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-121">Detailed description</a></li></ul><p></p><p>This class declares a PCell parameter by providing a name, the type and a value 
+and additional 
+information like description, unit string and default value. It is used in the <a href="class_PCellDeclaration.html">PCellDeclaration</a> class to 
+deliver the necessary information.</p><p>This class has been introduced in version 0.22.
+</p><a name="h2-15"></a><h2>Public constructors</h2><table><tr class="row0"><td>new PCellParameterDeclaration ptr</td><td><b><a href="#method38">new</a></b></td><td>(string name,<br>unsigned int type,<br>string description,<br>variant default = nil,<br>string unit = )</td><td>Create a new parameter declaration with the given name, type, default value and unit string</td></tr></table><a name="h2-20"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>PCellParameterDeclaration ptr</td><td><b><a href="#method9">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method10">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method11">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method12">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method13">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method14">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method15">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method16">add_choice</a></b></td><td>(string description,<br>variant value)</td><td>Add a new value to the list of choices</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method17">assign</a></b></td><td>(const PCellParameterDeclaration other)</td><td>Assigns another object to self</td></tr><tr class="row1"><td><i>[const]</i></td><td>string[]</td><td><b><a href="#method18">choice_descriptions</a></b></td><td></td><td>Returns a list of choice descriptions</td></tr><tr class="row0"><td><i>[const]</i></td><td>variant[]</td><td><b><a href="#method19">choice_values</a></b></td><td></td><td>Returns a list of choice values</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method20">clear_choices</a></b></td><td></td><td>Clears the list of choices</td></tr><tr class="row0"><td><i>[const]</i></td><td>variant</td><td><b><a href="#method22">default</a></b></td><td></td><td>Gets the default value</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method23">default=</a></b></td><td>(variant value)</td><td>Sets the default value</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method24">description</a></b></td><td></td><td>Gets the description text</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method25">description=</a></b></td><td>(string description)</td><td>Sets the description</td></tr><tr class="row0"><td><i>[const]</i></td><td>new PCellParameterDeclaration ptr</td><td><b><a href="#method28">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method29">hidden=</a></b></td><td>(bool flag)</td><td>Makes the parameter hidden if this attribute is set to true</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method30">hidden?</a></b></td><td></td><td>Returns true, if the parameter is a hidden parameter that should not be shown in the user interface</td></tr><tr class="row1"><td><i>[const]</i></td><td>variant</td><td><b><a href="#method32">max_value</a></b></td><td></td><td>Gets the maximum value allowed</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method33">max_value=</a></b></td><td>(variant value)</td><td>Sets the maximum value allowed</td></tr><tr class="row1"><td><i>[const]</i></td><td>variant</td><td><b><a href="#method34">min_value</a></b></td><td></td><td>Gets the minimum value allowed</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method35">min_value=</a></b></td><td>(variant value)</td><td>Sets the minimum value allowed</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method36">name</a></b></td><td></td><td>Gets the name</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method37">name=</a></b></td><td>(string value)</td><td>Sets the name</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method39">readonly=</a></b></td><td>(bool flag)</td><td>Makes the parameter read-only if this attribute is set to true</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method40">readonly?</a></b></td><td></td><td>Returns true, if the parameter is a read-only parameter</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method41">tooltip</a></b></td><td></td><td>Gets the tool tip text</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method42">tooltip=</a></b></td><td>(string tooltip)</td><td>Sets the tool tip text</td></tr><tr class="row1"><td><i>[const]</i></td><td>unsigned int</td><td><b><a href="#method43">type</a></b></td><td></td><td>Gets the type</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method44">type=</a></b></td><td>(unsigned int type)</td><td>Sets the type</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method45">unit</a></b></td><td></td><td>Gets the unit string</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method46">unit=</a></b></td><td>(string unit)</td><td>Sets the unit string</td></tr></table><a name="h2-89"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td></td><td>unsigned int</td><td><b><a href="#method0">TypeBoolean</a></b></td><td></td><td>Type code: boolean data</td></tr><tr class="row1"><td></td><td>unsigned int</td><td><b><a href="#method1">TypeCallback</a></b></td><td></td><td>Type code: a button triggering a callback</td></tr><tr class="row0"><td></td><td>unsigned int</td><td><b><a href="#method2">TypeDouble</a></b></td><td></td><td>Type code: floating-point data</td></tr><tr class="row1"><td></td><td>unsigned int</td><td><b><a href="#method3">TypeInt</a></b></td><td></td><td>Type code: integer data</td></tr><tr class="row0"><td></td><td>unsigned int</td><td><b><a href="#method4">TypeLayer</a></b></td><td></td><td>Type code: a layer (a <a href="class_LayerInfo.html">LayerInfo</a> object)</td></tr><tr class="row1"><td></td><td>unsigned int</td><td><b><a href="#method5">TypeList</a></b></td><td></td><td>Type code: a list of variants</td></tr><tr class="row0"><td></td><td>unsigned int</td><td><b><a href="#method6">TypeNone</a></b></td><td></td><td>Type code: unspecific type</td></tr><tr class="row1"><td></td><td>unsigned int</td><td><b><a href="#method7">TypeShape</a></b></td><td></td><td>Type code: a guiding shape (Box, Edge, Point, Polygon or Path)</td></tr><tr class="row0"><td></td><td>unsigned int</td><td><b><a href="#method8">TypeString</a></b></td><td></td><td>Type code: string data</td></tr></table><a name="h2-110"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method21">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method26">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method27">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method31">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-121"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-122"></a><h3>TypeBoolean</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_TypeBoolean"></a><a name="k_2"></a><p><b>Signature</b>: <i>[static] </i>unsigned int <b> TypeBoolean </b></p><p><b>Description</b>: Type code: boolean data</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'TypeBoolean'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-127"></a><h3>TypeCallback</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_TypeCallback"></a><a name="k_3"></a><p><b>Signature</b>: <i>[static] </i>unsigned int <b> TypeCallback </b></p><p><b>Description</b>: Type code: a button triggering a callback</p><p><p></p><p>This code has been introduced in version 0.28.</p></p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'TypeCallback'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-133"></a><h3>TypeDouble</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m_TypeDouble"></a><a name="k_4"></a><p><b>Signature</b>: <i>[static] </i>unsigned int <b> TypeDouble </b></p><p><b>Description</b>: Type code: floating-point data</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'TypeDouble'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-138"></a><h3>TypeInt</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m_TypeInt"></a><a name="k_5"></a><p><b>Signature</b>: <i>[static] </i>unsigned int <b> TypeInt </b></p><p><b>Description</b>: Type code: integer data</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'TypeInt'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-143"></a><h3>TypeLayer</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m_TypeLayer"></a><a name="k_6"></a><p><b>Signature</b>: <i>[static] </i>unsigned int <b> TypeLayer </b></p><p><b>Description</b>: Type code: a layer (a <a href="class_LayerInfo.html">LayerInfo</a> object)</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'TypeLayer'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-148"></a><h3>TypeList</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m_TypeList"></a><a name="k_7"></a><p><b>Signature</b>: <i>[static] </i>unsigned int <b> TypeList </b></p><p><b>Description</b>: Type code: a list of variants</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'TypeList'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-153"></a><h3>TypeNone</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m_TypeNone"></a><a name="k_8"></a><p><b>Signature</b>: <i>[static] </i>unsigned int <b> TypeNone </b></p><p><b>Description</b>: Type code: unspecific type</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'TypeNone'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-158"></a><h3>TypeShape</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_TypeShape"></a><a name="k_9"></a><p><b>Signature</b>: <i>[static] </i>unsigned int <b> TypeShape </b></p><p><b>Description</b>: Type code: a guiding shape (Box, Edge, Point, Polygon or Path)</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'TypeShape'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-163"></a><h3>TypeString</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_TypeString"></a><a name="k_10"></a><p><b>Signature</b>: <i>[static] </i>unsigned int <b> TypeString </b></p><p><b>Description</b>: Type code: string data</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'TypeString'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-168"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m__const_cast"></a><a name="k_11"></a><p><b>Signature</b>: <i>[const] </i><a href="class_PCellParameterDeclaration.html">PCellParameterDeclaration</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-174"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m__create"></a><a name="k_12"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-180"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m__destroy"></a><a name="k_13"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-187"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m__destroyed?"></a><a name="k_14"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-194"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m__is_const_object?"></a><a name="k_15"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-201"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m__manage"></a><a name="k_16"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-207"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m__unmanage"></a><a name="k_17"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-213"></a><h3>add_choice</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_add_choice"></a><a name="k_18"></a><p><b>Signature</b>: void <b> add_choice </b> (string description, variant value)</p><p><b>Description</b>: Add a new value to the list of choices</p><p><p>
+This method will add the given value with the given description to the list of
+choices. If choices are defined, KLayout will show a drop-down box instead of an
+entry field in the parameter user interface.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-222"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_assign"></a><a name="k_19"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_PCellParameterDeclaration.html">PCellParameterDeclaration</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow0"><td><a name="h3-226"></a><h3>choice_descriptions</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_choice_descriptions"></a><a name="k_20"></a><p><b>Signature</b>: <i>[const] </i>string[] <b> choice_descriptions </b></p><p><b>Description</b>: Returns a list of choice descriptions</p></td></tr><tr class="bigrow1"><td><a name="h3-230"></a><h3>choice_values</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_choice_values"></a><a name="k_21"></a><p><b>Signature</b>: <i>[const] </i>variant[] <b> choice_values </b></p><p><b>Description</b>: Returns a list of choice values</p></td></tr><tr class="bigrow0"><td><a name="h3-234"></a><h3>clear_choices</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_clear_choices"></a><a name="k_22"></a><p><b>Signature</b>: void <b> clear_choices </b></p><p><b>Description</b>: Clears the list of choices</p></td></tr><tr class="bigrow1"><td><a name="h3-238"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_create"></a><a name="k_23"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-245"></a><h3>default</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_default"></a><a name="k_24"></a><p><b>Signature</b>: <i>[const] </i>variant <b> default </b></p><p><b>Description</b>: Gets the default value</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'default'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-250"></a><h3>default=</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_default="></a><a name="k_25"></a><p><b>Signature</b>: void <b> default= </b> (variant value)</p><p><b>Description</b>: Sets the default value</p><p><p>
+If a default value is defined, it will be used to initialize the parameter value
+when a PCell is created.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'default'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-259"></a><h3>description</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_description"></a><a name="k_26"></a><p><b>Signature</b>: <i>[const] </i>string <b> description </b></p><p><b>Description</b>: Gets the description text</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'description'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-264"></a><h3>description=</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_description="></a><a name="k_27"></a><p><b>Signature</b>: void <b> description= </b> (string description)</p><p><b>Description</b>: Sets the description</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'description'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-269"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_destroy"></a><a name="k_28"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-277"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_destroyed?"></a><a name="k_29"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-285"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_dup"></a><a name="k_30"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_PCellParameterDeclaration.html">PCellParameterDeclaration</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-290"></a><h3>hidden=</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_hidden="></a><a name="k_31"></a><p><b>Signature</b>: void <b> hidden= </b> (bool flag)</p><p><b>Description</b>: Makes the parameter hidden if this attribute is set to true</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'hidden'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-295"></a><h3>hidden?</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_hidden?"></a><a name="k_32"></a><p><b>Signature</b>: <i>[const] </i>bool <b> hidden? </b></p><p><b>Description</b>: Returns true, if the parameter is a hidden parameter that should not be shown in the user interface</p><p><p>
+By making a parameter hidden, it is possible to create internal parameters which cannot be
+edited.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'hidden'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-304"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_is_const_object?"></a><a name="k_33"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-312"></a><h3>max_value</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_max_value"></a><a name="k_34"></a><p><b>Signature</b>: <i>[const] </i>variant <b> max_value </b></p><p><b>Description</b>: Gets the maximum value allowed</p><p><p>
+See <a href="#m_max_value=">max_value=</a> for a description of this attribute.</p><p>This attribute has been added in version 0.29.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'max_value'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-319"></a><h3>max_value=</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_max_value="></a><a name="k_35"></a><p><b>Signature</b>: void <b> max_value= </b> (variant value)</p><p><b>Description</b>: Sets the maximum value allowed</p><p><p>
+The maximum value is a visual feature and limits the allowed values for numerical
+entry boxes. This applies to parameters of type int or double. The maximum value
+is not effective if choices are present.</p><p>The maximum value is not enforced - for example there is no restriction implemented
+when setting values programmatically.</p><p>Setting this attribute to &quot;nil&quot; (the default) implies &quot;no limit&quot;.</p><p>This attribute has been added in version 0.29.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'max_value'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-329"></a><h3>min_value</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_min_value"></a><a name="k_36"></a><p><b>Signature</b>: <i>[const] </i>variant <b> min_value </b></p><p><b>Description</b>: Gets the minimum value allowed</p><p><p>
+See <a href="#m_min_value=">min_value=</a> for a description of this attribute.</p><p>This attribute has been added in version 0.29.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'min_value'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-336"></a><h3>min_value=</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_min_value="></a><a name="k_37"></a><p><b>Signature</b>: void <b> min_value= </b> (variant value)</p><p><b>Description</b>: Sets the minimum value allowed</p><p><p>
+The minimum value is a visual feature and limits the allowed values for numerical
+entry boxes. This applies to parameters of type int or double. The minimum value
+is not effective if choices are present.</p><p>The minimum value is not enforced - for example there is no restriction implemented
+when setting values programmatically.</p><p>Setting this attribute to &quot;nil&quot; (the default) implies &quot;no limit&quot;.</p><p>This attribute has been added in version 0.29.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'min_value'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-346"></a><h3>name</h3></td><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_name"></a><a name="k_38"></a><p><b>Signature</b>: <i>[const] </i>string <b> name </b></p><p><b>Description</b>: Gets the name</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'name'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-351"></a><h3>name=</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_name="></a><a name="k_39"></a><p><b>Signature</b>: void <b> name= </b> (string value)</p><p><b>Description</b>: Sets the name</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'name'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-356"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_new"></a><a name="k_40"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_PCellParameterDeclaration.html">PCellParameterDeclaration</a> ptr <b> new </b> (string name, unsigned int type, string description, variant default = nil, string unit = )</p><p><b>Description</b>: Create a new parameter declaration with the given name, type, default value and unit string</p><table class="layout-table"><tr><td><b>name</b>:</td><td>The parameter name</td></tr><tr><td><b>type</b>:</td><td>One of the Type... constants describing the type of the parameter</td></tr><tr><td><b>description</b>:</td><td>The description text</td></tr><tr><td><b>default</b>:</td><td>The default (initial) value</td></tr><tr><td><b>unit</b>:</td><td>The unit string</td></tr></table><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-368"></a><h3>readonly=</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_readonly="></a><a name="k_41"></a><p><b>Signature</b>: void <b> readonly= </b> (bool flag)</p><p><b>Description</b>: Makes the parameter read-only if this attribute is set to true</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'readonly'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-373"></a><h3>readonly?</h3></td><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_readonly?"></a><a name="k_42"></a><p><b>Signature</b>: <i>[const] </i>bool <b> readonly? </b></p><p><b>Description</b>: Returns true, if the parameter is a read-only parameter</p><p><p>
+By making a parameter read-only, it is shown but cannot be
+edited.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'readonly'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-382"></a><h3>tooltip</h3></td><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_tooltip"></a><a name="k_43"></a><p><b>Signature</b>: <i>[const] </i>string <b> tooltip </b></p><p><b>Description</b>: Gets the tool tip text</p><p><p>
+This attribute has been introduced in version 0.29.3.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'tooltip'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-389"></a><h3>tooltip=</h3></td><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_tooltip="></a><a name="k_44"></a><p><b>Signature</b>: void <b> tooltip= </b> (string tooltip)</p><p><b>Description</b>: Sets the tool tip text</p><p><p>
+This attribute has been introduced in version 0.29.3.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'tooltip'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-396"></a><h3>type</h3></td><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_type"></a><a name="k_45"></a><p><b>Signature</b>: <i>[const] </i>unsigned int <b> type </b></p><p><b>Description</b>: Gets the type</p><p><p>
+The type is one of the T... constants.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'type'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-403"></a><h3>type=</h3></td><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_type="></a><a name="k_46"></a><p><b>Signature</b>: void <b> type= </b> (unsigned int type)</p><p><b>Description</b>: Sets the type</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'type'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-408"></a><h3>unit</h3></td><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_unit"></a><a name="k_47"></a><p><b>Signature</b>: <i>[const] </i>string <b> unit </b></p><p><b>Description</b>: Gets the unit string</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'unit'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-413"></a><h3>unit=</h3></td><td style="padding-bottom: 16px"><a name="method46"></a><a name="m_unit="></a><a name="k_48"></a><p><b>Signature</b>: void <b> unit= </b> (string unit)</p><p><b>Description</b>: Sets the unit string</p><p><p>
+The unit string is shown right to the edit fields for numeric parameters.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'unit'. This is the setter.<br></p></td></tr></table></body>

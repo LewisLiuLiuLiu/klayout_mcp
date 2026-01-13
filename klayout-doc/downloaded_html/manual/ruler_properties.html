@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="basic.html">KLayout Basics</a> » Ruler Properties</p><h1>Ruler Properties</h1><a name="k_1"></a><a name="k_2"></a><p> 
+  These are the properties that can be configured for rulers:
+  </p><ul><li><b>Labels:</b> depending on the outline of the ruler, up to three labels an be present.
+      Each label can be configure individually to either show a text or the measurement 
+      values. The main label is always present, X and Y labels are only present, if the ruler
+      has an explicit vertical or horizontal component (all outline styles except &quot;diagonal&quot;).
+      For the main label the position of the label can be specified (&quot;P&quot; setting): the label
+      can be made to appear on the first or the second point or in the middle of the ruler.
+      The Alignment of the labels can be specified too: whether the appear left or right-aligned
+      or centered.
+    </li><li><b>Style:</b> the style determines how the ruler or its components are drawn. This can be
+      &quot;ruler-like&quot; (with ticks), arrow style, a plain line or with cross markers at the end.
+    </li><li><b>Outline:</b> the outline determines how the two points forming the ruler are connected
+      to render the ruler shape. This is either just one line (&quot;diagonal&quot;), a horizontal and a vertical line
+      (in some outline styles combined with the diagonal line) or a box given by the two points of the 
+      ruler. A special outline is the ellipse which draws an ellipse inside the box defined by the
+      ruler.
+    </li><li><b>Angle constraint:</b> the orientation of the ruler can be restricted in several ways, i.e. 
+      just being horizontal. By default, the ruler uses the global setting. It can however be configured 
+      to provide its own constraint.
+    </li><li><b>Object snapping:</b> each ruler can be configure to snap to the closest object edge or vertex.
+      By default, the rulers use the global setting. It may be disabled however for each ruler.
+    </li><li><b>Mode:</b> in normal mode, two clicks are required to define a ruler: to set the first
+      point and to set the second one. In &quot;Single click&quot; mode, a single click will set both 
+      points to the same. In &quot;Auto measure&quot; mode, the points will be determined by looking
+      for edges in the vicinity of the click point and adjusting the points accordingly.
+    </li></ul><p>
+  The &quot;Label format&quot; is an arbitrary text with embedded expressions that may represent a measurement
+  value. Each such expression starts with a dollar sign, followed by the expression string. The expression 
+  syntax supports the basic operations (&quot;*&quot;, &quot;/&quot;, &quot;+&quot;, &quot;-&quot; ..), bitwise operations (&quot;|&quot;, &quot;&amp;&quot;, ..), 
+  the conditional operator (&quot;x:y?z&quot;) as well as some functions, i.e. &quot;abs&quot;, &quot;sqrt&quot;, &quot;exp&quot;. It includes a &quot;sprintf&quot; 
+  function. These are some examples:
+  </p><ul><li><b>$X</b>: The value of the X variable (the horizontal distance, see below for a complete list of variables).</li><li><b>$(sprintf('%.2f',X))</b>: The value of the 'X' variable formatted as two digit fixed precision value.</li><li><b>$(abs(X)+abs(Y))</b>: The manhattan distance of the ruler.</li><li><b>$min(X,Y)</b>: The minimum of X and Y.</li></ul><p>
+  A description of the expression syntax and the functions available can be found in <a href="../about/expressions.html">About Expressions</a>.
+  </p><p>
+  This is a list of all variables available:
+  </p><ul><li><b>D:</b> The length of the ruler in micron units.</li><li><b>L:</b> The manhattan length of the ruler in micron units.</li><li><b>U:</b> The x-position of the ruler's first point in micron units.</li><li><b>V:</b> The y-position of the ruler's first point in micron units.</li><li><b>P:</b> The x-position of the ruler's second point in micron units.</li><li><b>Q:</b> The y-position of the ruler's second point in micron units.</li><li><b>X:</b> The horizontal extension of the ruler in micron units.</li><li><b>Y:</b> The vertical extension of the ruler in micron units.</li><li><b>A:</b> The area enclosed by the ruler (if it was a box) in square millimeters.</li><li><b>G:</b> The angle enclosed by the first and last segment of the ruler (used for angle measurement rulers).</li></ul></body>

@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class Point</p><h1>API reference - Class Point</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: An integer point class</p><ul><li><a href="#h2-12">Public constructors</a></li><li><a href="#h2-23">Public methods</a></li><li><a href="#h2-98">Public static methods and constants</a></li><li><a href="#h2-103">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-116">Detailed description</a></li></ul><p>
+Points represent a coordinate in the two-dimensional coordinate space of layout. They are not geometrical objects by itself. But they are frequently used in the database API for various purposes.</p><p>See <a href="../programming/database_api.html">The Database API</a> for more details about the database objects.</p><a name="h2-12"></a><h2>Public constructors</h2><table><tr class="row0"><td>new Point ptr</td><td><b><a href="#method33">new</a></b></td><td>(const DPoint dpoint)</td><td>Creates an integer coordinate point from a floating-point coordinate point</td></tr><tr class="row1"><td>new Point ptr</td><td><b><a href="#method34">new</a></b></td><td></td><td>Default constructor: creates a point at 0,0</td></tr><tr class="row0"><td>new Point ptr</td><td><b><a href="#method35">new</a></b></td><td>(const Vector v)</td><td>Default constructor: creates a point at from an vector</td></tr><tr class="row1"><td>new Point ptr</td><td><b><a href="#method36">new</a></b></td><td>(int x,<br>int y)</td><td>Constructor for a point from two coordinate values</td></tr></table><a name="h2-23"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method0">!=</a></b></td><td>(const Point p)</td><td>Inequality test operator</td></tr><tr class="row1"><td><i>[const]</i></td><td>Point</td><td><b><a href="#method1">*</a></b></td><td>(double f)</td><td>Scaling by some factor</td></tr><tr class="row0"><td></td><td>Point</td><td><b><a href="#method2">*=</a></b></td><td>(double f)</td><td>Scaling by some factor</td></tr><tr class="row1"><td><i>[const]</i></td><td>Point</td><td><b><a href="#method3">+</a></b></td><td>(const Vector v)</td><td>Adds a vector to a point</td></tr><tr class="row0"><td><i>[const]</i></td><td>Vector</td><td><b><a href="#method4">-</a></b></td><td>(const Point p)</td><td>Subtract one point from another</td></tr><tr class="row1"><td><i>[const]</i></td><td>Point</td><td><b><a href="#method5">-</a></b></td><td>(const Vector v)</td><td>Subtract one vector from a point</td></tr><tr class="row0"><td><i>[const]</i></td><td>Point</td><td><b><a href="#method6">-@</a></b></td><td></td><td>Compute the negative of a point</td></tr><tr class="row1"><td><i>[const]</i></td><td>Point</td><td><b><a href="#method7">/</a></b></td><td>(double d)</td><td>Division by some divisor</td></tr><tr class="row0"><td></td><td>Point</td><td><b><a href="#method8">/=</a></b></td><td>(double d)</td><td>Division by some divisor</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method9">&lt;</a></b></td><td>(const Point p)</td><td>&quot;less&quot; comparison operator</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method10">==</a></b></td><td>(const Point p)</td><td>Equality test operator</td></tr><tr class="row1"><td><i>[const]</i></td><td>Point ptr</td><td><b><a href="#method11">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method12">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method13">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method14">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method15">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method16">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method17">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row0"><td><i>[const]</i></td><td>double</td><td><b><a href="#method18">abs</a></b></td><td></td><td>The absolute value of the point (Euclidian distance to 0,0)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method19">assign</a></b></td><td>(const Point other)</td><td>Assigns another object to self</td></tr><tr class="row0"><td><i>[const]</i></td><td>double</td><td><b><a href="#method23">distance</a></b></td><td>(const Point d)</td><td>The Euclidian distance to another point</td></tr><tr class="row1"><td><i>[const]</i></td><td>new Point ptr</td><td><b><a href="#method24">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned long</td><td><b><a href="#method27">hash</a></b></td><td></td><td>Computes a hash value</td></tr><tr class="row1"><td></td><td>Point</td><td><b><a href="#method29">move</a></b></td><td>(const Vector v)</td><td>Moves the point.</td></tr><tr class="row0"><td></td><td>Point</td><td><b><a href="#method30">move</a></b></td><td>(int dx = 0,<br>int dy = 0)</td><td>Moves the point.</td></tr><tr class="row1"><td><i>[const]</i></td><td>Point</td><td><b><a href="#method31">moved</a></b></td><td>(const Vector v)</td><td>Returns the moved point.</td></tr><tr class="row0"><td><i>[const]</i></td><td>Point</td><td><b><a href="#method32">moved</a></b></td><td>(int dx = 0,<br>int dy = 0)</td><td>Returns the moved point.</td></tr><tr class="row1"><td><i>[const]</i></td><td>double</td><td><b><a href="#method37">sq_abs</a></b></td><td></td><td>The square of the absolute value of the point (Euclidian distance to 0,0)</td></tr><tr class="row0"><td><i>[const]</i></td><td>double</td><td><b><a href="#method38">sq_distance</a></b></td><td>(const Point d)</td><td>The square Euclidian distance to another point</td></tr><tr class="row1"><td><i>[const]</i></td><td>DPoint</td><td><b><a href="#method39">to_dtype</a></b></td><td>(double dbu = 1)</td><td>Converts the point to a floating-point coordinate point</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method40">to_s</a></b></td><td>(double dbu = 0)</td><td>String conversion.</td></tr><tr class="row1"><td><i>[const]</i></td><td>Vector</td><td><b><a href="#method41">to_v</a></b></td><td></td><td>Turns the point into a vector</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method42">x</a></b></td><td></td><td>Accessor to the x coordinate</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method43">x=</a></b></td><td>(int coord)</td><td>Write accessor to the x coordinate</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method44">y</a></b></td><td></td><td>Accessor to the y coordinate</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method45">y=</a></b></td><td>(int coord)</td><td>Write accessor to the y coordinate</td></tr></table><a name="h2-98"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td></td><td>new Point ptr</td><td><b><a href="#method26">from_s</a></b></td><td>(string s)</td><td>Creates an object from a string</td></tr></table><a name="h2-103"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method20">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method21">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method22">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[static]</i></td><td>new Point ptr</td><td><b><a href="#method25">from_dpoint</a></b></td><td>(const DPoint dpoint)</td><td>Use of this method is deprecated. Use new instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method28">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-116"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-117"></a><h3>!=</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_!="></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i>bool <b> != </b> (const <a href="class_Point.html">Point</a> p)</p><p><b>Description</b>: Inequality test operator</p></td></tr><tr class="bigrow1"><td><a name="h3-121"></a><h3>*</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_*"></a><a name="k_3"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Point.html">Point</a><b> * </b> (double f)</p><p><b>Description</b>: Scaling by some factor</p><p><p></p><p>Returns the scaled object. All coordinates are multiplied with the given factor and if necessary rounded.</p></p><p><b>Python specific notes: </b><br>This method also implements '__rmul__'.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-127"></a><h3>*=</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m_*="></a><a name="k_4"></a><p><b>Signature</b>: <a href="class_Point.html">Point</a><b> *= </b> (double f)</p><p><b>Description</b>: Scaling by some factor</p><p><p></p><p>Scales object in place. All coordinates are multiplied with the given factor and if necessary rounded.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-132"></a><h3>+</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m_+"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Point.html">Point</a><b> + </b> (const <a href="class_Vector.html">Vector</a> v)</p><p><b>Description</b>: Adds a vector to a point</p><p><p></p><p>Adds vector v to self by adding the coordinates.</p><p>Starting with version 0.25, this method expects a vector argument.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-137"></a><h3>-</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m_-"></a><a name="k_6"></a><p><b>(1) Signature</b>: <i>[const] </i><a href="class_Vector.html">Vector</a><b> - </b> (const <a href="class_Point.html">Point</a> p)</p><p><b>Description</b>: Subtract one point from another</p><p><p></p><p>Subtract point p from self by subtracting the coordinates. This renders a vector.</p><p>Starting with version 0.25, this method renders a vector.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method5"></a><a name="m_-"></a><a name="k_7"></a><p><b>(2) Signature</b>: <i>[const] </i><a href="class_Point.html">Point</a><b> - </b> (const <a href="class_Vector.html">Vector</a> v)</p><p><b>Description</b>: Subtract one vector from a point</p><p><p></p><p>Subtract vector v from from self by subtracting the coordinates. This renders a point.</p><p>This method has been added in version 0.27.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-146"></a><h3>-@</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m_-@"></a><a name="k_8"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Point.html">Point</a><b> -@ </b></p><p><b>Description</b>: Compute the negative of a point</p><p><p></p><p>Returns a new point with -x, -y.</p><p>This method has been added in version 0.23.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-151"></a><h3>/</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_/"></a><a name="k_9"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Point.html">Point</a><b> / </b> (double d)</p><p><b>Description</b>: Division by some divisor</p><p><p></p><p>Returns the scaled object. All coordinates are divided with the given divisor and if necessary rounded.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-156"></a><h3>/=</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_/="></a><a name="k_10"></a><p><b>Signature</b>: <a href="class_Point.html">Point</a><b> /= </b> (double d)</p><p><b>Description</b>: Division by some divisor</p><p><p></p><p>Divides the object in place. All coordinates are divided with the given divisor and if necessary rounded.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-161"></a><h3>&lt;</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_&lt;"></a><a name="k_11"></a><p><b>Signature</b>: <i>[const] </i>bool <b> &lt; </b> (const <a href="class_Point.html">Point</a> p)</p><p><b>Description</b>: &quot;less&quot; comparison operator</p><p><p></p><p>This operator is provided to establish a sorting
+order
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-168"></a><h3>==</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_=="></a><a name="k_12"></a><p><b>Signature</b>: <i>[const] </i>bool <b> == </b> (const <a href="class_Point.html">Point</a> p)</p><p><b>Description</b>: Equality test operator</p></td></tr><tr class="bigrow0"><td><a name="h3-172"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m__const_cast"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Point.html">Point</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-178"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m__create"></a><a name="k_14"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-184"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m__destroy"></a><a name="k_15"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-191"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m__destroyed?"></a><a name="k_16"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-198"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m__is_const_object?"></a><a name="k_17"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-205"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m__manage"></a><a name="k_18"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-211"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m__unmanage"></a><a name="k_19"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-217"></a><h3>abs</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_abs"></a><a name="k_20"></a><p><b>Signature</b>: <i>[const] </i>double <b> abs </b></p><p><b>Description</b>: The absolute value of the point (Euclidian distance to 0,0)</p><p><p></p><p>The returned value is 'sqrt(x*x+y*y)'.</p><p>This method has been introduced in version 0.23.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-222"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_assign"></a><a name="k_21"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_Point.html">Point</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow1"><td><a name="h3-226"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_create"></a><a name="k_22"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-233"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_destroy"></a><a name="k_23"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-241"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_destroyed?"></a><a name="k_24"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-249"></a><h3>distance</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_distance"></a><a name="k_25"></a><p><b>Signature</b>: <i>[const] </i>double <b> distance </b> (const <a href="class_Point.html">Point</a> d)</p><p><b>Description</b>: The Euclidian distance to another point</p><table class="layout-table"><tr><td><b>d</b>:</td><td>The other point to compute the distance to.</td></tr></table></td></tr><tr class="bigrow1"><td><a name="h3-256"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_dup"></a><a name="k_26"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_Point.html">Point</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-261"></a><h3>from_dpoint</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_from_dpoint"></a><a name="k_27"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_Point.html">Point</a> ptr <b> from_dpoint </b> (const <a href="class_DPoint.html">DPoint</a> dpoint)</p><p><b>Description</b>: Creates an integer coordinate point from a floating-point coordinate point</p><p>Use of this method is deprecated. Use new instead</p><p><p></p><p>This constructor has been introduced in version 0.25 and replaces the previous static method 'from_dpoint'.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-268"></a><h3>from_s</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_from_s"></a><a name="k_28"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_Point.html">Point</a> ptr <b> from_s </b> (string s)</p><p><b>Description</b>: Creates an object from a string</p><p><p>
+Creates the object from a string representation (as returned by <a href="#m_to_s">to_s</a>)</p><p>This method has been added in version 0.23.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-275"></a><h3>hash</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_hash"></a><a name="k_29"></a><p><b>Signature</b>: <i>[const] </i>unsigned long <b> hash </b></p><p><b>Description</b>: Computes a hash value</p><p><p>
+Returns a hash value for the given point. This method enables points as hash keys.</p><p>This method has been introduced in version 0.25.
+</p></p><p><b>Python specific notes: </b><br>This method is also available as 'hash(object)'.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-283"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_is_const_object?"></a><a name="k_30"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-291"></a><h3>move</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_move"></a><a name="k_31"></a><p><b>(1) Signature</b>: <a href="class_Point.html">Point</a><b> move </b> (const <a href="class_Vector.html">Vector</a> v)</p><p><b>Description</b>: Moves the point.</p><table class="layout-table"><tr><td><b>v</b>:</td><td>The distance to move the point.</td></tr><tr><td><b>Returns</b>:</td><td>The moved point.</td></tr></table><p><p></p><p>This method is equivalent to '+='. It was introduced to harmonize the API with the other objects. The point is modified.</p><p>This method has been introduced in version 0.29.9.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_move"></a><a name="k_32"></a><p><b>(2) Signature</b>: <a href="class_Point.html">Point</a><b> move </b> (int dx = 0, int dy = 0)</p><p><b>Description</b>: Moves the point.</p><table class="layout-table"><tr><td><b>dx</b>:</td><td>The x distance to move the point.</td></tr><tr><td><b>dy</b>:</td><td>The y distance to move the point.</td></tr><tr><td><b>Returns</b>:</td><td>The moved point.</td></tr></table><p><p></p><p>Moves the point by the given offset and returns the 
+moved point. The point is modified.</p><p>This method has been introduced in version 0.29.9.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-310"></a><h3>moved</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_moved"></a><a name="k_33"></a><p><b>(1) Signature</b>: <i>[const] </i><a href="class_Point.html">Point</a><b> moved </b> (const <a href="class_Vector.html">Vector</a> v)</p><p><b>Description</b>: Returns the moved point.</p><table class="layout-table"><tr><td><b>v</b>:</td><td>The distance to move the point.</td></tr><tr><td><b>Returns</b>:</td><td>The moved point.</td></tr></table><p><p></p><p>This method is equivalent to '+'. It was introduced to harmonize the API with the other objects. The point is not modified.</p><p>This method has been introduced in version 0.29.9.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_moved"></a><a name="k_34"></a><p><b>(2) Signature</b>: <i>[const] </i><a href="class_Point.html">Point</a><b> moved </b> (int dx = 0, int dy = 0)</p><p><b>Description</b>: Returns the moved point.</p><table class="layout-table"><tr><td><b>dx</b>:</td><td>The x distance to move the point.</td></tr><tr><td><b>dy</b>:</td><td>The y distance to move the point.</td></tr><tr><td><b>Returns</b>:</td><td>The moved point.</td></tr></table><p><p></p><p>Moves the point by the given offset and returns the 
+moved point. The point is not modified.</p><p>This method has been introduced in version 0.29.9.</p></p></td></tr><tr class="bigrow0"><td rowspan="4"><a name="h3-329"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_new"></a><a name="k_35"></a><p><b>(1) Signature</b>: <i>[static] </i>new <a href="class_Point.html">Point</a> ptr <b> new </b> (const <a href="class_DPoint.html">DPoint</a> dpoint)</p><p><b>Description</b>: Creates an integer coordinate point from a floating-point coordinate point</p><p><p></p><p>This constructor has been introduced in version 0.25 and replaces the previous static method 'from_dpoint'.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_new"></a><a name="k_36"></a><p><b>(2) Signature</b>: <i>[static] </i>new <a href="class_Point.html">Point</a> ptr <b> new </b></p><p><b>Description</b>: Default constructor: creates a point at 0,0</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_new"></a><a name="k_37"></a><p><b>(3) Signature</b>: <i>[static] </i>new <a href="class_Point.html">Point</a> ptr <b> new </b> (const <a href="class_Vector.html">Vector</a> v)</p><p><b>Description</b>: Default constructor: creates a point at from an vector</p><p><p>
+This constructor is equivalent to computing point(0,0)+v.
+This method has been introduced in version 0.25.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_new"></a><a name="k_38"></a><p><b>(4) Signature</b>: <i>[static] </i>new <a href="class_Point.html">Point</a> ptr <b> new </b> (int x, int y)</p><p><b>Description</b>: Constructor for a point from two coordinate values</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-350"></a><h3>sq_abs</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_sq_abs"></a><a name="k_39"></a><p><b>Signature</b>: <i>[const] </i>double <b> sq_abs </b></p><p><b>Description</b>: The square of the absolute value of the point (Euclidian distance to 0,0)</p><p><p></p><p>The returned value is 'x*x+y*y'.</p><p>This method has been introduced in version 0.23.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-355"></a><h3>sq_distance</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_sq_distance"></a><a name="k_40"></a><p><b>Signature</b>: <i>[const] </i>double <b> sq_distance </b> (const <a href="class_Point.html">Point</a> d)</p><p><b>Description</b>: The square Euclidian distance to another point</p><table class="layout-table"><tr><td><b>d</b>:</td><td>The other point to compute the distance to.</td></tr></table></td></tr><tr class="bigrow1"><td><a name="h3-362"></a><h3>to_dtype</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_to_dtype"></a><a name="k_41"></a><p><b>Signature</b>: <i>[const] </i><a href="class_DPoint.html">DPoint</a><b> to_dtype </b> (double dbu = 1)</p><p><b>Description</b>: Converts the point to a floating-point coordinate point</p><p><p></p><p>The database unit can be specified to translate the integer-coordinate point into a floating-point coordinate point in micron units. The database unit is basically a scaling factor.</p><p>This method has been introduced in version 0.25.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-367"></a><h3>to_s</h3></td><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_to_s"></a><a name="k_42"></a><p><b>Signature</b>: <i>[const] </i>string <b> to_s </b> (double dbu = 0)</p><p><b>Description</b>: String conversion.</p><p><p>
+If a DBU is given, the output units will be micrometers.</p><p>The DBU argument has been added in version 0.27.6.
+</p></p><p><b>Python specific notes: </b><br>This method is also available as 'str(object)'.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-375"></a><h3>to_v</h3></td><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_to_v"></a><a name="k_43"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Vector.html">Vector</a><b> to_v </b></p><p><b>Description</b>: Turns the point into a vector</p><p><p>
+This method returns a vector representing the distance from (0,0) to the point.This method has been introduced in version 0.25.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-381"></a><h3>x</h3></td><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_x"></a><a name="k_44"></a><p><b>Signature</b>: <i>[const] </i>int <b> x </b></p><p><b>Description</b>: Accessor to the x coordinate</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'x'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-386"></a><h3>x=</h3></td><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_x="></a><a name="k_45"></a><p><b>Signature</b>: void <b> x= </b> (int coord)</p><p><b>Description</b>: Write accessor to the x coordinate</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'x'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-391"></a><h3>y</h3></td><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_y"></a><a name="k_46"></a><p><b>Signature</b>: <i>[const] </i>int <b> y </b></p><p><b>Description</b>: Accessor to the y coordinate</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'y'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-396"></a><h3>y=</h3></td><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_y="></a><a name="k_47"></a><p><b>Signature</b>: void <b> y= </b> (int coord)</p><p><b>Description</b>: Write accessor to the y coordinate</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'y'. This is the setter.<br></p></td></tr></table></body>

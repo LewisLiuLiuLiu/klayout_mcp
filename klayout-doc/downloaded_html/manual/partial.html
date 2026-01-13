@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="editor.html">Editing Functions</a> » <a href="editor_operations.html">Basic Editing Operations</a> » Partial Editing</p><h1>Partial Editing</h1><a name="k_1"></a><a name="k_2"></a><p>
+  When objects have to be modified after the have been created, partial editing comes into play. 
+  &quot;Partial&quot; refers to the fact that just parts of a polygon or path are edited. For example, just one
+  vertex or an edge of a polygon can be moved. Partial editing mode also allows deleting single vertices or
+  edges or to insert new ones. In partial editing mode, multiple edges or vertices can be selected, even a 
+  whole shape can be selected and can then be moved or deleted.
+  </p><p>
+  When moving the selected parts, the movement direction constraint applies. 
+  See <a href="editor_options.html">Basic Editor Options</a> for details about the modes
+  available. For example, in manhattan mode, only horizontal and vertical movements of parts are allowed.
+  Again, the global movement constraint can be overridden by pressing Shift (orthogonal), Ctrl (diagonal) or 
+  both Shift and Ctrl (any angle) while moving the mouse.
+  </p><p>
+  To enter partial mode, click on the &quot;Partial&quot; button in the toolbar.
+  Parts (edges or vertices) can then be selected either by simply clicking at them or by dragging a selection rectangle.
+  As in normal selection mode, the modifier buttons Shift and Ctrl can be used to add a selection to
+  the existing one or to remove elements from the existing selection. Partial selection is subject to the 
+  &quot;top level only&quot; constraint (see <a href="editor_options.html">Basic Editor Options</a> for a description of the top level selection mode).
+  </p><p>
+  Simply clicking at an item immediately enters &quot;move&quot; mode. In this mode, you can position the element at the desired
+  target location and place it there by left-clicking at the position. Press &quot;ESC&quot; to cancel the operation.
+  When a complex selection is made, move mode is entered by clicking at one of the selected items (the edges
+  or vertices, not the shape to which they belong). 
+  </p><p>
+  When moving parts, certain constraints apply, i.e. single edges can only be moved perpendicular to their
+  current position. In addition, the movement is confined to the editing grid.
+  </p><p>
+  The selected items can be deleted by using the &quot;Delete&quot; function from the &quot;Edit&quot; menu or pressing the &quot;Delete&quot;
+  key. If not enough vertices remain to form a valid object, the object is deleted (i.e. a polygon with
+  less then 3 points). 
+  </p><p>
+  By double-clicking at an edge or path segment, an additional point is created on this edge at the 
+  cursor's position. You can create a &quot;bend&quot; on a path by placing two new vertices on that segment
+  and moving the connecting segment between these vertices away from the former center line. This basically
+  requires two double-clicks on the path's centerline, a single click on the newly formed segment and
+  a single click to drop it at the new position.
+  </p></body>

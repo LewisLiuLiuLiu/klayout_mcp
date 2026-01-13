@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class LoadLayoutOptions::CellConflictResolution</p><h1>API reference - Class LoadLayoutOptions::CellConflictResolution</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: This enum specifies how cell conflicts are handled if a layout read into another layout and a cell name conflict arises.</p><p>This class is equivalent to the class <a href="class_LoadLayoutOptions++CellConflictResolution.html">LoadLayoutOptions::CellConflictResolution</a></p><ul><li><a href="#h2-14">Public constructors</a></li><li><a href="#h2-21">Public methods</a></li><li><a href="#h2-44">Public static methods and constants</a></li><li><a href="#h2-55">Detailed description</a></li></ul><p>
+Until version 0.26.8 and before, the mode was always 'AddToCell'. On reading, a cell was 'reopened' when encountering a cell name which already existed. This mode is still the default. The other modes are made available to support other ways of merging layouts.</p><p>Proxy cells are never modified in the existing layout. Proxy cells are always local to their layout file. So if the existing cell is a proxy cell, the new cell will be renamed.</p><p>If the new or existing cell is a ghost cell, both cells are merged always.</p><p>This enum was introduced in version 0.27.
+</p><a name="h2-14"></a><h2>Public constructors</h2><table><tr class="row0"><td>new LoadLayoutOptions::CellConflictResolution ptr</td><td><b><a href="#method12">new</a></b></td><td>(int i)</td><td>Creates an enum from an integer value</td></tr><tr class="row1"><td>new LoadLayoutOptions::CellConflictResolution ptr</td><td><b><a href="#method13">new</a></b></td><td>(string s)</td><td>Creates an enum from a string value</td></tr></table><a name="h2-21"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method0">!=</a></b></td><td>(const LoadLayoutOptions::CellConflictResolution other)</td><td>Compares two enums for inequality</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method1">!=</a></b></td><td>(int other)</td><td>Compares an enum with an integer for inequality</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method2">&lt;</a></b></td><td>(const LoadLayoutOptions::CellConflictResolution other)</td><td>Returns true if the first enum is less (in the enum symbol order) than the second</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">&lt;</a></b></td><td>(int other)</td><td>Returns true if the enum is less (in the enum symbol order) than the integer value</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">==</a></b></td><td>(const LoadLayoutOptions::CellConflictResolution other)</td><td>Compares two enums</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method5">==</a></b></td><td>(int other)</td><td>Compares an enum with an integer value</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method10">hash</a></b></td><td></td><td>Gets the hash value from the enum</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method11">inspect</a></b></td><td></td><td>Converts an enum to a visual string</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method14">to_i</a></b></td><td></td><td>Gets the integer value from the enum</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method15">to_s</a></b></td><td></td><td>Gets the symbolic string from an enum</td></tr></table><a name="h2-44"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td><i>[static,const]</i></td><td>LoadLayoutOptions::CellConflictResolution</td><td><b><a href="#method6">AddToCell</a></b></td><td></td><td>Add content to existing cell</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>LoadLayoutOptions::CellConflictResolution</td><td><b><a href="#method7">OverwriteCell</a></b></td><td></td><td>The old cell is overwritten entirely (including child cells which are not used otherwise).</td></tr><tr class="row0"><td><i>[static,const]</i></td><td>LoadLayoutOptions::CellConflictResolution</td><td><b><a href="#method8">RenameCell</a></b></td><td></td><td>The new cell will be renamed to become unique.</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>LoadLayoutOptions::CellConflictResolution</td><td><b><a href="#method9">SkipNewCell</a></b></td><td></td><td>The new cell is skipped entirely (including child cells which are not used otherwise).</td></tr></table><a name="detailed"></a><a name="h2-55"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td rowspan="2"><a name="h3-56"></a><h3>!=</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_!="></a><a name="k_2"></a><p><b>(1) Signature</b>: <i>[const] </i>bool <b> != </b> (const <a href="class_LoadLayoutOptions++CellConflictResolution.html">LoadLayoutOptions::CellConflictResolution</a> other)</p><p><b>Description</b>: Compares two enums for inequality</p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_!="></a><a name="k_3"></a><p><b>(2) Signature</b>: <i>[const] </i>bool <b> != </b> (int other)</p><p><b>Description</b>: Compares an enum with an integer for inequality</p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-63"></a><h3>&lt;</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m_&lt;"></a><a name="k_4"></a><p><b>(1) Signature</b>: <i>[const] </i>bool <b> &lt; </b> (const <a href="class_LoadLayoutOptions++CellConflictResolution.html">LoadLayoutOptions::CellConflictResolution</a> other)</p><p><b>Description</b>: Returns true if the first enum is less (in the enum symbol order) than the second</p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method3"></a><a name="m_&lt;"></a><a name="k_5"></a><p><b>(2) Signature</b>: <i>[const] </i>bool <b> &lt; </b> (int other)</p><p><b>Description</b>: Returns true if the enum is less (in the enum symbol order) than the integer value</p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-70"></a><h3>==</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m_=="></a><a name="k_6"></a><p><b>(1) Signature</b>: <i>[const] </i>bool <b> == </b> (const <a href="class_LoadLayoutOptions++CellConflictResolution.html">LoadLayoutOptions::CellConflictResolution</a> other)</p><p><b>Description</b>: Compares two enums</p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method5"></a><a name="m_=="></a><a name="k_7"></a><p><b>(2) Signature</b>: <i>[const] </i>bool <b> == </b> (int other)</p><p><b>Description</b>: Compares an enum with an integer value</p></td></tr><tr class="bigrow1"><td><a name="h3-77"></a><h3>AddToCell</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m_AddToCell"></a><a name="k_8"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_LoadLayoutOptions++CellConflictResolution.html">LoadLayoutOptions::CellConflictResolution</a><b> AddToCell </b></p><p><b>Description</b>: Add content to existing cell</p><p><p>
+This is the mode use in before version 0.27. Content of new cells is simply added to existing cells with the same name.
+Before version 0.29.2, this mode also merged instances, rendering it difficult to merge two identical cell hierarchies.
+Since version 0.29.2, no instance duplicates are generated. Instead only new instances are added to existing cells.
+With this feature in place, it is safe to merge two identical cell hierarchies stored in different files using AddToCell mode.
+In that application, the shapes and layers of the layouts are combined, but the cell hierarchy stays identical.</p></p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'AddToCell'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-88"></a><h3>OverwriteCell</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_OverwriteCell"></a><a name="k_9"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_LoadLayoutOptions++CellConflictResolution.html">LoadLayoutOptions::CellConflictResolution</a><b> OverwriteCell </b></p><p><b>Description</b>: The old cell is overwritten entirely (including child cells which are not used otherwise).</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'OverwriteCell'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-93"></a><h3>RenameCell</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_RenameCell"></a><a name="k_10"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_LoadLayoutOptions++CellConflictResolution.html">LoadLayoutOptions::CellConflictResolution</a><b> RenameCell </b></p><p><b>Description</b>: The new cell will be renamed to become unique.</p><p><p>
+In this mode, two files are are combined rendering independent cell hierarchies coming from the original files.
+Cells may be renamed however. Also, new top cells will appear after merging a file into the layout using RenameCell mode.
+</p></p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'RenameCell'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-102"></a><h3>SkipNewCell</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_SkipNewCell"></a><a name="k_11"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_LoadLayoutOptions++CellConflictResolution.html">LoadLayoutOptions::CellConflictResolution</a><b> SkipNewCell </b></p><p><b>Description</b>: The new cell is skipped entirely (including child cells which are not used otherwise).</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'SkipNewCell'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-107"></a><h3>hash</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_hash"></a><a name="k_12"></a><p><b>Signature</b>: <i>[const] </i>int <b> hash </b></p><p><b>Description</b>: Gets the hash value from the enum</p><p><b>Python specific notes: </b><br>This method is also available as 'hash(object)'.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-112"></a><h3>inspect</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_inspect"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i>string <b> inspect </b></p><p><b>Description</b>: Converts an enum to a visual string</p><p><b>Python specific notes: </b><br>This method is also available as 'repr(object)'.<br></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-117"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_new"></a><a name="k_14"></a><p><b>(1) Signature</b>: <i>[static] </i>new <a href="class_LoadLayoutOptions++CellConflictResolution.html">LoadLayoutOptions::CellConflictResolution</a> ptr <b> new </b> (int i)</p><p><b>Description</b>: Creates an enum from an integer value</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_new"></a><a name="k_15"></a><p><b>(2) Signature</b>: <i>[static] </i>new <a href="class_LoadLayoutOptions++CellConflictResolution.html">LoadLayoutOptions::CellConflictResolution</a> ptr <b> new </b> (string s)</p><p><b>Description</b>: Creates an enum from a string value</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-126"></a><h3>to_i</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_to_i"></a><a name="k_16"></a><p><b>Signature</b>: <i>[const] </i>int <b> to_i </b></p><p><b>Description</b>: Gets the integer value from the enum</p><p><b>Python specific notes: </b><br>This method is also available as 'int(object)'.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-131"></a><h3>to_s</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_to_s"></a><a name="k_17"></a><p><b>Signature</b>: <i>[const] </i>string <b> to_s </b></p><p><b>Description</b>: Gets the symbolic string from an enum</p><p><b>Python specific notes: </b><br>This method is also available as 'str(object)'.<br></p></td></tr></table></body>

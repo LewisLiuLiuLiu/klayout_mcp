@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="editor.html">Editing Functions</a> » <a href="editor_advanced.html">Advanced Editing Operations</a> » Search and Replace</p><h1>Search and Replace</h1><a name="k_1"></a><a name="k_2"></a><ul><li><a href="#h2-42">Find</a></li><li><a href="#h2-96">Delete</a></li><li><a href="#h2-113">Replace</a></li><li><a href="#h2-142">Custom queries</a></li></ul><p>
+  KLayout offers a &quot;search and replace&quot; function which provides a basic 
+  search and search+replace, but also a very generic and powerful extended feature
+  called &quot;custom queries&quot; (see below for that). The search and replace dialog can be found in the
+  &quot;Edit&quot; menu under &quot;Search and replace&quot;.
+  </p><p>
+  The dialog provides four tabs in the left panel: &quot;Find&quot;, &quot;Delete&quot;, &quot;Replace&quot; and
+  &quot;Custom&quot;. The functionality of these four tabs is explained below.
+  </p><p>
+  The left side of the dialog will hold results for operations which deliver
+  a result, for example the &quot;Find&quot; operation. The result is a list which displays
+  various items, depending on the nature and parameters of the operation. 
+  If the item represents a layout object, for example a shape
+  or a cell instance, the items selected in the list are highlighted in the 
+  layout to indicate their position. The length of the list is limited to 
+  avoid performance degradation for very long lists. The number of items shown
+  can be configured on the configuration page.
+  </p><p>
+  The configuration page which allows configuration of the search and replace
+  dialog's behavior is shown when the &quot;Configure&quot; button at the left bottom 
+  corner is pressed.
+  It can be found as well in the setup dialog under &quot;Browsers&quot;, &quot;Search Result Browser&quot;.
+  </p><a name="h2-42"></a><h2>Find</h2><p>
+  The functionality of the &quot;Find&quot; tab is simple: Various conditions can be specified 
+  and all objects matching that condition are listed when the &quot;Find&quot; button is 
+  pressed.
+  </p><p>
+  The parameters of that function involve: Object type, cell scope and object specific conditions.
+  The object type is either &quot;Instances&quot; or a shape object. For shapes, the 
+  shape type can be confined to &quot;Box&quot;, &quot;Polygon&quot;, &quot;Path&quot; or &quot;Text&quot; which enables
+  specific features.
+  </p><p> 
+  The cell context can be one of:
+  </p><ul><li><b>Current cell</b>: look in the current cell and none else. Child cells are ignored.</li><li><b>Current cell and below</b>: look into the current cell and all child cells, where all instances of the children are considered.</li><li><b>All cells</b>: look into every cell individually, but don't consider the way the cells are instantiated.</li></ul><p>
+  Depending on the object type various parameters are available to be included in the
+  condition. Each condition applies to one specific parameter and is usually composed of
+  an operator (less, less than, equal ...) and a value against which the value of the 
+  parameter is checked. Length and area values are given in micron or square micron units.
+  </p><p>
+  String values can be matched against glob pattern using the tilde (&quot;~&quot;)
+  match and non-match (&quot;!~&quot;) operators. Glob pattern are the ones used for file names on 
+  the command line and use &quot;*&quot; for an arbitrary sequence of characters and &quot;?&quot; for 
+  a single arbitrary character. Here are some examples for glob pattern:
+  </p><table><tr><td><tt><b>A*</b></tt></td><td>The string must start with a capital &quot;A&quot;</td></tr><tr><td><tt><b>*A*</b></tt></td><td>The string must contain a capital &quot;A&quot; somewhere</td></tr><tr><td><tt><b>ABC?</b></tt></td><td>&quot;ABC&quot; followed by any character</td></tr><tr><td><tt><b>N{AND,OR}</b></tt></td><td>&quot;NAND&quot; or &quot;NOR&quot;</td></tr><tr><td><tt><b>A[0-9]</b></tt></td><td>&quot;A&quot; followed by a digit</td></tr><tr><td><tt><b>A[^0-9]</b></tt></td><td>&quot;A&quot; followed by a non-digit</td></tr></table><p>
+  If the value field is left empty, no check is made on that
+  parameter. All conditions which are checked must be fulfilled to 
+  make the object listed on the results page.
+  </p><a name="h2-96"></a><h2>Delete</h2><p>
+  Similar to the find page, this function asks for an object type, a cell context
+  and object specific conditions. 
+  </p><p>
+  If the &quot;Delete All&quot; button is pressed, all selected objects are deleted. 
+  </p><p>
+  If the &quot;Select+Delete&quot; button is pressed, the selected objects will first be shown
+  in the result page, similar to the &quot;Find&quot; function. Then, some or all of them can be 
+  selected and deleted by pressing the &quot;Delete&quot; button below the list.
+  </p><a name="h2-113"></a><h2>Replace</h2><p>
+  Similar to the find page, this function asks for an object type, a cell context
+  and object specific conditions. In addition, the function allows specification of
+  replacement values for the parameters. If an entry field is left empty for the 
+  replacement value, no replacement is made.
+  </p><p>
+  For strings with glob pattern matching, name parts can be reused in the replacement
+  string. For example, if the operator is &quot;~&quot; on a text's string and the match string
+  is &quot;A(*)&quot;, the replacement string can be set to &quot;B\1&quot;. &quot;\1&quot; means the value of the 
+  first bracket in the match string, hence this setup replaces all leading &quot;A&quot;'s 
+  by &quot;B&quot;.
+  </p><p>
+  If the &quot;Replace All&quot; button is pressed, the replacement parameters are set on all
+  selected objects.
+  </p><p>
+  If the &quot;Select+Replace&quot; button is pressed, the selected objects will first be shown
+  in the result page, similar to the &quot;Find&quot; function. Then, some or all of them can be 
+  selected and the replacement is made on them the &quot;Replace&quot; button is pressed below
+  the list.
+  </p><a name="h2-142"></a><h2>Custom queries</h2><p>
+  The full power of this dialog is unleashed when using that page. Custom queries
+  are not only able to provide the functionality of the three other pages (find, delete and
+  replace), but provide functionality far beyond that simple scenarios.
+  </p><p>
+  Custom queries are statements resembling SQL statements with embedded expressions and
+  a rich language to describe shape or cell instantiation details. A in-depth description 
+  can be found here: <a href="../about/custom_queries.html">About Custom Layout Queries</a>.
+  </p><p>
+  The custom query dialog page offers an entry field to enter the query 
+  and below an &quot;Execute&quot; button to run it. The most recently used queries can be pulled back
+  into the edit field using the drop-down box below the edit field.
+  Custom queries can be saved under a given name and reused. The list of saved queries
+  can be manipulated with the buttons right to it. See the button's tooltips for 
+  a description of the button's functionality.
+  </p><p>
+  If the tab is switched to another tab and back, the custom query will be updated 
+  reflecting the query corresponding to the current functionality selected on the 
+  other tab.
+  </p></body>

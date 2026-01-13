@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class TilingProcessor</p><h1>API reference - Class TilingProcessor</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: A processor for layout which distributes tasks over tiles</p><ul><li><a href="#h2-36">Public constructors</a></li><li><a href="#h2-41">Public methods</a></li><li><a href="#h2-138">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-149">Detailed description</a></li></ul><p></p><p>The tiling processor executes one or several scripts on one or multiple layouts providing a tiling scheme. In that scheme, the processor divides the original layout into rectangular tiles and executes the scripts on each tile separately. The tiling processor allows one to specify multiple, independent scripts which are run separately on each tile. It can make use of multi-core CPU's by supporting multiple threads running the tasks in parallel (with respect to tiles and scripts).</p><p>Tiling a optional - if no tiles are specified, the tiling processing basically operates flat and parallelization extends to the scripts only.</p><p>Tiles can be overlapping to gather input from neighboring tiles into the current tile. In order to provide that feature, a border can be specified which gives the amount by which the search region is extended beyond the border of the tile. To specify the border, use the <a href="class_TilingProcessor.html#m_tile_border">TilingProcessor#tile_border</a> method.</p><p>The basis of the tiling processor are <a href="class_Region.html">Region</a> objects and expressions. Expressions are a built-in simple language to form simple scripts. Expressions allow access to the objects and methods built into KLayout. Each script can consist of multiple operations. Scripts are specified using <a href="class_TilingProcessor.html#m_queue">TilingProcessor#queue</a>.</p><p>Input is provided to the script through variables holding a <a href="class_Region.html">Region</a> object each. From outside the tiling processor, input is specified with the <a href="class_TilingProcessor.html#m_input">TilingProcessor#input</a> method. This method is given a name and a <a href="class_RecursiveShapeIterator.html">RecursiveShapeIterator</a> object which delivers the data for the input. On the script side, a <a href="class_Region.html">Region</a> object is provided through a variable named like the first argument of the &quot;input&quot; method.</p><p>Inside the script the following functions are provided:</p><p><ul><li>&quot;_dbu&quot; delivers the database unit used for the computations </li><li>&quot;_tile&quot; delivers a region containing a mask for the tile (a rectangle) or nil if no tiling is used </li><li>&quot;_output&quot; is used to deliver output (see below) </li></ul></p><p>Output can be obtained from the tiling processor by registering a receiver with a channel. A channel is basically a name. Inside the script, the name describes a variable which can be used as the first argument of the &quot;_output&quot; function to identify the channel. A channel is registers using the <a href="class_TilingProcessor.html#m_output">TilingProcessor#output</a> method. Beside the name, a receiver must be specified. A receiver is either another layout (a cell of that), a report database or a custom receiver implemented through the <a href="class_TileOutputReceiver.html">TileOutputReceiver</a> class.</p><p>The &quot;_output&quot; function expects two or three parameters: one channel id (the variable that was defined by the name given in the output method call) and an object to output (a <a href="class_Region.html">Region</a>, <a href="class_Edges.html">Edges</a>, <a href="class_EdgePairs.html">EdgePairs</a> or a geometrical primitive such as <a href="class_Polygon.html">Polygon</a> or <a href="class_Box.html">Box</a>). In addition, a boolean argument can be given indicating whether clipping at the tile shall be applied. If clipping is requested (the default), the shapes will be clipped at the tile's box.</p><p>The tiling can be specified either through a tile size, a tile number or both. If a tile size is specified with the <a href="class_TilingProcessor.html#m_tile_size">TilingProcessor#tile_size</a> method, the tiling processor will compute the number of tiles required. If the tile count is given (through <a href="class_TilingProcessor.html#m_tiles">TilingProcessor#tiles</a>), the tile size will be computed. If both are given, the tiling array is fixed and the array is centered around the original layout's center. If the tiling origin is given as well, the tiling processor will use the given array without any modifications.</p><p>Once the tiling processor has been set up, the operation can be launched using <a href="class_TilingProcessor.html#m_execute">TilingProcessor#execute</a>.</p><p>This is some sample code. It performs two XOR operations between two layouts and delivers the results to a report database:</p><p><pre>
+ly1 = ... # first layout
+ly2 = ... # second layout
+
+rdb = RBA::ReportDatabase::new(&quot;xor&quot;)
+output_cell = rdb.create_cell(ly1.top_cell.name)
+output_cat1 = rbd.create_category(&quot;XOR 1-10&quot;)
+output_cat2 = rbd.create_category(&quot;XOR 2-11&quot;)
+
+tp = RBA::TilingProcessor::new
+tp.input(&quot;a1&quot;, ly1, ly1.top_cell.cell_index, RBA::LayerInfo::new(1, 0))
+tp.input(&quot;a2&quot;, ly1, ly1.top_cell.cell_index, RBA::LayerInfo::new(2, 0))
+tp.input(&quot;b1&quot;, ly2, ly2.top_cell.cell_index, RBA::LayerInfo::new(11, 0))
+tp.input(&quot;b2&quot;, ly2, ly2.top_cell.cell_index, RBA::LayerInfo::new(12, 0))
+tp.output(&quot;o1&quot;, rdb, output_cell, output_cat1)
+tp.output(&quot;o2&quot;, rdb, output_cell, output_cat2)
+tp.queue(&quot;_output(o1, a1 ^ b1)&quot;)
+tp.queue(&quot;_output(o2, a2 ^ b2)&quot;)
+tp.tile_size(50.0, 50.0)
+tp.execute(&quot;Job description&quot;)
+</pre></p><p>This class has been introduced in version 0.23.
+</p><a name="h2-36"></a><h2>Public constructors</h2><table><tr class="row0"><td>new TilingProcessor ptr</td><td><b><a href="#method31">new</a></b></td><td></td><td>Creates a new object of this class</td></tr></table><a name="h2-41"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>TilingProcessor ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">assign</a></b></td><td>(const TilingProcessor other)</td><td>Assigns another object to self</td></tr><tr class="row0"><td><i>[const]</i></td><td>double</td><td><b><a href="#method9">dbu</a></b></td><td></td><td>Gets the database unit under which the computations will be done</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method10">dbu=</a></b></td><td>(double u)</td><td>Sets the database unit under which the computations will be done</td></tr><tr class="row0"><td><i>[const]</i></td><td>new TilingProcessor ptr</td><td><b><a href="#method13">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method14">execute</a></b></td><td>(string desc)</td><td>Runs the job</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method15">frame=</a></b></td><td>(const DBox frame)</td><td>Sets the layout frame</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method16">input</a></b></td><td>(string name,<br>const RecursiveShapeIterator iter)</td><td>Specifies input for the tiling processor</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method17">input</a></b></td><td>(string name,<br>const RecursiveShapeIterator iter,<br>const ICplxTrans trans)</td><td>Specifies input for the tiling processor</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method18">input</a></b></td><td>(string name,<br>const Layout layout,<br>unsigned int cell_index,<br>const LayerInfo lp)</td><td>Specifies input for the tiling processor</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method19">input</a></b></td><td>(string name,<br>const Layout layout,<br>unsigned int cell_index,<br>unsigned int layer)</td><td>Specifies input for the tiling processor</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method20">input</a></b></td><td>(string name,<br>const Layout layout,<br>unsigned int cell_index,<br>const LayerInfo lp,<br>const ICplxTrans trans)</td><td>Specifies input for the tiling processor</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method21">input</a></b></td><td>(string name,<br>const Layout layout,<br>unsigned int cell_index,<br>unsigned int layer,<br>const ICplxTrans trans)</td><td>Specifies input for the tiling processor</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method22">input</a></b></td><td>(string name,<br>const Region region)</td><td>Specifies input for the tiling processor</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method23">input</a></b></td><td>(string name,<br>const Region region,<br>const ICplxTrans trans)</td><td>Specifies input for the tiling processor</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method24">input</a></b></td><td>(string name,<br>const Edges edges)</td><td>Specifies input for the tiling processor</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method25">input</a></b></td><td>(string name,<br>const Edges edges,<br>const ICplxTrans trans)</td><td>Specifies input for the tiling processor</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method26">input</a></b></td><td>(string name,<br>const EdgePairs edge_pairs)</td><td>Specifies input for the tiling processor</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method27">input</a></b></td><td>(string name,<br>const EdgePairs edge_pairs,<br>const ICplxTrans trans)</td><td>Specifies input for the tiling processor</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method28">input</a></b></td><td>(string name,<br>const Texts texts)</td><td>Specifies input for the tiling processor</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method29">input</a></b></td><td>(string name,<br>const Texts texts,<br>const ICplxTrans trans)</td><td>Specifies input for the tiling processor</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method32">output</a></b></td><td>(string name,<br>TileOutputReceiver ptr rec)</td><td>Specifies output for the tiling processor</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method33">output</a></b></td><td>(string name,<br>Layout layout,<br>unsigned int cell,<br>const LayerInfo lp)</td><td>Specifies output to a layout layer</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method34">output</a></b></td><td>(string name,<br>Layout layout,<br>unsigned int cell,<br>unsigned int layer_index)</td><td>Specifies output to a layout layer</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method35">output</a></b></td><td>(string name,<br>Region region)</td><td>Specifies output to a <a href="class_Region.html">Region</a> object</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method36">output</a></b></td><td>(string name,<br>Edges edges)</td><td>Specifies output to an <a href="class_Edges.html">Edges</a> object</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method37">output</a></b></td><td>(string name,<br>EdgePairs edge_pairs)</td><td>Specifies output to an <a href="class_EdgePairs.html">EdgePairs</a> object</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method38">output</a></b></td><td>(string name,<br>Texts texts)</td><td>Specifies output to an <a href="class_Texts.html">Texts</a> object</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method39">output</a></b></td><td>(string name,<br>double ptr sum)</td><td>Specifies output to single value</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method40">output</a></b></td><td>(string name,<br>ReportDatabase rdb,<br>unsigned long cell_id,<br>unsigned long category_id)</td><td>Specifies output to a report database</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method41">output</a></b></td><td>(string name,<br>Image ptr image)</td><td>Specifies output to an image</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method42">queue</a></b></td><td>(string script)</td><td>Queues a script for parallel execution</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method43">scale_to_dbu=</a></b></td><td>(bool en)</td><td>Enables or disabled automatic scaling to database unit</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method44">scale_to_dbu?</a></b></td><td></td><td>Gets a valid indicating whether automatic scaling to database unit is enabled</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned long</td><td><b><a href="#method45">threads</a></b></td><td></td><td>Gets the number of threads to use</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method46">threads=</a></b></td><td>(unsigned long n)</td><td>Specifies the number of threads to use</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method47">tile_border</a></b></td><td>(double bx,<br>double by)</td><td>Sets the tile border</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method48">tile_origin</a></b></td><td>(double xo,<br>double yo)</td><td>Sets the tile origin</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method49">tile_size</a></b></td><td>(double w,<br>double h)</td><td>Sets the tile size</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method50">tiles</a></b></td><td>(unsigned long nw,<br>unsigned long nh)</td><td>Sets the tile count</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method51">var</a></b></td><td>(string name,<br>variant value)</td><td>Defines a variable for the tiling processor script</td></tr></table><a name="h2-138"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method11">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method12">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method30">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-149"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-150"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_TilingProcessor.html">TilingProcessor</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-156"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-162"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroy"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-169"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroyed?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-176"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__is_const_object?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-183"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__manage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-189"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__unmanage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-195"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_assign"></a><a name="k_9"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_TilingProcessor.html">TilingProcessor</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow0"><td><a name="h3-199"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_create"></a><a name="k_10"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-206"></a><h3>dbu</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_dbu"></a><a name="k_11"></a><p><b>Signature</b>: <i>[const] </i>double <b> dbu </b></p><p><b>Description</b>: Gets the database unit under which the computations will be done</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'dbu'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-211"></a><h3>dbu=</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_dbu="></a><a name="k_12"></a><p><b>Signature</b>: void <b> dbu= </b> (double u)</p><p><b>Description</b>: Sets the database unit under which the computations will be done</p><p><p></p><p>All data used within the scripts will be brought to that database unit. If none is given it will be the database unit of the first layout given or 1nm if no layout is specified.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'dbu'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-218"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_destroy"></a><a name="k_13"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-226"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_destroyed?"></a><a name="k_14"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-234"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_dup"></a><a name="k_15"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_TilingProcessor.html">TilingProcessor</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-239"></a><h3>execute</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_execute"></a><a name="k_16"></a><p><b>Signature</b>: void <b> execute </b> (string desc)</p><p><b>Description</b>: Runs the job</p><p><p></p><p>This method will initiate execution of the queued scripts, once for every tile. The desc is a text shown in the progress bar for example.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-245"></a><h3>frame=</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_frame="></a><a name="k_17"></a><p><b>Signature</b>: void <b> frame= </b> (const <a href="class_DBox.html">DBox</a> frame)</p><p><b>Description</b>: Sets the layout frame</p><p><p></p><p>The layout frame is the box (in micron units) taken into account for computing
+the tiles if the tile counts are not given. If the layout frame is not set or
+set to an empty box, the processor will try to derive the frame from the given
+inputs.</p><p>This method has been introduced in version 0.25.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'frame'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td rowspan="14"><a name="h3-254"></a><h3>input</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_input"></a><a name="k_18"></a><p><b>(1) Signature</b>: void <b> input </b> (string name, const <a href="class_RecursiveShapeIterator.html">RecursiveShapeIterator</a> iter)</p><p><b>Description</b>: Specifies input for the tiling processor</p><p><p>
+This method will establish an input channel for the processor. This version receives input from a recursive shape iterator, hence from a hierarchy of shapes from a layout.</p><p>The name specifies the variable under which the input can be used in the scripts.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_input"></a><a name="k_19"></a><p><b>(2) Signature</b>: void <b> input </b> (string name, const <a href="class_RecursiveShapeIterator.html">RecursiveShapeIterator</a> iter, const <a href="class_ICplxTrans.html">ICplxTrans</a> trans)</p><p><b>Description</b>: Specifies input for the tiling processor</p><p><p>
+This method will establish an input channel for the processor. This version receives input from a recursive shape iterator, hence from a hierarchy of shapes from a layout.
+In addition, a transformation can be specified which will be applied to the shapes before they are used.</p><p>The name specifies the variable under which the input can be used in the scripts.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_input"></a><a name="k_20"></a><p><b>(3) Signature</b>: void <b> input </b> (string name, const <a href="class_Layout.html">Layout</a> layout, unsigned int cell_index, const <a href="class_LayerInfo.html">LayerInfo</a> lp)</p><p><b>Description</b>: Specifies input for the tiling processor</p><p><p>
+This method will establish an input channel for the processor. This version receives input from a layout and the hierarchy below the cell with the given cell index.
+&quot;lp&quot; is a <a href="class_LayerInfo.html">LayerInfo</a> object specifying the input layer.</p><p>The name specifies the variable under which the input can be used in the scripts.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_input"></a><a name="k_21"></a><p><b>(4) Signature</b>: void <b> input </b> (string name, const <a href="class_Layout.html">Layout</a> layout, unsigned int cell_index, unsigned int layer)</p><p><b>Description</b>: Specifies input for the tiling processor</p><p><p>
+This method will establish an input channel for the processor. This version receives input from a layout and the hierarchy below the cell with the given cell index.
+&quot;layer&quot; is the layer index of the input layer.</p><p>The name specifies the variable under which the input can be used in the scripts.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_input"></a><a name="k_22"></a><p><b>(5) Signature</b>: void <b> input </b> (string name, const <a href="class_Layout.html">Layout</a> layout, unsigned int cell_index, const <a href="class_LayerInfo.html">LayerInfo</a> lp, const <a href="class_ICplxTrans.html">ICplxTrans</a> trans)</p><p><b>Description</b>: Specifies input for the tiling processor</p><p><p>
+This method will establish an input channel for the processor. This version receives input from a layout and the hierarchy below the cell with the given cell index.
+&quot;lp&quot; is a <a href="class_LayerInfo.html">LayerInfo</a> object specifying the input layer.
+In addition, a transformation can be specified which will be applied to the shapes before they are used.</p><p>The name specifies the variable under which the input can be used in the scripts.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_input"></a><a name="k_23"></a><p><b>(6) Signature</b>: void <b> input </b> (string name, const <a href="class_Layout.html">Layout</a> layout, unsigned int cell_index, unsigned int layer, const <a href="class_ICplxTrans.html">ICplxTrans</a> trans)</p><p><b>Description</b>: Specifies input for the tiling processor</p><p><p>
+This method will establish an input channel for the processor. This version receives input from a layout and the hierarchy below the cell with the given cell index.
+&quot;layer&quot; is the layer index of the input layer.
+In addition, a transformation can be specified which will be applied to the shapes before they are used.</p><p>The name specifies the variable under which the input can be used in the scripts.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_input"></a><a name="k_24"></a><p><b>(7) Signature</b>: void <b> input </b> (string name, const <a href="class_Region.html">Region</a> region)</p><p><b>Description</b>: Specifies input for the tiling processor</p><p><p>
+This method will establish an input channel for the processor. This version receives input from a <a href="class_Region.html">Region</a> object. Regions don't always come with a database unit, hence a database unit should be specified with the <a href="#m_dbu=">dbu=</a> method unless a layout object is specified as input too.</p><p>Caution: the Region object must stay valid during the lifetime of the tiling processor. Take care to store it in a variable to prevent early destruction of the Region object. Not doing so may crash the application.</p><p>The name specifies the variable under which the input can be used in the scripts.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_input"></a><a name="k_25"></a><p><b>(8) Signature</b>: void <b> input </b> (string name, const <a href="class_Region.html">Region</a> region, const <a href="class_ICplxTrans.html">ICplxTrans</a> trans)</p><p><b>Description</b>: Specifies input for the tiling processor</p><p><p>
+This method will establish an input channel for the processor. This version receives input from a <a href="class_Region.html">Region</a> object. Regions don't always come with a database unit, hence a database unit should be specified with the <a href="#m_dbu=">dbu=</a> method unless a layout object is specified as input too.</p><p>Caution: the Region object must stay valid during the lifetime of the tiling processor. Take care to store it in a variable to prevent early destruction of the Region object. Not doing so may crash the application.</p><p>The name specifies the variable under which the input can be used in the scripts.
+This variant allows one to specify an additional transformation too. It has been introduced in version 0.23.2.
+</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_input"></a><a name="k_26"></a><p><b>(9) Signature</b>: void <b> input </b> (string name, const <a href="class_Edges.html">Edges</a> edges)</p><p><b>Description</b>: Specifies input for the tiling processor</p><p><p>
+This method will establish an input channel for the processor. This version receives input from an <a href="class_Edges.html">Edges</a> object. Edge collections don't always come with a database unit, hence a database unit should be specified with the <a href="#m_dbu=">dbu=</a> method unless a layout object is specified as input too.</p><p>Caution: the Edges object must stay valid during the lifetime of the tiling processor. Take care to store it in a variable to prevent early destruction of the Edges object. Not doing so may crash the application.</p><p>The name specifies the variable under which the input can be used in the scripts.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_input"></a><a name="k_27"></a><p><b>(10) Signature</b>: void <b> input </b> (string name, const <a href="class_Edges.html">Edges</a> edges, const <a href="class_ICplxTrans.html">ICplxTrans</a> trans)</p><p><b>Description</b>: Specifies input for the tiling processor</p><p><p>
+This method will establish an input channel for the processor. This version receives input from an <a href="class_Edges.html">Edges</a> object. Edge collections don't always come with a database unit, hence a database unit should be specified with the <a href="#m_dbu=">dbu=</a> method unless a layout object is specified as input too.</p><p>Caution: the Edges object must stay valid during the lifetime of the tiling processor. Take care to store it in a variable to prevent early destruction of the Edges object. Not doing so may crash the application.</p><p>The name specifies the variable under which the input can be used in the scripts.
+This variant allows one to specify an additional transformation too. It has been introduced in version 0.23.2.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_input"></a><a name="k_28"></a><p><b>(11) Signature</b>: void <b> input </b> (string name, const <a href="class_EdgePairs.html">EdgePairs</a> edge_pairs)</p><p><b>Description</b>: Specifies input for the tiling processor</p><p><p>
+This method will establish an input channel for the processor. This version receives input from an <a href="class_EdgePairs.html">EdgePairs</a> object. Edge pair collections don't always come with a database unit, hence a database unit should be specified with the <a href="#m_dbu=">dbu=</a> method unless a layout object is specified as input too.</p><p>Caution: the EdgePairs object must stay valid during the lifetime of the tiling processor. Take care to store it in a variable to prevent early destruction of the EdgePairs object. Not doing so may crash the application.</p><p>The name specifies the variable under which the input can be used in the scripts.
+This variant has been introduced in version 0.27.
+</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_input"></a><a name="k_29"></a><p><b>(12) Signature</b>: void <b> input </b> (string name, const <a href="class_EdgePairs.html">EdgePairs</a> edge_pairs, const <a href="class_ICplxTrans.html">ICplxTrans</a> trans)</p><p><b>Description</b>: Specifies input for the tiling processor</p><p><p>
+This method will establish an input channel for the processor. This version receives input from an <a href="class_EdgePairs.html">EdgePairs</a> object. Edge pair collections don't always come with a database unit, hence a database unit should be specified with the <a href="#m_dbu=">dbu=</a> method unless a layout object is specified as input too.</p><p>Caution: the EdgePairs object must stay valid during the lifetime of the tiling processor. Take care to store it in a variable to prevent early destruction of the EdgePairs object. Not doing so may crash the application.</p><p>The name specifies the variable under which the input can be used in the scripts.
+This variant has been introduced in version 0.27.
+</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_input"></a><a name="k_30"></a><p><b>(13) Signature</b>: void <b> input </b> (string name, const <a href="class_Texts.html">Texts</a> texts)</p><p><b>Description</b>: Specifies input for the tiling processor</p><p><p>
+This method will establish an input channel for the processor. This version receives input from an <a href="class_Texts.html">Texts</a> object. Text collections don't always come with a database unit, hence a database unit should be specified with the <a href="#m_dbu=">dbu=</a> method unless a layout object is specified as input too.</p><p>Caution: the Texts object must stay valid during the lifetime of the tiling processor. Take care to store it in a variable to prevent early destruction of the Texts object. Not doing so may crash the application.</p><p>The name specifies the variable under which the input can be used in the scripts.
+This variant has been introduced in version 0.27.
+</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_input"></a><a name="k_31"></a><p><b>(14) Signature</b>: void <b> input </b> (string name, const <a href="class_Texts.html">Texts</a> texts, const <a href="class_ICplxTrans.html">ICplxTrans</a> trans)</p><p><b>Description</b>: Specifies input for the tiling processor</p><p><p>
+This method will establish an input channel for the processor. This version receives input from an <a href="class_Texts.html">Texts</a> object. Text collections don't always come with a database unit, hence a database unit should be specified with the <a href="#m_dbu=">dbu=</a> method unless a layout object is specified as input too.</p><p>Caution: the Texts object must stay valid during the lifetime of the tiling processor. Take care to store it in a variable to prevent early destruction of the Texts object. Not doing so may crash the application.</p><p>The name specifies the variable under which the input can be used in the scripts.
+This variant has been introduced in version 0.27.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-343"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_is_const_object?"></a><a name="k_32"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-351"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_new"></a><a name="k_33"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_TilingProcessor.html">TilingProcessor</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new object of this class</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td rowspan="10"><a name="h3-356"></a><h3>output</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_output"></a><a name="k_34"></a><p><b>(1) Signature</b>: void <b> output </b> (string name, <a href="class_TileOutputReceiver.html">TileOutputReceiver</a> ptr rec)</p><p><b>Description</b>: Specifies output for the tiling processor</p><p><p>
+This method will establish an output channel for the processor. For that it registers an output receiver which will receive data from the scripts. The scripts call the _output function to deliver data.
+&quot;name&quot; will be name of the variable which must be passed to the first argument of the _output function in order to address this channel.</p><p>Please note that the tiling processor will destroy the receiver object when it is freed itself. Hence if you need to address the receiver object later, make sure that the processor is still alive, i.e. by assigning the object to a variable.</p><p>The following code uses the output receiver. It takes the shapes of a layer from a layout, computes the area of each tile and outputs the area to the custom receiver:</p><p><pre>
+layout = ... # the layout
+cell = ... # the top cell's index
+layout = ... # the input layer
+
+class MyReceiver &lt; RBA::TileOutputReceiver
+  def put(ix, iy, tile, obj, dbu, clip)
+    puts &quot;got area for tile #{ix+1},#{iy+1}: #{obj.to_s}&quot;
+  end
+end
+
+tp = RBA::TilingProcessor::new
+
+# register the custom receiver
+tp.output(&quot;my_receiver&quot;, MyReceiver::new)
+tp.input(&quot;the_input&quot;, layout.begin_shapes(cell, layer))
+tp.tile_size(100, 100)  # 100x100 um tile size
+# The script clips the input at the tile and computes the (merged) area:
+tp.queue(&quot;_output(my_receiver, (the_input &amp; _tile).area)&quot;)
+tp.execute(&quot;Job description&quot;)
+</pre></p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_output"></a><a name="k_35"></a><p><b>(2) Signature</b>: void <b> output </b> (string name, <a href="class_Layout.html">Layout</a> layout, unsigned int cell, const <a href="class_LayerInfo.html">LayerInfo</a> lp)</p><p><b>Description</b>: Specifies output to a layout layer</p><table class="layout-table"><tr><td><b>name</b>:</td><td>The name of the channel</td></tr><tr><td><b>layout</b>:</td><td>The layout to which the data is sent</td></tr><tr><td><b>cell</b>:</td><td>The index of the cell to which the data is sent</td></tr><tr><td><b>lp</b>:</td><td>The layer specification where the output will be sent to</td></tr></table><p><p>
+This method will establish an output channel to a layer in a layout. The output sent to that channel will be put into the specified layer and cell. In this version, the layer is specified through a <a href="class_LayerInfo.html">LayerInfo</a> object, i.e. layer and datatype number. If no such layer exists, it will be created.</p><p>The name is the name which must be used in the _output function of the scripts in order to address that channel.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_output"></a><a name="k_36"></a><p><b>(3) Signature</b>: void <b> output </b> (string name, <a href="class_Layout.html">Layout</a> layout, unsigned int cell, unsigned int layer_index)</p><p><b>Description</b>: Specifies output to a layout layer</p><table class="layout-table"><tr><td><b>name</b>:</td><td>The name of the channel</td></tr><tr><td><b>layout</b>:</td><td>The layout to which the data is sent</td></tr><tr><td><b>cell</b>:</td><td>The index of the cell to which the data is sent</td></tr><tr><td><b>layer_index</b>:</td><td>The layer index where the output will be sent to</td></tr></table><p><p>
+This method will establish an output channel to a layer in a layout. The output sent to that channel will be put into the specified layer and cell. In this version, the layer is specified through a layer index, hence it must be created before.</p><p>The name is the name which must be used in the _output function of the scripts in order to address that channel.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_output"></a><a name="k_37"></a><p><b>(4) Signature</b>: void <b> output </b> (string name, <a href="class_Region.html">Region</a> region)</p><p><b>Description</b>: Specifies output to a <a href="class_Region.html">Region</a> object</p><table class="layout-table"><tr><td><b>name</b>:</td><td>The name of the channel</td></tr><tr><td><b>region</b>:</td><td>The <a href="class_Region.html">Region</a> object to which the data is sent</td></tr></table><p><p>
+This method will establish an output channel to a <a href="class_Region.html">Region</a> object. The output sent to that channel will be put into the specified region.</p><p>The name is the name which must be used in the _output function of the scripts in order to address that channel.
+Edges sent to this channel are discarded. Edge pairs are converted to polygons.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_output"></a><a name="k_38"></a><p><b>(5) Signature</b>: void <b> output </b> (string name, <a href="class_Edges.html">Edges</a> edges)</p><p><b>Description</b>: Specifies output to an <a href="class_Edges.html">Edges</a> object</p><table class="layout-table"><tr><td><b>name</b>:</td><td>The name of the channel</td></tr><tr><td><b>edges</b>:</td><td>The <a href="class_Edges.html">Edges</a> object to which the data is sent</td></tr></table><p><p>
+This method will establish an output channel to an <a href="class_Edges.html">Edges</a> object. The output sent to that channel will be put into the specified edge collection.
+'Solid' objects such as polygons will be converted to edges by resolving their hulls into edges. Edge pairs are resolved into single edges.</p><p>The name is the name which must be used in the _output function of the scripts in order to address that channel.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_output"></a><a name="k_39"></a><p><b>(6) Signature</b>: void <b> output </b> (string name, <a href="class_EdgePairs.html">EdgePairs</a> edge_pairs)</p><p><b>Description</b>: Specifies output to an <a href="class_EdgePairs.html">EdgePairs</a> object</p><table class="layout-table"><tr><td><b>name</b>:</td><td>The name of the channel</td></tr><tr><td><b>edge_pairs</b>:</td><td>The <a href="class_EdgePairs.html">EdgePairs</a> object to which the data is sent</td></tr></table><p><p>
+This method will establish an output channel to an <a href="class_EdgePairs.html">EdgePairs</a> object. The output sent to that channel will be put into the specified edge pair collection.
+Only <a href="class_EdgePair.html">EdgePair</a> objects are accepted. Other objects are discarded.</p><p>The name is the name which must be used in the _output function of the scripts in order to address that channel.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_output"></a><a name="k_40"></a><p><b>(7) Signature</b>: void <b> output </b> (string name, <a href="class_Texts.html">Texts</a> texts)</p><p><b>Description</b>: Specifies output to an <a href="class_Texts.html">Texts</a> object</p><table class="layout-table"><tr><td><b>name</b>:</td><td>The name of the channel</td></tr><tr><td><b>texts</b>:</td><td>The <a href="class_Texts.html">Texts</a> object to which the data is sent</td></tr></table><p><p>
+This method will establish an output channel to an <a href="class_Texts.html">Texts</a> object. The output sent to that channel will be put into the specified edge pair collection.
+Only <a href="class_Text.html">Text</a> objects are accepted. Other objects are discarded.</p><p>The name is the name which must be used in the _output function of the scripts in order to address that channel.</p><p>This variant has been introduced in version 0.27.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_output"></a><a name="k_41"></a><p><b>(8) Signature</b>: void <b> output </b> (string name, double ptr sum)</p><p><b>Description</b>: Specifies output to single value</p><p><p>
+This method will establish an output channel which sums up float data delivered by calling the _output function.
+In order to specify the target for the data, a <a href="class_Value.html">Value</a> object must be provided for the &quot;sum&quot; parameter.</p><p>The name is the name which must be used in the _output function of the scripts in order to address that channel.
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_output"></a><a name="k_42"></a><p><b>(9) Signature</b>: void <b> output </b> (string name, <a href="class_ReportDatabase.html">ReportDatabase</a> rdb, unsigned long cell_id, unsigned long category_id)</p><p><b>Description</b>: Specifies output to a report database</p><p><p>
+This method will establish an output channel for the processor. The output sent to that channel will be put into the report database given by the &quot;rdb&quot; parameter. &quot;cell_id&quot; specifies the cell and &quot;category_id&quot; the category to use.</p><p>The name is the name which must be used in the _output function of the scripts in order to address that channel.
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_output"></a><a name="k_43"></a><p><b>(10) Signature</b>: void <b> output </b> (string name, <a href="class_Image.html">Image</a> ptr image)</p><p><b>Description</b>: Specifies output to an image</p><p><p>
+This method will establish an output channel which delivers float data to image data. The image is a monochrome image where each pixel corresponds to a single tile. This method for example is useful to collect density information into an image. The image is configured such that each pixel covers one tile.</p><p>The name is the name which must be used in the _output function of the scripts in order to address that channel.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-465"></a><h3>queue</h3></td><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_queue"></a><a name="k_44"></a><p><b>Signature</b>: void <b> queue </b> (string script)</p><p><b>Description</b>: Queues a script for parallel execution</p><p><p></p><p>With this method, scripts are registered that are executed in parallel on each tile.
+The scripts have &quot;Expressions&quot; syntax and can make use of several predefined variables and functions.
+See the <a href="class_TilingProcessor.html">TilingProcessor</a> class description for details.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-473"></a><h3>scale_to_dbu=</h3></td><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_scale_to_dbu="></a><a name="k_45"></a><p><b>Signature</b>: void <b> scale_to_dbu= </b> (bool en)</p><p><b>Description</b>: Enables or disabled automatic scaling to database unit</p><p><p></p><p>If automatic scaling to database unit is enabled, the input is automatically scaled to the database unit set inside the tile processor. This is the default.</p><p>This method has been introduced in version 0.23.2.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'scale_to_dbu'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-479"></a><h3>scale_to_dbu?</h3></td><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_scale_to_dbu?"></a><a name="k_46"></a><p><b>Signature</b>: <i>[const] </i>bool <b> scale_to_dbu? </b></p><p><b>Description</b>: Gets a valid indicating whether automatic scaling to database unit is enabled</p><p><p></p><p>This method has been introduced in version 0.23.2.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'scale_to_dbu'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-485"></a><h3>threads</h3></td><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_threads"></a><a name="k_47"></a><p><b>Signature</b>: <i>[const] </i>unsigned long <b> threads </b></p><p><b>Description</b>: Gets the number of threads to use</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'threads'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-490"></a><h3>threads=</h3></td><td style="padding-bottom: 16px"><a name="method46"></a><a name="m_threads="></a><a name="k_48"></a><p><b>Signature</b>: void <b> threads= </b> (unsigned long n)</p><p><b>Description</b>: Specifies the number of threads to use</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'threads'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-495"></a><h3>tile_border</h3></td><td style="padding-bottom: 16px"><a name="method47"></a><a name="m_tile_border"></a><a name="k_49"></a><p><b>Signature</b>: void <b> tile_border </b> (double bx, double by)</p><p><b>Description</b>: Sets the tile border</p><p><p></p><p>Specifies the tile border. The border is a margin that is considered when fetching shapes. By specifying a border you can fetch shapes into the tile's data which are outside the tile but still must be considered in the computations (i.e. because they might grow into the tile).</p><p>The tile border is given in micron.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-501"></a><h3>tile_origin</h3></td><td style="padding-bottom: 16px"><a name="method48"></a><a name="m_tile_origin"></a><a name="k_50"></a><p><b>Signature</b>: void <b> tile_origin </b> (double xo, double yo)</p><p><b>Description</b>: Sets the tile origin</p><p><p></p><p>Specifies the origin (lower left corner) of the tile field. If no origin is specified, the tiles are centered to the layout's bounding box. Giving the origin together with the tile count and dimensions gives full control over the tile array.</p><p>The tile origin is given in micron.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-507"></a><h3>tile_size</h3></td><td style="padding-bottom: 16px"><a name="method49"></a><a name="m_tile_size"></a><a name="k_51"></a><p><b>Signature</b>: void <b> tile_size </b> (double w, double h)</p><p><b>Description</b>: Sets the tile size</p><p><p></p><p>Specifies the size of the tiles to be used. If no tile size is specified, tiling won't be used and all computations will be done on the whole layout.</p><p>The tile size is given in micron.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-513"></a><h3>tiles</h3></td><td style="padding-bottom: 16px"><a name="method50"></a><a name="m_tiles"></a><a name="k_52"></a><p><b>Signature</b>: void <b> tiles </b> (unsigned long nw, unsigned long nh)</p><p><b>Description</b>: Sets the tile count</p><p><p></p><p>Specifies the number of tiles to be used. If no tile number is specified, the number of tiles required is computed from the layout's dimensions and the tile size. If a number is given, but no tile size, the tile size will be computed from the layout's dimensions.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-519"></a><h3>var</h3></td><td style="padding-bottom: 16px"><a name="method51"></a><a name="m_var"></a><a name="k_53"></a><p><b>Signature</b>: void <b> var </b> (string name, variant value)</p><p><b>Description</b>: Defines a variable for the tiling processor script</p><p><p></p><p>The name specifies the variable under which the value can be used in the scripts.</p></p></td></tr></table></body>

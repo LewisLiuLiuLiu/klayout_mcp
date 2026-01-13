@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class QTouchEvent</p><h1>API reference - Class QTouchEvent</h1><property value="QtGui" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_QtGui.html">QtGui</a></p><p><b>Description</b>: Binding of QTouchEvent</p><p><b>Class hierarchy</b>: QTouchEvent » <a href="class_QInputEvent.html">QInputEvent</a> » <a href="class_QEvent.html">QEvent</a></p><p><b>Sub-classes</b>: <a href="class_QTouchEvent++DeviceType.html">DeviceType</a>, <a href="class_QTouchEvent++QFlags_DeviceType.html">QFlags_DeviceType</a>, <a href="class_QTouchEvent++TouchPoint.html">TouchPoint</a></p><ul><li><a href="#h2-14">Public constructors</a></li><li><a href="#h2-19">Public methods</a></li><li><a href="#h2-64">Public static methods and constants</a></li><li><a href="#h2-71">Detailed description</a></li></ul><p></p><a name="h2-14"></a><h2>Public constructors</h2><table><tr class="row0"><td>new QTouchEvent</td><td><b><a href="#method13">new</a></b></td><td>(const QEvent_Type eventType,<br>const QTouchEvent_DeviceType deviceType = QTouchEvent::TouchScreen,<br>Qt_QFlags_KeyboardModifier modifiers = Qt::NoModifier,<br>Qt_QFlags_TouchPointState touchPointStates = 0,<br>QTouchEvent_TouchPoint[] touchPoints = QList&lt;QTouchEvent::TouchPoint&gt;())</td><td>Constructor QTouchEvent::QTouchEvent(QEvent::Type eventType, QTouchEvent::DeviceType deviceType, QFlags&lt;Qt::KeyboardModifier&gt; modifiers, QFlags&lt;Qt::TouchPointState&gt; touchPointStates, const QList&lt;QTouchEvent::TouchPoint&gt; &amp;touchPoints)</td></tr></table><a name="h2-19"></a><h2>Public methods</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_assign</a></b></td><td>(const QTouchEvent other)</td><td>Assigns another object to self</td></tr><tr class="row1"><td><i>[const]</i></td><td>QTouchEvent ptr</td><td><b><a href="#method3">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method4">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method6">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row1"><td><i>[const]</i></td><td>new QTouchEvent ptr</td><td><b><a href="#method7">_dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method8">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method9">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td><i>[const]</i></td><td>QTouchEvent_DeviceType</td><td><b><a href="#method11">deviceType</a></b></td><td></td><td>Method QTouchEvent::DeviceType QTouchEvent::deviceType()</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method12">deviceType=</a></b></td><td>(const QTouchEvent_DeviceType adeviceType)</td><td>Method void QTouchEvent::setDeviceType(QTouchEvent::DeviceType adeviceType)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method14">setDeviceType</a></b></td><td>(const QTouchEvent_DeviceType adeviceType)</td><td>Method void QTouchEvent::setDeviceType(QTouchEvent::DeviceType adeviceType)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method15">setTouchPointStates</a></b></td><td>(Qt_QFlags_TouchPointState aTouchPointStates)</td><td>Method void QTouchEvent::setTouchPointStates(QFlags&lt;Qt::TouchPointState&gt; aTouchPointStates)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method16">setTouchPoints</a></b></td><td>(QTouchEvent_TouchPoint[] atouchPoints)</td><td>Method void QTouchEvent::setTouchPoints(const QList&lt;QTouchEvent::TouchPoint&gt; &amp;atouchPoints)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method17">setWidget</a></b></td><td>(QWidget ptr awidget)</td><td>Method void QTouchEvent::setWidget(QWidget *awidget)</td></tr><tr class="row1"><td><i>[const]</i></td><td>Qt_QFlags_TouchPointState</td><td><b><a href="#method18">touchPointStates</a></b></td><td></td><td>Method QFlags&lt;Qt::TouchPointState&gt; QTouchEvent::touchPointStates()</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method19">touchPointStates=</a></b></td><td>(Qt_QFlags_TouchPointState aTouchPointStates)</td><td>Method void QTouchEvent::setTouchPointStates(QFlags&lt;Qt::TouchPointState&gt; aTouchPointStates)</td></tr><tr class="row1"><td><i>[const]</i></td><td>QTouchEvent_TouchPoint[]</td><td><b><a href="#method20">touchPoints</a></b></td><td></td><td>Method const QList&lt;QTouchEvent::TouchPoint&gt; &amp;QTouchEvent::touchPoints()</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method21">touchPoints=</a></b></td><td>(QTouchEvent_TouchPoint[] atouchPoints)</td><td>Method void QTouchEvent::setTouchPoints(const QList&lt;QTouchEvent::TouchPoint&gt; &amp;atouchPoints)</td></tr><tr class="row1"><td><i>[const]</i></td><td>QWidget ptr</td><td><b><a href="#method22">widget</a></b></td><td></td><td>Method QWidget *QTouchEvent::widget()</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method23">widget=</a></b></td><td>(QWidget ptr awidget)</td><td>Method void QTouchEvent::setWidget(QWidget *awidget)</td></tr></table><a name="h2-64"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td><i>[static,const]</i></td><td>QTouchEvent_DeviceType</td><td><b><a href="#method0">TouchPad</a></b></td><td></td><td>Enum constant QTouchEvent::TouchPad</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>QTouchEvent_DeviceType</td><td><b><a href="#method1">TouchScreen</a></b></td><td></td><td>Enum constant QTouchEvent::TouchScreen</td></tr></table><a name="detailed"></a><a name="h2-71"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-72"></a><h3>TouchPad</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_TouchPad"></a><a name="k_2"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_QTouchEvent_DeviceType.html">QTouchEvent_DeviceType</a><b> TouchPad </b></p><p><b>Description</b>: Enum constant QTouchEvent::TouchPad</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'TouchPad'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-77"></a><h3>TouchScreen</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_TouchScreen"></a><a name="k_3"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_QTouchEvent_DeviceType.html">QTouchEvent_DeviceType</a><b> TouchScreen </b></p><p><b>Description</b>: Enum constant QTouchEvent::TouchScreen</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'TouchScreen'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-82"></a><h3>_assign</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__assign"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _assign </b> (const <a href="class_QTouchEvent.html">QTouchEvent</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow1"><td><a name="h3-86"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__const_cast"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QTouchEvent.html">QTouchEvent</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-92"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__create"></a><a name="k_6"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-98"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__destroy"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-105"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__destroyed?"></a><a name="k_8"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-112"></a><h3>_dup</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__dup"></a><a name="k_9"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_QTouchEvent.html">QTouchEvent</a> ptr <b> _dup </b></p><p><b>Description</b>: Creates a copy of self</p></td></tr><tr class="bigrow0"><td><a name="h3-116"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__is_const_object?"></a><a name="k_10"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-123"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m__manage"></a><a name="k_11"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-129"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m__unmanage"></a><a name="k_12"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-135"></a><h3>deviceType</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_deviceType"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QTouchEvent_DeviceType.html">QTouchEvent_DeviceType</a><b> deviceType </b></p><p><b>Description</b>: Method QTouchEvent::DeviceType QTouchEvent::deviceType()</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'deviceType'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-140"></a><h3>deviceType=</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_deviceType="></a><a name="k_14"></a><p><b>Signature</b>: void <b> deviceType= </b> (const <a href="class_QTouchEvent_DeviceType.html">QTouchEvent_DeviceType</a> adeviceType)</p><p><b>Description</b>: Method void QTouchEvent::setDeviceType(QTouchEvent::DeviceType adeviceType)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'deviceType'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-145"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_new"></a><a name="k_15"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_QTouchEvent.html">QTouchEvent</a><b> new </b> (const <a href="class_QEvent_Type.html">QEvent_Type</a> eventType, const <a href="class_QTouchEvent_DeviceType.html">QTouchEvent_DeviceType</a> deviceType = QTouchEvent::TouchScreen, <a href="class_Qt_QFlags_KeyboardModifier.html">Qt_QFlags_KeyboardModifier</a> modifiers = Qt::NoModifier, <a href="class_Qt_QFlags_TouchPointState.html">Qt_QFlags_TouchPointState</a> touchPointStates = 0, <a href="class_QTouchEvent_TouchPoint.html">QTouchEvent_TouchPoint</a>[] touchPoints = QList&lt;QTouchEvent::TouchPoint&gt;())</p><p><b>Description</b>: Constructor QTouchEvent::QTouchEvent(QEvent::Type eventType, QTouchEvent::DeviceType deviceType, QFlags&lt;Qt::KeyboardModifier&gt; modifiers, QFlags&lt;Qt::TouchPointState&gt; touchPointStates, const QList&lt;QTouchEvent::TouchPoint&gt; &amp;touchPoints)</p><p><p>
+This method creates an object of class QTouchEvent.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-152"></a><h3>setDeviceType</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_setDeviceType"></a><a name="k_16"></a><p><b>Signature</b>: void <b> setDeviceType </b> (const <a href="class_QTouchEvent_DeviceType.html">QTouchEvent_DeviceType</a> adeviceType)</p><p><b>Description</b>: Method void QTouchEvent::setDeviceType(QTouchEvent::DeviceType adeviceType)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'deviceType'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-157"></a><h3>setTouchPointStates</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_setTouchPointStates"></a><a name="k_17"></a><p><b>Signature</b>: void <b> setTouchPointStates </b> (<a href="class_Qt_QFlags_TouchPointState.html">Qt_QFlags_TouchPointState</a> aTouchPointStates)</p><p><b>Description</b>: Method void QTouchEvent::setTouchPointStates(QFlags&lt;Qt::TouchPointState&gt; aTouchPointStates)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'touchPointStates'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-162"></a><h3>setTouchPoints</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_setTouchPoints"></a><a name="k_18"></a><p><b>Signature</b>: void <b> setTouchPoints </b> (<a href="class_QTouchEvent_TouchPoint.html">QTouchEvent_TouchPoint</a>[] atouchPoints)</p><p><b>Description</b>: Method void QTouchEvent::setTouchPoints(const QList&lt;QTouchEvent::TouchPoint&gt; &amp;atouchPoints)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'touchPoints'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-167"></a><h3>setWidget</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_setWidget"></a><a name="k_19"></a><p><b>Signature</b>: void <b> setWidget </b> (<a href="class_QWidget.html">QWidget</a> ptr awidget)</p><p><b>Description</b>: Method void QTouchEvent::setWidget(QWidget *awidget)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'widget'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-172"></a><h3>touchPointStates</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_touchPointStates"></a><a name="k_20"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Qt_QFlags_TouchPointState.html">Qt_QFlags_TouchPointState</a><b> touchPointStates </b></p><p><b>Description</b>: Method QFlags&lt;Qt::TouchPointState&gt; QTouchEvent::touchPointStates()</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'touchPointStates'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-177"></a><h3>touchPointStates=</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_touchPointStates="></a><a name="k_21"></a><p><b>Signature</b>: void <b> touchPointStates= </b> (<a href="class_Qt_QFlags_TouchPointState.html">Qt_QFlags_TouchPointState</a> aTouchPointStates)</p><p><b>Description</b>: Method void QTouchEvent::setTouchPointStates(QFlags&lt;Qt::TouchPointState&gt; aTouchPointStates)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'touchPointStates'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-182"></a><h3>touchPoints</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_touchPoints"></a><a name="k_22"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QTouchEvent_TouchPoint.html">QTouchEvent_TouchPoint</a>[] <b> touchPoints </b></p><p><b>Description</b>: Method const QList&lt;QTouchEvent::TouchPoint&gt; &amp;QTouchEvent::touchPoints()</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'touchPoints'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-187"></a><h3>touchPoints=</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_touchPoints="></a><a name="k_23"></a><p><b>Signature</b>: void <b> touchPoints= </b> (<a href="class_QTouchEvent_TouchPoint.html">QTouchEvent_TouchPoint</a>[] atouchPoints)</p><p><b>Description</b>: Method void QTouchEvent::setTouchPoints(const QList&lt;QTouchEvent::TouchPoint&gt; &amp;atouchPoints)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'touchPoints'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-192"></a><h3>widget</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_widget"></a><a name="k_24"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QWidget.html">QWidget</a> ptr <b> widget </b></p><p><b>Description</b>: Method QWidget *QTouchEvent::widget()</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'widget'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-197"></a><h3>widget=</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_widget="></a><a name="k_25"></a><p><b>Signature</b>: void <b> widget= </b> (<a href="class_QWidget.html">QWidget</a> ptr awidget)</p><p><b>Description</b>: Method void QTouchEvent::setWidget(QWidget *awidget)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'widget'. This is the setter.<br></p></td></tr></table></body>

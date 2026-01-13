@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class TextGenerator</p><h1>API reference - Class TextGenerator</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: A text generator class</p><ul><li><a href="#h2-30">Public constructors</a></li><li><a href="#h2-35">Public methods</a></li><li><a href="#h2-90">Public static methods and constants</a></li><li><a href="#h2-103">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-114">Detailed description</a></li></ul><p></p><p>A text generator is basically a way to produce human-readable text for labelling layouts. It's similar to the Basic.TEXT PCell, but more convenient to use in a scripting context.</p><p>Generators can be constructed from font files (or resources) or one of the registered generators can be used.</p><p>To create a generator from a font file proceed this way:
+<pre>
+gen = RBA::TextGenerator::new
+gen.load_from_file(&quot;myfont.gds&quot;)
+region = gen.text(&quot;A TEXT&quot;, 0.001)
+</pre></p><p>This code produces a RBA::Region with a database unit of 0.001 micron. This region can be fed into a <a href="class_Shapes.html">Shapes</a> container to place it into a cell for example.</p><p>By convention the font files must have two to three layers:</p><p><ul><li> 1/0 for the actual data </li><li> 2/0 for the borders </li><li> 3/0 for an optional additional background </li></ul></p><p>Currently, all glyphs must be bottom-left aligned at 0, 0. The
+border must be drawn in at least one glyph cell. The border is taken
+as the overall bbox of all borders.</p><p>The glyph cells must be named with a single character or &quot;nnn&quot; where &quot;d&quot; is the
+ASCII code of the character (i.e. &quot;032&quot; for space). Allowed ASCII codes are 32 through 127.
+If a lower-case &quot;a&quot; character is defined, lower-case letters are supported.
+Otherwise, lowercase letters are mapped to uppercase letters.</p><p>Undefined characters are left blank in the output.</p><p>A comment cell can be defined (&quot;COMMENT&quot;) which must hold one text in layer 1
+stating the comment, and additional descriptions such as line width:</p><p><ul><li> &quot;line_width=&lt;x&gt;&quot;: Specifies the intended line width in micron units </li><li> &quot;design_grid=&lt;x&gt;&quot;: Specifies the intended design grid in micron units </li><li> any other text: The description string </li></ul></p><p>Generators can be picked form a list of predefined generator. See <a href="#m_generators">generators</a>, <a href="#m_default_generator">default_generator</a> and <a href="#m_generator_by_name">generator_by_name</a> for picking a generator from the list.</p><p>This class has been introduced in version 0.25.</p><a name="h2-30"></a><h2>Public constructors</h2><table><tr class="row0"><td>new TextGenerator ptr</td><td><b><a href="#method32">new</a></b></td><td></td><td>Creates a new object of this class</td></tr></table><a name="h2-35"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>TextGenerator ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">assign</a></b></td><td>(const TextGenerator other)</td><td>Assigns another object to self</td></tr><tr class="row0"><td><i>[const]</i></td><td>Box</td><td><b><a href="#method8">background</a></b></td><td></td><td>Gets the background rectangle of each glyph in the generator's database units</td></tr><tr class="row1"><td><i>[const]</i></td><td>DBox</td><td><b><a href="#method10">dbackground</a></b></td><td></td><td>Gets the background rectangle in micron units</td></tr><tr class="row0"><td><i>[const]</i></td><td>double</td><td><b><a href="#method11">dbu</a></b></td><td></td><td>Gets the basic database unit the design of the glyphs was made</td></tr><tr class="row1"><td><i>[const]</i></td><td>double</td><td><b><a href="#method12">ddesign_grid</a></b></td><td></td><td>Gets the design grid of the glyphs in micron units</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method14">description</a></b></td><td></td><td>Gets the description text of the generator</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method15">design_grid</a></b></td><td></td><td>Gets the design grid of the glyphs in the generator's database units</td></tr><tr class="row0"><td><i>[const]</i></td><td>double</td><td><b><a href="#method18">dheight</a></b></td><td></td><td>Gets the design height of the glyphs in micron units</td></tr><tr class="row1"><td><i>[const]</i></td><td>double</td><td><b><a href="#method19">dline_width</a></b></td><td></td><td>Gets the line width of the glyphs in micron units</td></tr><tr class="row0"><td><i>[const]</i></td><td>new TextGenerator ptr</td><td><b><a href="#method20">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row1"><td><i>[const]</i></td><td>double</td><td><b><a href="#method21">dwidth</a></b></td><td></td><td>Gets the design width of the glyphs in micron units</td></tr><tr class="row0"><td><i>[const]</i></td><td>Region</td><td><b><a href="#method25">glyph</a></b></td><td>(char char)</td><td>Gets the glyph of the given character as a region</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method26">height</a></b></td><td></td><td>Gets the design height of the glyphs in the generator's database units</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method28">line_width</a></b></td><td></td><td>Gets the line width of the glyphs in the generator's database units</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method29">load_from_file</a></b></td><td>(string path)</td><td>Loads the given file into the generator</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method30">load_from_resource</a></b></td><td>(string resource_path)</td><td>Loads the given resource data (as layout data) into the generator</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method31">name</a></b></td><td></td><td>Gets the name of the generator</td></tr><tr class="row0"><td><i>[const]</i></td><td>Region</td><td><b><a href="#method34">text</a></b></td><td>(string text,<br>double target_dbu,<br>double mag = 1,<br>bool inv = false,<br>double bias = 0,<br>double char_spacing = 0,<br>double line_spacing = 0)</td><td>Gets the rendered text as a region</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method35">width</a></b></td><td></td><td>Gets the design height of the glyphs in the generator's database units</td></tr></table><a name="h2-90"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td></td><td>const TextGenerator ptr</td><td><b><a href="#method13">default_generator</a></b></td><td></td><td>Gets the default text generator (a standard font)</td></tr><tr class="row1"><td></td><td>string[]</td><td><b><a href="#method22">font_paths</a></b></td><td></td><td>Gets the paths where to look for font files</td></tr><tr class="row0"><td></td><td>const TextGenerator ptr</td><td><b><a href="#method23">generator_by_name</a></b></td><td>(string name)</td><td>Gets the text generator for a given name</td></tr><tr class="row1"><td></td><td>const TextGenerator ptr[]</td><td><b><a href="#method24">generators</a></b></td><td></td><td>Gets the generators registered in the system</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method33">set_font_paths</a></b></td><td>(string[] paths)</td><td>Sets the paths where to look for font files</td></tr></table><a name="h2-103"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method9">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method16">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method17">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method27">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-114"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-115"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_TextGenerator.html">TextGenerator</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-121"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-127"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroy"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-134"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroyed?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-141"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__is_const_object?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-148"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__manage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-154"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__unmanage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-160"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_assign"></a><a name="k_9"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_TextGenerator.html">TextGenerator</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow0"><td><a name="h3-164"></a><h3>background</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_background"></a><a name="k_10"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Box.html">Box</a><b> background </b></p><p><b>Description</b>: Gets the background rectangle of each glyph in the generator's database units</p><p><p>
+The background rectangle is the one that is used as background for inverted rendering. A version that delivers this value in micrometer units is <a href="#m_dbackground">dbackground</a>.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-170"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_create"></a><a name="k_11"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-177"></a><h3>dbackground</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_dbackground"></a><a name="k_12"></a><p><b>Signature</b>: <i>[const] </i><a href="class_DBox.html">DBox</a><b> dbackground </b></p><p><b>Description</b>: Gets the background rectangle in micron units</p><p><p>
+The background rectangle is the one that is used as background for inverted rendering.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-183"></a><h3>dbu</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_dbu"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i>double <b> dbu </b></p><p><b>Description</b>: Gets the basic database unit the design of the glyphs was made</p><p><p>
+This database unit the basic resolution of the glyphs.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-189"></a><h3>ddesign_grid</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_ddesign_grid"></a><a name="k_14"></a><p><b>Signature</b>: <i>[const] </i>double <b> ddesign_grid </b></p><p><b>Description</b>: Gets the design grid of the glyphs in micron units</p><p><p>
+The design grid is the basic grid used when designing the glyphs. In most cases this grid is bigger than the database unit. </p></p></td></tr><tr class="bigrow1"><td><a name="h3-195"></a><h3>default_generator</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_default_generator"></a><a name="k_15"></a><p><b>Signature</b>: <i>[static] </i>const <a href="class_TextGenerator.html">TextGenerator</a> ptr <b> default_generator </b></p><p><b>Description</b>: Gets the default text generator (a standard font)</p><p><p>
+This method delivers the default generator or nil if no such generator is installed.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-201"></a><h3>description</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_description"></a><a name="k_16"></a><p><b>Signature</b>: <i>[const] </i>string <b> description </b></p><p><b>Description</b>: Gets the description text of the generator</p><p><p>
+The generator's description text is a human-readable text that is used to identify the generator (aka 'font') in user interfaces.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-207"></a><h3>design_grid</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_design_grid"></a><a name="k_17"></a><p><b>Signature</b>: <i>[const] </i>int <b> design_grid </b></p><p><b>Description</b>: Gets the design grid of the glyphs in the generator's database units</p><p><p>
+The design grid is the basic grid used when designing the glyphs. In most cases this grid is bigger than the database unit. A version that delivers this value in micrometer units is <a href="#m_ddesign_grid">ddesign_grid</a>.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-213"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_destroy"></a><a name="k_18"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-221"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_destroyed?"></a><a name="k_19"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-229"></a><h3>dheight</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_dheight"></a><a name="k_20"></a><p><b>Signature</b>: <i>[const] </i>double <b> dheight </b></p><p><b>Description</b>: Gets the design height of the glyphs in micron units</p><p><p>
+The height is the height of the rectangle occupied by each character. </p></p></td></tr><tr class="bigrow1"><td><a name="h3-235"></a><h3>dline_width</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_dline_width"></a><a name="k_21"></a><p><b>Signature</b>: <i>[const] </i>double <b> dline_width </b></p><p><b>Description</b>: Gets the line width of the glyphs in micron units</p><p><p>
+The line width is the intended (not necessarily precisely) line width of typical character lines (such as the bar of an 'I').</p></p></td></tr><tr class="bigrow0"><td><a name="h3-241"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_dup"></a><a name="k_22"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_TextGenerator.html">TextGenerator</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-246"></a><h3>dwidth</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_dwidth"></a><a name="k_23"></a><p><b>Signature</b>: <i>[const] </i>double <b> dwidth </b></p><p><b>Description</b>: Gets the design width of the glyphs in micron units</p><p><p>
+The width is the width of the rectangle occupied by each character. </p></p></td></tr><tr class="bigrow0"><td><a name="h3-252"></a><h3>font_paths</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_font_paths"></a><a name="k_24"></a><p><b>Signature</b>: <i>[static] </i>string[] <b> font_paths </b></p><p><b>Description</b>: Gets the paths where to look for font files</p><p><p>
+See <a href="#m_set_font_paths">set_font_paths</a> for a description of this function.</p><p>This method has been introduced in version 0.27.4.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-258"></a><h3>generator_by_name</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_generator_by_name"></a><a name="k_25"></a><p><b>Signature</b>: <i>[static] </i>const <a href="class_TextGenerator.html">TextGenerator</a> ptr <b> generator_by_name </b> (string name)</p><p><b>Description</b>: Gets the text generator for a given name</p><p><p>
+This method delivers the generator with the given name or nil if no such generator is registered.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-264"></a><h3>generators</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_generators"></a><a name="k_26"></a><p><b>Signature</b>: <i>[static] </i>const <a href="class_TextGenerator.html">TextGenerator</a> ptr[] <b> generators </b></p><p><b>Description</b>: Gets the generators registered in the system</p><p><p>
+This method delivers a list of generator objects that can be used to create texts.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-270"></a><h3>glyph</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_glyph"></a><a name="k_27"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Region.html">Region</a><b> glyph </b> (char char)</p><p><b>Description</b>: Gets the glyph of the given character as a region</p><p><p>
+The region represents the glyph's outline and is delivered in the generator's database units .A more elaborate way to getting the text's outline is <a href="#m_text">text</a>.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-276"></a><h3>height</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_height"></a><a name="k_28"></a><p><b>Signature</b>: <i>[const] </i>int <b> height </b></p><p><b>Description</b>: Gets the design height of the glyphs in the generator's database units</p><p><p>
+The height is the height of the rectangle occupied by each character. A version that delivers this value in micrometer units is <a href="#m_dheight">dheight</a>.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-282"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_is_const_object?"></a><a name="k_29"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-290"></a><h3>line_width</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_line_width"></a><a name="k_30"></a><p><b>Signature</b>: <i>[const] </i>int <b> line_width </b></p><p><b>Description</b>: Gets the line width of the glyphs in the generator's database units</p><p><p>
+The line width is the intended (not necessarily precisely) line width of typical character lines (such as the bar of an 'I'). A version that delivers this value in micrometer units is <a href="#m_dline_width">dline_width</a>.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-296"></a><h3>load_from_file</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_load_from_file"></a><a name="k_31"></a><p><b>Signature</b>: void <b> load_from_file </b> (string path)</p><p><b>Description</b>: Loads the given file into the generator</p><p><p>
+See the description of the class how the layout data is read.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-302"></a><h3>load_from_resource</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_load_from_resource"></a><a name="k_32"></a><p><b>Signature</b>: void <b> load_from_resource </b> (string resource_path)</p><p><b>Description</b>: Loads the given resource data (as layout data) into the generator</p><p><p>
+The resource path has to start with a colon, i.e. ':/my/resource.gds'. See the description of the class how the layout data is read.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-308"></a><h3>name</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_name"></a><a name="k_33"></a><p><b>Signature</b>: <i>[const] </i>string <b> name </b></p><p><b>Description</b>: Gets the name of the generator</p><p><p>
+The generator's name is the basic key by which the generator is identified.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-314"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_new"></a><a name="k_34"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_TextGenerator.html">TextGenerator</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new object of this class</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-319"></a><h3>set_font_paths</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_set_font_paths"></a><a name="k_35"></a><p><b>Signature</b>: <i>[static] </i>void <b> set_font_paths </b> (string[] paths)</p><p><b>Description</b>: Sets the paths where to look for font files</p><p><p>
+This function sets the paths where to look for font files. After setting such a path, each font found will render a specific generator. The generator can be found under the font file's name. As the text generator is also the basis for the Basic.TEXT PCell, using this function also allows configuring custom fonts for this library cell.</p><p>This method has been introduced in version 0.27.4.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-325"></a><h3>text</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_text"></a><a name="k_36"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Region.html">Region</a><b> text </b> (string text, double target_dbu, double mag = 1, bool inv = false, double bias = 0, double char_spacing = 0, double line_spacing = 0)</p><p><b>Description</b>: Gets the rendered text as a region</p><table class="layout-table"><tr><td><b>text</b>:</td><td>The text string</td></tr><tr><td><b>target_dbu</b>:</td><td>The database unit for which to produce the text</td></tr><tr><td><b>mag</b>:</td><td>The magnification (1.0 for original size)</td></tr><tr><td><b>inv</b>:</td><td>inverted rendering: if true, the glyphs are rendered inverse with the background box as the outer bounding box</td></tr><tr><td><b>bias</b>:</td><td>An additional bias to be applied (happens before inversion, can be negative)</td></tr><tr><td><b>char_spacing</b>:</td><td>Additional space between characters (in micron units)</td></tr><tr><td><b>line_spacing</b>:</td><td>Additional space between lines (in micron units)</td></tr></table><p><p></p><p>Various options can be specified to control the appearance of the text. See the description of the parameters. It's important to specify the target database unit in target_dbu to indicate what database unit shall be used to create the output for.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-339"></a><h3>width</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_width"></a><a name="k_37"></a><p><b>Signature</b>: <i>[const] </i>int <b> width </b></p><p><b>Description</b>: Gets the design height of the glyphs in the generator's database units</p><p><p>
+The width is the width of the rectangle occupied by each character. A version that delivers this value in micrometer units is <a href="#m_dwidth">dwidth</a>.</p></p></td></tr></table></body>

@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class QGraphicsPolygonItem</p><h1>API reference - Class QGraphicsPolygonItem</h1><property value="QtGui" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_QtGui.html">QtGui</a></p><p><b>Description</b>: Binding of QGraphicsPolygonItem</p><p><b>Class hierarchy</b>: QGraphicsPolygonItem » <a href="class_QAbstractGraphicsShapeItem.html">QAbstractGraphicsShapeItem</a> » <a href="class_QGraphicsItem.html">QGraphicsItem</a></p><ul><li><a href="#h2-13">Public constructors</a></li><li><a href="#h2-20">Public methods</a></li><li><a href="#h2-71">Protected methods (static, non-static and constructors)</a></li><li><a href="#h2-130">Detailed description</a></li></ul><p></p><a name="h2-13"></a><h2>Public constructors</h2><table><tr class="row0"><td>new QGraphicsPolygonItem</td><td><b><a href="#method37">new</a></b></td><td>(QGraphicsItem ptr parent = 0,<br>QGraphicsScene ptr scene = 0)</td><td>Constructor QGraphicsPolygonItem::QGraphicsPolygonItem(QGraphicsItem *parent, QGraphicsScene *scene)</td></tr><tr class="row1"><td>new QGraphicsPolygonItem</td><td><b><a href="#method38">new</a></b></td><td>(const QPolygonF polygon,<br>QGraphicsItem ptr parent = 0,<br>QGraphicsScene ptr scene = 0)</td><td>Constructor QGraphicsPolygonItem::QGraphicsPolygonItem(const QPolygonF &amp;polygon, QGraphicsItem *parent, QGraphicsScene *scene)</td></tr></table><a name="h2-20"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>QGraphicsPolygonItem ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method8">advance</a></b></td><td>(int phase)</td><td>Virtual method void QGraphicsPolygonItem::advance(int phase)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QRectF</td><td><b><a href="#method9">boundingRect</a></b></td><td></td><td>Virtual method QRectF QGraphicsPolygonItem::boundingRect()</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method10">collidesWithItem</a></b></td><td>(const QGraphicsItem ptr other,<br>const Qt_ItemSelectionMode mode)</td><td>Virtual method bool QGraphicsPolygonItem::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode)</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method11">collidesWithPath</a></b></td><td>(const QPainterPath path,<br>const Qt_ItemSelectionMode mode)</td><td>Virtual method bool QGraphicsPolygonItem::collidesWithPath(const QPainterPath &amp;path, Qt::ItemSelectionMode mode)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method12">contains</a></b></td><td>(const QPointF point)</td><td>Virtual method bool QGraphicsPolygonItem::contains(const QPointF &amp;point)</td></tr><tr class="row0"><td><i>[const]</i></td><td>Qt_FillRule</td><td><b><a href="#method19">fillRule</a></b></td><td></td><td>Method Qt::FillRule QGraphicsPolygonItem::fillRule()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method20">fillRule=</a></b></td><td>(const Qt_FillRule rule)</td><td>Method void QGraphicsPolygonItem::setFillRule(Qt::FillRule rule)</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method28">isObscuredBy</a></b></td><td>(const QGraphicsItem ptr item)</td><td>Virtual method bool QGraphicsPolygonItem::isObscuredBy(const QGraphicsItem *item)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method29">isObscuredBy?</a></b></td><td>(const QGraphicsItem ptr item)</td><td>Method bool QGraphicsPolygonItem::isObscuredBy(const QGraphicsItem *item)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QPainterPath</td><td><b><a href="#method39">opaqueArea</a></b></td><td></td><td>Virtual method QPainterPath QGraphicsPolygonItem::opaqueArea()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method40">paint</a></b></td><td>(QPainter ptr painter,<br>const QStyleOptionGraphicsItem ptr option,<br>QWidget ptr widget)</td><td>Virtual method void QGraphicsPolygonItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QPolygonF</td><td><b><a href="#method41">polygon</a></b></td><td></td><td>Method QPolygonF QGraphicsPolygonItem::polygon()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method42">polygon=</a></b></td><td>(const QPolygonF polygon)</td><td>Method void QGraphicsPolygonItem::setPolygon(const QPolygonF &amp;polygon)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method48">setFillRule</a></b></td><td>(const Qt_FillRule rule)</td><td>Method void QGraphicsPolygonItem::setFillRule(Qt::FillRule rule)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method49">setPolygon</a></b></td><td>(const QPolygonF polygon)</td><td>Method void QGraphicsPolygonItem::setPolygon(const QPolygonF &amp;polygon)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QPainterPath</td><td><b><a href="#method50">shape</a></b></td><td></td><td>Virtual method QPainterPath QGraphicsPolygonItem::shape()</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method52">type</a></b></td><td></td><td>Virtual method int QGraphicsPolygonItem::type()</td></tr></table><a name="h2-71"></a><h2>Protected methods (static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method7">addToIndex</a></b></td><td></td><td><td>Method void QGraphicsPolygonItem::addToIndex()</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method13">contextMenuEvent</a></b></td><td>(QGraphicsSceneContextMenuEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)</td></td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method14">dragEnterEvent</a></b></td><td>(QGraphicsSceneDragDropEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::dragEnterEvent(QGraphicsSceneDragDropEvent *event)</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method15">dragLeaveEvent</a></b></td><td>(QGraphicsSceneDragDropEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::dragLeaveEvent(QGraphicsSceneDragDropEvent *event)</td></td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method16">dragMoveEvent</a></b></td><td>(QGraphicsSceneDragDropEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::dragMoveEvent(QGraphicsSceneDragDropEvent *event)</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method17">dropEvent</a></b></td><td>(QGraphicsSceneDragDropEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::dropEvent(QGraphicsSceneDragDropEvent *event)</td></td></tr><tr class="row0"><td><i>[const]</i></td><td>variant</td><td><b><a href="#method18">extension</a></b></td><td>(variant variant)</td><td><td>Virtual method QVariant QGraphicsPolygonItem::extension(const QVariant &amp;variant)</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method21">focusInEvent</a></b></td><td>(QFocusEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::focusInEvent(QFocusEvent *event)</td></td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method22">focusOutEvent</a></b></td><td>(QFocusEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::focusOutEvent(QFocusEvent *event)</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method23">hoverEnterEvent</a></b></td><td>(QGraphicsSceneHoverEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)</td></td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method24">hoverLeaveEvent</a></b></td><td>(QGraphicsSceneHoverEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method25">hoverMoveEvent</a></b></td><td>(QGraphicsSceneHoverEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)</td></td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method26">inputMethodEvent</a></b></td><td>(QInputMethodEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::inputMethodEvent(QInputMethodEvent *event)</td></td></tr><tr class="row1"><td><i>[const]</i></td><td>variant</td><td><b><a href="#method27">inputMethodQuery</a></b></td><td>(const Qt_InputMethodQuery query)</td><td><td>Virtual method QVariant QGraphicsPolygonItem::inputMethodQuery(Qt::InputMethodQuery query)</td></td></tr><tr class="row0"><td></td><td>variant</td><td><b><a href="#method30">itemChange</a></b></td><td>(const QGraphicsItem_GraphicsItemChange change,<br>variant value)</td><td><td>Virtual method QVariant QGraphicsPolygonItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &amp;value)</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method31">keyPressEvent</a></b></td><td>(QKeyEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::keyPressEvent(QKeyEvent *event)</td></td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method32">keyReleaseEvent</a></b></td><td>(QKeyEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::keyReleaseEvent(QKeyEvent *event)</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method33">mouseDoubleClickEvent</a></b></td><td>(QGraphicsSceneMouseEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)</td></td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method34">mouseMoveEvent</a></b></td><td>(QGraphicsSceneMouseEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method35">mousePressEvent</a></b></td><td>(QGraphicsSceneMouseEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::mousePressEvent(QGraphicsSceneMouseEvent *event)</td></td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method36">mouseReleaseEvent</a></b></td><td>(QGraphicsSceneMouseEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method43">prepareGeometryChange</a></b></td><td></td><td><td>Method void QGraphicsPolygonItem::prepareGeometryChange()</td></td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method44">removeFromIndex</a></b></td><td></td><td><td>Method void QGraphicsPolygonItem::removeFromIndex()</td></td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method45">sceneEvent</a></b></td><td>(QEvent ptr event)</td><td><td>Virtual method bool QGraphicsPolygonItem::sceneEvent(QEvent *event)</td></td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method46">sceneEventFilter</a></b></td><td>(QGraphicsItem ptr watched,<br>QEvent ptr event)</td><td><td>Virtual method bool QGraphicsPolygonItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method47">setExtension</a></b></td><td>(unsigned int extension,<br>variant variant)</td><td><td>Virtual method void QGraphicsPolygonItem::setExtension(QGraphicsItem::Extension extension, const QVariant &amp;variant)</td></td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method51">supportsExtension</a></b></td><td>(unsigned int extension)</td><td><td>Virtual method bool QGraphicsPolygonItem::supportsExtension(QGraphicsItem::Extension extension)</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method53">wheelEvent</a></b></td><td>(QGraphicsSceneWheelEvent ptr event)</td><td><td>Virtual method void QGraphicsPolygonItem::wheelEvent(QGraphicsSceneWheelEvent *event)</td></td></tr></table><a name="detailed"></a><a name="h2-130"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-131"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QGraphicsPolygonItem.html">QGraphicsPolygonItem</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-137"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-143"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroy"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-150"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroyed?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-157"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__is_const_object?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-164"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__manage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-170"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__unmanage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-176"></a><h3>addToIndex</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_addToIndex"></a><a name="k_9"></a><p><b>Signature</b>: void <b> addToIndex </b></p><p><b>Description</b>: Method void QGraphicsPolygonItem::addToIndex()</p><p><p>
+This method is protected and can only be called from inside a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-182"></a><h3>advance</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_advance"></a><a name="k_10"></a><p><b>Signature</b>: void <b> advance </b> (int phase)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::advance(int phase)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-188"></a><h3>boundingRect</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_boundingRect"></a><a name="k_11"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QRectF.html">QRectF</a><b> boundingRect </b></p><p><b>Description</b>: Virtual method QRectF QGraphicsPolygonItem::boundingRect()</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-194"></a><h3>collidesWithItem</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_collidesWithItem"></a><a name="k_12"></a><p><b>Signature</b>: <i>[const] </i>bool <b> collidesWithItem </b> (const <a href="class_QGraphicsItem.html">QGraphicsItem</a> ptr other, const <a href="class_Qt_ItemSelectionMode.html">Qt_ItemSelectionMode</a> mode)</p><p><b>Description</b>: Virtual method bool QGraphicsPolygonItem::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-200"></a><h3>collidesWithPath</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_collidesWithPath"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i>bool <b> collidesWithPath </b> (const <a href="class_QPainterPath.html">QPainterPath</a> path, const <a href="class_Qt_ItemSelectionMode.html">Qt_ItemSelectionMode</a> mode)</p><p><b>Description</b>: Virtual method bool QGraphicsPolygonItem::collidesWithPath(const QPainterPath &amp;path, Qt::ItemSelectionMode mode)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-206"></a><h3>contains</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_contains"></a><a name="k_14"></a><p><b>Signature</b>: <i>[const] </i>bool <b> contains </b> (const <a href="class_QPointF.html">QPointF</a> point)</p><p><b>Description</b>: Virtual method bool QGraphicsPolygonItem::contains(const QPointF &amp;point)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-212"></a><h3>contextMenuEvent</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_contextMenuEvent"></a><a name="k_15"></a><p><b>Signature</b>: void <b> contextMenuEvent </b> (<a href="class_QGraphicsSceneContextMenuEvent.html">QGraphicsSceneContextMenuEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-218"></a><h3>dragEnterEvent</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_dragEnterEvent"></a><a name="k_16"></a><p><b>Signature</b>: void <b> dragEnterEvent </b> (<a href="class_QGraphicsSceneDragDropEvent.html">QGraphicsSceneDragDropEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::dragEnterEvent(QGraphicsSceneDragDropEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-224"></a><h3>dragLeaveEvent</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_dragLeaveEvent"></a><a name="k_17"></a><p><b>Signature</b>: void <b> dragLeaveEvent </b> (<a href="class_QGraphicsSceneDragDropEvent.html">QGraphicsSceneDragDropEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::dragLeaveEvent(QGraphicsSceneDragDropEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-230"></a><h3>dragMoveEvent</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_dragMoveEvent"></a><a name="k_18"></a><p><b>Signature</b>: void <b> dragMoveEvent </b> (<a href="class_QGraphicsSceneDragDropEvent.html">QGraphicsSceneDragDropEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::dragMoveEvent(QGraphicsSceneDragDropEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-236"></a><h3>dropEvent</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_dropEvent"></a><a name="k_19"></a><p><b>Signature</b>: void <b> dropEvent </b> (<a href="class_QGraphicsSceneDragDropEvent.html">QGraphicsSceneDragDropEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::dropEvent(QGraphicsSceneDragDropEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-242"></a><h3>extension</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_extension"></a><a name="k_20"></a><p><b>Signature</b>: <i>[const] </i>variant <b> extension </b> (variant variant)</p><p><b>Description</b>: Virtual method QVariant QGraphicsPolygonItem::extension(const QVariant &amp;variant)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-248"></a><h3>fillRule</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_fillRule"></a><a name="k_21"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Qt_FillRule.html">Qt_FillRule</a><b> fillRule </b></p><p><b>Description</b>: Method Qt::FillRule QGraphicsPolygonItem::fillRule()</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'fillRule'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-253"></a><h3>fillRule=</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_fillRule="></a><a name="k_22"></a><p><b>Signature</b>: void <b> fillRule= </b> (const <a href="class_Qt_FillRule.html">Qt_FillRule</a> rule)</p><p><b>Description</b>: Method void QGraphicsPolygonItem::setFillRule(Qt::FillRule rule)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'fillRule'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-258"></a><h3>focusInEvent</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_focusInEvent"></a><a name="k_23"></a><p><b>Signature</b>: void <b> focusInEvent </b> (<a href="class_QFocusEvent.html">QFocusEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::focusInEvent(QFocusEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-264"></a><h3>focusOutEvent</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_focusOutEvent"></a><a name="k_24"></a><p><b>Signature</b>: void <b> focusOutEvent </b> (<a href="class_QFocusEvent.html">QFocusEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::focusOutEvent(QFocusEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-270"></a><h3>hoverEnterEvent</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_hoverEnterEvent"></a><a name="k_25"></a><p><b>Signature</b>: void <b> hoverEnterEvent </b> (<a href="class_QGraphicsSceneHoverEvent.html">QGraphicsSceneHoverEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-276"></a><h3>hoverLeaveEvent</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_hoverLeaveEvent"></a><a name="k_26"></a><p><b>Signature</b>: void <b> hoverLeaveEvent </b> (<a href="class_QGraphicsSceneHoverEvent.html">QGraphicsSceneHoverEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-282"></a><h3>hoverMoveEvent</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_hoverMoveEvent"></a><a name="k_27"></a><p><b>Signature</b>: void <b> hoverMoveEvent </b> (<a href="class_QGraphicsSceneHoverEvent.html">QGraphicsSceneHoverEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-288"></a><h3>inputMethodEvent</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_inputMethodEvent"></a><a name="k_28"></a><p><b>Signature</b>: void <b> inputMethodEvent </b> (<a href="class_QInputMethodEvent.html">QInputMethodEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::inputMethodEvent(QInputMethodEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-294"></a><h3>inputMethodQuery</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_inputMethodQuery"></a><a name="k_29"></a><p><b>Signature</b>: <i>[const] </i>variant <b> inputMethodQuery </b> (const <a href="class_Qt_InputMethodQuery.html">Qt_InputMethodQuery</a> query)</p><p><b>Description</b>: Virtual method QVariant QGraphicsPolygonItem::inputMethodQuery(Qt::InputMethodQuery query)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-300"></a><h3>isObscuredBy</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_isObscuredBy"></a><a name="k_30"></a><p><b>Signature</b>: <i>[const] </i>bool <b> isObscuredBy </b> (const <a href="class_QGraphicsItem.html">QGraphicsItem</a> ptr item)</p><p><b>Description</b>: Virtual method bool QGraphicsPolygonItem::isObscuredBy(const QGraphicsItem *item)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-306"></a><h3>isObscuredBy?</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_isObscuredBy?"></a><a name="k_31"></a><p><b>Signature</b>: <i>[const] </i>bool <b> isObscuredBy? </b> (const <a href="class_QGraphicsItem.html">QGraphicsItem</a> ptr item)</p><p><b>Description</b>: Method bool QGraphicsPolygonItem::isObscuredBy(const QGraphicsItem *item)</p><p><p>
+This is a reimplementation of QAbstractGraphicsShapeItem::isObscuredBy</p></p></td></tr><tr class="bigrow0"><td><a name="h3-312"></a><h3>itemChange</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_itemChange"></a><a name="k_32"></a><p><b>Signature</b>: variant <b> itemChange </b> (const <a href="class_QGraphicsItem_GraphicsItemChange.html">QGraphicsItem_GraphicsItemChange</a> change, variant value)</p><p><b>Description</b>: Virtual method QVariant QGraphicsPolygonItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &amp;value)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-318"></a><h3>keyPressEvent</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_keyPressEvent"></a><a name="k_33"></a><p><b>Signature</b>: void <b> keyPressEvent </b> (<a href="class_QKeyEvent.html">QKeyEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::keyPressEvent(QKeyEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-324"></a><h3>keyReleaseEvent</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_keyReleaseEvent"></a><a name="k_34"></a><p><b>Signature</b>: void <b> keyReleaseEvent </b> (<a href="class_QKeyEvent.html">QKeyEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::keyReleaseEvent(QKeyEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-330"></a><h3>mouseDoubleClickEvent</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_mouseDoubleClickEvent"></a><a name="k_35"></a><p><b>Signature</b>: void <b> mouseDoubleClickEvent </b> (<a href="class_QGraphicsSceneMouseEvent.html">QGraphicsSceneMouseEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-336"></a><h3>mouseMoveEvent</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_mouseMoveEvent"></a><a name="k_36"></a><p><b>Signature</b>: void <b> mouseMoveEvent </b> (<a href="class_QGraphicsSceneMouseEvent.html">QGraphicsSceneMouseEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-342"></a><h3>mousePressEvent</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_mousePressEvent"></a><a name="k_37"></a><p><b>Signature</b>: void <b> mousePressEvent </b> (<a href="class_QGraphicsSceneMouseEvent.html">QGraphicsSceneMouseEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::mousePressEvent(QGraphicsSceneMouseEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-348"></a><h3>mouseReleaseEvent</h3></td><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_mouseReleaseEvent"></a><a name="k_38"></a><p><b>Signature</b>: void <b> mouseReleaseEvent </b> (<a href="class_QGraphicsSceneMouseEvent.html">QGraphicsSceneMouseEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-354"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_new"></a><a name="k_39"></a><p><b>(1) Signature</b>: <i>[static] </i>new <a href="class_QGraphicsPolygonItem.html">QGraphicsPolygonItem</a><b> new </b> (<a href="class_QGraphicsItem.html">QGraphicsItem</a> ptr parent = 0, <a href="class_QGraphicsScene.html">QGraphicsScene</a> ptr scene = 0)</p><p><b>Description</b>: Constructor QGraphicsPolygonItem::QGraphicsPolygonItem(QGraphicsItem *parent, QGraphicsScene *scene)</p><p><p>
+This method creates an object of class QGraphicsPolygonItem.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_new"></a><a name="k_40"></a><p><b>(2) Signature</b>: <i>[static] </i>new <a href="class_QGraphicsPolygonItem.html">QGraphicsPolygonItem</a><b> new </b> (const <a href="class_QPolygonF.html">QPolygonF</a> polygon, <a href="class_QGraphicsItem.html">QGraphicsItem</a> ptr parent = 0, <a href="class_QGraphicsScene.html">QGraphicsScene</a> ptr scene = 0)</p><p><b>Description</b>: Constructor QGraphicsPolygonItem::QGraphicsPolygonItem(const QPolygonF &amp;polygon, QGraphicsItem *parent, QGraphicsScene *scene)</p><p><p>
+This method creates an object of class QGraphicsPolygonItem.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-367"></a><h3>opaqueArea</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_opaqueArea"></a><a name="k_41"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QPainterPath.html">QPainterPath</a><b> opaqueArea </b></p><p><b>Description</b>: Virtual method QPainterPath QGraphicsPolygonItem::opaqueArea()</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-373"></a><h3>paint</h3></td><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_paint"></a><a name="k_42"></a><p><b>Signature</b>: void <b> paint </b> (<a href="class_QPainter.html">QPainter</a> ptr painter, const <a href="class_QStyleOptionGraphicsItem.html">QStyleOptionGraphicsItem</a> ptr option, <a href="class_QWidget.html">QWidget</a> ptr widget)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-379"></a><h3>polygon</h3></td><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_polygon"></a><a name="k_43"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QPolygonF.html">QPolygonF</a><b> polygon </b></p><p><b>Description</b>: Method QPolygonF QGraphicsPolygonItem::polygon()</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'polygon'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-384"></a><h3>polygon=</h3></td><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_polygon="></a><a name="k_44"></a><p><b>Signature</b>: void <b> polygon= </b> (const <a href="class_QPolygonF.html">QPolygonF</a> polygon)</p><p><b>Description</b>: Method void QGraphicsPolygonItem::setPolygon(const QPolygonF &amp;polygon)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'polygon'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-389"></a><h3>prepareGeometryChange</h3></td><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_prepareGeometryChange"></a><a name="k_45"></a><p><b>Signature</b>: void <b> prepareGeometryChange </b></p><p><b>Description</b>: Method void QGraphicsPolygonItem::prepareGeometryChange()</p><p><p>
+This method is protected and can only be called from inside a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-395"></a><h3>removeFromIndex</h3></td><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_removeFromIndex"></a><a name="k_46"></a><p><b>Signature</b>: void <b> removeFromIndex </b></p><p><b>Description</b>: Method void QGraphicsPolygonItem::removeFromIndex()</p><p><p>
+This method is protected and can only be called from inside a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-401"></a><h3>sceneEvent</h3></td><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_sceneEvent"></a><a name="k_47"></a><p><b>Signature</b>: bool <b> sceneEvent </b> (<a href="class_QEvent.html">QEvent</a> ptr event)</p><p><b>Description</b>: Virtual method bool QGraphicsPolygonItem::sceneEvent(QEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-407"></a><h3>sceneEventFilter</h3></td><td style="padding-bottom: 16px"><a name="method46"></a><a name="m_sceneEventFilter"></a><a name="k_48"></a><p><b>Signature</b>: bool <b> sceneEventFilter </b> (<a href="class_QGraphicsItem.html">QGraphicsItem</a> ptr watched, <a href="class_QEvent.html">QEvent</a> ptr event)</p><p><b>Description</b>: Virtual method bool QGraphicsPolygonItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-413"></a><h3>setExtension</h3></td><td style="padding-bottom: 16px"><a name="method47"></a><a name="m_setExtension"></a><a name="k_49"></a><p><b>Signature</b>: void <b> setExtension </b> (unsigned int extension, variant variant)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::setExtension(QGraphicsItem::Extension extension, const QVariant &amp;variant)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-419"></a><h3>setFillRule</h3></td><td style="padding-bottom: 16px"><a name="method48"></a><a name="m_setFillRule"></a><a name="k_50"></a><p><b>Signature</b>: void <b> setFillRule </b> (const <a href="class_Qt_FillRule.html">Qt_FillRule</a> rule)</p><p><b>Description</b>: Method void QGraphicsPolygonItem::setFillRule(Qt::FillRule rule)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'fillRule'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-424"></a><h3>setPolygon</h3></td><td style="padding-bottom: 16px"><a name="method49"></a><a name="m_setPolygon"></a><a name="k_51"></a><p><b>Signature</b>: void <b> setPolygon </b> (const <a href="class_QPolygonF.html">QPolygonF</a> polygon)</p><p><b>Description</b>: Method void QGraphicsPolygonItem::setPolygon(const QPolygonF &amp;polygon)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'polygon'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-429"></a><h3>shape</h3></td><td style="padding-bottom: 16px"><a name="method50"></a><a name="m_shape"></a><a name="k_52"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QPainterPath.html">QPainterPath</a><b> shape </b></p><p><b>Description</b>: Virtual method QPainterPath QGraphicsPolygonItem::shape()</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-435"></a><h3>supportsExtension</h3></td><td style="padding-bottom: 16px"><a name="method51"></a><a name="m_supportsExtension"></a><a name="k_53"></a><p><b>Signature</b>: <i>[const] </i>bool <b> supportsExtension </b> (unsigned int extension)</p><p><b>Description</b>: Virtual method bool QGraphicsPolygonItem::supportsExtension(QGraphicsItem::Extension extension)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-441"></a><h3>type</h3></td><td style="padding-bottom: 16px"><a name="method52"></a><a name="m_type"></a><a name="k_54"></a><p><b>Signature</b>: <i>[const] </i>int <b> type </b></p><p><b>Description</b>: Virtual method int QGraphicsPolygonItem::type()</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-447"></a><h3>wheelEvent</h3></td><td style="padding-bottom: 16px"><a name="method53"></a><a name="m_wheelEvent"></a><a name="k_55"></a><p><b>Signature</b>: void <b> wheelEvent </b> (<a href="class_QGraphicsSceneWheelEvent.html">QGraphicsSceneWheelEvent</a> ptr event)</p><p><b>Description</b>: Virtual method void QGraphicsPolygonItem::wheelEvent(QGraphicsSceneWheelEvent *event)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr></table></body>

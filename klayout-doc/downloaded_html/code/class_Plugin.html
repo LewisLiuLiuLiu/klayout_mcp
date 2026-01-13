@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class Plugin</p><h1>API reference - Class Plugin</h1><property value="lay" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_lay.html">lay</a></p><p><b>Description</b>: The plugin object</p><p><b>Class hierarchy</b>: Plugin » <a href="class_PluginBase.html">PluginBase</a></p><ul><li><a href="#h2-13">Public methods</a></li><li><a href="#h2-104">Public static methods and constants</a></li><li><a href="#h2-121">Detailed description</a></li></ul><p></p><p>This class provides the actual plugin implementation. Each view gets its own instance of the plugin class. The plugin factory <a href="class_PluginFactory.html">PluginFactory</a> class must be specialized to provide a factory for new objects of the Plugin class. See the documentation there for details about the plugin mechanism and the basic concepts.</p><p>This class has been introduced in version 0.22.
+</p><a name="h2-13"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>Plugin ptr</td><td><b><a href="#method6">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method9">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method10">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method11">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method12">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method14">activated</a></b></td><td></td><td>Gets called when the plugin is activated (selected in the tool bar)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method15">add_edge_marker</a></b></td><td>(const DEdge e,<br>bool emphasize = false)</td><td>Creates a cursor to indicate an edge</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method16">add_edge_marker</a></b></td><td>(const Edge e,<br>int cv_index,<br>const LayerInfo layer,<br>bool emphasize = false)</td><td>Creates a cursor to indicate an edge</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method17">add_mouse_cursor</a></b></td><td>(const DPoint p,<br>bool emphasize = false)</td><td>Creates a cursor to indicate the mouse position</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method18">add_mouse_cursor</a></b></td><td>(const Point p,<br>int cv_index,<br>const LayerInfo layer,<br>bool emphasize = false)</td><td>Creates a cursor to indicate the mouse position</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method19">clear_mouse_cursors</a></b></td><td></td><td>Clears all existing mouse cursors</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method20">config_finalize</a></b></td><td></td><td>Sends the post-configuration request to the plugin</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>bool</td><td><b><a href="#method21">configure</a></b></td><td>(string name,<br>string value)</td><td>Sends configuration requests to the plugin</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method22">deactivated</a></b></td><td></td><td>Gets called when the plugin is deactivated and another plugin is activated</td></tr><tr class="row0"><td><i>[const]</i></td><td>Dispatcher ptr</td><td><b><a href="#method23">dispatcher</a></b></td><td></td><td>Gets the dispatcher object the plugin is associated with</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method24">drag_cancel</a></b></td><td></td><td>Gets called on various occasions when some mouse drag operation should be canceled</td></tr><tr class="row0"><td></td><td>EditorOptionsPageBase ptr[]</td><td><b><a href="#method25">editor_options_pages</a></b></td><td></td><td>Gets the editor options pages which are associated with the view</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>bool</td><td><b><a href="#method26">enter_event</a></b></td><td>(bool prio)</td><td>Handles the enter event (mouse enters canvas area of view)</td></tr><tr class="row0"><td></td><td>EditorOptionsPageBase ptr</td><td><b><a href="#method27">focus_page</a></b></td><td></td><td>Gets the (first) focus page</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>int</td><td><b><a href="#method28">focus_page_open</a></b></td><td></td><td>Gets called when the focus page wants to be opened - i.e. if 'Tab' is pressed during editing</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method29">grab_mouse</a></b></td><td></td><td>Redirects mouse events to this plugin, even if the plugin is not active.</td></tr><tr class="row1"><td><i>[virtual,const]</i></td><td>bool</td><td><b><a href="#method30">has_tracking_position</a></b></td><td></td><td>Gets a value indicating whether the plugin provides a tracking position</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>bool</td><td><b><a href="#method31">key_event</a></b></td><td>(unsigned int key,<br>unsigned int buttons)</td><td>Handles the key pressed event</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>bool</td><td><b><a href="#method32">leave_event</a></b></td><td>(bool prio)</td><td>Handles the leave event (mouse leaves canvas area of view)</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method33">menu_activated</a></b></td><td>(string symbol)</td><td>Gets called when a custom menu item is selected</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>bool</td><td><b><a href="#method34">mouse_button_pressed_event</a></b></td><td>(DPoint p,<br>unsigned int buttons,<br>bool prio)</td><td>Handles the mouse button pressed event</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>bool</td><td><b><a href="#method35">mouse_button_released_event</a></b></td><td>(DPoint p,<br>unsigned int buttons,<br>bool prio)</td><td>Handles the mouse button release event</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>bool</td><td><b><a href="#method36">mouse_click_event</a></b></td><td>(DPoint p,<br>unsigned int buttons,<br>bool prio)</td><td>Handles the mouse button click event (after the button has been released)</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>bool</td><td><b><a href="#method37">mouse_double_click_event</a></b></td><td>(DPoint p,<br>unsigned int buttons,<br>bool prio)</td><td>Handles the mouse button double-click event</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>bool</td><td><b><a href="#method38">mouse_moved_event</a></b></td><td>(DPoint p,<br>unsigned int buttons,<br>bool prio)</td><td>Handles the mouse move event</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method39">set_cursor</a></b></td><td>(int cursor_type)</td><td>Sets the cursor in the view area to the given type</td></tr><tr class="row1"><td><i>[const]</i></td><td>DPoint</td><td><b><a href="#method40">snap</a></b></td><td>(DPoint p)</td><td>Snaps a point to the edit grid</td></tr><tr class="row0"><td><i>[const]</i></td><td>DVector</td><td><b><a href="#method41">snap</a></b></td><td>(DVector v)</td><td>Snaps a vector to the edit grid</td></tr><tr class="row1"><td><i>[const]</i></td><td>DPoint</td><td><b><a href="#method42">snap</a></b></td><td>(const DPoint p,<br>const DPoint plast,<br>bool connect = false,<br>AngleConstraintType ac = AC_Global)</td><td>Snaps a point to the edit grid with an angle constraint</td></tr><tr class="row0"><td><i>[const]</i></td><td>DVector</td><td><b><a href="#method43">snap</a></b></td><td>(const DVector v,<br>bool connect = false,<br>AngleConstraintType ac = AC_Global)</td><td>Snaps a move vector to the edit grid with and implies an angle constraint</td></tr><tr class="row1"><td></td><td>DPoint</td><td><b><a href="#method44">snap2</a></b></td><td>(const DPoint p,<br>bool visualize = false)</td><td>Snaps a point to the edit grid with advanced snapping (including object snapping)</td></tr><tr class="row0"><td></td><td>DPoint</td><td><b><a href="#method45">snap2</a></b></td><td>(const DPoint p,<br>const DPoint plast,<br>bool connect = false,<br>AngleConstraintType ac = AC_Global,<br>bool visualize = false)</td><td>Snaps a point to the edit grid with an angle constraint with advanced snapping (including object snapping)</td></tr><tr class="row1"><td><i>[virtual,const]</i></td><td>DPoint</td><td><b><a href="#method46">tracking_position</a></b></td><td></td><td>Gets the tracking position</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method47">ungrab_mouse</a></b></td><td></td><td>Removes a mouse grab registered with <a href="#m_grab_mouse">grab_mouse</a>.</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method48">update</a></b></td><td></td><td>Gets called when the view has changed</td></tr><tr class="row0"><td><i>[const]</i></td><td>LayoutView ptr</td><td><b><a href="#method49">view</a></b></td><td></td><td>Gets the view object the plugin is associated with</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>bool</td><td><b><a href="#method50">wheel_event</a></b></td><td>(int delta,<br>bool horizontal,<br>DPoint p,<br>unsigned int buttons,<br>bool prio)</td><td>Handles the mouse wheel event</td></tr></table><a name="h2-104"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td><i>[static,const]</i></td><td>AngleConstraintType</td><td><b><a href="#method0">AC_Any</a></b></td><td></td><td>Specifies to use any angle and not snap to a specific direction.</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>AngleConstraintType</td><td><b><a href="#method1">AC_Diagonal</a></b></td><td></td><td>Specifies to use multiples of 45 degree.</td></tr><tr class="row0"><td><i>[static,const]</i></td><td>AngleConstraintType</td><td><b><a href="#method2">AC_Global</a></b></td><td></td><td>Specifies to use the global angle constraint.</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>AngleConstraintType</td><td><b><a href="#method3">AC_Horizontal</a></b></td><td></td><td>Specifies to use horizontal direction only.</td></tr><tr class="row0"><td><i>[static,const]</i></td><td>AngleConstraintType</td><td><b><a href="#method4">AC_Ortho</a></b></td><td></td><td>Specifies to use multiples of 90 degree.</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>AngleConstraintType</td><td><b><a href="#method5">AC_Vertical</a></b></td><td></td><td>Specifies to use vertical direction only.</td></tr><tr class="row0"><td></td><td>AngleConstraintType</td><td><b><a href="#method13">ac_from_buttons</a></b></td><td>(unsigned int buttons)</td><td>Creates an angle constraint from a button combination</td></tr></table><a name="detailed"></a><a name="h2-121"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-122"></a><h3>AC_Any</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_AC_Any"></a><a name="k_2"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_AngleConstraintType.html">AngleConstraintType</a><b> AC_Any </b></p><p><b>Description</b>: Specifies to use any angle and not snap to a specific direction.</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'AC_Any'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-127"></a><h3>AC_Diagonal</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_AC_Diagonal"></a><a name="k_3"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_AngleConstraintType.html">AngleConstraintType</a><b> AC_Diagonal </b></p><p><b>Description</b>: Specifies to use multiples of 45 degree.</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'AC_Diagonal'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-132"></a><h3>AC_Global</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m_AC_Global"></a><a name="k_4"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_AngleConstraintType.html">AngleConstraintType</a><b> AC_Global </b></p><p><b>Description</b>: Specifies to use the global angle constraint.</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'AC_Global'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-137"></a><h3>AC_Horizontal</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m_AC_Horizontal"></a><a name="k_5"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_AngleConstraintType.html">AngleConstraintType</a><b> AC_Horizontal </b></p><p><b>Description</b>: Specifies to use horizontal direction only.</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'AC_Horizontal'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-142"></a><h3>AC_Ortho</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m_AC_Ortho"></a><a name="k_6"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_AngleConstraintType.html">AngleConstraintType</a><b> AC_Ortho </b></p><p><b>Description</b>: Specifies to use multiples of 90 degree.</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'AC_Ortho'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-147"></a><h3>AC_Vertical</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m_AC_Vertical"></a><a name="k_7"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_AngleConstraintType.html">AngleConstraintType</a><b> AC_Vertical </b></p><p><b>Description</b>: Specifies to use vertical direction only.</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'AC_Vertical'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-152"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__const_cast"></a><a name="k_8"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Plugin.html">Plugin</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-158"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__create"></a><a name="k_9"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-164"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__destroy"></a><a name="k_10"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-171"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m__destroyed?"></a><a name="k_11"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-178"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m__is_const_object?"></a><a name="k_12"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-185"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m__manage"></a><a name="k_13"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-191"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m__unmanage"></a><a name="k_14"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-197"></a><h3>ac_from_buttons</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_ac_from_buttons"></a><a name="k_15"></a><p><b>Signature</b>: <i>[static] </i><a href="class_AngleConstraintType.html">AngleConstraintType</a><b> ac_from_buttons </b> (unsigned int buttons)</p><p><b>Description</b>: Creates an angle constraint from a button combination</p><p><p>
+This method provides the angle constraints implied by a specific modifier combination, i.e. 'Shift' will render ortho snapping. Use this function to generate angle constraints following the established conventions.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-203"></a><h3>activated</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_activated"></a><a name="k_16"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> activated </b></p><p><b>Description</b>: Gets called when the plugin is activated (selected in the tool bar)</p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-207"></a><h3>add_edge_marker</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_add_edge_marker"></a><a name="k_17"></a><p><b>(1) Signature</b>: void <b> add_edge_marker </b> (const <a href="class_DEdge.html">DEdge</a> e, bool emphasize = false)</p><p><b>Description</b>: Creates a cursor to indicate an edge</p><p><p>
+This function will create a marker that indicates an edge - for example the edge that a point is snapping to. 
+If 'emphasize' is true, the cursor is displayed in a 'stronger' style.</p><p>Before you use this method, clear existing edge markers and cursors with <a href="#m_clear_mouse_cursors">clear_mouse_cursors</a>.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_add_edge_marker"></a><a name="k_18"></a><p><b>(2) Signature</b>: void <b> add_edge_marker </b> (const <a href="class_Edge.html">Edge</a> e, int cv_index, const <a href="class_LayerInfo.html">LayerInfo</a> layer, bool emphasize = false)</p><p><b>Description</b>: Creates a cursor to indicate an edge</p><p><p>
+This version of this method creates an edge marker based on the integer-unit edge and
+a source cellview index plus a layer info.
+The cellview index and layer info is used to derive the transformation rules to apply to the edge and to compute the final position.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-221"></a><h3>add_mouse_cursor</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_add_mouse_cursor"></a><a name="k_19"></a><p><b>(1) Signature</b>: void <b> add_mouse_cursor </b> (const <a href="class_DPoint.html">DPoint</a> p, bool emphasize = false)</p><p><b>Description</b>: Creates a cursor to indicate the mouse position</p><p><p>
+This function will create a marker that indicates the (for example snapped) mouse position.
+In addition to this, it will establish the position for the tracking cursor, if mouse
+tracking is enabled in the application. You can override the tracking position by reimplementing
+<a href="#m_tracking_position">tracking_position</a> and <a href="#m_has_tracking_position">has_tracking_position</a>.</p><p>To enable tracking, make sure a reimplementation of <a href="#m_mouse_moved_event">mouse_moved_event</a> does not consume the
+event and returns 'false'.</p><p>Multiple cursors can be created. In that case, the tracking position is given by the last cursor.</p><p>If 'emphasize' is true, the cursor is displayed in a 'stronger' style - i.e. with a double circle instead of a single one.</p><p>Before you use this method, clear existing cursors with <a href="#m_clear_mouse_cursors">clear_mouse_cursors</a>.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_add_mouse_cursor"></a><a name="k_20"></a><p><b>(2) Signature</b>: void <b> add_mouse_cursor </b> (const <a href="class_Point.html">Point</a> p, int cv_index, const <a href="class_LayerInfo.html">LayerInfo</a> layer, bool emphasize = false)</p><p><b>Description</b>: Creates a cursor to indicate the mouse position</p><p><p>
+This version of this method creates a mouse cursor based on the integer-unit point and
+a source cellview index plus a layer info.
+The cellview index and layer info is used to derive the transformation rules to apply to the point and to compute the final position.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-238"></a><h3>clear_mouse_cursors</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_clear_mouse_cursors"></a><a name="k_21"></a><p><b>Signature</b>: void <b> clear_mouse_cursors </b></p><p><b>Description</b>: Clears all existing mouse cursors</p><p><p>
+Use this function to remove exisiting mouse cursors (see <a href="#m_add_mouse_cursor">add_mouse_cursor</a> and <a href="#m_add_edge_marker">add_edge_marker</a>).
+This method is automatically called when the plugin becomes deactivated.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-245"></a><h3>config_finalize</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_config_finalize"></a><a name="k_22"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> config_finalize </b></p><p><b>Description</b>: Sends the post-configuration request to the plugin</p><p><p>
+After all configuration parameters have been sent, 'config_finalize' is called to given the plugin a chance to update its internal state according to the new configuration.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-252"></a><h3>configure</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_configure"></a><a name="k_23"></a><p><b>Signature</b>: <i>[virtual] </i>bool <b> configure </b> (string name, string value)</p><p><b>Description</b>: Sends configuration requests to the plugin</p><table class="layout-table"><tr><td><b>name</b>:</td><td>The name of the configuration variable as registered in the plugin factory</td></tr><tr><td><b>value</b>:</td><td>The value of the configuration variable</td></tr></table><p><p></p><p>When a configuration variable is changed, the new value is reported to the plugin by calling the 'configure' method.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-261"></a><h3>deactivated</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_deactivated"></a><a name="k_24"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> deactivated </b></p><p><b>Description</b>: Gets called when the plugin is deactivated and another plugin is activated</p></td></tr><tr class="bigrow1"><td><a name="h3-265"></a><h3>dispatcher</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_dispatcher"></a><a name="k_25"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Dispatcher.html">Dispatcher</a> ptr <b> dispatcher </b></p><p><b>Description</b>: Gets the dispatcher object the plugin is associated with</p><p><p>
+This method returns the dispatcher object that the plugin is associated with.
+The dispatcher object manages the configuration parameters. 'set_config', 'get_config' and 'commit_config' can be used on this object to get or set configuration parameters. Configuration parameters are a way to persist information and the preferred way of communicating with editor option pages and configuration pages.</p><p>This convenience method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-272"></a><h3>drag_cancel</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_drag_cancel"></a><a name="k_26"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> drag_cancel </b></p><p><b>Description</b>: Gets called on various occasions when some mouse drag operation should be canceled</p><p><p>
+If the plugin implements some press-and-drag or a click-and-drag operation, this callback should cancel this operation and return to some state waiting for a new mouse event.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-278"></a><h3>editor_options_pages</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_editor_options_pages"></a><a name="k_27"></a><p><b>Signature</b>: <a href="class_EditorOptionsPageBase.html">EditorOptionsPageBase</a> ptr[] <b> editor_options_pages </b></p><p><b>Description</b>: Gets the editor options pages which are associated with the view</p><p><p>
+The editor options pages are created by the plugin factory class and are associated with this plugin.
+This method allows locating them and using them for plugin-specific purposes.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-285"></a><h3>enter_event</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_enter_event"></a><a name="k_28"></a><p><b>Signature</b>: <i>[virtual] </i>bool <b> enter_event </b> (bool prio)</p><p><b>Description</b>: Handles the enter event (mouse enters canvas area of view)</p><p><p>
+The behaviour of this callback is the same than for <a href="#m_mouse_button_pressed_event">mouse_button_pressed_event</a>, except that it is called when the mouse enters the canvas area.
+This method does not have a position nor button flags.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-293"></a><h3>focus_page</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_focus_page"></a><a name="k_29"></a><p><b>Signature</b>: <a href="class_EditorOptionsPageBase.html">EditorOptionsPageBase</a> ptr <b> focus_page </b></p><p><b>Description</b>: Gets the (first) focus page</p><p><p>
+Focus pages are editor options pages that have a true value for <a href="class_EditorOptionsPage.html#m_is_focus_page">EditorOptionsPage#is_focus_page</a>.
+The pages can be navigated to quickly or can be shown in a modal dialog from the editor function.
+This method returns the first focus page present in the editor options pages stack.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-301"></a><h3>focus_page_open</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_focus_page_open"></a><a name="k_30"></a><p><b>Signature</b>: <i>[virtual] </i>int <b> focus_page_open </b></p><p><b>Description</b>: Gets called when the focus page wants to be opened - i.e. if 'Tab' is pressed during editing</p><p><p>
+The default implementation calls <a href="class_EditorOptionsPage.html#m_show">EditorOptionsPage#show</a> on the focus page.
+This method can be overloaded to provide certain actions before or after the page is shown, specifically if the page is a modal one. For example, it can update the page with current dimensions of a shape that is created and after committing the page, adjust the shape accordingly.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-308"></a><h3>grab_mouse</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_grab_mouse"></a><a name="k_31"></a><p><b>Signature</b>: void <b> grab_mouse </b></p><p><b>Description</b>: Redirects mouse events to this plugin, even if the plugin is not active.</p></td></tr><tr class="bigrow0"><td><a name="h3-312"></a><h3>has_tracking_position</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_has_tracking_position"></a><a name="k_32"></a><p><b>Signature</b>: <i>[virtual,const] </i>bool <b> has_tracking_position </b></p><p><b>Description</b>: Gets a value indicating whether the plugin provides a tracking position</p><p><p>
+The tracking position is shown in the lower-left corner of the layout window to indicate the current position.
+If this method returns true for the active service, the application will fetch the position by calling <a href="#m_tracking_position">tracking_position</a> rather than displaying the original mouse position.</p><p>The default implementation enables tracking if a mouse cursor has been set using <a href="#m_add_mouse_cursor">add_mouse_cursor</a>.
+When enabling tracking, make sure a reimplementation of <a href="#m_mouse_moved_event">mouse_moved_event</a> does not consume the
+event and returns 'false'.</p><p>This method has been added in version 0.27.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-321"></a><h3>key_event</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_key_event"></a><a name="k_33"></a><p><b>Signature</b>: <i>[virtual] </i>bool <b> key_event </b> (unsigned int key, unsigned int buttons)</p><p><b>Description</b>: Handles the key pressed event</p><table class="layout-table"><tr><td><b>key</b>:</td><td>The Qt key code of the key that was pressed</td></tr><tr><td><b>buttons</b>:</td><td>A combination of the constants in the <a href="class_ButtonState.html">ButtonState</a> class which codes both the mouse buttons and the key modifiers (.e. ShiftButton etc).</td></tr><tr><td><b>Returns</b>:</td><td>True to terminate dispatcher</td></tr></table><p><p>
+This method will called by the view on the active plugin when a button is pressed on the mouse.</p><p>If the plugin handles the event, it should return true to indicate that the event should not be processed further.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-332"></a><h3>leave_event</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_leave_event"></a><a name="k_34"></a><p><b>Signature</b>: <i>[virtual] </i>bool <b> leave_event </b> (bool prio)</p><p><b>Description</b>: Handles the leave event (mouse leaves canvas area of view)</p><p><p>
+The behaviour of this callback is the same than for <a href="#m_mouse_button_pressed_event">mouse_button_pressed_event</a>, except that it is called when the mouse leaves the canvas area.
+This method does not have a position nor button flags.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-340"></a><h3>menu_activated</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_menu_activated"></a><a name="k_35"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> menu_activated </b> (string symbol)</p><p><b>Description</b>: Gets called when a custom menu item is selected</p><p><p>
+When a menu item is clicked which was registered with the plugin factory, the plugin's 'menu_activated' method is called for the current view. The symbol registered for the menu item is passed in the 'symbol' argument.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-346"></a><h3>mouse_button_pressed_event</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_mouse_button_pressed_event"></a><a name="k_36"></a><p><b>Signature</b>: <i>[virtual] </i>bool <b> mouse_button_pressed_event </b> (<a href="class_DPoint.html">DPoint</a> p, unsigned int buttons, bool prio)</p><p><b>Description</b>: Handles the mouse button pressed event</p><table class="layout-table"><tr><td><b>p</b>:</td><td>The point at which the button was pressed</td></tr><tr><td><b>buttons</b>:</td><td>A combination of the constants in the <a href="class_ButtonState.html">ButtonState</a> class which codes both the mouse buttons and the key modifiers (.e. LeftButton, ShiftButton etc).</td></tr><tr><td><b>Returns</b>:</td><td>True to terminate dispatcher</td></tr></table><p><p>
+This method will called by the view when a button is pressed on the mouse.</p><p>First, the plugins that grabbed the mouse with <a href="#m_grab_mouse">grab_mouse</a> will receive this event with 'prio' set to true in the reverse order the plugins grabbed the mouse. The loop will terminate if one of the mouse event handlers returns true.</p><p>If that is not the case or no plugin has grabbed the mouse, the active plugin receives the mouse event with 'prio' set to true.</p><p>If no receiver accepted the mouse event by returning true, it is sent again to all plugins with 'prio' set to false.
+Again, the loop terminates if one of the receivers returns true. The second pass gives inactive plugins a chance to monitor the mouse and implement specific actions - i.e. displaying the current position.</p><p>This event is not sent immediately when the mouse button is pressed but when a signification movement for the mouse cursor away from the original position is detected. If the mouse button is released before that, a mouse_clicked_event is sent rather than a press-move-release sequence.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-358"></a><h3>mouse_button_released_event</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_mouse_button_released_event"></a><a name="k_37"></a><p><b>Signature</b>: <i>[virtual] </i>bool <b> mouse_button_released_event </b> (<a href="class_DPoint.html">DPoint</a> p, unsigned int buttons, bool prio)</p><p><b>Description</b>: Handles the mouse button release event</p><p><p>
+The behaviour of this callback is the same than for <a href="#m_mouse_button_pressed_event">mouse_button_pressed_event</a>, except that it is called when the mouse button is released.
+Starting with version 0.30.6, the button mask reflects the keyboard modifiers at the moment the mouse was released. Before, the keyboard modifiers were captured at the moment when the mouse was pressed.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-365"></a><h3>mouse_click_event</h3></td><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_mouse_click_event"></a><a name="k_38"></a><p><b>Signature</b>: <i>[virtual] </i>bool <b> mouse_click_event </b> (<a href="class_DPoint.html">DPoint</a> p, unsigned int buttons, bool prio)</p><p><b>Description</b>: Handles the mouse button click event (after the button has been released)</p><p><p>
+The behaviour of this callback is the same than for <a href="#m_mouse_button_pressed_event">mouse_button_pressed_event</a>, except that it is called when the mouse button has been released without moving it.
+A mouse click is not defined by duration, but by releasing a button without moving the mouse after the button was pressed. As a consequence, a <a href="#m_mouse_button_pressed_event">mouse_button_pressed_event</a> is always issued at the beginning, but it is not followed by a <a href="#m_mouse_button_released_event">mouse_button_released_event</a>.
+Instead, the 'mouse_click_event' is issued.</p><p>Starting with version 0.30.6, the button mask reflects the keyboard modifiers at the moment the mouse was released. Before, the keyboard modifiers were captured at the moment when the mouse was pressed.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-373"></a><h3>mouse_double_click_event</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_mouse_double_click_event"></a><a name="k_39"></a><p><b>Signature</b>: <i>[virtual] </i>bool <b> mouse_double_click_event </b> (<a href="class_DPoint.html">DPoint</a> p, unsigned int buttons, bool prio)</p><p><b>Description</b>: Handles the mouse button double-click event</p><p><p>
+The behaviour of this callback is the same than for <a href="#m_mouse_button_pressed_event">mouse_button_pressed_event</a>, except that it is called when the mouse button has been double-clicked.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-380"></a><h3>mouse_moved_event</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_mouse_moved_event"></a><a name="k_40"></a><p><b>Signature</b>: <i>[virtual] </i>bool <b> mouse_moved_event </b> (<a href="class_DPoint.html">DPoint</a> p, unsigned int buttons, bool prio)</p><p><b>Description</b>: Handles the mouse move event</p><p><p>
+The behaviour of this callback is the same than for <a href="#m_mouse_button_pressed_event">mouse_button_pressed_event</a>, except that it is called when the mouse is moved in the canvas area.</p><p>The mouse move event is important for a number of background jobs, such as coordinate display in the status bar.
+Hence, you should not consume the event - i.e. you should return 'false' from this method.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-388"></a><h3>set_cursor</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_set_cursor"></a><a name="k_41"></a><p><b>Signature</b>: void <b> set_cursor </b> (int cursor_type)</p><p><b>Description</b>: Sets the cursor in the view area to the given type</p><p><p>
+Setting the cursor has an effect only inside event handlers, i.e. <a href="#m_mouse_button_pressed_event">mouse_button_pressed_event</a>. The cursor is not set permanently. Is is reset in the mouse move handler unless a button is pressed or the cursor is explicitly set again in <a href="#m_mouse_moved_event">mouse_moved_event</a>.</p><p>The cursor type is one of the cursor constants in the <a href="class_Cursor.html">Cursor</a> class, i.e. 'CursorArrow' for the normal cursor.</p></p></td></tr><tr class="bigrow0"><td rowspan="4"><a name="h3-394"></a><h3>snap</h3></td><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_snap"></a><a name="k_42"></a><p><b>(1) Signature</b>: <i>[const] </i><a href="class_DPoint.html">DPoint</a><b> snap </b> (<a href="class_DPoint.html">DPoint</a> p)</p><p><b>Description</b>: Snaps a point to the edit grid</p><table class="layout-table"><tr><td><b>p</b>:</td><td>The point to snap</td></tr></table><p><p></p><p>If the edit grid is given, the point's x and y components
+are snapped to the edit grid. Otherwise the global grid is used.
+Edit and global grid are set by configuration options.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_snap"></a><a name="k_43"></a><p><b>(2) Signature</b>: <i>[const] </i><a href="class_DVector.html">DVector</a><b> snap </b> (<a href="class_DVector.html">DVector</a> v)</p><p><b>Description</b>: Snaps a vector to the edit grid</p><table class="layout-table"><tr><td><b>v</b>:</td><td>The vector to snap</td></tr></table><p><p></p><p>If the edit grid is given, the vector's x and y components
+are snapped to the edit grid. Otherwise the global grid is used.
+Edit and global grid are set by configuration options.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_snap"></a><a name="k_44"></a><p><b>(3) Signature</b>: <i>[const] </i><a href="class_DPoint.html">DPoint</a><b> snap </b> (const <a href="class_DPoint.html">DPoint</a> p, const <a href="class_DPoint.html">DPoint</a> plast, bool connect = false, <a href="class_AngleConstraintType.html">AngleConstraintType</a> ac = AC_Global)</p><p><b>Description</b>: Snaps a point to the edit grid with an angle constraint</p><table class="layout-table"><tr><td><b>p</b>:</td><td>The point to snap</td></tr><tr><td><b>plast</b>:</td><td>The last point of the connection/move vector</td></tr><tr><td><b>connect</b>:</td><td>true, if the point is an connection vertex, false if it is a move target point</td></tr><tr><td><b>ac</b>:</td><td>Overrides the connect or move angle constraint unless it is <a href="class_Plugin.html#m_AC_Global">Plugin#AC_Global</a></td></tr></table><p><p></p><p>This method snaps point &quot;p&quot; relative to the initial point &quot;plast&quot;. This method
+tries to snap &quot;p&quot; to the edit or global grid (edit grid with higher priority), while
+trying to observe the angle constraint that imposes a constraint on the way &quot;p&quot;
+can move relative to &quot;plast&quot;.</p><p>The &quot;connect&quot; parameter will decide which angle constraint to use, unless &quot;ac&quot; specifies
+an angle constraint already. If &quot;connect&quot; is true, the line between &quot;p&quot; and &quot;plast&quot; is regarded a connection
+between points (e.g. a polygon edge) and the connection angle constraint applies. Otherwise
+the move constraint applies.</p><p>The angle constraint determines how &quot;p&quot; can move in relation to &quot;plast&quot; - for example,
+if the angle constraint is <a href="class_Plugin.html#m_AC_Ortho">Plugin#AC_Ortho</a>, &quot;p&quot; can only move away from &quot;plast&quot; in horizontal or vertical direction.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_snap"></a><a name="k_45"></a><p><b>(4) Signature</b>: <i>[const] </i><a href="class_DVector.html">DVector</a><b> snap </b> (const <a href="class_DVector.html">DVector</a> v, bool connect = false, <a href="class_AngleConstraintType.html">AngleConstraintType</a> ac = AC_Global)</p><p><b>Description</b>: Snaps a move vector to the edit grid with and implies an angle constraint</p><table class="layout-table"><tr><td><b>v</b>:</td><td>The vector to snap</td></tr><tr><td><b>connect</b>:</td><td>true, if the vector is an connection vector, false if it is a move vector</td></tr><tr><td><b>ac</b>:</td><td>Overrides the connect or move angle constraint unless it is AC_Global</td></tr></table><p><p></p><p>The &quot;connect&quot; parameter will decide which angle constraint to use, unless &quot;ac&quot; specifies
+an angle constraint already. If &quot;connect&quot; is true, the vector is regarded a connection line
+between points (e.g. a polygon edge) and the connection angle constraint applies. Otherwise
+the move constraint applies.</p><p>The angle constraint determines how &quot;p&quot; can move in relation to &quot;plast&quot; - for example,
+if the angle constraint is <a href="class_Plugin.html#m_AC_Ortho">Plugin#AC_Ortho</a>, &quot;p&quot; can only move away from &quot;plast&quot; in horizontal or vertical direction.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-443"></a><h3>snap2</h3></td><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_snap2"></a><a name="k_46"></a><p><b>(1) Signature</b>: <a href="class_DPoint.html">DPoint</a><b> snap2 </b> (const <a href="class_DPoint.html">DPoint</a> p, bool visualize = false)</p><p><b>Description</b>: Snaps a point to the edit grid with advanced snapping (including object snapping)</p><table class="layout-table"><tr><td><b>p</b>:</td><td>The point to snap</td></tr><tr><td><b>visualize</b>:</td><td>If true, a cursor shape is added to the scene indicating the snap details</td></tr></table><p><p></p><p>This method behaves like the other &quot;snap2&quot; variant, but does not allow to specify an
+angle constraint. Only grid constraints and snapping to objects is supported.</p><p>If &quot;visualize&quot; is true, the function will generate calls to <a href="#m_add_mouse_cursor">add_mouse_cursor</a> or <a href="#m_add_edge_marker">add_edge_marker</a> to provide a visualization of the edges or vertexes that the point is snapping to. <a href="#m_clear_mouse_cursors">clear_mouse_cursors</a> will be called before.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_snap2"></a><a name="k_47"></a><p><b>(2) Signature</b>: <a href="class_DPoint.html">DPoint</a><b> snap2 </b> (const <a href="class_DPoint.html">DPoint</a> p, const <a href="class_DPoint.html">DPoint</a> plast, bool connect = false, <a href="class_AngleConstraintType.html">AngleConstraintType</a> ac = AC_Global, bool visualize = false)</p><p><b>Description</b>: Snaps a point to the edit grid with an angle constraint with advanced snapping (including object snapping)</p><table class="layout-table"><tr><td><b>p</b>:</td><td>The point to snap</td></tr><tr><td><b>plast</b>:</td><td>The last point of the connection or move start point</td></tr><tr><td><b>connect</b>:</td><td>true, if the point is an connection, false if it is a move target point</td></tr><tr><td><b>ac</b>:</td><td>Overrides the connect or move angle constraint unless it is AC_Global</td></tr><tr><td><b>visualize</b>:</td><td>If true, a cursor shape is added to the scene indicating the snap details</td></tr></table><p><p></p><p>This method will snap the point p, given an initial point &quot;plast&quot;. This includes an angle constraint.
+If &quot;connect&quot; is true, the line between &quot;plast&quot; and &quot;p&quot; is regarded a connection (e.g. a polygon edge).
+If not, the line is regarded a move vector. If &quot;ac&quot; is <a href="class_Plugin.html#m_AC_Global">Plugin#AC_Global</a>, the angle constraint is 
+taken from the connect or move angle constraint, depending on the value of &quot;connect&quot;. The angle constraint
+determines how &quot;p&quot; can move in relation to &quot;plast&quot; - for example, if the angle constraint is <a href="class_Plugin.html#m_AC_Ortho">Plugin#AC_Ortho</a>, 
+&quot;p&quot; can only move away from &quot;plast&quot; in horizontal or vertical direction.</p><p>This method considers options like global or editing grid or whether the target point
+will snap to another object. The behavior is given by the respective configuration.</p><p>If &quot;visualize&quot; is true, the function will generate calls to <a href="#m_add_mouse_cursor">add_mouse_cursor</a> or <a href="#m_add_edge_marker">add_edge_marker</a> to provide a visualization of the edges or vertexes that the point is snapping to. <a href="#m_clear_mouse_cursors">clear_mouse_cursors</a> will be called before.</p><p>This method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-470"></a><h3>tracking_position</h3></td><td style="padding-bottom: 16px"><a name="method46"></a><a name="m_tracking_position"></a><a name="k_48"></a><p><b>Signature</b>: <i>[virtual,const] </i><a href="class_DPoint.html">DPoint</a><b> tracking_position </b></p><p><b>Description</b>: Gets the tracking position</p><p><p>
+See <a href="#m_has_tracking_position">has_tracking_position</a> for details.</p><p>The default implementation takes the tracking position from a mouse cursor, if you have created one using <a href="#m_add_mouse_cursor">add_mouse_cursor</a>.
+When enabling tracking, make sure a reimplementation of <a href="#m_mouse_moved_event">mouse_moved_event</a> does not consume the
+event and returns 'false'.</p><p>This method has been added in version 0.27.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-478"></a><h3>ungrab_mouse</h3></td><td style="padding-bottom: 16px"><a name="method47"></a><a name="m_ungrab_mouse"></a><a name="k_49"></a><p><b>Signature</b>: void <b> ungrab_mouse </b></p><p><b>Description</b>: Removes a mouse grab registered with <a href="#m_grab_mouse">grab_mouse</a>.</p></td></tr><tr class="bigrow0"><td><a name="h3-482"></a><h3>update</h3></td><td style="padding-bottom: 16px"><a name="method48"></a><a name="m_update"></a><a name="k_50"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> update </b></p><p><b>Description</b>: Gets called when the view has changed</p><p><p>
+This method is called in particular if the view has changed the visible rectangle, i.e. after zooming in or out or panning. This callback can be used to update any internal states that depend on the view's state.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-488"></a><h3>view</h3></td><td style="padding-bottom: 16px"><a name="method49"></a><a name="m_view"></a><a name="k_51"></a><p><b>Signature</b>: <i>[const] </i><a href="class_LayoutView.html">LayoutView</a> ptr <b> view </b></p><p><b>Description</b>: Gets the view object the plugin is associated with</p><p><p>
+This method returns the view object that the plugin is associated with.</p><p>This convenience method has been added in version 0.30.4.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-494"></a><h3>wheel_event</h3></td><td style="padding-bottom: 16px"><a name="method50"></a><a name="m_wheel_event"></a><a name="k_52"></a><p><b>Signature</b>: <i>[virtual] </i>bool <b> wheel_event </b> (int delta, bool horizontal, <a href="class_DPoint.html">DPoint</a> p, unsigned int buttons, bool prio)</p><p><b>Description</b>: Handles the mouse wheel event</p><p><p>
+The behaviour of this callback is the same than for <a href="#m_mouse_button_pressed_event">mouse_button_pressed_event</a>, except that it is called when the mouse wheel is rotated.
+Additional parameters for this event are 'delta' (the rotation angle in units of 1/8th degree) and 'horizontal' which is true when the horizontal wheel was rotated and false if the vertical wheel was rotated.
+</p></p></td></tr></table></body>

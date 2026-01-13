@@ -1,0 +1,608 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Various Topics</a> » <a href="drc_ref.html">DRC Reference</a> » DRC Reference: Netter object</p><h1>DRC Reference: Netter object</h1><a name="k_1"></a><p>
+The Netter object provides services related to network extraction
+from a layout. The relevant methods of this object are available
+as global functions too where they act on a default incarnation
+of the netter. Usually it's not required to instantiate a Netter
+object, but it serves as a container for this functionality.
+</p><p><pre>
+# create a new Netter object:
+nx = netter
+nx.connect(poly, contact)
+...
+</pre></p><p>
+Network formation:
+</p><p>
+A basic service the Netter object provides is the formation of 
+connected networks of conductive shapes (netting). To do so, the Netter
+must be given a connection specification. This happens by calling
+&quot;connect&quot; with two polygon layers. The Netter will then regard all
+overlaps of shapes on these layers as connections between the
+respective materials. Networks are the basis for netlist extraction,
+network geometry deduction and the antenna check.
+</p><p>
+Connections can be cleared with &quot;clear_connections&quot;. If not, 
+connections add atop of the already defined ones. Here is an 
+example for the antenna check:
+</p><p><pre>
+# build connction of poly+gate to metal1
+connect(gate, poly)
+connect(poly, contact)
+connect(contact, metal1)
+
+# runs an antenna check for metal1 with a ratio of 50
+m1_antenna_errors = antenna_check(gate, metal1, 50.0)
+
+# add connections to metal2
+connect(metal1, via1)
+connect(via1, metal2)
+
+# runs an antenna check for metal2 with a ratio of 70.0
+m2_antenna_errors = antenna_check(gate, metal2, 70.0)
+
+# this will remove all connections made
+clear_connections
+...
+</pre></p><p>
+Further functionality of the Netter object:
+</p><p>
+More methods will be added in the future to support network-related features.
+</p><ul><li><a href="#h2-64">&quot;antenna_check&quot; - Performs an antenna check</a></li><li><a href="#h2-209">&quot;clear_connections&quot; - Clears all connections stored so far</a></li><li><a href="#h2-218">&quot;connect&quot; - Specifies a connection between two layers</a></li><li><a href="#h2-245">&quot;connect_explicit&quot; - Specifies a list of net names for nets to connect (&quot;must connect&quot; nets)</a></li><li><a href="#h2-291">&quot;connect_global&quot; - Connects a layer with a global net</a></li><li><a href="#h2-303">&quot;connect_implicit&quot; - Specifies a search pattern for implicit net connections (&quot;must connect&quot; nets)</a></li><li><a href="#h2-334">&quot;device_scaling&quot; - Specifies a dimension scale factor for the geometrical device properties</a></li><li><a href="#h2-345">&quot;evaluate_nets&quot; - Evaluates net properties and annotates shapes from a given layer on the nets</a></li><li><a href="#h2-421">&quot;extract_devices&quot; - Extracts devices based on the given extractor class, name and device layer selection</a></li><li><a href="#h2-480">&quot;ignore_extraction_errors&quot; - Specifies whether to ignore extraction errors</a></li><li><a href="#h2-491">&quot;l2n_data&quot; - Gets the internal LayoutToNetlist object</a></li><li><a href="#h2-501">&quot;name&quot; - Assigns a name to a layer</a></li><li><a href="#h2-543">&quot;name_prefix&quot; - Specifies the name prefix for auto-generated layer names</a></li><li><a href="#h2-552">&quot;netlist&quot; - Gets the extracted netlist or triggers extraction if not done yet</a></li><li><a href="#h2-564">&quot;soft_connect&quot; - Specifies a soft connection between two layers</a></li><li><a href="#h2-592">&quot;soft_connect_global&quot; - Soft-connects a layer with a global net</a></li><li><a href="#h2-607">&quot;top_level&quot; - Specifies top level mode</a></li></ul><a name="antenna_check"></a><a name="h2-64"></a><h2>&quot;antenna_check&quot; - Performs an antenna check</h2><a name="k_2"></a><p>Usage:</p><ul><li><tt>antenna_check(gate, metal, ratio, [ diode_specs ... ] [, texts ])</tt></li></ul><p>
+The antenna check is used to avoid plasma induced damage. Physically, 
+the damage happes if during the manufacturing of a metal layer with
+plasma etching charge accumulates on the metal islands. On reaching a
+certain threshold, this charge may discarge over gate oxide attached of 
+devices attached to such metal areas hence damaging it.
+</p><p>
+Antenna checks are performed by collecting all connected nets up to
+a certain metal layer and then computing the area of all metal shapes
+and all connected gates of a certain kind (e.g. thin and thick oxide gates).
+The ratio of metal area divided by the gate area must not exceed a certain
+threshold.
+</p><p>
+A simple antenna check is this:
+</p><p><pre>
+poly = ... # poly layer
+diff = ... # diffusion layer
+contact = ... # contact layer
+metal1 = ... # metal layer
+
+# compute gate area
+gate = poly &amp; diff
+
+# note that gate and poly have to be included - gate is
+# a subset of poly, but forms the sensitive area
+connect(gate, poly)
+connect(poly, contact)
+connect(contact, metal1)
+errors = antenna_check(gate, metal1, 50.0)
+</pre></p><p>
+Usually antenna checks apply to multiple metal layers. In this case,
+the connectivity needs to be extended after the first check to include
+the next metal layers. This can be achieved with incremental connects:
+</p><p><pre>
+# provide connections up to metal1
+connect(gate, poly)
+connect(poly, contact)
+connect(contact, metal1)
+metal1_errors = antenna_check(gate, metal1, 50.0)
+
+# now *add* connections up to metal2
+connect(metal1, via1)
+connect(via1, metal2)
+metal2_errors = antenna_check(gate, metal2, 50.0)
+
+... continue this scheme with further metal layers ...
+</pre></p><p>
+Plasma induced damage can be rectified by including diodes
+which create a safe current path for discharging the metal
+islands. Such diodes can be identified with a recognition layer
+(usually the diffusion area of a certain kind). You can include
+such diode recognition layers in the antenna check. If a connection
+is detected to a diode, the respective network is skipped:
+</p><p><pre>
+...
+diode = ... # diode recognition layer
+
+connect(diode, contact)
+errors = antenna_check(gate, metal1, 50.0, diode)
+</pre></p><p>
+You can also make diode connections decreases the
+sensitivity of the antenna check depending on the size
+of the diode. The following specification makes 
+diode connections increase the ratio threshold by
+10 per square micrometer of diode area:
+</p><p><pre>
+...
+diode = ... # diode recognition layer
+
+connect(diode, contact)
+# each square micrometer of diode area connected to a network
+# will add 10 to the ratio:
+errors = antenna_check(gate, metal1, 50.0, [ diode, 10.0 ])
+</pre></p><p>
+Multiple diode specifications are allowed. Just add them 
+to the antenna_check call.
+</p><p>
+You can include the perimeter into the area computation for
+the gate or metal layer or both. The physical picture
+is this: the side walls of the material contribute to the 
+surface too. As the side wall area can be estimated by taking
+the perimeter times some material thickness, the effective 
+area is: 
+</p><p><pre>
+A(eff) = A + P * t
+</pre></p><p>
+Here A is the area of the polygons and P is their perimeter.
+t is the &quot;thickness&quot; in micrometer units. To specify such
+a condition, use the following notation:
+</p><p><pre>
+errors = antenna_check(area_and_perimeter(gate, 0.5), ...)
+</pre></p><p>
+&quot;area_and_perimeter&quot; takes the polygon layer and the 
+thickness (0.5 micrometers in this case). 
+This notation can be applied to both gate and
+metal layers. A detailed notation for the usual,
+area-only case is available as well for completeness:
+</p><p><pre>
+errors = antenna_check(area_only(gate), ...)
+
+# this is equivalent to a zero thickness:
+errors = antenna_check(area_and_perimeter(gate, 0.0), ...)
+# or the standard case:
+errors = antenna_check(gate, ...)
+</pre></p><p>
+Finally there is also &quot;perimeter_only&quot;. When using this 
+specification with a thickness value, the area is computed
+from the perimeter alone:
+</p><p><pre>
+A(eff) = P * t
+</pre></p><p><pre>
+errors = antenna_check(perimeter_only(gate, 0.5), ...)
+</pre></p><p>
+The error shapes produced by the antenna check are copies
+of the metal shapes on the metal layers of each network 
+violating the antenna rule.
+</p><p>
+You can specify a text layer (use &quot;labels&quot; to create one). It will receive
+error labels describing the measured values and computation parameters for debugging
+the layout. This option has been introduced in version 0.27.11.
+</p><a name="clear_connections"></a><a name="h2-209"></a><h2>&quot;clear_connections&quot; - Clears all connections stored so far</h2><a name="k_3"></a><p>Usage:</p><ul><li><tt>clear_connections</tt></li></ul><p>
+See <a href="#connect">connect</a> for more details.
+</p><a name="connect"></a><a name="h2-218"></a><h2>&quot;connect&quot; - Specifies a connection between two layers</h2><a name="k_4"></a><p>Usage:</p><ul><li><tt>connect(a, b)</tt></li></ul><p>
+a and b must be polygon or text layers. After calling this function, the
+Netter regards all overlapping or touching shapes on these layers
+to form an electrical connection between the materials formed by
+these layers. This also implies intra-layer connections: shapes
+on these layers touching or overlapping other shapes on these
+layers will form bigger, electrically connected areas.
+</p><p>
+Texts will be used to assign net names to the nets. The preferred
+method is to use <a href="drc_ref_global.html#labels">labels</a> to create a text layer from a design 
+layer. When using <a href="drc_ref_global.html#input">input</a>, text labels are carried implicitly
+with the polygons but at the cost of small dummy shapes (2x2 DBU
+marker polygons) and limited functionality.
+</p><p>
+Multiple connect calls must be made to form larger connectivity
+stacks across multiple layers. Such stacks may include forks and
+joins.
+</p><p>
+Connections are accumulated. The connections defined so far
+can be cleared with <a href="#clear_connections">clear_connections</a>.
+</p><a name="connect_explicit"></a><a name="h2-245"></a><h2>&quot;connect_explicit&quot; - Specifies a list of net names for nets to connect (&quot;must connect&quot; nets)</h2><a name="k_5"></a><p>Usage:</p><ul><li><tt>connect_explicit(net_names)</tt></li><li><tt>connect_explicit(cell_pattern, net_names)</tt></li></ul><p>
+Use this method to explicitly connect nets even if there is no physical connection.
+The concept is similar to implicit connection (see <a href="#connect_implicit">connect_implicit</a>). The method gets
+a list of nets which are connected virtually, even if there is no physical connection.
+The first version applies this scheme to all cells, the second version to cells matching
+the cell name pattern. The cell name pattern follows the usual glob style form (e.g. &quot;A*&quot;
+applies the connection in all cells whose name starts with &quot;A&quot;).
+</p><p>
+This method is useful to establish a logical connection which is made later up on the 
+next level of hierarchy. For example, a standard cell my not contain substrate or well
+taps as these may be made by tap or spare cells. Logically however, the cell only has
+one power or ground pin for the devices and substrate or well. In order to match both
+representations - for example for the purpose of LVS - the dual power or ground pins have
+to be connected. Assuming that there is a global net &quot;BULK&quot; for the substrate and a
+net &quot;VSS&quot; for the sources of the NMOS devices, the following statement will create this
+connection for all cell names beginning with &quot;INV&quot;:
+</p><p><pre>
+connect_global(bulk, &quot;BULK&quot;)
+...
+connect_explicit(&quot;INV*&quot;, [ &quot;BULK&quot;, &quot;VSS&quot; ])
+</pre></p><p>
+The resulting net and pin will carry a name made from the combination of the connected
+nets. In this case it will be &quot;BULK,VSS&quot;.
+</p><p>
+The virtual connection in general bears the risk of missing a physical connection. 
+The &quot;connect_explicit&quot; feature therefore checks whether the connection is made physically 
+on the next hierarchy level (&quot;must connect&quot; nets), except for top-level cells for which 
+it is assumed that this connection is made later. 
+A warning is raised instead for top level cells.
+</p><p>
+Explicit connections also imply implicit connections between different parts of 
+one of the nets. In the example before, &quot;VSS&quot; pieces without a physical connection
+will also be connected.
+</p><p>
+The explicit connections are applied on the next net extraction and cleared
+on &quot;clear_connections&quot;.
+</p><a name="connect_global"></a><a name="h2-291"></a><h2>&quot;connect_global&quot; - Connects a layer with a global net</h2><a name="k_6"></a><p>Usage:</p><ul><li><tt>connect_global(l, name)</tt></li></ul><p>
+Connects the shapes from the given layer l to a global net with the given name.
+Global nets are common to all cells. Global nets automatically connect to parent
+cells throughs implied pins. An example is the substrate (bulk) net which connects
+to shapes belonging to tie-down diodes. &quot;l&quot; can be a polygon or text layer.
+</p><a name="connect_implicit"></a><a name="h2-303"></a><h2>&quot;connect_implicit&quot; - Specifies a search pattern for implicit net connections (&quot;must connect&quot; nets)</h2><a name="k_7"></a><p>Usage:</p><ul><li><tt>connect_implicit(label_pattern)</tt></li><li><tt>connect_implicit(cell_pattern, label_pattern)</tt></li></ul><p>
+This method specifies a net name search pattern, either for all cells or for
+certain cells, given by a name search pattern. Search pattern follow the usual glob
+form (e.g. &quot;A*&quot; for all cells or nets with names starting with &quot;A&quot;).
+</p><p>
+Then, for nets matching the net name pattern and for which there is more than
+one subnet, the subnets are connected. &quot;Subnets&quot; are physically disconnected parts
+of a net which carry the same name.
+</p><p>
+This feature is useful for example for power nets which are complete in a cell,
+but are supposed to be connected upwards in the hierarchy (&quot;must connect&quot; nets).
+Physically there are multiple nets, logically - and specifically in the schematic for
+the purpose of LVS - there is only one net. 
+&quot;connect_implicit&quot; now creates a virtual, combined physical net that matches the logical net.
+</p><p>
+This is general bears the risk of missing a physical connection. The &quot;connect_implicit&quot;
+feature therefore checks whether the connection is made physically on the next hierarchy
+level, except for top-level cells for which it is assumed that this connection is made
+later. A warning is raised instead for top level cells.
+</p><p>
+The implicit connections are applied on the next net extraction and cleared
+on &quot;clear_connections&quot;. Another feature is <a href="#connect_explicit">connect_explicit</a> which allows connecting
+differently named subnets in a similar fashion.
+</p><a name="device_scaling"></a><a name="h2-334"></a><h2>&quot;device_scaling&quot; - Specifies a dimension scale factor for the geometrical device properties</h2><a name="k_8"></a><p>Usage:</p><ul><li><tt>device_scaling(factor)</tt></li></ul><p>
+Specifying a factor of 2 will make all devices being extracted as if the 
+geometries were two times larger. This feature is useful when the drawn layout
+does not correspond to the physical dimensions.
+</p><a name="evaluate_nets"></a><a name="h2-345"></a><h2>&quot;evaluate_nets&quot; - Evaluates net properties and annotates shapes from a given layer on the nets</h2><a name="k_9"></a><p>Usage:</p><ul><li><tt>evaluate_nets(primary_layer, secondary_layers, expression [, variables])</tt></li></ul><p>
+The function takes a primary layer and a number of secondary layers, each of
+them given a variable name.
+It visits each net and evaluates the given expression on the net.
+The expression needs to be written in KLayout expression notations.
+</p><p>
+The default action is to copy the shapes of the primary layer to the
+output. This action can be modified in some ways: skip shapes of
+certain nets or attach properties to the shapes during the evaluation.
+</p><p>
+Using the &quot;put&quot; function inside the expression, properties can be 
+attached to the output shapes. The properties can be computed using
+a number of net attributes - area and perimeter for example.
+</p><p>
+Also the <a href="../code/class_Net.html">Net</a> object representing the net is available through the
+'net' function. This allows implementing a more elaborate
+antenna check for example.
+</p><p>
+Also, the expression can choose to drop shapes and not copy them to 
+the output by calling the &quot;skip&quot; function with a &quot;true&quot; argument.
+</p><p>
+Arbitrary values can be passed as variables, which removes the need
+to encode variable values into the expression. For this, use the 
+'variables' argument and pass a hash with names and values. Each of
+those values becomes available as a variable with the given name
+inside the expression.
+</p><p>
+The following functions are available inside the expressions:
+</p><p><ul><li>&quot;net&quot; - the <a href="../code/class_Net.html">Net</a> object of the current net </li><li>&quot;skip(flag)&quot; - if called with a 'true' argument, the primary layer's shapes are not copied for this net </li><li>&quot;put(name, value)&quot; - places the value as a property with name 'name' (this must be a string) on the output shapes </li><li>&quot;area&quot; - the combined area of the primary layer's shapes on the net in square micrometer units </li><li>&quot;area(symbol)&quot; - the combined area of the secondary layer's shapes on the net in square micrometer units </li><li>&quot;perimeter&quot; - the perimeter of the primary layer's shapes on the net in micrometer units </li><li>&quot;perimeter(symbol)&quot; - the perimeter of the secondary layer's shapes on the net in micrometer units </li></ul></p><p>
+Here, 'symbol' is the name given to the secondary layer in the secondary layer
+dictionary.
+</p><p>
+The following example emulates an antenna check. It computes the area ratio of metal vs. gate area and 
+attaches the value as a property with name 'AR' to the shapes, copied from the 'gate' layer:
+</p><p><pre>
+gate = ...   # a layer with the gate shapes
+metal = ...  # a layer with metal shapes
+
+# NOTE: 'MET' is the name we are going to use in the expression
+antenna_errors = evaluate_nets(gate, { &quot;MET&quot; =&gt; metal }, &quot;put('AR',area(MET)/area)&quot;)
+</pre></p><p>
+This other example also computes the area ratio of metal vs. gate area, and 
+outputs the gate shapes of all nets whose metal to gate area ratio is bigger than
+500. The area ratio is output to a property with name 'AR':
+</p><p><pre>
+gate = ...   # a layer with the gate shapes
+metal = ...  # a layer with metal shapes
+
+variables = { &quot;thr&quot; =&gt; 500.0 }
+expression = &quot;var ar=area(MET)/area; put('AR',ar); skip(ar&lt;thr)&quot;
+
+antenna_errors = evaluate_nets(gate, { &quot;MET&quot; =&gt; metal }, expression, variables)
+</pre></p><p>
+NOTE: GDS does not support properties with string names, so 
+either save to OASIS, or use integer numbers for the property names.
+</p><a name="extract_devices"></a><a name="h2-421"></a><h2>&quot;extract_devices&quot; - Extracts devices based on the given extractor class, name and device layer selection</h2><a name="k_10"></a><p>Usage:</p><ul><li><tt>extract_devices(extractor, layer_hash)</tt></li><li><tt>extract_devices(extractor_class, name, layer_hash)</tt></li></ul><p>
+Runs the device extraction for given device extractor class. In the first
+form, the extractor object is given. In the second form, the extractor's
+class object and the new extractor's name is given.
+</p><p>
+The device extractor is either an instance of one of the predefined extractor
+classes (e.g. obtained from the utility methods such as <a href="drc_ref_global.html#mos4">mos4</a>) or a custom class. 
+It provides the
+algorithms for deriving the device parameters from the device geometry. It needs 
+several device recognition layers which are passed in the layer hash.
+</p><p>
+Predefined device extractors are:
+</p><p><ul><li><a href="drc_ref_global.html#mos3">mos3</a> - A three-terminal MOS transistor </li><li><a href="drc_ref_global.html#mos4">mos4</a> - A four-terminal MOS transistor </li><li><a href="drc_ref_global.html#dmos3">dmos3</a> - A three-terminal MOS asymmetric transistor </li><li><a href="drc_ref_global.html#dmos4">dmos4</a> - A four-terminal MOS asymmetric transistor </li><li><a href="drc_ref_global.html#bjt3">bjt3</a> - A three-terminal bipolar transistor </li><li><a href="drc_ref_global.html#bjt4">bjt4</a> - A four-terminal bipolar transistor </li><li><a href="drc_ref_global.html#diode">diode</a> - A planar diode </li><li><a href="drc_ref_global.html#resistor">resistor</a> - A resistor </li><li><a href="drc_ref_global.html#resistor_with_bulk">resistor_with_bulk</a> - A resistor with a separate bulk terminal </li><li><a href="drc_ref_global.html#capacitor">capacitor</a> - A capacitor </li><li><a href="drc_ref_global.html#capacitor_with_bulk">capacitor_with_bulk</a> - A capacitor with a separate bulk terminal </li></ul></p><p>
+Each device class (e.g. n-MOS/p-MOS or high Vt/low Vt) needs its own instance
+of device extractor. The device extractor beside the algorithm and specific 
+extraction settings defines the name of the device to be built.
+</p><p>
+The layer hash is a map of device type specific functional names (key) and
+polygon layers (value). Here is an example:
+</p><p><pre>
+deep
+
+nwell   = input(1, 0)
+active  = input(2, 0)
+poly    = input(3, 0)
+bulk    = make_layer   # renders an empty layer used for putting the terminals on
+
+nactive = active - nwell  # active area of NMOS
+nsd     = nactive - poly  # source/drain area
+gate    = nactive &amp; poly  # gate area
+
+extract_devices(mos4(&quot;NMOS4&quot;), { :SD =&gt; nsd, :G =&gt; gate, :P =&gt; poly, :W =&gt; bulk })
+</pre></p><p>
+The return value of this method will be the device class of the devices
+generated in the extraction step (see <a href="../code/class_DeviceClass.html">DeviceClass</a>).
+</p><a name="ignore_extraction_errors"></a><a name="h2-480"></a><h2>&quot;ignore_extraction_errors&quot; - Specifies whether to ignore extraction errors</h2><a name="k_11"></a><p>Usage:</p><ul><li><tt>ignore_extraction_errors(value)</tt></li></ul><p>
+With this value set to false (the default), &quot;extract_netlist&quot; will raise
+an exception upon extraction errors. Otherwise, extraction errors will be logged
+but no error is raised.
+</p><a name="l2n_data"></a><a name="h2-491"></a><h2>&quot;l2n_data&quot; - Gets the internal <a href="../code/class_LayoutToNetlist.html">LayoutToNetlist</a> object</h2><a name="k_12"></a><p>Usage:</p><ul><li><tt>l2n_data</tt></li></ul><p>
+The <a href="../code/class_LayoutToNetlist.html">LayoutToNetlist</a> object provides access to the internal details of
+the netter object.
+</p><a name="name"></a><a name="h2-501"></a><h2>&quot;name&quot; - Assigns a name to a layer</h2><a name="k_13"></a><p>Usage:</p><ul><li><tt>name(layer, name)</tt></li><li><tt>name(layer, name, layer_number, datatype_number)</tt></li><li><tt>name(layer, name, layer_info)</tt></li></ul><p>
+Layer names are listed in the LayoutToNetlist (L2N) or LVS database. They
+are used to identify the layers, the net or device terminal geometries are
+on. It is usual to have computed layers, so it is necessary to indicate the
+purpose of the layer for later reuse of the geometries.
+</p><p>
+It is a good practice to assign names to computed and original layers, 
+for example:
+</p><p><pre>
+poly = input(...)
+poly_resistor = input(...)
+
+poly_wiring = poly - poly_resistor
+name(poly_wiring, &quot;poly_wiring&quot;)
+</pre></p><p>
+Names must be assigned before the layers are used for the first time
+in <a href="#connect">connect</a>, <a href="#soft_connect">soft_connect</a>, <a href="#connect_global">connect_global</a>, <a href="#soft_connect_global">soft_connect_global</a> and 
+<a href="#extract_devices">extract_devices</a> statements. 
+</p><p>
+If layers are not named, they will be given a name made from the 
+<a href="#name_prefix">name_prefix</a> and an incremental number when the layer is used for the
+first time. 
+</p><p><a href="#name">name</a> can only be used once on a layer and the layer names must be 
+unique (not taken by another layer).
+</p><p>
+The layer/datatype or LayerInfo specification is optional and will
+be used to configure the internal layout. This information is also
+persisted inside database files. Specifying a layer/datatype information
+is useful, if a layer is not an original layer, but is to be restored
+to an actual layout layer later.
+</p><a name="name_prefix"></a><a name="h2-543"></a><h2>&quot;name_prefix&quot; - Specifies the name prefix for auto-generated layer names</h2><a name="k_14"></a><p>Usage:</p><ul><li><tt>name_prefix(prefix)</tt></li></ul><p>
+See <a href="#name"></a> for details. The default prefix is &quot;l&quot;.
+</p><a name="netlist"></a><a name="h2-552"></a><h2>&quot;netlist&quot; - Gets the extracted netlist or triggers extraction if not done yet</h2><a name="k_15"></a><p>Usage:</p><ul><li><tt>netlist</tt></li></ul><p>
+If no extraction has been performed yet, this method will start the 
+layout analysis. Hence, all <a href="#connect">connect</a>, <a href="#connect_global">connect_global</a> and <a href="#connect_implicit">connect_implicit</a>
+calls must have been made before this method is used. Further <a href="#connect">connect</a>
+statements will clear the netlist and re-extract it again.
+</p><a name="soft_connect"></a><a name="h2-564"></a><h2>&quot;soft_connect&quot; - Specifies a soft connection between two layers</h2><a name="k_16"></a><p>Usage:</p><ul><li><tt>soft_connect(a, b)</tt></li></ul><p>
+a and b must be polygon or text layers. After calling this function, the
+Netter considers shapes from layer a and b connected in &quot;soft mode&quot;.
+Typically, b is a high-ohmic layer such as diffusion, implant for substate
+material, also called the &quot;lower&quot; layer. 
+</p><p>
+A soft connection between shapes from layer a and b forms a directional 
+connection like an ideal diode: current can flow down, but now up 
+(not meant in the physical sense, this is a concept). 
+</p><p>
+Hence, two nets are disconnected, if they both connect to the same lower layer, 
+but do not have a connection between them. 
+</p><p>
+The netlist extractor will use this scheme to identify nets that are 
+connected only via such a high-ohmic region. Such a case is typically
+bad for the functionality of a device and reported as an error.
+Once, the check has been made and no error is found, soft-connected
+nets are joined the same way than hard connections are made.
+</p><p>
+Beside this, soft connections follow the same rules than hard connections
+(see <a href="#connect">connect</a>).
+</p><a name="soft_connect_global"></a><a name="h2-592"></a><h2>&quot;soft_connect_global&quot; - Soft-connects a layer with a global net</h2><a name="k_17"></a><p>Usage:</p><ul><li><tt>soft-connect_global(l, name)</tt></li></ul><p>
+Connects the shapes from the given layer l to a global net with the given name
+in &quot;soft mode&quot;.
+</p><p>
+See <a href="#connect_global">connect_global</a> for details about the concepts of global nets.
+See <a href="#soft_connect">soft_connect</a> for details about the concept of soft connections.
+In global net soft connections, the global net (typically a substrate)
+is always the &quot;lower&quot; layer.
+</p><a name="top_level"></a><a name="h2-607"></a><h2>&quot;top_level&quot; - Specifies top level mode</h2><a name="k_18"></a><p>Usage:</p><ul><li><tt>top_level(value)</tt></li></ul><p>
+With this value set to false (the default), it is assumed that the 
+circuit is not used as a top level chip circuit. In that case, for
+example must-connect nets which are not connected are reported as
+as warnings. If top level mode is set to true, such disconnected
+nets are reported as errors as this indicates a missing physical
+connection.
+</p></body>

@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class Device</p><h1>API reference - Class Device</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: A device inside a circuit.</p><p><b>Class hierarchy</b>: Device » <a href="class_NetlistObject.html">NetlistObject</a></p><ul><li><a href="#h2-13">Public methods</a></li><li><a href="#h2-92">Detailed description</a></li></ul><p>
+Device object represent atomic devices such as resistors, diodes or transistors. The <a href="class_Device.html">Device</a> class represents a particular device with specific parameters. The type of device is represented by a <a href="class_DeviceClass.html">DeviceClass</a> object. Device objects live in <a href="class_Circuit.html">Circuit</a> objects, the device class objects live in the <a href="class_Netlist.html">Netlist</a> object.</p><p>Devices connect to nets through terminals. Terminals are described by a terminal ID which is essentially the zero-based index of the terminal. Terminal definitions can be obtained from the device class using the <a href="class_DeviceClass.html#m_terminal_definitions">DeviceClass#terminal_definitions</a> method.</p><p>Devices connect to nets through the <a href="class_Device.html#m_connect_terminal">Device#connect_terminal</a> method. Device terminals can be disconnected using <a href="class_Device.html#m_disconnect_terminal">Device#disconnect_terminal</a>.</p><p>Device objects are created inside a circuit with <a href="class_Circuit.html#m_create_device">Circuit#create_device</a>.</p><p>This class has been added in version 0.26.</p><a name="h2-13"></a><h2>Public methods</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method0">_assign</a></b></td><td>(const Device other)</td><td>Assigns another object to self</td></tr><tr class="row1"><td><i>[const]</i></td><td>Device ptr</td><td><b><a href="#method1">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method3">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row1"><td><i>[const]</i></td><td>new Device ptr</td><td><b><a href="#method5">_dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method6">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td><i>[const]</i></td><td>const Circuit ptr</td><td><b><a href="#method9">circuit</a></b></td><td></td><td>Gets the circuit the device lives in.</td></tr><tr class="row0"><td></td><td>Circuit ptr</td><td><b><a href="#method10">circuit</a></b></td><td></td><td>Gets the circuit the device lives in (non-const version).</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method11">connect_terminal</a></b></td><td>(unsigned long terminal_id,<br>Net ptr net)</td><td>Connects the given terminal to the specified net.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method12">connect_terminal</a></b></td><td>(string terminal_name,<br>Net ptr net)</td><td>Connects the given terminal to the specified net.</td></tr><tr class="row1"><td><i>[const]</i></td><td>const DeviceAbstract ptr</td><td><b><a href="#method13">device_abstract</a></b></td><td></td><td>Gets the device abstract for this device instance.</td></tr><tr class="row0"><td><i>[const]</i></td><td>const DeviceClass ptr</td><td><b><a href="#method14">device_class</a></b></td><td></td><td>Gets the device class the device belongs to.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method15">disconnect_terminal</a></b></td><td>(unsigned long terminal_id)</td><td>Disconnects the given terminal from any net.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method16">disconnect_terminal</a></b></td><td>(string terminal_name)</td><td>Disconnects the given terminal from any net.</td></tr><tr class="row1"><td><i>[const,iter]</i></td><td>DeviceAbstractRef</td><td><b><a href="#method17">each_combined_abstract</a></b></td><td></td><td>Iterates over the combined device specifications.</td></tr><tr class="row0"><td><i>[const,iter]</i></td><td>DeviceReconnectedTerminal</td><td><b><a href="#method18">each_reconnected_terminal_for</a></b></td><td>(unsigned long terminal_id)</td><td>Iterates over the reconnected terminal specifications for a given outer terminal.</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method19">expanded_name</a></b></td><td></td><td>Gets the expanded name of the device.</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned long</td><td><b><a href="#method20">id</a></b></td><td></td><td>Gets the device ID.</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method21">is_combined_device?</a></b></td><td></td><td>Returns true, if the device is a combined device.</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method22">name</a></b></td><td></td><td>Gets the name of the device.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method23">name=</a></b></td><td>(string name)</td><td>Sets the name of the device.</td></tr><tr class="row0"><td><i>[const]</i></td><td>const Net ptr</td><td><b><a href="#method24">net_for_terminal</a></b></td><td>(unsigned long terminal_id)</td><td>Gets the net connected to the specified terminal.</td></tr><tr class="row1"><td></td><td>Net ptr</td><td><b><a href="#method25">net_for_terminal</a></b></td><td>(unsigned long terminal_id)</td><td>Gets the net connected to the specified terminal (non-const version).</td></tr><tr class="row0"><td><i>[const]</i></td><td>const Net ptr</td><td><b><a href="#method26">net_for_terminal</a></b></td><td>(string terminal_name)</td><td>Gets the net connected to the specified terminal.</td></tr><tr class="row1"><td></td><td>Net ptr</td><td><b><a href="#method27">net_for_terminal</a></b></td><td>(string terminal_name)</td><td>Gets the net connected to the specified terminal (non-const version).</td></tr><tr class="row0"><td><i>[const]</i></td><td>double</td><td><b><a href="#method28">parameter</a></b></td><td>(unsigned long param_id)</td><td>Gets the parameter value for the given parameter ID.</td></tr><tr class="row1"><td><i>[const]</i></td><td>double</td><td><b><a href="#method29">parameter</a></b></td><td>(string param_name)</td><td>Gets the parameter value for the given parameter name.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method30">set_parameter</a></b></td><td>(unsigned long param_id,<br>double value)</td><td>Sets the parameter value for the given parameter ID.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method31">set_parameter</a></b></td><td>(string param_name,<br>double value)</td><td>Sets the parameter value for the given parameter name.</td></tr><tr class="row0"><td><i>[const]</i></td><td>const NetTerminalRef ptr</td><td><b><a href="#method32">terminal_ref</a></b></td><td>(unsigned long terminal_id)</td><td>Gets the terminal refeference for a specific terminal.</td></tr><tr class="row1"><td></td><td>NetTerminalRef ptr</td><td><b><a href="#method33">terminal_ref</a></b></td><td>(unsigned long terminal_id)</td><td>Gets the terminal refeference for a specific terminal (non-const version).</td></tr><tr class="row0"><td><i>[const]</i></td><td>const NetTerminalRef ptr</td><td><b><a href="#method34">terminal_ref</a></b></td><td>(string terminal_name)</td><td>Gets the terminal refeference for a specific terminal where the terminal is given by name.</td></tr><tr class="row1"><td></td><td>NetTerminalRef ptr</td><td><b><a href="#method35">terminal_ref</a></b></td><td>(string terminal_name)</td><td>Gets the terminal refeference for a specific terminal where the terminal is given by name (non-const version).</td></tr><tr class="row0"><td><i>[const]</i></td><td>DCplxTrans</td><td><b><a href="#method36">trans</a></b></td><td></td><td>Gets the location of the device.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method37">trans=</a></b></td><td>(const DCplxTrans t)</td><td>Sets the location of the device.</td></tr></table><a name="detailed"></a><a name="h2-92"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-93"></a><h3>_assign</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__assign"></a><a name="k_2"></a><p><b>Signature</b>: void <b> _assign </b> (const <a href="class_Device.html">Device</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow1"><td><a name="h3-97"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__const_cast"></a><a name="k_3"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Device.html">Device</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-103"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__create"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-109"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroy"></a><a name="k_5"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-116"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__destroyed?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-123"></a><h3>_dup</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__dup"></a><a name="k_7"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_Device.html">Device</a> ptr <b> _dup </b></p><p><b>Description</b>: Creates a copy of self</p></td></tr><tr class="bigrow0"><td><a name="h3-127"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__is_const_object?"></a><a name="k_8"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-134"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__manage"></a><a name="k_9"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-140"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__unmanage"></a><a name="k_10"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-146"></a><h3>circuit</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_circuit"></a><a name="k_11"></a><p><b>(1) Signature</b>: <i>[const] </i>const <a href="class_Circuit.html">Circuit</a> ptr <b> circuit </b></p><p><b>Description</b>: Gets the circuit the device lives in.</p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_circuit"></a><a name="k_12"></a><p><b>(2) Signature</b>: <a href="class_Circuit.html">Circuit</a> ptr <b> circuit </b></p><p><b>Description</b>: Gets the circuit the device lives in (non-const version).</p><p><p></p><p>This constness variant has been introduced in version 0.26.8</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-154"></a><h3>connect_terminal</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_connect_terminal"></a><a name="k_13"></a><p><b>(1) Signature</b>: void <b> connect_terminal </b> (unsigned long terminal_id, <a href="class_Net.html">Net</a> ptr net)</p><p><b>Description</b>: Connects the given terminal to the specified net.</p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_connect_terminal"></a><a name="k_14"></a><p><b>(2) Signature</b>: void <b> connect_terminal </b> (string terminal_name, <a href="class_Net.html">Net</a> ptr net)</p><p><b>Description</b>: Connects the given terminal to the specified net.</p><p><p>
+This version accepts a terminal name. If the name is not a valid terminal name, an exception is raised.
+If the terminal has been connected to a global net, it will be disconnected from there.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-164"></a><h3>device_abstract</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_device_abstract"></a><a name="k_15"></a><p><b>Signature</b>: <i>[const] </i>const <a href="class_DeviceAbstract.html">DeviceAbstract</a> ptr <b> device_abstract </b></p><p><b>Description</b>: Gets the device abstract for this device instance.</p><p><p>
+See <a href="class_DeviceAbstract.html">DeviceAbstract</a> for more details.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'device_abstract'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-172"></a><h3>device_class</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_device_class"></a><a name="k_16"></a><p><b>Signature</b>: <i>[const] </i>const <a href="class_DeviceClass.html">DeviceClass</a> ptr <b> device_class </b></p><p><b>Description</b>: Gets the device class the device belongs to.</p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-176"></a><h3>disconnect_terminal</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_disconnect_terminal"></a><a name="k_17"></a><p><b>(1) Signature</b>: void <b> disconnect_terminal </b> (unsigned long terminal_id)</p><p><b>Description</b>: Disconnects the given terminal from any net.</p><p><p>
+If the terminal has been connected to a global, this connection will be disconnected too.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_disconnect_terminal"></a><a name="k_18"></a><p><b>(2) Signature</b>: void <b> disconnect_terminal </b> (string terminal_name)</p><p><b>Description</b>: Disconnects the given terminal from any net.</p><p><p>
+This version accepts a terminal name. If the name is not a valid terminal name, an exception is raised.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-187"></a><h3>each_combined_abstract</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_each_combined_abstract"></a><a name="k_19"></a><p><b>Signature</b>: <i>[const,iter] </i><a href="class_DeviceAbstractRef.html">DeviceAbstractRef</a><b> each_combined_abstract </b></p><p><b>Description</b>: Iterates over the combined device specifications.</p><p><p>
+This feature applies to combined devices. This iterator will deliver all device abstracts present in addition to the default device abstract.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-194"></a><h3>each_reconnected_terminal_for</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_each_reconnected_terminal_for"></a><a name="k_20"></a><p><b>Signature</b>: <i>[const,iter] </i><a href="class_DeviceReconnectedTerminal.html">DeviceReconnectedTerminal</a><b> each_reconnected_terminal_for </b> (unsigned long terminal_id)</p><p><b>Description</b>: Iterates over the reconnected terminal specifications for a given outer terminal.</p><p><p>
+This feature applies to combined devices. This iterator will deliver all device-to-abstract terminal reroutings.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-201"></a><h3>expanded_name</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_expanded_name"></a><a name="k_21"></a><p><b>Signature</b>: <i>[const] </i>string <b> expanded_name </b></p><p><b>Description</b>: Gets the expanded name of the device.</p><p><p>
+The expanded name takes the name of the device. If the name is empty, the numeric ID will be used to build a name. </p></p></td></tr><tr class="bigrow1"><td><a name="h3-207"></a><h3>id</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_id"></a><a name="k_22"></a><p><b>Signature</b>: <i>[const] </i>unsigned long <b> id </b></p><p><b>Description</b>: Gets the device ID.</p><p><p>
+The ID is a unique integer which identifies the device.
+It can be used to retrieve the device from the circuit using <a href="class_Circuit.html#m_device_by_id">Circuit#device_by_id</a>.
+When assigned, the device ID is not 0.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-216"></a><h3>is_combined_device?</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_is_combined_device?"></a><a name="k_23"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_combined_device? </b></p><p><b>Description</b>: Returns true, if the device is a combined device.</p><p><p>
+Combined devices feature multiple device abstracts and device-to-abstract terminal connections.
+See each_reconnected_terminal and <a href="#m_each_combined_abstract">each_combined_abstract</a> for more details.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-224"></a><h3>name</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_name"></a><a name="k_24"></a><p><b>Signature</b>: <i>[const] </i>string <b> name </b></p><p><b>Description</b>: Gets the name of the device.</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'name'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-229"></a><h3>name=</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_name="></a><a name="k_25"></a><p><b>Signature</b>: void <b> name= </b> (string name)</p><p><b>Description</b>: Sets the name of the device.</p><p><p>
+Device names are used to name a device inside a netlist file. Device names should be unique within a circuit.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'name'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td rowspan="4"><a name="h3-236"></a><h3>net_for_terminal</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_net_for_terminal"></a><a name="k_26"></a><p><b>(1) Signature</b>: <i>[const] </i>const <a href="class_Net.html">Net</a> ptr <b> net_for_terminal </b> (unsigned long terminal_id)</p><p><b>Description</b>: Gets the net connected to the specified terminal.</p><p><p>
+If the terminal is not connected, nil is returned for the net.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_net_for_terminal"></a><a name="k_27"></a><p><b>(2) Signature</b>: <a href="class_Net.html">Net</a> ptr <b> net_for_terminal </b> (unsigned long terminal_id)</p><p><b>Description</b>: Gets the net connected to the specified terminal (non-const version).</p><p><p>
+If the terminal is not connected, nil is returned for the net.</p><p>This constness variant has been introduced in version 0.26.8</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_net_for_terminal"></a><a name="k_28"></a><p><b>(3) Signature</b>: <i>[const] </i>const <a href="class_Net.html">Net</a> ptr <b> net_for_terminal </b> (string terminal_name)</p><p><b>Description</b>: Gets the net connected to the specified terminal.</p><p><p>
+If the terminal is not connected, nil is returned for the net.</p><p>This convenience method has been introduced in version 0.27.3.
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_net_for_terminal"></a><a name="k_29"></a><p><b>(4) Signature</b>: <a href="class_Net.html">Net</a> ptr <b> net_for_terminal </b> (string terminal_name)</p><p><b>Description</b>: Gets the net connected to the specified terminal (non-const version).</p><p><p>
+If the terminal is not connected, nil is returned for the net.</p><p>This convenience method has been introduced in version 0.27.3.
+</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-259"></a><h3>parameter</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_parameter"></a><a name="k_30"></a><p><b>(1) Signature</b>: <i>[const] </i>double <b> parameter </b> (unsigned long param_id)</p><p><b>Description</b>: Gets the parameter value for the given parameter ID.</p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_parameter"></a><a name="k_31"></a><p><b>(2) Signature</b>: <i>[const] </i>double <b> parameter </b> (string param_name)</p><p><b>Description</b>: Gets the parameter value for the given parameter name.</p><p><p>
+If the parameter name is not valid, an exception is thrown.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-268"></a><h3>set_parameter</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_set_parameter"></a><a name="k_32"></a><p><b>(1) Signature</b>: void <b> set_parameter </b> (unsigned long param_id, double value)</p><p><b>Description</b>: Sets the parameter value for the given parameter ID.</p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_set_parameter"></a><a name="k_33"></a><p><b>(2) Signature</b>: void <b> set_parameter </b> (string param_name, double value)</p><p><b>Description</b>: Sets the parameter value for the given parameter name.</p><p><p>
+If the parameter name is not valid, an exception is thrown.</p></p></td></tr><tr class="bigrow0"><td rowspan="4"><a name="h3-277"></a><h3>terminal_ref</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_terminal_ref"></a><a name="k_34"></a><p><b>(1) Signature</b>: <i>[const] </i>const <a href="class_NetTerminalRef.html">NetTerminalRef</a> ptr <b> terminal_ref </b> (unsigned long terminal_id)</p><p><b>Description</b>: Gets the terminal refeference for a specific terminal.</p><p><p>
+The terminal ref is the connector between a net and a device terminal. It knows the net the terminal is connected to and is useful to obtain the shapes making the terminal of the device. If the terminal is not connected, nil is returned for the net.</p><p>This method has been introduced in version 0.30.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_terminal_ref"></a><a name="k_35"></a><p><b>(2) Signature</b>: <a href="class_NetTerminalRef.html">NetTerminalRef</a> ptr <b> terminal_ref </b> (unsigned long terminal_id)</p><p><b>Description</b>: Gets the terminal refeference for a specific terminal (non-const version).</p><p><p>
+The terminal ref is the connector between a net and a device terminal. It knows the net the terminal is connected to and is useful to obtain the shapes making the terminal of the device. If the terminal is not connected, nil is returned for the net.</p><p>This method has been introduced in version 0.30.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_terminal_ref"></a><a name="k_36"></a><p><b>(3) Signature</b>: <i>[const] </i>const <a href="class_NetTerminalRef.html">NetTerminalRef</a> ptr <b> terminal_ref </b> (string terminal_name)</p><p><b>Description</b>: Gets the terminal refeference for a specific terminal where the terminal is given by name.</p><p><p>
+The terminal ref is the connector between a net and a device terminal. It knows the net the terminal is connected to and is useful to obtain the shapes making the terminal of the device. If the terminal is not connected, nil is returned for the net.</p><p>This method has been introduced in version 0.30.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_terminal_ref"></a><a name="k_37"></a><p><b>(4) Signature</b>: <a href="class_NetTerminalRef.html">NetTerminalRef</a> ptr <b> terminal_ref </b> (string terminal_name)</p><p><b>Description</b>: Gets the terminal refeference for a specific terminal where the terminal is given by name (non-const version).</p><p><p>
+The terminal ref is the connector between a net and a device terminal. It knows the net the terminal is connected to and is useful to obtain the shapes making the terminal of the device. If the terminal is not connected, nil is returned for the net.</p><p>This method has been introduced in version 0.30.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-298"></a><h3>trans</h3></td><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_trans"></a><a name="k_38"></a><p><b>Signature</b>: <i>[const] </i><a href="class_DCplxTrans.html">DCplxTrans</a><b> trans </b></p><p><b>Description</b>: Gets the location of the device.</p><p><p>
+See <a href="#m_trans=">trans=</a> for details about this method.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'trans'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-305"></a><h3>trans=</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_trans="></a><a name="k_39"></a><p><b>Signature</b>: void <b> trans= </b> (const <a href="class_DCplxTrans.html">DCplxTrans</a> t)</p><p><b>Description</b>: Sets the location of the device.</p><p><p>
+The device location is essentially describing the position of the device. The position is typically the center of some recognition shape. In this case the transformation is a plain displacement to the center of this shape.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'trans'. This is the setter.<br></p></td></tr></table></body>

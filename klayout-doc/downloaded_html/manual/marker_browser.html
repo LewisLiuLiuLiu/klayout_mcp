@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="basic.html">KLayout Basics</a> » The Marker Browser</p><h1>The Marker Browser</h1><a name="k_1"></a><p>
+  KLayout offers a generic concept of storing error markers or related information.
+  This concept is called the &quot;Report database&quot; (RDB). An arbitrary number of report databases
+  can be associated with a layout view. Usually, each database refers to a certain layout 
+  but that is not a strict requirement. 
+  </p><p>
+  A report database primarily is a generic collection of &quot;values&quot;, which can be strings or other
+  items. Usually, a value is a collection of geometrical objects which somehow flag
+  some position or drawn geometry. Multiple of such values comprise a &quot;marker item&quot;. 
+  The report database associates these marker items with
+  additional information:</p><ul><li><b>Tags:</b> Flags that indicate certain conditions. The marker browser uses
+      a couple of predefined tags like &quot;important&quot;, &quot;waived&quot; and &quot;visited&quot; which can be
+      set or reset by the user indicating whether a marker item is considered important or
+      an error has been waived.
+    </li><li><b>Image:</b> A marker can be assigned a screenshot image which serves for
+      documentation purposes.
+    </li></ul><p>
+  Marker items are organized into categories. Each marker item must be associated with a 
+  category. Categories themselves can be organized hierarchically, i.e. categories can be split 
+  into sub-categories. This offers a way of improving the organisation of such categories.
+  </p><p>
+  Marker items are usually associated with a cell, i.e. where a error was detected. By default,
+  a marker item is simply associated with the top cell.
+  </p><p>
+  The report database uses a proprietary format based on XML which is capable of storing the 
+  annotations provided by the database. It is possible however to 
+  import Calibre DRC ASCII format files.
+  </p><p>
+  The marker browser is a tool to browse a report database associated with a view.
+  The marker browser can be started using the &quot;Marker Browser&quot; function in the &quot;Tools&quot; menu.
+  The marker browser tracks whether a marker has already been visited similar to the 
+  &quot;read&quot; flag in a mail client. This allows tracking of a review session. The &quot;visited&quot; state is 
+  reflected in the database file.
+  </p><p>
+  In the marker browser, use the &quot;Open&quot; button to load a XML database file or import files from
+  other formats. Choose &quot;Reload&quot; to reload a file and &quot;Save As&quot; to write a database in XML
+  format.
+  </p><p>
+  The marker browser offers three panels:
+  </p><ul><li><b>Directory:</b> This panel lists the categories and cells of the database. 
+      Categories or cells with unvisited markers will be shown in bold font. Such with
+      no markers at all are shown in green color. It is possible to suppress these 
+      categories or cells by deselecting &quot;Show All&quot; in the directory's context menu.
+      To have the lists sorted by marker count, click at the header of the count 
+      column.<br>
+      Multiple categories or cells can be selected. In that case, the markers panel
+      will show the markers of all selected cells or categories.
+    </li><li><b>Markers:</b> This panel lists the markers in the selected category and/or cell.
+      A length of the list is limited and can be changed on the configuration page 
+      (&quot;Configure&quot; button on the marker browser or in the setup dialog).
+      Various tags are shown in this panel as well. The list can be sorted 
+      in various ways by clicking at the respective header.<br>
+      When a marker is selected in this list, it will be highlighted in the layout, provided
+      a suitable layout is associated. The way a marker is highlighted and how the
+      view is adjusted can be specified on the configuration page.
+    </li><li><b>Info:</b> This panel summarizes the information for the selected marker.
+      If a screenshot was associated with the marker it is shown here. Click on the thumbnail
+      image to show it in a separate window in the original size.
+    </li></ul><p>
+  Similar to the shape and instance browsers, the marker browser offers navigation
+  buttons to select the next marker, category or cell.
+  </p><p>
+  The marker browser supports &quot;tagged values&quot;: each marker can be associated with a value
+  that has a name. Such values can be imported from RVE files where they are called 
+  properties. Tagged values are generated by certain generators and can represent 
+  measurement values or similar. When tagged values are present, they will be shown 
+  in the markers list. The markers can be sorted by these values by clicking on the 
+  appropriate header.
+  </p></body>

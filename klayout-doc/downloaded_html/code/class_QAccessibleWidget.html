@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class QAccessibleWidget</p><h1>API reference - Class QAccessibleWidget</h1><property value="QtGui" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_QtGui.html">QtGui</a></p><p><b>Description</b>: Binding of QAccessibleWidget</p><p><b>Class hierarchy</b>: QAccessibleWidget » <a href="class_QAccessibleObject.html">QAccessibleObject</a> » <a href="class_QAccessibleInterface.html">QAccessibleInterface</a> » <a href="class_QAccessible.html">QAccessible</a></p><ul><li><a href="#h2-13">Public constructors</a></li><li><a href="#h2-18">Public methods</a></li><li><a href="#h2-55">Detailed description</a></li></ul><p></p><a name="h2-13"></a><h2>Public constructors</h2><table><tr class="row0"><td>new QAccessibleWidget</td><td><b><a href="#method11">new</a></b></td><td>(QWidget ptr o,<br>const QAccessible_Role r = QAccessible::Client,<br>string name = QString())</td><td>Constructor QAccessibleWidget::QAccessibleWidget(QWidget *o, QAccessible::Role r, const QString &amp;name)</td></tr></table><a name="h2-18"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>QAccessibleWidget ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method2">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method4">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method6">actionText</a></b></td><td>(int action,<br>const QAccessible_Text t,<br>int child)</td><td>Method QString QAccessibleWidget::actionText(int action, QAccessible::Text t, int child)</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method7">childAt</a></b></td><td>(int x,<br>int y)</td><td>Method int QAccessibleWidget::childAt(int x, int y)</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method8">childCount</a></b></td><td></td><td>Method int QAccessibleWidget::childCount()</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method9">doAction</a></b></td><td>(int action,<br>int child,<br>variant[] params)</td><td>Method bool QAccessibleWidget::doAction(int action, int child, const QList&lt;QVariant&gt; &amp;params)</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method10">indexOfChild</a></b></td><td>(const QAccessibleInterface ptr child)</td><td>Method int QAccessibleWidget::indexOfChild(const QAccessibleInterface *child)</td></tr><tr class="row1"><td><i>[const]</i></td><td>QRect</td><td><b><a href="#method12">rect</a></b></td><td>(int child)</td><td>Method QRect QAccessibleWidget::rect(int child)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QAccessible_QFlags_RelationFlag</td><td><b><a href="#method13">relationTo</a></b></td><td>(int child,<br>const QAccessibleInterface ptr other,<br>int otherChild)</td><td>Method QFlags&lt;QAccessible::RelationFlag&gt; QAccessibleWidget::relationTo(int child, const QAccessibleInterface *other, int otherChild)</td></tr><tr class="row1"><td><i>[const]</i></td><td>QAccessible_Role</td><td><b><a href="#method14">role</a></b></td><td>(int child)</td><td>Method QAccessible::Role QAccessibleWidget::role(int child)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QAccessible_QFlags_StateFlag</td><td><b><a href="#method15">state</a></b></td><td>(int child)</td><td>Method QFlags&lt;QAccessible::StateFlag&gt; QAccessibleWidget::state(int child)</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method16">text</a></b></td><td>(const QAccessible_Text t,<br>int child)</td><td>Method QString QAccessibleWidget::text(QAccessible::Text t, int child)</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method17">userActionCount</a></b></td><td>(int child)</td><td>Method int QAccessibleWidget::userActionCount(int child)</td></tr></table><a name="detailed"></a><a name="h2-55"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-56"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QAccessibleWidget.html">QAccessibleWidget</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-62"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-68"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroyed?"></a><a name="k_4"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-75"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__is_const_object?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-82"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__manage"></a><a name="k_6"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-88"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__unmanage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-94"></a><h3>actionText</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m_actionText"></a><a name="k_8"></a><p><b>Signature</b>: <i>[const] </i>string <b> actionText </b> (int action, const <a href="class_QAccessible_Text.html">QAccessible_Text</a> t, int child)</p><p><b>Description</b>: Method QString QAccessibleWidget::actionText(int action, QAccessible::Text t, int child)</p><p><p>
+This is a reimplementation of QAccessibleObject::actionText</p></p></td></tr><tr class="bigrow1"><td><a name="h3-100"></a><h3>childAt</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_childAt"></a><a name="k_9"></a><p><b>Signature</b>: <i>[const] </i>int <b> childAt </b> (int x, int y)</p><p><b>Description</b>: Method int QAccessibleWidget::childAt(int x, int y)</p><p><p>
+This is a reimplementation of QAccessibleInterface::childAt</p></p></td></tr><tr class="bigrow0"><td><a name="h3-106"></a><h3>childCount</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_childCount"></a><a name="k_10"></a><p><b>Signature</b>: <i>[const] </i>int <b> childCount </b></p><p><b>Description</b>: Method int QAccessibleWidget::childCount()</p><p><p>
+This is a reimplementation of QAccessibleInterface::childCount</p></p></td></tr><tr class="bigrow1"><td><a name="h3-112"></a><h3>doAction</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_doAction"></a><a name="k_11"></a><p><b>Signature</b>: bool <b> doAction </b> (int action, int child, variant[] params)</p><p><b>Description</b>: Method bool QAccessibleWidget::doAction(int action, int child, const QList&lt;QVariant&gt; &amp;params)</p><p><p>
+This is a reimplementation of QAccessibleObject::doAction</p></p></td></tr><tr class="bigrow0"><td><a name="h3-118"></a><h3>indexOfChild</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_indexOfChild"></a><a name="k_12"></a><p><b>Signature</b>: <i>[const] </i>int <b> indexOfChild </b> (const <a href="class_QAccessibleInterface.html">QAccessibleInterface</a> ptr child)</p><p><b>Description</b>: Method int QAccessibleWidget::indexOfChild(const QAccessibleInterface *child)</p><p><p>
+This is a reimplementation of QAccessibleInterface::indexOfChild</p></p></td></tr><tr class="bigrow1"><td><a name="h3-124"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_new"></a><a name="k_13"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_QAccessibleWidget.html">QAccessibleWidget</a><b> new </b> (<a href="class_QWidget.html">QWidget</a> ptr o, const <a href="class_QAccessible_Role.html">QAccessible_Role</a> r = QAccessible::Client, string name = QString())</p><p><b>Description</b>: Constructor QAccessibleWidget::QAccessibleWidget(QWidget *o, QAccessible::Role r, const QString &amp;name)</p><p><p>
+This method creates an object of class QAccessibleWidget.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-131"></a><h3>rect</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_rect"></a><a name="k_14"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QRect.html">QRect</a><b> rect </b> (int child)</p><p><b>Description</b>: Method QRect QAccessibleWidget::rect(int child)</p><p><p>
+This is a reimplementation of QAccessibleObject::rect</p></p></td></tr><tr class="bigrow1"><td><a name="h3-137"></a><h3>relationTo</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_relationTo"></a><a name="k_15"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QAccessible_QFlags_RelationFlag.html">QAccessible_QFlags_RelationFlag</a><b> relationTo </b> (int child, const <a href="class_QAccessibleInterface.html">QAccessibleInterface</a> ptr other, int otherChild)</p><p><b>Description</b>: Method QFlags&lt;QAccessible::RelationFlag&gt; QAccessibleWidget::relationTo(int child, const QAccessibleInterface *other, int otherChild)</p><p><p>
+This is a reimplementation of QAccessibleInterface::relationTo</p></p></td></tr><tr class="bigrow0"><td><a name="h3-143"></a><h3>role</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_role"></a><a name="k_16"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QAccessible_Role.html">QAccessible_Role</a><b> role </b> (int child)</p><p><b>Description</b>: Method QAccessible::Role QAccessibleWidget::role(int child)</p><p><p>
+This is a reimplementation of QAccessibleInterface::role</p></p></td></tr><tr class="bigrow1"><td><a name="h3-149"></a><h3>state</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_state"></a><a name="k_17"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QAccessible_QFlags_StateFlag.html">QAccessible_QFlags_StateFlag</a><b> state </b> (int child)</p><p><b>Description</b>: Method QFlags&lt;QAccessible::StateFlag&gt; QAccessibleWidget::state(int child)</p><p><p>
+This is a reimplementation of QAccessibleInterface::state</p></p></td></tr><tr class="bigrow0"><td><a name="h3-155"></a><h3>text</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_text"></a><a name="k_18"></a><p><b>Signature</b>: <i>[const] </i>string <b> text </b> (const <a href="class_QAccessible_Text.html">QAccessible_Text</a> t, int child)</p><p><b>Description</b>: Method QString QAccessibleWidget::text(QAccessible::Text t, int child)</p><p><p>
+This is a reimplementation of QAccessibleInterface::text</p></p></td></tr><tr class="bigrow1"><td><a name="h3-161"></a><h3>userActionCount</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_userActionCount"></a><a name="k_19"></a><p><b>Signature</b>: <i>[const] </i>int <b> userActionCount </b> (int child)</p><p><b>Description</b>: Method int QAccessibleWidget::userActionCount(int child)</p><p><p>
+This is a reimplementation of QAccessibleObject::userActionCount</p></p></td></tr></table></body>

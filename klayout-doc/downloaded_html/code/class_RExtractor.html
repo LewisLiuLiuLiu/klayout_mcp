@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class RExtractor</p><h1>API reference - Class RExtractor</h1><property value="pex" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_pex.html">pex</a></p><p><b>Description</b>: The basic R extractor class</p><ul><li><a href="#h2-13">Public constructors</a></li><li><a href="#h2-18">Public methods</a></li><li><a href="#h2-37">Public static methods and constants</a></li><li><a href="#h2-44">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-55">Detailed description</a></li></ul><p></p><p>Use <a href="#m_tesselation_extractor">tesselation_extractor</a> and <a href="#m_square_counting_extractor">square_counting_extractor</a> to create an actual extractor object.
+To use the extractor, call the <a href="#m_extract">extract</a> method on a given polygon with ports that define the network attachment points.</p><p>This class has been introduced in version 0.30.2
+</p><a name="h2-13"></a><h2>Public constructors</h2><table><tr class="row0"><td>new RExtractor ptr</td><td><b><a href="#method12">new</a></b></td><td></td><td>Creates a new object of this class</td></tr></table><a name="h2-18"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>RExtractor ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>new RNetwork ptr</td><td><b><a href="#method10">extract</a></b></td><td>(const Polygon polygon,<br>Point[] vertex_ports = [],<br>Polygon[] polygon_ports = [])</td><td>Runs the extraction on the given polygon</td></tr></table><a name="h2-37"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td></td><td>new RExtractor ptr</td><td><b><a href="#method13">square_counting_extractor</a></b></td><td>(double dbu,<br>bool skip_simplify = false)</td><td>Creates a square counting R extractor</td></tr><tr class="row1"><td></td><td>new RExtractor ptr</td><td><b><a href="#method14">tesselation_extractor</a></b></td><td>(double dbu,<br>double min_b = 0.3,<br>double max_area = 0,<br>bool skip_reduction = false)</td><td>Creates a tesselation R extractor</td></tr></table><a name="h2-44"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method7">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method8">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method9">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method11">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-55"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-56"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_RExtractor.html">RExtractor</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-62"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-68"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroy"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-75"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroyed?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-82"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__is_const_object?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-89"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__manage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-95"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__unmanage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-101"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_create"></a><a name="k_9"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-108"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_destroy"></a><a name="k_10"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-116"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_destroyed?"></a><a name="k_11"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-124"></a><h3>extract</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_extract"></a><a name="k_12"></a><p><b>Signature</b>: new <a href="class_RNetwork.html">RNetwork</a> ptr <b> extract </b> (const <a href="class_Polygon.html">Polygon</a> polygon, <a href="class_Point.html">Point</a>[] vertex_ports = [], <a href="class_Polygon.html">Polygon</a>[] polygon_ports = [])</p><p><b>Description</b>: Runs the extraction on the given polygon</p><p><p>
+This method will create a new <a href="class_RNetwork.html">RNetwork</a> object from the given polygon.</p><p>'vertex_ports' is an array of points that define point-like ports. A port will create a <a href="class_RNode.html">RNode</a> object in the resistor graph. This node object carries the type VertexPort and the index of the vertex in this array.</p><p>'polygon_ports' is an array of polygons that define distributed ports. The polygons should be inside the resistor polygon and convex. A port will create a <a href="class_RNode.html">RNode</a> object in the resistor graph. For polygon ports, this node object carries the type PolygonPort and the index of the polygon in this array.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-131"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_is_const_object?"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-139"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_new"></a><a name="k_14"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_RExtractor.html">RExtractor</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new object of this class</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-144"></a><h3>square_counting_extractor</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_square_counting_extractor"></a><a name="k_15"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_RExtractor.html">RExtractor</a> ptr <b> square_counting_extractor </b> (double dbu, bool skip_simplify = false)</p><p><b>Description</b>: Creates a square counting R extractor</p><table class="layout-table"><tr><td><b>dbu</b>:</td><td>The database unit of the polygons the extractor will work on</td></tr><tr><td><b>skip_simplify</b>:</td><td>If true, the final step to simplify the netlist will be skipped. This feature is for testing mainly.</td></tr><tr><td><b>Returns</b>:</td><td>A new <a href="class_RExtractor.html">RExtractor</a> object that implements the square counting extractor</td></tr></table><p><p>
+The square counting extractor extracts resistances from a polygon with ports using the following approach:</p><p><ul><li> Split the original polygon into convex parts using a Hertel-Mehlhorn decomposition </li><li> Create internal nodes at the locations where the parts touch </li><li> For each part, extract the resistance along the horizonal or vertical axis, whichever is longer </li></ul></p><p>The square counting extractor assumes the parts are 'thin' - i.e. the long axis is much longer than the short axis - and the parts are either oriented horizontally or vertically. The current flow is assumed to be linear and homogenous along the long axis. Ports define probe points for the voltages along the long long axis. Polygon ports are considered points located at the center of the polygon's bounding box.</p><p>The results of the extraction is normalized to a sheet resistance of 1 Ohm/square - i.e. to obtain the actual resistor values, multiply the element resistance values by the sheet resistance.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-158"></a><h3>tesselation_extractor</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_tesselation_extractor"></a><a name="k_16"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_RExtractor.html">RExtractor</a> ptr <b> tesselation_extractor </b> (double dbu, double min_b = 0.3, double max_area = 0, bool skip_reduction = false)</p><p><b>Description</b>: Creates a tesselation R extractor</p><table class="layout-table"><tr><td><b>dbu</b>:</td><td>The database unit of the polygons the extractor will work on</td></tr><tr><td><b>min_b</b>:</td><td>Defines the min 'b' value of the refined Delaunay triangulation (see <a href="class_Polygon.html#m_delaunay">Polygon#delaunay</a>)</td></tr><tr><td><b>max_area</b>:</td><td>Defines maximum area value of the refined Delaunay triangulation (see <a href="class_Polygon.html#m_delaunay">Polygon#delaunay</a>). The value is given in square micrometer units.</td></tr><tr><td><b>skip_reduction</b>:</td><td>If true, the reduction step for the netlist will be skipped. This feature is for testing mainly. The resulting R graph will contain all the original triangles and the internal nodes representing the vertexes.</td></tr><tr><td><b>Returns</b>:</td><td>A new <a href="class_RExtractor.html">RExtractor</a> object that implements the square counting extractor</td></tr></table><p><p>
+The tesselation extractor starts with a triangulation of the original polygon. The triangulation is turned into a resistor network and simplified.</p><p>The tesselation extractor is well suited for homogeneous geometries, but does not properly consider the boundary conditions at the borders of the region. It is good for extracting resistance networks of substrate or large sheet layers.</p><p>The square counting extractor assumes the parts are 'thin' - i.e. the long axis is much longer than the short axis - and the parts are either oriented horizontally or vertically. The current flow is assumed to be linear and homogenous along the long axis. Ports define probe points for the voltages along the long long axis. Polygon ports are considered points located at the center of the polygon's bounding box.</p><p>The tesselation extractor delivers a full matrix of resistors - there is a resistor between every pair of ports.</p><p>The results of the extraction is normalized to a sheet resistance of 1 Ohm/square - i.e. to obtain the actual resistor values, multiply the element resistance values by the sheet resistance.</p></p></td></tr></table></body>

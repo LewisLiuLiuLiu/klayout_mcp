@@ -1,0 +1,1066 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Programming scripts</a> » The Database API</p><h1>The Database API</h1><ul><li><a href="#h2-18">The Layout class</a></li><li><a href="#h2-558">The LayerInfo class</a></li><li><a href="#h2-600">The Cell class</a></li><li><a href="#h2-894">The CellInstArray class</a></li><li><a href="#h2-952">The Instance class</a></li><li><a href="#h2-994">The Shapes class</a></li><li><a href="#h2-1143">The Shape class</a></li></ul><p>
+  The basic object of the database is the <a href="../code/class_Layout.html">Layout</a> object. A Layout object
+  represents a layout file or a layout generated. Basically, a layout is a collection of cells and 
+  geometrical shapes. The shapes are organised in layers and the cells can be instantiated in other
+  cells creating a hierarchy of cells. Hence, the basic objects of the database are Layout, Cell, Shapes
+  and the geometrical primitives like Box, Path, Polygon, Text and Edge.
+  </p><a name="h2-18"></a><h2>The Layout class</h2><a name="k_1"></a><p>
+  The <a href="../code/class_Layout.html">Layout</a> object is the basic container for a layout. Multiple layouts can live within KLayout. Some are 
+  stored inside the application and are created when a layout is loaded for example. However, layout objects
+  can also be created as standalone objects for manipulation by Ruby scripts. Such a layout can be an isolated entity
+  without connection to a view.
+  </p><a name="h3-28"></a><h3>A basic sample</h3><p>This is a sample how to create a layout in a layout view with one cell (&quot;TOP&quot;), one layer (layer 10, datatype 0) and one shape (a 1x2 micron box).
+  This sample also shows how to set up the layout view properly:</p><pre># create a new view (mode 1) with an empty layout
+main_window = RBA::Application::instance.main_window
+layout = main_window.create_layout(1).layout
+layout_view = main_window.current_view
+
+# set the database unit (shown as an example, the default is 0.001)
+layout.dbu = 0.001
+
+# create a cell
+cell = layout.create_cell(&quot;TOP&quot;)
+
+# create a layer
+layer_index = layout.insert_layer(RBA::LayerInfo::new(10, 0))
+
+# add a shape
+cell.shapes(layer_index).insert(RBA::Box::new(0, 0, 1000, 2000))
+
+# select the top cell in the view, set up the view's layer list and
+# fit the viewport to the extensions of our layout
+layout_view.select_cell(cell.cell_index, 0)
+layout_view.add_missing_layers
+layout_view.zoom_fit
+</pre><p>It is also possible to create a standalone layout. Here is an example how to create the layout
+  without a connection to a view and save that layout to a file:
+  </p><pre># create the layout
+layout = RBA::Layout::new
+
+# set the database unit (shown as an example, the default is 0.001)
+layout.dbu = 0.001
+
+# create a cell
+cell = layout.create_cell(&quot;TOP&quot;)
+
+# create a layer
+layer_index = layout.insert_layer(RBA::LayerInfo::new(10, 0))
+
+# add a shape
+cell.shapes(layer_index).insert(RBA::Box::new(0, 0, 1000, 2000))
+
+# save the layout
+layout.write(&quot;my_layout.gds&quot;)</pre><a name="h3-79"></a><h3>Overview over the Layout object</h3><a name="k_2"></a><p>
+  The basic building blocks of layouts are layers and cells. Layers are not individual objects. Instead, a layer
+  is rather an index and the various methods allow addressing shapes inside layers by using that index. However,
+  the layout object stores the layer properties, i.e. the layer and datatype number.
+  </p><p>
+  Cells are represented by <a href="../code/class_Cell.html">Cell</a> objects which are described later. Cells are often
+  referred to by a cell index which is basically an ID which allows identification of 
+  a cell without having to keep a reference. The Layout object allows converting of a cell index to a cell reference
+  with the <a href="../code/class_Layout.html#m_cell">Layout#cell</a> method. Cells can be instantiated inside other cells. Instances are
+  described by <a href="../code/class_CellInstArray.html">CellInstArray</a> objects.
+  </p><p>
+  Another important property of the layout object is the database unit. In the layout, all geometrical coordinates are
+  stored as integer values for efficiency. The database unit specifies the length of one unit in micrometers. 
+  The database unit can be accessed with the <a href="../code/class_Layout.html#m_dbu">Layout#dbu</a> attribute. Changing the database unit effectively scales
+  a layout. Often the database unit is a fixed value and compatibility between different layouts in a flow 
+  often demands use of a specific database unit. Hence, changing the value of the database unit is possible
+  but requires some careful consideration.
+  </p><p>
+  KLayout provides certain &quot;working objects&quot; - i.e. standalone geometry primitives that can be used in a number
+  of low-level algorithms. For example, for rectangles, the <a href="../code/class_Box.html">Box</a> object is provided. These objects
+  represent coordinates as integer units as they are compatible with the internal objects from the database. 
+  By convention, these coordinates are interpreted as multiple of database units, i.e. a width of &quot;100&quot; for a box 
+  converts to &quot;100 nm&quot; for a database unit of 1 nm.
+  These working objects are described in the &quot;Geometry API&quot; section.
+  </p><p>
+  In parallel to these objects, there exist floating-point coordinate objects. They are identified by a &quot;D&quot; prefix in 
+  the class name. For example, the floating-point twin of &quot;Box&quot; is  <a href="../code/class_DBox.html">DBox</a>. By convention, the 
+  coordinates of these objects are interpreted as micrometers. Hence, these objects represent physical dimensions
+  without needing a database unit.
+  </p><p>
+  Some algorithms, as the ones provided by the &quot;Region&quot; class, cannot act on floating-point objects. Hence their 
+  use is somewhat limited. Still is it convenient to work with such objects in coding layout generators for example.
+  The Layout database allows retrieving primitives in both integer (database unit) and floating-point (micrometer forms)
+  and also accepts both forms in most places. Conversion to the internal integer-coordinate representation happens
+  automatically.
+  </p><p>
+  The Layout object keeps shapes (texts, polygons, boxes, paths etc.) on &quot;layers&quot;. A layer is a collection of
+  shapes. A layout features a set of layers and each cell provides space for each layer. The shapes are stored
+  inside the cells while the layers are managed by the layout.
+  For doing so, the Layout object keeps layers as a table of <a href="../code/class_LayerInfo.html">LayerInfo</a> objects. The LayerInfo object
+  carries information about the description of a layer, for example layer and datatype number and/or the layer name.
+  A layer is basically 
+  just an index in that table. Layers can be created using the <a href="../code/class_Layout.html#m_insert_layer">Layout#insert_layer</a> method. Each layer is present
+  in every cell and inside a cell, a shape storage for each layer is provided.
+  </p><p>
+  Inside the layout object, shapes are kept with integer coordinates. The physical units can be obtained
+  by multiplying the integer coordinates with the database unit. The integer type objects are <a href="../code/class_Box.html">Box</a>, <a href="../code/class_Polygon.html">Polygon</a>
+  etc. Most objects also support floating-point coordinate objects (<a href="../code/class_DBox.html">DBox</a>, <a href="../code/class_DPolygon.html">DPolygon</a> etc.). 
+  These objects are then given in micrometer units - i.e. already multiplied by the database unit. 
+  If using these objects, keep in mind that internally they are still integer-type objects. This means, 
+  rounding to the database will happen and if you change the database unit, the objects will effectively scale.
+  </p><p>
+  A Layout object provides some basic layout manipulation and query methods. For example, it provides a method
+  to retrieve shapes touching or overlapping a certain rectangular region of a cell. It also provides a clip method which
+  extracts a rectangular region from a layout 
+  (<a href="../code/class_Layout.html#m_clip">Layout#clip</a>, <a href="../code/class_Layout.html#m_clip_into">Layout#clip_into</a>, <a href="../code/class_Layout.html#m_multi_clip">Layout#multi_clip</a>, <a href="../code/class_Layout.html#m_multi_clip_into">Layout#multi_clip_into</a>). It provides methods to delete cells and cell trees and (<a href="../code/class_Layout.html#m_delete_cell">Layout#delete_cell</a>, <a href="../code/class_Layout.html#m_delete_cell_rec">Layout#delete_cell_rec</a>, <a href="../code/class_Layout.html#m_delete_cells">Layout#delete_cells</a>, 
+  <a href="../code/class_Layout.html#m_prune_cell">Layout#prune_cell</a>, <a href="../code/class_Layout.html#m_prune_subcells">Layout#prune_subcells</a>). There are also methods to manipulate layers (<a href="../code/class_Layout.html#m_clear_layer">Layout#clear_layer</a>, <a href="../code/class_Layout.html#m_copy_layer">Layout#copy_layer</a>, <a href="../code/class_Layout.html#m_move_layer">Layout#move_layer</a>, <a href="../code/class_Layout.html#m_delete_layer">Layout#delete_layer</a>).
+  </p><p>
+  Some convenience functions are provide to read and write a layout from or to a file. The <a href="../code/class_Layout.html#m_read">Layout#read</a> method reads a
+  layout from a file. It basically merges the contents of the file with the layout so it's possible to 
+  combine multiple files by using read more than once. The method comes in two flavors: a simple one and one
+  that allows specification of reader options with a <a href="../code/class_LoadLayoutOptions.html">LoadLayoutOptions</a> object.
+  There is also a <a href="../code/class_Layout.html#m_write">Layout#write</a> method which writes the layout to a file. The simple form writes the layout to
+  a file and the file type is determined by the file extension. A full-featured version exists which allows 
+  to specify the format and many more options with a <a href="../code/class_SaveLayoutOptions.html">SaveLayoutOptions</a> object.
+  </p><p>
+  Layouts can also import cells from Libraries (<a href="../code/class_Library.html">Library</a>). Such imported cells are basically
+  cells linked to another cell inside the library. Library cells are imported using the <a href="../code/class_Layout.html#m_add_lib_cell">Layout#add_lib_cell</a> method.
+  This method creates a &quot;proxy&quot; cell which is a copy of the library cell but is linked to the library. As long as
+  the library is present in the system, this link is maintained and stored in the layout files. If the link is lost
+  because the library is removed, the proxy cell becomes a normal cell.
+  Such proxy cells basically behave like normal cells but should not be manipulated.
+  </p><p>
+  Layout objects are also responsible for handling properties. Properties are basically arbitrary sets
+  of data (key/value pairs) attached to shapes, cells or instances. For efficiency, the property data is not
+  attached to every shape, cell or instance. Instead, the layout object manages different property sets and
+  associate each distinct set with an integer ID. The shape, cell or cell instance only stores that ID. 
+  To create, query or change property sets, the layout object provides the <a href="../code/class_Layout.html#m_properties">Layout#properties</a> and
+  <a href="../code/class_Layout.html#m_properties_id">Layout#properties_id</a> methods. Since that is inconvenient, shapes, cells and instances provide 
+  access to the properties by providing methods to set, get and delete properties from the set (for example <a href="../code/class_Shape.html#m_property">Shape#property</a>, 
+  <a href="../code/class_Shape.html#m_delete_property">Shape#delete_property</a> and <a href="../code/class_Shape.html#m_set_property">Shape#set_property</a>). Internally, these methods
+  create a new ID if necessary and assign that ID to the shape, cell or instance.
+  </p><p>
+  A layout can provide and import PCells. PCells are cells that provide its geometry through program code
+  (for example written in Ruby) and provide parameters which can be adjusted to change the appearance of the 
+  cell. For each PCell a &quot;declaration&quot; must be provided which basically contains the code for the 
+  PCell and some information about the parameters provided by the PCell. PCells are stored in the layout
+  and are referred to by a PCell ID (an integer). PCells are added to a layout using <a href="../code/class_Layout.html#m_register_pcell">Layout#register_pcell</a> and 
+  retrieved by ID or name using <a href="../code/class_Layout.html#m_pcell_declaration">Layout#pcell_declaration</a>. PCells are instantiated with a specific parameter set
+  using the <a href="../code/class_Layout.html#m_add_pcell_variant">Layout#add_pcell_variant</a>. This method creates a cell representing the layout generated by the 
+  PCell code for a particular set of parameters. The layout internally caches the PCell layouts so the PCell 
+  code is executed only if a new parameter set is requested. Usually PCells are provided through libraries.
+  In that case, the library provides the PCell variant through <a href="../code/class_Layout.html#m_add_pcell_variant">Layout#add_pcell_variant</a> which is imported into the 
+  target layout through <a href="../code/class_Layout.html#m_add_lib_cell">Layout#add_lib_cell</a>. There is a overload of <a href="../code/class_Layout.html#m_add_pcell_variant">Layout#add_pcell_variant</a> which combines both
+  steps.
+  </p><p>
+  The following code demonstrates how to create a PCell (in that case a &quot;TEXT&quot; cell from the &quot;Basic&quot; library):
+  </p><pre>ly = RBA::Layout.new
+top = ly.add_cell(&quot;TOP&quot;)
+
+# Find the lib
+lib = RBA::Library.library_by_name(&quot;Basic&quot;)
+lib || raise(&quot;Unknown lib 'Basic'&quot;)
+
+# Find the pcell
+pcell_decl = lib.layout.pcell_declaration(&quot;TEXT&quot;)
+pcell_decl || raise(&quot;Unknown PCell 'TEXT'&quot;)
+
+# Set the parameters (text string, layer to 10/0, magnification to 2.5)
+param = { &quot;text&quot; =&gt; &quot;KLAYOUT RULES&quot;, &quot;layer&quot; =&gt; RBA::LayerInfo::new(10, 0), &quot;mag&quot; =&gt; 2.5 }
+
+# Build a param array using the param hash as a source.
+# Fill all remaining parameter with default values.
+pv = pcell_decl.get_parameters.collect do |p|
+  param[p.name] || p.default
+end
+
+# Create a PCell variant cell
+pcell_var = ly.add_pcell_variant(lib, pcell_decl.id, pv)
+
+# Instantiate that cell
+t = RBA::Trans::new(RBA::Trans::r90, 0, 0)
+pcell_inst = ly.cell(top).insert(RBA::CellInstArray::new(pcell_var, t))</pre><a name="h3-234"></a><h3>Editable mode</h3><a name="k_3"></a><p>
+  A layout can exist in two flavors: editable and non-editable. In editable mode, some optimisations
+  are disabled. For example, OASIS shape arrays are expanded into single shapes. This enables manipulation
+  of the database. For example, the shape replacement, property manipulation and other operations are
+  only possible in editable mode. On the other hand, the memory footprint of a layout may be larger
+  in editable mode. Independent of the mode, layouts can be created and cells, instances and shapes
+  can be added, but not manipulated.
+  </p><p>
+  A layout object living in the application is created in editable or non-editable mode depending on
+  the application setting. Layout objects explicitly created by RBA code can either be in editable
+  or non-editable mode:
+  </p><pre>editable_layout = RBA::Layout.new
+non_editable_layout = RBA::Layout.new(false)</pre><p>
+  The <a href="../code/class_Layout.html#m_is_editable?">Layout#is_editable?</a> method returns true, if a layout is in editable mode. Once the layout is
+  created, the editable mode cannot be changed.
+  </p><a name="h3-260"></a><h3>Meta information</h3><a name="k_4"></a><a name="k_5"></a><p>A layout object and cell objects can keep arbitrary meta data in the form of key/value pairs. This meta data is 
+  extracted during the reading of a layout and will reflect special properties of the layout file.
+  For example, the GDS2 library name is available as meta information with key &quot;libname&quot;.
+  </p><p>The layout object offers methods to retrieve that information: <a href="../code/class_Layout.html#m_each_meta_info">Layout#each_meta_info</a> will 
+  iterate over the meta data (returning a <a href="../code/class_LayoutMetaInfo.html">LayoutMetaInfo</a> object). <a href="../code/class_Layout.html#m_meta_info_value">Layout#meta_info_value</a>
+  will get the value for a given name. <a href="../code/class_Layout.html#m_add_meta_info">Layout#add_meta_info</a> will add a new meta information object
+  and <a href="../code/class_Layout.html#m_remove_meta_info">Layout#remove_meta_info</a> will delete one. 
+  Equivalent methods exist for the &quot;Cell&quot; class.
+  </p><p>
+  Meta information is a different concept than properties. While properties are native to the stream format 
+  used, meta information is a KLayout extension. It is mapped to properties in OASIS in the same way, PCell
+  context information is stored. For GDS2, KLayout provides a special context container inside the GDS2 file 
+  to store that information.
+  </p><p>
+  Meta information is not subject to the stream format's limitations. For example, keys can be of any type
+  and values can be arrays, dicts or even higher-level, string-serializable objects such as &quot;Box&quot;. 
+  There is also no restriction on size of the attached data, in contrast to properties, where GDS2 imposes 
+  some limitations on the string length for example.
+  </p><a name="h3-290"></a><h3>Cell related methods</h3><a name="k_6"></a><p>Cells can be created using the <a href="../code/class_Layout.html#m_create_cell">Layout#create_cell</a> method. This method expects a cell name. If a cell with that
+  name already exists, a new name is generated by appending a suffix. The method returns the Cell object of the new
+  cell. <a href="../code/class_Layout.html#m_rename_cell">Layout#rename_cell</a> or <a href="../code/class_Cell.html#m_name=">Cell#name=</a> can be used to change the name of a cell.
+  The Cell object for a given name can be obtained with <a href="../code/class_Layout.html#m_cell">Layout#cell</a> which returns the Cell
+  object or nil if no cell with that name exists.
+  </p><p>The cell name can be obtained from the cell index with the <a href="../code/class_Layout.html#m_cell_name">Layout#cell_name</a> method or <a href="../code/class_Cell.html#m_name">Cell#name</a>).
+  <a href="../code/class_Layout.html#m_has_cell?">Layout#has_cell?</a> can be used to determine whether a cell with
+  the given name exists. <a href="../code/class_Layout.html#m_is_valid_cell_index?">Layout#is_valid_cell_index?</a> can be used to determine whether a given index is a valid cell
+  index. <a href="../code/class_Layout.html#m_cells">Layout#cells</a> returns the number of cells in the layout.
+  To work with cells, the Cell object is required. It can be obtained from the cell index using the <a href="../code/class_Layout.html#m_cell">Layout#cell</a> method.
+  </p><p>
+  The top cell of a layout can be obtained using <a href="../code/class_Layout.html#m_top_cell">Layout#top_cell</a>. If multiple top cells exist,
+  this method will raise an exception. In that case, <a href="../code/class_Layout.html#m_top_cells">Layout#top_cells</a> can be used to obtain 
+  all top cells.
+  </p><p>All cells in the layout can be iterated using the <a href="../code/class_Layout.html#m_each_cell">Layout#each_cell</a> iterator. All top cells (cells which are 
+  not instantiated itself) can be iterated with the <a href="../code/class_Layout.html#m_each_top_cell">Layout#each_top_cell</a> iterator. The cells can be iterated bottom-up
+  (all child cells come before their parents) or top-down (all parents come before their children) using the 
+  <a href="../code/class_Layout.html#m_each_cell_bottom_up">Layout#each_cell_bottom_up</a> or <a href="../code/class_Layout.html#m_each_cell_top_down">Layout#each_cell_top_down</a>.
+  </p><p><a href="../code/class_Layout.html#m_delete_cell">Layout#delete_cell</a> deletes a cell. This method will keep the child cells, which may become top cells because their parent
+  cell is deleted. <a href="../code/class_Layout.html#m_delete_cells">Layout#delete_cells</a> deletes multiple cells and is more efficient than deleting cell by cell. 
+  <a href="../code/class_Layout.html#m_delete_cell_rec">Layout#delete_cell_rec</a> will delete a cell and all child cells (direct and indirect), irregardless whether they
+  are used otherwise or not. <a href="../code/class_Layout.html#m_prune_cell">Layout#prune_cell</a> does the same but is somewhat more sensitive in that respect and
+  does not delete child cells if they are instantiated by parents not in the cell tree below the cell being deleted.
+  <a href="../code/class_Layout.html#m_prune_subcells">Layout#prune_subcells</a> as prune_cell deletes the child cells or a cell but in contrast to prune_cell does not delete the 
+  cell itself.
+  </p><a name="h3-329"></a><h3>Layer related methods</h3><a name="k_7"></a><p><a href="../code/class_Layout.html#m_insert_layer">Layout#insert_layer</a> creates a new layer in the layout. The layer will be available to all cells. This method 
+  receives a <a href="../code/class_LayerInfo.html">LayerInfo</a> object which holds the information about the layer's name, layer
+  and datatype. It returns a layer index which can be used to address shapes in the cells. <a href="../code/class_Layout.html#m_insert_layer_at">Layout#insert_layer_at</a> 
+  can be used to create a layer with a specific layer index, provided that index is not used yet.</p><p><a href="../code/class_Layout.html#m_is_valid_layer?">Layout#is_valid_layer?</a> can be used to determine whether a layer index is a valid index. <a href="../code/class_Layout.html#m_layer_indices">Layout#layer_indices</a> 
+  returns a list of indexes of all layers present. <a href="../code/class_Layout.html#m_layers">Layout#layers</a> returns the number of layers present.</p><p><a href="../code/class_Layout.html#m_find_layer">Layout#find_layer</a>Returns the layer index for a given layer in various flavors.
+  <a href="../code/class_Layout.html#m_layer">Layout#layer</a> finds or creates a layer if it does not exist yet. Again, the layer
+  can be given in various flavors - for example by layer and datatype, by name or with a <a href="../code/class_LayerInfo.html">LayerInfo</a> object.</p><p><a href="../code/class_Layout.html#m_set_info">Layout#set_info</a> can be used to change the LayerInfo object for a layer. <a href="../code/class_Layout.html#m_get_info">Layout#get_info</a> returns the LayerInfo
+  object for a layer. To modify the information, obtain the information with get_info, modify it, and set the 
+  new information with set_info:</p><pre>lv = RBA::Application::instance.main_window.current_view
+ly = lv.current_cellview.layout
+info = ly.get_info(0)
+info.layer = 100
+ly.set_info(0, info)
+lv.add_missing_layers
+lv.remove_unused_layers</pre><p>The previous sample changes the layer number for layer index 0 to 100. &quot;add_missing_layers&quot; and &quot;remove_unused_layers&quot; will create 
+  new layer entries in the layer list and remove the entry for the previous layer.</p><p>For special purposes, special (temporary) layers can be created in the layout. Those layers basically behave like 
+  normal layers but don't appear in the layer list and are not saved to a file. Special layers can be created using
+  <a href="../code/class_Layout.html#m_insert_special_layer">Layout#insert_special_layer</a> and <a href="../code/class_Layout.html#m_insert_special_layer_at">Layout#insert_special_layer_at</a>. <a href="../code/class_Layout.html#m_is_special_layer?">Layout#is_special_layer?</a> returns true if a given index
+  is a special layer.
+  </p><p>In addition, a layout contains a special layer which is used to implement the &quot;guiding shape&quot; feature of PCells.
+  It is a special layer that serves as a container for shapes which parametrize PCells. The index of that layer can be
+  obtained with <a href="../code/class_Layout.html#m_guiding_shape_layer">Layout#guiding_shape_layer</a>.</p><p>A list of the indexes for all layers inside the layout can be obtained with <a href="../code/class_Layout.html#m_layer_indexes">Layout#layer_indexes</a>. 
+  A corresponding list of LayerInfo objects can be obtained with <a href="../code/class_Layout.html#m_layer_infos">Layout#layer_infos</a>.
+  </p><a name="h3-373"></a><h3>Recursive full or region queries</h3><a name="k_8"></a><a name="k_9"></a><p>
+  A layout provides methods to retrieve shapes recursively. That means, that the shapes are delivered from all 
+  cells instantiated below a given top cell. Cells instantiated multiple times are also visited multiple times.
+  While the shapes are delivered, information is provided what cell instances the
+  specific shape instance is found in.
+  </p><p>
+  Recursive shape retrieval is done through a iterator, the <a href="../code/class_RecursiveShapeIterator.html">RecursiveShapeIterator</a>.
+  This object delivers one shape each time. A RecursiveShapeIterator is created for example using the <a href="../code/class_Layout.html#m_begin_shapes">Layout#begin_shapes</a> method.
+  This method requires the cell index of the starting (initial) cell and a layer index.
+  This code demonstrates how to use the RecursiveShapeIterator:
+  </p><pre>layout = RBA::Application::instance.main_window.current_view.active_cellview.layout
+# start iterating shapes from cell &quot;TOP&quot;, layer index 0
+si = layout.begin_shapes(layout.cell_by_name(&quot;TOP&quot;), 0)
+while !si.at_end?
+  puts si.shape.to_s + &quot; with transformation &quot; + si.trans.to_s
+  si.next
+end</pre><p>
+  The RecursiveShapeIterator's shape method delivers a shape reference (see description of the Shape class or <a href="../code/class_Shape.html">Shape</a>)
+  which basically points to a shape inside a cell. Since the cell may be a child cell of the initial cell 
+  the RecursiveShapeIterator was created with, in general a transformation is present that tells how the cell's
+  content shows up in the initial cell. The generic form of that transformation is a <a href="../code/class_CplxTrans.html">CplxTrans</a> object
+  which is delivered by the RecursiveShapeIterator's &quot;trans&quot; method. This transformation renders floating-point coordinates which
+  is precise but not a suitable representation for transforming shapes into a form compatible with the database. 
+  For that purpose, a <a href="../code/class_ICplxTrans.html">ICplxTrans</a> object is provided as well through the &quot;itrans&quot; method.
+  This transformation renders integer coordinates which may imply rounding effects in some cases. The RecursiveShapeIterator
+  delivers the cell from which the current shape is taken through the &quot;cell_index&quot; method.
+  </p><p>
+  A RecursiveShapeIterator can be configured to retrieve only certain type of shapes (i.e. boxes, texts etc.).
+  To do so, set the shape_flags attribute of the shape iterator before using it:
+  </p><pre>layout = RBA::Application::instance.main_window.current_view.active_cellview.layout
+# start iterating shapes from cell &quot;TOP&quot;, layer index 0
+si = layout.begin_shapes(layout.cell_by_name(&quot;TOP&quot;), 0)
+si.shape_flags = RBA::Shapes::SBoxes
+while !si.at_end?
+  puts si.shape.to_s + &quot; with transformation &quot; + si.trans.to_s
+  si.next
+end</pre><p>
+  Also the maximum depth at which the RecursiveShapeIterator will traverse the hierarchy can be set using the &quot;max_depth&quot;
+  attribute. Setting this attribute to 0 will report only shapes from the initial cell. The depth must be set before the 
+  first shape is retrieved.
+  </p><p>
+  The RecursiveShapeIterator can also deliver shapes from a region. The region is a rectangle specified in coordinates
+  of the initial cell. To create a RecursiveShapeIterator that only delivers shapes inside that region use the 
+  <a href="../code/class_Layout.html#m_begin_shapes_touching">Layout#begin_shapes_touching</a> or <a href="../code/class_Layout.html#m_begin_shapes_overlapping">Layout#begin_shapes_overlapping</a> methods of the Layout object.
+  These methods expect a Box object that specifies that rectangle. All shapes delivered will either touch or overlap
+  that box when projected into the initial cell.
+  </p><p>
+  Shape manipulations should be avoided inside loops that iterate over shapes using a RecursiveShapeIterator.
+  The reason is that shape manipulations may invalidate the internal state of the RecursiveShapeIterator.
+  Instead, collect all shape references that need to be manipulated in an array and do the manipulations later.
+  </p><a name="h3-445"></a><h3>Properties</h3><a name="k_10"></a><p>
+  As stated earlier, shapes and other objects can carry an arbitrary number of user properties in form of key/value pairs.
+  For efficiency, these properties are not stored directly, but in form of a properties ID, which identifies
+  a unique set of properties.
+  </p><p>
+  The objects that can carry properties are shapes (<a href="../code/class_Shape.html">Shape</a>), instances (<a href="../code/class_Instance.html">Instance</a>),
+  Cells (<a href="../code/class_Cell.html">Cell</a>) and the Layout object itself (<a href="../code/class_Layout.html">Layout</a>). All these objects
+  have a &quot;prop_id&quot; method that allows retrieving the properties ID. There is also a setter to change the properties ID.
+  </p><p>
+  As it is not quite convenient to work with properties IDs, there are methods to get or manipulate the properties directly.
+  Those are:
+  </p><ul><li> &quot;property&quot; (<a href="../code/class_Shape.html#m_property">Shape#property</a>, <a href="../code/class_Instance.html#m_property">Instance#property</a>, 
+      <a href="../code/class_Cell.html#m_property">Cell#property</a> and <a href="../code/class_Layout.html#m_property">Layout#property</a>) to get the property value 
+      for a specific key.
+    </li><li> &quot;set_property&quot; (<a href="../code/class_Shape.html#m_set_property">Shape#set_property</a>, <a href="../code/class_Instance.html#m_set_property">Instance#set_property</a>, 
+      <a href="../code/class_Cell.html#m_set_property">Cell#set_property</a> and <a href="../code/class_Layout.html#m_set_property">Layout#set_property</a>) to change or set the property value 
+      for a specific key.
+    </li><li> &quot;delete_property&quot; (<a href="../code/class_Shape.html#m_delete_property">Shape#delete_property</a>, <a href="../code/class_Instance.html#m_delete_property">Instance#delete_property</a>, 
+      <a href="../code/class_Cell.html#m_delete_property">Cell#delete_property</a> and <a href="../code/class_Layout.html#m_delete_property">Layout#delete_property</a>) to remove a specific key
+      from the properties.
+    </li><li> &quot;properties&quot; (<a href="../code/class_Shape.html#m_properties">Shape#properties</a>, <a href="../code/class_Instance.html#m_properties">Instance#properties</a>, 
+      and <a href="../code/class_Cell.html#m_properties">Cell#properties</a>) to get the properties as a hash (dict).
+      For the &quot;Layout&quot; object this method is called &quot;properties_hash&quot; (<a href="../code/class_Layout.html#m_properties_hash">Layout#properties_hash</a>).
+      For historical reasons, this class also has a method &quot;properties_array&quot; (<a href="../code/class_Layout.html#m_properties_array">Layout#properties_array</a>)
+      that delivers the properties as an array of key/value pairs.
+    </li><li> &quot;has_prop_id?&quot; (<a href="../code/class_Shape.html#m_has_prop_id?">Shape#has_prop_id?</a>, <a href="../code/class_Instance.html#m_has_prop_id?">Instance#has_prop_id?</a>, 
+      <a href="../code/class_Cell.html#m_has_prop_id?">Cell#has_prop_id?</a> and <a href="../code/class_Layout.html#m_has_prop_id?">Layout#has_prop_id?</a>) is a predicate indicating
+      that properties are attached to the object.
+    </li></ul><p>
+  Properties IDs identify a property set uniquely, so identity of the IDs implies identity of the properties set.
+  In the same fashion, different IDs mean different properties sets.
+  The ID is an arbitrary integer value and will change between invocations of the program.
+  The ID value 0 is reserved for &quot;no properties&quot; or an empty property set.
+  </p><p>
+  Sometimes it is required to work with properties IDs directly.
+  The Layout object provides four class methods to convert properties IDs to hashes (dicts) or lists 
+  back and forth:
+  </p><ul><li> &quot;properties_id&quot; gets the properties ID from an array or hash of properties (<a href="../code/class_Layout.html#m_properties_id">Layout#properties_id</a>).
+      If used with an array, the array elements need to be key/value pairs.</li><li> &quot;properties_array&quot; gets the properties as an array of key/value pairs from a properties ID (<a href="../code/class_Layout.html#m_properties_array">Layout#properties_array</a>).</li><li> &quot;properties_dict&quot; gets the properties as a hash (dict) from a properties ID (<a href="../code/class_Layout.html#m_properties_dict">Layout#properties_dict</a>).</li><li> &quot;property&quot; gets a property value for a given key from a properties ID (<a href="../code/class_Layout.html#m_property">Layout#property</a>).</li></ul><p>
+  Here is a sample for working with properties IDs:
+  </p><pre>layout = RBA::Layout::new
+
+# Populate the layout with a layer, a cell and one shape
+
+l1 = layout.layer(1, 0)
+top = layout.create_cell(&quot;TOP&quot;)
+box = top.shapes(l1).insert(RBA::Box::new(0, 0, 100, 200))
+
+# Use properties IDs to set initial properties
+
+props = { 1 =&gt; &quot;value for key #1&quot;, 2 =&gt; &quot;value for key #2&quot; }
+prop_id = RBA::Layout::properties_id(props)
+
+# same as:
+# box.set_property(1, &quot;value for key #1&quot;)
+# box.set_property(2, &quot;value for key #2&quot;)
+box.prop_id = prop_id
+
+# Change key 1 property
+# same as:
+# box.set_property(1, &quot;one&quot;)
+
+props = RBA::Layout::properties_hash(box.prop_id)
+props[1] = &quot;one&quot;
+box.prop_id = RBA::Layout::properties_id(props)</pre><p>
+  Please note that replacing a property ID and modifying the properties usually invalidates any iterators and should 
+  not be done in a loop over shapes.
+  </p><p><b>Note:</b> Although property keys can basically be any type, the GDS2 format does not have string names for properties. 
+  Property keys should be positive integers for GDS2.
+  OASIS, on the other hand, can handle string and numeric property &quot;names&quot;. When saving layouts in GDS2 format, KLayout tries
+  to convert the properties' names into numbers if possible (i.e. if it sees that the string is a number). If it can't, then
+  the property is not saved. When the layout is read by KLayout upon opening, the property keys will be read as integers.
+  </p><p>
+  Values can be strings or numerical for OASIS. In GDS2, values are converted to strings always.
+  </p><a name="h2-558"></a><h2>The LayerInfo class</h2><a name="k_11"></a><p>
+  The <a href="../code/class_LayerInfo.html">LayerInfo</a> object encapsulates the layer's naming properties. 
+  In GDS2, a layer is described by a layer number and datatype number. In OASIS, a text name can be added
+  to that description. In other formats like DXF, a layer has just a text name.
+  </p><p>
+  The LayerInfo object thus has a twofold identity: a numeric identity (layer and datatype number) and 
+  a text layer name. Both properties can be specified. In that case, the numeric identity has precedence
+  over the text name.
+  </p><p>
+  When a layout is loaded, LayerInfo objects are used to represent a layer's naming properties in 
+  the Layout object. The LayerInfo object associated with a layer can be retrieved using the Layout's
+  &quot;get_info&quot; method. It can be set using the &quot;set_info&quot; method. In general, the LayerInfo property is
+  detached from the layer index, so it can be assigned and manipulated freely. 
+  </p><p>
+  The default constructor of LayerInfo will create a nameless object. Nameless layers are not saved
+  to any file and can be used for internal purposes such as temporary or intermediate layers. 
+  </p><p>
+  The <a href="../code/class_LayerInfo.html#m_layer">LayerInfo#layer</a> attribute allows read and write access to the layer number. <a href="../code/class_LayerInfo.html#m_datatype">LayerInfo#datatype</a> is the
+  attribute for the datatype number. <a href="../code/class_LayerInfo.html#m_name">LayerInfo#name</a> gives access to the text name. <a href="../code/class_LayerInfo.html#m_is_named?">LayerInfo#is_named?</a> returns
+  true, if the LayerInfo object represents a named layer (no layer or datatype number are specified). 
+  <a href="../code/class_LayerInfo.html#m_is_equivalent?">LayerInfo#is_equivalent?</a> compares two LayerInfo objects and returns true, if both denote the same
+  layer. This is not exact equivalence but follows the logical precedence: two layers are equivalent
+  if layer or datatype number match (in that case the text name is ignored) or, if no layer and datatype
+  number are specified, the name matches exactly.
+  </p><p>
+  LayerInfo objects supply a hash value (<a href="../code/class_LayerInfo.html#m_hash">LayerInfo#hash</a>) and can therefore be used as
+  keys in Ruby hashes.
+  </p><a name="h2-600"></a><h2>The Cell class</h2><a name="k_12"></a><p>
+  After the Layout object, the <a href="../code/class_Cell.html">Cell</a> object is the most fundamental object in KLayout's database 
+  API. It represents a cell, which itself is a collection of shapes per layer
+  and instances of other cells. The methods provided by the Cell class deal with either the shape or
+  the instance aspect. A cell is also responsible for handling parts of the PCell scheme, either for
+  the cell itself (if it is an incarnation of a PCell) or instances of PCells.
+  </p><p>
+  A cell has a name which can be retrieved using the <a href="../code/class_Cell.html#m_name">Cell#name</a> method and which can be set
+  using the <a href="../code/class_Cell.html#m_name=">Cell#name=</a> method. Setting the name is equivalent to using the Layout's &quot;rename_cell&quot; method.
+  <a href="../code/class_Cell.html#m_basic_name">Cell#basic_name</a> delivers the PCell or library cell name for cells imported from a library or PCell variants. &quot;name&quot;
+  will deliver an internal unique name in that case. <a href="../code/class_Cell.html#m_display_title">Cell#display_title</a> is a string that encodes library name
+  and PCell parameters as well and can be used as a descriptive title for the cell in user interfaces.
+  </p><p>
+  If the cell is a library cell (a &quot;proxy&quot;), it will have a database name (something like &quot;TEXT$1&quot;) and a qualified
+  name which states the library and the cell name separated with a dot (i.e. &quot;Basic.TEXT&quot;). The qualified name
+  is not neccessarily unique. The qualified name of the cell can be obtained with <a href="../code/class_Cell.html#m_qname">Cell#qname</a>.
+  </p><p>
+  A cell that represents a cell imported from a library or a PCell variant (or both) is called a proxy cell.
+  For such cells, <a href="../code/class_Cell.html#m_is_proxy?">Cell#is_proxy?</a> returns true. Such cells should not be manipulated since they may be refreshed
+  when required and the original state is restored. <a href="../code/class_Cell.html#m_is_library_cell?">Cell#is_library_cell?</a> and <a href="../code/class_Cell.html#m_is_pcell_variant?">Cell#is_pcell_variant?</a> deliver
+  a more detailed information about the nature of the proxy cell.
+  </p><p>
+  The layout that the cell lives in can be retrieved with the <a href="../code/class_Cell.html#m_layout">Cell#layout</a> method. If the cell is 
+  created standalone (without layout), this method returns nil. In that case, a cell is not named either.
+  </p><p>
+  A cell can be a &quot;ghost cell&quot;. A ghost cell is an empty cell which is not written to a layout write and 
+  created when a layout file is read with an unsatisfied reference. Unsatisfied references are present 
+  in some GDS2 files which represent partial layouts. By simple merging of two GDS2 files, such references can be
+  made true instances, when another file contributes the cell for that reference. KLayout supports such 
+  unsatisfied references by providing the &quot;ghost cells&quot; which serve as a instance target but are not written.
+  Ghost cells are simply cells where the <a href="../code/class_Cell.html#m_is_ghost_cell?">Cell#is_ghost_cell?</a> attribute is true. An empty cell can be made
+  a ghost cell by setting the <a href="../code/class_Cell.html#m_ghost_cell=">Cell#ghost_cell=</a> property.
+  </p><p>
+  A cell has a bounding box which includes child cells as well. KLayout keeps a per-layer bounding box, so it's 
+  very simple to tell whether a cell is empty in a certain layer (including the hierarchy below). In that case 
+  the per-layer bounding box is an empty box. The overall bounding box can be derived with the <a href="../code/class_Cell.html#m_bbox">Cell#bbox</a> method.
+  The per-layer bounding box can be derived with the <a href="../code/class_Cell.html#m_bbox_per_layer">Cell#bbox_per_layer</a> method.
+  </p><p>
+  Cells can be marked as &quot;ghost cells&quot; using the <a href="../code/class_Cell.html#m_ghost_cell=">Cell#ghost_cell=</a>. Ghost cells
+  are not saved into GDS2 files (but their references are). Also, ghost cells act as &quot;placeholders&quot; for cells - 
+  for example if a cell is pasted into a layout, it will replace any ghost cell with the same name.
+  If a normal cell with the same name exists, a copy will be created instead. A cell can be asked whether
+  it is a ghost cell using <a href="../code/class_Cell.html#m_is_ghost_cell?">Cell#is_ghost_cell?</a>.
+  </p><p>
+  Starting with version 0.23, cells can have properties as well, but writing cell properties to layout
+  files is subject to some restrictions. Properties are only written to GDS2 if a special option is enabled
+  because a potentially incompatible extension of GDS2 is used to store the properties. OASIS files 
+  support cell properties without restrictions.
+  </p><a name="h3-669"></a><h3>Cells and shapes</h3><p>
+  A cell carries a set of geometrical shapes, organised in layers. A layer is specified by a layer index. The layer index
+  is managed by the Layout object. It is basically an integer that identifies the layer in the layout. 
+  The shapes are stored in containers of the <a href="../code/class_Shapes.html">Shapes</a> class. Given a layer index, the 
+  shapes object can be obtained from the cell through the <a href="../code/class_Cell.html#m_shapes">Cell#shapes</a> method:
+  </p><pre>shapes = cell.shapes(layer_index)
+shapes.each do |shape|
+  puts shape.to_s
+end</pre><p>
+  The same can be achieved by directly iterating over the shapes in the cell:
+  </p><pre>cell.each_shape(layer_index) do |shape|
+  puts shape.to_s
+end</pre><p>
+  That iterator also allows specification of a filter so it delivers only a certain subset, i.e. only text objects.
+  See <a href="../code/class_Cell.html">Cell</a> and <a href="../code/class_Shapes.html">Shapes</a> for more details.
+  </p><p>
+  There are iterators that deliver shapes within a rectangular region, either overlapping or touching that
+  region (<a href="../code/class_Cell.html#m_each_overlapping_shape">Cell#each_overlapping_shape</a>, <a href="../code/class_Cell.html#m_each_touching_shape">Cell#each_touching_shape</a>). They basically work like the &quot;each_shape&quot;
+  iterator. Please note that these iterators are not recursive, i.e. they don't deliver shapes from child cells.
+  Recursive iteration can be performed using Layout's &quot;begin_shapes&quot; method and the RecursiveShapeIterator object.
+  </p><p>
+  All shapes in a cell can be cleared using <a href="../code/class_Cell.html#m_clear_shapes">Cell#clear_shapes</a>. A single layer can be cleared using the <a href="../code/class_Cell.html#m_clear">Cell#clear</a> method
+  with the layer index to clear. Both methods are not recursive, i.e. they only clear the shapes on the given cell, not on 
+  the child cells.
+  </p><p>Layers can be copied using the <a href="../code/class_Cell.html#m_copy">Cell#copy</a> method. The shapes of a layer can be moved to another layer using the <a href="../code/class_Cell.html#m_move">Cell#move</a>
+  method. In both cases, the target layer is not overwritten, but the shapes from the source layer are added to the target layer.
+  <a href="../code/class_Cell.html#m_swap">Cell#swap</a> will swap the shapes of two layers. In all these cases, the operation is local on the cell, i.e. child cells are
+  not affected.
+  </p><p>
+  Shapes within a cell are represented as <a href="../code/class_Shape.html">Shape</a> objects. A shape object is a generic object 
+  which represents either a polygon, a box, a path, a text or an edge object. Shapes provide some generic methods
+  such as <a href="../code/class_Shape.html#m_bbox">Shape#bbox</a> to retrieve the bounding box or <a href="../code/class_Shape.html#m_transform">Shape#transform</a>. Shapes 
+  act as &quot;pointers&quot; to geometrical objects inside the database. Manipulating a shape will also manipulate the 
+  database object.
+  </p><p>
+  To work with specific kind of shapes, the working classes such as <a href="../code/class_Polygon.html">Polygon</a> are provided. Shapes
+  can be converted into these working objects. The working objects are not related to the layout object and not
+  having a connection to the layout makes them lightweight objects. A usual way of manipulating a shape is to
+  translate it to a working object, modify that and assign the working object back to the shape.
+  </p><p>
+  Interfaces to floating-point working classes such as <a href="../code/class_DPolygon.html">DPolygon</a> are provided too. By convention
+  such objects represent shapes in micrometer units. If such an object is requested from the shapes container it
+  is converted from an integer-type object in database units to a floating-point type object in micrometer units
+  by multiplying with the database unit. When sending such an object to the Shapes container the same happens in 
+  reverse. Internally, the integer type is used.
+  </p><a name="h3-738"></a><h3>Cells and hierarchy</h3><p>
+  The direct children of a cell can be iterated with <a href="../code/class_Cell.html#m_each_child_cell">Cell#each_child_cell</a>. That iterator delivers the cell index of
+  each child cell of the cell. Similar, there is a <a href="../code/class_Cell.html#m_each_parent_cell">Cell#each_parent_cell</a> iterator. It delivers the cell indexes of
+  all cells calling that cells. For a top cell that iterator delivers nothing. <a href="../code/class_Cell.html#m_is_leaf?">Cell#is_leaf?</a> returns true, if the 
+  cell does not have child cells. <a href="../code/class_Cell.html#m_is_top?">Cell#is_top?</a> returns true, if the cell is top cell. 
+  </p><p>
+  Cells and their children form a directed acyclic cell graph. That means, no cell may instantiate a cell which itself calls the
+  cell whether directly or indirectly. There is a set of cells called by a given cell, either directly or indirectly through 
+  children of the cell. That set is the &quot;called&quot; cell set. That cell set can be obtained with the <a href="../code/class_Cell.html#m_called_cells">Cell#called_cells</a> method in 
+  form of an array of cell indexes.
+  </p><p>
+  Similar, there is a set of cells calling a cell, either directly or indirectly. That set of cells can be obtained with 
+  the <a href="../code/class_Cell.html#m_caller_cells">Cell#caller_cells</a> method. For a top cell that set is empty. 
+  </p><p>
+  The number of hierarchy levels can be obtained with <a href="../code/class_Cell.html#m_hierarchy_levels">Cell#hierarchy_levels</a>. This method delivers the length of the longest path
+  to a leaf cell. A leaf cell has a hierarchy level count of 0. 
+  </p><p>
+  A cell can be flattened using <a href="../code/class_Cell.html#m_flatten">Cell#flatten</a>.
+  Child cells can be removed using <a href="../code/class_Cell.html#m_prune_subcells">Cell#prune_subcells</a>.
+  The cell can be removed with <a href="../code/class_Cell.html#m_delete">Cell#delete</a> or <a href="../code/class_Cell.html#m_prune_cell">Cell#prune_cell</a>. The
+  latter will also remove any child cells which are not used otherwise.
+  </p><a name="h3-771"></a><h3>Copying information between cells</h3><p>
+  Instances can be copied from one cell to another using <a href="../code/class_Cell.html#m_copy_instances">Cell#copy_instances</a>. 
+  Shapes can be copied using <a href="../code/class_Cell.html#m_copy_shapes">Cell#copy_shapes</a>. The latter method supports 
+  layer conversions by employing a <a href="../code/class_LayerMapping.html">LayerMapping</a> object to specify input and 
+  output layers. In addition, shapes can be copied to another layout which automatically performs
+  database unit conversion if necessary.
+  </p><p>
+  A full cell tree can be copied using <a href="../code/class_Cell.html#m_copy_tree">Cell#copy_tree</a>. This method will 
+  create a new hierarchy below the target cell matching the source cell's hierarchy and 
+  copy all shapes from source to target using that new hierarchy. Source and target cell 
+  may reside in different layouts and database unit conversion is done automatically.
+  </p><p>
+  The content of a cell can be copied to another cell hierarchically using <a href="../code/class_Cell.html#m_copy_tree_shapes">Cell#copy_tree_shapes</a>, 
+  provided a cell mapping exists. A cell mapping specifies, how child cells of the source cell are identified
+  in the target, which can be a different layout. For the cell mapping a <a href="../code/class_CellMapping.html">CellMapping</a> object is
+  employed. In addition, a <a href="../code/class_LayerMapping.html">LayerMapping</a> object can be used to specify layer mapping to 
+  the target. If no cell mapping is provided, shapes are flattened into the next possible parent, which provides
+  a way to creating flat copies of cells.
+  &quot;copy_tree&quot; is a convenience method and is a special case of &quot;copy_tree_shapes&quot;.
+  </p><p>
+  For all methods, &quot;move&quot; flavors are available (<a href="../code/class_Cell.html#m_move_instances">Cell#move_instances</a>, 
+  <a href="../code/class_Cell.html#m_move_shapes">Cell#move_shapes</a>, <a href="../code/class_Cell.html#m_move_tree">Cell#move_tree</a> and <a href="../code/class_Cell.html#m_move_tree_shapes">Cell#move_tree_shapes</a>), 
+  which not only copy the information but also remove the respective objects in the source 
+  cell. That somewhat reduces the memory required for such operations.
+  </p><a name="h3-805"></a><h3>Cells and instances</h3><p>
+  A cell also plays a role as container for the instances. An instance describes a cell that is placed into another cell.
+  Technically an instance is a combination of a cell reference and a transformation. Raw instances are represented by <a href="../code/class_CellInstArray.html">CellInstArray</a>
+  objects. Instances inside a cell are referred to by <a href="../code/class_Instance.html">Instance</a> objects.
+  An Instance object is basically a pointer into a CellInstArray stored inside a cell and associates properties with raw
+  instances for example.
+  </p><p>
+  Instances can be created by using the various <a href="../code/class_Cell.html#m_insert">Cell#insert</a> methods of Cell. Instances can have properties, so a property ID
+  can be provided (see Layout class for a discussion about property ID's). Instances can be deleted using the <a href="../code/class_Cell.html#m_erase">Cell#erase</a> method.
+  All instances of a cell can be deleted using the <a href="../code/class_Cell.html#m_clear_insts">Cell#clear_insts</a> method. 
+  </p><p>
+  An instance can be replaced by another CellInstArray object using the <a href="../code/class_Cell.html#m_replace">Cell#replace</a> method. The properties ID can be changed
+  using the <a href="../code/class_Cell.html#m_replace_prop_id">Cell#replace_prop_id</a> method. It is easier however to use the Instance object's &quot;cell_inst=&quot; or &quot;prop_id=&quot; method.
+  </p><p>
+  Instances can be iterated with <a href="../code/class_Cell.html#m_each_inst">Cell#each_inst</a>. <a href="../code/class_Cell.html#m_each_overlapping_inst">Cell#each_overlapping_inst</a> and <a href="../code/class_Cell.html#m_each_touching_inst">Cell#each_touching_inst</a> delivers all
+  instances overlapping or touching a given rectangular region. That means, the instance's overall bounding box overlaps
+  or touches the search rectangle.
+  </p><p><a href="../code/class_Cell.html#m_each_parent_inst">Cell#each_parent_inst</a> delivers all parent instances. Parent instances are basically reverse instances represented 
+  by the <a href="../code/class_ParentInstArray.html">ParentInstArray</a> object. A parent instance identifies are parent cell and 
+  the instance of the given cell in that parent cell. This iterator allows deriving all instances of the given cell 
+  in other cells.
+  </p><p>Instances can be transformed with a given transformation (either a orthogonal or a general complex transformation)
+  using the <a href="../code/class_Cell.html#m_transform">Cell#transform</a> method. This method invalidates the Instance pointer given as the argument and returns a
+  new Instance pointer to the new cell instance.
+  </p><p>
+  A floating-point integer class exists too (<a href="../code/class_DCellInstArray.html">DCellInstArray</a>). By convention
+  this object represent an instance in micrometer units. If such an object is requested from the cell it
+  is converted from an integer-type object in database units to a floating-point type object in micrometer units
+  by multiplying with the database unit. When sending such an object to the cell the same happens in 
+  reverse. Internally, the integer type is used.
+  </p><a name="h3-852"></a><h3>Cells, libraries and PCells</h3><p>If a cell is a cell imported from a library, <a href="../code/class_Cell.html#m_is_library_cell?">Cell#is_library_cell?</a> will return true and it is possible to derive
+  the Library object from which this cell is imported using the <a href="../code/class_Cell.html#m_library">Cell#library</a> method. <a href="../code/class_Cell.html#m_library_cell_index">Cell#library_cell_index</a> will 
+  return the cell index of the cell in the library's local layout.
+  </p><p>If a cell is a PCell variant, either directly from the layout or from a library, <a href="../code/class_Cell.html#m_is_pcell_variant?">Cell#is_pcell_variant?</a> returns true.
+  This method can also be called on an Instance object in which case it delivers true if the instance is an instance of
+  a PCell. <a href="../code/class_Cell.html#m_pcell_id">Cell#pcell_id</a> returns the PCell declaration ID if the cell is a PCell variant. <a href="../code/class_Cell.html#m_pcell_declaration">Cell#pcell_declaration</a> will
+  return the PCell declaration object. There is also a overload of &quot;pcell_declaration&quot; that determines the PCell declaration
+  object for an Instance if it is a PCell instance. <a href="../code/class_Cell.html#m_pcell_parameters">Cell#pcell_parameters</a> delivers the PCell parameters for a cell (if it is
+  a PCell variant) or an instance (if it is a PCell instance). The PCell parameters are an array of variable-type values
+  and the interpretation is dependent on the PCell implementation. The <a href="../code/class_PCellDeclaration.html">PCellDeclaration</a> object 
+  which can be obtained through &quot;pcell_declaration&quot; gives the necessary information about the interpretation of the 
+  parameters.
+  </p><p>
+  Finally, <a href="../code/class_Cell.html#m_refresh">Cell#refresh</a> allows refreshing the layout of a proxy cell, i.e. transfer the current state of a library
+  cell into this cell or recompute the PCell layout.
+  Usually this method needs not to be called. When PCell parameters change for example, the layout is automatically
+  recomputed.
+  </p><a name="h3-877"></a><h3>Cells and PCell instances</h3><p>
+  A cell can be a PCell variant as we've seen above. In addition, a cell can hold PCell instances.
+  The parameters of PCell instances can be modified from the cell using <a href="../code/class_Cell.html#m_change_pcell_parameter">Cell#change_pcell_parameter</a> for
+  individual parameters given by name or <a href="../code/class_Cell.html#m_change_pcell_parameters">Cell#change_pcell_parameters</a> for all parameters. 
+  For changing all parameters it is required to know the parameter's order and meaning. The order can be
+  obtained from the PCell declaration class which itself can be retrieved from a PCell instance with <a href="../code/class_Cell.html#m_pcell_declaration">Cell#pcell_declaration</a>
+  (with the instance as the first argument).
+  </p><p>
+  The PCell parameters of a PCell instance can be obtained with <a href="../code/class_Cell.html#m_pcell_parameters">Cell#pcell_parameters</a> (with the 
+  instance as the first argument). To get a specific parameter, use the PCell declaration object which lists the
+  parameters on the order they are delivered by the &quot;pcell_parameters&quot; method.
+  </p><a name="h2-894"></a><h2>The CellInstArray class</h2><a name="k_13"></a><p>
+  Despite its name, a <a href="../code/class_CellInstArray.html">CellInstArray</a> object holds a cell reference which is
+  not only an array, but also a single instances. The object represents a raw instance, in contrast to the 
+  Instance object which is basically a pointer to an instance inside the database. CellInstArray objects as raw instances can be created, 
+  copied, modified and stored in the usual containers, but once they are stored inside the Cell object, they can
+  be addressed by the Instance object.
+  </p><p>
+  The CellInstArray object represents either single instances or array instances. Array instances correspond
+  to GDS2 AREF records and are regular, two-dimensional (not necessarily orthogonal) arrays of instances.
+  A single instance consist of a cell index, denoting the cell that is instantiated and a single transformation,
+  which can be either a simple, orthogonal affine transformation without a magnification (a Trans object, see 
+  <a href="../code/class_Trans.html">Trans</a>) or a general affine transformation (a CplxTrans object, see 
+  <a href="../code/class_CplxTrans.html">CplxTrans</a>). A cell instance array in addition specifies two dimensions (na, nb) and shift
+  vectors (a, b). For each individual instance of the array, an additional displacement is added to the 
+  transformation which is computed by the following formula:
+  </p><pre>d=i*a+j*b   (i=0..na-1, j=0..nb-1)</pre><p>
+  A CellInstArray object that represents an array will return true on <a href="../code/class_CellInstArray.html#m_is_regular_array?">CellInstArray#is_regular_array?</a>. In that case,
+  the <a href="../code/class_CellInstArray.html#m_a">CellInstArray#a</a> and <a href="../code/class_CellInstArray.html#m_b">CellInstArray#b</a> attributes are the basic vectors of the array and <a href="../code/class_CellInstArray.html#m_na">CellInstArray#na</a> and <a href="../code/class_CellInstArray.html#m_nb">CellInstArray#nb</a> are 
+  the dimensions of the array. <a href="../code/class_CellInstArray.html#m_size">CellInstArray#size</a> is the number of instances in the array.
+  </p><p>
+  A CellInstArray with a simple transformation will return false on <a href="../code/class_CellInstArray.html#m_is_complex?">CellInstArray#is_complex?</a> and the 
+  <a href="../code/class_CellInstArray.html#m_trans">CellInstArray#trans</a> attributes gives the basic transformation of the instance. If the transformation is complex, 
+  i.e. has a rotation angle which is not a multiple of 90 degree or a magnification, <a href="../code/class_CellInstArray.html#m_is_complex?">CellInstArray#is_complex?</a>
+  will return true and <a href="../code/class_CellInstArray.html#m_cplx_trans">CellInstArray#cplx_trans</a> should be used instead of <a href="../code/class_CellInstArray.html#m_trans">CellInstArray#trans</a>. In any case, <a href="../code/class_CellInstArray.html#m_cplx_trans">CellInstArray#cplx_trans</a>
+  gives the correct transformation.
+  </p><p>The <a href="../code/class_CellInstArray.html#m_cell_index">CellInstArray#cell_index</a> attribute gets or sets the cell index. The <a href="../code/class_CellInstArray.html#m_bbox">CellInstArray#bbox</a> and <a href="../code/class_CellInstArray.html#m_bbox_per_layer">CellInstArray#bbox_per_layer</a>
+  methods deliver the total bounding box of the instance including all instances for an array. <a href="../code/class_CellInstArray.html#m_bbox_per_layer">CellInstArray#bbox_per_layer</a>
+  gives the bounding box for a single layer. Since the instance only knows the cell index, these methods require
+  a Layout object in order to derive the actual cell's bounding box.
+  </p><p>
+  A CellInstArray object can be inverted using the <a href="../code/class_CellInstArray.html#m_invert">CellInstArray#invert</a> method. This method returns an array which
+  represents the ways the parent cell is seen from the child cell. A CellInstArray object can also be transformed
+  by a given transformation. The <a href="../code/class_CellInstArray.html#m_transform">CellInstArray#transform</a> method will (like <a href="../code/class_CellInstArray.html#m_invert">CellInstArray#invert</a>) transform the object in-place,
+  i.e. modify the object. <a href="../code/class_CellInstArray.html#m_transformed">CellInstArray#transformed</a> will do the same, but leave the object it is called on and return
+  a modified copy (out-of-place). Various variants of the <a href="../code/class_CellInstArray.html#m_transform">CellInstArray#transform</a> and <a href="../code/class_CellInstArray.html#m_transformed">CellInstArray#transformed</a> methods exist
+  taking different forms of transformations (simple, complex).
+  </p><p>
+  The floating-point variant (<a href="../code/class_DCellInstArray.html">DCellInstArray</a>) behaves the same way, except that by convention the 
+  unit of coordinates is micrometers.
+  </p><a name="h2-952"></a><h2>The Instance class</h2><a name="k_14"></a><p>
+  As stated earlier, the <a href="../code/class_Instance.html">Instance</a> object represents a cell instance
+  in the database. Technically it acts as a proxy to some CellInstArray inside the database.
+  In addition, it provides access to properties attached to the instance. Instance objects play an important
+  role in the Cell class to identify a certain instance, for example to delete it.
+  </p><p>
+  The Instance class provides a couple of methods that give read access to the underlying CellInstArray object
+  (<a href="../code/class_Instance.html#m_a">Instance#a</a>, <a href="../code/class_Instance.html#m_b">Instance#b</a>, <a href="../code/class_Instance.html#m_na">Instance#na</a>, <a href="../code/class_Instance.html#m_nb">Instance#nb</a>, <a href="../code/class_Instance.html#m_size">Instance#size</a>, <a href="../code/class_Instance.html#m_trans">Instance#trans</a>, <a href="../code/class_Instance.html#m_cplx_trans">Instance#cplx_trans</a>, 
+  <a href="../code/class_Instance.html#m_cell_index">Instance#cell_index</a>, <a href="../code/class_Instance.html#m_cell">Instance#cell</a>, <a href="../code/class_Instance.html#m_is_complex?">Instance#is_complex?</a> or
+  <a href="../code/class_Instance.html#m_is_regular_array?">Instance#is_regular_array?</a>). The whole CellInstArray object can be read with the <a href="../code/class_Instance.html#m_cell_inst">Instance#cell_inst</a> method.
+  It is possible to copy (dup) and modify that object and replace the current CellInstArray with the new 
+  one using <a href="../code/class_Instance.html#m_cell_inst=">Instance#cell_inst=</a>. Please note, that this operation may invalidate iterators and should not
+  be done inside a loop using &quot;Cell::each_inst&quot; for example.
+  </p><p>
+  The cell the Instance object lives in can be obtained with <a href="../code/class_Instance.html#m_cell">Instance#cell</a>. <a href="../code/class_Instance.html#m_cell_index">Instance#cell_index</a> basically
+  renders the same information, but in form of a cell index. The cell can be assigned (<a href="../code/class_Instance.html#m_cell=">Instance#cell=</a>) which changes is to
+  refer to a different cell.
+  </p><p>
+  The layout the instance lives in can be obtained with <a href="../code/class_Instance.html#m_layout">Instance#layout</a>. The cell the instance lives in
+  is returned by <a href="../code/class_Instance.html#m_parent_cell">Instance#parent_cell</a>. The parent cell can be assigned (<a href="../code/class_Instance.html#m_parent_cell=">Instance#parent_cell=</a>), which effectively moves the instance to
+  a different cell.
+  </p><p>
+  User properties can be accessed through the <a href="../code/class_Instance.html#m_prop_id">Instance#prop_id</a> attribute or, more convenient, through the 
+  <a href="../code/class_Instance.html#m_property">Instance#property</a>, <a href="../code/class_Instance.html#m_delete_property">Instance#delete_property</a> or <a href="../code/class_Instance.html#m_set_property">Instance#set_property</a> methods. Please note that changing the
+  property ID or the property values may invalidate iterators as well. 
+  </p><p>
+  An instance has an equality operator. That operator returns true, if the Instances identify the same object.
+  </p><a name="h2-994"></a><h2>The Shapes class</h2><a name="k_15"></a><p>
+  The <a href="../code/class_Shapes.html">Shapes</a> object is the basic container for geometrical shapes. It
+  stores geometrical primitives (Boxes, Polygons, Paths, Texts and Edges) either directly or 
+  in compressed form to achieve a low memory usage. For example, OASIS shape arrays are stored 
+  as compact arrays when KLayout is used in viewer mode. 
+  The Shapes container provides a simplified view through the Shape object which is basically
+  a pointer to an individual instance of a geometrical primitive. The Shapes container provides
+  access to the primitives through Shape objects. 
+  </p><p>
+  In editable mode (i.e. if a Shapes container lives in an editable Layout object), the 
+  shapes can be modified or deleted after they have been inserted. In the opposite mode (viewer mode), shapes can be added, but not
+  modified nor deleted. 
+  </p><p>
+  A Shapes container is usually obtained from a cell with a given layer index and is filled with 
+  geometrical primitives using one of the <a href="../code/class_Shapes.html#m_insert">Shapes#insert</a> methods. Please note that the shapes
+  are specified in integer coordinates when you use the integer type objects and micrometer
+  units when using the floating-point type objects (whose classes start with &quot;D&quot;):
+  </p><pre># cell = a Cell object
+# layer_index = the index of a the layer
+shapes = cell.shapes(layer_index)
+shapes.insert(RBA::Box::new(0, 0, 1000, 2000))</pre><p>
+  With floating-point objects:
+  </p><pre># cell = a Cell object
+# layer_index = the index of a the layer
+shapes = cell.shapes(layer_index)
+shapes.insert(RBA::DBox::new(0.0, 0.0, 1.0, 2.0))</pre><p>
+  A Shapes object can also be created without a cell:
+  </p><pre>shapes = RBA::Shapes::new
+shapes.insert(RBA::Box::new(0, 0, 1000, 2000))</pre><p>
+  Standalone Shapes objects can be useful when the methods of the Shapes object are required
+  (for example, region queries through &quot;each_overlapping&quot;). There are are variety of &quot;insert&quot;
+  methods available, some of which copy shapes from other Shapes containers using a Shape 
+  object as the reference for the source object. Some of these variants allow one to specify a
+  transformation which is applied before the shape is inserted. There are also variants
+  for all geometrical primitives with or without a properties ID.
+  </p><p>
+  If a Shapes container is empty, <a href="../code/class_Shapes.html#m_is_empty?">Shapes#is_empty?</a> will return true. The content of another
+  Shapes container can be assigned to a Shapes object with the <a href="../code/class_Shapes.html#m_assign">Shapes#assign</a> method. The 
+  number of geometrical primitives inside the Shapes container can be obtained with the
+  <a href="../code/class_Shapes.html#m_size">Shapes#size</a> method. All shapes in the Shapes container can be deleted with the <a href="../code/class_Shapes.html#m_clear">Shapes#clear</a> method.
+  </p><p>
+  The content of the Shapes container can be iterated with the <a href="../code/class_Shapes.html#m_each">Shapes#each</a> iterator. If will
+  deliver Shape objects pointing to the current geometrical primitive. The <a href="../code/class_Shapes.html#m_each_overlapping">Shapes#each_overlapping</a>
+  and <a href="../code/class_Shapes.html#m_each_touching">Shapes#each_touching</a> methods deliver only those primitives whose bounding box overlaps
+  or touches the given rectangle. All iterators allow one to specify flags which confine the
+  kind of shape delivered. The flags are a combination of the &quot;S...&quot; constants. For example:
+  </p><pre># delivers all primitives:
+shapes.each(RBA::Shapes::SAll) { |s| ... }
+# delivers all primitives which have user properties attached:
+shapes.each(RBA::Shapes::SAllWithProperties) { |s| ... }
+# delivers only texts:
+shapes.each(RBA::Shapes::STexts) { |s| ... }
+# delivers only polygons and boxes:
+shapes.each(RBA::Shapes::SBoxes | RBA::Shapes::SPolygons) { |s| ... }</pre><p>
+  A geometrical primitive inside the container can be erased using the <a href="../code/class_Shapes.html#m_erase">Shapes#erase</a>
+  method. It is safe to erase shapes inside an iterator loop for editable containers.
+  </p><p>
+  Shapes can be replaced by other primitives using one of the <a name="k_16"></a>replace methods.
+  Please note that using &quot;replace&quot; inside an iterator loop may lead to unexpected 
+  behavior of the iterator, so modifying a shape inside an iterator loop should be
+  avoided. Here is an example:
+  </p><pre># DON'T:
+# (replace polygons by their bounding boxes)
+shapes.each do |shape|
+  if shape.is_polygon?
+    shapes.replace(shape, shape.bbox)
+  end
+end
+
+# DO
+# (replace polygons by their bounding boxes)
+shapes_to_modify = []
+shapes.each do |shape|
+  if shape.is_polygon?
+    shapes_to_modify.push(shape)
+  end
+end
+shapes_to_modify.each do |shape|
+  shapes.replace(shape, shape.bbox)
+end</pre><p>
+  The latter solution requires some more memory but is in general safer.
+  It is safe however to replace an object by the same kind of object inside a loop.
+  </p><p>
+  Shapes can be transformed by using one of the <a href="../code/class_Shapes.html#m_transform">Shapes#transform</a> methods provided
+  by the Shapes object. Variants for simple and complex transformations exist. 
+  Please note that using a arbitrary-angle transformation on a box (i.e. a CplxTrans
+  object with a rotation angle of 45 degree) will not render a rotated box since a box 
+  is by definition parallel to the axes. Instead this operation will render the 
+  bounding box of the rotated box.
+  Transforming shapes is safe inside an iterator loop.
+  </p><p>
+  The Shapes container also manages user properties by employing properties ID's. 
+  Properties can be modified by obtaining a new ID from the layout object and 
+  replacing the property ID using the <a href="../code/class_Shapes.html#m_replace_prop_id">Shapes#replace_prop_id</a> method. However it's
+  much more convenient to use the <a href="../code/class_Shape.html#m_property">Shape#property</a>, <a href="../code/class_Shape.html#m_set_property">Shape#set_property</a> or
+  <a href="../code/class_Shape.html#m_delete_property">Shape#delete_property</a> methods of the Shape object. In both cases however, 
+  modifying the properties should be avoided inside an iterator loop.
+  </p><p>
+  All shapes inside a shape container can be transformed using <a href="../code/class_Shapes.html#m_transform">Shapes#transform</a>.
+  </p><p>
+  With version 0.23, new collection objects entered the stage: <a href="../code/class_Region.html">Region</a>, <a href="../code/class_Edges.html">Edges</a> and
+  <a href="../code/class_EdgePairs.html">EdgePairs</a> which basically provide a way to store polygons, edges or edge pair objects 
+  independently from the shapes container. They are mainly used to implement bulk operations, specifically for
+  the DRC functionality. The cooperate with the shapes container in the sense that they can be inserted into 
+  a shapes container which will produce polygons or edges in the layout database (edge pairs are converted to single
+  edges or polygons. These classes are discussed in <a href="geometry_api.html">The Geometry API</a>.
+  </p><a name="h2-1143"></a><h2>The Shape class</h2><a name="k_17"></a><p>
+  The <a href="../code/class_Shape.html">Shape</a> object provides a unified view to a geometrical primitive inside
+  a Shapes container. It also plays an important role for addressing geometrical primitives 
+  inside a Shapes container. A Shape object has general methods and specific methods that apply 
+  depending on its identity.
+  </p><a name="h3-1153"></a><h3>General methods</h3><p>
+  The <a href="../code/class_Shape.html#m_bbox">Shape#bbox</a> method delivers the bounding box of the geometrical primitive addressed by
+  the Shape object. Please note that the bounding box of a text only contains the single 
+  point of the text's origin, not the text drawing itself. 
+  </p><p><a href="../code/class_Shape.html#m_cell">Shape#cell</a> delivers the Cell object that shape lives in. The same way, <a href="../code/class_Shape.html#m_layout">Shape#layout</a>
+  delivers the Layout object and <a href="../code/class_Shape.html#m_shapes">Shape#shapes</a> the Shapes object.
+  </p><p><a href="../code/class_Shape.html#m_property">Shape#property</a>, <a href="../code/class_Shape.html#m_set_property">Shape#set_property</a> and <a href="../code/class_Shape.html#m_delete_property">Shape#delete_property</a> allow modification of the
+  user properties of the geometrical primitive. The same can be achieved somewhat less
+  conveniently using a properties
+  ID with the <a href="../code/class_Shape.html#m_prop_id">Shape#prop_id</a> attributes' write accessor (<a href="../code/class_Shape.html#m_prop_id=">Shape#prop_id=</a>). Please note the
+  comments in the description of the Shapes object regarding the interaction of these modifying
+  operations with iterators. <a href="../code/class_Shape.html#m_has_prop_id?">Shape#has_prop_id?</a> returns true, if the shape has user properties
+  attached.
+  </p><p><a href="../code/class_Shape.html#m_type">Shape#type</a> returns the type code of the shape addressed by the Shape object. This is 
+  a detailed code which distinguishes between different internal representations. It's more
+  convenient to use one of the <b>is_...?</b> methods. For example <a href="../code/class_Shape.html#m_is_box?">Shape#is_box?</a> returns true,
+  if the geometrical primitive is a box. A note about <a href="../code/class_Shape.html#m_is_polygon?">Shape#is_polygon?</a> and <a href="../code/class_Shape.html#m_is_simple_polygon?">Shape#is_simple_polygon?</a>:
+  usually it is not required to distinguish between both. &quot;is_polygon?&quot; will also return true for 
+  simple polygons, so it is likely to be sufficient to just ask for &quot;is_polygon?&quot;.
+  <a href="../code/class_Shape.html#m_is_user_object?">Shape#is_user_object?</a> returns true, if the primitive is a custom object. Such objects are 
+  rarely used and not supported by the Ruby API currently.
+  </p><p><a href="../code/class_Shape.html#m_area">Shape#area</a> delivers the area of the shape. The area is zero for a text object. 
+  <a href="../code/class_Shape.html#m_perimeter">Shape#perimeter</a> delivers the perimeter of the shape. The perimeter is zero for a text object. 
+  The Shape object
+  provides an equality operator which delivers true if two Shape objects point to the same 
+  primitive.
+  </p><p>
+  It is possible to replace a primitive by another one by using the shape assignment methods, i.e.
+  <a href="../code/class_Shape.html#m_box=">Shape#box=</a>, <a href="../code/class_Shape.html#m_path=">Shape#path=</a>, <a href="../code/class_Shape.html#m_polygon=">Shape#polygon=</a>, <a href="../code/class_Shape.html#m_simple_polygon=">Shape#simple_polygon=</a>, <a href="../code/class_Shape.html#m_text=">Shape#text=</a> and <a href="../code/class_Shape.html#m_edge=">Shape#edge=</a>.
+  Using these methods is equivalent to the using &quot;replace&quot; on the containing Shapes objects. Please
+  see the notes on using &quot;replace&quot; inside iterators there.
+  </p><p>
+  Floating-point objects are supported too. For example, <a href="../code/class_Shape.html#m_dbox">Shape#dbox</a> is equivalent to <a href="../code/class_Shape.html#m_box">Shape#box</a>,
+  but delivers the object in micrometer units. <a href="../code/class_Shape.html#m_dbox=">Shape#dbox=</a> receives a micrometer-unit object.
+  <a href="../code/class_Shape.html#m_box_dp1">Shape#box_dp1</a> is equivalent to <a href="../code/class_Shape.html#m_box_p1">Shape#box_p1</a>, but gets the first point of the box in micrometer units.
+  </p><p>
+  The layer index a shape is on can be obtained with <a href="../code/class_Shape.html#m_layer">Shape#layer</a>. 
+  A shape can be moved to a different layer by assigning a different layer index with <a href="../code/class_Shape.html#m_layer=">Shape#layer=</a>.
+  In that context, layers can also be addressed by layer/datatype or name using a <a href="../code/class_LayerInfo.html">LayerInfo</a> object.
+  The respective methods to address a shape's layer then are <a href="../code/class_Shape.html#m_layer_info">Shape#layer_info</a> and
+  <a href="../code/class_Shape.html#m_layer_info=">Shape#layer_info=</a>.
+  </p><p>
+  A shape can be transformed using one of the <a href="../code/class_Shape.html#m_transform">Shape#transform</a> flavors.
+  </p><a name="h3-1218"></a><h3>Methods applying for box shapes</h3><p>A Shape object represents a box if it returns true on <a href="../code/class_Shape.html#m_is_box?">Shape#is_box?</a>. 
+  The only specific methods that are provided for box type shapes are the <a href="../code/class_Shape.html#m_box">Shape#box</a>
+  getter and <a href="../code/class_Shape.html#m_box=">Shape#box=</a> setter. <a href="../code/class_Shape.html#m_box_center">Shape#box_center</a>, 
+  <a href="../code/class_Shape.html#m_box_center=">Shape#box_center=</a>, <a href="../code/class_Shape.html#m_box_p1">Shape#box_p1</a>, <a href="../code/class_Shape.html#m_box_p1=">Shape#box_p1=</a>,
+  <a href="../code/class_Shape.html#m_box_p2">Shape#box_p2</a> and <a href="../code/class_Shape.html#m_box_p2=">Shape#box_p2=</a> get or modify individual aspects of the 
+  box.
+  </p><p>
+  For the floating-point equivalents in micrometer units see the <a href="../code/class_Shape.html">Shape</a>.
+  </p><a name="h3-1232"></a><h3>Methods applying for polygon and simple polygon shapes</h3><p>A Shape object represents a polygon or simple polygon if it returns true on <a href="../code/class_Shape.html#m_is_polygon?">Shape#is_polygon?</a>. 
+  If the object is a simple polygon, it will also return true on <a href="../code/class_Shape.html#m_is_simple_polygon?">Shape#is_simple_polygon?</a>.
+  A simple polygon is just a polygon that cannot have holes.
+  </p><p>In every case, the <a href="../code/class_Shape.html#m_each_edge">Shape#each_edge</a> iterator will deliver all edges (connections between points
+  of the polygon). 
+  <a href="../code/class_Shape.html#m_each_point_hull">Shape#each_point_hull</a> will deliver the points of the outer (hull) contour and 
+  <a href="../code/class_Shape.html#m_each_point_hole">Shape#each_point_hole</a> will deliver the points of a specific hole contour. <a href="../code/class_Shape.html#m_holes">Shape#holes</a> will deliver
+  the number of holes. A simple polygon does not have holes and <a href="../code/class_Shape.html#m_holes">Shape#holes</a> always gives zero.
+  </p><p>The <a href="../code/class_Shape.html#m_polygon">Shape#polygon</a> getter delivers a <a href="../code/class_Polygon.html">Polygon</a> object. The same
+  way <a href="../code/class_Shape.html#m_simple_polygon">Shape#simple_polygon</a> delivers a <a href="../code/class_SimplePolygon.html">SimplePolygon</a> object. 
+  A polygon with holes is converted in that case to a simple polygon by introducing cut lines to connect
+  the holes with the outer contour. 
+  </p><p>
+  The <a href="../code/class_Shape.html#m_polygon=">Shape#polygon=</a> and <a href="../code/class_Shape.html#m_simple_polygon=">Shape#simple_polygon=</a> setters will replace the current object by the
+  given new one.
+  </p><p>
+  For the floating-point equivalents in micrometer units see the <a href="../code/class_Shape.html">Shape</a>.
+  </p><a name="h3-1261"></a><h3>Methods applying for path shapes</h3><p>A Shape object represents a path if it returns true on <a href="../code/class_Shape.html#m_is_path?">Shape#is_path?</a>.
+  The path's width can be obtained through the <a href="../code/class_Shape.html#m_path_width">Shape#path_width</a> method. The extensions of the
+  path ends can be obtained with <a href="../code/class_Shape.html#m_path_bgnext">Shape#path_bgnext</a> and <a href="../code/class_Shape.html#m_path_endext">Shape#path_endext</a> for the start and end
+  extensions. The <a href="../code/class_Path.html">Path</a> object can be obtained with the <a href="../code/class_Shape.html#m_path">Shape#path</a> getter.
+  For the path width and extensions setters are also provided (<a href="../code/class_Shape.html#m_path_width=">Shape#path_width=</a>, 
+  <a href="../code/class_Shape.html#m_path_bgnext=">Shape#path_bgnext=</a> and <a href="../code/class_Shape.html#m_path_endext=">Shape#path_endext=</a>).
+  </p><p>
+  The path length can be obtained with <a href="../code/class_Shape.html#m_path_length">Shape#path_length</a> and includes the begin and end
+  extensions. The round-ended path flag can be obtained with <a href="../code/class_Shape.html#m_round_path?">Shape#round_path?</a> flag
+  and set with <a href="../code/class_Shape.html#m_round_path=">Shape#round_path=</a>.
+  </p><p>
+  The points of the path's spine can be iterated with <a href="../code/class_Shape.html#m_each_point">Shape#each_point</a>. <a href="../code/class_Shape.html#m_polygon">Shape#polygon</a> can be 
+  used to obtain the path's contour.
+  </p><p>
+  For the floating-point equivalents in micrometer units see the <a href="../code/class_Shape.html">Shape</a>.
+  </p><a name="h3-1286"></a><h3>Methods applying for text shapes</h3><p>A Shape object represents a text object if it returns true on <a href="../code/class_Shape.html#m_is_text?">Shape#is_text?</a>.
+  The text's text string can be obtained with <a href="../code/class_Shape.html#m_text_string">Shape#text_string</a>. The text's origin and 
+  orientation is encoded in a transformation (a Trans object, see <a href="../code/class_Trans.html">Trans</a>) 
+  which can be obtained with the <a href="../code/class_Shape.html#m_text_trans">Shape#text_trans</a> method. 
+  The font code, text size and alignment flags can be obtained with the <a href="../code/class_Shape.html#m_text_font">Shape#text_font</a>,
+  <a href="../code/class_Shape.html#m_text_size">Shape#text_size</a>, <a href="../code/class_Shape.html#m_text_halign">Shape#text_halign</a> and <a href="../code/class_Shape.html#m_text_valign">Shape#text_valign</a> methods. See the description
+  of the <a href="../code/class_Text.html">Text</a> object for details about these attributes.
+  </p><p>
+  The text representation attributes can be set with <a href="../code/class_Shape.html#m_text_font=">Shape#text_font=</a>, <a href="../code/class_Shape.html#m_text_size=">Shape#text_size=</a>, 
+  <a href="../code/class_Shape.html#m_text_halign=">Shape#text_halign=</a> and <a href="../code/class_Shape.html#m_text_valign=">Shape#text_valign=</a>.
+  <a href="../code/class_Shape.html#m_text_trans=">Shape#text_trans=</a> will modify the text's transformation.
+  </p><p><a href="../code/class_Shape.html#m_text">Shape#text</a> will deliver the Text geometrical primitive and <a href="../code/class_Shape.html#m_text=">Shape#text=</a> allows replacing the
+  shape with the given Text object.
+  </p><p>
+  For the floating-point equivalents in micrometer units see the <a href="../code/class_Shape.html">Shape</a>.
+  </p><a name="h3-1312"></a><h3>Methods applying for edge shapes</h3><p>
+  A Shape object represents an edge if it returns true on <a href="../code/class_Shape.html#m_is_edge?">Shape#is_edge?</a>.
+  Edge objects in general are not well supported in KLayout currently. They can be created and manipulated
+  by scripts, but cannot be drawn or modified on the user interface. In GDS2 files, edges
+  are represented by zero-width paths which is sometimes breaking the conventions of other tools.
+  </p><p>The only specific methods that are provided for edge type shapes are the <a href="../code/class_Shape.html#m_edge">Shape#edge</a>
+  getter and <a href="../code/class_Shape.html#m_edge=">Shape#edge=</a> setter.
+  </p><p>
+  For the floating-point equivalents in micrometer units see the <a href="../code/class_Shape.html">Shape</a>.
+  </p></body>

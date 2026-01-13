@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="editor.html">Editing Functions</a> » <a href="editor_advanced.html">Advanced Editing Operations</a> » Layer Boolean Operations</p><h1>Layer Boolean Operations</h1><a name="k_1"></a><a name="k_2"></a><a name="k_3"></a><a name="k_4"></a><a name="k_5"></a><a name="k_6"></a><p>
+  KLayout now comes with a set of boolean operations. These operations are available in the &quot;Layers&quot; submenu of the &quot;Edit&quot; menu (&quot;Boolean Operations&quot;
+  and &quot;Merge&quot; functions). A dialog will open that allows specification of mode, input layer(s), output layer and certain other options.
+  </p><ul><li><b>AND</b>: intersection. The output layer will contain all areas where shapes from layer A and layer B overlap.</li><li><b>A NOT B</b>: difference. The output layer will contain all areas where shapes from layer A are not overlapping with shapes from layer B.</li><li><b>B NOT A</b>: difference. The output layer will contain all areas where shapes from layer B are not overlapping with shapes from layer A.</li><li><b>XOR</b>: symmetric difference. The output layer will contain all areas where shapes from layer A are not overlapping with shapes from layer B and vice versa.</li></ul><p>
+  In addition, a <b>MERGE</b> operation is provided, which is a single-layer operation that joins (merges) all shapes on the layer. As a special 
+  feature, this operation allows selecting a minimum overlap count: 0 means that output is produced when at least one shape is present. 1 means that two 
+  shapes have to overlap to produce an output and so on. This does not apply for single polygons: self-overlaps of polygons are not detected in this mode.
+  </p><p>
+  All operations can be performed in three hierarchical modes:
+  </p><ul><li><b>Flat</b>: Both layers are flattened and the results are put into the current top cell.</li><li><b>Top cell</b>: perform the operation on shapes in the top cell only.</li><li><b>Cellwise</b>: perform the operation on shapes of all cells below the current top cell individually. This mode is allowed only if the layouts of both inputs and output are the same.</li></ul><p>
+  For the first two modes, the source and target layout can be different, provided that all layouts are loaded into the same view. This allows 
+  combining layers of different layouts. For example to compare them using a XOR function.
+  </p><p>
+  As a special feature, KLayout's boolean implementation allows choosing how &quot;kissing corner&quot; situations are resolved. KLayout allows two modes:
+  </p><ul><li><b>Maximum coherence</b>: the output will contain as few, coherent polygons as possible. These polygons may contain points multiple times, since
+  the contour may return to the same point without closing the contour.</li><li><b>Minimum coherence</b>: the output will contain as much, potentially touching polygons as possible.</li></ul><p>
+  The following screenshots illustrate the maximum coherence (left) and minimum coherence (right) modes for a XOR operation between two rectangles.
+  </p><p><img src="max_coherence.png"><img src="min_coherence.png"></p><p>
+  The boolean operations are currently implemented flat and based on a full-level edge representation. This means, that the complete layer is flattened (if &quot;flat&quot; mode is requested) and 
+  converted into a set of edges which the processor runs on. This will lead to huge resource requirements for very large layouts and is not recommended
+  for such applications currently.
+  </p><p>
+  The boolean processor is based on an iterative approach to cover grid snap effects which makes it highly accurate but somewhat slower than a 
+  single-pass scanline implementation. Performance penalty is about 2x (two times slower) compared to an efficiently implemented single-pass algorithm. 
+  </p></body>

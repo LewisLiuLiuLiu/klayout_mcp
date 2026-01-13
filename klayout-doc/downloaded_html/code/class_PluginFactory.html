@@ -1,0 +1,264 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class PluginFactory</p><h1>API reference - Class PluginFactory</h1><property value="lay" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_lay.html">lay</a></p><p><b>Description</b>: The plugin framework's plugin factory object</p><ul><li><a href="#h2-59">Public constructors</a></li><li><a href="#h2-64">Public methods</a></li><li><a href="#h2-119">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-132">Detailed description</a></li></ul><p></p><p>Plugins are components that extend KLayout's functionality in various aspects. Scripting support exists currently for providing mouse mode handlers and general on-demand functionality connected with a menu entry.</p><p>Plugins are objects that implement the <a href="class_Plugin.html">Plugin</a> interface. Each layout view is associated with one instance of such an object. The PluginFactory is a singleton which is responsible for creating <a href="class_Plugin.html">Plugin</a> objects and providing certain configuration information such as where to put the menu items connected to this plugin and what configuration keys are used.</p><p>An implementation of PluginFactory must at least provide an implementation of <a href="#m_create_plugin">create_plugin</a>. This method must instantiate a new object of the specific plugin.</p><p>After the factory has been created, it must be registered in the system using one of the <a href="#m_register">register</a> methods. It is therefore recommended to put the call to <a href="#m_register">register</a> at the end of the &quot;initialize&quot; method. For the registration to work properly, the menu items must be defined before <a href="#m_register">register</a> is called.</p><p>The following features can also be implemented:</p><p><ul><li>Reserve keys in the configuration file using <a href="#m_add_option">add_option</a> in the constructor</li><li>Create menu items by using <a href="#m_add_menu_entry">add_menu_entry</a> in the constructor</li><li>Set the title for the mode entry that appears in the tool bar using the <a href="#m_register">register</a> argument</li><li>Provide global functionality (independent from the layout view) using <a href="#m_configure">configure</a> or <a href="#m_menu_activated">menu_activated</a></li></ul></p><p>This is a simple example for a plugin in Ruby. It switches the mouse cursor to a 'cross' cursor when it is active:</p><p><pre>
+class PluginTestFactory &lt; RBA::PluginFactory
+
+  # Constructor
+  def initialize
+    # registers the new plugin class at position 100000 (at the end), with name
+    # &quot;my_plugin_test&quot; and title &quot;My plugin test&quot;
+    register(100000, &quot;my_plugin_test&quot;, &quot;My plugin test&quot;)
+  end
+  
+  # Create a new plugin instance of the custom type
+  def create_plugin(manager, dispatcher, view)
+    return PluginTest.new
+  end
+
+end
+
+# The plugin class
+class PluginTest &lt; RBA::Plugin
+  def mouse_moved_event(p, buttons, prio)
+    if prio
+      # Set the cursor to cross if our plugin is active.
+      set_cursor(RBA::Cursor::Cross)
+    end
+    # Returning false indicates that we don't want to consume the event.
+    # This way for example the cursor position tracker still works.
+    false
+  end
+  def mouse_click_event(p, buttons, prio)
+    if prio
+      puts &quot;mouse button clicked.&quot;
+      # This indicates we want to consume the event and others don't receive the mouse click
+      # with prio = false.
+      return true
+    end
+    # don't consume the event if we are not active.
+    false
+  end
+end
+
+# Instantiate the new plugin factory.
+PluginTestFactory.new
+</pre></p><p>This class has been introduced in version 0.22.
+</p><a name="h2-59"></a><h2>Public constructors</h2><table><tr class="row0"><td>new PluginFactory ptr</td><td><b><a href="#method28">new</a></b></td><td></td><td>Creates a new object of this class</td></tr></table><a name="h2-64"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>PluginFactory ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">add_config_menu_item</a></b></td><td>(string menu_name,<br>string insert_pos,<br>string title,<br>string cname,<br>string cvalue)</td><td>Adds a configuration menu item</td></tr><tr class="row0"><td><i>[const]</i></td><td>void</td><td><b><a href="#method8">add_config_page</a></b></td><td>(ConfigPage ptr page)</td><td>Adds the given configuration page</td></tr><tr class="row1"><td><i>[const]</i></td><td>void</td><td><b><a href="#method9">add_editor_options_page</a></b></td><td>(EditorOptionsPage ptr page)</td><td>Adds the given editor options page</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">add_menu_entry</a></b></td><td>(string menu_name,<br>string insert_pos)</td><td>Specifies a separator</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method11">add_menu_entry</a></b></td><td>(string symbol,<br>string menu_name,<br>string insert_pos,<br>string title)</td><td>Specifies a menu item</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method13">add_menu_item_clone</a></b></td><td>(string symbol,<br>string menu_name,<br>string insert_pos,<br>string copy_from)</td><td>Specifies a menu item as a clone of another one</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method14">add_option</a></b></td><td>(string name,<br>string default_value)</td><td>Specifies configuration variables.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method15">add_submenu</a></b></td><td>(string menu_name,<br>string insert_pos,<br>string title)</td><td>Specifies a menu item or sub-menu</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method16">config_finalize</a></b></td><td></td><td>Gets called after a set of configuration events has been sent</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>bool</td><td><b><a href="#method17">configure</a></b></td><td>(string name,<br>string value)</td><td>Gets called for configuration events for the plugin singleton</td></tr><tr class="row1"><td><i>[virtual,const]</i></td><td>void</td><td><b><a href="#method19">create_config_pages</a></b></td><td></td><td>Creates the configuration widgets</td></tr><tr class="row0"><td><i>[virtual,const]</i></td><td>void</td><td><b><a href="#method20">create_editor_options_pages</a></b></td><td></td><td>Creates the editor option pages</td></tr><tr class="row1"><td><i>[virtual,const]</i></td><td>new Plugin ptr</td><td><b><a href="#method21">create_plugin</a></b></td><td>(Manager ptr manager,<br>Dispatcher ptr dispatcher,<br>LayoutView ptr view)</td><td>Creates the plugin</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method24">has_tool_entry=</a></b></td><td>(bool f)</td><td>Enables or disables the tool bar entry</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method25">initialized</a></b></td><td>(Dispatcher ptr dispatcher)</td><td>Gets called when the plugin singleton is initialized, i.e. when the application has been started.</td></tr><tr class="row0"><td><i>[virtual,const]</i></td><td>bool</td><td><b><a href="#method27">menu_activated</a></b></td><td>(string symbol)</td><td>Gets called when a menu item is selected</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method29">register</a></b></td><td>(int position,<br>string name,<br>string title)</td><td>Registers the plugin factory</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method30">register</a></b></td><td>(int position,<br>string name,<br>string title,<br>string icon)</td><td>Registers the plugin factory</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method31">uninitialized</a></b></td><td>(Dispatcher ptr dispatcher)</td><td>Gets called when the application shuts down and the plugin is unregistered</td></tr></table><a name="h2-119"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method12">add_menu_entry</a></b></td><td>(string symbol,<br>string menu_name,<br>string insert_pos,<br>string title,<br>bool sub_menu)</td><td>Use of this method is deprecated</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method18">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method22">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method23">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method26">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-132"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-133"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_PluginFactory.html">PluginFactory</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-139"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-145"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroy"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-152"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroyed?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-159"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__is_const_object?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-166"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__manage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-172"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__unmanage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-178"></a><h3>add_config_menu_item</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_add_config_menu_item"></a><a name="k_9"></a><p><b>Signature</b>: void <b> add_config_menu_item </b> (string menu_name, string insert_pos, string title, string cname, string cvalue)</p><p><b>Description</b>: Adds a configuration menu item</p><p><p></p><p>Menu items created this way will send a configuration request with 'cname' as the configuration parameter name and 'cvalue' as the configuration parameter value.
+If 'cvalue' is a string with a single question mark (&quot;?&quot;), the item is a check box that reflects the boolean value of the configuration item.</p><p>This method has been introduced in version 0.27.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-184"></a><h3>add_config_page</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_add_config_page"></a><a name="k_10"></a><p><b>Signature</b>: <i>[const] </i>void <b> add_config_page </b> (<a href="class_ConfigPage.html">ConfigPage</a> ptr page)</p><p><b>Description</b>: Adds the given configuration page</p><p><p>
+See <a href="#m_create_config_pages">create_config_pages</a> how to use this function. The method is effective only in the reimplementation context of this function.</p><p>This method has been introduced in version 0.30.4.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-190"></a><h3>add_editor_options_page</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_add_editor_options_page"></a><a name="k_11"></a><p><b>Signature</b>: <i>[const] </i>void <b> add_editor_options_page </b> (<a href="class_EditorOptionsPage.html">EditorOptionsPage</a> ptr page)</p><p><b>Description</b>: Adds the given editor options page</p><p><p>
+See <a href="#m_create_editor_options_pages">create_editor_options_pages</a> how to use this function. The method is effective only in the reimplementation context of this function.</p><p>This method has been introduced in version 0.30.4.</p></p></td></tr><tr class="bigrow0"><td rowspan="3"><a name="h3-196"></a><h3>add_menu_entry</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_add_menu_entry"></a><a name="k_12"></a><p><b>(1) Signature</b>: void <b> add_menu_entry </b> (string menu_name, string insert_pos)</p><p><b>Description</b>: Specifies a separator</p><p><p>
+Call this method in the factory constructor to build the menu items that this plugin shall create.
+This specific call inserts a separator at the given position (insert_pos). The position uses abstract menu item paths and &quot;menu_name&quot; names the component that will be created. See <a href="class_AbstractMenu.html">AbstractMenu</a> for a description of the path.
+</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_add_menu_entry"></a><a name="k_13"></a><p><b>(2) Signature</b>: void <b> add_menu_entry </b> (string symbol, string menu_name, string insert_pos, string title)</p><p><b>Description</b>: Specifies a menu item</p><table class="layout-table"><tr><td><b>symbol</b>:</td><td>The string to send to the plugin if the menu is triggered</td></tr><tr><td><b>menu_name</b>:</td><td>The name of entry to create at the given position</td></tr><tr><td><b>insert_pos</b>:</td><td>The position where to create the entry</td></tr><tr><td><b>title</b>:</td><td>The title string for the item. The title can contain a keyboard shortcut in round braces after the title text, i.e. &quot;My Menu Item(F12)&quot;</td></tr></table><p><p>
+Call this method in the factory constructor to build the menu items that this plugin shall create.
+This specific call inserts a menu item at the specified position (insert_pos). The position uses abstract menu item paths and &quot;menu_name&quot; names the component that will be created. See <a href="class_AbstractMenu.html">AbstractMenu</a> for a description of the path.
+When the menu item is selected &quot;symbol&quot; is the string that is sent to the <a href="#m_menu_activated">menu_activated</a> callback (either the global one for the factory ot the one of the per-view plugin instance).</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_add_menu_entry"></a><a name="k_14"></a><p><b>(3) Signature</b>: void <b> add_menu_entry </b> (string symbol, string menu_name, string insert_pos, string title, bool sub_menu)</p><p><b>Description</b>: Specifies a menu item or sub-menu</p><p>Use of this method is deprecated</p><p><p>
+Similar to the previous form of &quot;add_menu_entry&quot;, but this version allows also to create sub-menus by setting the last parameter to &quot;true&quot;.</p><p>With version 0.27 it's more convenient to use <a href="#m_add_submenu">add_submenu</a>.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-223"></a><h3>add_menu_item_clone</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_add_menu_item_clone"></a><a name="k_15"></a><p><b>Signature</b>: void <b> add_menu_item_clone </b> (string symbol, string menu_name, string insert_pos, string copy_from)</p><p><b>Description</b>: Specifies a menu item as a clone of another one</p><p><p>
+Using this method, a menu item can be made a clone of another entry (given as path by 'copy_from').
+The new item will share the <a href="class_Action.html">Action</a> object with the original one, so manipulating the action will change both the original entry and the new entry.</p><p>This method has been introduced in version 0.27.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-230"></a><h3>add_option</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_add_option"></a><a name="k_16"></a><p><b>Signature</b>: void <b> add_option </b> (string name, string default_value)</p><p><b>Description</b>: Specifies configuration variables.</p><p><p>
+Call this method in the factory constructor to add configuration key/value pairs to the configuration repository. Without specifying configuration variables, the status of a plugin cannot be persisted. </p><p>Once the configuration variables are known, they can be retrieved on demand using &quot;get_config&quot; from <a href="class_MainWindow.html">MainWindow</a> or listening to <a href="#m_configure">configure</a> callbacks (either in the factory or the plugin instance). Configuration variables can be set using &quot;set_config&quot; from <a href="class_MainWindow.html">MainWindow</a>. This scheme also works without registering the configuration options, but doing so has the advantage that it is guaranteed that a variable with this keys exists and has the given default value initially.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-236"></a><h3>add_submenu</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_add_submenu"></a><a name="k_17"></a><p><b>Signature</b>: void <b> add_submenu </b> (string menu_name, string insert_pos, string title)</p><p><b>Description</b>: Specifies a menu item or sub-menu</p><p><p></p><p>This method has been introduced in version 0.27.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-241"></a><h3>config_finalize</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_config_finalize"></a><a name="k_18"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> config_finalize </b></p><p><b>Description</b>: Gets called after a set of configuration events has been sent</p><p><p>
+This method can be reimplemented and is called after a set of configuration events has been sent to the plugin factory singleton with <a href="#m_configure">configure</a>. It can be used to set up user interfaces properly for example.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-248"></a><h3>configure</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_configure"></a><a name="k_19"></a><p><b>Signature</b>: <i>[virtual] </i>bool <b> configure </b> (string name, string value)</p><p><b>Description</b>: Gets called for configuration events for the plugin singleton</p><table class="layout-table"><tr><td><b>name</b>:</td><td>The configuration key</td></tr><tr><td><b>value</b>:</td><td>The value of the configuration variable</td></tr><tr><td><b>Returns</b>:</td><td>True to stop further processing</td></tr></table><p><p>
+This method can be reimplemented to receive configuration events for the plugin singleton. Before a configuration can be received it must be registered by calling <a href="#m_add_option">add_option</a> in the plugin factories' constructor.</p><p>The implementation of this method may return true indicating that the configuration request will not be handled by further modules. It's more cooperative to return false which will make the system distribute the configuration request to other receivers as well.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-259"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_create"></a><a name="k_20"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-266"></a><h3>create_config_pages</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_create_config_pages"></a><a name="k_21"></a><p><b>Signature</b>: <i>[virtual,const] </i>void <b> create_config_pages </b></p><p><b>Description</b>: Creates the configuration widgets</p><p><p>
+The configuration pages are widgets that are displayed in the configuration dialog ('File/Setup'). Every plugin can create multiple such widgets and specify, where these widgets are displayed. The widgets are of type <a href="class_ConfigPage.html">ConfigPage</a>.</p><p>The title string also specifies the location of the widget in the configuration page hierarchy. See <a href="class_ConfigPage.html">ConfigPage</a> for more details.</p><p>In order to create config pages, instantiate a <a href="class_ConfigPage.html">ConfigPage</a> object and call <a href="#m_add_config_page">add_config_page</a> to register it.</p><p>This method has been introduced in version 0.30.4.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-272"></a><h3>create_editor_options_pages</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_create_editor_options_pages"></a><a name="k_22"></a><p><b>Signature</b>: <i>[virtual,const] </i>void <b> create_editor_options_pages </b></p><p><b>Description</b>: Creates the editor option pages</p><p><p>
+The editor option pages are widgets of type <a href="class_EditorOptionsPage.html">EditorOptionsPage</a>. These Qt widgets are displayed in a seperate dock (the 'editor options') and become visible when the plugin is active - i.e. its mode is selected. Use this method to provide customized pages that will be displayed in the editor options dock.</p><p>In order to create config pages, instantiate a <a href="class_EditorOptionsPage.html">EditorOptionsPage</a> object and call <a href="#m_add_editor_options_page">add_editor_options_page</a> to register it.</p><p>This method has been introduced in version 0.30.4.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-278"></a><h3>create_plugin</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_create_plugin"></a><a name="k_23"></a><p><b>Signature</b>: <i>[virtual,const] </i>new <a href="class_Plugin.html">Plugin</a> ptr <b> create_plugin </b> (<a href="class_Manager.html">Manager</a> ptr manager, <a href="class_Dispatcher.html">Dispatcher</a> ptr dispatcher, <a href="class_LayoutView.html">LayoutView</a> ptr view)</p><p><b>Description</b>: Creates the plugin</p><table class="layout-table"><tr><td><b>manager</b>:</td><td>The database manager object responsible for handling database transactions</td></tr><tr><td><b>dispatcher</b>:</td><td>The reference to the <a href="class_MainWindow.html">MainWindow</a> object</td></tr><tr><td><b>view</b>:</td><td>The <a href="class_LayoutView.html">LayoutView</a> that is plugin is created for</td></tr><tr><td><b>Returns</b>:</td><td>The new <a href="class_Plugin.html">Plugin</a> implementation object</td></tr></table><p><p>
+This is the basic functionality that the factory must provide. This method must create a plugin of the specific type.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-290"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_destroy"></a><a name="k_24"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-298"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_destroyed?"></a><a name="k_25"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-306"></a><h3>has_tool_entry=</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_has_tool_entry="></a><a name="k_26"></a><p><b>Signature</b>: void <b> has_tool_entry= </b> (bool f)</p><p><b>Description</b>: Enables or disables the tool bar entry</p><p><p>
+Initially this property is set to true. This means that the plugin will have a visible entry in the toolbar. This property can be set to false to disable this feature. In that case, the title and icon given on registration will be ignored. </p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'has_tool_entry'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-313"></a><h3>initialized</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_initialized"></a><a name="k_27"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> initialized </b> (<a href="class_Dispatcher.html">Dispatcher</a> ptr dispatcher)</p><p><b>Description</b>: Gets called when the plugin singleton is initialized, i.e. when the application has been started.</p><table class="layout-table"><tr><td><b>dispatcher</b>:</td><td>The reference to the <a href="class_MainWindow.html">MainWindow</a> object</td></tr></table></td></tr><tr class="bigrow0"><td><a name="h3-320"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_is_const_object?"></a><a name="k_28"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-328"></a><h3>menu_activated</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_menu_activated"></a><a name="k_29"></a><p><b>Signature</b>: <i>[virtual,const] </i>bool <b> menu_activated </b> (string symbol)</p><p><b>Description</b>: Gets called when a menu item is selected</p><p><p></p><p>Usually, menu-triggered functionality is implemented in the per-view instance of the plugin. However, using this method it is possible to implement functionality globally for all plugin instances. The symbol is the string registered with the specific menu item in the add_menu_item call.</p><p>If this method was handling the menu event, it should return true. This indicates that the event will not be propagated to other plugins hence avoiding duplicate calls.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-334"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_new"></a><a name="k_30"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_PluginFactory.html">PluginFactory</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new object of this class</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-339"></a><h3>register</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_register"></a><a name="k_31"></a><p><b>(1) Signature</b>: void <b> register </b> (int position, string name, string title)</p><p><b>Description</b>: Registers the plugin factory</p><table class="layout-table"><tr><td><b>position</b>:</td><td>An integer that determines the order in which the plugins are created. The internal plugins use the values from 1000 to 50000.</td></tr><tr><td><b>name</b>:</td><td>The plugin name. This is an arbitrary string which should be unique. Hence it is recommended to use a unique prefix, i.e. &quot;myplugin::ThePluginClass&quot;.</td></tr><tr><td><b>title</b>:</td><td>The title string which is supposed to appear in the tool bar and menu related to this plugin.</td></tr></table><p><p></p><p>Registration of the plugin factory makes the object known to the system. Registration requires that the menu items have been set already. Hence it is recommended to put the registration at the end of the initialization method of the factory class.
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_register"></a><a name="k_32"></a><p><b>(2) Signature</b>: void <b> register </b> (int position, string name, string title, string icon)</p><p><b>Description</b>: Registers the plugin factory</p><table class="layout-table"><tr><td><b>position</b>:</td><td>An integer that determines the order in which the plugins are created. The internal plugins use the values from 1000 to 50000.</td></tr><tr><td><b>name</b>:</td><td>The plugin name. This is an arbitrary string which should be unique. Hence it is recommended to use a unique prefix, i.e. &quot;myplugin::ThePluginClass&quot;.</td></tr><tr><td><b>title</b>:</td><td>The title string which is supposed to appear in the tool bar and menu related to this plugin.</td></tr><tr><td><b>icon</b>:</td><td>The path to the icon that appears in the tool bar and menu related to this plugin.</td></tr></table><p><p></p><p>This version also allows registering an icon for the tool bar.</p><p>Registration of the plugin factory makes the object known to the system. Registration requires that the menu items have been set already. Hence it is recommended to put the registration at the end of the initialization method of the factory class.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-361"></a><h3>uninitialized</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_uninitialized"></a><a name="k_33"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> uninitialized </b> (<a href="class_Dispatcher.html">Dispatcher</a> ptr dispatcher)</p><p><b>Description</b>: Gets called when the application shuts down and the plugin is unregistered</p><table class="layout-table"><tr><td><b>dispatcher</b>:</td><td>The reference to the <a href="class_MainWindow.html">MainWindow</a> object</td></tr></table><p><p>
+This event can be used to free resources allocated with this factory singleton.</p></p></td></tr></table></body>

@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class Action</p><h1>API reference - Class Action</h1><property value="lay" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_lay.html">lay</a></p><p><b>Description</b>: The abstraction for an action (i.e. used inside menus)</p><p><b>Class hierarchy</b>: Action</p><ul><li><a href="#h2-26">Public constructors</a></li><li><a href="#h2-31">Public methods</a></li><li><a href="#h2-118">Public static methods and constants</a></li><li><a href="#h2-123">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-134">Detailed description</a></li></ul><p></p><p>Actions act as a generalization of menu entries. The action provides the appearance of a menu entry such as title, key shortcut etc. and dispatches the menu events. The action can be manipulated to change to appearance of a menu entry and can be attached an observer that receives the events when the menu item is selected.</p><p>Multiple action objects can refer to the same action internally, in which case the information and event handler is copied between the incarnations. This way, a single implementation can be provided for multiple places where an action appears, for example inside the toolbar and in addition as a menu entry. Both actions will shared the same icon, text, shortcut etc.</p><p>Actions are mainly used for providing new menu items inside the <a href="class_AbstractMenu.html">AbstractMenu</a> class. This is some sample Ruby code for that case:</p><p><pre>
+a = RBA::Action.new
+a.title = &quot;Push Me!&quot;
+a.on_triggered do 
+  puts &quot;I was pushed!&quot;
+end
+
+app = RBA::Application.instance
+mw = app.main_window
+
+menu = mw.menu
+menu.insert_separator(&quot;@toolbar.end&quot;, &quot;name&quot;)
+menu.insert_item(&quot;@toolbar.end&quot;, &quot;my_action&quot;, a)
+</pre></p><p>This code will register a custom action in the toolbar. When the toolbar button is pushed a message is printed. The toolbar is addressed by a path starting with the pseudo root &quot;@toolbar&quot;.</p><p>In Version 0.23, the Action class has been merged with the ActionBase class.
+</p><a name="h2-26"></a><h2>Public constructors</h2><table><tr class="row0"><td>new Action ptr</td><td><b><a href="#method33">new</a></b></td><td></td><td>Creates a new object of this class</td></tr></table><a name="h2-31"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>Action ptr</td><td><b><a href="#method1">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method2">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method3">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method5">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method6">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method7">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method8">checkable=</a></b></td><td>(bool checkable)</td><td>Makes the item(s) checkable or not</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method9">checked=</a></b></td><td>(bool checked)</td><td>Checks or unchecks the item</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method11">default_shortcut</a></b></td><td></td><td>Gets the default keyboard shortcut</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method12">default_shortcut=</a></b></td><td>(string shortcut)</td><td>Sets the default keyboard shortcut</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method15">effective_shortcut</a></b></td><td></td><td>Gets the effective keyboard shortcut</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method16">enabled=</a></b></td><td>(bool enabled)</td><td>Enables or disables the action</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method17">hidden=</a></b></td><td>(bool hidden)</td><td>Sets a value that makes the item hidden always</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method18">icon=</a></b></td><td>(string file)</td><td>Sets the icon to the given image file</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method19">icon=</a></b></td><td>(const QIcon qicon)</td><td>Sets the icon to the given <a href="class_QIcon.html">QIcon</a> object</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method20">icon_text</a></b></td><td></td><td>Gets the icon's text</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method21">icon_text=</a></b></td><td>(string icon_text)</td><td>Sets the icon's text</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method22">is_checkable?</a></b></td><td></td><td>Gets a value indicating whether the item is checkable</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method23">is_checked?</a></b></td><td></td><td>Gets a value indicating whether the item is checked</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method25">is_effective_enabled?</a></b></td><td></td><td>Gets a value indicating whether the item is really enabled</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method26">is_effective_visible?</a></b></td><td></td><td>Gets a value indicating whether the item is really visible</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method27">is_enabled?</a></b></td><td></td><td>Gets a value indicating whether the item is enabled</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method28">is_hidden?</a></b></td><td></td><td>Gets a value indicating whether the item is hidden</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method29">is_separator?</a></b></td><td></td><td>Gets a value indicating whether the item is a separator</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method30">is_visible?</a></b></td><td></td><td>Gets a value indicating whether the item is visible</td></tr><tr class="row0"><td><i>[const]</i></td><td>Macro ptr</td><td><b><a href="#method31">macro</a></b></td><td></td><td>Gets the macro associated with the action</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method32">menu_opening</a></b></td><td></td><td>This method is called if the menu item is a sub-menu and before the menu is opened.</td></tr><tr class="row0"><td><i>[signal]</i></td><td>void</td><td><b><a href="#method34">on_menu_opening</a></b></td><td></td><td>This event is called if the menu item is a sub-menu and before the menu is opened.</td></tr><tr class="row1"><td><i>[signal]</i></td><td>void</td><td><b><a href="#method35">on_triggered</a></b></td><td></td><td>This event is called if the menu item is selected.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method36">separator=</a></b></td><td>(bool separator)</td><td>Makes an item a separator or not</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method37">shortcut</a></b></td><td></td><td>Gets the keyboard shortcut</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method38">shortcut=</a></b></td><td>(string shortcut)</td><td>Sets the keyboard shortcut</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method39">title</a></b></td><td></td><td>Gets the title</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method40">title=</a></b></td><td>(string title)</td><td>Sets the title</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method41">tool_tip</a></b></td><td></td><td>Gets the tool tip text.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method42">tool_tip=</a></b></td><td>(string text)</td><td>Sets the tool tip text</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method43">trigger</a></b></td><td></td><td>Triggers the action programmatically</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method44">triggered</a></b></td><td></td><td>This method is called if the menu item is selected.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method45">visible=</a></b></td><td>(bool visible)</td><td>Sets the item's visibility</td></tr><tr class="row0"><td><i>[virtual,const]</i></td><td>bool</td><td><b><a href="#method46">wants_enabled</a></b></td><td></td><td>Returns a value whether the action wants to become enabled.</td></tr><tr class="row1"><td><i>[virtual,const]</i></td><td>bool</td><td><b><a href="#method47">wants_visible</a></b></td><td></td><td>Returns a value whether the action wants to become visible</td></tr></table><a name="h2-118"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td><i>[static,const]</i></td><td>string</td><td><b><a href="#method0">NoKeyBound</a></b></td><td></td><td>Gets a shortcut value indicating that no shortcut shall be assigned</td></tr></table><a name="h2-123"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method13">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method14">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method24">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-134"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-135"></a><h3>NoKeyBound</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_NoKeyBound"></a><a name="k_2"></a><p><b>Signature</b>: <i>[static,const] </i>string <b> NoKeyBound </b></p><p><b>Description</b>: Gets a shortcut value indicating that no shortcut shall be assigned</p><p><p>
+This method has been introduced in version 0.26.</p></p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'NoKeyBound'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-142"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__const_cast"></a><a name="k_3"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Action.html">Action</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-148"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__create"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-154"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroy"></a><a name="k_5"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-161"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__destroyed?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-168"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__is_const_object?"></a><a name="k_7"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-175"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__manage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-181"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__unmanage"></a><a name="k_9"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-187"></a><h3>checkable=</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_checkable="></a><a name="k_10"></a><p><b>Signature</b>: void <b> checkable= </b> (bool checkable)</p><p><b>Description</b>: Makes the item(s) checkable or not</p><table class="layout-table"><tr><td><b>checkable</b>:</td><td>true to make the item checkable</td></tr></table><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'checkable'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-195"></a><h3>checked=</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_checked="></a><a name="k_11"></a><p><b>Signature</b>: void <b> checked= </b> (bool checked)</p><p><b>Description</b>: Checks or unchecks the item</p><table class="layout-table"><tr><td><b>checked</b>:</td><td>true to make the item checked</td></tr></table><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'checked'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-203"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_create"></a><a name="k_12"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-210"></a><h3>default_shortcut</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_default_shortcut"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i>string <b> default_shortcut </b></p><p><b>Description</b>: Gets the default keyboard shortcut</p><table class="layout-table"><tr><td><b>Returns</b>:</td><td>The default keyboard shortcut as a string</td></tr></table><p><p></p><p>This attribute has been introduced in version 0.25.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'default_shortcut'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-220"></a><h3>default_shortcut=</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_default_shortcut="></a><a name="k_14"></a><p><b>Signature</b>: void <b> default_shortcut= </b> (string shortcut)</p><p><b>Description</b>: Sets the default keyboard shortcut</p><p><p></p><p>The default shortcut is used, if shortcut is empty.</p><p>This attribute has been introduced in version 0.25.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'default_shortcut'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-227"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_destroy"></a><a name="k_15"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-235"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_destroyed?"></a><a name="k_16"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-243"></a><h3>effective_shortcut</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_effective_shortcut"></a><a name="k_17"></a><p><b>Signature</b>: <i>[const] </i>string <b> effective_shortcut </b></p><p><b>Description</b>: Gets the effective keyboard shortcut</p><table class="layout-table"><tr><td><b>Returns</b>:</td><td>The effective keyboard shortcut as a string</td></tr></table><p><p></p><p>The effective shortcut is the one that is taken. It's either shortcut or default_shortcut.</p><p>This attribute has been introduced in version 0.25.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-252"></a><h3>enabled=</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_enabled="></a><a name="k_18"></a><p><b>Signature</b>: void <b> enabled= </b> (bool enabled)</p><p><b>Description</b>: Enables or disables the action</p><table class="layout-table"><tr><td><b>enabled</b>:</td><td>true to enable the item</td></tr></table><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'enabled'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-260"></a><h3>hidden=</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_hidden="></a><a name="k_19"></a><p><b>Signature</b>: void <b> hidden= </b> (bool hidden)</p><p><b>Description</b>: Sets a value that makes the item hidden always</p><p><p>
+See is_hidden? for details.</p><p>This attribute has been introduced in version 0.25
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'hidden'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-268"></a><h3>icon=</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_icon="></a><a name="k_20"></a><p><b>(1) Signature</b>: void <b> icon= </b> (string file)</p><p><b>Description</b>: Sets the icon to the given image file</p><table class="layout-table"><tr><td><b>file</b>:</td><td>The image file to load for the icon</td></tr></table><p><p></p><p>Passing an empty string will reset the icon.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'icon'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_icon="></a><a name="k_21"></a><p><b>(2) Signature</b>: void <b> icon= </b> (const <a href="class_QIcon.html">QIcon</a> qicon)</p><p><b>Description</b>: Sets the icon to the given <a href="class_QIcon.html">QIcon</a> object</p><table class="layout-table"><tr><td><b>qicon</b>:</td><td>The QIcon object</td></tr></table><p><p></p><p>This variant has been added in version 0.28.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'icon'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-287"></a><h3>icon_text</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_icon_text"></a><a name="k_22"></a><p><b>Signature</b>: <i>[const] </i>string <b> icon_text </b></p><p><b>Description</b>: Gets the icon's text</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'icon_text'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-292"></a><h3>icon_text=</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_icon_text="></a><a name="k_23"></a><p><b>Signature</b>: void <b> icon_text= </b> (string icon_text)</p><p><b>Description</b>: Sets the icon's text</p><p><p></p><p>If an icon text is set, this will be used for the text below the icon.
+If no icon text is set, the normal text will be used for the icon.
+Passing an empty string will reset the icon's text.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'icon_text'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-301"></a><h3>is_checkable?</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_is_checkable?"></a><a name="k_24"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_checkable? </b></p><p><b>Description</b>: Gets a value indicating whether the item is checkable</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'checkable'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-306"></a><h3>is_checked?</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_is_checked?"></a><a name="k_25"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_checked? </b></p><p><b>Description</b>: Gets a value indicating whether the item is checked</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'checked'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-311"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_is_const_object?"></a><a name="k_26"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-319"></a><h3>is_effective_enabled?</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_is_effective_enabled?"></a><a name="k_27"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_effective_enabled? </b></p><p><b>Description</b>: Gets a value indicating whether the item is really enabled</p><p><p>
+This is the combined value from is_enabled? and dynamic value (<a href="#m_wants_enabled">wants_enabled</a>).
+This attribute has been introduced in version 0.28.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-327"></a><h3>is_effective_visible?</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_is_effective_visible?"></a><a name="k_28"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_effective_visible? </b></p><p><b>Description</b>: Gets a value indicating whether the item is really visible</p><p><p>
+This is the combined visibility from is_visible? and is_hidden? and dynamic visibility (<a href="#m_wants_visible">wants_visible</a>).
+This attribute has been introduced in version 0.25.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-335"></a><h3>is_enabled?</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_is_enabled?"></a><a name="k_29"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_enabled? </b></p><p><b>Description</b>: Gets a value indicating whether the item is enabled</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'enabled'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-340"></a><h3>is_hidden?</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_is_hidden?"></a><a name="k_30"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_hidden? </b></p><p><b>Description</b>: Gets a value indicating whether the item is hidden</p><p><p>
+If an item is hidden, it's always hidden and is_visible? does not have an effect.
+This attribute has been introduced in version 0.25.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'hidden'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-349"></a><h3>is_separator?</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_is_separator?"></a><a name="k_31"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_separator? </b></p><p><b>Description</b>: Gets a value indicating whether the item is a separator</p><p><p>
+This method has been introduced in version 0.25.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'separator'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-357"></a><h3>is_visible?</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_is_visible?"></a><a name="k_32"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_visible? </b></p><p><b>Description</b>: Gets a value indicating whether the item is visible</p><p><p>
+The visibility combines with is_hidden?. To get the true visiblity, use is_effective_visible?.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'visible'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-364"></a><h3>macro</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_macro"></a><a name="k_33"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Macro.html">Macro</a> ptr <b> macro </b></p><p><b>Description</b>: Gets the macro associated with the action</p><p><p>
+If the action is associated with a macro, this method returns a reference to the <a href="class_Macro.html">Macro</a> object. Otherwise, this method returns nil.</p><p>This method has been added in version 0.25.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-371"></a><h3>menu_opening</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_menu_opening"></a><a name="k_34"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> menu_opening </b></p><p><b>Description</b>: This method is called if the menu item is a sub-menu and before the menu is opened.</p><p><p>
+Reimplement this method is a derived class to receive this event. You can also use the on_menu_opening event instead.</p><p>This method has been added in version 0.28.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-377"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_new"></a><a name="k_35"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_Action.html">Action</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new object of this class</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-382"></a><h3>on_menu_opening</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_on_menu_opening"></a><a name="k_36"></a><p><b>Signature</b>: <i>[signal] </i>void <b> on_menu_opening </b></p><p><b>Description</b>: This event is called if the menu item is a sub-menu and before the menu is opened.</p><p><p></p><p>This event provides an opportunity to populate the menu before it is opened.</p><p>This event has been introduced in version 0.28.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'on_menu_opening'. This is the getter.<br>The object exposes a writable attribute 'on_menu_opening'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-389"></a><h3>on_triggered</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_on_triggered"></a><a name="k_37"></a><p><b>Signature</b>: <i>[signal] </i>void <b> on_triggered </b></p><p><b>Description</b>: This event is called if the menu item is selected.</p><p><p></p><p>This event has been introduced in version 0.21 and moved to the ActionBase class in 0.28.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'on_triggered'. This is the getter.<br>The object exposes a writable attribute 'on_triggered'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-396"></a><h3>separator=</h3></td><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_separator="></a><a name="k_38"></a><p><b>Signature</b>: void <b> separator= </b> (bool separator)</p><p><b>Description</b>: Makes an item a separator or not</p><table class="layout-table"><tr><td><b>separator</b>:</td><td>true to make the item a separator</td></tr></table><p><p></p><p>This method has been introduced in version 0.25.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'separator'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-406"></a><h3>shortcut</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_shortcut"></a><a name="k_39"></a><p><b>Signature</b>: <i>[const] </i>string <b> shortcut </b></p><p><b>Description</b>: Gets the keyboard shortcut</p><table class="layout-table"><tr><td><b>Returns</b>:</td><td>The keyboard shortcut as a string</td></tr></table><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'shortcut'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-414"></a><h3>shortcut=</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_shortcut="></a><a name="k_40"></a><p><b>Signature</b>: void <b> shortcut= </b> (string shortcut)</p><p><b>Description</b>: Sets the keyboard shortcut</p><table class="layout-table"><tr><td><b>shortcut</b>:</td><td>The keyboard shortcut in Qt notation (i.e. &quot;Ctrl+C&quot;)</td></tr></table><p><p>
+If the shortcut string is empty, the default shortcut will be used. If the string is equal to <a href="class_Action.html#m_NoKeyBound">Action#NoKeyBound</a>, no keyboard shortcut will be assigned.</p><p>The NoKeyBound option has been added in version 0.26.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'shortcut'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-424"></a><h3>title</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_title"></a><a name="k_41"></a><p><b>Signature</b>: <i>[const] </i>string <b> title </b></p><p><b>Description</b>: Gets the title</p><table class="layout-table"><tr><td><b>Returns</b>:</td><td>The current title string</td></tr></table><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'title'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-432"></a><h3>title=</h3></td><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_title="></a><a name="k_42"></a><p><b>Signature</b>: void <b> title= </b> (string title)</p><p><b>Description</b>: Sets the title</p><table class="layout-table"><tr><td><b>title</b>:</td><td>The title string to set (just the title)</td></tr></table><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'title'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-440"></a><h3>tool_tip</h3></td><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_tool_tip"></a><a name="k_43"></a><p><b>Signature</b>: <i>[const] </i>string <b> tool_tip </b></p><p><b>Description</b>: Gets the tool tip text.</p><p><p></p><p>This method has been added in version 0.22.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'tool_tip'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-447"></a><h3>tool_tip=</h3></td><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_tool_tip="></a><a name="k_44"></a><p><b>Signature</b>: void <b> tool_tip= </b> (string text)</p><p><b>Description</b>: Sets the tool tip text</p><p><p></p><p>The tool tip text is displayed in the tool tip window of the menu entry.
+This is in particular useful for entries in the tool bar.
+This method has been added in version 0.22.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'tool_tip'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-456"></a><h3>trigger</h3></td><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_trigger"></a><a name="k_45"></a><p><b>Signature</b>: void <b> trigger </b></p><p><b>Description</b>: Triggers the action programmatically</p></td></tr><tr class="bigrow1"><td><a name="h3-460"></a><h3>triggered</h3></td><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_triggered"></a><a name="k_46"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> triggered </b></p><p><b>Description</b>: This method is called if the menu item is selected.</p><p><p></p><p>Reimplement this method is a derived class to receive this event. You can also use the on_triggered event instead.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-465"></a><h3>visible=</h3></td><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_visible="></a><a name="k_47"></a><p><b>Signature</b>: void <b> visible= </b> (bool visible)</p><p><b>Description</b>: Sets the item's visibility</p><table class="layout-table"><tr><td><b>visible</b>:</td><td>true to make the item visible</td></tr></table><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'visible'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-473"></a><h3>wants_enabled</h3></td><td style="padding-bottom: 16px"><a name="method46"></a><a name="m_wants_enabled"></a><a name="k_48"></a><p><b>Signature</b>: <i>[virtual,const] </i>bool <b> wants_enabled </b></p><p><b>Description</b>: Returns a value whether the action wants to become enabled.</p><p><p>
+This is a dynamic query for enabled state which the system uses to dynamically show or hide menu items. This information is evaluated in addition to is_enabled? and contributes to the effective enabled status from is_effective_enabled?.</p><p>This feature has been introduced in version 0.28.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-480"></a><h3>wants_visible</h3></td><td style="padding-bottom: 16px"><a name="method47"></a><a name="m_wants_visible"></a><a name="k_49"></a><p><b>Signature</b>: <i>[virtual,const] </i>bool <b> wants_visible </b></p><p><b>Description</b>: Returns a value whether the action wants to become visible</p><p><p>
+This is a dynamic query for visibility which the system uses to dynamically show or hide menu items, for example in the MRU lists. This visibility information is evaluated in addition to is_visible? and is_hidden? and contributes to the effective visibility status from is_effective_visible?.</p><p>This feature has been introduced in version 0.28.
+</p></p></td></tr></table></body>

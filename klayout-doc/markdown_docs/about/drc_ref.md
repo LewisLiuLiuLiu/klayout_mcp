@@ -1,0 +1,3 @@
+# KLayout Documentation
+
+KLayout 0.30.5 (2025-12-11 6ad326e80) [master] KLayout Documentation (Qt 4): Main Index » Various Topics » DRC Reference # DRC Reference - [DRC Reference: DRC expressions](drc_ref_drc.md) - [DRC Reference: Layer Object](drc_ref_layer.md) - [DRC Reference: Netter object](drc_ref_netter.md) - [DRC Reference: Source Object](drc_ref_source.md) - [DRC Reference: Global Functions](drc_ref_global.md)

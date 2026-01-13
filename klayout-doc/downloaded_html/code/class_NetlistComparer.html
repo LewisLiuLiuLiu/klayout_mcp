@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class NetlistComparer</p><h1>API reference - Class NetlistComparer</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: Compares two netlists</p><ul><li><a href="#h2-14">Public constructors</a></li><li><a href="#h2-21">Public methods</a></li><li><a href="#h2-80">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-91">Detailed description</a></li></ul><p>
+This class performs a comparison of two netlists.
+It can be used with an event receiver (logger) to track the errors and net mismatches. Event receivers are derived from class <a href="class_GenericNetlistCompareLogger.html">GenericNetlistCompareLogger</a>.
+The netlist comparer can be configured in different ways. Specific hints can be given for nets, device classes or circuits to improve efficiency and reliability of the graph equivalence deduction algorithm. For example, objects can be marked as equivalent using <a href="#m_same_nets">same_nets</a>, <a href="#m_same_circuits">same_circuits</a> etc. The compare algorithm will then use these hints to derive further equivalences. This way, ambiguities can be resolved.</p><p>Another configuration option relates to swappable pins of subcircuits. If pins are marked this way, the compare algorithm may swap them to achieve net matching. Swappable pins belong to an 'equivalence group' and can be defined with <a href="#m_equivalent_pins">equivalent_pins</a>.</p><p>This class has been introduced in version 0.26.</p><a name="h2-14"></a><h2>Public constructors</h2><table><tr class="row0"><td>new NetlistComparer ptr</td><td><b><a href="#method24">new</a></b></td><td></td><td>Creates a new comparer object.</td></tr><tr class="row1"><td>new NetlistComparer ptr</td><td><b><a href="#method25">new</a></b></td><td>(GenericNetlistCompareLogger ptr logger)</td><td>Creates a new comparer object.</td></tr></table><a name="h2-21"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>NetlistComparer ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method7">compare</a></b></td><td>(const Netlist ptr netlist_a,<br>const Netlist ptr netlist_b)</td><td>Compares two netlists.</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method8">compare</a></b></td><td>(const Netlist ptr netlist_a,<br>const Netlist ptr netlist_b,<br>NetlistCompareLogger ptr logger)</td><td>Compares two netlists.</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method12">dont_consider_net_names</a></b></td><td></td><td>Gets a value indicating whether net names shall not be considered</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method13">dont_consider_net_names=</a></b></td><td>(bool f)</td><td>Sets a value indicating whether net names shall not be considered</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method14">equivalent_pins</a></b></td><td>(const Circuit ptr circuit_b,<br>unsigned long pin_id1,<br>unsigned long pin_id2)</td><td>Marks two pins of the given circuit as equivalent (i.e. they can be swapped).</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method15">equivalent_pins</a></b></td><td>(const Circuit ptr circuit_b,<br>unsigned long[] pin_ids)</td><td>Marks several pins of the given circuit as equivalent (i.e. they can be swapped).</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method17">join_symmetric_nets</a></b></td><td>(Circuit ptr circuit)</td><td>Joins symmetric nodes in the given circuit.</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned long</td><td><b><a href="#method18">max_branch_complexity</a></b></td><td></td><td>Gets the maximum branch complexity</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method19">max_branch_complexity=</a></b></td><td>(unsigned long n)</td><td>Sets the maximum branch complexity</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned long</td><td><b><a href="#method20">max_depth</a></b></td><td></td><td>Gets the maximum search depth</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method21">max_depth=</a></b></td><td>(unsigned long n)</td><td>Sets the maximum search depth</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method22">max_resistance=</a></b></td><td>(double threshold)</td><td>Excludes all resistor devices with a resistance values higher than the given threshold.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method23">min_capacitance=</a></b></td><td>(double threshold)</td><td>Excludes all capacitor devices with a capacitance values less than the given threshold.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method26">same_circuits</a></b></td><td>(const Circuit ptr circuit_a,<br>const Circuit ptr circuit_b)</td><td>Marks two circuits as identical.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method27">same_device_classes</a></b></td><td>(const DeviceClass ptr dev_cls_a,<br>const DeviceClass ptr dev_cls_b)</td><td>Marks two device classes as identical.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method28">same_nets</a></b></td><td>(const Net ptr net_a,<br>const Net ptr net_b,<br>bool must_match = false)</td><td>Marks two nets as identical.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method29">same_nets</a></b></td><td>(const Circuit ptr circuit_a,<br>const Circuit ptr circuit_b,<br>const Net ptr net_a,<br>const Net ptr net_b,<br>bool must_match = false)</td><td>Marks two nets as identical.</td></tr><tr class="row0"><td><i>[const]</i></td><td>Circuit ptr[]</td><td><b><a href="#method30">unmatched_circuits_a</a></b></td><td>(Netlist ptr a,<br>Netlist ptr b)</td><td>Returns a list of circuits in A for which there is not corresponding circuit in B</td></tr><tr class="row1"><td><i>[const]</i></td><td>Circuit ptr[]</td><td><b><a href="#method31">unmatched_circuits_b</a></b></td><td>(Netlist ptr a,<br>Netlist ptr b)</td><td>Returns a list of circuits in B for which there is not corresponding circuit in A</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method32">with_log</a></b></td><td></td><td>Gets a value indicating that log messages are generated.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method33">with_log=</a></b></td><td>(bool flag)</td><td>Sets a value indicating that log messages are generated.</td></tr></table><a name="h2-80"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method9">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method10">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method11">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method16">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-91"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-92"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_NetlistComparer.html">NetlistComparer</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-98"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-104"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroy"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-111"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroyed?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-118"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__is_const_object?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-125"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__manage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-131"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__unmanage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-137"></a><h3>compare</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_compare"></a><a name="k_9"></a><p><b>(1) Signature</b>: <i>[const] </i>bool <b> compare </b> (const <a href="class_Netlist.html">Netlist</a> ptr netlist_a, const <a href="class_Netlist.html">Netlist</a> ptr netlist_b)</p><p><b>Description</b>: Compares two netlists.</p><p><p>
+This method will perform the actual netlist compare. It will return true if both netlists are identical. If the comparer has been configured with <a href="#m_same_nets">same_nets</a> or similar methods, the objects given there must be located inside 'circuit_a' and 'circuit_b' respectively.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_compare"></a><a name="k_10"></a><p><b>(2) Signature</b>: <i>[const] </i>bool <b> compare </b> (const <a href="class_Netlist.html">Netlist</a> ptr netlist_a, const <a href="class_Netlist.html">Netlist</a> ptr netlist_b, <a href="class_NetlistCompareLogger.html">NetlistCompareLogger</a> ptr logger)</p><p><b>Description</b>: Compares two netlists.</p><p><p>
+This method will perform the actual netlist compare using the given logger. It will return true if both netlists are identical. If the comparer has been configured with <a href="#m_same_nets">same_nets</a> or similar methods, the objects given there must be located inside 'circuit_a' and 'circuit_b' respectively.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-148"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_create"></a><a name="k_11"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-155"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_destroy"></a><a name="k_12"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-163"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_destroyed?"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-171"></a><h3>dont_consider_net_names</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_dont_consider_net_names"></a><a name="k_14"></a><p><b>Signature</b>: <i>[const] </i>bool <b> dont_consider_net_names </b></p><p><b>Description</b>: Gets a value indicating whether net names shall not be considered</p><p><p>
+See <a href="#m_dont_consider_net_names=">dont_consider_net_names=</a> for details.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'dont_consider_net_names'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-178"></a><h3>dont_consider_net_names=</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_dont_consider_net_names="></a><a name="k_15"></a><p><b>Signature</b>: void <b> dont_consider_net_names= </b> (bool f)</p><p><b>Description</b>: Sets a value indicating whether net names shall not be considered</p><p><p>
+If this value is set to true, net names will not be considered when resolving ambiguities.
+Not considering net names usually is more expensive. The default is 'false' indicating that
+net names will be considered for ambiguity resolution.</p><p>This property has been introduced in version 0.26.7.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'dont_consider_net_names'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-188"></a><h3>equivalent_pins</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_equivalent_pins"></a><a name="k_16"></a><p><b>(1) Signature</b>: void <b> equivalent_pins </b> (const <a href="class_Circuit.html">Circuit</a> ptr circuit_b, unsigned long pin_id1, unsigned long pin_id2)</p><p><b>Description</b>: Marks two pins of the given circuit as equivalent (i.e. they can be swapped).</p><p><p>
+Only circuits from the second input can be given swappable pins. This will imply the same swappable pins on the equivalent circuit of the first input. To mark multiple pins as swappable, use the version that takes a list of pins.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_equivalent_pins"></a><a name="k_17"></a><p><b>(2) Signature</b>: void <b> equivalent_pins </b> (const <a href="class_Circuit.html">Circuit</a> ptr circuit_b, unsigned long[] pin_ids)</p><p><b>Description</b>: Marks several pins of the given circuit as equivalent (i.e. they can be swapped).</p><p><p>
+Only circuits from the second input can be given swappable pins. This will imply the same swappable pins on the equivalent circuit of the first input. This version is a generic variant of the two-pin version of this method.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-199"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_is_const_object?"></a><a name="k_18"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-207"></a><h3>join_symmetric_nets</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_join_symmetric_nets"></a><a name="k_19"></a><p><b>Signature</b>: void <b> join_symmetric_nets </b> (<a href="class_Circuit.html">Circuit</a> ptr circuit)</p><p><b>Description</b>: Joins symmetric nodes in the given circuit.</p><p><p></p><p>Nodes are symmetrical if swapping them would not modify the circuit.
+Hence they will carry the same potential and can be connected (joined).
+This will simplify the circuit and can be applied before device combination
+to render a schematic-equivalent netlist in some cases (split gate option).</p><p>This algorithm will apply the comparer's settings to the symmetry
+condition (device filtering, device compare tolerances, device class
+equivalence etc.).</p><p>This method has been introduced in version 0.26.4.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-218"></a><h3>max_branch_complexity</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_max_branch_complexity"></a><a name="k_20"></a><p><b>Signature</b>: <i>[const] </i>unsigned long <b> max_branch_complexity </b></p><p><b>Description</b>: Gets the maximum branch complexity</p><p><p>
+See <a href="#m_max_branch_complexity=">max_branch_complexity=</a> for details.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'max_branch_complexity'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-225"></a><h3>max_branch_complexity=</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_max_branch_complexity="></a><a name="k_21"></a><p><b>Signature</b>: void <b> max_branch_complexity= </b> (unsigned long n)</p><p><b>Description</b>: Sets the maximum branch complexity</p><p><p>
+This value limits the maximum branch complexity of the backtracking algorithm.
+The complexity is the accumulated number of branch options with ambiguous
+net matches. Backtracking will stop when the maximum number of options
+has been exceeded.</p><p>By default, from version 0.27 on the complexity is unlimited and can be reduced in cases where runtimes need to be limited at the cost less elaborate matching evaluation.</p><p>As the computational complexity is the square of the branch count,
+this value should be adjusted carefully.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'max_branch_complexity'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-237"></a><h3>max_depth</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_max_depth"></a><a name="k_22"></a><p><b>Signature</b>: <i>[const] </i>unsigned long <b> max_depth </b></p><p><b>Description</b>: Gets the maximum search depth</p><p><p>
+See <a href="#m_max_depth=">max_depth=</a> for details.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'max_depth'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-244"></a><h3>max_depth=</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_max_depth="></a><a name="k_23"></a><p><b>Signature</b>: void <b> max_depth= </b> (unsigned long n)</p><p><b>Description</b>: Sets the maximum search depth</p><p><p>
+This value limits the search depth of the backtracking algorithm to the
+given number of jumps.</p><p>By default, from version 0.27 on the depth is unlimited and can be reduced in cases where runtimes need to be limited at the cost less elaborate matching evaluation.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'max_depth'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-253"></a><h3>max_resistance=</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_max_resistance="></a><a name="k_24"></a><p><b>Signature</b>: void <b> max_resistance= </b> (double threshold)</p><p><b>Description</b>: Excludes all resistor devices with a resistance values higher than the given threshold.</p><p><p>
+To reset this constraint, set this attribute to zero.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'max_resistance'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-260"></a><h3>min_capacitance=</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_min_capacitance="></a><a name="k_25"></a><p><b>Signature</b>: void <b> min_capacitance= </b> (double threshold)</p><p><b>Description</b>: Excludes all capacitor devices with a capacitance values less than the given threshold.</p><p><p>
+To reset this constraint, set this attribute to zero.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'min_capacitance'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-267"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_new"></a><a name="k_26"></a><p><b>(1) Signature</b>: <i>[static] </i>new <a href="class_NetlistComparer.html">NetlistComparer</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new comparer object.</p><p><p>
+See the class description for more details.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_new"></a><a name="k_27"></a><p><b>(2) Signature</b>: <i>[static] </i>new <a href="class_NetlistComparer.html">NetlistComparer</a> ptr <b> new </b> (<a href="class_GenericNetlistCompareLogger.html">GenericNetlistCompareLogger</a> ptr logger)</p><p><b>Description</b>: Creates a new comparer object.</p><p><p>
+The logger is a delegate or event receiver which the comparer will send compare events to. See the class description for more details.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-280"></a><h3>same_circuits</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_same_circuits"></a><a name="k_28"></a><p><b>Signature</b>: void <b> same_circuits </b> (const <a href="class_Circuit.html">Circuit</a> ptr circuit_a, const <a href="class_Circuit.html">Circuit</a> ptr circuit_b)</p><p><b>Description</b>: Marks two circuits as identical.</p><p><p>
+This method makes a circuit circuit_a in netlist a identical to the corresponding
+circuit circuit_b in netlist b (see <a href="#m_compare">compare</a>). By default circuits with the same name are identical.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-288"></a><h3>same_device_classes</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_same_device_classes"></a><a name="k_29"></a><p><b>Signature</b>: void <b> same_device_classes </b> (const <a href="class_DeviceClass.html">DeviceClass</a> ptr dev_cls_a, const <a href="class_DeviceClass.html">DeviceClass</a> ptr dev_cls_b)</p><p><b>Description</b>: Marks two device classes as identical.</p><p><p>
+This makes a device class dev_cls_a in netlist a identical to the corresponding
+device class dev_cls_b in netlist b (see <a href="#m_compare">compare</a>).
+By default device classes with the same name are identical.
+</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-297"></a><h3>same_nets</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_same_nets"></a><a name="k_30"></a><p><b>(1) Signature</b>: void <b> same_nets </b> (const <a href="class_Net.html">Net</a> ptr net_a, const <a href="class_Net.html">Net</a> ptr net_b, bool must_match = false)</p><p><b>Description</b>: Marks two nets as identical.</p><p><p>
+This makes a net net_a in netlist a identical to the corresponding
+net net_b in netlist b (see <a href="#m_compare">compare</a>).
+Otherwise, the algorithm will try to identify nets according to their topology. This method can be used to supply hints to the compare algorithm. It will use these hints to derive further identities.</p><p>If 'must_match' is true, the nets are required to match. If they don't, an error is reported.</p><p>The 'must_match' optional argument has been added in version 0.27.3.
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_same_nets"></a><a name="k_31"></a><p><b>(2) Signature</b>: void <b> same_nets </b> (const <a href="class_Circuit.html">Circuit</a> ptr circuit_a, const <a href="class_Circuit.html">Circuit</a> ptr circuit_b, const <a href="class_Net.html">Net</a> ptr net_a, const <a href="class_Net.html">Net</a> ptr net_b, bool must_match = false)</p><p><b>Description</b>: Marks two nets as identical.</p><p><p>
+This makes a net net_a in netlist a identical to the corresponding
+net net_b in netlist b (see <a href="#m_compare">compare</a>).
+Otherwise, the algorithm will try to identify nets according to their topology. This method can be used to supply hints to the compare algorithm. It will use these hints to derive further identities.</p><p>If 'must_match' is true, the nets are required to match. If they don't, an error is reported.</p><p>This variant allows specifying nil for the nets indicating the nets are mismatched by definition. with 'must_match' this will render a net mismatch error.</p><p>This variant has been added in version 0.27.3.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-314"></a><h3>unmatched_circuits_a</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_unmatched_circuits_a"></a><a name="k_32"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Circuit.html">Circuit</a> ptr[] <b> unmatched_circuits_a </b> (<a href="class_Netlist.html">Netlist</a> ptr a, <a href="class_Netlist.html">Netlist</a> ptr b)</p><p><b>Description</b>: Returns a list of circuits in A for which there is not corresponding circuit in B</p><p><p>
+This list can be used to flatten these circuits so they do not participate in the compare process.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-321"></a><h3>unmatched_circuits_b</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_unmatched_circuits_b"></a><a name="k_33"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Circuit.html">Circuit</a> ptr[] <b> unmatched_circuits_b </b> (<a href="class_Netlist.html">Netlist</a> ptr a, <a href="class_Netlist.html">Netlist</a> ptr b)</p><p><b>Description</b>: Returns a list of circuits in B for which there is not corresponding circuit in A</p><p><p>
+This list can be used to flatten these circuits so they do not participate in the compare process.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-328"></a><h3>with_log</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_with_log"></a><a name="k_34"></a><p><b>Signature</b>: <i>[const] </i>bool <b> with_log </b></p><p><b>Description</b>: Gets a value indicating that log messages are generated.</p><p><p>
+See <a href="#m_with_log=">with_log=</a> for details about this flag.</p><p>This attribute have been introduced in version 0.28.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'with_log'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-336"></a><h3>with_log=</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_with_log="></a><a name="k_35"></a><p><b>Signature</b>: void <b> with_log= </b> (bool flag)</p><p><b>Description</b>: Sets a value indicating that log messages are generated.</p><p><p>
+Log messages may be expensive to compute, hence they can be turned off.
+By default, log messages are generated.</p><p>This attribute have been introduced in version 0.28.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'with_log'. This is the setter.<br></p></td></tr></table></body>

@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="advanced.html">Advanced Topics</a> » The Fill (Tiling) Utility</p><h1>The Fill (Tiling) Utility</h1><a name="k_1"></a><a name="k_2"></a><p>
+  The fill utility creates a regular pattern of fill unit cell instances in certain areas of a layout.
+  This feature is usually referred to as &quot;tiling&quot; or &quot;fill&quot;. It is based on a rectangular unit cell which 
+  is repeated in x- and y-direction to fill the available space. In most cases, the intention is to 
+  fill empty areas in the layout to enhance the layout uniformity for a better process performance.
+  </p><p>
+  Before the fill utility can be used, a fill cell must be prepared in the layout that is filled. The dimension of
+  the cell are defined by a box drawn on an arbitrary layer. This box must represent the &quot;footprint&quot; of the cell.
+  This is the space that one instance will cover in the region to be filled.
+  </p><p>
+  The fill utility is found in the &quot;Utilities&quot; sub-menu of the &quot;edit&quot; menu and is available in edit mode only.
+  To use this utility, open the dialog and
+  </p><ul><li>Select the outer boundary of the fill region (&quot;what to fill&quot;). Available choices are: Full cell, the interior or 
+        the polygons on a given layer, the interior of all selected polygons, a single box or an area defined by
+        a ruler.
+    </li><li>Specify if the fill area should keep a certain minimum distance to the border of the fill region.</li><li>Specify the regions within the fill region which must not be filled. Available choices are: All layers
+        (don't create fill over any polygon drawn), all visible layers (don't create fill over any polygon visible),
+        all selected layers or don't exclude anything.
+    </li><li>If the fill tiles must keep a certain minimum distance from the exclude regions, specify that distance
+        in the &quot;Spacing around exclude areas&quot; entry field.</li><li>Specify the fill cell and the boundary layer which defines the cell's footprint in the &quot;Fill Cell&quot; group.</li></ul><p>
+  By default, the fill utility operates on a fixed raster. This can lead to a poor fill efficiency in some cases.
+  The fill utility offers a &quot;Enhanced fill&quot; option, where it tries to find a cell arrangement which is not 
+  necessarily on a common raster but provides a better fill performance.
+  In addition, second-order fill is supported. In that case, a second - usually smaller - fill cell can be 
+  specified which is used to fill the remaining areas of the layout.
+  </p><p>
+  The following screenshots show the effect of the different fill modes for some artificial fill 
+  problem.
+  </p><table><tr valign="top"><td width="10%"><b>Default:</b></td><td width="5%"></td><td><img src="fill_default.png"></td></tr><tr valign="top"><td width="10%"><b>Enhanced:</b></td><td width="5%"></td><td><img src="fill_enhanced.png"></td></tr><tr valign="top"><td width="10%"><b>Enhanced plus<br>second order:</b></td><td width="5%"></td><td><img src="fill_second_order.png"></td></tr></table></body>

@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="basic.html">KLayout Basics</a> » Further View Options</p><h1>Further View Options</h1><a name="k_1"></a><p>
+  The &quot;View&quot; menu offers some more options to tune the display:
+  </p><ul><li><b>Show Grid</b>: This is a fast access method for the respective configuration option.
+      Unchecking this menu entry hides the grid lines and the scale bar.
+    </li><li><b>Grids</b>: this submenu allows fast access to the current grid setting. You can choose from
+      one of the default grids that are configured on the &quot;Default Grids&quot; page in the &quot;Application&quot;
+      section of the setup dialog. Grids are mainly used for editing geometry but also for snapping
+      rulers if they are configured to do so.
+    </li><li><b>Show Texts</b>: when this option is unchecked, texts are not drawn. That applies to 
+      text objects and user properties. Drawing is somewhat faster when texts are not drawn.
+    </li><li><b>Show Cell Frames</b>: when this option is unchecked, cell frames from hidden cells or
+      cell below the hierarchy levels selected are not drawn.
+    </li><li><b>Show Layers Without Fill</b>: when this option is checked, the shapes are drawn without
+      fill. Hence the layout is shown in a kind of wire frame. This option is intended to temporarily
+      disabling the fill pattern. Keeping this option checked may be confusing because setting a 
+      fill pattern may not have any effect then.
+    </li><li><b>Synchronized Views</b>: with this option, all views (tabs) in the main window are synchronized, i.e.
+      they show the same region of the layout. This option can be useful if two layouts are loaded in
+      different views for clarity, but identical regions need to be inspected.
+    </li><li><b>Select Top Level Objects</b>: this menu item gives a quick access to the respective editor
+      option. If this option is checked, only objects from the top level are selected. This is 
+      in particular important for editing because editing a subcell can cause effects in other 
+      places there that cell is instantiated but no edit is intended.
+    </li><li><b>Toolbar</b>, <b>Navigator</b>, ...: disable or enable the respective tool windows.
+    </li><li><b>Highlight Object Under Mouse</b>: with this option checked, the object under the mouse is
+      highlighted temporarily if the mouse hovers over that object.
+      Since that can be confusing in some (rare) cases, this menu item provides quick access to
+      that configuration option.
+    </li></ul></body>

@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » KLayout Basics</p><h1>KLayout Basics</h1><p>
+  Welcome to KLayout's user manual. This is the manual chapter covering the basic features of KLayout. The following subtopics are
+  available:
+  </p><ul><li><a href="main_window.html">The Main Window</a></li><li><a href="loading.html">Loading A File</a></li><li><a href="panels.html">Managing The Panels And Loaded Layouts</a></li><li><a href="cell.html">Choosing A Cell</a></li><li><a href="hier.html">Choosing A Hierarchy Depth</a></li><li><a href="cell_list.html">Configuring The Cell List</a></li><li><a href="library_view.html">The Library View</a></li><li><a href="hiding.html">Hiding Cells</a></li><li><a href="zoom.html">Zooming Into The Layout</a></li><li><a href="global_trans.html">Global Rotation and Flip</a></li><li><a href="view_state.html">Returning To A Previous View</a></li><li><a href="bookmarks.html">Bookmarking Views</a></li><li><a href="descend.html">Descending Into A Cell With Context</a></li><li><a href="layer_views.html">The Layer List (Layer Views)</a></li><li><a href="layer_color.html">Choosing A Layer Color</a></li><li><a href="layer_content.html">Telling Used From Unused Layers</a></li><li><a href="line_style.html">Choosing A Line Style</a></li><li><a href="layer_animation.html">Animating Layers</a></li><li><a href="layer_style.html">Changing The Display Style</a></li><li><a href="layer_visibility.html">Changing The Layer Visibility</a></li><li><a href="layer_validity.html">Valid And Invalid Layers</a></li><li><a href="layer_hier.html">Organizing Layers Hierarchically</a></li><li><a href="layer_tabs.html">Using Multiple Layer Setups With Tabs</a></li><li><a href="layer_source.html">Removing And Adding Layers To The Layer Set</a></li><li><a href="layer_source_expert.html">Transforming Views And Property Selectors</a></li><li><a href="explicit_hier_levels.html">Specifying Explicit Hierarchy Levels For One Layer Or A Layer Group</a></li><li><a href="load_save_layers.html">Loading And Saving The Layer Sets</a></li><li><a href="screenshots.html">Creating A Screenshot</a></li><li><a href="measure.html">Doing Measurements</a></li><li><a href="ruler_properties.html">Ruler Properties</a></li><li><a href="images.html">Adding Images</a></li><li><a href="landmarks.html">Using Landmarks To Align Images</a></li><li><a href="browse_shapes.html">Browsing Shapes</a></li><li><a href="browse_instances.html">Browsing Instances</a></li><li><a href="marker_browser.html">The Marker Browser</a></li><li><a href="technology_manager.html">Technology Management</a></li><li><a href="selecting.html">Selecting Rulers, Shapes Or Instances</a></li><li><a href="setup.html">More Configuration Options</a></li><li><a href="undo_redo.html">Undo And Redo</a></li><li><a href="save.html">Saving A Layout Or Parts Of It</a></li><li><a href="session.html">Saving And Restoring A Session</a></li><li><a href="view_options.html">Further View Options</a></li></ul></body>

@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class Technology</p><h1>API reference - Class Technology</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: Represents a technology</p><ul><li><a href="#h2-17">Public constructors</a></li><li><a href="#h2-22">Public methods</a></li><li><a href="#h2-107">Public static methods and constants</a></li><li><a href="#h2-130">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-141">Detailed description</a></li></ul><p></p><p>This class represents one technology from a set of technologies. The set of technologies available in the system can be obtained with <a href="#m_technology_names">technology_names</a>. Individual technology definitions are returned with <a href="#m_technology_by_name">technology_by_name</a>. Use <a href="#m_create_technology">create_technology</a> to register new technologies and <a href="#m_remove_technology">remove_technology</a> to delete technologies.</p><p>Note that a Technology object needs to be registered in the system, before its name can be used to specify a technology, for example in <a href="class_Layout.html#m_technology_name">Layout#technology_name</a>. Technology objects created by <a href="#m_create_technology">create_technology</a> are automatically registered. If you create a Technology object directly, you need to register it explicitly:
+<pre>
+tech = RBA::Technology::new
+tech.load(&quot;mytech.lyt&quot;)
+RBA::Technology::register_technology(tech)
+</pre></p><p>Note that in the latter example, an exception will be thrown if a technology with the same name already exists. Also note, that <a href="class_Technology.html#m_register">Technology#register</a> will register a copy of the object, so modifying it after registration will not have any effect.</p><p>The Technology class has been introduced in version 0.25.
+</p><a name="h2-17"></a><h2>Public constructors</h2><table><tr class="row0"><td>new Technology ptr</td><td><b><a href="#method43">new</a></b></td><td></td><td>Creates a new object of this class</td></tr></table><a name="h2-22"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>Technology ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">add_other_layers=</a></b></td><td>(bool add)</td><td>Sets the flag indicating whether to add other layers to the layer properties</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method8">add_other_layers?</a></b></td><td></td><td>Gets the flag indicating whether to add other layers to the layer properties</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method9">assign</a></b></td><td>(const Technology other)</td><td>Assigns another object to self</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method10">base_path</a></b></td><td></td><td>Gets the base path of the technology</td></tr><tr class="row1"><td></td><td>TechnologyComponent ptr</td><td><b><a href="#method12">component</a></b></td><td>(string name)</td><td>Gets the technology component with the given name</td></tr><tr class="row0"><td><i>[const]</i></td><td>string[]</td><td><b><a href="#method13">component_names</a></b></td><td></td><td>Gets the names of all components available for <a href="#m_component">component</a></td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method14">correct_path</a></b></td><td>(string path)</td><td>Makes a file path relative to the base path if one is specified</td></tr><tr class="row0"><td><i>[const]</i></td><td>double</td><td><b><a href="#method17">dbu</a></b></td><td></td><td>Gets the default database unit</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method18">dbu=</a></b></td><td>(double dbu)</td><td>Sets the default database unit</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method19">default_base_path</a></b></td><td></td><td>Gets the default base path</td></tr><tr class="row1"><td><i>[const]</i></td><td>double</td><td><b><a href="#method20">default_grid</a></b></td><td></td><td>Gets the default grid</td></tr><tr class="row0"><td><i>[const]</i></td><td>double[]</td><td><b><a href="#method21">default_grids</a></b></td><td></td><td>Gets the default grids</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method22">default_grids=</a></b></td><td>(double[] grids)</td><td>Sets the default grids</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method23">description</a></b></td><td></td><td>Gets the description</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method24">description=</a></b></td><td>(string description)</td><td>Sets the description</td></tr><tr class="row0"><td><i>[const]</i></td><td>new Technology ptr</td><td><b><a href="#method27">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method28">eff_layer_properties_file</a></b></td><td></td><td>Gets the effective path of the layer properties file</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method29">eff_path</a></b></td><td>(string path)</td><td>Makes a file path relative to the base path if one is specified</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method30">explicit_base_path</a></b></td><td></td><td>Gets the explicit base path</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method31">explicit_base_path=</a></b></td><td>(string path)</td><td>Sets the explicit base path</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method32">group</a></b></td><td></td><td>Gets the technology group</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method33">group=</a></b></td><td>(string group)</td><td>Sets the technology group</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method36">layer_properties_file</a></b></td><td></td><td>Gets the path of the layer properties file</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method37">layer_properties_file=</a></b></td><td>(string file)</td><td>Sets the path of the layer properties file</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method38">load</a></b></td><td>(string file)</td><td>Loads the technology definition from a file</td></tr><tr class="row0"><td><i>[const]</i></td><td>LoadLayoutOptions</td><td><b><a href="#method39">load_layout_options</a></b></td><td></td><td>Gets the layout reader options</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method40">load_layout_options=</a></b></td><td>(const LoadLayoutOptions options)</td><td>Sets the layout reader options</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method41">name</a></b></td><td></td><td>Gets the name of the technology</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method42">name=</a></b></td><td>(string name)</td><td>Sets the name of the technology</td></tr><tr class="row0"><td><i>[const]</i></td><td>void</td><td><b><a href="#method46">save</a></b></td><td>(string file)</td><td>Saves the technology definition to a file</td></tr><tr class="row1"><td><i>[const]</i></td><td>SaveLayoutOptions</td><td><b><a href="#method47">save_layout_options</a></b></td><td></td><td>Gets the layout writer options</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method48">save_layout_options=</a></b></td><td>(const SaveLayoutOptions options)</td><td>Sets the layout writer options</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method49">set_default_grids</a></b></td><td>(double[] grids,<br>double default_grid = 0)</td><td>Sets the default grids and the strong default one</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method55">to_xml</a></b></td><td></td><td>Returns a XML representation of this technolog</td></tr></table><a name="h2-107"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method11">clear_technologies</a></b></td><td></td><td>Clears all technologies</td></tr><tr class="row1"><td></td><td>Technology ptr</td><td><b><a href="#method16">create_technology</a></b></td><td>(string name)</td><td>Creates a new (empty) technology with the given name</td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method34">has_technology?</a></b></td><td>(string name)</td><td>Returns a value indicating whether there is a technology with this name</td></tr><tr class="row1"><td></td><td>Technology ptr</td><td><b><a href="#method44">register_technology</a></b></td><td>(const Technology tech)</td><td>Registers a technology in the system</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method45">remove_technology</a></b></td><td>(string name)</td><td>Removes the technology with the given name from the system</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method50">technologies_from_xml</a></b></td><td>(string xml)</td><td>Loads the technologies from a XML representation</td></tr><tr class="row0"><td></td><td>string</td><td><b><a href="#method51">technologies_to_xml</a></b></td><td></td><td>Returns a XML representation of all technologies registered in the system</td></tr><tr class="row1"><td></td><td>Technology ptr</td><td><b><a href="#method52">technology_by_name</a></b></td><td>(string name)</td><td>Gets the technology object for a given name</td></tr><tr class="row0"><td></td><td>Technology</td><td><b><a href="#method53">technology_from_xml</a></b></td><td>(string xml)</td><td>Loads the technology from a XML representation</td></tr><tr class="row1"><td></td><td>string[]</td><td><b><a href="#method54">technology_names</a></b></td><td></td><td>Gets a list of technology names defined in the system</td></tr></table><a name="h2-130"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method15">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method25">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method26">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method35">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-141"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-142"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Technology.html">Technology</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-148"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-154"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroy"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-161"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroyed?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-168"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__is_const_object?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-175"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__manage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-181"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__unmanage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-187"></a><h3>add_other_layers=</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_add_other_layers="></a><a name="k_9"></a><p><b>Signature</b>: void <b> add_other_layers= </b> (bool add)</p><p><b>Description</b>: Sets the flag indicating whether to add other layers to the layer properties</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'add_other_layers'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-192"></a><h3>add_other_layers?</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_add_other_layers?"></a><a name="k_10"></a><p><b>Signature</b>: <i>[const] </i>bool <b> add_other_layers? </b></p><p><b>Description</b>: Gets the flag indicating whether to add other layers to the layer properties</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'add_other_layers'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-197"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_assign"></a><a name="k_11"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_Technology.html">Technology</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow0"><td><a name="h3-201"></a><h3>base_path</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_base_path"></a><a name="k_12"></a><p><b>Signature</b>: <i>[const] </i>string <b> base_path </b></p><p><b>Description</b>: Gets the base path of the technology</p><p><p></p><p>The base path is the effective path where files are read from if their file path is a relative one. If the explicit path is set (see <a href="#m_explicit_base_path=">explicit_base_path=</a>), it is
+used. If not, the default path is used. The default path is the one from which
+a technology file was imported. The explicit one is the one that is specified
+explicitly with <a href="#m_explicit_base_path=">explicit_base_path=</a>.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-210"></a><h3>clear_technologies</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_clear_technologies"></a><a name="k_13"></a><p><b>Signature</b>: <i>[static] </i>void <b> clear_technologies </b></p><p><b>Description</b>: Clears all technologies</p><p><p></p><p>This method has been introduced in version 0.26.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-216"></a><h3>component</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_component"></a><a name="k_14"></a><p><b>Signature</b>: <a href="class_TechnologyComponent.html">TechnologyComponent</a> ptr <b> component </b> (string name)</p><p><b>Description</b>: Gets the technology component with the given name</p><p><p>
+The names are unique system identifiers. For all names, use <a href="#m_component_names">component_names</a>.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-222"></a><h3>component_names</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_component_names"></a><a name="k_15"></a><p><b>Signature</b>: <i>[const] </i>string[] <b> component_names </b></p><p><b>Description</b>: Gets the names of all components available for <a href="#m_component">component</a></p></td></tr><tr class="bigrow0"><td><a name="h3-226"></a><h3>correct_path</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_correct_path"></a><a name="k_16"></a><p><b>Signature</b>: <i>[const] </i>string <b> correct_path </b> (string path)</p><p><b>Description</b>: Makes a file path relative to the base path if one is specified</p><p><p></p><p>This method turns an absolute path into one relative to the base path. Only files below the base path will be made relative. Files above or beside won't be made relative.</p><p>See <a href="#m_base_path">base_path</a> for details about the default base path.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-232"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_create"></a><a name="k_17"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-239"></a><h3>create_technology</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_create_technology"></a><a name="k_18"></a><p><b>Signature</b>: <i>[static] </i><a href="class_Technology.html">Technology</a> ptr <b> create_technology </b> (string name)</p><p><b>Description</b>: Creates a new (empty) technology with the given name</p><p><p></p><p>The new technology is already registered in the system.</p><p>This method returns a reference to the new technology.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-244"></a><h3>dbu</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_dbu"></a><a name="k_19"></a><p><b>Signature</b>: <i>[const] </i>double <b> dbu </b></p><p><b>Description</b>: Gets the default database unit</p><p><p></p><p>The default database unit is the one used when creating a layout for example.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'dbu'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-250"></a><h3>dbu=</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_dbu="></a><a name="k_20"></a><p><b>Signature</b>: void <b> dbu= </b> (double dbu)</p><p><b>Description</b>: Sets the default database unit</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'dbu'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-255"></a><h3>default_base_path</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_default_base_path"></a><a name="k_21"></a><p><b>Signature</b>: <i>[const] </i>string <b> default_base_path </b></p><p><b>Description</b>: Gets the default base path</p><p><p></p><p>See <a href="#m_base_path">base_path</a> for details about the default base path.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'default_base_path'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-262"></a><h3>default_grid</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_default_grid"></a><a name="k_22"></a><p><b>Signature</b>: <i>[const] </i>double <b> default_grid </b></p><p><b>Description</b>: Gets the default grid</p><p><p></p><p>The default grid is a specific one from the default grid list.
+It indicates the one that is taken if the current grid is not matching one of the default grids.</p><p>To set the default grid, use <a href="#m_set_default_grids">set_default_grids</a>.</p><p>This property has been introduced in version 0.29.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-268"></a><h3>default_grids</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_default_grids"></a><a name="k_23"></a><p><b>Signature</b>: <i>[const] </i>double[] <b> default_grids </b></p><p><b>Description</b>: Gets the default grids</p><p><p></p><p>See <a href="#m_default_grids">default_grids</a> for details.</p><p>This property has been introduced in version 0.28.17.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'default_grids'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-274"></a><h3>default_grids=</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_default_grids="></a><a name="k_24"></a><p><b>Signature</b>: void <b> default_grids= </b> (double[] grids)</p><p><b>Description</b>: Sets the default grids</p><p><p>
+If not empty, this list replaces the global grid list for this technology.
+Note that this method will reset the default grid (see <a href="#m_default_grid">default_grid</a>). Use <a href="#m_set_default_grids">set_default_grids</a> to set the default grids and the strong default one.</p><p>This property has been introduced in version 0.28.17.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'default_grids'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-282"></a><h3>description</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_description"></a><a name="k_25"></a><p><b>Signature</b>: <i>[const] </i>string <b> description </b></p><p><b>Description</b>: Gets the description</p><p><p></p><p>The technology description is shown to the user in technology selection dialogs and for display purposes.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'description'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-288"></a><h3>description=</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_description="></a><a name="k_26"></a><p><b>Signature</b>: void <b> description= </b> (string description)</p><p><b>Description</b>: Sets the description</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'description'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-293"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_destroy"></a><a name="k_27"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-301"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_destroyed?"></a><a name="k_28"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-309"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_dup"></a><a name="k_29"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_Technology.html">Technology</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-314"></a><h3>eff_layer_properties_file</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_eff_layer_properties_file"></a><a name="k_30"></a><p><b>Signature</b>: <i>[const] </i>string <b> eff_layer_properties_file </b></p><p><b>Description</b>: Gets the effective path of the layer properties file</p></td></tr><tr class="bigrow1"><td><a name="h3-318"></a><h3>eff_path</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_eff_path"></a><a name="k_31"></a><p><b>Signature</b>: <i>[const] </i>string <b> eff_path </b> (string path)</p><p><b>Description</b>: Makes a file path relative to the base path if one is specified</p><p><p></p><p>This method will return the actual path for a file from the file's path. If the input path is a relative one, it will be made absolute by using the base path.</p><p>See <a href="#m_base_path">base_path</a> for details about the default base path.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-324"></a><h3>explicit_base_path</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_explicit_base_path"></a><a name="k_32"></a><p><b>Signature</b>: <i>[const] </i>string <b> explicit_base_path </b></p><p><b>Description</b>: Gets the explicit base path</p><p><p></p><p>See <a href="#m_base_path">base_path</a> for details about the explicit base path.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'explicit_base_path'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-331"></a><h3>explicit_base_path=</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_explicit_base_path="></a><a name="k_33"></a><p><b>Signature</b>: void <b> explicit_base_path= </b> (string path)</p><p><b>Description</b>: Sets the explicit base path</p><p><p></p><p>See <a href="#m_base_path">base_path</a> for details about the explicit base path.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'explicit_base_path'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-338"></a><h3>group</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_group"></a><a name="k_34"></a><p><b>Signature</b>: <i>[const] </i>string <b> group </b></p><p><b>Description</b>: Gets the technology group</p><p><p></p><p>The technology group is used to group certain technologies together in the technology selection menu. Technologies with the same group are put under a submenu with that group title.</p><p>The 'group' attribute has been introduced in version 0.26.2.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'group'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-345"></a><h3>group=</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_group="></a><a name="k_35"></a><p><b>Signature</b>: void <b> group= </b> (string group)</p><p><b>Description</b>: Sets the technology group</p><p><p>
+See <a href="#m_group">group</a> for details about this attribute.</p><p>The 'group' attribute has been introduced in version 0.26.2.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'group'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-353"></a><h3>has_technology?</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_has_technology?"></a><a name="k_36"></a><p><b>Signature</b>: <i>[static] </i>bool <b> has_technology? </b> (string name)</p><p><b>Description</b>: Returns a value indicating whether there is a technology with this name</p></td></tr><tr class="bigrow1"><td><a name="h3-357"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_is_const_object?"></a><a name="k_37"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-365"></a><h3>layer_properties_file</h3></td><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_layer_properties_file"></a><a name="k_38"></a><p><b>Signature</b>: <i>[const] </i>string <b> layer_properties_file </b></p><p><b>Description</b>: Gets the path of the layer properties file</p><p><p></p><p>If empty, no layer properties file is associated with the technology. If non-empty, this path will be corrected by the base path (see <a href="#m_correct_path">correct_path</a>) and this layer properties file will be loaded for layouts with this technology.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'layer_properties_file'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-371"></a><h3>layer_properties_file=</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_layer_properties_file="></a><a name="k_39"></a><p><b>Signature</b>: void <b> layer_properties_file= </b> (string file)</p><p><b>Description</b>: Sets the path of the layer properties file</p><p><p></p><p>See <a href="#m_layer_properties_file">layer_properties_file</a> for details about this property.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'layer_properties_file'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-377"></a><h3>load</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_load"></a><a name="k_40"></a><p><b>Signature</b>: void <b> load </b> (string file)</p><p><b>Description</b>: Loads the technology definition from a file</p></td></tr><tr class="bigrow1"><td><a name="h3-381"></a><h3>load_layout_options</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_load_layout_options"></a><a name="k_41"></a><p><b>Signature</b>: <i>[const] </i><a href="class_LoadLayoutOptions.html">LoadLayoutOptions</a><b> load_layout_options </b></p><p><b>Description</b>: Gets the layout reader options</p><p><p></p><p>This method returns the layout reader options that are used when reading layouts with this technology.</p><p>Change the reader options by modifying the object and using the setter to change it:</p><p><pre>
+opt = tech.load_layout_options
+opt.dxf_dbu = 2.5
+tech.load_layout_options = opt
+</pre></p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'load_layout_options'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-392"></a><h3>load_layout_options=</h3></td><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_load_layout_options="></a><a name="k_42"></a><p><b>Signature</b>: void <b> load_layout_options= </b> (const <a href="class_LoadLayoutOptions.html">LoadLayoutOptions</a> options)</p><p><b>Description</b>: Sets the layout reader options</p><p><p></p><p>See <a href="#m_load_layout_options">load_layout_options</a> for a description of this property.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'load_layout_options'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-399"></a><h3>name</h3></td><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_name"></a><a name="k_43"></a><p><b>Signature</b>: <i>[const] </i>string <b> name </b></p><p><b>Description</b>: Gets the name of the technology</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'name'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-404"></a><h3>name=</h3></td><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_name="></a><a name="k_44"></a><p><b>Signature</b>: void <b> name= </b> (string name)</p><p><b>Description</b>: Sets the name of the technology</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'name'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-409"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_new"></a><a name="k_45"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_Technology.html">Technology</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new object of this class</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-414"></a><h3>register_technology</h3></td><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_register_technology"></a><a name="k_46"></a><p><b>Signature</b>: <i>[static] </i><a href="class_Technology.html">Technology</a> ptr <b> register_technology </b> (const <a href="class_Technology.html">Technology</a> tech)</p><p><b>Description</b>: Registers a technology in the system</p><p><p></p><p>Only after a technology is registered, it can be used in the system, e.g. by specifying its name in <a href="class_Layout.html#m_technology_name">Layout#technology_name</a>. While <a href="#m_create_technology">create_technology</a> already registers the technology, this method allows registering a Technology object that has created in other ways.</p><p>This method returns a reference to the new technology object, which is a copy of the argument. <a href="#m_remove_technology">remove_technology</a> can be used to remove a technology registered by this method.</p><p>This method has been introduced in version 0.28.14.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-419"></a><h3>remove_technology</h3></td><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_remove_technology"></a><a name="k_47"></a><p><b>Signature</b>: <i>[static] </i>void <b> remove_technology </b> (string name)</p><p><b>Description</b>: Removes the technology with the given name from the system</p></td></tr><tr class="bigrow0"><td><a name="h3-423"></a><h3>save</h3></td><td style="padding-bottom: 16px"><a name="method46"></a><a name="m_save"></a><a name="k_48"></a><p><b>Signature</b>: <i>[const] </i>void <b> save </b> (string file)</p><p><b>Description</b>: Saves the technology definition to a file</p></td></tr><tr class="bigrow1"><td><a name="h3-427"></a><h3>save_layout_options</h3></td><td style="padding-bottom: 16px"><a name="method47"></a><a name="m_save_layout_options"></a><a name="k_49"></a><p><b>Signature</b>: <i>[const] </i><a href="class_SaveLayoutOptions.html">SaveLayoutOptions</a><b> save_layout_options </b></p><p><b>Description</b>: Gets the layout writer options</p><p><p></p><p>This method returns the layout writer options that are used when writing layouts with this technology.</p><p>Change the reader options by modifying the object and using the setter to change it:</p><p><pre>
+opt = tech.save_layout_options
+opt.dbu = 0.01
+tech.save_layout_options = opt
+</pre></p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'save_layout_options'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-438"></a><h3>save_layout_options=</h3></td><td style="padding-bottom: 16px"><a name="method48"></a><a name="m_save_layout_options="></a><a name="k_50"></a><p><b>Signature</b>: void <b> save_layout_options= </b> (const <a href="class_SaveLayoutOptions.html">SaveLayoutOptions</a> options)</p><p><b>Description</b>: Sets the layout writer options</p><p><p></p><p>See <a href="#m_save_layout_options">save_layout_options</a> for a description of this property.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'save_layout_options'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-445"></a><h3>set_default_grids</h3></td><td style="padding-bottom: 16px"><a name="method49"></a><a name="m_set_default_grids"></a><a name="k_51"></a><p><b>Signature</b>: void <b> set_default_grids </b> (double[] grids, double default_grid = 0)</p><p><b>Description</b>: Sets the default grids and the strong default one</p><p><p>
+See <a href="#m_default_grids">default_grids</a> and <a href="#m_default_grid">default_grid</a> for a description of this property.
+Note that the default grid has to be a member of the 'grids' array to become active.</p><p>This method has been introduced in version 0.29.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-452"></a><h3>technologies_from_xml</h3></td><td style="padding-bottom: 16px"><a name="method50"></a><a name="m_technologies_from_xml"></a><a name="k_52"></a><p><b>Signature</b>: <i>[static] </i>void <b> technologies_from_xml </b> (string xml)</p><p><b>Description</b>: Loads the technologies from a XML representation</p><p><p></p><p>See <a href="#m_technologies_to_xml">technologies_to_xml</a> for details.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-457"></a><h3>technologies_to_xml</h3></td><td style="padding-bottom: 16px"><a name="method51"></a><a name="m_technologies_to_xml"></a><a name="k_53"></a><p><b>Signature</b>: <i>[static] </i>string <b> technologies_to_xml </b></p><p><b>Description</b>: Returns a XML representation of all technologies registered in the system</p><p><p></p><p><a href="#m_technologies_from_xml">technologies_from_xml</a> can be used to restore the technology definitions. This method is provided mainly as a substitute for the pre-0.25 way of accessing technology data through the 'technology-data' configuration parameter. This method will return the equivalent string.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-462"></a><h3>technology_by_name</h3></td><td style="padding-bottom: 16px"><a name="method52"></a><a name="m_technology_by_name"></a><a name="k_54"></a><p><b>Signature</b>: <i>[static] </i><a href="class_Technology.html">Technology</a> ptr <b> technology_by_name </b> (string name)</p><p><b>Description</b>: Gets the technology object for a given name</p></td></tr><tr class="bigrow1"><td><a name="h3-466"></a><h3>technology_from_xml</h3></td><td style="padding-bottom: 16px"><a name="method53"></a><a name="m_technology_from_xml"></a><a name="k_55"></a><p><b>Signature</b>: <i>[static] </i><a href="class_Technology.html">Technology</a><b> technology_from_xml </b> (string xml)</p><p><b>Description</b>: Loads the technology from a XML representation</p><p><p></p><p>See technology_to_xml for details. Note that this function will create a new Technology object which is not registered in the system. See <a href="class_Technology.html#m_register">Technology#register</a> for details.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-471"></a><h3>technology_names</h3></td><td style="padding-bottom: 16px"><a name="method54"></a><a name="m_technology_names"></a><a name="k_56"></a><p><b>Signature</b>: <i>[static] </i>string[] <b> technology_names </b></p><p><b>Description</b>: Gets a list of technology names defined in the system</p></td></tr><tr class="bigrow1"><td><a name="h3-475"></a><h3>to_xml</h3></td><td style="padding-bottom: 16px"><a name="method55"></a><a name="m_to_xml"></a><a name="k_57"></a><p><b>Signature</b>: <i>[const] </i>string <b> to_xml </b></p><p><b>Description</b>: Returns a XML representation of this technolog</p><p><p></p><p><a href="#m_technology_from_xml">technology_from_xml</a> can be used to restore the technology definition.</p></p></td></tr></table></body>

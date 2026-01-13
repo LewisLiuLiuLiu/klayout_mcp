@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="advanced.html">Advanced Topics</a> » The Net Tracing Feature</p><h1>The Net Tracing Feature</h1><a name="k_1"></a><a name="k_2"></a><ul><li><a href="#h2-21">Single net tracing</a></li><li><a href="#h2-97">Tracing all nets</a></li></ul><p>
+  The net tracing function allows tracing of a net by detecting touching shapes that together form a conductive
+  region. It features specification of a stack of metal (or in general &quot;conductive&quot;) layers optionally connected through 
+  via shapes. The net tracing algorithm will follow connections over the via shapes to form connections to other
+  metal layers. The material footprint can be derived from single layout layers or a boolean combination of several
+  layers. For example, this allows selecting source and drain regions of transistors by subtracting the poly region from the 
+  active area region.
+  </p><a name="h2-21"></a><h2>Single net tracing</h2><p>
+  This algorithm is intended for extracting single nets and employs an incremental extraction approach. Therefore 
+  extraction of a single small net is comparatively fast while extraction of large nets such as power nets is considerably 
+  slower compared to hierarchical LVS tools currently.
+  </p><p>
+  The net tracing function can be found in the &quot;Tools&quot; menu. The user interface allows tracing of multiple nets which are stored 
+  in a list of nets extracted. If labels are found on the nets, these are used to derive a net name. Beside that, the cells which
+  are traversed in the net extraction are listed, so the cells being connected by this net can be identified.
+  </p><p>
+  Before nets can be extracted, a layer stack must be specified. Press &quot;Layer Stack&quot; on the user interface to open the 
+  layer stack dialog or use &quot;Edit Layer Stack&quot; in the &quot;Tools&quot; menu. Layers must be specified in the &quot;layer/datatype&quot; notation. The 
+  via specification is optional. If no via layer is specified, both metal layer shapes are required to touch in order to form a 
+  connection. If a via layer is specified, a via shape must be present to form the connection.
+  </p><p>
+  The layer stack (also referred to as &quot;Connectivity&quot;) is also a technology component. This means
+  if you select a technology for layout, the technology specific stack is selected. To edit the stack
+  for all technologies, use the Technology Manager (&quot;Tools/Manage Technologies&quot;) and use the 
+  &quot;Connectivity&quot; section from the technologies.
+  </p><p>
+  A connectivity definition can specify multiple stacks, out of which one has to be selected.
+  This is useful, if your technology setup features multiple routing metal schemes for example.
+  You do not need to setup different technologies for each scheme. If you have declared multiple
+  stacks, you can choose one in the &quot;Trace Net&quot; dialog in the drop-down button right of the 
+  &quot;Layer Stack&quot; and the &quot;Configuration&quot; button at the bottom left.
+  </p><p>
+  Within the stack definition, KLayout allows specification of symbolic layers and to use boolean expressions. That way it is possible to 
+  assign meaningful names to layers (i.e. &quot;POLY&quot; or &quot;VIA1&quot;) and to use derived layers (i.e. &quot;ACTIVE-POLY&quot; for
+  the source and drain regions of a CMOS transistor). Read more about these features in <a href="../about/connectivity.html">Connectivity</a>
+  and <a href="../about/symbolic_layers.html">Symbolic Connectivity Layers</a>.
+  </p><p>
+  Once a layer stack has been defined and selected, a net can be traced by pressing the &quot;Trace Net&quot; button and clicking on a point in the
+  layout. Starting from shapes found under this point, the net is extracted and listed in the net list on the left side of the 
+  net tracing dialog. If &quot;Lock&quot; is checked, another net can be traced by clicking at another point without having to press
+  the &quot;Trace Net&quot; button again.
+  </p><p>
+  Sometimes you encounter large nets (e.g. power nets). When you click on such a net, the tracer will start running and
+  the extraction will take a long time. If you're not interested in the details of such nets, you can limit the depth
+  of the net tracing. This means, after a specified number of shapes is encountered, the tracer will stop and report
+  the shapes collected so far as an incomplete net.
+  </p><p>
+  To configure the depth, enter the desired number of shapes in the 
+  &quot;Trace depth&quot; box at the bottom of the trace dialog. NOTE: the actual number of shapes in the net may be a little
+  less than the specified depth due to internal marker shapes which are taken into account, but are not delivered
+  as parts of the net.
+  </p><p>
+  The &quot;Trace Path&quot; function works similar but allows specification of two points and let the algorithm find the shortest connection
+  (in terms of shape count, not geometrical length) between those points. If the points are not connected, a message is given
+  which indicates that no path leads from one point to the other.
+  </p><p>
+  The display of the nets can be configured in many ways. The configuration dialog is opened when &quot;Configure&quot; is pressed in 
+  the trace net dialog. Beside the color and style of the markers used to display the net it can be specified if and how the window
+  is changed to fit the net.
+  </p><a name="h2-97"></a><h2>Tracing all nets</h2><p>
+  This algorithm is borrowed from the LVS feature, where the scenario is extended by device 
+  recognition and netlist formation. In the context of the net tracer, nets consist of the 
+  connected shapes but don't attach to devices. As LVS extracts all nets in one sweep, using
+  this feature in the net tracer will deliver all nets at once. Although this is a richer
+  information output, the tracing of all nets is typically faster then tracing a single, big
+  net such as power nets. The LVS net extractor also supports hierarchical processing which
+  gives a considerable performance improvement and more compact net representations.
+  </p><p>
+  To extract all nets, use &quot;Trace All Nets&quot; from the &quot;Tools&quot; menu. It will start extracting
+  the nets immediately. It will take the connectivity definition from the standard, single-net
+  net tracer. You can edit this layer stack either from the single net tracer UI, from the technology
+  manager or &quot;Edit Layer Stack&quot; from the &quot;Tools&quot; menu.
+  </p><p>
+  After the net tracer has finished, the netlist browser dialog opens. In this dialog you
+  can:
+  </p><ul><li>Browser the circuit hierarchy (taken from the cell hierarchy) in the left half of the central 
+    view.
+    </li><li>Browse the nets of the circuits in the right half of the view. Clicking on a net
+    will highlight the net.
+    </li><li>Configure the net highlighting behavior. Use the &quot;Configure&quot; button.
+    </li><li>Export all or selected nets to layout, save the netlist (with shapes) to a file, load it back from a file and manage
+    the netlist database. Use the &quot;File&quot; menu button in the right upper corner.
+    </li><li>Search for net names (if labeled) and circuits using the search edit box.
+    </li><li>Navigate through the history using the &quot;back&quot; and &quot;forward&quot; buttons at the top left.
+    </li></ul><p>
+  Extracted nets are written and read in a KLayout-specific format called &quot;L2N&quot; (&quot;layout to netlist&quot;).
+  This format contains both the nets and the shapes that make up a net. This way, the traced
+  nets can be saved and retrieved later.
+  </p></body>

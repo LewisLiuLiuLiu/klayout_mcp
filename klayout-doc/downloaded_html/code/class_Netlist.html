@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class Netlist</p><h1>API reference - Class Netlist</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: The netlist top-level class</p><ul><li><a href="#h2-13">Public constructors</a></li><li><a href="#h2-18">Public methods</a></li><li><a href="#h2-129">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-140">Detailed description</a></li></ul><p>
+A netlist is a hierarchical structure of circuits. At least one circuit is the top-level circuit, other circuits may be referenced as subcircuits.
+Circuits are created with create_circuit and are represented by objects of the <a href="class_Circuit.html">Circuit</a> class.</p><p>Beside circuits, the netlist manages device classes. Device classes describe specific types of devices. Device classes are represented by objects of the <a href="class_DeviceClass.html">DeviceClass</a> class and are created using create_device_class.</p><p>The netlist class has been introduced with version 0.26.</p><a name="h2-13"></a><h2>Public constructors</h2><table><tr class="row0"><td>new Netlist ptr</td><td><b><a href="#method43">new</a></b></td><td></td><td>Creates a new object of this class</td></tr></table><a name="h2-18"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>Netlist ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">add</a></b></td><td>(Circuit ptr circuit)</td><td>Adds the circuit to the netlist</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">add</a></b></td><td>(DeviceClass ptr device_class)</td><td>Adds the device class to the netlist</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method9">assign</a></b></td><td>(const Netlist other)</td><td>Assigns another object to self</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">blank_circuit</a></b></td><td>(string pattern)</td><td>Blanks circuits matching a certain pattern</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method11">case_sensitive=</a></b></td><td>(bool cs)</td><td>Sets a value indicating whether the netlist names are case sensitive</td></tr><tr class="row0"><td></td><td>Circuit ptr</td><td><b><a href="#method12">circuit_by_cell_index</a></b></td><td>(unsigned int cell_index)</td><td>Gets the circuit object for a given cell index.</td></tr><tr class="row1"><td><i>[const]</i></td><td>const Circuit ptr</td><td><b><a href="#method13">circuit_by_cell_index</a></b></td><td>(unsigned int cell_index)</td><td>Gets the circuit object for a given cell index (const version).</td></tr><tr class="row0"><td></td><td>Circuit ptr</td><td><b><a href="#method14">circuit_by_name</a></b></td><td>(string name)</td><td>Gets the circuit object for a given name.</td></tr><tr class="row1"><td><i>[const]</i></td><td>const Circuit ptr</td><td><b><a href="#method15">circuit_by_name</a></b></td><td>(string name)</td><td>Gets the circuit object for a given name (const version).</td></tr><tr class="row0"><td></td><td>Circuit ptr[]</td><td><b><a href="#method16">circuits_by_name</a></b></td><td>(string name_pattern,<br>variant case_sensitive = default)</td><td>Gets the circuit objects for a given name filter.</td></tr><tr class="row1"><td><i>[const]</i></td><td>const Circuit ptr[]</td><td><b><a href="#method17">circuits_by_name</a></b></td><td>(string name_pattern,<br>variant case_sensitive = default)</td><td>Gets the circuit objects for a given name filter (const version).</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method18">combine_devices</a></b></td><td></td><td>Combines devices where possible</td></tr><tr class="row1"><td></td><td>DeviceClass ptr</td><td><b><a href="#method22">device_class_by_name</a></b></td><td>(string name)</td><td>Gets the device class for a given name.</td></tr><tr class="row0"><td><i>[const]</i></td><td>const DeviceClass ptr</td><td><b><a href="#method23">device_class_by_name</a></b></td><td>(string name)</td><td>Gets the device class for a given name (const version).</td></tr><tr class="row1"><td><i>[const]</i></td><td>new Netlist ptr</td><td><b><a href="#method24">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row0"><td><i>[iter]</i></td><td>Circuit</td><td><b><a href="#method25">each_circuit</a></b></td><td></td><td>Iterates over the circuits of the netlist</td></tr><tr class="row1"><td><i>[const,iter]</i></td><td>Circuit</td><td><b><a href="#method26">each_circuit</a></b></td><td></td><td>Iterates over the circuits of the netlist (const version)</td></tr><tr class="row0"><td><i>[iter]</i></td><td>Circuit</td><td><b><a href="#method27">each_circuit_bottom_up</a></b></td><td></td><td>Iterates over the circuits bottom-up</td></tr><tr class="row1"><td><i>[const,iter]</i></td><td>Circuit</td><td><b><a href="#method28">each_circuit_bottom_up</a></b></td><td></td><td>Iterates over the circuits bottom-up (const version)</td></tr><tr class="row0"><td><i>[iter]</i></td><td>Circuit</td><td><b><a href="#method29">each_circuit_top_down</a></b></td><td></td><td>Iterates over the circuits top-down</td></tr><tr class="row1"><td><i>[const,iter]</i></td><td>Circuit</td><td><b><a href="#method30">each_circuit_top_down</a></b></td><td></td><td>Iterates over the circuits top-down (const version)</td></tr><tr class="row0"><td><i>[iter]</i></td><td>DeviceClass</td><td><b><a href="#method31">each_device_class</a></b></td><td></td><td>Iterates over the device classes of the netlist</td></tr><tr class="row1"><td><i>[const,iter]</i></td><td>DeviceClass</td><td><b><a href="#method32">each_device_class</a></b></td><td></td><td>Iterates over the device classes of the netlist (const version)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method33">flatten</a></b></td><td></td><td>Flattens all circuits of the netlist</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method34">flatten_circuit</a></b></td><td>(Circuit ptr circuit)</td><td>Flattens a subcircuit</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method35">flatten_circuit</a></b></td><td>(string pattern)</td><td>Flattens circuits matching a certain pattern</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method36">flatten_circuits</a></b></td><td>(Circuit ptr[] circuits)</td><td>Flattens all given circuits of the netlist</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method37">from_s</a></b></td><td>(string str)</td><td>Reads the netlist from a string representation.</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method38">is_case_sensitive?</a></b></td><td></td><td>Returns a value indicating whether the netlist names are case sensitive</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method40">make_top_level_pins</a></b></td><td></td><td>Creates pins for top-level circuits.</td></tr><tr class="row1"><td></td><td>Net ptr[]</td><td><b><a href="#method41">nets_by_name</a></b></td><td>(string name_pattern,<br>variant case_sensitive = default)</td><td>Gets the net objects for a given name filter.</td></tr><tr class="row0"><td><i>[const]</i></td><td>const Net ptr[]</td><td><b><a href="#method42">nets_by_name</a></b></td><td>(string name_pattern,<br>variant case_sensitive = default)</td><td>Gets the net objects for a given name filter (const version).</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method44">purge</a></b></td><td></td><td>Purge unused nets, circuits and subcircuits.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method45">purge_circuit</a></b></td><td>(Circuit ptr circuit)</td><td>Removes the given circuit object and all child circuits which are not used otherwise from the netlist</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method46">purge_devices</a></b></td><td></td><td>Purges invalid devices.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method47">purge_nets</a></b></td><td></td><td>Purges floating nets.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method48">read</a></b></td><td>(string file,<br>NetlistReader ptr reader)</td><td>Reads the netlist from the given file using the given reader object to parse the file</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method49">remove</a></b></td><td>(Circuit ptr circuit)</td><td>Removes the given circuit object from the netlist</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method50">remove</a></b></td><td>(DeviceClass ptr device_class)</td><td>Removes the given device class object from the netlist</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method51">simplify</a></b></td><td></td><td>Convenience method that combines the simplification.</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method52">to_s</a></b></td><td></td><td>Converts the netlist to a string representation.</td></tr><tr class="row0"><td></td><td>Circuit ptr</td><td><b><a href="#method53">top_circuit</a></b></td><td></td><td>Gets the top circuit.</td></tr><tr class="row1"><td><i>[const]</i></td><td>const Circuit ptr</td><td><b><a href="#method54">top_circuit</a></b></td><td></td><td>Gets the top circuit (const version).</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned long</td><td><b><a href="#method55">top_circuit_count</a></b></td><td></td><td>Gets the number of top circuits.</td></tr><tr class="row1"><td></td><td>Circuit ptr[]</td><td><b><a href="#method56">top_circuits</a></b></td><td></td><td>Gets the top circuits.</td></tr><tr class="row0"><td><i>[const]</i></td><td>const Circuit ptr[]</td><td><b><a href="#method57">top_circuits</a></b></td><td></td><td>Gets the top circuits.</td></tr><tr class="row1"><td><i>[const]</i></td><td>void</td><td><b><a href="#method58">write</a></b></td><td>(string file,<br>NetlistWriter ptr writer,<br>string description = )</td><td>Writes the netlist to the given file using the given writer object to format the file</td></tr></table><a name="h2-129"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method19">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method20">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method21">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method39">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-140"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-141"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Netlist.html">Netlist</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-147"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-153"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroy"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-160"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroyed?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-167"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__is_const_object?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-174"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__manage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-180"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__unmanage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-186"></a><h3>add</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_add"></a><a name="k_9"></a><p><b>(1) Signature</b>: void <b> add </b> (<a href="class_Circuit.html">Circuit</a> ptr circuit)</p><p><b>Description</b>: Adds the circuit to the netlist</p><p><p>
+This method will add the given circuit object to the netlist. After the circuit has been added, it will be owned by the netlist.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_add"></a><a name="k_10"></a><p><b>(2) Signature</b>: void <b> add </b> (<a href="class_DeviceClass.html">DeviceClass</a> ptr device_class)</p><p><b>Description</b>: Adds the device class to the netlist</p><p><p>
+This method will add the given device class object to the netlist. After the device class has been added, it will be owned by the netlist.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-197"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_assign"></a><a name="k_11"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_Netlist.html">Netlist</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow1"><td><a name="h3-201"></a><h3>blank_circuit</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_blank_circuit"></a><a name="k_12"></a><p><b>Signature</b>: void <b> blank_circuit </b> (string pattern)</p><p><b>Description</b>: Blanks circuits matching a certain pattern</p><p><p>
+This method will erase everything from inside the circuits matching the given pattern. It will only leave pins which are not connected to any net. Hence, this method forms 'abstract' or black-box circuits which can be instantiated through subcircuits like the former ones, but are empty shells.
+The name pattern is a glob expression. For example, 'blank_circuit(&quot;np*&quot;)' will blank out all circuits with names starting with 'np'.</p><p>For more details see <a href="class_Circuit.html#m_blank">Circuit#blank</a> which is the corresponding method on the actual object.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-208"></a><h3>case_sensitive=</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_case_sensitive="></a><a name="k_13"></a><p><b>Signature</b>: void <b> case_sensitive= </b> (bool cs)</p><p><b>Description</b>: Sets a value indicating whether the netlist names are case sensitive</p><p><p>
+This method has been added in version 0.27.3.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'case_sensitive'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-216"></a><h3>circuit_by_cell_index</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_circuit_by_cell_index"></a><a name="k_14"></a><p><b>(1) Signature</b>: <a href="class_Circuit.html">Circuit</a> ptr <b> circuit_by_cell_index </b> (unsigned int cell_index)</p><p><b>Description</b>: Gets the circuit object for a given cell index.</p><p><p>
+If the cell index is not valid or no circuit is registered with this index, nil is returned.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_circuit_by_cell_index"></a><a name="k_15"></a><p><b>(2) Signature</b>: <i>[const] </i>const <a href="class_Circuit.html">Circuit</a> ptr <b> circuit_by_cell_index </b> (unsigned int cell_index)</p><p><b>Description</b>: Gets the circuit object for a given cell index (const version).</p><p><p>
+If the cell index is not valid or no circuit is registered with this index, nil is returned.</p><p>This constness variant has been introduced in version 0.26.8.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-227"></a><h3>circuit_by_name</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_circuit_by_name"></a><a name="k_16"></a><p><b>(1) Signature</b>: <a href="class_Circuit.html">Circuit</a> ptr <b> circuit_by_name </b> (string name)</p><p><b>Description</b>: Gets the circuit object for a given name.</p><p><p>
+If the name is not a valid circuit name, nil is returned.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_circuit_by_name"></a><a name="k_17"></a><p><b>(2) Signature</b>: <i>[const] </i>const <a href="class_Circuit.html">Circuit</a> ptr <b> circuit_by_name </b> (string name)</p><p><b>Description</b>: Gets the circuit object for a given name (const version).</p><p><p>
+If the name is not a valid circuit name, nil is returned.</p><p>This constness variant has been introduced in version 0.26.8.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-238"></a><h3>circuits_by_name</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_circuits_by_name"></a><a name="k_18"></a><p><b>(1) Signature</b>: <a href="class_Circuit.html">Circuit</a> ptr[] <b> circuits_by_name </b> (string name_pattern, variant case_sensitive = default)</p><p><b>Description</b>: Gets the circuit objects for a given name filter.</p><p><p>
+The name filter is a glob pattern. This method will return all <a href="class_Circuit.html">Circuit</a> objects matching the glob pattern.
+The 'case_sensitive' argument will control whether the name is looked up in a case sensitive way or not. Note that with case insensitive search on a netlist that is case sensitive, the same name may render more than one hit. By default, case sensitivity is taken from the netlist.</p><p>This method has been introduced in version 0.26.4.
+The 'case_sensitive' argument has been added in version 0.30.2.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_circuits_by_name"></a><a name="k_19"></a><p><b>(2) Signature</b>: <i>[const] </i>const <a href="class_Circuit.html">Circuit</a> ptr[] <b> circuits_by_name </b> (string name_pattern, variant case_sensitive = default)</p><p><b>Description</b>: Gets the circuit objects for a given name filter (const version).</p><p><p>
+The name filter is a glob pattern. This method will return all <a href="class_Circuit.html">Circuit</a> objects matching the glob pattern.
+The 'case_sensitive' argument will control whether the name is looked up in a case sensitive way or not. Note that with case insensitive search on a netlist that is case sensitive, the same name may render more than one hit. By default, case sensitivity is taken from the netlist.</p><p>This constness variant has been introduced in version 0.26.8.The 'case_sensitive' argument has been added in version 0.30.2.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-252"></a><h3>combine_devices</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_combine_devices"></a><a name="k_20"></a><p><b>Signature</b>: void <b> combine_devices </b></p><p><b>Description</b>: Combines devices where possible</p><p><p>
+This method will combine devices that can be combined according to their device classes 'combine_devices' method.
+For example, serial or parallel resistors can be combined into a single resistor.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-260"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_create"></a><a name="k_21"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-267"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_destroy"></a><a name="k_22"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-275"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_destroyed?"></a><a name="k_23"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-283"></a><h3>device_class_by_name</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_device_class_by_name"></a><a name="k_24"></a><p><b>(1) Signature</b>: <a href="class_DeviceClass.html">DeviceClass</a> ptr <b> device_class_by_name </b> (string name)</p><p><b>Description</b>: Gets the device class for a given name.</p><p><p>
+If the name is not a valid device class name, nil is returned.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_device_class_by_name"></a><a name="k_25"></a><p><b>(2) Signature</b>: <i>[const] </i>const <a href="class_DeviceClass.html">DeviceClass</a> ptr <b> device_class_by_name </b> (string name)</p><p><b>Description</b>: Gets the device class for a given name (const version).</p><p><p>
+If the name is not a valid device class name, nil is returned.</p><p>This constness variant has been introduced in version 0.26.8.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-294"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_dup"></a><a name="k_26"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_Netlist.html">Netlist</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-299"></a><h3>each_circuit</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_each_circuit"></a><a name="k_27"></a><p><b>(1) Signature</b>: <i>[iter] </i><a href="class_Circuit.html">Circuit</a><b> each_circuit </b></p><p><b>Description</b>: Iterates over the circuits of the netlist</p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_each_circuit"></a><a name="k_28"></a><p><b>(2) Signature</b>: <i>[const,iter] </i><a href="class_Circuit.html">Circuit</a><b> each_circuit </b></p><p><b>Description</b>: Iterates over the circuits of the netlist (const version)</p><p><p></p><p>This constness variant has been introduced in version 0.26.8.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-307"></a><h3>each_circuit_bottom_up</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_each_circuit_bottom_up"></a><a name="k_29"></a><p><b>(1) Signature</b>: <i>[iter] </i><a href="class_Circuit.html">Circuit</a><b> each_circuit_bottom_up </b></p><p><b>Description</b>: Iterates over the circuits bottom-up</p><p><p>
+Iterating bottom-up means the parent circuits come after the child circuits. This is the basically the reverse order as delivered by <a href="#m_each_circuit_top_down">each_circuit_top_down</a>.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_each_circuit_bottom_up"></a><a name="k_30"></a><p><b>(2) Signature</b>: <i>[const,iter] </i><a href="class_Circuit.html">Circuit</a><b> each_circuit_bottom_up </b></p><p><b>Description</b>: Iterates over the circuits bottom-up (const version)</p><p><p>
+Iterating bottom-up means the parent circuits come after the child circuits. This is the basically the reverse order as delivered by <a href="#m_each_circuit_top_down">each_circuit_top_down</a>.</p><p>This constness variant has been introduced in version 0.26.8.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-318"></a><h3>each_circuit_top_down</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_each_circuit_top_down"></a><a name="k_31"></a><p><b>(1) Signature</b>: <i>[iter] </i><a href="class_Circuit.html">Circuit</a><b> each_circuit_top_down </b></p><p><b>Description</b>: Iterates over the circuits top-down</p><p><p>
+Iterating top-down means the parent circuits come before the child circuits. The first <a href="#m_top_circuit_count">top_circuit_count</a> circuits are top circuits - i.e. those which are not referenced by other circuits.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_each_circuit_top_down"></a><a name="k_32"></a><p><b>(2) Signature</b>: <i>[const,iter] </i><a href="class_Circuit.html">Circuit</a><b> each_circuit_top_down </b></p><p><b>Description</b>: Iterates over the circuits top-down (const version)</p><p><p>
+Iterating top-down means the parent circuits come before the child circuits. The first <a href="#m_top_circuit_count">top_circuit_count</a> circuits are top circuits - i.e. those which are not referenced by other circuits.</p><p>This constness variant has been introduced in version 0.26.8.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-329"></a><h3>each_device_class</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_each_device_class"></a><a name="k_33"></a><p><b>(1) Signature</b>: <i>[iter] </i><a href="class_DeviceClass.html">DeviceClass</a><b> each_device_class </b></p><p><b>Description</b>: Iterates over the device classes of the netlist</p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_each_device_class"></a><a name="k_34"></a><p><b>(2) Signature</b>: <i>[const,iter] </i><a href="class_DeviceClass.html">DeviceClass</a><b> each_device_class </b></p><p><b>Description</b>: Iterates over the device classes of the netlist (const version)</p><p><p></p><p>This constness variant has been introduced in version 0.26.8.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-337"></a><h3>flatten</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_flatten"></a><a name="k_35"></a><p><b>Signature</b>: void <b> flatten </b></p><p><b>Description</b>: Flattens all circuits of the netlist</p><p><p>
+After calling this method, only the top circuits will remain.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-343"></a><h3>flatten_circuit</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_flatten_circuit"></a><a name="k_36"></a><p><b>(1) Signature</b>: void <b> flatten_circuit </b> (<a href="class_Circuit.html">Circuit</a> ptr circuit)</p><p><b>Description</b>: Flattens a subcircuit</p><p><p>
+This method will substitute all instances (subcircuits) of the given circuit by its contents. After this, the circuit is removed.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_flatten_circuit"></a><a name="k_37"></a><p><b>(2) Signature</b>: void <b> flatten_circuit </b> (string pattern)</p><p><b>Description</b>: Flattens circuits matching a certain pattern</p><p><p>
+This method will substitute all instances (subcircuits) of all circuits with names matching the given name pattern. The name pattern is a glob expression. For example, 'flatten_circuit(&quot;np*&quot;)' will flatten all circuits with names starting with 'np'.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-354"></a><h3>flatten_circuits</h3></td><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_flatten_circuits"></a><a name="k_38"></a><p><b>Signature</b>: void <b> flatten_circuits </b> (<a href="class_Circuit.html">Circuit</a> ptr[] circuits)</p><p><b>Description</b>: Flattens all given circuits of the netlist</p><p><p>
+This method is equivalent to calling <a href="#m_flatten_circuit">flatten_circuit</a> for all given circuits, but more efficient.</p><p>This method has been introduced in version 0.26.1</p></p></td></tr><tr class="bigrow1"><td><a name="h3-360"></a><h3>from_s</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_from_s"></a><a name="k_39"></a><p><b>Signature</b>: void <b> from_s </b> (string str)</p><p><b>Description</b>: Reads the netlist from a string representation.</p><p><p>
+This method is intended for test purposes mainly. It turns a string returned by <a href="#m_to_s">to_s</a> back into a netlist. Note that the device classes must be created before as they are not persisted inside the string.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-366"></a><h3>is_case_sensitive?</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_is_case_sensitive?"></a><a name="k_40"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_case_sensitive? </b></p><p><b>Description</b>: Returns a value indicating whether the netlist names are case sensitive</p><p><p>
+This method has been added in version 0.27.3.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'case_sensitive'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-374"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_is_const_object?"></a><a name="k_41"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-382"></a><h3>make_top_level_pins</h3></td><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_make_top_level_pins"></a><a name="k_42"></a><p><b>Signature</b>: void <b> make_top_level_pins </b></p><p><b>Description</b>: Creates pins for top-level circuits.</p><p><p>
+This method will turn all named nets of top-level circuits (such that are not referenced by subcircuits) into pins. This method can be used before purge to avoid that purge will remove nets which are directly connecting to subcircuits.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-388"></a><h3>nets_by_name</h3></td><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_nets_by_name"></a><a name="k_43"></a><p><b>(1) Signature</b>: <a href="class_Net.html">Net</a> ptr[] <b> nets_by_name </b> (string name_pattern, variant case_sensitive = default)</p><p><b>Description</b>: Gets the net objects for a given name filter.</p><p><p>
+The name filter is a glob pattern. This method will return all <a href="class_Net.html">Net</a> objects matching the glob pattern.
+The 'case_sensitive' argument will control whether the name is looked up in a case sensitive way or not. Note that with case insensitive search on a netlist that is case sensitive, the same name may render more than one hit. By default, case sensitivity is taken from the netlist.</p><p>This method has been introduced in version 0.28.4.
+The 'case_sensitive' argument has been added in version 0.30.2.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_nets_by_name"></a><a name="k_44"></a><p><b>(2) Signature</b>: <i>[const] </i>const <a href="class_Net.html">Net</a> ptr[] <b> nets_by_name </b> (string name_pattern, variant case_sensitive = default)</p><p><b>Description</b>: Gets the net objects for a given name filter (const version).</p><p><p>
+The name filter is a glob pattern. This method will return all <a href="class_Net.html">Net</a> objects matching the glob pattern.
+The 'case_sensitive' argument will control whether the name is looked up in a case sensitive way or not. Note that with case insensitive search on a netlist that is case sensitive, the same name may render more than one hit. By default, case sensitivity is taken from the netlist.</p><p>This constness variant has been introduced in version 0.28.4.The 'case_sensitive' argument has been added in version 0.30.2.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-402"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_new"></a><a name="k_45"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_Netlist.html">Netlist</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new object of this class</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-407"></a><h3>purge</h3></td><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_purge"></a><a name="k_46"></a><p><b>Signature</b>: void <b> purge </b></p><p><b>Description</b>: Purge unused nets, circuits and subcircuits.</p><p><p>
+This method will purge all nets which return floating == true. Circuits which don't have any nets (or only floating ones) and removed. Their subcircuits are disconnected.
+This method respects the <a href="class_Circuit.html#m_dont_purge">Circuit#dont_purge</a> attribute and will never delete circuits with this flag set.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-414"></a><h3>purge_circuit</h3></td><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_purge_circuit"></a><a name="k_47"></a><p><b>Signature</b>: void <b> purge_circuit </b> (<a href="class_Circuit.html">Circuit</a> ptr circuit)</p><p><b>Description</b>: Removes the given circuit object and all child circuits which are not used otherwise from the netlist</p><p><p>
+After the circuit has been removed, the object becomes invalid and cannot be used further. A circuit with references (see has_refs?) should not be removed as the subcircuits calling it would afterwards point to nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-420"></a><h3>purge_devices</h3></td><td style="padding-bottom: 16px"><a name="method46"></a><a name="m_purge_devices"></a><a name="k_48"></a><p><b>Signature</b>: void <b> purge_devices </b></p><p><b>Description</b>: Purges invalid devices.</p><p><p>
+Purges devices which are considered invalid. Such devices are for example those whose terminals are all connected to a single net.</p><p>This method has been added in version 0.29.7.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-426"></a><h3>purge_nets</h3></td><td style="padding-bottom: 16px"><a name="method47"></a><a name="m_purge_nets"></a><a name="k_49"></a><p><b>Signature</b>: void <b> purge_nets </b></p><p><b>Description</b>: Purges floating nets.</p><p><p>
+Floating nets can be created as effect of reconnections of devices or pins. This method will eliminate all nets that make less than two connections.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-432"></a><h3>read</h3></td><td style="padding-bottom: 16px"><a name="method48"></a><a name="m_read"></a><a name="k_50"></a><p><b>Signature</b>: void <b> read </b> (string file, <a href="class_NetlistReader.html">NetlistReader</a> ptr reader)</p><p><b>Description</b>: Reads the netlist from the given file using the given reader object to parse the file</p><p><p>
+See <a href="class_NetlistSpiceReader.html">NetlistSpiceReader</a> for an example for a parser. </p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-438"></a><h3>remove</h3></td><td style="padding-bottom: 16px"><a name="method49"></a><a name="m_remove"></a><a name="k_51"></a><p><b>(1) Signature</b>: void <b> remove </b> (<a href="class_Circuit.html">Circuit</a> ptr circuit)</p><p><b>Description</b>: Removes the given circuit object from the netlist</p><p><p>
+After the circuit has been removed, the object becomes invalid and cannot be used further. A circuit with references (see has_refs?) should not be removed as the subcircuits calling it would afterwards point to nothing.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method50"></a><a name="m_remove"></a><a name="k_52"></a><p><b>(2) Signature</b>: void <b> remove </b> (<a href="class_DeviceClass.html">DeviceClass</a> ptr device_class)</p><p><b>Description</b>: Removes the given device class object from the netlist</p><p><p>
+After the object has been removed, it becomes invalid and cannot be used further. Use this method with care as it may corrupt the internal structure of the netlist. Only use this method when device refers to this device class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-449"></a><h3>simplify</h3></td><td style="padding-bottom: 16px"><a name="method51"></a><a name="m_simplify"></a><a name="k_53"></a><p><b>Signature</b>: void <b> simplify </b></p><p><b>Description</b>: Convenience method that combines the simplification.</p><p><p>
+This method is a convenience method that runs <a href="#m_make_top_level_pins">make_top_level_pins</a>, <a href="#m_purge">purge</a>, <a href="#m_combine_devices">combine_devices</a> and <a href="#m_purge_nets">purge_nets</a>.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-455"></a><h3>to_s</h3></td><td style="padding-bottom: 16px"><a name="method52"></a><a name="m_to_s"></a><a name="k_54"></a><p><b>Signature</b>: <i>[const] </i>string <b> to_s </b></p><p><b>Description</b>: Converts the netlist to a string representation.</p><p><p>
+This method is intended for test purposes mainly.</p></p><p><b>Python specific notes: </b><br>This method is also available as 'str(object)'.<br></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-462"></a><h3>top_circuit</h3></td><td style="padding-bottom: 16px"><a name="method53"></a><a name="m_top_circuit"></a><a name="k_55"></a><p><b>(1) Signature</b>: <a href="class_Circuit.html">Circuit</a> ptr <b> top_circuit </b></p><p><b>Description</b>: Gets the top circuit.</p><p><p>
+This method will return nil, if there is no top circuit. It will raise an error, if there is more than a single top circuit.</p><p>This convenience method has been added in version 0.29.5.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method54"></a><a name="m_top_circuit"></a><a name="k_56"></a><p><b>(2) Signature</b>: <i>[const] </i>const <a href="class_Circuit.html">Circuit</a> ptr <b> top_circuit </b></p><p><b>Description</b>: Gets the top circuit (const version).</p><p><p>
+This method will return nil, if there is no top circuit. It will raise an error, if there is more than a single top circuit.</p><p>This convenience method has been added in version 0.29.5.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-473"></a><h3>top_circuit_count</h3></td><td style="padding-bottom: 16px"><a name="method55"></a><a name="m_top_circuit_count"></a><a name="k_57"></a><p><b>Signature</b>: <i>[const] </i>unsigned long <b> top_circuit_count </b></p><p><b>Description</b>: Gets the number of top circuits.</p><p><p>
+Top circuits are those which are not referenced by other circuits via subcircuits. A well-formed netlist has a single top circuit.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-479"></a><h3>top_circuits</h3></td><td style="padding-bottom: 16px"><a name="method56"></a><a name="m_top_circuits"></a><a name="k_58"></a><p><b>(1) Signature</b>: <a href="class_Circuit.html">Circuit</a> ptr[] <b> top_circuits </b></p><p><b>Description</b>: Gets the top circuits.</p><p><p>
+Returns a list of top circuits.</p><p>This convenience method has been added in version 0.29.5.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method57"></a><a name="m_top_circuits"></a><a name="k_59"></a><p><b>(2) Signature</b>: <i>[const] </i>const <a href="class_Circuit.html">Circuit</a> ptr[] <b> top_circuits </b></p><p><b>Description</b>: Gets the top circuits.</p><p><p>
+Returns a list of top circuits.</p><p>This convenience method has been added in version 0.29.5.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-490"></a><h3>write</h3></td><td style="padding-bottom: 16px"><a name="method58"></a><a name="m_write"></a><a name="k_60"></a><p><b>Signature</b>: <i>[const] </i>void <b> write </b> (string file, <a href="class_NetlistWriter.html">NetlistWriter</a> ptr writer, string description = )</p><p><b>Description</b>: Writes the netlist to the given file using the given writer object to format the file</p><p><p>
+See <a href="class_NetlistSpiceWriter.html">NetlistSpiceWriter</a> for an example for a formatter. The description is an arbitrary text which will be put into the file somewhere at the beginning.</p></p></td></tr></table></body>

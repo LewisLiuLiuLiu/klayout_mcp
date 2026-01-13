@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class LayoutVsSchematic</p><h1>API reference - Class LayoutVsSchematic</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: A generic framework for doing LVS (layout vs. schematic)</p><p><b>Class hierarchy</b>: LayoutVsSchematic » <a href="class_LayoutToNetlist.html">LayoutToNetlist</a></p><ul><li><a href="#h2-18">Public constructors</a></li><li><a href="#h2-31">Public methods</a></li><li><a href="#h2-66">Detailed description</a></li></ul><p></p><p>This class extends the concept of the netlist extraction from a layout to LVS verification. It does so by adding these concepts to the <a href="class_LayoutToNetlist.html">LayoutToNetlist</a> class:</p><p><ul><li> A reference netlist. This will be the netlist against which the layout-derived netlist is compared against. See <a href="#m_reference">reference</a> and <a href="#m_reference=">reference=</a>.
+</li><li> A compare step. During the compare the layout-derived netlist and the reference netlists are compared. The compare results are captured in the cross-reference object. See <a href="#m_compare">compare</a> and <a href="class_NetlistComparer.html">NetlistComparer</a> for the comparer object.
+</li><li> A cross-reference. This object (of class <a href="class_NetlistCrossReference.html">NetlistCrossReference</a>) will keep the relations between the objects of the two netlists. It also lists the differences between the netlists. See <a href="#m_xref">xref</a> about how to access this object.</li></ul></p><p>The LVS object can be persisted to and from a file in a specific format, so it is sometimes referred to as the &quot;LVS database&quot;.</p><p>LVS objects can be attached to layout views with <a href="class_LayoutView.html#m_add_lvsdb">LayoutView#add_lvsdb</a> so they become available in the netlist database browser.</p><p>This class has been introduced in version 0.26.</p><a name="h2-18"></a><h2>Public constructors</h2><table><tr class="row0"><td>new LayoutVsSchematic ptr</td><td><b><a href="#method9">new</a></b></td><td>(const RecursiveShapeIterator iter)</td><td>Creates a new LVS object with the extractor connected to an original layout</td></tr><tr class="row1"><td>new LayoutVsSchematic ptr</td><td><b><a href="#method10">new</a></b></td><td></td><td>Creates a new LVS object</td></tr><tr class="row0"><td>new LayoutVsSchematic ptr</td><td><b><a href="#method11">new</a></b></td><td>(DeepShapeStore ptr dss)</td><td>Creates a new LVS object with the extractor object reusing an existing <a href="class_DeepShapeStore.html">DeepShapeStore</a> object</td></tr><tr class="row1"><td>new LayoutVsSchematic ptr</td><td><b><a href="#method12">new</a></b></td><td>(DeepShapeStore ptr dss,<br>unsigned int layout_index)</td><td>Creates a new LVS object with the extractor object reusing an existing <a href="class_DeepShapeStore.html">DeepShapeStore</a> object</td></tr><tr class="row0"><td>new LayoutVsSchematic ptr</td><td><b><a href="#method13">new</a></b></td><td>(string topcell_name,<br>double dbu)</td><td>Creates a new LVS object with the extractor object taking a flat DSS</td></tr></table><a name="h2-31"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>LayoutVsSchematic ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method7">compare</a></b></td><td>(NetlistComparer ptr comparer)</td><td>Compare the layout-extracted netlist against the reference netlist using the given netlist comparer.</td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method8">flag_missing_ports</a></b></td><td>(const Circuit ptr circuit)</td><td>Flags inconsistent port labels in the given circuit</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method14">read</a></b></td><td>(string path)</td><td>Reads the LVS object from the file.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method15">read_l2n</a></b></td><td>(string path)</td><td>Reads the <a href="class_LayoutToNetlist.html">LayoutToNetlist</a> part of the object from a file.</td></tr><tr class="row1"><td></td><td>Netlist ptr</td><td><b><a href="#method16">reference</a></b></td><td></td><td>Gets the reference netlist.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method17">reference=</a></b></td><td>(Netlist ptr reference_netlist)</td><td>Sets the reference netlist.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method18">write</a></b></td><td>(string path,<br>bool short_format = false)</td><td>Writes the LVS object to a file.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method19">write_l2n</a></b></td><td>(string path,<br>bool short_format = false)</td><td>Writes the <a href="class_LayoutToNetlist.html">LayoutToNetlist</a> part of the object to a file.</td></tr><tr class="row1"><td></td><td>NetlistCrossReference ptr</td><td><b><a href="#method20">xref</a></b></td><td></td><td>Gets the cross-reference object</td></tr></table><a name="detailed"></a><a name="h2-66"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-67"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_LayoutVsSchematic.html">LayoutVsSchematic</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-73"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-79"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroy"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-86"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroyed?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-93"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__is_const_object?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-100"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__manage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-106"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__unmanage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-112"></a><h3>compare</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_compare"></a><a name="k_9"></a><p><b>Signature</b>: bool <b> compare </b> (<a href="class_NetlistComparer.html">NetlistComparer</a> ptr comparer)</p><p><b>Description</b>: Compare the layout-extracted netlist against the reference netlist using the given netlist comparer.</p></td></tr><tr class="bigrow0"><td><a name="h3-116"></a><h3>flag_missing_ports</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_flag_missing_ports"></a><a name="k_10"></a><p><b>Signature</b>: bool <b> flag_missing_ports </b> (const <a href="class_Circuit.html">Circuit</a> ptr circuit)</p><p><b>Description</b>: Flags inconsistent port labels in the given circuit</p><table class="layout-table"><tr><td><b>circuit</b>:</td><td>Either a layout or schematic circuit</td></tr><tr><td><b>Returns</b>:</td><td>True, if no errors were found</td></tr></table><p><p></p><p>This method will check all schematic nets which have pins and tests whether the corresponding layout net has the same name. This way, it is checked if the pins are properly labelled.</p><p>The method must be called after the compare step was successful. Error messages will be added to the log entries. If an error occured or the cross reference is not value, 'false' is returned.</p><p>This method was introduced in version 0.30.2.</p></p></td></tr><tr class="bigrow1"><td rowspan="5"><a name="h3-125"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_new"></a><a name="k_11"></a><p><b>(1) Signature</b>: <i>[static] </i>new <a href="class_LayoutVsSchematic.html">LayoutVsSchematic</a> ptr <b> new </b> (const <a href="class_RecursiveShapeIterator.html">RecursiveShapeIterator</a> iter)</p><p><b>Description</b>: Creates a new LVS object with the extractor connected to an original layout</p><p><p>
+This constructor will attach the extractor of the LVS object to an original layout through the shape iterator.
+</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_new"></a><a name="k_12"></a><p><b>(2) Signature</b>: <i>[static] </i>new <a href="class_LayoutVsSchematic.html">LayoutVsSchematic</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new LVS object</p><p><p>
+The main objective for this constructor is to create an object suitable for reading and writing LVS database files.
+</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_new"></a><a name="k_13"></a><p><b>(3) Signature</b>: <i>[static] </i>new <a href="class_LayoutVsSchematic.html">LayoutVsSchematic</a> ptr <b> new </b> (<a href="class_DeepShapeStore.html">DeepShapeStore</a> ptr dss)</p><p><b>Description</b>: Creates a new LVS object with the extractor object reusing an existing <a href="class_DeepShapeStore.html">DeepShapeStore</a> object</p><p><p>
+See the corresponding constructor of the <a href="class_LayoutToNetlist.html">LayoutToNetlist</a> object for more details.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_new"></a><a name="k_14"></a><p><b>(4) Signature</b>: <i>[static] </i>new <a href="class_LayoutVsSchematic.html">LayoutVsSchematic</a> ptr <b> new </b> (<a href="class_DeepShapeStore.html">DeepShapeStore</a> ptr dss, unsigned int layout_index)</p><p><b>Description</b>: Creates a new LVS object with the extractor object reusing an existing <a href="class_DeepShapeStore.html">DeepShapeStore</a> object</p><p><p>
+See the corresponding constructor of the <a href="class_LayoutToNetlist.html">LayoutToNetlist</a> object for more details.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_new"></a><a name="k_15"></a><p><b>(5) Signature</b>: <i>[static] </i>new <a href="class_LayoutVsSchematic.html">LayoutVsSchematic</a> ptr <b> new </b> (string topcell_name, double dbu)</p><p><b>Description</b>: Creates a new LVS object with the extractor object taking a flat DSS</p><p><p>
+See the corresponding constructor of the <a href="class_LayoutToNetlist.html">LayoutToNetlist</a> object for more details.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-158"></a><h3>read</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_read"></a><a name="k_16"></a><p><b>Signature</b>: void <b> read </b> (string path)</p><p><b>Description</b>: Reads the LVS object from the file.</p><p><p>
+This method employs the native format of KLayout.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-165"></a><h3>read_l2n</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_read_l2n"></a><a name="k_17"></a><p><b>Signature</b>: void <b> read_l2n </b> (string path)</p><p><b>Description</b>: Reads the <a href="class_LayoutToNetlist.html">LayoutToNetlist</a> part of the object from a file.</p><p><p>
+This method employs the native format of KLayout.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-172"></a><h3>reference</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_reference"></a><a name="k_18"></a><p><b>Signature</b>: <a href="class_Netlist.html">Netlist</a> ptr <b> reference </b></p><p><b>Description</b>: Gets the reference netlist.</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'reference'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-177"></a><h3>reference=</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_reference="></a><a name="k_19"></a><p><b>Signature</b>: void <b> reference= </b> (<a href="class_Netlist.html">Netlist</a> ptr reference_netlist)</p><p><b>Description</b>: Sets the reference netlist.</p><p><p>
+This will set the reference netlist used inside <a href="#m_compare">compare</a> as the second netlist to compare against the layout-extracted netlist.</p><p>The LVS object will take ownership over the netlist - i.e. if it goes out of scope, the reference netlist is deleted.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'reference'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-185"></a><h3>write</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_write"></a><a name="k_20"></a><p><b>Signature</b>: void <b> write </b> (string path, bool short_format = false)</p><p><b>Description</b>: Writes the LVS object to a file.</p><p><p>
+This method employs the native format of KLayout.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-192"></a><h3>write_l2n</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_write_l2n"></a><a name="k_21"></a><p><b>Signature</b>: void <b> write_l2n </b> (string path, bool short_format = false)</p><p><b>Description</b>: Writes the <a href="class_LayoutToNetlist.html">LayoutToNetlist</a> part of the object to a file.</p><p><p>
+This method employs the native format of KLayout.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-199"></a><h3>xref</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_xref"></a><a name="k_22"></a><p><b>Signature</b>: <a href="class_NetlistCrossReference.html">NetlistCrossReference</a> ptr <b> xref </b></p><p><b>Description</b>: Gets the cross-reference object</p><p><p>
+The cross-reference object is created while comparing the layout-extracted netlist against the reference netlist - i.e. during <a href="#m_compare">compare</a>. Before <a href="#m_compare">compare</a> is called, this object is nil.
+It holds the results of the comparison - a cross-reference between the nets and other objects in the match case and a listing of non-matching nets and other objects for the non-matching cases.
+See <a href="class_NetlistCrossReference.html">NetlistCrossReference</a> for more details.
+</p></p></td></tr></table></body>

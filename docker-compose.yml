@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  klayout-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # 支持多平台构建
+      platforms:
+        - linux/amd64
+        - linux/arm64
+    container_name: klayout-mcp-server
+    volumes:
+      # 挂载源代码，便于开发（本地编辑，容器内运行）
+      - ./src:/app/src:rw
+      - ./klayout-doc:/app/klayout-doc:rw
+      # 挂载项目根目录，便于访问其他文件
+      - ./:/app:rw
+    environment:
+      - PYTHONPATH=/usr/local/klayout/pymod:/app/src
+      - LD_LIBRARY_PATH=/usr/local/klayout
+    # 启用交互式终端，便于调试
+    stdin_open: true
+    tty: true
+    # 暴露端口，便于外部访问
+    ports:
+      - "8000:8000"
+    # 网络配置
+    # 如需使用主机网络，可取消注释以下行
+    # network_mode: host
+    # 重启策略
+    restart: unless-stopped
+
+# 开发模式配置
+# 使用命令：docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+# 可以添加额外的开发配置

@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Various Topics</a> » Layer Mapping Tables</p><h1>Layer Mapping Tables</h1><p>
+  Layer mapping tables are used to specify the behavior of the layout reader. Specifically, 
+  they define what actions are taken when a shape on a certain layer is encountered.
+  They can be used to
+  </p><ul><li>Filter layers</li><li>Supply layer names for GDS layer and datatype combinations</li><li>Map layers to different ones</li><li>Combine different layers into the same layer</li></ul><p>
+  A layer mapping table consists of two specifications: a match expression and an optional target expression.
+  If a shape is encountered, the reader looks up the shape's layer in the mapping table. If an 
+  entry is found whose match expression matches the layer of the shape, the shape is assigned
+  a new layer given by the target expression if present. By assigning different match expressions the
+  same target expressions, multiple input layers can be combined into a single one.
+  </p><p>
+  If no matching entry is found, the reader can be configured to either store the shape 
+  under the original layer or discard it. This option can be found in the reader options
+  dialog as the &quot;Read all layers&quot; option. If that box is checked, the shapes are stored under
+  their original layer and discarded if not.
+  </p><p>
+  A target expression can be used also to add information, specifically a layer name. In GDS there
+  is no layer name but just a layer and datatype number. In OASIS, there is a layer name in addition.
+  Other formats just use named layers and don't have the concept of layer number or datatype number.
+  When the target expression specifies a layer name that name is used. That allows adding of OASIS 
+  layer names to GDS files for example. Layers with names are usually more useful than 
+  layers that just have a number.
+  </p><p>
+  The layer mapping table consists of lines, each specifying the match expression and optional target
+  expression. The match and target expressions are separated by a colon.
+  Each expression has the form &quot;layer&quot; (numeric), &quot;layer/datatype&quot; (both numberic), &quot;name&quot; (a string)
+  or &quot;name(layer)&quot; or &quot;name(layer/datatype)&quot; (all specifications). When name and layer/datatype
+  are specified in a match string, KLayout will first look for a matching layer/datatype and then for
+  a matching layer name. The name match is case sensitive.
+  For the numerical specifications, ranges are allowed using a hyphen for an interval and
+  the comma for enumerations (see second example below).
+  </p><p>
+  Here are some examples:
+  </p><table cellspacing="2" cellpadding="0" border="0"><tr><td><b>1/0</b> or <b>1</b></td><td>Matching layer 1, datatype 0</td></tr><tr><td><b>17/1-5,10</b></td><td>Matching layer 17, datatypes 1 to 5 and 10</td></tr><tr><td><b>1/0:22</b></td><td>Matching Layer 1, datatype 0. Shapes are shifted to layer 22, datatype 0</td></tr><tr><td><b>1/0:A</b></td><td>Matching layer 1, datatype 0. The name &quot;A&quot; is added to that layer</td></tr><tr><td><b>1/0:A(2/0)</b></td><td>Matching Layer 1, datatype 0 mapped. Shapes are shifted to layer 2, datatype 0 and name &quot;A&quot;</td></tr><tr><td><b>A</b></td><td>Matching named layer &quot;A&quot;</td></tr><tr><td><b>A:1/0</b></td><td>Matching named layer &quot;A&quot;. Shapes are shifted to layer 1, datatype 0</td></tr></table><p>
+  When the layer mapping is read from a file, each line corresponds to one entry. Blanks are ignored as
+  are empty lines. Comments can be inserted using the &quot;#&quot; character in front of the comment.
+  </p><a name="h2-96"></a><h2>Wildcards</h2><p>
+  Source layers can be specified using wildcards. A wildcard is a &quot;*&quot; character 
+  matching &quot;any layer&quot;.
+  Examples for such expressions are:
+  </p><table cellspacing="2" cellpadding="0" border="0"><tr><td><b>10-*/0</b></td><td>Matching layer 10 and above, datatype 0</td></tr><tr><td><b>*/10</b></td><td>Matching datatype 10 of every layer</td></tr><tr><td><b>0-5,10-*/*</b></td><td>Matching layer 0 to 5 (inclusive) and above 10, all datatypes.</td></tr></table><p>
+  When ranges or wildcards are used as match expressions, the specified
+  layers will be lumped together into a single layer. This layer will have
+  the least permitted layer and datatype number. For example, with a 
+  match expression of &quot;1-10/*&quot;, all these layers will be mapped to &quot;1/0&quot;.
+  This behavior can be modified using a target layer specification with
+  wildcards.
+  </p><a name="h2-128"></a><h2>Wildcard expansion and relative layer mapping</h2><p>
+  If the match expression includes a numerical range or wildcards
+  for the layer or datatype number, by default all these layers
+  will be combined into a single one, where its layer or datatype number is derived
+  from the least permitted number.
+  </p><p>
+  This behavior can be modified using wildcard expansion. This is a target layer
+  which includes a &quot;*&quot; wildcard. This wildcard is substituted by the actual 
+  layer or datatype number:
+  </p><table cellspacing="2" cellpadding="0" border="0"><tr><td><b>10-*/0 : */10</b></td><td>Maintain layers for layer 10 and above and map datatype to 10</td></tr><tr><td><b>10-*/0 : */*</b></td><td>Select layers 10 and above, datatype 0 and maintain these as individual layers</td></tr><tr><td><b>1/* : 2/*</b></td><td>Map layer number 1 to 2, maintain all datatypes</td></tr></table><p>
+  Relative layer mapping allows adding an offset to the layer or datatype numbers.
+  This offset can be negative with undefined behavior when the resulting number goes below
+  zero:
+  </p><table cellspacing="2" cellpadding="0" border="0"><tr><td><b>10-20/*: *+1000/*</b></td><td>Selects all layers between 10 and 20, all datatypes. These layers will be
+        read into the original layers plus 1000 for the layer number.</td></tr><tr><td><b>10/10-*: */*-10</b></td><td>Selects layer 10, datatypes 10 plus. The resulting datatypes will be 10 less starting from 0.</td></tr></table><a name="h2-176"></a><h2>Multi-mapping and unmapping</h2><p>
+  Layer mapping table support an advanced feature which is to duplicate input layers to
+  a number of output layers (1:n) mapping.
+  The feature is enabled by prepending a &quot;+&quot; to the mapping statement. The following
+  statement will first select layer 5/0 and additionally copy it to layer 1000/0:
+  </p><pre>5/0
++5/0: 1000/0
+</pre><p>
+  Unmapping removes the mapping for a specific layer or range. It is specified by prepending &quot;-&quot;
+  to the mapping expression. The following statement will map all datatypes of layer 5 to 0 except
+  for datatype 10 which is not considered.
+  </p><pre>5/*: 5/0
+-5/10
+</pre><p>
+  Unmapping cancels the mappings specified previously, so the order of statements becomes important
+  when using unmapping and multi-mapping.
+  </p><a name="h2-204"></a><h2>Brackets</h2><p>
+  Square brackets can be used to imply mapping to the original layer. When putting square brackets
+  around a mapping expression, the default target is &quot;*/*&quot;, which means expansion to the original layer.
+  Hence the following statements are identical:
+  </p><pre>[1-10/*]
+1-10/* : */*
+</pre><p>
+  When combining this with &quot;+&quot; for multi-mapping, put &quot;+&quot; in front of the bracket.
+  </p><p>
+  You can put round brackets around mapping expressions for visual clarity, specifically when
+  combining them with &quot;-&quot; (unmapping) or &quot;+&quot; (multi-mapping):
+  </p><pre>-(1-10/*)
++(17/0 : 1017/0)
+</pre></body>

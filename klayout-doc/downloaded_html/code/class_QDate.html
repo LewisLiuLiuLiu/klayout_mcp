@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class QDate</p><h1>API reference - Class QDate</h1><property value="QtCore" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_QtCore.html">QtCore</a></p><p><b>Description</b>: Binding of QDate</p><p><b>Sub-classes</b>: <a href="class_QDate++MonthNameType.html">MonthNameType</a>, <a href="class_QDate++QFlags_MonthNameType.html">QFlags_MonthNameType</a></p><ul><li><a href="#h2-13">Public constructors</a></li><li><a href="#h2-20">Public methods</a></li><li><a href="#h2-93">Public static methods and constants</a></li><li><a href="#h2-132">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-143">Detailed description</a></li></ul><p></p><a name="h2-13"></a><h2>Public constructors</h2><table><tr class="row0"><td>new QDate</td><td><b><a href="#method46">new</a></b></td><td></td><td>Constructor QDate::QDate()</td></tr><tr class="row1"><td>new QDate</td><td><b><a href="#method47">new</a></b></td><td>(int y,<br>int m,<br>int d)</td><td>Constructor QDate::QDate(int y, int m, int d)</td></tr></table><a name="h2-20"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method0">!=</a></b></td><td>(const QDate other)</td><td>Method bool QDate::operator!=(const QDate &amp;other)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method1">&lt;</a></b></td><td>(const QDate other)</td><td>Method bool QDate::operator&lt;(const QDate &amp;other)</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method2">&lt;=</a></b></td><td>(const QDate other)</td><td>Method bool QDate::operator&lt;=(const QDate &amp;other)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">==</a></b></td><td>(const QDate other)</td><td>Method bool QDate::operator==(const QDate &amp;other)</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">&gt;</a></b></td><td>(const QDate other)</td><td>Method bool QDate::operator&gt;(const QDate &amp;other)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method5">&gt;=</a></b></td><td>(const QDate other)</td><td>Method bool QDate::operator&gt;=(const QDate &amp;other)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QDate ptr</td><td><b><a href="#method8">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method9">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method11">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method12">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method13">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method14">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td><i>[const]</i></td><td>QDate</td><td><b><a href="#method15">addDays</a></b></td><td>(int days)</td><td>Method QDate QDate::addDays(int days)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QDate</td><td><b><a href="#method16">addMonths</a></b></td><td>(int months)</td><td>Method QDate QDate::addMonths(int months)</td></tr><tr class="row1"><td><i>[const]</i></td><td>QDate</td><td><b><a href="#method17">addYears</a></b></td><td>(int years)</td><td>Method QDate QDate::addYears(int years)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method18">assign</a></b></td><td>(const QDate other)</td><td>Assigns another object to self</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method21">day</a></b></td><td></td><td>Method int QDate::day()</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method22">dayOfWeek</a></b></td><td></td><td>Method int QDate::dayOfWeek()</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method23">dayOfYear</a></b></td><td></td><td>Method int QDate::dayOfYear()</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method24">daysInMonth</a></b></td><td></td><td>Method int QDate::daysInMonth()</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method25">daysInYear</a></b></td><td></td><td>Method int QDate::daysInYear()</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method26">daysTo</a></b></td><td>(const QDate arg1)</td><td>Method int QDate::daysTo(const QDate &amp;)</td></tr><tr class="row1"><td><i>[const]</i></td><td>new QDate ptr</td><td><b><a href="#method29">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method33">getDate</a></b></td><td>(int ptr year,<br>int ptr month,<br>int ptr day)</td><td>Method void QDate::getDate(int *year, int *month, int *day)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method36">isNull?</a></b></td><td></td><td>Method bool QDate::isNull()</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method37">isValid?</a></b></td><td></td><td>Method bool QDate::isValid()</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method45">month</a></b></td><td></td><td>Method int QDate::month()</td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method48">setDate</a></b></td><td>(int year,<br>int month,<br>int day)</td><td>Method bool QDate::setDate(int year, int month, int day)</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method49">setYMD</a></b></td><td>(int y,<br>int m,<br>int d)</td><td>Method bool QDate::setYMD(int y, int m, int d)</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method54">toJulianDay</a></b></td><td></td><td>Method int QDate::toJulianDay()</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method55">toString</a></b></td><td>(const Qt_DateFormat f = Qt::TextDate)</td><td>Method QString QDate::toString(Qt::DateFormat f)</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method56">toString</a></b></td><td>(string format)</td><td>Method QString QDate::toString(const QString &amp;format)</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method57">weekNumber</a></b></td><td>(int ptr yearNum = 0)</td><td>Method int QDate::weekNumber(int *yearNum)</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method58">year</a></b></td><td></td><td>Method int QDate::year()</td></tr></table><a name="h2-93"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td><i>[static,const]</i></td><td>QDate_MonthNameType</td><td><b><a href="#method6">DateFormat</a></b></td><td></td><td>Enum constant QDate::DateFormat</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>QDate_MonthNameType</td><td><b><a href="#method7">StandaloneFormat</a></b></td><td></td><td>Enum constant QDate::StandaloneFormat</td></tr><tr class="row0"><td></td><td>QDate</td><td><b><a href="#method20">currentDate</a></b></td><td></td><td>Static method QDate QDate::currentDate()</td></tr><tr class="row1"><td></td><td>QDate</td><td><b><a href="#method30">fromJulianDay</a></b></td><td>(int jd)</td><td>Static method QDate QDate::fromJulianDay(int jd)</td></tr><tr class="row0"><td></td><td>QDate</td><td><b><a href="#method31">fromString</a></b></td><td>(string s,<br>const Qt_DateFormat f = Qt::TextDate)</td><td>Static method QDate QDate::fromString(const QString &amp;s, Qt::DateFormat f)</td></tr><tr class="row1"><td></td><td>QDate</td><td><b><a href="#method32">fromString</a></b></td><td>(string s,<br>string format)</td><td>Static method QDate QDate::fromString(const QString &amp;s, const QString &amp;format)</td></tr><tr class="row0"><td></td><td>unsigned int</td><td><b><a href="#method34">gregorianToJulian</a></b></td><td>(int y,<br>int m,<br>int d)</td><td>Static method unsigned int QDate::gregorianToJulian(int y, int m, int d)</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method35">isLeapYear?</a></b></td><td>(int year)</td><td>Static method bool QDate::isLeapYear(int year)</td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method38">isValid?</a></b></td><td>(int y,<br>int m,<br>int d)</td><td>Static method bool QDate::isValid(int y, int m, int d)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method40">julianToGregorian</a></b></td><td>(unsigned int jd,<br>int y,<br>int m,<br>int d)</td><td>Static method void QDate::julianToGregorian(unsigned int jd, int &amp;y, int &amp;m, int &amp;d)</td></tr><tr class="row0"><td></td><td>string</td><td><b><a href="#method41">longDayName</a></b></td><td>(int weekday)</td><td>Static method QString QDate::longDayName(int weekday)</td></tr><tr class="row1"><td></td><td>string</td><td><b><a href="#method42">longDayName</a></b></td><td>(int weekday,<br>const QDate_MonthNameType type)</td><td>Static method QString QDate::longDayName(int weekday, QDate::MonthNameType type)</td></tr><tr class="row0"><td></td><td>string</td><td><b><a href="#method43">longMonthName</a></b></td><td>(int month)</td><td>Static method QString QDate::longMonthName(int month)</td></tr><tr class="row1"><td></td><td>string</td><td><b><a href="#method44">longMonthName</a></b></td><td>(int month,<br>const QDate_MonthNameType type)</td><td>Static method QString QDate::longMonthName(int month, QDate::MonthNameType type)</td></tr><tr class="row0"><td></td><td>string</td><td><b><a href="#method50">shortDayName</a></b></td><td>(int weekday)</td><td>Static method QString QDate::shortDayName(int weekday)</td></tr><tr class="row1"><td></td><td>string</td><td><b><a href="#method51">shortDayName</a></b></td><td>(int weekday,<br>const QDate_MonthNameType type)</td><td>Static method QString QDate::shortDayName(int weekday, QDate::MonthNameType type)</td></tr><tr class="row0"><td></td><td>string</td><td><b><a href="#method52">shortMonthName</a></b></td><td>(int month)</td><td>Static method QString QDate::shortMonthName(int month)</td></tr><tr class="row1"><td></td><td>string</td><td><b><a href="#method53">shortMonthName</a></b></td><td>(int month,<br>const QDate_MonthNameType type)</td><td>Static method QString QDate::shortMonthName(int month, QDate::MonthNameType type)</td></tr></table><a name="h2-132"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method19">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method27">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method28">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method39">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-143"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-144"></a><h3>!=</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_!="></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i>bool <b> != </b> (const <a href="class_QDate.html">QDate</a> other)</p><p><b>Description</b>: Method bool QDate::operator!=(const QDate &amp;other)</p></td></tr><tr class="bigrow1"><td><a name="h3-148"></a><h3>&lt;</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_&lt;"></a><a name="k_3"></a><p><b>Signature</b>: <i>[const] </i>bool <b> &lt; </b> (const <a href="class_QDate.html">QDate</a> other)</p><p><b>Description</b>: Method bool QDate::operator&lt;(const QDate &amp;other)</p></td></tr><tr class="bigrow0"><td><a name="h3-152"></a><h3>&lt;=</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m_&lt;="></a><a name="k_4"></a><p><b>Signature</b>: <i>[const] </i>bool <b> &lt;= </b> (const <a href="class_QDate.html">QDate</a> other)</p><p><b>Description</b>: Method bool QDate::operator&lt;=(const QDate &amp;other)</p></td></tr><tr class="bigrow1"><td><a name="h3-156"></a><h3>==</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m_=="></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> == </b> (const <a href="class_QDate.html">QDate</a> other)</p><p><b>Description</b>: Method bool QDate::operator==(const QDate &amp;other)</p></td></tr><tr class="bigrow0"><td><a name="h3-160"></a><h3>&gt;</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m_&gt;"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> &gt; </b> (const <a href="class_QDate.html">QDate</a> other)</p><p><b>Description</b>: Method bool QDate::operator&gt;(const QDate &amp;other)</p></td></tr><tr class="bigrow1"><td><a name="h3-164"></a><h3>&gt;=</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m_&gt;="></a><a name="k_7"></a><p><b>Signature</b>: <i>[const] </i>bool <b> &gt;= </b> (const <a href="class_QDate.html">QDate</a> other)</p><p><b>Description</b>: Method bool QDate::operator&gt;=(const QDate &amp;other)</p></td></tr><tr class="bigrow0"><td><a name="h3-168"></a><h3>DateFormat</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m_DateFormat"></a><a name="k_8"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_QDate_MonthNameType.html">QDate_MonthNameType</a><b> DateFormat </b></p><p><b>Description</b>: Enum constant QDate::DateFormat</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'DateFormat'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-173"></a><h3>StandaloneFormat</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_StandaloneFormat"></a><a name="k_9"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_QDate_MonthNameType.html">QDate_MonthNameType</a><b> StandaloneFormat </b></p><p><b>Description</b>: Enum constant QDate::StandaloneFormat</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'StandaloneFormat'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-178"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__const_cast"></a><a name="k_10"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QDate.html">QDate</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-184"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m__create"></a><a name="k_11"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-190"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m__destroy"></a><a name="k_12"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-197"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m__destroyed?"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-204"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m__is_const_object?"></a><a name="k_14"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-211"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m__manage"></a><a name="k_15"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-217"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m__unmanage"></a><a name="k_16"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-223"></a><h3>addDays</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_addDays"></a><a name="k_17"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QDate.html">QDate</a><b> addDays </b> (int days)</p><p><b>Description</b>: Method QDate QDate::addDays(int days)</p></td></tr><tr class="bigrow0"><td><a name="h3-227"></a><h3>addMonths</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_addMonths"></a><a name="k_18"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QDate.html">QDate</a><b> addMonths </b> (int months)</p><p><b>Description</b>: Method QDate QDate::addMonths(int months)</p></td></tr><tr class="bigrow1"><td><a name="h3-231"></a><h3>addYears</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_addYears"></a><a name="k_19"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QDate.html">QDate</a><b> addYears </b> (int years)</p><p><b>Description</b>: Method QDate QDate::addYears(int years)</p></td></tr><tr class="bigrow0"><td><a name="h3-235"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_assign"></a><a name="k_20"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_QDate.html">QDate</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow1"><td><a name="h3-239"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_create"></a><a name="k_21"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-246"></a><h3>currentDate</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_currentDate"></a><a name="k_22"></a><p><b>Signature</b>: <i>[static] </i><a href="class_QDate.html">QDate</a><b> currentDate </b></p><p><b>Description</b>: Static method QDate QDate::currentDate()</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-252"></a><h3>day</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_day"></a><a name="k_23"></a><p><b>Signature</b>: <i>[const] </i>int <b> day </b></p><p><b>Description</b>: Method int QDate::day()</p></td></tr><tr class="bigrow0"><td><a name="h3-256"></a><h3>dayOfWeek</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_dayOfWeek"></a><a name="k_24"></a><p><b>Signature</b>: <i>[const] </i>int <b> dayOfWeek </b></p><p><b>Description</b>: Method int QDate::dayOfWeek()</p></td></tr><tr class="bigrow1"><td><a name="h3-260"></a><h3>dayOfYear</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_dayOfYear"></a><a name="k_25"></a><p><b>Signature</b>: <i>[const] </i>int <b> dayOfYear </b></p><p><b>Description</b>: Method int QDate::dayOfYear()</p></td></tr><tr class="bigrow0"><td><a name="h3-264"></a><h3>daysInMonth</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_daysInMonth"></a><a name="k_26"></a><p><b>Signature</b>: <i>[const] </i>int <b> daysInMonth </b></p><p><b>Description</b>: Method int QDate::daysInMonth()</p></td></tr><tr class="bigrow1"><td><a name="h3-268"></a><h3>daysInYear</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_daysInYear"></a><a name="k_27"></a><p><b>Signature</b>: <i>[const] </i>int <b> daysInYear </b></p><p><b>Description</b>: Method int QDate::daysInYear()</p></td></tr><tr class="bigrow0"><td><a name="h3-272"></a><h3>daysTo</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_daysTo"></a><a name="k_28"></a><p><b>Signature</b>: <i>[const] </i>int <b> daysTo </b> (const <a href="class_QDate.html">QDate</a> arg1)</p><p><b>Description</b>: Method int QDate::daysTo(const QDate &amp;)</p></td></tr><tr class="bigrow1"><td><a name="h3-276"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_destroy"></a><a name="k_29"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-284"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_destroyed?"></a><a name="k_30"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-292"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_dup"></a><a name="k_31"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_QDate.html">QDate</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-297"></a><h3>fromJulianDay</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_fromJulianDay"></a><a name="k_32"></a><p><b>Signature</b>: <i>[static] </i><a href="class_QDate.html">QDate</a><b> fromJulianDay </b> (int jd)</p><p><b>Description</b>: Static method QDate QDate::fromJulianDay(int jd)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-303"></a><h3>fromString</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_fromString"></a><a name="k_33"></a><p><b>(1) Signature</b>: <i>[static] </i><a href="class_QDate.html">QDate</a><b> fromString </b> (string s, const <a href="class_Qt_DateFormat.html">Qt_DateFormat</a> f = Qt::TextDate)</p><p><b>Description</b>: Static method QDate QDate::fromString(const QString &amp;s, Qt::DateFormat f)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_fromString"></a><a name="k_34"></a><p><b>(2) Signature</b>: <i>[static] </i><a href="class_QDate.html">QDate</a><b> fromString </b> (string s, string format)</p><p><b>Description</b>: Static method QDate QDate::fromString(const QString &amp;s, const QString &amp;format)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-314"></a><h3>getDate</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_getDate"></a><a name="k_35"></a><p><b>Signature</b>: void <b> getDate </b> (int ptr year, int ptr month, int ptr day)</p><p><b>Description</b>: Method void QDate::getDate(int *year, int *month, int *day)</p></td></tr><tr class="bigrow1"><td><a name="h3-318"></a><h3>gregorianToJulian</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_gregorianToJulian"></a><a name="k_36"></a><p><b>Signature</b>: <i>[static] </i>unsigned int <b> gregorianToJulian </b> (int y, int m, int d)</p><p><b>Description</b>: Static method unsigned int QDate::gregorianToJulian(int y, int m, int d)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-324"></a><h3>isLeapYear?</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_isLeapYear?"></a><a name="k_37"></a><p><b>Signature</b>: <i>[static] </i>bool <b> isLeapYear? </b> (int year)</p><p><b>Description</b>: Static method bool QDate::isLeapYear(int year)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-330"></a><h3>isNull?</h3></td><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_isNull?"></a><a name="k_38"></a><p><b>Signature</b>: <i>[const] </i>bool <b> isNull? </b></p><p><b>Description</b>: Method bool QDate::isNull()</p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-334"></a><h3>isValid?</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_isValid?"></a><a name="k_39"></a><p><b>(1) Signature</b>: <i>[const] </i>bool <b> isValid? </b></p><p><b>Description</b>: Method bool QDate::isValid()</p><p><b>Python specific notes: </b><br>This instance method is available as '_inst_isValid' in Python.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_isValid?"></a><a name="k_40"></a><p><b>(2) Signature</b>: <i>[static] </i>bool <b> isValid? </b> (int y, int m, int d)</p><p><b>Description</b>: Static method bool QDate::isValid(int y, int m, int d)</p><p><p>
+This method is static and can be called without an instance.</p></p><p><b>Python specific notes: </b><br>This class method is available as '_class_isValid' in Python.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-345"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_is_const_object?"></a><a name="k_41"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-353"></a><h3>julianToGregorian</h3></td><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_julianToGregorian"></a><a name="k_42"></a><p><b>Signature</b>: <i>[static] </i>void <b> julianToGregorian </b> (unsigned int jd, int y, int m, int d)</p><p><b>Description</b>: Static method void QDate::julianToGregorian(unsigned int jd, int &amp;y, int &amp;m, int &amp;d)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-359"></a><h3>longDayName</h3></td><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_longDayName"></a><a name="k_43"></a><p><b>(1) Signature</b>: <i>[static] </i>string <b> longDayName </b> (int weekday)</p><p><b>Description</b>: Static method QString QDate::longDayName(int weekday)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_longDayName"></a><a name="k_44"></a><p><b>(2) Signature</b>: <i>[static] </i>string <b> longDayName </b> (int weekday, const <a href="class_QDate_MonthNameType.html">QDate_MonthNameType</a> type)</p><p><b>Description</b>: Static method QString QDate::longDayName(int weekday, QDate::MonthNameType type)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-370"></a><h3>longMonthName</h3></td><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_longMonthName"></a><a name="k_45"></a><p><b>(1) Signature</b>: <i>[static] </i>string <b> longMonthName </b> (int month)</p><p><b>Description</b>: Static method QString QDate::longMonthName(int month)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_longMonthName"></a><a name="k_46"></a><p><b>(2) Signature</b>: <i>[static] </i>string <b> longMonthName </b> (int month, const <a href="class_QDate_MonthNameType.html">QDate_MonthNameType</a> type)</p><p><b>Description</b>: Static method QString QDate::longMonthName(int month, QDate::MonthNameType type)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-381"></a><h3>month</h3></td><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_month"></a><a name="k_47"></a><p><b>Signature</b>: <i>[const] </i>int <b> month </b></p><p><b>Description</b>: Method int QDate::month()</p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-385"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method46"></a><a name="m_new"></a><a name="k_48"></a><p><b>(1) Signature</b>: <i>[static] </i>new <a href="class_QDate.html">QDate</a><b> new </b></p><p><b>Description</b>: Constructor QDate::QDate()</p><p><p>
+This method creates an object of class QDate.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method47"></a><a name="m_new"></a><a name="k_49"></a><p><b>(2) Signature</b>: <i>[static] </i>new <a href="class_QDate.html">QDate</a><b> new </b> (int y, int m, int d)</p><p><b>Description</b>: Constructor QDate::QDate(int y, int m, int d)</p><p><p>
+This method creates an object of class QDate.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-398"></a><h3>setDate</h3></td><td style="padding-bottom: 16px"><a name="method48"></a><a name="m_setDate"></a><a name="k_50"></a><p><b>Signature</b>: bool <b> setDate </b> (int year, int month, int day)</p><p><b>Description</b>: Method bool QDate::setDate(int year, int month, int day)</p></td></tr><tr class="bigrow0"><td><a name="h3-402"></a><h3>setYMD</h3></td><td style="padding-bottom: 16px"><a name="method49"></a><a name="m_setYMD"></a><a name="k_51"></a><p><b>Signature</b>: bool <b> setYMD </b> (int y, int m, int d)</p><p><b>Description</b>: Method bool QDate::setYMD(int y, int m, int d)</p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-406"></a><h3>shortDayName</h3></td><td style="padding-bottom: 16px"><a name="method50"></a><a name="m_shortDayName"></a><a name="k_52"></a><p><b>(1) Signature</b>: <i>[static] </i>string <b> shortDayName </b> (int weekday)</p><p><b>Description</b>: Static method QString QDate::shortDayName(int weekday)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method51"></a><a name="m_shortDayName"></a><a name="k_53"></a><p><b>(2) Signature</b>: <i>[static] </i>string <b> shortDayName </b> (int weekday, const <a href="class_QDate_MonthNameType.html">QDate_MonthNameType</a> type)</p><p><b>Description</b>: Static method QString QDate::shortDayName(int weekday, QDate::MonthNameType type)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-417"></a><h3>shortMonthName</h3></td><td style="padding-bottom: 16px"><a name="method52"></a><a name="m_shortMonthName"></a><a name="k_54"></a><p><b>(1) Signature</b>: <i>[static] </i>string <b> shortMonthName </b> (int month)</p><p><b>Description</b>: Static method QString QDate::shortMonthName(int month)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method53"></a><a name="m_shortMonthName"></a><a name="k_55"></a><p><b>(2) Signature</b>: <i>[static] </i>string <b> shortMonthName </b> (int month, const <a href="class_QDate_MonthNameType.html">QDate_MonthNameType</a> type)</p><p><b>Description</b>: Static method QString QDate::shortMonthName(int month, QDate::MonthNameType type)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-428"></a><h3>toJulianDay</h3></td><td style="padding-bottom: 16px"><a name="method54"></a><a name="m_toJulianDay"></a><a name="k_56"></a><p><b>Signature</b>: <i>[const] </i>int <b> toJulianDay </b></p><p><b>Description</b>: Method int QDate::toJulianDay()</p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-432"></a><h3>toString</h3></td><td style="padding-bottom: 16px"><a name="method55"></a><a name="m_toString"></a><a name="k_57"></a><p><b>(1) Signature</b>: <i>[const] </i>string <b> toString </b> (const <a href="class_Qt_DateFormat.html">Qt_DateFormat</a> f = Qt::TextDate)</p><p><b>Description</b>: Method QString QDate::toString(Qt::DateFormat f)</p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method56"></a><a name="m_toString"></a><a name="k_58"></a><p><b>(2) Signature</b>: <i>[const] </i>string <b> toString </b> (string format)</p><p><b>Description</b>: Method QString QDate::toString(const QString &amp;format)</p></td></tr><tr class="bigrow1"><td><a name="h3-439"></a><h3>weekNumber</h3></td><td style="padding-bottom: 16px"><a name="method57"></a><a name="m_weekNumber"></a><a name="k_59"></a><p><b>Signature</b>: <i>[const] </i>int <b> weekNumber </b> (int ptr yearNum = 0)</p><p><b>Description</b>: Method int QDate::weekNumber(int *yearNum)</p></td></tr><tr class="bigrow0"><td><a name="h3-443"></a><h3>year</h3></td><td style="padding-bottom: 16px"><a name="method58"></a><a name="m_year"></a><a name="k_60"></a><p><b>Signature</b>: <i>[const] </i>int <b> year </b></p><p><b>Description</b>: Method int QDate::year()</p></td></tr></table></body>

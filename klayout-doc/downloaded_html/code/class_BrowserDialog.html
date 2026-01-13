@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class BrowserDialog</p><h1>API reference - Class BrowserDialog</h1><property value="lay" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_lay.html">lay</a></p><p><b>Description</b>: A HTML display and browser dialog</p><p><b>Class hierarchy</b>: BrowserDialog » <a href="class_QDialog.html">QDialog</a> » <a href="class_QWidget.html">QWidget</a> » <a href="class_QObject.html">QObject</a></p><ul><li><a href="#h2-29">Public constructors</a></li><li><a href="#h2-40">Public methods</a></li><li><a href="#h2-77">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-92">Detailed description</a></li></ul><p></p><p>The browser dialog displays HTML code in a browser panel. The HTML code is delivered through a separate object of class <a href="class_BrowserSource.html">BrowserSource</a> which acts as a &quot;server&quot; for a specific kind of URL scheme. Whenever the browser sees a URL starting with &quot;int:&quot; it will ask the connected BrowserSource object for the HTML code of that page using its 'get' method. The task of the BrowserSource object is to format the data requested in HTML and deliver it.</p><p>One use case for that class is the implementation of rich data browsers for structured information. In a simple scenario, the browser dialog can be instantiated with a static HTML page. In that case, only the content of that page is shown.</p><p>Here's a simple example:</p><p><pre>
+html = &quot;&lt;html&gt;&lt;body&gt;Hello, world!&lt;/body&gt;&lt;/html&gt;&quot;
+RBA::BrowserDialog::new(html).exec
+</pre></p><p>And that is an example for the use case with a <a href="class_BrowserSource.html">BrowserSource</a> as the &quot;server&quot;:</p><p><pre>
+class MySource &lt; RBA::BrowserSource
+  def get(url)
+    if (url =~ /b.html$/)
+      return &quot;&lt;html&gt;&lt;body&gt;The second page&lt;/body&gt;&lt;/html&gt;&quot;
+    else
+      return &quot;&lt;html&gt;&lt;body&gt;The first page with a &lt;a href='int:b.html'&gt;link&lt;/a&gt;&lt;/body&gt;&lt;/html&gt;&quot;
+    end
+  end
+end
+
+source = MySource::new
+RBA::BrowserDialog::new(source).exec
+</pre></p><a name="h2-29"></a><h2>Public constructors</h2><table><tr class="row0"><td>new BrowserDialog ptr</td><td><b><a href="#method14">new</a></b></td><td>(BrowserSource ptr source)</td><td>Creates a HTML browser window with a <a href="class_BrowserSource.html">BrowserSource</a> as the source of HTML code</td></tr><tr class="row1"><td>new BrowserDialog ptr</td><td><b><a href="#method15">new</a></b></td><td>(string html)</td><td>Creates a HTML browser window with a static HTML content</td></tr><tr class="row0"><td>new BrowserDialog ptr</td><td><b><a href="#method16">new</a></b></td><td>(QWidget ptr parent,<br>BrowserSource ptr source)</td><td>Creates a HTML browser window with a <a href="class_BrowserSource.html">BrowserSource</a> as the source of HTML code</td></tr><tr class="row1"><td>new BrowserDialog ptr</td><td><b><a href="#method17">new</a></b></td><td>(QWidget ptr parent,<br>string html)</td><td>Creates a HTML browser window with a static HTML content</td></tr></table><a name="h2-40"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>BrowserDialog ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">caption=</a></b></td><td>(string caption)</td><td>Sets the caption of the window</td></tr><tr class="row0"><td></td><td>int</td><td><b><a href="#method10">execute</a></b></td><td></td><td>Executes the HTML browser dialog as a modal window</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method11">home=</a></b></td><td>(string home_url)</td><td>Sets the browser's initial and current URL which is selected if the &quot;home&quot; location is chosen</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method12">label=</a></b></td><td>(string label)</td><td>Sets the label text</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method13">load</a></b></td><td>(string url)</td><td>Loads the given URL into the browser dialog</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method18">reload</a></b></td><td></td><td>Reloads the current page</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method19">resize</a></b></td><td>(int width,<br>int height)</td><td>Sets the size of the dialog window</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method20">search</a></b></td><td>(string search_item)</td><td>Issues a search request using the given search item and the search URL specified with <a href="#m_set_search_url">set_search_url</a></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method23">set_search_url</a></b></td><td>(string url,<br>string query_item)</td><td>Enables the search field and specifies the search URL generated for a search</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method26">source=</a></b></td><td>(BrowserSource ptr source)</td><td>Connects to a source object</td></tr></table><a name="h2-77"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method8">closed</a></b></td><td></td><td>Use of this method is deprecated</td></tr><tr class="row1"><td></td><td>int</td><td><b><a href="#method9">exec</a></b></td><td></td><td>Use of this method is deprecated. Use execute instead</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method21">set_caption</a></b></td><td>(string caption)</td><td>Use of this method is deprecated. Use caption= instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method22">set_home</a></b></td><td>(string home_url)</td><td>Use of this method is deprecated. Use home= instead</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method24">set_size</a></b></td><td>(int width,<br>int height)</td><td>Use of this method is deprecated. Use resize instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method25">set_source</a></b></td><td>(BrowserSource ptr source)</td><td>Use of this method is deprecated. Use source= instead</td></tr></table><a name="detailed"></a><a name="h2-92"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-93"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_BrowserDialog.html">BrowserDialog</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-99"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-105"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroy"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-112"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroyed?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-119"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__is_const_object?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-126"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__manage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-132"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__unmanage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-138"></a><h3>caption=</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_caption="></a><a name="k_9"></a><p><b>Signature</b>: void <b> caption= </b> (string caption)</p><p><b>Description</b>: Sets the caption of the window</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'caption'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-143"></a><h3>closed</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_closed"></a><a name="k_10"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> closed </b></p><p><b>Description</b>: Callback when the dialog is closed</p><p>Use of this method is deprecated</p><p><p>
+This callback can be reimplemented to implement cleanup functionality when the dialog is closed.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-150"></a><h3>exec</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_exec"></a><a name="k_11"></a><p><b>Signature</b>: int <b> exec </b></p><p><b>Description</b>: Executes the HTML browser dialog as a modal window</p><p>Use of this method is deprecated. Use execute instead</p><p><b>Python specific notes: </b><br>This attribute is available as 'exec_' in Python.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-156"></a><h3>execute</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_execute"></a><a name="k_12"></a><p><b>Signature</b>: int <b> execute </b></p><p><b>Description</b>: Executes the HTML browser dialog as a modal window</p><p><b>Python specific notes: </b><br>This attribute is available as 'exec_' in Python.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-161"></a><h3>home=</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_home="></a><a name="k_13"></a><p><b>Signature</b>: void <b> home= </b> (string home_url)</p><p><b>Description</b>: Sets the browser's initial and current URL which is selected if the &quot;home&quot; location is chosen</p><p><p>
+The home URL is the one shown initially and the one which is selected when the &quot;home&quot; button is pressed. The default location is &quot;int:/index.html&quot;.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'home'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-169"></a><h3>label=</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_label="></a><a name="k_14"></a><p><b>Signature</b>: void <b> label= </b> (string label)</p><p><b>Description</b>: Sets the label text</p><p><p></p><p>The label is shown left of the navigation buttons.
+By default, no label is specified.</p><p>This method has been introduced in version 0.23.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'label'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-177"></a><h3>load</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_load"></a><a name="k_15"></a><p><b>Signature</b>: void <b> load </b> (string url)</p><p><b>Description</b>: Loads the given URL into the browser dialog</p><p><p>
+Typically the URL has the &quot;int:&quot; scheme so the HTML code is taken from the <a href="class_BrowserSource.html">BrowserSource</a> object.
+</p></p></td></tr><tr class="bigrow0"><td rowspan="4"><a name="h3-184"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_new"></a><a name="k_16"></a><p><b>(1) Signature</b>: <i>[static] </i>new <a href="class_BrowserDialog.html">BrowserDialog</a> ptr <b> new </b> (<a href="class_BrowserSource.html">BrowserSource</a> ptr source)</p><p><b>Description</b>: Creates a HTML browser window with a <a href="class_BrowserSource.html">BrowserSource</a> as the source of HTML code</p><p><p>
+This method has been introduced in version 0.23.
+</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_new"></a><a name="k_17"></a><p><b>(2) Signature</b>: <i>[static] </i>new <a href="class_BrowserDialog.html">BrowserDialog</a> ptr <b> new </b> (string html)</p><p><b>Description</b>: Creates a HTML browser window with a static HTML content</p><p><p>
+This method has been introduced in version 0.23.
+</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_new"></a><a name="k_18"></a><p><b>(3) Signature</b>: <i>[static] </i>new <a href="class_BrowserDialog.html">BrowserDialog</a> ptr <b> new </b> (<a href="class_QWidget.html">QWidget</a> ptr parent, <a href="class_BrowserSource.html">BrowserSource</a> ptr source)</p><p><b>Description</b>: Creates a HTML browser window with a <a href="class_BrowserSource.html">BrowserSource</a> as the source of HTML code</p><p><p>
+This method variant with a parent argument has been introduced in version 0.24.2.
+</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_new"></a><a name="k_19"></a><p><b>(4) Signature</b>: <i>[static] </i>new <a href="class_BrowserDialog.html">BrowserDialog</a> ptr <b> new </b> (<a href="class_QWidget.html">QWidget</a> ptr parent, string html)</p><p><b>Description</b>: Creates a HTML browser window with a static HTML content</p><p><p>
+This method variant with a parent argument has been introduced in version 0.24.2.
+</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-213"></a><h3>reload</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_reload"></a><a name="k_20"></a><p><b>Signature</b>: void <b> reload </b></p><p><b>Description</b>: Reloads the current page</p></td></tr><tr class="bigrow0"><td><a name="h3-217"></a><h3>resize</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_resize"></a><a name="k_21"></a><p><b>Signature</b>: void <b> resize </b> (int width, int height)</p><p><b>Description</b>: Sets the size of the dialog window</p></td></tr><tr class="bigrow1"><td><a name="h3-221"></a><h3>search</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_search"></a><a name="k_22"></a><p><b>Signature</b>: void <b> search </b> (string search_item)</p><p><b>Description</b>: Issues a search request using the given search item and the search URL specified with <a href="#m_set_search_url">set_search_url</a></p><p><p></p><p>See <a href="#m_set_search_url">set_search_url</a> for a description of the search mechanism.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-227"></a><h3>set_caption</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_set_caption"></a><a name="k_23"></a><p><b>Signature</b>: void <b> set_caption </b> (string caption)</p><p><b>Description</b>: Sets the caption of the window</p><p>Use of this method is deprecated. Use caption= instead</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'caption'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-233"></a><h3>set_home</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_set_home"></a><a name="k_24"></a><p><b>Signature</b>: void <b> set_home </b> (string home_url)</p><p><b>Description</b>: Sets the browser's initial and current URL which is selected if the &quot;home&quot; location is chosen</p><p>Use of this method is deprecated. Use home= instead</p><p><p>
+The home URL is the one shown initially and the one which is selected when the &quot;home&quot; button is pressed. The default location is &quot;int:/index.html&quot;.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'home'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-242"></a><h3>set_search_url</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_set_search_url"></a><a name="k_25"></a><p><b>Signature</b>: void <b> set_search_url </b> (string url, string query_item)</p><p><b>Description</b>: Enables the search field and specifies the search URL generated for a search</p><p><p></p><p>If a search URL is set, the search box right to the navigation bar will be enabled. When a text is entered into the search box, the browser will navigate to an URL composed of the search URL, the search item and the search text, i.e. &quot;myurl?item=search_text&quot;.</p><p>This method has been introduced in version 0.23.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-248"></a><h3>set_size</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_set_size"></a><a name="k_26"></a><p><b>Signature</b>: void <b> set_size </b> (int width, int height)</p><p><b>Description</b>: Sets the size of the dialog window</p><p>Use of this method is deprecated. Use resize instead</p></td></tr><tr class="bigrow0"><td><a name="h3-253"></a><h3>set_source</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_set_source"></a><a name="k_27"></a><p><b>Signature</b>: void <b> set_source </b> (<a href="class_BrowserSource.html">BrowserSource</a> ptr source)</p><p><b>Description</b>: Connects to a source object</p><p>Use of this method is deprecated. Use source= instead</p><p><p></p><p>Setting the source should be the first thing done after the BrowserDialog object is created. It will not have any effect after the browser has loaded the first page. In particular, <a href="#m_home=">home=</a> should be called after the source was set.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'source'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-260"></a><h3>source=</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_source="></a><a name="k_28"></a><p><b>Signature</b>: void <b> source= </b> (<a href="class_BrowserSource.html">BrowserSource</a> ptr source)</p><p><b>Description</b>: Connects to a source object</p><p><p></p><p>Setting the source should be the first thing done after the BrowserDialog object is created. It will not have any effect after the browser has loaded the first page. In particular, <a href="#m_home=">home=</a> should be called after the source was set.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'source'. This is the setter.<br></p></td></tr></table></body>

@@ -1,0 +1,312 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Various Topics</a> » The 2.5d View</p><h1>The 2.5d View</h1><a name="k_1"></a><a name="k_2"></a><a name="k_3"></a><a name="k_4"></a><ul><li><a href="#h2-66">2.5d Script Anatomy</a></li><li><a href="#h2-199">Navigating the 2.5d View</a></li><li><a href="#h2-241">Colors in the 2.5d View</a></li><li><a href="#h2-252">Other Controls</a></li><li><a href="#h2-269">Material Visibility</a></li></ul><p>
+  The &quot;2.5d view&quot; offers a semi-3d view of the layout. It's not a full 3d view as the layers are only extruded vertically
+  into layers with a certain thickness. The view cannot model process topology, but it can visualize
+  wiring congestions in a three-dimensional space or the vertical relative dimensions of features of the process stack.
+  </p><p>
+  Currently, the performance is limited, a rough number for a
+  practical limit is around 100k polygons. The 2.5d view is only available, if KLayout was compiled with
+  OpenGL support.
+  </p><p>
+  In order to use the tool, you will need a script generating the material stack.
+  Such a script is a variant of a DRC script (see <a href="../manual/drc.html">Design Rule Check (DRC)</a>). 
+  The DRC language is used to import or generate polygon layers which are then
+  extruded and placed on a certain z level.
+  </p><p>
+  To create a new script, use &quot;Tools/2.5d View/New 2.5d Script&quot;. This will create a new script in the
+  macro editor. 
+  </p><p>
+  A simple script is this one. It takes two layers - 1/0 and 2/0 - and extrudes then in a 
+  stacked fashion, the first with 200nm thickness and the second one with 300nm:
+  </p><pre>
+z(input(1, 0), zstart: 0.1.um, height: 200.nm)  # extrudes layer 1/0 to a height of 200nm starting at z=100nm
+z(input(2, 0), height: 300.nm)                  # adds layer 2/0 for the next 300nm
+</pre><p>
+  To run the script, use the &quot;Run&quot; button from the macro IDE or pick the script
+  from the script list in the &quot;Tools/2.5d View&quot; menu. If your script is not shown in that 
+  menu, check if it is configured to be bound to a menu item.
+  </p><p>
+  After the script was executed, the 2.5d window is displayed. If you closed that window, you can 
+  re-open it with &quot;Tools/2.5d View/Open Window&quot;. The window will show the layout section visible 
+  in the layout view. To refresh the scene - also after changing the script - either run the script
+  again from the macro IDE or use the green &quot;re-run&quot; button in the upper left corner of the 2.5d view
+  window.
+  </p><p><img src="25d_screenshot.png"></p><a name="h2-66"></a><h2>2.5d Script Anatomy</h2><p>
+  As mentioned, a 2.5d script is a variant of a DRC script. You can basically use all features
+  of DRC, specifically boolean operations. Some practical restrictions exist:
+  </p><ul><li>You should not use external sources (&quot;source&quot; statement) as the 2.5d view is related to the loaded layout</li><li>Report generation or &quot;output&quot; statements are permitted, but do not make much sense in the context
+        of 2.5d view scripts.</li></ul><p>
+  2.5d scripts utilizes the DRC language with these two additional functions:
+  </p><ul><li><p><tt>z(</tt>layer [, options]<tt>)</tt></p><p>Extrudes the given layer. &quot;layer&quot; is a DRC layer (polygon, edge or even edge pair). &quot;options&quot; declare the z extrusion and display parameters.</p></li><li><p><tt>zz(</tt> [options] <tt>) {</tt> block <tt>}</tt></p><p>Declares a material group which combines multiple &quot;z&quot; statements under a single display group.
+           This allows generating 3d material geometries which are more than a single extruded plane.
+           The display parameters then are specified within &quot;zz&quot; for all &quot;z&quot; calls inside the block.</p></li></ul><a name="h3-94"></a><h3>&quot;z&quot; Function (plane extrusion)</h3><a name="k_5"></a><p>
+  The layer argument of the function is a DRC layer which is rendered as an extruded sheet.
+  Further arguments control the height, z location and colors.
+  When used inside the &quot;zz&quot; block, the color options of the &quot;z&quot; calls are ignored and 
+  taken from &quot;zz&quot; instead.
+  </p><p>
+  Options for this function are:
+  </p><ul><li><b>zstart</b>: specifies the bottom coordinate of the extruded sheet. If this option is not given, the top coordinate of the previous &quot;z&quot; statement is used.</li><li><b>zstop</b>: specifies the top coordinate of the extruded sheet. Alternatively you can use &quot;height&quot;.</li><li><b>height</b>: specifies the extrusion height. Alternatively you can use &quot;zstop&quot;.</li><li><b>color</b>: specifies the color to use as a 24 bit hex RGB triplet (use &quot;0xrrggbb&quot; to specify the color similar to the HTML notation &quot;#rrggbb&quot;).
+                        A color specification gives a single color with not differentiation of frame and wall colors.</li><li><b>frame</b>: specifies the frame color to use as a 24 bit hex RGB triplet. If only a frame color is specified, the geometry will be rendered as wire frame only.</li><li><b>fill</b>: specifies the fill (wall) color to use as a 24 bit hex RGB triplet. This allows specifying a different color for wall and frame when used with &quot;frame&quot;.</li><li><b>like</b>: specifies to use the same colors than used for some layer in the layout view. 
+                        If the layer is an original layer (i.e. taken from &quot;input&quot;), &quot;like&quot; defaults to the 
+                        original layer's source. If given, &quot;like&quot; needs to be a string representation of the
+                        layer source (e.g. &quot;7/0&quot; for layer 7, datatype 0).</li><li><b>name</b>: gives the material a name for displaying in the material list.</li></ul><p>
+  Examples for the extrusion options:
+  </p><pre>
+z(layer, 0.1 .. 0.2)                extrude layer to z = 0.1 to 0.2 um
+z(layer, zstart: 0.1, zstop: 0.2)   same as above
+z(layer, zstart: 0.1, height: 0.1)  same as above, but with height instead of zstop
+z(layer, height: 200.nm)            extrude layer from last z position with a height of 200nm
+</pre><p>
+  Examples for display options:
+  </p><pre>
+z(..., color: 0xff0000)             use bright red for the material color (RGB)
+z(..., frame: 0xff0000)             use bright red for the frame color (combine with &quot;fill&quot; for the fill color)
+z(..., fill: 0x00ff00)              use bright green for the fill color along (combine with &quot;frame&quot; for the frame color)
+z(..., like: &quot;7/0&quot;)                 borrow style from layout view's style for layer &quot;7/0&quot;
+z(..., name: &quot;M1&quot;)                  assigns a name to show for the material 
+</pre><a name="h3-146"></a><h3>&quot;zz&quot; Function (material groups)</h3><a name="k_6"></a><p>
+  The &quot;zz&quot; function forms a display group which clusters multiple &quot;z&quot; calls. The basic usage is with a block
+  containing the &quot;z&quot; calls. As DRC scripts are Ruby, the notation for the block is either &quot;do .. end&quot; or 
+  curly brackets immediately after the &quot;zz&quot; call:
+  </p><pre>
+zz( display options ... ) do
+  z(layer1, extrusion options ... )
+  z(layer2, extrusion options ... )
+  ...
+end
+</pre><p>
+  The &quot;z&quot; calls do not need to have colors or other display options as they are
+  taken from &quot;zz&quot;.
+  </p><p>
+  Material groups allow forming more complex, stacked geometries. Here is an example
+  forming a simple FinFET geometry using boolean and a sizing operation:
+  </p><pre>
+gate = input(1, 0)
+active = input(2, 0)
+
+z(active, zstart: 0, height: 20.nm, name: &quot;ACTIVE&quot;)
+
+zz(name: &quot;GATE&quot;, like: &quot;1/0&quot;) do
+  
+  active_sized = active.sized(10.nm)
+  gate_over_active_sized = active_sized &amp; gate
+  
+  z(gate - active, zstart: 0, height: 10.nm)
+  z(gate_over_active_sized - active, height: 10.nm)
+  z(gate_over_active_sized, height: 10.nm)
+
+end
+</pre><p>
+  Which renders this result:
+  </p><p><img src="25d_screenshot2.png"></p><a name="h2-199"></a><h2>Navigating the 2.5d View</h2><a name="k_7"></a><a name="k_8"></a><p>
+  The navigation is based on the movement of the camera while the scene is 
+  formed by the extruded layout. The scene can be scaled to provide zoom features.
+  Scaling and rotation is relative to the pivot point which is indicated by the 
+  compass icon on the ground plane.
+  </p><p>
+  This is a short list of the navigation controls which act on the camera:
+  </p><ul><li> Dragging with the right mouse button down: change azimuth and elevation angle </li><li> Dragging with the middle mouse button down: move the pivot up and down or left and right </li><li> Mouse wheel: moves the pivot forward and backward </li><li> Control key + mouse wheel: magnify or shrink the layout </li><li> Press and hold shift key: switch to top level view (see below) </li><li> Up/down keys: move the pivot forward or backward </li><li> Left/right keys: move the pivot to the left or the right </li><li> Control + up/down keys: change the elevation angle </li><li> Control + left/right keys: change the azimuth angle </li></ul><p>
+  In top level view, the navigation is slightly different:
+  </p><ul><li> Dragging with the right mouse button down: change azimuth angle </li><li> mouse wheel: magnify or shrink the layout </li><li> Up/down/left/right keys: move the pivot on the horizontal plane </li></ul><p>
+  Note: if the Shift key does not switch to top level view, click into the 
+  scene view once.
+  </p><a name="h2-241"></a><h2>Colors in the 2.5d View</h2><p>
+  While the 2.5d view window is open, the layout view is still active. Layer 
+  colors are applied also to the 2.5d view. Changing the fill color will change
+  the 2.5d view's face color. The frame color will be applied to the wire frame.
+  If a hollow stipple is selected, only the wire frame is shown. If a layer is
+  made invisible in the layout view, the corresponding blocks will also be
+  made invisible in the 2.5d view.
+  </p><a name="h2-252"></a><h2>Other Controls</h2><p>
+  The left zoom slider changes the overall scale factor. The right slider only changes the z (height) axis zoom factor.
+  This is useful as in many cases, the real height profile will result in a rather flat arrangement. Increasing the 
+  z zoom factor will exaggerate the vertical axis hence making height variations more pronounced.
+  </p><p>
+  The edit boxes next to the scale sliders allow entering the scale factors manually.
+  </p><p>
+  The button bar at the top right side holds the view presets. Use them to reset the window to 
+  front view, top view etc.
+  </p><a name="h2-269"></a><h2>Material Visibility</h2><p>
+  Using the check boxes from the material view right of the scene view you can disable
+  materials, so they are no longer rendered. From the material list's context menu, 
+  you can hide or show all materials or just the selected ones.
+  </p></body>

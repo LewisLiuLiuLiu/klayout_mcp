@@ -1,0 +1,362 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class EditorHooks</p><h1>API reference - Class EditorHooks</h1><property value="lay" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_lay.html">lay</a></p><p><b>Description</b>: An implementation base class for editor hooks</p><ul><li><a href="#h2-145">Public constructors</a></li><li><a href="#h2-150">Public methods</a></li><li><a href="#h2-221">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-232">Detailed description</a></li></ul><p></p><p>Editor hooks allow implementing technology-specific callbacks into the editor for example to implement visual feedback about DRC rules.</p><p>This class provides the basic interface. To implement callbacks, use the <a href="class_EditorHooks.html">EditorHooks</a> class. You should not need to instantiate this class.</p><p>The following is an excample for editor hooks that add DRC space indicators for polygon-alike shapes,
+It implements the shape creation protocol to capture new shapes and the modification protocol to capture shape manipulations. It displays a halo following hard-coded DRC rules to indicate the forbidden zones around the shapes:</p><p><pre>
+class MyEditorHooks &lt; RBA::EditorHooks
+
+  def initialize()
+  
+    register(&quot;editor_hooks_demo&quot;)
+
+    cleanup    
+
+    # some demo values    
+    @spaces = {
+      RBA::LayerInfo::new(1, 0) =&gt; [ 0.2, RBA::Region::Euclidian ],
+      RBA::LayerInfo::new(2, 0) =&gt; [ 0.5, RBA::Region::Projection ]
+    }
+    
+  end
+
+  # Utilities
+  
+  # pick the space value from layer or set to nil
+  def set_space_from_layer(layer_index)
+    lp = @layout.get_info(layer_index)
+    if @spaces[lp]
+      (s, m) = @spaces[lp]
+      @space = s / @layout.dbu
+      @metrics = m
+    else
+      @space = nil
+    end
+  end
+      
+  def add_marker_from_shape(shape, trans)
+  
+    if !@space
+      return   # no space value set
+    end
+    
+    p = shape.polygon
+    if !p
+      return   # not a polygon-like object
+    end
+    
+    r = RBA::Region::new
+    # maintain 2-point polygons for the first edge drawn
+    r.merged_semantics = (p.num_points != 2)
+    r.insert(p)
+    
+    # compute DRC hull and prepare markers
+    r.drc_hull(@metrics, @space).each do |pp|
+      m = RBA::Marker::new(@view)
+      m.line_style = 2
+      m.vertex_size = 0
+      m.set_polygon(trans * pp)
+      @markers.append(m)
+    end
+    
+  end
+  
+  # setup session
+  def start(cv)
+    cleanup
+    @view = cv.view
+    @layout = cv.layout
+  end
+  
+  # end session
+  def cleanup
+    @space = nil
+    @view = nil
+    @layout = nil
+    clear_markers
+  end
+  
+  def clear_markers
+    @markers &amp;&amp; @markers.each do |m|
+      # this is how a marker gets removed in Ruby:
+      m._destroy
+    end
+    @markers = []
+  end
+        
+  # Shape creation protocol
+  
+  def begin_create_shapes(cv, layer)
+    start(cv)
+    set_space_from_layer(layer.layer_index)
+  end
+
+  def begin_new_shapes
+    clear_markers
+  end
+
+  def create_shape(shape, trans)
+    add_marker_from_shape(shape, trans)
+  end
+      
+  def end_create_shapes
+    cleanup
+  end
+    
+  # Modification protocol
+  
+  def begin_edit(cv)
+    start(cv)
+  end
+
+  def begin_edits
+    # create new markers
+    clear_markers
+  end
+
+  # transformation of a shape or instance
+  def transformed(path, applied, trans)
+    if path.shape
+      set_space_from_layer(path.layer)
+      add_marker_from_shape(path.shape, trans * applied)
+    end
+  end
+
+  # modification of a shape
+  def modified(path, shape, trans)
+    set_space_from_layer(path.layer)
+    add_marker_from_shape(shape, trans)
+  end
+
+  def end_edit
+    cleanup
+  end
+  
+end
+
+# instantiation of the hooks object
+MyEditorHooks::new
+</pre></p><p>The EditorHooks class has been introduced in version 0.29.1.</p><a name="h2-145"></a><h2>Public constructors</h2><table><tr class="row0"><td>new EditorHooks ptr</td><td><b><a href="#method34">new</a></b></td><td></td><td>Creates a new object of this class</td></tr></table><a name="h2-150"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>EditorHooks ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">add_technology</a></b></td><td>(string tech)</td><td>Additionally associates the hooks with the given technology.</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method8">begin_create_instances</a></b></td><td>(CellView cellview)</td><td>Instance creation protocol - begin session</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method9">begin_create_shapes</a></b></td><td>(CellView cellview,<br>const LayerProperties layer)</td><td>Shape creation protocol - begin session</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method10">begin_edit</a></b></td><td>(CellView cellview)</td><td>Editing protocol - begin session</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method11">begin_edits</a></b></td><td></td><td>Editing protocol - begin edits</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method12">begin_new_instances</a></b></td><td></td><td>Instance creation protocol - begin new instances</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method13">begin_new_shapes</a></b></td><td></td><td>Shape creation protocol - begin new shapes</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method14">clear_technologies</a></b></td><td></td><td>Clears the list of technologies the hooks are associated with.</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method15">commit_edit</a></b></td><td></td><td>Editing protocol - commit new objects</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method16">commit_instances</a></b></td><td></td><td>Instance creation protocol - commit new objects</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method17">commit_shapes</a></b></td><td></td><td>Shape creation protocol - commit new objects</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method19">create_instance</a></b></td><td>(const Instance instance,<br>const CplxTrans view_trans)</td><td>Instance creation protocol - indicate a new object</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method20">create_shape</a></b></td><td>(const Shape shape,<br>const CplxTrans view_trans)</td><td>Shape creation protocol - indicate a new object</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method23">end_create_instances</a></b></td><td></td><td>Instance creation protocol - finish session</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method24">end_create_shapes</a></b></td><td></td><td>Shape creation protocol - finish session</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method25">end_edit</a></b></td><td></td><td>Editing protocol - finish session</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method26">end_edits</a></b></td><td></td><td>Editing protocol - finish list of edits</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method27">end_new_instances</a></b></td><td></td><td>Instance creation protocol - finish list of new instances</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method28">end_new_shapes</a></b></td><td></td><td>Shape creation protocol - finish list of new shapes</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method29">for_technologies</a></b></td><td></td><td>Returns a value indicating whether the hooks are associated with any technology.</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method31">is_for_technology</a></b></td><td>(string tech)</td><td>Returns a value indicating whether the hooks are associated with the given technology.</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method32">modified</a></b></td><td>(const ObjectInstPath object,<br>const Shape shape,<br>const CplxTrans view_trans)</td><td>Modification protocol - indicate a modified object</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method33">name</a></b></td><td></td><td>Gets the name of the hooks object.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method35">register</a></b></td><td>(string name)</td><td>Registers the hooks in the system.</td></tr><tr class="row1"><td><i>[const]</i></td><td>string[]</td><td><b><a href="#method36">technologies</a></b></td><td></td><td>Gets the list of technologies these hooks are associated with.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method37">technology=</a></b></td><td>(string technology)</td><td>sets the name of the technology the hooks are associated with</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method38">transformed</a></b></td><td>(const ObjectInstPath object,<br>const ICplxTrans applied_trans,<br>const CplxTrans view_trans)</td><td>Editing protocol - indicate an object transformation</td></tr></table><a name="h2-221"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method18">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method21">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method22">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method30">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-232"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-233"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_EditorHooks.html">EditorHooks</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-239"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-245"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroy"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-252"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroyed?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-259"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__is_const_object?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-266"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__manage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-272"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__unmanage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-278"></a><h3>add_technology</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_add_technology"></a><a name="k_9"></a><p><b>Signature</b>: void <b> add_technology </b> (string tech)</p><p><b>Description</b>: Additionally associates the hooks with the given technology.</p><p><p>
+See also <a href="#m_clear_technologies">clear_technologies</a>.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-285"></a><h3>begin_create_instances</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_begin_create_instances"></a><a name="k_10"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> begin_create_instances </b> (<a href="class_CellView.html">CellView</a> cellview)</p><p><b>Description</b>: Instance creation protocol - begin session</p><p><p>
+This method is called to initiate an instance creation session. The session is ended with <a href="#m_end_create_instances">end_create_instances</a>. Between these calls, new objects are announced with <a href="#m_begin_new_instances">begin_new_instances</a>, <a href="#m_create_instance">create_instance</a> and <a href="#m_end_new_instances">end_new_instances</a> calls. These calls are repeated to indicate changes in the objects created.</p><p><a href="#m_commit_instances">commit_instances</a> is called once before <a href="#m_end_create_instances">end_create_instances</a> to indicate that the last set of objects is committed to the database.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-291"></a><h3>begin_create_shapes</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_begin_create_shapes"></a><a name="k_11"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> begin_create_shapes </b> (<a href="class_CellView.html">CellView</a> cellview, const <a href="class_LayerProperties.html">LayerProperties</a> layer)</p><p><b>Description</b>: Shape creation protocol - begin session</p><p><p>
+This method is called to initiate a shape creation session. The session is ended with <a href="#m_end_create_shapes">end_create_shapes</a>. Between these calls, new objects are announced with <a href="#m_begin_new_shapes">begin_new_shapes</a>, <a href="#m_create_shape">create_shape</a> and <a href="#m_end_new_shapes">end_new_shapes</a> calls. These calls are repeated to indicate changes in the objects created.</p><p><a href="#m_commit_shapes">commit_shapes</a> is called once before <a href="#m_end_create_shapes">end_create_shapes</a> to indicate that the last set of objects is committed to the database.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-297"></a><h3>begin_edit</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_begin_edit"></a><a name="k_12"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> begin_edit </b> (<a href="class_CellView.html">CellView</a> cellview)</p><p><b>Description</b>: Editing protocol - begin session</p><p><p>
+This method is called to initiate an object editing session. The session is ended with <a href="#m_end_edit">end_edit</a>. Between these calls, edits are announced with <a href="#m_begin_edits">begin_edits</a>, <a href="#m_transformed">transformed</a> or <a href="#m_modified">modified</a> and <a href="#m_end_edits">end_edits</a> calls. These calls are repeated to indicate changes in the objects modified while moving the mouse for example.</p><p><a href="#m_commit_edit">commit_edit</a> is called once before <a href="#m_end_edit">end_edit</a> to indicate that the last set of objects are committed to the database.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-303"></a><h3>begin_edits</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_begin_edits"></a><a name="k_13"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> begin_edits </b></p><p><b>Description</b>: Editing protocol - begin edits</p><p><p>
+See <a href="#m_begin_edit">begin_edit</a> for a description of the protocol.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-309"></a><h3>begin_new_instances</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_begin_new_instances"></a><a name="k_14"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> begin_new_instances </b></p><p><b>Description</b>: Instance creation protocol - begin new instances</p><p><p>
+See <a href="#m_begin_create_instances">begin_create_instances</a> for a description of the protocol.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-315"></a><h3>begin_new_shapes</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_begin_new_shapes"></a><a name="k_15"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> begin_new_shapes </b></p><p><b>Description</b>: Shape creation protocol - begin new shapes</p><p><p>
+See <a href="#m_begin_create_shapes">begin_create_shapes</a> for a description of the protocol.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-321"></a><h3>clear_technologies</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_clear_technologies"></a><a name="k_16"></a><p><b>Signature</b>: void <b> clear_technologies </b></p><p><b>Description</b>: Clears the list of technologies the hooks are associated with.</p><p><p>
+See also <a href="#m_add_technology">add_technology</a>.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-328"></a><h3>commit_edit</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_commit_edit"></a><a name="k_17"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> commit_edit </b></p><p><b>Description</b>: Editing protocol - commit new objects</p><p><p>
+See <a href="#m_begin_edit">begin_edit</a> for a description of the protocol.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-334"></a><h3>commit_instances</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_commit_instances"></a><a name="k_18"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> commit_instances </b></p><p><b>Description</b>: Instance creation protocol - commit new objects</p><p><p>
+See <a href="#m_begin_create_instances">begin_create_instances</a> for a description of the protocol.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-340"></a><h3>commit_shapes</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_commit_shapes"></a><a name="k_19"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> commit_shapes </b></p><p><b>Description</b>: Shape creation protocol - commit new objects</p><p><p>
+See <a href="#m_begin_create_shapes">begin_create_shapes</a> for a description of the protocol.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-346"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_create"></a><a name="k_20"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-353"></a><h3>create_instance</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_create_instance"></a><a name="k_21"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> create_instance </b> (const <a href="class_Instance.html">Instance</a> instance, const <a href="class_CplxTrans.html">CplxTrans</a> view_trans)</p><p><b>Description</b>: Instance creation protocol - indicate a new object</p><p><p>
+See <a href="#m_begin_create_instances">begin_create_instances</a> for a description of the protocol.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-359"></a><h3>create_shape</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_create_shape"></a><a name="k_22"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> create_shape </b> (const <a href="class_Shape.html">Shape</a> shape, const <a href="class_CplxTrans.html">CplxTrans</a> view_trans)</p><p><b>Description</b>: Shape creation protocol - indicate a new object</p><p><p>
+See <a href="#m_begin_create_shapes">begin_create_shapes</a> for a description of the protocol.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-365"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_destroy"></a><a name="k_23"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-373"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_destroyed?"></a><a name="k_24"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-381"></a><h3>end_create_instances</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_end_create_instances"></a><a name="k_25"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> end_create_instances </b></p><p><b>Description</b>: Instance creation protocol - finish session</p><p><p>
+See begin_create for a description of the protocol.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-387"></a><h3>end_create_shapes</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_end_create_shapes"></a><a name="k_26"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> end_create_shapes </b></p><p><b>Description</b>: Shape creation protocol - finish session</p><p><p>
+See begin_create for a description of the protocol.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-393"></a><h3>end_edit</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_end_edit"></a><a name="k_27"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> end_edit </b></p><p><b>Description</b>: Editing protocol - finish session</p><p><p>
+See <a href="#m_begin_edit">begin_edit</a> for a description of the protocol.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-399"></a><h3>end_edits</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_end_edits"></a><a name="k_28"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> end_edits </b></p><p><b>Description</b>: Editing protocol - finish list of edits</p><p><p>
+See <a href="#m_begin_edit">begin_edit</a> for a description of the protocol.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-405"></a><h3>end_new_instances</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_end_new_instances"></a><a name="k_29"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> end_new_instances </b></p><p><b>Description</b>: Instance creation protocol - finish list of new instances</p><p><p>
+See <a href="#m_begin_create_instances">begin_create_instances</a> for a description of the protocol.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-411"></a><h3>end_new_shapes</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_end_new_shapes"></a><a name="k_30"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> end_new_shapes </b></p><p><b>Description</b>: Shape creation protocol - finish list of new shapes</p><p><p>
+See <a href="#m_begin_create_shapes">begin_create_shapes</a> for a description of the protocol.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-417"></a><h3>for_technologies</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_for_technologies"></a><a name="k_31"></a><p><b>Signature</b>: <i>[const] </i>bool <b> for_technologies </b></p><p><b>Description</b>: Returns a value indicating whether the hooks are associated with any technology.</p></td></tr><tr class="bigrow0"><td><a name="h3-421"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_is_const_object?"></a><a name="k_32"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-429"></a><h3>is_for_technology</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_is_for_technology"></a><a name="k_33"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_for_technology </b> (string tech)</p><p><b>Description</b>: Returns a value indicating whether the hooks are associated with the given technology.</p><p><p>
+The method is equivalent to checking whether the <a href="#m_technologies">technologies</a> list is empty.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-436"></a><h3>modified</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_modified"></a><a name="k_34"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> modified </b> (const <a href="class_ObjectInstPath.html">ObjectInstPath</a> object, const <a href="class_Shape.html">Shape</a> shape, const <a href="class_CplxTrans.html">CplxTrans</a> view_trans)</p><p><b>Description</b>: Modification protocol - indicate a modified object</p><table class="layout-table"><tr><td><b>object</b>:</td><td>A path to the modified object</td></tr><tr><td><b>shape</b>:</td><td>The new, modified shape</td></tr><tr><td><b>view_trans</b>:</td><td>The combined transformation of DBU space to view space</td></tr></table><p><p>
+See <a href="#m_begin_edit">begin_edit</a> for a description of the protocol.</p><p>Note that 'object' is the original, unmodified objects while 'shape' is the modified shape. This shape object is a synthetic reference and does not exist in the database yet.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-448"></a><h3>name</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_name"></a><a name="k_35"></a><p><b>Signature</b>: <i>[const] </i>string <b> name </b></p><p><b>Description</b>: Gets the name of the hooks object.</p><p><p>
+This is the name, the object was registered under in the system.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-454"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_new"></a><a name="k_36"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_EditorHooks.html">EditorHooks</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new object of this class</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-459"></a><h3>register</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_register"></a><a name="k_37"></a><p><b>Signature</b>: void <b> register </b> (string name)</p><p><b>Description</b>: Registers the hooks in the system.</p><p><p>
+The hooks will not be active before they are registered in the system. Registration will also transfer object ownership to the system.</p><p>The name is arbitary, but should be unique. Upon registration, this hooks object will replace others with the same name already registered in the system. This will simplify debugging as you can re-run the same code, without accumulating hooks.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-466"></a><h3>technologies</h3></td><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_technologies"></a><a name="k_38"></a><p><b>Signature</b>: <i>[const] </i>string[] <b> technologies </b></p><p><b>Description</b>: Gets the list of technologies these hooks are associated with.</p></td></tr><tr class="bigrow1"><td><a name="h3-470"></a><h3>technology=</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_technology="></a><a name="k_39"></a><p><b>Signature</b>: void <b> technology= </b> (string technology)</p><p><b>Description</b>: sets the name of the technology the hooks are associated with</p><p><p>
+This will clear all technology associations and associate the hooks with that technology only.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'technology'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-478"></a><h3>transformed</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_transformed"></a><a name="k_40"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> transformed </b> (const <a href="class_ObjectInstPath.html">ObjectInstPath</a> object, const <a href="class_ICplxTrans.html">ICplxTrans</a> applied_trans, const <a href="class_CplxTrans.html">CplxTrans</a> view_trans)</p><p><b>Description</b>: Editing protocol - indicate an object transformation</p><table class="layout-table"><tr><td><b>object</b>:</td><td>A path to the modified object</td></tr><tr><td><b>applied_trans</b>:</td><td>The DBU-space of the transformation applied to the object</td></tr><tr><td><b>view_trans</b>:</td><td>The combined transformation of DBU space to view space</td></tr></table><p><p>
+See <a href="#m_begin_edit">begin_edit</a> for a description of the protocol.</p><p>Note that 'object' is the original, unmodified objects to which 'applied_trans' will be applied upon commit.</p></p></td></tr></table></body>

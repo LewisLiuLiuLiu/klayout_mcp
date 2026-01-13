@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class PixelBuffer</p><h1>API reference - Class PixelBuffer</h1><property value="lay" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_lay.html">lay</a></p><p><b>Description</b>: A simplistic pixel buffer representing an image of ARGB32 or RGB32 values</p><ul><li><a href="#h2-12">Public constructors</a></li><li><a href="#h2-17">Public methods</a></li><li><a href="#h2-70">Public static methods and constants</a></li><li><a href="#h2-79">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-90">Detailed description</a></li></ul><p></p><p>This object is mainly provided for offline rendering of layouts in Qt-less environments.
+It supports a rectangular pixel space with color values encoded in 32bit integers. It supports transparency through an optional alpha channel. The color format for a pixel is &quot;0xAARRGGBB&quot; where 'AA' is the alpha value which is ignored in non-transparent mode.</p><p>This class supports basic operations such as initialization, single-pixel access and I/O to PNG.</p><p>This class has been introduced in version 0.28.</p><a name="h2-12"></a><h2>Public constructors</h2><table><tr class="row0"><td>new PixelBuffer ptr</td><td><b><a href="#method21">new</a></b></td><td>(unsigned int width,<br>unsigned int height)</td><td>Creates a pixel buffer object</td></tr></table><a name="h2-17"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method0">!=</a></b></td><td>(const PixelBuffer other)</td><td>Returns a value indicating whether self is not identical to the other image</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method1">==</a></b></td><td>(const PixelBuffer other)</td><td>Returns a value indicating whether self is identical to the other image</td></tr><tr class="row0"><td><i>[const]</i></td><td>PixelBuffer ptr</td><td><b><a href="#method2">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method3">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method4">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method5">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method6">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method9">assign</a></b></td><td>(const PixelBuffer other)</td><td>Assigns another object to self</td></tr><tr class="row0"><td><i>[const]</i></td><td>PixelBuffer</td><td><b><a href="#method13">diff</a></b></td><td>(const PixelBuffer other)</td><td>Creates a difference image</td></tr><tr class="row1"><td><i>[const]</i></td><td>new PixelBuffer ptr</td><td><b><a href="#method14">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method15">fill</a></b></td><td>(unsigned int color)</td><td>Fills the pixel buffer with the given pixel value</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method16">fill</a></b></td><td>(QColor color)</td><td>Fills the pixel buffer with the given QColor</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned int</td><td><b><a href="#method19">height</a></b></td><td></td><td>Gets the height of the pixel buffer in pixels</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method22">patch</a></b></td><td>(const PixelBuffer other)</td><td>Patches another pixel buffer into this one</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned int</td><td><b><a href="#method23">pixel</a></b></td><td>(unsigned int x,<br>unsigned int y)</td><td>Gets the value of the pixel at position x, y</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method25">set_pixel</a></b></td><td>(unsigned int x,<br>unsigned int y,<br>unsigned int c)</td><td>Sets the value of the pixel at position x, y</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method26">swap</a></b></td><td>(PixelBuffer other)</td><td>Swaps data with another PixelBuffer object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bytes</td><td><b><a href="#method27">to_png_data</a></b></td><td></td><td>Converts the pixel buffer to a PNG byte stream</td></tr><tr class="row0"><td><i>[const]</i></td><td>QImage</td><td><b><a href="#method28">to_qimage</a></b></td><td></td><td>Converts the pixel buffer to a <a href="class_QImage.html">QImage</a> object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method29">transparent</a></b></td><td></td><td>Gets a flag indicating whether the pixel buffer supports an alpha channel</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method30">transparent=</a></b></td><td>(bool t)</td><td>Sets a flag indicating whether the pixel buffer supports an alpha channel</td></tr><tr class="row1"><td><i>[const]</i></td><td>unsigned int</td><td><b><a href="#method31">width</a></b></td><td></td><td>Gets the width of the pixel buffer in pixels</td></tr><tr class="row0"><td><i>[const]</i></td><td>void</td><td><b><a href="#method32">write_png</a></b></td><td>(string file)</td><td>Writes the pixel buffer to a PNG file</td></tr></table><a name="h2-70"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td></td><td>PixelBuffer</td><td><b><a href="#method17">from_png_data</a></b></td><td>(bytes data)</td><td>Reads the pixel buffer from a PNG byte stream</td></tr><tr class="row1"><td></td><td>PixelBuffer</td><td><b><a href="#method18">from_qimage</a></b></td><td>(const QImage qimage)</td><td>Creates a pixel buffer object from a QImage object</td></tr><tr class="row0"><td></td><td>PixelBuffer</td><td><b><a href="#method24">read_png</a></b></td><td>(string file)</td><td>Reads the pixel buffer from a PNG file</td></tr></table><a name="h2-79"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method11">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method12">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method20">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-90"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-91"></a><h3>!=</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_!="></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i>bool <b> != </b> (const <a href="class_PixelBuffer.html">PixelBuffer</a> other)</p><p><b>Description</b>: Returns a value indicating whether self is not identical to the other image</p></td></tr><tr class="bigrow1"><td><a name="h3-95"></a><h3>==</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_=="></a><a name="k_3"></a><p><b>Signature</b>: <i>[const] </i>bool <b> == </b> (const <a href="class_PixelBuffer.html">PixelBuffer</a> other)</p><p><b>Description</b>: Returns a value indicating whether self is identical to the other image</p></td></tr><tr class="bigrow0"><td><a name="h3-99"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__const_cast"></a><a name="k_4"></a><p><b>Signature</b>: <i>[const] </i><a href="class_PixelBuffer.html">PixelBuffer</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-105"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__create"></a><a name="k_5"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-111"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__destroy"></a><a name="k_6"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-118"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__destroyed?"></a><a name="k_7"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-125"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__is_const_object?"></a><a name="k_8"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-132"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__manage"></a><a name="k_9"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-138"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__unmanage"></a><a name="k_10"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-144"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_assign"></a><a name="k_11"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_PixelBuffer.html">PixelBuffer</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow0"><td><a name="h3-148"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_create"></a><a name="k_12"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-155"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_destroy"></a><a name="k_13"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-163"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_destroyed?"></a><a name="k_14"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-171"></a><h3>diff</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_diff"></a><a name="k_15"></a><p><b>Signature</b>: <i>[const] </i><a href="class_PixelBuffer.html">PixelBuffer</a><b> diff </b> (const <a href="class_PixelBuffer.html">PixelBuffer</a> other)</p><p><b>Description</b>: Creates a difference image</p><p><p></p><p>This method is provided to support transfer of image differences - i.e. small updates instead of full images. It works for non-transparent images only and generates an image with transpareny enabled and with the new pixel values for pixels that have changed. The alpha value will be 0 for identical images and 255 for pixels with different values. This way, the difference image can be painted over the original image to generate the new image.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-176"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_dup"></a><a name="k_16"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_PixelBuffer.html">PixelBuffer</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-181"></a><h3>fill</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_fill"></a><a name="k_17"></a><p><b>(1) Signature</b>: void <b> fill </b> (unsigned int color)</p><p><b>Description</b>: Fills the pixel buffer with the given pixel value</p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_fill"></a><a name="k_18"></a><p><b>(2) Signature</b>: void <b> fill </b> (<a href="class_QColor.html">QColor</a> color)</p><p><b>Description</b>: Fills the pixel buffer with the given QColor</p></td></tr><tr class="bigrow0"><td><a name="h3-188"></a><h3>from_png_data</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_from_png_data"></a><a name="k_19"></a><p><b>Signature</b>: <i>[static] </i><a href="class_PixelBuffer.html">PixelBuffer</a><b> from_png_data </b> (bytes data)</p><p><b>Description</b>: Reads the pixel buffer from a PNG byte stream</p><p><p>
+This method may not be available if PNG support is not compiled into KLayout.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-194"></a><h3>from_qimage</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_from_qimage"></a><a name="k_20"></a><p><b>Signature</b>: <i>[static] </i><a href="class_PixelBuffer.html">PixelBuffer</a><b> from_qimage </b> (const <a href="class_QImage.html">QImage</a> qimage)</p><p><b>Description</b>: Creates a pixel buffer object from a QImage object</p></td></tr><tr class="bigrow0"><td><a name="h3-198"></a><h3>height</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_height"></a><a name="k_21"></a><p><b>Signature</b>: <i>[const] </i>unsigned int <b> height </b></p><p><b>Description</b>: Gets the height of the pixel buffer in pixels</p></td></tr><tr class="bigrow1"><td><a name="h3-202"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_is_const_object?"></a><a name="k_22"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-210"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_new"></a><a name="k_23"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_PixelBuffer.html">PixelBuffer</a> ptr <b> new </b> (unsigned int width, unsigned int height)</p><p><b>Description</b>: Creates a pixel buffer object</p><table class="layout-table"><tr><td><b>width</b>:</td><td>The width in pixels</td></tr><tr><td><b>height</b>:</td><td>The height in pixels</td></tr></table><p><p></p><p>The pixels are basically uninitialized. You will need to use <a href="#m_fill">fill</a> to initialize them to a certain value.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-220"></a><h3>patch</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_patch"></a><a name="k_24"></a><p><b>Signature</b>: void <b> patch </b> (const <a href="class_PixelBuffer.html">PixelBuffer</a> other)</p><p><b>Description</b>: Patches another pixel buffer into this one</p><p><p></p><p>This method is the inverse of <a href="#m_diff">diff</a> - it will patch the difference image created by diff into this pixel buffer. Note that this method will not do true alpha blending and requires the other pixel buffer to have the same format than self. Self will be modified by this operation.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-225"></a><h3>pixel</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_pixel"></a><a name="k_25"></a><p><b>Signature</b>: <i>[const] </i>unsigned int <b> pixel </b> (unsigned int x, unsigned int y)</p><p><b>Description</b>: Gets the value of the pixel at position x, y</p></td></tr><tr class="bigrow1"><td><a name="h3-229"></a><h3>read_png</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_read_png"></a><a name="k_26"></a><p><b>Signature</b>: <i>[static] </i><a href="class_PixelBuffer.html">PixelBuffer</a><b> read_png </b> (string file)</p><p><b>Description</b>: Reads the pixel buffer from a PNG file</p><p><p>
+This method may not be available if PNG support is not compiled into KLayout.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-235"></a><h3>set_pixel</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_set_pixel"></a><a name="k_27"></a><p><b>Signature</b>: void <b> set_pixel </b> (unsigned int x, unsigned int y, unsigned int c)</p><p><b>Description</b>: Sets the value of the pixel at position x, y</p></td></tr><tr class="bigrow1"><td><a name="h3-239"></a><h3>swap</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_swap"></a><a name="k_28"></a><p><b>Signature</b>: void <b> swap </b> (<a href="class_PixelBuffer.html">PixelBuffer</a> other)</p><p><b>Description</b>: Swaps data with another PixelBuffer object</p></td></tr><tr class="bigrow0"><td><a name="h3-243"></a><h3>to_png_data</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_to_png_data"></a><a name="k_29"></a><p><b>Signature</b>: <i>[const] </i>bytes <b> to_png_data </b></p><p><b>Description</b>: Converts the pixel buffer to a PNG byte stream</p><p><p>
+This method may not be available if PNG support is not compiled into KLayout.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-249"></a><h3>to_qimage</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_to_qimage"></a><a name="k_30"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QImage.html">QImage</a><b> to_qimage </b></p><p><b>Description</b>: Converts the pixel buffer to a <a href="class_QImage.html">QImage</a> object</p></td></tr><tr class="bigrow0"><td><a name="h3-253"></a><h3>transparent</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_transparent"></a><a name="k_31"></a><p><b>Signature</b>: <i>[const] </i>bool <b> transparent </b></p><p><b>Description</b>: Gets a flag indicating whether the pixel buffer supports an alpha channel</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'transparent'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-258"></a><h3>transparent=</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_transparent="></a><a name="k_32"></a><p><b>Signature</b>: void <b> transparent= </b> (bool t)</p><p><b>Description</b>: Sets a flag indicating whether the pixel buffer supports an alpha channel</p><p><p></p><p>By default, the pixel buffer does not support an alpha channel.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'transparent'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-265"></a><h3>width</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_width"></a><a name="k_33"></a><p><b>Signature</b>: <i>[const] </i>unsigned int <b> width </b></p><p><b>Description</b>: Gets the width of the pixel buffer in pixels</p></td></tr><tr class="bigrow1"><td><a name="h3-269"></a><h3>write_png</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_write_png"></a><a name="k_34"></a><p><b>Signature</b>: <i>[const] </i>void <b> write_png </b> (string file)</p><p><b>Description</b>: Writes the pixel buffer to a PNG file</p><p><p>
+This method may not be available if PNG support is not compiled into KLayout.</p></p></td></tr></table></body>

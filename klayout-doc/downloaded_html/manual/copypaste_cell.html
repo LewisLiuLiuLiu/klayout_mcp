@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="editor.html">Editing Functions</a> » <a href="editor_operations.html">Basic Editing Operations</a> » Copy And Paste Of Cells</p><h1>Copy And Paste Of Cells</h1><a name="k_1"></a><a name="k_2"></a><p>
+  Whole cells can be copied to the clipboard as well. To copy a whole cell, 
+  select the cell in the hierarchy browser (make sure the focus is in that window)
+  and choose &quot;Copy&quot; or &quot;Cut&quot; from the &quot;Edit&quot; menu.
+  To paste such a cell into a target layout, choose &quot;Paste&quot; from the &quot;Edit&quot; menu.
+  </p><p>
+  Two copy modes are provided: deep and shallow copy. When &quot;copy&quot; or &quot;cut&quot; is chosen and 
+  the cell instantiates other cells, a dialog will been shown in which the mode can be selected:
+  </p><ul><li><b>Shallow copy</b>: In shallow mode, only the cell itself will be copied. No copies of the child cells
+      will be created. If a cell copy is created, the cell will call the same cells than
+      the original cell. If a cell is copied to another layout (in a different tab), the 
+      child cells will not be carried along and &quot;ghost&quot; cells will be created or existing
+      cells with the same name will be used as child cells.
+    </li><li><b>Deep copy</b>: In deep copy mode, the cell plus its child cells are copied. All cells will be carried
+      along and when pasting the cell, copies of all children will be created as well.
+    </li></ul><p>
+  When a cell is pasted into another layout and there is a &quot;ghost cell&quot; with that name, the
+  pasted cell will replace the ghost cell. If there is a normal cell with that name, 
+  a new cell variant will be created and the name of the pasted cell will be changed by adding
+  a suffix to create a unique name.
+  </p><p>
+  Copying a cell in deep copy mode from one layout to another provides a way to merge two layouts
+  into one: simply copy the top cell of the first layout into the second one and instantiate
+  both in a new top cell for example. 
+  </p></body>

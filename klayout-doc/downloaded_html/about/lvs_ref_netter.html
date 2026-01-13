@@ -1,0 +1,509 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Various Topics</a> » <a href="lvs_ref.html">LVS Reference</a> » LVS Reference: Netter object</p><h1>LVS Reference: Netter object</h1><a name="k_1"></a><p>
+The Netter object provides services related to network extraction
+from a layout plus comparison against a reference netlist.
+Similar to the DRC <a href="drc_ref_netter.html">DRC::Netter</a> (which lacks the compare ability), the
+relevant method of this object are available as global functions too
+where they act on a default incarnation. Usually it's not required
+to instantiate a Netter object explicitly. 
+</p><p>
+The LVS Netter object inherits all methods of the <a href="drc_ref_netter.html">DRC::Netter</a>.
+</p><p>
+An individual netter object can be created, if the netter results
+need to be kept for multiple extractions. If you really need
+a Netter object, use the global <a href="lvs_ref_global.html#netter">netter</a> function:
+</p><p><pre>
+# create a new Netter object:
+nx = netter
+
+# build connectivity
+nx.connect(poly, contact)
+...
+
+# read the reference netlist
+nx.schematic(&quot;reference.cir&quot;)
+
+# configure the netlist compare
+nx.same_circuits(&quot;A&quot;, &quot;B&quot;)
+...
+
+# runs the compare
+if ! nx.compare
+puts(&quot;no equivalence!&quot;)
+end
+</pre></p><ul><li><a href="#h2-46">&quot;align&quot; - Aligns the extracted netlist vs. the schematic</a></li><li><a href="#h2-71">&quot;blank_circuit&quot; - Removes the content from the given circuits (blackboxing)</a></li><li><a href="#h2-101">&quot;compare&quot; - Compares the extracted netlist vs. the schematic</a></li><li><a href="#h2-118">&quot;consider_net_names&quot; - Indicates whether the netlist comparer shall use net names</a></li><li><a href="#h2-130">&quot;disable_parameter&quot; - Indicates whether to disable a specific parameter for a given device</a></li><li><a href="#h2-146">&quot;enable_parameter&quot; - Indicates whether to enable a specific parameter for a given device</a></li><li><a href="#h2-162">&quot;equivalent_pins&quot; - Marks pins as equivalent</a></li><li><a href="#h2-189">&quot;flag_missing_ports&quot; - Flags inconsistently labelled or missing ports in the current top circuit</a></li><li><a href="#h2-210">&quot;ignore_parameter&quot; - Skip a specific parameter for a given device class name during device compare</a></li><li><a href="#h2-224">&quot;join_symmetric_nets&quot; - Joins symmetric nets of selected circuits on the extracted netlist</a></li><li><a href="#h2-247">&quot;lvs_data&quot; - Gets the internal LayoutVsSchematic object</a></li><li><a href="#h2-257">&quot;max_branch_complexity&quot; - Configures the maximum branch complexity for ambiguous net matching</a></li><li><a href="#h2-283">&quot;max_depth&quot; - Configures the maximum search depth for net match deduction</a></li><li><a href="#h2-306">&quot;max_res&quot; - Ignores resistors with a resistance above a certain value</a></li><li><a href="#h2-316">&quot;min_caps&quot; - Ignores capacitors with a capacitance below a certain value</a></li><li><a href="#h2-326">&quot;no_lvs_hints&quot; - Disables LVS hints</a></li><li><a href="#h2-336">&quot;same_circuits&quot; - Establishes an equivalence between the circuits</a></li><li><a href="#h2-355">&quot;same_device_classes&quot; - Establishes an equivalence between the device classes</a></li><li><a href="#h2-395">&quot;same_nets&quot; - Establishes an equivalence between the nets</a></li><li><a href="#h2-442">&quot;same_nets!&quot; - Establishes an equivalence between the nets with matching requirement</a></li><li><a href="#h2-470">&quot;schematic&quot; - Gets, sets or reads the reference netlist</a></li><li><a href="#h2-490">&quot;split_gates&quot; - Implements the &quot;split gates&quot; feature</a></li><li><a href="#h2-512">&quot;tolerance&quot; - Specifies compare tolerances for certain device parameters</a></li></ul><a name="align"></a><a name="h2-46"></a><h2>&quot;align&quot; - Aligns the extracted netlist vs. the schematic</h2><a name="k_2"></a><p>Usage:</p><ul><li><tt>align</tt></li></ul><p>
+The align method will modify the netlists in case of missing 
+corresponding circuits. It will flatten these circuits, thus 
+improving the equivalence between the netlists. Top level circuits
+are not flattened.
+</p><p>
+This feature is in particular useful to remove structural cells
+like device PCells, reuse blocks etc.
+</p><p>
+This method will also remove schematic circuits for which there is
+no corresponding layout cell. In the extreme case of flat layout this
+will result in a flat vs. flat compare.
+</p><p>
+&quot;netlist.flatten_circuit(...)&quot; or &quot;schematic.flatten_circuit(...)&quot;
+are other (explicit) ways to flatten circuits.
+</p><p>
+Please note that flattening circuits has some side effects such 
+as loss of details in the cross reference and net layout.
+</p><a name="blank_circuit"></a><a name="h2-71"></a><h2>&quot;blank_circuit&quot; - Removes the content from the given circuits (blackboxing)</h2><a name="k_3"></a><p>Usage:</p><ul><li><tt>blank_circuit(circuit_filter)</tt></li></ul><p>
+This method will erase all content from the circuits matching the filter.
+The filter is a glob expression.
+</p><p>
+This has the following effects:
+</p><p><ul><li>The circuits are no longer compared (netlist vs. schematic) </li><li>Named pins are required to match (use labels on the nets to name pins in the layout) </li><li>Unnamed pins are treated as equivalent and can be swapped </li><li>The selected circuits will not be purged on netlist simplification </li></ul></p><p>
+Using this method can be useful to reduce the verification overhead for 
+blocks which are already verifified by other ways or for which no schematic
+is available - e.g. hard macros.
+</p><p>
+Example:
+</p><p><pre>
+# skips all MEMORY* circuits from compare
+blank_circuit(&quot;MEMORY*&quot;)
+</pre></p><a name="compare"></a><a name="h2-101"></a><h2>&quot;compare&quot; - Compares the extracted netlist vs. the schematic</h2><a name="k_4"></a><p>Usage:</p><ul><li><tt>compare</tt></li></ul><p>
+Before using this method, a schematic netlist has to be loaded with <a href="#schematic">schematic</a>.
+The compare can be configured in more details using <a href="#same_nets">same_nets</a>, <a href="#same_circuits">same_circuits</a>,
+<a href="#same_device_classes">same_device_classes</a> and <a href="#equivalent_pins">equivalent_pins</a>.
+</p><p>
+The compare method will also modify the netlists in case of missing 
+corresponding circuits: the unpaired circuit will be flattened then.
+</p><p>
+This method will return true, if the netlists are equivalent and false
+otherwise.
+</p><a name="consider_net_names"></a><a name="h2-118"></a><h2>&quot;consider_net_names&quot; - Indicates whether the netlist comparer shall use net names</h2><a name="k_5"></a><p>Usage:</p><ul><li><tt>consider_net_names(f)</tt></li></ul><p>
+If this value is set to true (the default), the netlist comparer
+will employ net names to resolve ambiguities. If set to false,
+ambiguities will be resolved based on the topology alone. Topology
+resolution is more expensive.
+</p><a name="disable_parameter"></a><a name="h2-130"></a><h2>&quot;disable_parameter&quot; - Indicates whether to disable a specific parameter for a given device</h2><a name="k_6"></a><p>Usage:</p><ul><li><tt>disable_parameter(device_class_name, parameter_name)</tt></li></ul><p>
+Disabling a parameter is the inverse of <a href="#enable_parameter">enable_parameter</a>. Disabling a parameter will
+reset the &quot;primary&quot; flag of the parameter. This has several effects - e.g. the parameter will not be 
+used in device compare during netlist matching by default. 
+</p><p>
+This is not a strong concept but rather
+a hint for the system. Disabling a parameter for netlist compare without side effects
+is possible with the <a href="#ignore_parameter">ignore_parameter</a> function. In the same way, <a href="#tolerance">tolerance</a> will enable a parameter for
+netlist compare regardless of the &quot;primary&quot; status of the parameter.
+</p><a name="enable_parameter"></a><a name="h2-146"></a><h2>&quot;enable_parameter&quot; - Indicates whether to enable a specific parameter for a given device</h2><a name="k_7"></a><p>Usage:</p><ul><li><tt>enable_parameter(device_class_name, parameter_name)</tt></li></ul><p>
+The parameter is made &quot;primary&quot; which enables further applications - e.g. it is netlisted
+for some elements which normally would not print that parameter, and the parameter
+is compared in the default device compare scheme during netlist matching.
+</p><p>
+Enabling a parameter is rather a hint for the system and the effects can be controlled
+by other means, so this is not a strong concept. For example, once a <a href="#tolerance">tolerance</a> is 
+specified for a parameter, the &quot;primary&quot; flag of the parameter is not considered anymore.
+The inverse the this function is <a href="#disable_parameter">disable_parameter</a>.
+</p><a name="equivalent_pins"></a><a name="h2-162"></a><h2>&quot;equivalent_pins&quot; - Marks pins as equivalent</h2><a name="k_8"></a><p>Usage:</p><ul><li><tt>equivalent_pins(circuit, pin ...)</tt></li></ul><p>
+This method will mark the given pins as equivalent. This gives the compare algorithm
+more degrees of freedom when establishing net correspondence. Typically this method
+is used to declare inputs from gates are equivalent where are are logically, but not
+physically (e.g. in a CMOS NAND gate):
+</p><p><pre>
+netter.equivalent_pins(&quot;NAND2&quot;, 0, 1)
+</pre></p><p>
+The circuit argument is either a circuit name (a string) or a Circuit object
+from the schematic netlist. 
+</p><p>
+Names are case sensitive for layout-derived netlists and case-insensitive for SPICE schematic netlists.
+</p><p>
+The pin arguments are zero-based pin numbers, where 0 is the first number, 1 the second etc.
+If the netlist provides named pins, names can be used instead of numbers. Again, use upper
+case pin names for SPICE netlists.
+</p><p>
+Use this method andwhere in the script before the <a href="#compare">compare</a> call.
+</p><a name="flag_missing_ports"></a><a name="h2-189"></a><h2>&quot;flag_missing_ports&quot; - Flags inconsistently labelled or missing ports in the current top circuit</h2><a name="k_9"></a><p>Usage:</p><ul><li><tt>flag_missing_ports</tt></li></ul><p>
+This method must be called after &quot;compare&quot; was executed successfully and will 
+report errors if pins in the current top circuit's schematic are not labelled 
+correspondingly in the layout. This prevents swapping of port labels or 
+pads.
+</p><p><pre>
+success = compare
+success &amp;&amp; flag_missing_ports
+</pre></p><p>
+Note that in order to use this method, the top circuit from the schematic netlist
+needs to have pins. This may not be always the case - for example, if the top 
+level circuit is not a subcircuit in a Spice netlist.
+</p><a name="ignore_parameter"></a><a name="h2-210"></a><h2>&quot;ignore_parameter&quot; - Skip a specific parameter for a given device class name during device compare</h2><a name="k_10"></a><p>Usage:</p><ul><li><tt>ignore_parameter(device_class_name, parameter_name)</tt></li></ul><p>
+Use this function is ignore a parameter for a particular device class during the netlist compare.
+Some parameters - for example &quot;L&quot; and &quot;W&quot; parameters of the resistor device - are &quot;secondary&quot; parameters
+which are not ignored by default. Using &quot;ignore_parameter&quot; on such devices does not have an effect.
+</p><p>
+&quot;ignore_parameter&quot; and &quot;tolerance&quot; only have an effect with the default device comparer. Using a custom device comparer
+will override the definitions by &quot;ignore_parameter&quot; or &quot;tolerance&quot;.
+</p><a name="join_symmetric_nets"></a><a name="h2-224"></a><h2>&quot;join_symmetric_nets&quot; - Joins symmetric nets of selected circuits on the extracted netlist</h2><a name="k_11"></a><p>Usage:</p><ul><li><tt>join_symmetric_nets(circuit_filter)</tt></li></ul><p>
+Nets are symmetrical if swapping them would not modify the circuit.
+Hence they will carry the same potential and can be connected (joined).
+This will simplify the circuit and can be applied before device combination
+(e.g. through &quot;netlist.simplify&quot;) to render a schematic-equivalent netlist in some 
+cases where symmetric nodes are split (i.e. &quot;split gate&quot; configuration).
+</p><p>
+This method operates on the extracted netlist (layout). The circuit filter
+specifies the circuits to which to apply this operation. The filter is a
+glob-style pattern. Using &quot;*&quot; for all circuits is possible, but it's 
+discouraged currenty until the reliability of the symmetry detection 
+algorithm is established. Currently it is recommended to apply it only to 
+those circuits for which this feature is required.
+</p><p>
+For the symmetry detection, the specified constraints (e.g. tolerances,
+device filters etc.) apply.
+</p><a name="lvs_data"></a><a name="h2-247"></a><h2>&quot;lvs_data&quot; - Gets the internal <a href="../code/class_LayoutVsSchematic.html">LayoutVsSchematic</a> object</h2><a name="k_12"></a><p>Usage:</p><ul><li><tt>lvs_data</tt></li></ul><p>
+The <a href="../code/class_LayoutVsSchematic.html">LayoutVsSchematic</a> object provides access to the internal details of
+the netter object.
+</p><a name="max_branch_complexity"></a><a name="h2-257"></a><h2>&quot;max_branch_complexity&quot; - Configures the maximum branch complexity for ambiguous net matching</h2><a name="k_13"></a><p>Usage:</p><ul><li><tt>max_branch_complexity(n)</tt></li></ul><p>
+The netlist compare algorithm is basically a backtracing algorithm.
+With ambiguous nets, the algorithm picks possible net pairs and
+tries whether they will make a good match. Following the deduction
+path for this nets may lead to further branches if more ambiguous
+nets are encountered. To avoid combinational explosion, the maximum
+branch complexity is limited to the value configured with this 
+function. The default value is 500 which means not more than
+500 combinations are tried for a single seed pair. For networks
+with inherent ambiguity such as decoders, the complexity
+can be increased at the expense of potentially larger runtimes.
+The runtime penality is roughly proportional to the branch
+complexity.
+</p><p>
+By default, the branch complexity is unlimited, but it may
+be reduced in order to limit the compare runtimes at the cost
+of a less elaborate compare attempt. The preferred solution 
+however is to use labels for net name hints which also reduces
+the depth.
+</p><a name="max_depth"></a><a name="h2-283"></a><h2>&quot;max_depth&quot; - Configures the maximum search depth for net match deduction</h2><a name="k_14"></a><p>Usage:</p><ul><li><tt>max_depth(n)</tt></li></ul><p>
+The netlist compare algorithm works recursively: once a net
+equivalence is established, additional matches are derived from
+this equivalence. Such equivalences in turn are used to derive
+new equivalences and so on. The maximum depth parameter configures
+the number of recursions the algorithm performs before picking
+the next net. With higher values for the depth, the algorithm
+pursues this &quot;deduction path&quot; in greater depth while with 
+smaller values, the algorithm prefers picking nets in a random fashion
+as the seeds for this deduction path. The default value is 8. 
+</p><p>
+By default, the depth is unlimited, but it may
+be reduced in order to limit the compare runtimes at the cost
+of a less elaborate compare attempt. The preferred solution 
+however is to use labels for net name hints which also reduces
+the branch complexity.
+</p><a name="max_res"></a><a name="h2-306"></a><h2>&quot;max_res&quot; - Ignores resistors with a resistance above a certain value</h2><a name="k_15"></a><p>Usage:</p><ul><li><tt>max_res(threshold)</tt></li></ul><p>
+After using this method, the netlist compare will ignore resistor devices
+with a resistance value above the given threshold (in Farad).
+</p><a name="min_caps"></a><a name="h2-316"></a><h2>&quot;min_caps&quot; - Ignores capacitors with a capacitance below a certain value</h2><a name="k_16"></a><p>Usage:</p><ul><li><tt>min_caps(threshold)</tt></li></ul><p>
+After using this method, the netlist compare will ignore capacitance devices
+with a capacitance values below the given threshold (in Farad).
+</p><a name="no_lvs_hints"></a><a name="h2-326"></a><h2>&quot;no_lvs_hints&quot; - Disables LVS hints</h2><a name="k_17"></a><p>Usage:</p><ul><li><tt>no_lvs_hints</tt></li></ul><p>
+LVS hints may be expensive to compute. Use this function to disable
+generation of LVS hints
+</p><a name="same_circuits"></a><a name="h2-336"></a><h2>&quot;same_circuits&quot; - Establishes an equivalence between the circuits</h2><a name="k_18"></a><p>Usage:</p><ul><li><tt>same_circuits(circuit_a, circuit_b)</tt></li></ul><p>
+This method will force an equivalence between the two circuits.
+By default, circuits are identified by name. If names are different, this
+method allows establishing an explicit correspondence.
+</p><p>
+circuit_a is for the layout netlist, circuit_b for the schematic netlist.
+Names are case sensitive for layout-derived netlists and case-insensitive for SPICE schematic netlists.
+</p><p>
+One of the circuits may be nil. In this case, the corresponding
+other circuit is mapped to &quot;nothing&quot;, i.e. ignored.
+</p><p>
+Use this method andwhere in the script before the <a href="#compare">compare</a> call.
+</p><a name="same_device_classes"></a><a name="h2-355"></a><h2>&quot;same_device_classes&quot; - Establishes an equivalence between the device classes</h2><a name="k_19"></a><p>Usage:</p><ul><li><tt>same_device_classes(class_a, class_b)</tt></li></ul><p>
+This method will force an equivalence between the two device classes.
+Device classes are also known as &quot;models&quot;.
+By default, device classes are identified by name. If names are different, this
+method allows establishing an explicit correspondence.
+</p><p>
+Before this method can be used, a schematic netlist needs to be loaded with
+<a href="#schematic">schematic</a>.
+</p><p>
+class_a is for the layout netlist, class_b for the schematic netlist.
+Names are case sensitive for layout-derived netlists and case-insensitive for SPICE schematic netlists.
+</p><p>
+One of the device classes may be &quot;nil&quot;. In this case, the corresponding
+other device class is mapped to &quot;nothing&quot;, i.e. ignored.
+</p><p>
+A device class on one side can be mapped to multiple other device
+classes on the other side by using this function multiple times, e.g.
+</p><p><pre>
+same_device_classes(&quot;POLYRES&quot;, &quot;RES&quot;)
+same_device_classes(&quot;WELLRES&quot;, &quot;RES&quot;)
+</pre></p><p>
+will match both &quot;POLYRES&quot; and &quot;WELLRES&quot; on the layout side to &quot;RES&quot; on the 
+schematic side.
+</p><p>
+Once a device class is mentioned with &quot;same_device_classes&quot;, matching by
+name is disabled for this class. So after using 'same_device_classes(&quot;A&quot;, &quot;B&quot;)'
+&quot;A&quot; is no longer equivalent to &quot;A&quot; on the other side. If you want &quot;A&quot; to 
+stay equivalent to &quot;A&quot; too, you need to use 'same_device_classes(&quot;A&quot;, &quot;A&quot;)' 
+in addition.
+</p><p>
+Use this method andwhere in the script before the <a href="#compare">compare</a> call.
+</p><a name="same_nets"></a><a name="h2-395"></a><h2>&quot;same_nets&quot; - Establishes an equivalence between the nets</h2><a name="k_20"></a><p>Usage:</p><ul><li><tt>same_nets(circuit_pattern, net_pattern)</tt></li><li><tt>same_nets(circuit_pattern, net_a, net_b)</tt></li><li><tt>same_nets(circuit_a, net_a, circuit_b, net_b)</tt></li></ul><p>
+This method will force an equivalence between the net_a and net_b from circuit_a
+and circuit_b (circuit in the three-argument form is for both circuit_a and circuit_b).
+</p><p>
+In the four-argument form, the circuits can be either given by name or as Circuit
+objects. In the three-argument form, the circuits have to be given by name pattern. 
+Nets can be either given by name or as Net objects.
+In the two-argument form, the circuits and nets have to be given as name pattern.
+</p><p>
+&quot;name pattern&quot; are glob-style pattern - e.g. the following will identify the 
+all nets starting with &quot;A&quot; from the extracted netlist with the same net from 
+the schematic netlist for all circuits starting with &quot;INV&quot;:
+</p><p><pre>
+same_nets(&quot;INV*&quot;, &quot;A*&quot;)
+</pre></p><p>
+A plain &quot;*&quot; for the net pattern forces all (named) nets to be equivalent between layout and schematic. 
+Unnamed nets from the extracted netlist are not considered - i.e. nets without a label.
+</p><p>
+After using this function, the compare algorithm will consider these nets equivalent.
+Use this method to provide hints for the comparer in cases which are difficult to
+resolve otherwise.
+</p><p>
+circuit_a and net_a are for the layout netlist, circuit_b and net_b for the schematic netlist.
+Names are case sensitive for layout-derived netlists and case-insensitive for SPICE schematic netlists.
+</p><p>
+Use this method andwhere in the script before the <a href="#compare">compare</a> call.
+</p><p>
+Multiple calls of &quot;same_nets&quot; can be used. The calls are effective in the order
+the are given. For example, the following sequence specifies equivalence of all
+equally named nets, with the exception of &quot;A&quot; and &quot;B&quot; which are equivalent to each other
+inside cell &quot;ND2&quot;, despite their different name:
+</p><p><pre>
+same_nets(&quot;*&quot;, &quot;*&quot;)
+same_nets(&quot;ND2&quot;, &quot;A&quot;, &quot;B&quot;)
+</pre></p><a name="same_nets!"></a><a name="h2-442"></a><h2>&quot;same_nets!&quot; - Establishes an equivalence between the nets with matching requirement</h2><a name="k_21"></a><p>Usage:</p><ul><li><tt>same_nets!(circuit_pattern, net_pattern)</tt></li><li><tt>same_nets!(circuit_pattern, net_a, net_b)</tt></li><li><tt>same_nets!(circuit_a, net_a, circuit_b, net_b)</tt></li></ul><p>
+This method is equivalent to <a href="#same_nets">same_nets</a>, but requires identity of the given nets.
+If the specified nets do not match, an error is reported.
+</p><p>
+For example, this global specification requires all named nets from the
+layout to have an equivalent net in the schematic and those nets need to be 
+identical for all circuits:
+</p><p><pre>
+same_nets!(&quot;*&quot;, &quot;*&quot;)
+</pre></p><p>
+The following specification requires &quot;A&quot; and &quot;B&quot; to be identical in
+circuit &quot;ND2&quot;. It is not an error if either &quot;A&quot; does not exist in the
+layout or &quot;B&quot; does not exist in the schematic:
+</p><p><pre>
+same_nets!(&quot;ND2&quot;, &quot;A&quot;, &quot;B&quot;)
+</pre></p><a name="schematic"></a><a name="h2-470"></a><h2>&quot;schematic&quot; - Gets, sets or reads the reference netlist</h2><a name="k_22"></a><p>Usage:</p><ul><li><tt>schematic(filename)</tt></li><li><tt>schematic(filename, reader)</tt></li><li><tt>schematic(netlist)</tt></li><li><tt>schematic</tt></li></ul><p>
+If no argument is given, the current schematic netlist is returned. nil is 
+returned if no schematic netlist is set yet.
+</p><p>
+If a filename is given (first two forms), the netlist is read from the given file.
+If no reader is provided, Spice format will be assumed. The reader object is a
+<a href="../code/class_NetlistReader.html">NetlistReader</a> object and allows detailed customization of the reader process.
+</p><p>
+Alternatively, a <a href="../code/class_Netlist.html">Netlist</a> object can be given which is obtained from any other
+source.
+</p><a name="split_gates"></a><a name="h2-490"></a><h2>&quot;split_gates&quot; - Implements the &quot;split gates&quot; feature</h2><a name="k_23"></a><p>Usage:</p><ul><li><tt>split_gates(device_name)</tt></li><li><tt>split_gates(device_name, circuit_filter)</tt></li></ul><p>
+Multi-fingered, multi-gate MOS transistors can be built without connecting
+the source/drain internal nets between the fingers. This will prevent 
+&quot;combine_devices&quot; from combining the single gate transistors of the
+different fingers into single ones.
+</p><p>
+&quot;split_gates&quot; now marks the devices of the given class so that they will
+receive a special treatment which joins the internl source/drain nodes.
+</p><p>
+By default, this method is applied to all circuits. You can specify
+a circuit pattern to apply it to certain circuits only.
+</p><p>
+&quot;device_name&quot; must be a valid device name and denote a MOS3, MOS4, DMOS3
+or DMOS4 device.
+</p><a name="tolerance"></a><a name="h2-512"></a><h2>&quot;tolerance&quot; - Specifies compare tolerances for certain device parameters</h2><a name="k_24"></a><p>Usage:</p><ul><li><tt>tolerance(device_class_name, parameter_name, absolute_tolerance [, relative_tolerance])</tt></li><li><tt>tolerance(device_class_name, parameter_name [, :absolute =&gt; absolute_tolerance] [, :relative =&gt; relative_tolerance])</tt></li></ul><p>
+Specifies a compare tolerance for a specific parameter on a given device class.
+The device class is the name of a device class in the extracted netlist.
+Tolerances can be given in absolute units or relative or both. 
+The relative tolerance is given as a factor, so 0.1 is a 10% tolerance.
+Absolute and relative tolerances add, so specifying both allows for a larger
+deviation.
+</p><p>
+Some device parameters - like the resistor's &quot;L&quot; and &quot;W&quot; parameters - are not compared by default.
+These are &quot;secondary&quot; device parameters. Using a tolerance on such parameters will make these parameters
+being compared even if they are secondary ones.
+</p><p>
+A function is skip a parameter during the device compare is &quot;ignore_parameter&quot;.
+</p><p>
+&quot;tolerance&quot; and &quot;ignore_parameter&quot; only have an effect with the default device comparer. Using a custom device comparer
+will override the definitions by &quot;ignore_parameter&quot; or &quot;tolerance&quot;.
+</p></body>

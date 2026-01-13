@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class GenericNetlistCompareLogger</p><h1>API reference - Class GenericNetlistCompareLogger</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: An event receiver for the netlist compare feature.</p><p><b>Class hierarchy</b>: GenericNetlistCompareLogger » <a href="class_NetlistCompareLogger.html">NetlistCompareLogger</a></p><ul><li><a href="#h2-15">Public methods</a></li><li><a href="#h2-70">Public static methods and constants</a></li><li><a href="#h2-81">Detailed description</a></li></ul><p>
+The <a href="class_NetlistComparer.html">NetlistComparer</a> class will send compare events to a logger derived from this class. Use this class to implement your own logger class. You can override on of its methods to receive certain kind of events.
+This class has been introduced in version 0.26.
+</p><a name="h2-15"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>GenericNetlistCompareLogger ptr</td><td><b><a href="#method4">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method7">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method8">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method9">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method11">begin_circuit</a></b></td><td>(const Circuit ptr a,<br>const Circuit ptr b)</td><td>This function is called when a new circuit is compared.</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method12">begin_netlist</a></b></td><td>(const Netlist ptr a,<br>const Netlist ptr b)</td><td>This function is called at the beginning of the compare process.</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method13">circuit_mismatch</a></b></td><td>(const Circuit ptr a,<br>const Circuit ptr b,<br>string msg)</td><td>This function is called when circuits can't be compared.</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method14">circuit_skipped</a></b></td><td>(const Circuit ptr a,<br>const Circuit ptr b,<br>string msg)</td><td>This function is called when circuits can't be compared.</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method15">device_class_mismatch</a></b></td><td>(const DeviceClass ptr a,<br>const DeviceClass ptr b,<br>string msg)</td><td>This function is called when device classes can't be compared.</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method16">device_mismatch</a></b></td><td>(const Device ptr a,<br>const Device ptr b,<br>string msg)</td><td>This function is called when two devices can't be paired.</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method17">end_circuit</a></b></td><td>(const Circuit ptr a,<br>const Circuit ptr b,<br>bool matching,<br>string msg)</td><td>This function is called at the end of the compare process.</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method18">end_netlist</a></b></td><td>(const Netlist ptr a,<br>const Netlist ptr b)</td><td>This function is called at the end of the compare process.</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method19">log_entry</a></b></td><td>(Severity level,<br>string msg)</td><td>Issues an entry for the compare log.</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method20">match_ambiguous_nets</a></b></td><td>(const Net ptr a,<br>const Net ptr b,<br>string msg)</td><td>This function is called when two nets are identified, but this choice is ambiguous.</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method21">match_devices</a></b></td><td>(const Device ptr a,<br>const Device ptr b)</td><td>This function is called when two devices are identified.</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method22">match_devices_with_different_device_classes</a></b></td><td>(const Device ptr a,<br>const Device ptr b)</td><td>This function is called when two devices are identified but have different device classes.</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method23">match_devices_with_different_parameters</a></b></td><td>(const Device ptr a,<br>const Device ptr b)</td><td>This function is called when two devices are identified but have different parameters.</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method24">match_nets</a></b></td><td>(const Net ptr a,<br>const Net ptr b)</td><td>This function is called when two nets are identified.</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method25">match_pins</a></b></td><td>(const Pin ptr a,<br>const Pin ptr b)</td><td>This function is called when two pins are identified.</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method26">match_subcircuits</a></b></td><td>(const SubCircuit ptr a,<br>const SubCircuit ptr b)</td><td>This function is called when two subcircuits are identified.</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method27">net_mismatch</a></b></td><td>(const Net ptr a,<br>const Net ptr b,<br>string msg)</td><td>This function is called when a net can't be paired.</td></tr><tr class="row0"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method28">pin_mismatch</a></b></td><td>(const Pin ptr a,<br>const Pin ptr b,<br>string msg)</td><td>This function is called when two pins can't be paired.</td></tr><tr class="row1"><td><i>[virtual]</i></td><td>void</td><td><b><a href="#method29">subcircuit_mismatch</a></b></td><td>(const SubCircuit ptr a,<br>const SubCircuit ptr b,<br>string msg)</td><td>This function is called when two subcircuits can't be paired.</td></tr></table><a name="h2-70"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td><i>[static,const]</i></td><td>Severity</td><td><b><a href="#method0">Error</a></b></td><td></td><td>Specifies error severity (preferred action is stop)</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>Severity</td><td><b><a href="#method1">Info</a></b></td><td></td><td>Specifies info severity (print if requested, otherwise silent)</td></tr><tr class="row0"><td><i>[static,const]</i></td><td>Severity</td><td><b><a href="#method2">NoSeverity</a></b></td><td></td><td>Specifies no particular severity (default)</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>Severity</td><td><b><a href="#method3">Warning</a></b></td><td></td><td>Specifies warning severity (log with high priority, but do not stop)</td></tr></table><a name="detailed"></a><a name="h2-81"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-82"></a><h3>Error</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_Error"></a><a name="k_2"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_Severity.html">Severity</a><b> Error </b></p><p><b>Description</b>: Specifies error severity (preferred action is stop)</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'Error'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-87"></a><h3>Info</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_Info"></a><a name="k_3"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_Severity.html">Severity</a><b> Info </b></p><p><b>Description</b>: Specifies info severity (print if requested, otherwise silent)</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'Info'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-92"></a><h3>NoSeverity</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m_NoSeverity"></a><a name="k_4"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_Severity.html">Severity</a><b> NoSeverity </b></p><p><b>Description</b>: Specifies no particular severity (default)</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'NoSeverity'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-97"></a><h3>Warning</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m_Warning"></a><a name="k_5"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_Severity.html">Severity</a><b> Warning </b></p><p><b>Description</b>: Specifies warning severity (log with high priority, but do not stop)</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'Warning'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-102"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__const_cast"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i><a href="class_GenericNetlistCompareLogger.html">GenericNetlistCompareLogger</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-108"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__create"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-114"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__destroy"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-121"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__destroyed?"></a><a name="k_9"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-128"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__is_const_object?"></a><a name="k_10"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-135"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m__manage"></a><a name="k_11"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-141"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m__unmanage"></a><a name="k_12"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-147"></a><h3>begin_circuit</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_begin_circuit"></a><a name="k_13"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> begin_circuit </b> (const <a href="class_Circuit.html">Circuit</a> ptr a, const <a href="class_Circuit.html">Circuit</a> ptr b)</p><p><b>Description</b>: This function is called when a new circuit is compared.</p><p><p>
+This compare procedure will run the netlist compare circuit vs. circuit in a bottom-up fashion.
+Before each circuit is compared, this method is called once with the circuits that are about to be compared.
+After the circuit has been compared, <a href="#m_end_circuit">end_circuit</a> will be called.</p><p>In some cases, the compare algorithm will decide that circuits can't be compared. This happens if for some or all subcircuits the pin assignment can't be derived. In this case, <a href="#m_circuit_skipped">circuit_skipped</a> will be called once instead of <a href="#m_begin_circuit">begin_circuit</a> and <a href="#m_end_circuit">end_circuit</a>.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-156"></a><h3>begin_netlist</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_begin_netlist"></a><a name="k_14"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> begin_netlist </b> (const <a href="class_Netlist.html">Netlist</a> ptr a, const <a href="class_Netlist.html">Netlist</a> ptr b)</p><p><b>Description</b>: This function is called at the beginning of the compare process.</p><p><p>
+This method is called once when the compare run begins.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-163"></a><h3>circuit_mismatch</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_circuit_mismatch"></a><a name="k_15"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> circuit_mismatch </b> (const <a href="class_Circuit.html">Circuit</a> ptr a, const <a href="class_Circuit.html">Circuit</a> ptr b, string msg)</p><p><b>Description</b>: This function is called when circuits can't be compared.</p><p><p>
+This method is called when a circuit can't be mapped to a partner in the other netlist. In this case, this method is called with the one circuit and nil for the other circuit.</p><p>This method is called instead of <a href="#m_begin_circuit">begin_circuit</a> and <a href="#m_end_circuit">end_circuit</a>.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-169"></a><h3>circuit_skipped</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_circuit_skipped"></a><a name="k_16"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> circuit_skipped </b> (const <a href="class_Circuit.html">Circuit</a> ptr a, const <a href="class_Circuit.html">Circuit</a> ptr b, string msg)</p><p><b>Description</b>: This function is called when circuits can't be compared.</p><p><p>
+If there is a known circuit pair, but the circuits can be compared - for example because subcircuits can't be identified - this method will be called with both circuits.</p><p>This method is called instead of <a href="#m_begin_circuit">begin_circuit</a> and <a href="#m_end_circuit">end_circuit</a>.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-175"></a><h3>device_class_mismatch</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_device_class_mismatch"></a><a name="k_17"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> device_class_mismatch </b> (const <a href="class_DeviceClass.html">DeviceClass</a> ptr a, const <a href="class_DeviceClass.html">DeviceClass</a> ptr b, string msg)</p><p><b>Description</b>: This function is called when device classes can't be compared.</p><p><p>
+This method is called when a device class can't be mapped to a partner in the other netlist. In this case, this method is called with the one device class and nil for the other class.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-182"></a><h3>device_mismatch</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_device_mismatch"></a><a name="k_18"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> device_mismatch </b> (const <a href="class_Device.html">Device</a> ptr a, const <a href="class_Device.html">Device</a> ptr b, string msg)</p><p><b>Description</b>: This function is called when two devices can't be paired.</p><p><p>
+This will report the device considered in a or b. The other argument is nil. See <a href="#m_match_devices">match_devices</a> for details.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-189"></a><h3>end_circuit</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_end_circuit"></a><a name="k_19"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> end_circuit </b> (const <a href="class_Circuit.html">Circuit</a> ptr a, const <a href="class_Circuit.html">Circuit</a> ptr b, bool matching, string msg)</p><p><b>Description</b>: This function is called at the end of the compare process.</p><p><p>
+The 'matching' argument indicates whether the circuits have been identified as identical.
+See <a href="#m_begin_circuit">begin_circuit</a> for details.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-196"></a><h3>end_netlist</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_end_netlist"></a><a name="k_20"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> end_netlist </b> (const <a href="class_Netlist.html">Netlist</a> ptr a, const <a href="class_Netlist.html">Netlist</a> ptr b)</p><p><b>Description</b>: This function is called at the end of the compare process.</p><p><p>
+This method is called once when the compare run ended.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-203"></a><h3>log_entry</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_log_entry"></a><a name="k_21"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> log_entry </b> (<a href="class_Severity.html">Severity</a> level, string msg)</p><p><b>Description</b>: Issues an entry for the compare log.</p><p><p>
+This method delivers a log message generated during the compare of two circuits.
+It is called between of <a href="#m_begin_circuit">begin_circuit</a> and <a href="#m_end_circuit">end_circuit</a>.</p><p>This method has been added in version 0.28.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-210"></a><h3>match_ambiguous_nets</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_match_ambiguous_nets"></a><a name="k_22"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> match_ambiguous_nets </b> (const <a href="class_Net.html">Net</a> ptr a, const <a href="class_Net.html">Net</a> ptr b, string msg)</p><p><b>Description</b>: This function is called when two nets are identified, but this choice is ambiguous.</p><p><p>
+This choice is a last-resort fallback to allow continuation of the compare procedure. It is likely that this compare will fail later. Looking for ambiguous nets allows deduction of the origin of this faulty decision. See <a href="#m_match_nets">match_nets</a> for more details.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-216"></a><h3>match_devices</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_match_devices"></a><a name="k_23"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> match_devices </b> (const <a href="class_Device.html">Device</a> ptr a, const <a href="class_Device.html">Device</a> ptr b)</p><p><b>Description</b>: This function is called when two devices are identified.</p><p><p>
+If two devices are identified as a corresponding pair, this method will be called with both devices.
+If the devices can be paired, but the device parameters don't match, <a href="#m_match_devices_with_different_parameters">match_devices_with_different_parameters</a> will be called instead.
+If the devices can be paired, but the device classes don't match, <a href="#m_match_devices_with_different_device_classes">match_devices_with_different_device_classes</a> will be called instead.
+If devices can't be matched, <a href="#m_device_mismatch">device_mismatch</a> will be called with the one device considered and the other device being nil.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-225"></a><h3>match_devices_with_different_device_classes</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_match_devices_with_different_device_classes"></a><a name="k_24"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> match_devices_with_different_device_classes </b> (const <a href="class_Device.html">Device</a> ptr a, const <a href="class_Device.html">Device</a> ptr b)</p><p><b>Description</b>: This function is called when two devices are identified but have different device classes.</p><p><p>
+See <a href="#m_match_devices">match_devices</a> for details.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-232"></a><h3>match_devices_with_different_parameters</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_match_devices_with_different_parameters"></a><a name="k_25"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> match_devices_with_different_parameters </b> (const <a href="class_Device.html">Device</a> ptr a, const <a href="class_Device.html">Device</a> ptr b)</p><p><b>Description</b>: This function is called when two devices are identified but have different parameters.</p><p><p>
+See <a href="#m_match_devices">match_devices</a> for details.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-239"></a><h3>match_nets</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_match_nets"></a><a name="k_26"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> match_nets </b> (const <a href="class_Net.html">Net</a> ptr a, const <a href="class_Net.html">Net</a> ptr b)</p><p><b>Description</b>: This function is called when two nets are identified.</p><p><p>
+If two nets are identified as a corresponding pair, this method will be called with both nets.
+If the nets can be paired, but this match is ambiguous, <a href="#m_match_ambiguous_nets">match_ambiguous_nets</a> will be called instead.
+If nets can't be matched to a partner, <a href="#m_net_mismatch">net_mismatch</a> will be called.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-248"></a><h3>match_pins</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_match_pins"></a><a name="k_27"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> match_pins </b> (const <a href="class_Pin.html">Pin</a> ptr a, const <a href="class_Pin.html">Pin</a> ptr b)</p><p><b>Description</b>: This function is called when two pins are identified.</p><p><p>
+If two pins are identified as a corresponding pair, this method will be called with both pins.
+If pins can't be matched, <a href="#m_pin_mismatch">pin_mismatch</a> will be called with the one pin considered and the other pin being nil.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-255"></a><h3>match_subcircuits</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_match_subcircuits"></a><a name="k_28"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> match_subcircuits </b> (const <a href="class_SubCircuit.html">SubCircuit</a> ptr a, const <a href="class_SubCircuit.html">SubCircuit</a> ptr b)</p><p><b>Description</b>: This function is called when two subcircuits are identified.</p><p><p>
+If two subcircuits are identified as a corresponding pair, this method will be called with both subcircuits.
+If subcircuits can't be matched, <a href="#m_subcircuit_mismatch">subcircuit_mismatch</a> will be called with the one subcircuit considered and the other subcircuit being nil.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-262"></a><h3>net_mismatch</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_net_mismatch"></a><a name="k_29"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> net_mismatch </b> (const <a href="class_Net.html">Net</a> ptr a, const <a href="class_Net.html">Net</a> ptr b, string msg)</p><p><b>Description</b>: This function is called when a net can't be paired.</p><p><p>
+This method will be called, if a net cannot be identified as identical with another net. The corresponding argument will identify the net and source netlist. The other argument will be nil.</p><p>In some cases, a mismatch is reported with two nets given. This means,
+nets are known not to match. Still the compare algorithm will proceed as
+if these nets were equivalent to derive further matches.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-271"></a><h3>pin_mismatch</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_pin_mismatch"></a><a name="k_30"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> pin_mismatch </b> (const <a href="class_Pin.html">Pin</a> ptr a, const <a href="class_Pin.html">Pin</a> ptr b, string msg)</p><p><b>Description</b>: This function is called when two pins can't be paired.</p><p><p>
+This will report the pin considered in a or b. The other argument is nil. See <a href="#m_match_pins">match_pins</a> for details.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-278"></a><h3>subcircuit_mismatch</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_subcircuit_mismatch"></a><a name="k_31"></a><p><b>Signature</b>: <i>[virtual] </i>void <b> subcircuit_mismatch </b> (const <a href="class_SubCircuit.html">SubCircuit</a> ptr a, const <a href="class_SubCircuit.html">SubCircuit</a> ptr b, string msg)</p><p><b>Description</b>: This function is called when two subcircuits can't be paired.</p><p><p>
+This will report the subcircuit considered in a or b. The other argument is nil. See <a href="#m_match_subcircuits">match_subcircuits</a> for details.
+</p></p></td></tr></table></body>

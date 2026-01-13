@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Various Topics</a> » Macros in Menus</p><h1>Macros in Menus</h1><p>
+  KLayout allows installing macros as menu entries. Each time that menu entry is selected, 
+  the macro will be executed.
+  To configure a macro for installation in the menu, open the macro in the macro development environment 
+  and open the macro properties dialog. 
+  </p><p>
+  The macro is configured to be shown in the menu by checking the &quot;Show in menu&quot; check box.
+  That also enables two other fields: the menu path and the group name.
+  </p><p>
+  The menu path specifies the position where the macro shall be put. A macro path is a 
+  sequence of symbolic names separated by a dot. For example:
+  </p><ul><li><tt>edit_menu.end</tt> is the end of the &quot;Edit&quot; menu </li><li><tt>edit_menu.undo</tt> is the &quot;Undo&quot; entry in the &quot;Edit&quot; menu</li></ul><p>To obtain
+  a list of the paths available, have a look at the &quot;Key Bindings&quot; page in the &quot;Application&quot;
+  section of the setup dialog (&quot;File/Setup&quot;).
+  </p><p>
+  The pseudo element &quot;end&quot; denotes the position
+  after the last entry. The same way &quot;begin&quot; indicates the first entry in the menu.
+  The macro will be inserted before the entry indicated by the path. Hence:
+  </p><ul><li><tt>edit_menu.end</tt>: the macro will be inserted at the end of the &quot;Edit&quot; menu</li><li><tt>edit_menu.undo</tt>: the macro will be inserted before the &quot;Undo&quot; entry.</li></ul><p>
+  If a plus sign follows the macro path element, the new element is inserted <b>after</b>
+  this element. For example:
+  </p><ul><li><tt>edit_menu.undo+</tt>: the macro will be inserted after the &quot;Undo&quot; menu item.</li></ul><p>
+  A special form can be used to generate new groups: if the given element does not exist,
+  the menu generator can be instructed to create it by appending the insert point plus
+  the new text string to the element after a &quot;&gt;&quot; character. For example:
+  </p><ul><li><tt>edit_menu.my_group&gt;end(&quot;My Edit Functions&quot;).end</tt>: will look for &quot;my_group&quot; and add the new element at the end of this group. If no such
+  group exists, it will be created at the end of the &quot;Edit&quot; menu with the title &quot;My Edit Functions&quot;.</li></ul><p>
+  If no macro path is specified, the macro is inserted in the &quot;Macros&quot; menu.
+  The description of the macro is used as the menu title. If a shortcut is specified, that
+  shortcut is used for the macro entry as well.
+  </p><p>
+  The group name can be used to group together all menu entries with the same group name.
+  Any text is allowed here.
+  A group is separated from the other entries in the menu by a separator line. It is recommended to
+  use the group feature in conjunction with a &quot;end&quot;-terminated menu path which is identical
+  for all entries of the same group. Other uses cases are possible, but the result is 
+  not defined. 
+  </p><a name="h2-81"></a><h2>A Note for MacOS Users</h2><p>
+  The Qt/MacOS combination does not allow for dynamically configuring 
+  the main menu. On MacOS the behavior is as follows:
+  </p><p>
+  Every top-level menu entry that is generated either by code or by configuring
+  a macro correspondingly, will be shown in a separate entry in the main toolbar.
+  This entry is labelled &quot;...&quot; and is shown only when it is populated. All
+  non-standard main menu entries are placed there in the same order they would
+  appear in the main menu.
+  </p></body>

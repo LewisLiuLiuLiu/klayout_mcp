@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class QThread</p><h1>API reference - Class QThread</h1><property value="QtCore" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_QtCore.html">QtCore</a></p><p><b>Description</b>: Binding of QThread</p><p><b>Class hierarchy</b>: QThread » <a href="class_QObject.html">QObject</a></p><p><b>Sub-classes</b>: <a href="class_QThread++Priority.html">Priority</a>, <a href="class_QThread++QFlags_Priority.html">QFlags_Priority</a></p><ul><li><a href="#h2-14">Public constructors</a></li><li><a href="#h2-19">Public methods</a></li><li><a href="#h2-82">Public static methods and constants</a></li><li><a href="#h2-119">Protected methods (static, non-static and constructors)</a></li><li><a href="#h2-146">Detailed description</a></li></ul><p></p><a name="h2-14"></a><h2>Public constructors</h2><table><tr class="row0"><td>new QThread</td><td><b><a href="#method34">new</a></b></td><td>(QObject ptr parent = 0)</td><td>Constructor QThread::QThread(QObject *parent)</td></tr></table><a name="h2-19"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>QThread ptr</td><td><b><a href="#method8">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method9">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method11">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method12">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method13">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method14">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td><i>[signal]</i></td><td>void</td><td><b><a href="#method19">destroyed</a></b></td><td>(QObject ptr arg1)</td><td>Signal declaration for QThread::destroyed(QObject *)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method21">emit_destroyed</a></b></td><td>(QObject ptr arg1 = 0)</td><td>Emitter for signal void QThread::destroyed(QObject *)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method22">emit_finished</a></b></td><td></td><td>Emitter for signal void QThread::finished()</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method23">emit_started</a></b></td><td></td><td>Emitter for signal void QThread::started()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method24">emit_terminated</a></b></td><td></td><td>Emitter for signal void QThread::terminated()</td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method25">event</a></b></td><td>(QEvent ptr arg1)</td><td>Virtual method bool QThread::event(QEvent *)</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method26">eventFilter</a></b></td><td>(QObject ptr arg1,<br>QEvent ptr arg2)</td><td>Virtual method bool QThread::eventFilter(QObject *, QEvent *)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method28">exit</a></b></td><td>(int retcode = 0)</td><td>Method void QThread::exit(int retcode)</td></tr><tr class="row1"><td><i>[signal]</i></td><td>void</td><td><b><a href="#method29">finished</a></b></td><td></td><td>Signal declaration for QThread::finished()</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method31">isFinished?</a></b></td><td></td><td>Method bool QThread::isFinished()</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method32">isRunning?</a></b></td><td></td><td>Method bool QThread::isRunning()</td></tr><tr class="row0"><td><i>[const]</i></td><td>QThread_Priority</td><td><b><a href="#method35">priority</a></b></td><td></td><td>Method QThread::Priority QThread::priority()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method36">priority=</a></b></td><td>(const QThread_Priority priority)</td><td>Method void QThread::setPriority(QThread::Priority priority)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method37">quit</a></b></td><td></td><td>Method void QThread::quit()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method41">setPriority</a></b></td><td>(const QThread_Priority priority)</td><td>Method void QThread::setPriority(QThread::Priority priority)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method42">setStackSize</a></b></td><td>(unsigned int stackSize)</td><td>Method void QThread::setStackSize(unsigned int stackSize)</td></tr><tr class="row1"><td><i>[const]</i></td><td>unsigned int</td><td><b><a href="#method45">stackSize</a></b></td><td></td><td>Method unsigned int QThread::stackSize()</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method46">stackSize=</a></b></td><td>(unsigned int stackSize)</td><td>Method void QThread::setStackSize(unsigned int stackSize)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method47">start</a></b></td><td>(const QThread_Priority arg1 = QThread::InheritPriority)</td><td>Method void QThread::start(QThread::Priority)</td></tr><tr class="row0"><td><i>[signal]</i></td><td>void</td><td><b><a href="#method48">started</a></b></td><td></td><td>Signal declaration for QThread::started()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method50">terminate</a></b></td><td></td><td>Method void QThread::terminate()</td></tr><tr class="row0"><td><i>[signal]</i></td><td>void</td><td><b><a href="#method51">terminated</a></b></td><td></td><td>Signal declaration for QThread::terminated()</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method58">wait</a></b></td><td>(unsigned long time = ULONG_MAX)</td><td>Method bool QThread::wait(unsigned long int time)</td></tr></table><a name="h2-82"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td><i>[static,const]</i></td><td>QThread_Priority</td><td><b><a href="#method0">HighPriority</a></b></td><td></td><td>Enum constant QThread::HighPriority</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>QThread_Priority</td><td><b><a href="#method1">HighestPriority</a></b></td><td></td><td>Enum constant QThread::HighestPriority</td></tr><tr class="row0"><td><i>[static,const]</i></td><td>QThread_Priority</td><td><b><a href="#method2">IdlePriority</a></b></td><td></td><td>Enum constant QThread::IdlePriority</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>QThread_Priority</td><td><b><a href="#method3">InheritPriority</a></b></td><td></td><td>Enum constant QThread::InheritPriority</td></tr><tr class="row0"><td><i>[static,const]</i></td><td>QThread_Priority</td><td><b><a href="#method4">LowPriority</a></b></td><td></td><td>Enum constant QThread::LowPriority</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>QThread_Priority</td><td><b><a href="#method5">LowestPriority</a></b></td><td></td><td>Enum constant QThread::LowestPriority</td></tr><tr class="row0"><td><i>[static,const]</i></td><td>QThread_Priority</td><td><b><a href="#method6">NormalPriority</a></b></td><td></td><td>Enum constant QThread::NormalPriority</td></tr><tr class="row1"><td><i>[static,const]</i></td><td>QThread_Priority</td><td><b><a href="#method7">TimeCriticalPriority</a></b></td><td></td><td>Enum constant QThread::TimeCriticalPriority</td></tr><tr class="row0"><td></td><td>QThread ptr</td><td><b><a href="#method16">currentThread</a></b></td><td></td><td>Static method QThread *QThread::currentThread()</td></tr><tr class="row1"><td></td><td>unsigned long</td><td><b><a href="#method17">currentThreadId</a></b></td><td></td><td>Static method Qt::HANDLE QThread::currentThreadId()</td></tr><tr class="row0"><td></td><td>int</td><td><b><a href="#method30">idealThreadCount</a></b></td><td></td><td>Static method int QThread::idealThreadCount()</td></tr><tr class="row1"><td></td><td>QMetaObject</td><td><b><a href="#method49">staticMetaObject</a></b></td><td></td><td>Obtains the static MetaObject for this class.</td></tr><tr class="row0"><td></td><td>string</td><td><b><a href="#method53">tr</a></b></td><td>(string s,<br>string c = 0)</td><td>Static method QString QThread::tr(const char *s, const char *c)</td></tr><tr class="row1"><td></td><td>string</td><td><b><a href="#method54">tr</a></b></td><td>(string s,<br>string c,<br>int n)</td><td>Static method QString QThread::tr(const char *s, const char *c, int n)</td></tr><tr class="row0"><td></td><td>string</td><td><b><a href="#method55">trUtf8</a></b></td><td>(string s,<br>string c = 0)</td><td>Static method QString QThread::trUtf8(const char *s, const char *c)</td></tr><tr class="row1"><td></td><td>string</td><td><b><a href="#method56">trUtf8</a></b></td><td>(string s,<br>string c,<br>int n)</td><td>Static method QString QThread::trUtf8(const char *s, const char *c, int n)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method59">yieldCurrentThread</a></b></td><td></td><td>Static method void QThread::yieldCurrentThread()</td></tr></table><a name="h2-119"></a><h2>Protected methods (static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method15">childEvent</a></b></td><td>(QChildEvent ptr arg1)</td><td><td>Virtual method void QThread::childEvent(QChildEvent *)</td></td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method18">customEvent</a></b></td><td>(QEvent ptr arg1)</td><td><td>Virtual method void QThread::customEvent(QEvent *)</td></td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method20">disconnectNotify</a></b></td><td>(string signal)</td><td><td>Virtual method void QThread::disconnectNotify(const char *signal)</td></td></tr><tr class="row1"><td></td><td>int</td><td><b><a href="#method27">exec</a></b></td><td></td><td><td>Method int QThread::exec()</td></td></tr><tr class="row0"><td><i>[static]</i></td><td>void</td><td><b><a href="#method33">msleep</a></b></td><td>(unsigned long arg1)</td><td><td>Method void QThread::msleep(unsigned long int)</td></td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method38">receivers</a></b></td><td>(string signal)</td><td><td>Method int QThread::receivers(const char *signal)</td></td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method39">run</a></b></td><td></td><td><td>Virtual method void QThread::run()</td></td></tr><tr class="row1"><td><i>[const]</i></td><td>QObject ptr</td><td><b><a href="#method40">sender</a></b></td><td></td><td><td>Method QObject *QThread::sender()</td></td></tr><tr class="row0"><td><i>[static]</i></td><td>void</td><td><b><a href="#method43">setTerminationEnabled</a></b></td><td>(bool enabled = true)</td><td><td>Method void QThread::setTerminationEnabled(bool enabled)</td></td></tr><tr class="row1"><td><i>[static]</i></td><td>void</td><td><b><a href="#method44">sleep</a></b></td><td>(unsigned long arg1)</td><td><td>Method void QThread::sleep(unsigned long int)</td></td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method52">timerEvent</a></b></td><td>(QTimerEvent ptr arg1)</td><td><td>Virtual method void QThread::timerEvent(QTimerEvent *)</td></td></tr><tr class="row1"><td><i>[static]</i></td><td>void</td><td><b><a href="#method57">usleep</a></b></td><td>(unsigned long arg1)</td><td><td>Method void QThread::usleep(unsigned long int)</td></td></tr></table><a name="detailed"></a><a name="h2-146"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-147"></a><h3>HighPriority</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_HighPriority"></a><a name="k_2"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_QThread_Priority.html">QThread_Priority</a><b> HighPriority </b></p><p><b>Description</b>: Enum constant QThread::HighPriority</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'HighPriority'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-152"></a><h3>HighestPriority</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_HighestPriority"></a><a name="k_3"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_QThread_Priority.html">QThread_Priority</a><b> HighestPriority </b></p><p><b>Description</b>: Enum constant QThread::HighestPriority</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'HighestPriority'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-157"></a><h3>IdlePriority</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m_IdlePriority"></a><a name="k_4"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_QThread_Priority.html">QThread_Priority</a><b> IdlePriority </b></p><p><b>Description</b>: Enum constant QThread::IdlePriority</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'IdlePriority'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-162"></a><h3>InheritPriority</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m_InheritPriority"></a><a name="k_5"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_QThread_Priority.html">QThread_Priority</a><b> InheritPriority </b></p><p><b>Description</b>: Enum constant QThread::InheritPriority</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'InheritPriority'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-167"></a><h3>LowPriority</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m_LowPriority"></a><a name="k_6"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_QThread_Priority.html">QThread_Priority</a><b> LowPriority </b></p><p><b>Description</b>: Enum constant QThread::LowPriority</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'LowPriority'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-172"></a><h3>LowestPriority</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m_LowestPriority"></a><a name="k_7"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_QThread_Priority.html">QThread_Priority</a><b> LowestPriority </b></p><p><b>Description</b>: Enum constant QThread::LowestPriority</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'LowestPriority'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-177"></a><h3>NormalPriority</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m_NormalPriority"></a><a name="k_8"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_QThread_Priority.html">QThread_Priority</a><b> NormalPriority </b></p><p><b>Description</b>: Enum constant QThread::NormalPriority</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'NormalPriority'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-182"></a><h3>TimeCriticalPriority</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_TimeCriticalPriority"></a><a name="k_9"></a><p><b>Signature</b>: <i>[static,const] </i><a href="class_QThread_Priority.html">QThread_Priority</a><b> TimeCriticalPriority </b></p><p><b>Description</b>: Enum constant QThread::TimeCriticalPriority</p><p><b>Python specific notes: </b><br>The class exposes a readable attribute 'TimeCriticalPriority'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-187"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__const_cast"></a><a name="k_10"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QThread.html">QThread</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-193"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m__create"></a><a name="k_11"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-199"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m__destroy"></a><a name="k_12"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-206"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m__destroyed?"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-213"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m__is_const_object?"></a><a name="k_14"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-220"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m__manage"></a><a name="k_15"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-226"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m__unmanage"></a><a name="k_16"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-232"></a><h3>childEvent</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_childEvent"></a><a name="k_17"></a><p><b>Signature</b>: void <b> childEvent </b> (<a href="class_QChildEvent.html">QChildEvent</a> ptr arg1)</p><p><b>Description</b>: Virtual method void QThread::childEvent(QChildEvent *)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-238"></a><h3>currentThread</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_currentThread"></a><a name="k_18"></a><p><b>Signature</b>: <i>[static] </i><a href="class_QThread.html">QThread</a> ptr <b> currentThread </b></p><p><b>Description</b>: Static method QThread *QThread::currentThread()</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-244"></a><h3>currentThreadId</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_currentThreadId"></a><a name="k_19"></a><p><b>Signature</b>: <i>[static] </i>unsigned long <b> currentThreadId </b></p><p><b>Description</b>: Static method Qt::HANDLE QThread::currentThreadId()</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-250"></a><h3>customEvent</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_customEvent"></a><a name="k_20"></a><p><b>Signature</b>: void <b> customEvent </b> (<a href="class_QEvent.html">QEvent</a> ptr arg1)</p><p><b>Description</b>: Virtual method void QThread::customEvent(QEvent *)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-256"></a><h3>destroyed</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_destroyed"></a><a name="k_21"></a><p><b>Signature</b>: <i>[signal] </i>void <b> destroyed </b> (<a href="class_QObject.html">QObject</a> ptr arg1)</p><p><b>Description</b>: Signal declaration for QThread::destroyed(QObject *)</p><p><p>
+You can bind a procedure to this signal.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'destroyed'. This is the getter.<br>The object exposes a writable attribute 'destroyed'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-263"></a><h3>disconnectNotify</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_disconnectNotify"></a><a name="k_22"></a><p><b>Signature</b>: void <b> disconnectNotify </b> (string signal)</p><p><b>Description</b>: Virtual method void QThread::disconnectNotify(const char *signal)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-269"></a><h3>emit_destroyed</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_emit_destroyed"></a><a name="k_23"></a><p><b>Signature</b>: void <b> emit_destroyed </b> (<a href="class_QObject.html">QObject</a> ptr arg1 = 0)</p><p><b>Description</b>: Emitter for signal void QThread::destroyed(QObject *)</p><p><p>
+Call this method to emit this signal.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-275"></a><h3>emit_finished</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_emit_finished"></a><a name="k_24"></a><p><b>Signature</b>: void <b> emit_finished </b></p><p><b>Description</b>: Emitter for signal void QThread::finished()</p><p><p>
+Call this method to emit this signal.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-281"></a><h3>emit_started</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_emit_started"></a><a name="k_25"></a><p><b>Signature</b>: void <b> emit_started </b></p><p><b>Description</b>: Emitter for signal void QThread::started()</p><p><p>
+Call this method to emit this signal.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-287"></a><h3>emit_terminated</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_emit_terminated"></a><a name="k_26"></a><p><b>Signature</b>: void <b> emit_terminated </b></p><p><b>Description</b>: Emitter for signal void QThread::terminated()</p><p><p>
+Call this method to emit this signal.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-293"></a><h3>event</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_event"></a><a name="k_27"></a><p><b>Signature</b>: bool <b> event </b> (<a href="class_QEvent.html">QEvent</a> ptr arg1)</p><p><b>Description</b>: Virtual method bool QThread::event(QEvent *)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-299"></a><h3>eventFilter</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_eventFilter"></a><a name="k_28"></a><p><b>Signature</b>: bool <b> eventFilter </b> (<a href="class_QObject.html">QObject</a> ptr arg1, <a href="class_QEvent.html">QEvent</a> ptr arg2)</p><p><b>Description</b>: Virtual method bool QThread::eventFilter(QObject *, QEvent *)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-305"></a><h3>exec</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_exec"></a><a name="k_29"></a><p><b>Signature</b>: int <b> exec </b></p><p><b>Description</b>: Method int QThread::exec()</p><p><p>
+This method is protected and can only be called from inside a derived class.</p></p><p><b>Python specific notes: </b><br>This attribute is available as 'exec_' in Python.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-312"></a><h3>exit</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_exit"></a><a name="k_30"></a><p><b>Signature</b>: void <b> exit </b> (int retcode = 0)</p><p><b>Description</b>: Method void QThread::exit(int retcode)</p></td></tr><tr class="bigrow1"><td><a name="h3-316"></a><h3>finished</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_finished"></a><a name="k_31"></a><p><b>Signature</b>: <i>[signal] </i>void <b> finished </b></p><p><b>Description</b>: Signal declaration for QThread::finished()</p><p><p>
+You can bind a procedure to this signal.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'finished'. This is the getter.<br>The object exposes a writable attribute 'finished'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-323"></a><h3>idealThreadCount</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_idealThreadCount"></a><a name="k_32"></a><p><b>Signature</b>: <i>[static] </i>int <b> idealThreadCount </b></p><p><b>Description</b>: Static method int QThread::idealThreadCount()</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-329"></a><h3>isFinished?</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_isFinished?"></a><a name="k_33"></a><p><b>Signature</b>: <i>[const] </i>bool <b> isFinished? </b></p><p><b>Description</b>: Method bool QThread::isFinished()</p></td></tr><tr class="bigrow0"><td><a name="h3-333"></a><h3>isRunning?</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_isRunning?"></a><a name="k_34"></a><p><b>Signature</b>: <i>[const] </i>bool <b> isRunning? </b></p><p><b>Description</b>: Method bool QThread::isRunning()</p></td></tr><tr class="bigrow1"><td><a name="h3-337"></a><h3>msleep</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_msleep"></a><a name="k_35"></a><p><b>Signature</b>: <i>[static] </i>void <b> msleep </b> (unsigned long arg1)</p><p><b>Description</b>: Method void QThread::msleep(unsigned long int)</p><p><p>
+This method is protected and can only be called from inside a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-343"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_new"></a><a name="k_36"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_QThread.html">QThread</a><b> new </b> (<a href="class_QObject.html">QObject</a> ptr parent = 0)</p><p><b>Description</b>: Constructor QThread::QThread(QObject *parent)</p><p><p>
+This method creates an object of class QThread.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-350"></a><h3>priority</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_priority"></a><a name="k_37"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QThread_Priority.html">QThread_Priority</a><b> priority </b></p><p><b>Description</b>: Method QThread::Priority QThread::priority()</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'priority'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-355"></a><h3>priority=</h3></td><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_priority="></a><a name="k_38"></a><p><b>Signature</b>: void <b> priority= </b> (const <a href="class_QThread_Priority.html">QThread_Priority</a> priority)</p><p><b>Description</b>: Method void QThread::setPriority(QThread::Priority priority)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'priority'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-360"></a><h3>quit</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_quit"></a><a name="k_39"></a><p><b>Signature</b>: void <b> quit </b></p><p><b>Description</b>: Method void QThread::quit()</p></td></tr><tr class="bigrow0"><td><a name="h3-364"></a><h3>receivers</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_receivers"></a><a name="k_40"></a><p><b>Signature</b>: <i>[const] </i>int <b> receivers </b> (string signal)</p><p><b>Description</b>: Method int QThread::receivers(const char *signal)</p><p><p>
+This method is protected and can only be called from inside a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-370"></a><h3>run</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_run"></a><a name="k_41"></a><p><b>Signature</b>: void <b> run </b></p><p><b>Description</b>: Virtual method void QThread::run()</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-376"></a><h3>sender</h3></td><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_sender"></a><a name="k_42"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QObject.html">QObject</a> ptr <b> sender </b></p><p><b>Description</b>: Method QObject *QThread::sender()</p><p><p>
+This method is protected and can only be called from inside a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-382"></a><h3>setPriority</h3></td><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_setPriority"></a><a name="k_43"></a><p><b>Signature</b>: void <b> setPriority </b> (const <a href="class_QThread_Priority.html">QThread_Priority</a> priority)</p><p><b>Description</b>: Method void QThread::setPriority(QThread::Priority priority)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'priority'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-387"></a><h3>setStackSize</h3></td><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_setStackSize"></a><a name="k_44"></a><p><b>Signature</b>: void <b> setStackSize </b> (unsigned int stackSize)</p><p><b>Description</b>: Method void QThread::setStackSize(unsigned int stackSize)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'stackSize'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-392"></a><h3>setTerminationEnabled</h3></td><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_setTerminationEnabled"></a><a name="k_45"></a><p><b>Signature</b>: <i>[static] </i>void <b> setTerminationEnabled </b> (bool enabled = true)</p><p><b>Description</b>: Method void QThread::setTerminationEnabled(bool enabled)</p><p><p>
+This method is protected and can only be called from inside a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-398"></a><h3>sleep</h3></td><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_sleep"></a><a name="k_46"></a><p><b>Signature</b>: <i>[static] </i>void <b> sleep </b> (unsigned long arg1)</p><p><b>Description</b>: Method void QThread::sleep(unsigned long int)</p><p><p>
+This method is protected and can only be called from inside a derived class.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-404"></a><h3>stackSize</h3></td><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_stackSize"></a><a name="k_47"></a><p><b>Signature</b>: <i>[const] </i>unsigned int <b> stackSize </b></p><p><b>Description</b>: Method unsigned int QThread::stackSize()</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'stackSize'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-409"></a><h3>stackSize=</h3></td><td style="padding-bottom: 16px"><a name="method46"></a><a name="m_stackSize="></a><a name="k_48"></a><p><b>Signature</b>: void <b> stackSize= </b> (unsigned int stackSize)</p><p><b>Description</b>: Method void QThread::setStackSize(unsigned int stackSize)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'stackSize'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-414"></a><h3>start</h3></td><td style="padding-bottom: 16px"><a name="method47"></a><a name="m_start"></a><a name="k_49"></a><p><b>Signature</b>: void <b> start </b> (const <a href="class_QThread_Priority.html">QThread_Priority</a> arg1 = QThread::InheritPriority)</p><p><b>Description</b>: Method void QThread::start(QThread::Priority)</p></td></tr><tr class="bigrow0"><td><a name="h3-418"></a><h3>started</h3></td><td style="padding-bottom: 16px"><a name="method48"></a><a name="m_started"></a><a name="k_50"></a><p><b>Signature</b>: <i>[signal] </i>void <b> started </b></p><p><b>Description</b>: Signal declaration for QThread::started()</p><p><p>
+You can bind a procedure to this signal.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'started'. This is the getter.<br>The object exposes a writable attribute 'started'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-425"></a><h3>staticMetaObject</h3></td><td style="padding-bottom: 16px"><a name="method49"></a><a name="m_staticMetaObject"></a><a name="k_51"></a><p><b>Signature</b>: <i>[static] </i><a href="class_QMetaObject.html">QMetaObject</a><b> staticMetaObject </b></p><p><b>Description</b>: Obtains the static MetaObject for this class.</p></td></tr><tr class="bigrow0"><td><a name="h3-429"></a><h3>terminate</h3></td><td style="padding-bottom: 16px"><a name="method50"></a><a name="m_terminate"></a><a name="k_52"></a><p><b>Signature</b>: void <b> terminate </b></p><p><b>Description</b>: Method void QThread::terminate()</p></td></tr><tr class="bigrow1"><td><a name="h3-433"></a><h3>terminated</h3></td><td style="padding-bottom: 16px"><a name="method51"></a><a name="m_terminated"></a><a name="k_53"></a><p><b>Signature</b>: <i>[signal] </i>void <b> terminated </b></p><p><b>Description</b>: Signal declaration for QThread::terminated()</p><p><p>
+You can bind a procedure to this signal.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'terminated'. This is the getter.<br>The object exposes a writable attribute 'terminated'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-440"></a><h3>timerEvent</h3></td><td style="padding-bottom: 16px"><a name="method52"></a><a name="m_timerEvent"></a><a name="k_54"></a><p><b>Signature</b>: void <b> timerEvent </b> (<a href="class_QTimerEvent.html">QTimerEvent</a> ptr arg1)</p><p><b>Description</b>: Virtual method void QThread::timerEvent(QTimerEvent *)</p><p><p>
+This method can be reimplemented in a derived class.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-446"></a><h3>tr</h3></td><td style="padding-bottom: 16px"><a name="method53"></a><a name="m_tr"></a><a name="k_55"></a><p><b>(1) Signature</b>: <i>[static] </i>string <b> tr </b> (string s, string c = 0)</p><p><b>Description</b>: Static method QString QThread::tr(const char *s, const char *c)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method54"></a><a name="m_tr"></a><a name="k_56"></a><p><b>(2) Signature</b>: <i>[static] </i>string <b> tr </b> (string s, string c, int n)</p><p><b>Description</b>: Static method QString QThread::tr(const char *s, const char *c, int n)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-457"></a><h3>trUtf8</h3></td><td style="padding-bottom: 16px"><a name="method55"></a><a name="m_trUtf8"></a><a name="k_57"></a><p><b>(1) Signature</b>: <i>[static] </i>string <b> trUtf8 </b> (string s, string c = 0)</p><p><b>Description</b>: Static method QString QThread::trUtf8(const char *s, const char *c)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method56"></a><a name="m_trUtf8"></a><a name="k_58"></a><p><b>(2) Signature</b>: <i>[static] </i>string <b> trUtf8 </b> (string s, string c, int n)</p><p><b>Description</b>: Static method QString QThread::trUtf8(const char *s, const char *c, int n)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-468"></a><h3>usleep</h3></td><td style="padding-bottom: 16px"><a name="method57"></a><a name="m_usleep"></a><a name="k_59"></a><p><b>Signature</b>: <i>[static] </i>void <b> usleep </b> (unsigned long arg1)</p><p><b>Description</b>: Method void QThread::usleep(unsigned long int)</p><p><p>
+This method is protected and can only be called from inside a derived class.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-474"></a><h3>wait</h3></td><td style="padding-bottom: 16px"><a name="method58"></a><a name="m_wait"></a><a name="k_60"></a><p><b>Signature</b>: bool <b> wait </b> (unsigned long time = ULONG_MAX)</p><p><b>Description</b>: Method bool QThread::wait(unsigned long int time)</p></td></tr><tr class="bigrow1"><td><a name="h3-478"></a><h3>yieldCurrentThread</h3></td><td style="padding-bottom: 16px"><a name="method59"></a><a name="m_yieldCurrentThread"></a><a name="k_61"></a><p><b>Signature</b>: <i>[static] </i>void <b> yieldCurrentThread </b></p><p><b>Description</b>: Static method void QThread::yieldCurrentThread()</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr></table></body>

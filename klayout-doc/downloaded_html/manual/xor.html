@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="advanced.html">Advanced Topics</a> » The XOR Tool</p><h1>The XOR Tool</h1><a name="k_1"></a><a name="k_2"></a><p>
+  The XOR tool performs a geometrical XOR (also ANOTB and BNOTA for asymmetric differences) on two layouts by performing the respective boolean operations layer by layer.
+  The XOR tool is started using &quot;XOR Tool&quot; from the &quot;Tools&quot; menu). 
+  Currently, the tool compares all or just the visible layers. Currently, it compares layers from one layout vs. the identical layers from
+  the other layout.
+  </p><p>
+  The current implementation employs a flat XOR processor. This limits the application somewhat to small and medium sized layouts and does not 
+  make use of hierarchy, which basically excludes applications for very hierarchical layouts (i.e. memory arrays).
+  The memory footprint associated with the flat approach can be mitigated by using the tiling feature which performs the operation
+  on a tile with limited size. This does not reduce the run times but the memory requirements.
+  </p><p>
+  The XOR tool allows specification of tolerances. Basically a tolerance is an undersizing step following the boolean operation. This way, small markers can be suppressed.
+  This is particular useful to remove markers resulting from tiny differences between the layouts being compared.
+  Multiple tolerances can be specified. In that case, multiple undersize steps are performed to create sets of layers with different 
+  tolerances each. For example, a tolerance specification of &quot;0,0.001,0.005,0.010&quot; will create four sets (marker categories) containing all difference
+  markers and others for markers indicating differences larger than 1nm, 5nm and 10nm.
+  </p><p>
+  Tiling can be enabled by entering a tile size into the entry box. For semi-flat layouts such as standard cell blocks, a tile size
+  of 1000 micron is a good starting point. The choice of the tile size mainly determines memory requirements.
+  </p><p>
+  The XOR tool allows sending the output either to a marker database or to another or one of the input layouts. The mode can be selected
+  with the &quot;Output&quot; drop-down box. If output is sent to one of the original inputs, it is mandatory to specify a layer offset which maps the 
+  original layer to a new layer. An offset of &quot;1000/0&quot; for example means, that differences between shapes on layer &quot;16/0&quot; will be sent to &quot;1016/0&quot; for the first tolerance
+  category and &quot;2016/0&quot; for the second.
+  </p><p>
+  Finally, the XOR can be confined to a region. This saves time if differences in parts of the layout are 
+  of interest. To select a region use the drop-down box next to &quot;From region&quot;:
+  </p><ul><li><b>All:</b> Do an XOR on the whole area (default)</li><li><b>Visible region:</b> Confine the XOR to the visible part of the layouts</li><li><b>Clipped to ruler:</b> Draw one or many rulers to specify the region to which the
+      XOR shall be confined. Each ruler specifies a region given be the extension of the ruler.
+      If you use a box-type ruler, the ruler gives a better visualization of the region</li></ul></body>

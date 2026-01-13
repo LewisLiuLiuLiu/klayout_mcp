@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="basic.html">KLayout Basics</a> » Using Landmarks To Align Images</p><h1>Using Landmarks To Align Images</h1><a name="k_1"></a><a name="k_2"></a><a name="k_3"></a><p>
+  &quot;Landmarks&quot; are arbitrary positions in the image. You can define such positions graphically in an image
+  and then, within the layout view, use the defined landmarks as handles to align an image with a layout.
+  Depending on the number of landmarks defined, you can use this feature to compensate the shift of an image,
+  rotation, shear or even perspective distortion. 
+  </p><p>
+  Landmarks are defined in the landmark editor. Open the landmark editor by pressing the &quot;Define&quot; button
+  in the image properties dialogs.
+  </p><p>
+  The landmarks editor shows the image in the left panel and a list of the landmarks already defined 
+  int the right panel. You can zoom around the image view using the same methods than in KLayout's
+  layout view (mouse wheel, middle mouse button, zoom box with right mouse button).
+  </p><p>
+  To add a landmark choose &quot;Add&quot; mode. Then click at the desired position of the new
+  landmark. It will be shown in the image as a small target cross symbol. 
+  To delete a landmark, choose &quot;Delete&quot; mode and click on the landmark to delete.
+  You can also select a landmark from the list and enter Delete mode. In that case,
+  the currently selected landmarks are deleted. 
+  </p><p>
+  To move a landmark, enter &quot;Move&quot; mode and move the landmark. Please note that the
+  move operations follows KLayouts &quot;pick and place&quot; philosophy, so you have to click
+  with the mouse twice: once to pick the landmark and second to drop it. The advantage
+  of this approach is that you can zoom while dragging the landmark.
+  </p><p>
+  It does not make much sense to define more than 4 landmarks because for more
+  the transformation derived from the landmarks is overdetermined. For best 
+  accuracy it is important to select landmark positions that span a large region.
+  In particular, landmarks should not be too close and three landmarks should
+  not form a line.
+  </p><p>
+  Dependent on the number of landmarks, KLayout can adjust the following 
+  parameters of the image:
+  </p><ul><li><b>1 Landmark</b>: displacement</li><li><b>2 Landmarks</b>: displacement, rotation and magnification</li><li><b>3 Landmarks</b>: displacement, rotation, magnification and shear</li><li><b>4 Landmarks</b>: displacement, rotation, magnification, shear and perspective distortion</li></ul><p>
+  Once the landmarks are defined, they can be used to adjust the image's display transformation.
+  To do so, enter &quot;Move&quot; move in KLayout. When the mouse is over the image, the landmark symbols are 
+  shown and can be picked with the mouse. When you pick up a landmark and move the mouse, KLayout will
+  adjust the image transformation and display the image frame according to the new transformation.
+  When you drop the landmark, the image will be transformed accordingly.
+  </p><p>
+  Depending on the number of landmarks, KLayout can adjust either some or all transformation parameters
+  such as displacement, angle etc. such that the other landmarks stay on the same position. 
+  In some cases that may not be desired. For example, if four landmarks are defined and one of them
+  is moved, the result may be an extreme perspective distortion. Usually one would do a coarse adjustment
+  by roughly adjusting the position and magnification and use the perspective transformation only to 
+  fine-adjust the image finally. 
+  </p><p>
+  Hence, KLayout allows reduction of the degree of freedom it has when adjusting the transformation.
+  While you drag a landmark, you can use these modifier keys:
+  </p><ul><li><b>Shift</b>: Only adjust displacement</li><li><b>Ctrl</b>: Adjust displacement, rotation and magnification</li><li><b>Shift+Ctrl</b>: Adjust displacement, rotation, magnification and shear</li></ul></body>

@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="basic.html">KLayout Basics</a> » Removing And Adding Layers To The Layer Set</p><h1>Removing And Adding Layers To The Layer Set</h1><a name="k_1"></a><a name="k_2"></a><a name="k_3"></a><p>
+  The layers shown in the layer list are rather &quot;pointers&quot; to the actual
+  layout layers and not representing the actual layers. Because of this, these
+  layers are more precisely referred to as &quot;views&quot;. Layers can be removed and
+  created again without affecting the actual layout data.
+  </p><p>
+  To create a layer, choose &quot;Insert View&quot; from the layer context menu (right 
+  mouse button click on the layer list). Then, an input dialog prompts for the
+  source specification. The source specification tells, from which actual data
+  layer to take the displayed data from. The most simple form of a source 
+  specification is &quot;layer/datatype&quot; (i.e. &quot;5/0&quot;) or the layer name, if an OASIS
+  layer name is present. This specification can be enhanced by a layout index.
+  The first layout loaded in the panel is referred to which &quot;@1&quot; or by omitting 
+  this specification. The source specification &quot;10/5@2&quot; therefore refers to layer
+  10, datatype 5 of the second layout loaded in the panel.
+  </p><p>
+  Source specifications can be wildcarded. That means, either layer, datatype
+  or layout index can be specified by &quot;*&quot;. In this case, such a layer must
+  be contained in a group and the group parent must provide the missing specifications.
+  For example, if a layer is specified &quot;10/*&quot; and the parent is specified &quot;*/5&quot;, the
+  effective layer looked for will be &quot;10/5&quot;. Unlike the behaviour for the display
+  styles, the children override (or specialize) the parent's definition in the 
+  case of the source specification.
+  </p><p>
+  The layer list can be cleaned up to remove layer views that do not correspond to
+  actual layout layers using the function &quot;Clean up views&quot; from the context menu.
+  Similar, layers that are present in the layout but for which there is no view can
+  be added using the &quot;Add other views&quot; method.
+  </p></body>

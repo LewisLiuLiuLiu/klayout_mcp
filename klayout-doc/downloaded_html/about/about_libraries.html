@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Various Topics</a> » About Libraries</p><h1>About Libraries</h1><a name="k_1"></a><a name="k_2"></a><p>
+  Starting with version 0.22, KLayout offers a library concept. 
+  Libraries are a way to import cell layout into a layout from the outside and
+  thus a convenient way to provide standard building blocks for the layout. 
+  Using a cell from a library is easy: when asked for a cell, select
+  the library where to take the cell from and choose a cell from that
+  library. 
+  </p><p>
+  Libraries are basically just foreign layouts that are virtually linked
+  to the current layout. When a cell is imported from a library, it is 
+  copied into the current layout, so that the current layout by itself 
+  is a valid entity.
+  </p><p>
+  When a layout containing library references is saved, KLayout stores
+  some meta information in that file which allows it to restore the
+  library links and related information.
+  For GDS, that meta information is stored in a separate top cell. For OASIS,
+  the meta information is stored in special per-cell properties.
+  For other formats, the meta information is not stored currently.
+  </p><p>
+  Libraries can be provided in several ways:
+  </p><ul><li><p><b>As ordinary layout files:</b> 
+      Such libraries are simple layout files (GDS, OASIS or other support format). KLayout looks up
+      those libraries in the &quot;libraries&quot; subfolders of the search path and gathers all layout files
+      it finds there into the library repository.</p><p>The search path usually includes the installation site (where the KLayout executable resides)
+      and the application folder (i.e. &quot;~/.klayout&quot; on Linux). Hence libraries can be installed
+      locally (i.e. in &quot;~/.klayout/libraries&quot;) or globally (at the installation site). 
+      </p><p>
+      For GDS files, the library name will be the LIBNAME of the GDS file. Otherwise it will be the
+      name of the library file minus the extension.
+      </p></li><li><b>Coded libraries:</b>
+      Such libraries are provided by code, either through shared objects/DLL's or through Ruby code.
+      Basically such code has to provide a layout object containing the library cells. 
+      A coded library can also provide PCells (parametrized cells) as library components.
+      Sell <a href="about_pcells.html">About PCells</a> for details about parametrized cells.
+    </li></ul><p>
+  Starting with version 0.25, libraries can be provides through packages. This means, they can be downloaded from some
+  repository and can be managed within the package manager. Library installation is very simple
+  this way. Library deinstallation too. See <a href="packages.html">About Packages</a> for details
+  about packages.
+  </p></body>

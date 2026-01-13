@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class LayerPropertiesIterator</p><h1>API reference - Class LayerPropertiesIterator</h1><property value="lay" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_lay.html">lay</a></p><p><b>Description</b>: Layer properties iterator</p><ul><li><a href="#h2-12">Public constructors</a></li><li><a href="#h2-17">Public methods</a></li><li><a href="#h2-74">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-85">Detailed description</a></li></ul><p></p><p>This iterator provides a flat view for the layers in the layer tree if used with the next method. In this mode it will descend into the hierarchy and deliver node by node as a linear (flat) sequence.</p><p>The iterator can also be used to navigate through the node hierarchy using <a href="#m_next_sibling">next_sibling</a>, <a href="#m_down_first_child">down_first_child</a>, <a href="#m_parent">parent</a> etc.</p><p>The iterator also plays an important role for manipulating the layer properties tree, i.e. by specifying insertion points in the tree for the <a href="class_LayoutView.html">LayoutView</a> class.
+</p><a name="h2-12"></a><h2>Public constructors</h2><table><tr class="row0"><td>new LayerPropertiesIterator ptr</td><td><b><a href="#method25">new</a></b></td><td></td><td>Creates a new object of this class</td></tr></table><a name="h2-17"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method0">!=</a></b></td><td>(const LayerPropertiesIterator other)</td><td>Inequality</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method1">&lt;</a></b></td><td>(const LayerPropertiesIterator other)</td><td>Comparison</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method2">==</a></b></td><td>(const LayerPropertiesIterator other)</td><td>Equality</td></tr><tr class="row1"><td><i>[const]</i></td><td>LayerPropertiesIterator ptr</td><td><b><a href="#method3">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method4">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method6">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method7">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method9">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">assign</a></b></td><td>(const LayerPropertiesIterator other)</td><td>Assigns another object to self</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method11">at_end?</a></b></td><td></td><td>At-the-end property</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method12">at_top?</a></b></td><td></td><td>At-the-top property</td></tr><tr class="row1"><td><i>[const]</i></td><td>unsigned long</td><td><b><a href="#method13">child_index</a></b></td><td></td><td>Returns the index of the child within the parent</td></tr><tr class="row0"><td><i>[const]</i></td><td>LayerPropertiesNodeRef</td><td><b><a href="#method15">current</a></b></td><td></td><td>Returns a reference to the layer properties node that the iterator points to</td></tr><tr class="row1"><td></td><td>LayerPropertiesIterator</td><td><b><a href="#method18">down_first_child</a></b></td><td></td><td>Move to the first child</td></tr><tr class="row0"><td></td><td>LayerPropertiesIterator</td><td><b><a href="#method19">down_last_child</a></b></td><td></td><td>Move to the last child</td></tr><tr class="row1"><td><i>[const]</i></td><td>new LayerPropertiesIterator ptr</td><td><b><a href="#method20">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row0"><td><i>[const]</i></td><td>LayerPropertiesIterator</td><td><b><a href="#method21">first_child</a></b></td><td></td><td>Returns the iterator pointing to the first child</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method23">is_null?</a></b></td><td></td><td>&quot;is null&quot; predicate</td></tr><tr class="row0"><td><i>[const]</i></td><td>LayerPropertiesIterator</td><td><b><a href="#method24">last_child</a></b></td><td></td><td>Returns the iterator pointing behind the last child</td></tr><tr class="row1"><td></td><td>LayerPropertiesIterator</td><td><b><a href="#method26">next</a></b></td><td></td><td>Increment operator</td></tr><tr class="row0"><td></td><td>LayerPropertiesIterator</td><td><b><a href="#method27">next_sibling</a></b></td><td>(long n)</td><td>Move to the next sibling by a given distance</td></tr><tr class="row1"><td><i>[const]</i></td><td>unsigned long</td><td><b><a href="#method28">num_siblings</a></b></td><td></td><td>Return the number of siblings</td></tr><tr class="row0"><td><i>[const]</i></td><td>LayerPropertiesIterator</td><td><b><a href="#method29">parent</a></b></td><td></td><td>Returns the iterator pointing to the parent node</td></tr><tr class="row1"><td></td><td>LayerPropertiesIterator</td><td><b><a href="#method30">to_sibling</a></b></td><td>(unsigned long n)</td><td>Move to the sibling with the given index</td></tr><tr class="row0"><td></td><td>LayerPropertiesIterator</td><td><b><a href="#method31">up</a></b></td><td></td><td>Move up</td></tr></table><a name="h2-74"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method14">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method16">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method17">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method22">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-85"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-86"></a><h3>!=</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_!="></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i>bool <b> != </b> (const <a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a> other)</p><p><b>Description</b>: Inequality</p><table class="layout-table"><tr><td><b>other</b>:</td><td>The other object to compare against</td></tr></table></td></tr><tr class="bigrow1"><td><a name="h3-93"></a><h3>&lt;</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_&lt;"></a><a name="k_3"></a><p><b>Signature</b>: <i>[const] </i>bool <b> &lt; </b> (const <a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a> other)</p><p><b>Description</b>: Comparison</p><table class="layout-table"><tr><td><b>other</b>:</td><td>The other object to compare against</td></tr><tr><td><b>Returns</b>:</td><td>true, if self points to an object that comes before other</td></tr></table></td></tr><tr class="bigrow0"><td><a name="h3-101"></a><h3>==</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m_=="></a><a name="k_4"></a><p><b>Signature</b>: <i>[const] </i>bool <b> == </b> (const <a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a> other)</p><p><b>Description</b>: Equality</p><table class="layout-table"><tr><td><b>other</b>:</td><td>The other object to compare against</td></tr></table><p><p></p><p>Returns true, if self and other point to the same layer properties node. Caution: this does not imply that both layer properties nodes sit in the same tab. Just their position in the tree is compared.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-109"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__const_cast"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i><a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-115"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__create"></a><a name="k_6"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-121"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__destroy"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-128"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__destroyed?"></a><a name="k_8"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-135"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__is_const_object?"></a><a name="k_9"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-142"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__manage"></a><a name="k_10"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-148"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m__unmanage"></a><a name="k_11"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-154"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_assign"></a><a name="k_12"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow1"><td><a name="h3-158"></a><h3>at_end?</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_at_end?"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i>bool <b> at_end? </b></p><p><b>Description</b>: At-the-end property</p><p><p></p><p>This predicate is true if the iterator is at the end of either all elements or
+at the end of the child list (if <a href="#m_down_last_child">down_last_child</a> or <a href="#m_down_first_child">down_first_child</a> is used to iterate).
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-165"></a><h3>at_top?</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_at_top?"></a><a name="k_14"></a><p><b>Signature</b>: <i>[const] </i>bool <b> at_top? </b></p><p><b>Description</b>: At-the-top property</p><p><p></p><p>This predicate is true if there is no parent node above the node addressed by self.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-171"></a><h3>child_index</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_child_index"></a><a name="k_15"></a><p><b>Signature</b>: <i>[const] </i>unsigned long <b> child_index </b></p><p><b>Description</b>: Returns the index of the child within the parent</p><p><p></p><p>This method returns the index of that the properties node the iterator points to in the list
+of children of its parent. If the element does not have a parent, the 
+index of the element in the global list is returned.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-179"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_create"></a><a name="k_16"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-186"></a><h3>current</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_current"></a><a name="k_17"></a><p><b>Signature</b>: <i>[const] </i><a href="class_LayerPropertiesNodeRef.html">LayerPropertiesNodeRef</a><b> current </b></p><p><b>Description</b>: Returns a reference to the layer properties node that the iterator points to</p><p><p></p><p>Starting with version 0.25, the returned object can be manipulated and the changes will be reflected in the view immediately.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-192"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_destroy"></a><a name="k_18"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-200"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_destroyed?"></a><a name="k_19"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-208"></a><h3>down_first_child</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_down_first_child"></a><a name="k_20"></a><p><b>Signature</b>: <a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a><b> down_first_child </b></p><p><b>Description</b>: Move to the first child</p><p><p></p><p>This method moves to the first child of the current element. If there is
+no child, <a href="#m_at_end?">at_end?</a> will be true. Even then, the iterator is sitting at the 
+the child level and <a href="#m_up">up</a> can be used to move back.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-216"></a><h3>down_last_child</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_down_last_child"></a><a name="k_21"></a><p><b>Signature</b>: <a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a><b> down_last_child </b></p><p><b>Description</b>: Move to the last child</p><p><p></p><p>This method moves behind the last child of the current element. <a href="#m_at_end?">at_end?</a> will be
+true then. Even then, the iterator points to the child level and <a href="#m_up">up</a> 
+can be used to move back.</p><p>Despite the name, the iterator does not address the last child, but the position after that child. To actually get the iterator for the last child, use down_last_child and next_sibling(-1).</p></p></td></tr><tr class="bigrow0"><td><a name="h3-223"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_dup"></a><a name="k_22"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-228"></a><h3>first_child</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_first_child"></a><a name="k_23"></a><p><b>Signature</b>: <i>[const] </i><a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a><b> first_child </b></p><p><b>Description</b>: Returns the iterator pointing to the first child</p><p><p></p><p>If there is no children, the iterator will be a valid insert point but not
+point to any valid element. It will report <a href="#m_at_end?">at_end?</a> = true.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-235"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_is_const_object?"></a><a name="k_24"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-243"></a><h3>is_null?</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_is_null?"></a><a name="k_25"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_null? </b></p><p><b>Description</b>: &quot;is null&quot; predicate</p><p><p></p><p>This predicate is true if the iterator is &quot;null&quot;. Such an iterator can be
+created with the default constructor or by moving a top-level iterator up.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-250"></a><h3>last_child</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_last_child"></a><a name="k_26"></a><p><b>Signature</b>: <i>[const] </i><a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a><b> last_child </b></p><p><b>Description</b>: Returns the iterator pointing behind the last child</p><p><p></p><p>The iterator will be a valid insert point but not
+point to any valid element. It will report <a href="#m_at_end?">at_end?</a> = true.</p><p>Despite the name, the iterator does not address the last child, but the position after that child. To actually get the iterator for the last child, use last_child and call next_sibling(-1) on that iterator.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-257"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_new"></a><a name="k_27"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new object of this class</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-262"></a><h3>next</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_next"></a><a name="k_28"></a><p><b>Signature</b>: <a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a><b> next </b></p><p><b>Description</b>: Increment operator</p><p><p></p><p>The iterator will be incremented to point to the next layer entry. It will descend into the hierarchy to address child nodes if there are any.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-267"></a><h3>next_sibling</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_next_sibling"></a><a name="k_29"></a><p><b>Signature</b>: <a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a><b> next_sibling </b> (long n)</p><p><b>Description</b>: Move to the next sibling by a given distance</p><p><p></p><p>The iterator is moved to the nth next sibling of the current element. Use negative distances to move backward.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-273"></a><h3>num_siblings</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_num_siblings"></a><a name="k_30"></a><p><b>Signature</b>: <i>[const] </i>unsigned long <b> num_siblings </b></p><p><b>Description</b>: Return the number of siblings</p><p><p></p><p>The count includes the current element. More precisely, this property delivers the number of children of the current node's parent.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-278"></a><h3>parent</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_parent"></a><a name="k_31"></a><p><b>Signature</b>: <i>[const] </i><a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a><b> parent </b></p><p><b>Description</b>: Returns the iterator pointing to the parent node</p><p><p></p><p>This method will return an iterator pointing to the parent element.
+If there is no parent, the returned iterator will be a null iterator.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-285"></a><h3>to_sibling</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_to_sibling"></a><a name="k_32"></a><p><b>Signature</b>: <a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a><b> to_sibling </b> (unsigned long n)</p><p><b>Description</b>: Move to the sibling with the given index</p><p><p></p><p>The iterator is moved to the nth sibling by selecting the nth child in the current node's parent.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-291"></a><h3>up</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_up"></a><a name="k_33"></a><p><b>Signature</b>: <a href="class_LayerPropertiesIterator.html">LayerPropertiesIterator</a><b> up </b></p><p><b>Description</b>: Move up</p><p><p></p><p>The iterator is moved to point to the current element's parent.
+If the current element does not have a parent, the iterator will
+become a null iterator.
+</p></p></td></tr></table></body>

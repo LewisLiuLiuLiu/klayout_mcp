@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class DeepShapeStore</p><h1>API reference - Class DeepShapeStore</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: An opaque layout heap for the deep region processor</p><ul><li><a href="#h2-19">Public constructors</a></li><li><a href="#h2-24">Public methods</a></li><li><a href="#h2-97">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-108">Detailed description</a></li></ul><p></p><p>This class is used for keeping intermediate, hierarchical data for the deep region processor. It is used in conjunction with the region constructor to create a deep (hierarchical) region.
+<pre>
+layout = ... # a layout
+layer = ...  # a layer
+cell = ...   # a cell (initial cell for the deep region)
+dss = RBA::DeepShapeStore::new
+region = RBA::Region::new(cell.begin(layer), dss)
+</pre></p><p>The DeepShapeStore object also supplies some configuration options for the operations acting on the deep regions. See for example <a href="#m_threads=">threads=</a>.</p><p>This class has been introduced in version 0.26.
+</p><a name="h2-19"></a><h2>Public constructors</h2><table><tr class="row0"><td>new DeepShapeStore ptr</td><td><b><a href="#method22">new</a></b></td><td></td><td>Creates a new object of this class</td></tr></table><a name="h2-24"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>DeepShapeStore ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">add_breakout_cell</a></b></td><td>(unsigned int layout_index,<br>unsigned int[] cell_index)</td><td>Adds a cell indexe to the breakout cell list for the given layout inside the store</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">add_breakout_cells</a></b></td><td>(unsigned int layout_index,<br>unsigned int[] cells)</td><td>Adds cell indexes to the breakout cell list for the given layout inside the store</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method9">add_breakout_cells</a></b></td><td>(unsigned int layout_index,<br>string pattern)</td><td>Adds cells (given by a cell name pattern) to the breakout cell list for the given layout inside the store</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">add_breakout_cells</a></b></td><td>(string pattern)</td><td>Adds cells (given by a cell name pattern) to the breakout cell list to all layouts inside the store</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method11">clear_breakout_cells</a></b></td><td>(unsigned int layout_index)</td><td>Clears the breakout cells</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method12">clear_breakout_cells</a></b></td><td></td><td>Clears the breakout cells</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method17">is_singular?</a></b></td><td></td><td>Gets a value indicating whether there is a single layout variant</td></tr><tr class="row0"><td><i>[const]</i></td><td>double</td><td><b><a href="#method18">max_area_ratio</a></b></td><td></td><td>Gets the max. area ratio.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method19">max_area_ratio=</a></b></td><td>(double ratio)</td><td>Sets the max. area ratio for bounding box vs. polygon area</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned long</td><td><b><a href="#method20">max_vertex_count</a></b></td><td></td><td>Gets the maximum vertex count.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method21">max_vertex_count=</a></b></td><td>(unsigned long count)</td><td>Sets the maximum vertex count default value</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method23">pop_state</a></b></td><td></td><td>Restores the store's state on the state state</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method24">push_state</a></b></td><td></td><td>Pushes the store's state on the state state</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method25">reject_odd_polygons</a></b></td><td></td><td>Gets a flag indicating whether to reject odd polygons.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method26">reject_odd_polygons=</a></b></td><td>(bool count)</td><td>Sets a flag indicating whether to reject odd polygons</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method27">set_breakout_cells</a></b></td><td>(unsigned int layout_index,<br>unsigned int[] cells)</td><td>Sets the breakout cell list (as cell indexes) for the given layout inside the store</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method28">set_breakout_cells</a></b></td><td>(unsigned int layout_index,<br>string pattern)</td><td>Sets the breakout cell list (as cell name pattern) for the given layout inside the store</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method29">set_breakout_cells</a></b></td><td>(string pattern)</td><td>Sets the breakout cell list (as cell name pattern) for the all layouts inside the store</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method30">subcircuit_hierarchy_for_nets</a></b></td><td></td><td>Gets a value indicating whether to build a subcircuit hierarchy per net</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method31">subcircuit_hierarchy_for_nets=</a></b></td><td>(bool value)</td><td>Sets a value indicating whether to build a subcircuit hierarchy per net</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method32">text_enlargement</a></b></td><td></td><td>Gets the text enlargement value.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method33">text_enlargement=</a></b></td><td>(int value)</td><td>Sets the text enlargement value</td></tr><tr class="row1"><td><i>[const]</i></td><td>variant</td><td><b><a href="#method34">text_property_name</a></b></td><td></td><td>Gets the text property name.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method35">text_property_name=</a></b></td><td>(variant name)</td><td>Sets the text property name.</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method36">threads</a></b></td><td></td><td>Gets the number of threads.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method37">threads=</a></b></td><td>(int n)</td><td>Sets the number of threads to allocate for the hierarchical processor</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method38">wants_all_cells</a></b></td><td></td><td>Gets a flag wether to copy the full hierarchy for the working layouts</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method39">wants_all_cells=</a></b></td><td>(bool flag)</td><td>Sets a flag wether to copy the full hierarchy for the working layouts</td></tr></table><a name="h2-97"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method13">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method14">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method15">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method16">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-108"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-109"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_DeepShapeStore.html">DeepShapeStore</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-115"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-121"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroy"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-128"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroyed?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-135"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__is_const_object?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-142"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__manage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-148"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__unmanage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-154"></a><h3>add_breakout_cell</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_add_breakout_cell"></a><a name="k_9"></a><p><b>Signature</b>: void <b> add_breakout_cell </b> (unsigned int layout_index, unsigned int[] cell_index)</p><p><b>Description</b>: Adds a cell indexe to the breakout cell list for the given layout inside the store</p><p><p>
+See <a href="#m_clear_breakout_cells">clear_breakout_cells</a> for an explanation of breakout cells.</p><p>This method has been added in version 0.26.1
+</p></p></td></tr><tr class="bigrow0"><td rowspan="3"><a name="h3-161"></a><h3>add_breakout_cells</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_add_breakout_cells"></a><a name="k_10"></a><p><b>(1) Signature</b>: void <b> add_breakout_cells </b> (unsigned int layout_index, unsigned int[] cells)</p><p><b>Description</b>: Adds cell indexes to the breakout cell list for the given layout inside the store</p><p><p>
+See <a href="#m_clear_breakout_cells">clear_breakout_cells</a> for an explanation of breakout cells.</p><p>This method has been added in version 0.26.1
+</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_add_breakout_cells"></a><a name="k_11"></a><p><b>(2) Signature</b>: void <b> add_breakout_cells </b> (unsigned int layout_index, string pattern)</p><p><b>Description</b>: Adds cells (given by a cell name pattern) to the breakout cell list for the given layout inside the store</p><p><p>
+See <a href="#m_clear_breakout_cells">clear_breakout_cells</a> for an explanation of breakout cells.</p><p>This method has been added in version 0.26.1
+</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_add_breakout_cells"></a><a name="k_12"></a><p><b>(3) Signature</b>: void <b> add_breakout_cells </b> (string pattern)</p><p><b>Description</b>: Adds cells (given by a cell name pattern) to the breakout cell list to all layouts inside the store</p><p><p>
+See <a href="#m_clear_breakout_cells">clear_breakout_cells</a> for an explanation of breakout cells.</p><p>This method has been added in version 0.26.1
+</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-180"></a><h3>clear_breakout_cells</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_clear_breakout_cells"></a><a name="k_13"></a><p><b>(1) Signature</b>: void <b> clear_breakout_cells </b> (unsigned int layout_index)</p><p><b>Description</b>: Clears the breakout cells</p><p><p>
+Breakout cells are a feature by which hierarchy handling can be disabled for specific cells. If cells are specified as breakout cells, they don't interact with neighbor or parent cells, hence are virtually isolated. Breakout cells are useful to shortcut hierarchy evaluation for cells which are otherwise difficult to handle. An example are memory array cells with overlaps to their neighbors: a precise handling of such cells would generate variants and the boundary of the array. Although precise, this behavior leads to partial flattening and propagation of shapes. In consequence, this will also result in wrong device detection in LVS applications. In such cases, these array cells can be declared 'breakout cells' which makes them isolated entities and variant generation does not happen.</p><p>See also <a href="#m_set_breakout_cells">set_breakout_cells</a> and <a href="#m_add_breakout_cells">add_breakout_cells</a>.</p><p>This method has been added in version 0.26.1
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_clear_breakout_cells"></a><a name="k_14"></a><p><b>(2) Signature</b>: void <b> clear_breakout_cells </b></p><p><b>Description</b>: Clears the breakout cells</p><p><p>
+See the other variant of <a href="#m_clear_breakout_cells">clear_breakout_cells</a> for details.</p><p>This method has been added in version 0.26.1
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-193"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_create"></a><a name="k_15"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-200"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_destroy"></a><a name="k_16"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-208"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_destroyed?"></a><a name="k_17"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-216"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_is_const_object?"></a><a name="k_18"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-224"></a><h3>is_singular?</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_is_singular?"></a><a name="k_19"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_singular? </b></p><p><b>Description</b>: Gets a value indicating whether there is a single layout variant</p><p><p></p><p>Specifically for network extraction, singular DSS objects are required. Multiple layouts may be present if different sources of layouts have been used. Such DSS objects are not usable for network extraction.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-229"></a><h3>max_area_ratio</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_max_area_ratio"></a><a name="k_20"></a><p><b>Signature</b>: <i>[const] </i>double <b> max_area_ratio </b></p><p><b>Description</b>: Gets the max. area ratio.</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'max_area_ratio'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-234"></a><h3>max_area_ratio=</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_max_area_ratio="></a><a name="k_21"></a><p><b>Signature</b>: void <b> max_area_ratio= </b> (double ratio)</p><p><b>Description</b>: Sets the max. area ratio for bounding box vs. polygon area</p><p><p></p><p>This parameter is used to simplify complex polygons. It is used by
+create_polygon_layer with the default parameters. It's also used by
+boolean operations when they deliver their output.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'max_area_ratio'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-243"></a><h3>max_vertex_count</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_max_vertex_count"></a><a name="k_22"></a><p><b>Signature</b>: <i>[const] </i>unsigned long <b> max_vertex_count </b></p><p><b>Description</b>: Gets the maximum vertex count.</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'max_vertex_count'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-248"></a><h3>max_vertex_count=</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_max_vertex_count="></a><a name="k_23"></a><p><b>Signature</b>: void <b> max_vertex_count= </b> (unsigned long count)</p><p><b>Description</b>: Sets the maximum vertex count default value</p><p><p></p><p>This parameter is used to simplify complex polygons. It is used by
+create_polygon_layer with the default parameters. It's also used by
+boolean operations when they deliver their output.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'max_vertex_count'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-257"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_new"></a><a name="k_24"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_DeepShapeStore.html">DeepShapeStore</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new object of this class</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-262"></a><h3>pop_state</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_pop_state"></a><a name="k_25"></a><p><b>Signature</b>: void <b> pop_state </b></p><p><b>Description</b>: Restores the store's state on the state state</p><p><p>
+This will restore the state pushed by <a href="#m_push_state">push_state</a>.</p><p>This method has been added in version 0.26.1
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-269"></a><h3>push_state</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_push_state"></a><a name="k_26"></a><p><b>Signature</b>: void <b> push_state </b></p><p><b>Description</b>: Pushes the store's state on the state state</p><p><p>
+This will save the stores state (<a href="#m_threads">threads</a>, <a href="#m_max_vertex_count">max_vertex_count</a>, <a href="#m_max_area_ratio">max_area_ratio</a>, breakout cells ...) on the state stack. <a href="#m_pop_state">pop_state</a> can be used to restore the state.</p><p>This method has been added in version 0.26.1
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-276"></a><h3>reject_odd_polygons</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_reject_odd_polygons"></a><a name="k_27"></a><p><b>Signature</b>: <i>[const] </i>bool <b> reject_odd_polygons </b></p><p><b>Description</b>: Gets a flag indicating whether to reject odd polygons.</p><p><p>
+This attribute has been introduced in version 0.27.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'reject_odd_polygons'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-283"></a><h3>reject_odd_polygons=</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_reject_odd_polygons="></a><a name="k_28"></a><p><b>Signature</b>: void <b> reject_odd_polygons= </b> (bool count)</p><p><b>Description</b>: Sets a flag indicating whether to reject odd polygons</p><p><p></p><p>Some kind of 'odd' (e.g. non-orientable) polygons may spoil the functionality because they cannot be handled properly. By using this flag, the shape store we reject these kind of polygons. The default is 'accept' (without warning).</p><p>This attribute has been introduced in version 0.27.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'reject_odd_polygons'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td rowspan="3"><a name="h3-289"></a><h3>set_breakout_cells</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_set_breakout_cells"></a><a name="k_29"></a><p><b>(1) Signature</b>: void <b> set_breakout_cells </b> (unsigned int layout_index, unsigned int[] cells)</p><p><b>Description</b>: Sets the breakout cell list (as cell indexes) for the given layout inside the store</p><p><p>
+See <a href="#m_clear_breakout_cells">clear_breakout_cells</a> for an explanation of breakout cells.</p><p>This method has been added in version 0.26.1
+</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_set_breakout_cells"></a><a name="k_30"></a><p><b>(2) Signature</b>: void <b> set_breakout_cells </b> (unsigned int layout_index, string pattern)</p><p><b>Description</b>: Sets the breakout cell list (as cell name pattern) for the given layout inside the store</p><p><p>
+See <a href="#m_clear_breakout_cells">clear_breakout_cells</a> for an explanation of breakout cells.</p><p>This method has been added in version 0.26.1
+</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_set_breakout_cells"></a><a name="k_31"></a><p><b>(3) Signature</b>: void <b> set_breakout_cells </b> (string pattern)</p><p><b>Description</b>: Sets the breakout cell list (as cell name pattern) for the all layouts inside the store</p><p><p>
+See <a href="#m_clear_breakout_cells">clear_breakout_cells</a> for an explanation of breakout cells.</p><p>This method has been added in version 0.26.1
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-308"></a><h3>subcircuit_hierarchy_for_nets</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_subcircuit_hierarchy_for_nets"></a><a name="k_32"></a><p><b>Signature</b>: <i>[const] </i>bool <b> subcircuit_hierarchy_for_nets </b></p><p><b>Description</b>: Gets a value indicating whether to build a subcircuit hierarchy per net</p><p><p>
+See <a href="#m_subcircuit_hierarchy_for_nets=">subcircuit_hierarchy_for_nets=</a> for details.</p><p>This attribute has been introduced in version 0.28.4</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'subcircuit_hierarchy_for_nets'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-315"></a><h3>subcircuit_hierarchy_for_nets=</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_subcircuit_hierarchy_for_nets="></a><a name="k_33"></a><p><b>Signature</b>: void <b> subcircuit_hierarchy_for_nets= </b> (bool value)</p><p><b>Description</b>: Sets a value indicating whether to build a subcircuit hierarchy per net</p><p><p></p><p>This flag is used to determine the way, net subcircuit hierarchies are built:
+when true, subcells are created for subcircuits on a net. Otherwise the net
+shapes are produced flat inside the cell they appear on.</p><p>This attribute has been introduced in version 0.28.4</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'subcircuit_hierarchy_for_nets'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-323"></a><h3>text_enlargement</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_text_enlargement"></a><a name="k_34"></a><p><b>Signature</b>: <i>[const] </i>int <b> text_enlargement </b></p><p><b>Description</b>: Gets the text enlargement value.</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'text_enlargement'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-328"></a><h3>text_enlargement=</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_text_enlargement="></a><a name="k_35"></a><p><b>Signature</b>: void <b> text_enlargement= </b> (int value)</p><p><b>Description</b>: Sets the text enlargement value</p><p><p></p><p>If set to a non-negative value, text objects are converted to boxes with the
+given enlargement (width = 2 * enlargement). The box centers are identical
+to the original location of the text.
+If this value is negative (the default), texts are ignored.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'text_enlargement'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-338"></a><h3>text_property_name</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_text_property_name"></a><a name="k_36"></a><p><b>Signature</b>: <i>[const] </i>variant <b> text_property_name </b></p><p><b>Description</b>: Gets the text property name.</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'text_property_name'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-343"></a><h3>text_property_name=</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_text_property_name="></a><a name="k_37"></a><p><b>Signature</b>: void <b> text_property_name= </b> (variant name)</p><p><b>Description</b>: Sets the text property name.</p><p><p></p><p>If set to a non-null variant, text strings are attached to the generated boxes
+as properties with this particular name. This option has an effect only if the
+text_enlargement property is not negative.
+By default, the name is empty.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'text_property_name'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-353"></a><h3>threads</h3></td><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_threads"></a><a name="k_38"></a><p><b>Signature</b>: <i>[const] </i>int <b> threads </b></p><p><b>Description</b>: Gets the number of threads.</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'threads'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-358"></a><h3>threads=</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_threads="></a><a name="k_39"></a><p><b>Signature</b>: void <b> threads= </b> (int n)</p><p><b>Description</b>: Sets the number of threads to allocate for the hierarchical processor</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'threads'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-363"></a><h3>wants_all_cells</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_wants_all_cells"></a><a name="k_40"></a><p><b>Signature</b>: <i>[const] </i>bool <b> wants_all_cells </b></p><p><b>Description</b>: Gets a flag wether to copy the full hierarchy for the working layouts</p><p><p>
+This attribute has been introduced in version 0.28.10.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'wants_all_cells'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-370"></a><h3>wants_all_cells=</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_wants_all_cells="></a><a name="k_41"></a><p><b>Signature</b>: void <b> wants_all_cells= </b> (bool flag)</p><p><b>Description</b>: Sets a flag wether to copy the full hierarchy for the working layouts</p><p><p></p><p>The DeepShapeStore object keeps a copy of the original hierarchy internally for the working layouts.
+By default, this hierarchy is mapping only non-empty cells. While the operations proceed, more cells may need to be added. This conservative approach saves some memory, but the update operations may reduce overall performance. Setting this flag to 'true' switches to a mode where the full hierarchy is copied always. This will take more memory but may save CPU time.</p><p>This attribute has been introduced in version 0.28.10.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'wants_all_cells'. This is the setter.<br></p></td></tr></table></body>

@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="advanced.html">Advanced Topics</a> » Import Other Layout Files</p><h1>Import Other Layout Files</h1><a name="k_1"></a><p>
+  This function can merge other layouts into the layout loaded. Merging means that the hierarchy of the specified layout is
+  inserted into the given layout. Different modes are available that control the way how the hierarchy is merged.
+  This function is available in the &quot;File&quot; menu as &quot;Import/Other File Into Current&quot;.
+  </p><p>
+  The workflow for importing a different layout is this:
+  </p><ul><li>Specify the file to input. At least the file name is required. Additionally, a cell can be specified. In that case,
+        only the cells referred to by the given cell (directly or indirectly) are imported. Reader options can be specified separately 
+        for the import. Reader options are applied the same way than the reader options are used for the standard load function.</li><li>Specify the import mode. The modes are described below.</li><li>Specify the layer mapping. Either the shapes are imported on their original layer or an offset can be used that will be added
+        to the layer to form the target layer of the import. An offset of &quot;1000/0&quot; for example specifies to add 1000 to the layer and
+        use the original datatype.</li><li>Specify an optional transformation. The imported layout will be transformed accordingly. The transformation can be specified explicitly 
+        or with up to three points which are mapped onto each other.</li></ul><p>
+  Four import modes are available that control how the hierarchy of the imported layout is
+  inserted into the existing layout:
+  </p><ul><li><b>Merge</b>: in this mode, the contents of the imported cell will be put into the current cell and
+      the child hierarchy is added below the current cell.</li><li><b>Extra</b>: in this mode,  new top level cells containing the hierarchy tree of the 
+      imported cell or cells will be created. In this mode, multiple cells can be imported
+      if the imported layout contains multiple top cells. Leave the cell specification empty for this.
+    </li><li><b>Instantiate</b>: the imported cell will be instantiated into the current cell as a separate 
+      hierarchy.</li><li><b>Merge hierarchy</b>: The fourth mode is a little bit more complex. Basically it works like 
+      &quot;Merge&quot;, but identifies corresponding cells and merges the contents for the 
+      corresponding imported cells into the original cells. 
+      The algorithm identifies corresponding cells by requiring that the flat 
+      instances of the imported child cell exactly equal the flat instances of the 
+      corresponding original cell (where flat refers to the instances of a cell in 
+      the context of the current cell). This is done by selectively thinning out the 
+      candidate list and finally employing a name similarity measure to resolve 
+      ambiguities.</li></ul><p>
+  The import function will create new cell names using the &quot;$x&quot; suffix to avoid name ambiguities.
+  </p></body>

@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Various Topics</a> » About Technology Management</p><h1>About Technology Management</h1><p>
+  Technology management summarizes features which require a certain interpretation of a layout.
+  In particular, layout layers are assigned a physical meaning, for example via layers or active area
+  layers in CMOS technologies. Since that interpretation often is depending on the technology
+  the product will be fabricated with, the ability to provide multiple setups is summarized
+  as &quot;technology management&quot;.
+  </p><p>
+  A technology setup implements the following aspects:
+  </p><ul><li>Layer mapping: when the layout reader loads a file that for a certain technology, it can 
+      apply a layer mapping, i.e. apply layer names to GDS layers, filter layer etc.
+    </li><li>Layer properties: depending on the technology, the layer display can be configured by
+      providing a technology specific layer properties file.
+    </li><li>Connectivity: the layer stack and the connections made by layers for the net tracer
+      feature.
+    </li><li>Macros: macros associated with the technology. When the corresponding technology is
+      selected (is the one of the current layout), such macros will show up in the menu if they
+      are bound to a menu entry. Otherwise they will be invisible.
+    </li><li>DRC scripts: in the same way, DRC scripts can be associated with a technology.</li><li>Libraries: if a library is associated with a technology, it is shown in the list
+      of available libraries when an instance is created. Library association cannot be
+      edited. Instead, a library installed in the system comes with a technology 
+      association itself.</li><li>File format options: technology specific file reader or writer options can be
+      given. When a layout is saved, it will use the writer options from its technology.
+      When loading a layout, the reader options from the active technology will be used.</li></ul><p>
+  In the future, more aspects may be added to the technology definition.
+  </p><p>
+  There is always one &quot;Default&quot; technology that is used when no technology is 
+  specified.
+  </p><a name="h2-53"></a><h2>Setting up technologies</h2><p>
+  Technologies can be set up using the &quot;Technology Manager&quot; in the &quot;Tools&quot; menu.
+  There is always a &quot;Default&quot; technology which provides the settings when no
+  technology is selected. New technologies can be added or technologies can be
+  deleted using the &quot;+&quot; or &quot;x&quot; buttons below the technology tree.
+  </p><p>
+  A technology has a name (a short string) and a description. The name is used
+  to identify the technology in various places. The description is the human-readable
+  text that is displayed in the technology selection boxes for example. The short name can 
+  be changed by selecting the technology and pressing the &quot;Rename&quot; button or using &quot;Rename&quot;
+  from the technology tree's context menu (right mouse click). The description can be
+  edited on the &quot;General&quot; page.
+  </p><p>
+  In the technology manager, below each technology, the components are shown that define
+  the various aspects of a technology. Beside the &quot;General&quot; aspect (names, descriptions) there
+  is a &quot;Layers&quot; component which defines the layer mapping table and layer properties file and
+  the &quot;Connectivity&quot; component which defines the settings for the net tracer.
+  </p><a name="h2-78"></a><h2>Using technologies</h2><p>
+  When more than the default technology is defined, KLayout provides a drop-down menu in 
+  the tool bar to select the current technology. The current technology is the technology
+  used when new files are loaded. It is also possible to define the technology to be used 
+  on the command line using the &quot;-n&quot; switch (applies to following files and specifies the
+  technology to use by their short name).
+  </p><p>
+  The technology of the currently selected layout is shown in the status bar of the main 
+  window in the left section. It is possible to switch the technology of a layout already 
+  loaded by using the &quot;Layout Properties&quot; dialog from the &quot;File&quot; menu. After switching the
+  technology, the layer properties defined in the technology can be applied and the associated
+  macros or DRC scripts are shown in the menu if they are associated bound to a menu entry or
+  the key binding becomes active if a shortcut is defined for that macro.
+  </p><a name="h2-97"></a><h2>Technologies and macros or DRC scripts</h2><p>
+  Macros or DRC scripts are stored in sub-folders relative to the technology's base path. When 
+  no base path is specified or the base path is invalid, macros or DRC scripts cannot be associated. 
+  KLayout will look search for macros, if a directory called &quot;macros&quot; is present in the 
+  base path. If it finds files with a valid macro suffix there it will associate them with 
+  this technology. The same way, KLayout will look for DRC scripts, if a directory called &quot;drc&quot;
+  is present in the base path.
+  </p><p>
+  Macros and DRC scripts associated with a technology are shown in the technology manager. To edit
+  or debug scripts of macros, use the macro development environment (&quot;Macros/Macro Development&quot;).
+  If a technology has a macros or DRC scripts folder, the macro or DRC scripts tree in the
+  development environment will show a corresponding top-level branch for that technology.
+  </p><p>
+  Multiple technologies can share the same base path - hence it is possible to share macros
+  or DRC scripts between technologies.
+  </p><a name="h2-120"></a><h2>Managing technologies</h2><p>
+  Technologies can be imported and exported to technology files (suffix &quot;.lyt&quot;). This is mainly
+  useful to exchange technology settings between users or technologies.
+  </p><p>
+  Except for the default technology, technologies are kept in 
+  technology folders in KLayout's application path. They are read from 
+  subfolders from the &quot;tech&quot; directories. The technology definition itself
+  is held in a file with extension &quot;.lyt&quot;. The technology folder may have
+  subfolders to hold library files, macros, DRC runsets, LEF files and
+  other pieces of the technology package. 
+  </p><p>
+  Technologies can be managed using packages. Packages are a convenient way to share
+  add-ons between users. Packages can be installed from a common repository
+  and allow easy addition and removal of components. Technologies are one aspect
+  of packages, so it's possible to create packages that contribute one or more
+  technologies. See <a href="packages.html">About Packages</a> for more details.
+  </p></body>

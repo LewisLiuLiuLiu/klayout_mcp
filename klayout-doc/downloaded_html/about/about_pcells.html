@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Various Topics</a> » About PCells</p><h1>About PCells</h1><p>
+  Starting with version 0.22, KLayout offers parametrized cells (PCells).
+  PCells are a feature found in other tools to simplify layout by providing generators
+  for common layout building blocks. Parametrized cells do not contain
+  static layout but are created dynamically by code using a given set of parameters.
+  </p><p>
+  For example, a circle PCell requires two parameters: the layer where the circle
+  should be produced and the radius of the circle to produce. The code is responsible
+  for creating the circle from these parameters.
+  </p><p>
+  Using a PCell is easy: choose the library and the PCell from that library when asked for
+  the cell in the instance options dialog. For PCells, KLayout offers an additional
+  parameters page where it asks for the parameter required by the PCell. The placement
+  of the PCell is done as for simple instances. PCells offer the same instantiation
+  options that normal cells.
+  </p><p>
+  KLayout provides a simple library called &quot;Basic&quot; with some useful basic PCells.
+  See <a href="basic_lib.html">About The Basic Library</a> for more details about that library.
+  </p><p>
+  Unlike other tools, KLayout offers the unique feature of &quot;guiding shapes&quot;. A guiding shape
+  is some kind of &quot;ghost shape&quot; that is not produced as real layout but is present as a 
+  part of the PCell instance. It is drawn in the style of the cell frame but can be edited
+  as a normal shape. In particular, a guiding shape can be manipulated with the properties
+  dialog and the partial edit mode. A special case is a point-like shape which can act 
+  as a handle of the PCell. In move mode, these shapes can be moved to change the parameter
+  related to that handle.
+  </p><p>
+  Another use case for guiding shapes is the rounded path. This PCell uses a path as the
+  input shape and applies rounding to the path's spine corners to compute a new path 
+  which smoothly bends around the corners. The radius of the bends is a numerical 
+  PCell parameter while the input shape controlling the geometry and the width of the
+  path is the guiding shape.
+  </p><p>
+  A PCell implementation consists of at least three parts: 
+  a description text, a parameter declaration and a production callback. In addition, a PCell
+  can provide a method that &quot;fixes&quot; parameters according to the PCells consistency rules
+  (coerce parameters). Technically, a PCell is a class implementing a certain interface with
+  these methods.
+  </p><p>
+  PCells are usually packed in libraries. PCell libraries can be provided as
+  shared objects/DLL's (in C++) or as Ruby scripts. Because PCell code is only executed if
+  required, performance usually is not the main objective. A Ruby implementation
+  will therefore be sufficient in most cases and
+  is a much easier to maintain. The Ruby approach also benefits from KLayout's integrated development
+  environment.
+  </p><p>
+  For an introduction into PCell programming with Ruby, see <a href="../programming/ruby_pcells.html">Coding PCells In Ruby</a>.
+  </p></body>

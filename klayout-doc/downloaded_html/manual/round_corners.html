@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="editor.html">Editing Functions</a> » <a href="editor_advanced.html">Advanced Editing Operations</a> » Corner Rounding</p><h1>Corner Rounding</h1><a name="k_1"></a><a name="k_2"></a><p>
+  In some applications, i.e. power devices, it is desirable to have round corners instead of sharp corners to limit the electrical field.
+  Klayout now offers a convenient way to create such structures. The basic idea is to draw the structures with sharp, 90 degree corners and then
+  &quot;soften&quot; the corners by rounding them to a given radius. The resulting polygons can then be written to GDS files, even though GDS does not 
+  have the concept of &quot;soft&quot; (or circular) geometries.
+  </p><p>
+  The interesting part is: <b>the corner rounding function can be re-applied on such geometries on a polygon basic</b>. That means, that even if such a modified 
+  polygons are saved to GDS or otherwise modified, the original geometry can be reconstructed and the corner radius can be changed. No special geometrical objects
+  or special GDS annotation is required to achieve this. This requirement imposes some (probably weak) limitations:
+  </p><ul><li>The number of points per corner must not be too small (currently at least 32 on the full circle)</li><li>The original geometry must not exhibit sharp corners and the original segments must be at least twice the corner radius in length.</li><li>The corner segments must be perceivable as such, i.e the angle between adjacent edges must be &quot;nearly&quot; 180 degree. This imposes some 
+  restrictions on the minimum length of such a segment and on the accuracy by which they can be expressed in database units. This boils down to 
+  a certain length limit in terms of database units.</li></ul><p>
+  The following screenshot illustrates the round corners function. As can be seen in this example, it is necessary to allow a different
+  radius specification for &quot;inner&quot; and &quot;outer&quot; corners.
+  </p><p><img src="round_corners.png"></p><p>
+  The corner rounding function operates on selected shapes. It can be found in the &quot;Selection&quot; submenu of the &quot;Edit&quot; menu. 
+  A dialog will open which allows specification of the radius values and the desired resolution. If the selected polygon already has rounded corners, 
+  the corner rounding will be removed and the original polygon reconstructed before the new corner rounding is applied. By
+  specifying &quot;0&quot; for the radius, the original sharp corners will be recovered.
+  </p></body>

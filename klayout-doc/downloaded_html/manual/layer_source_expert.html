@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="basic.html">KLayout Basics</a> » Transforming Views And Property Selectors</p><h1>Transforming Views And Property Selectors</h1><a name="k_1"></a><a name="k_2"></a><a name="k_3"></a><p>
+  The source specification described in the section before is much more powerful 
+  than just allowing to describe the data source. In addition to that, the layer can 
+  be geometrically transformed and the display can be confined to shapes 
+  that belong to a certain class described by a property selector.
+  </p><p>
+  A geometrical transformation is specified by appending a transformation in 
+  round brackets to the layer/datatype source specification. The format of this
+  transformation is (in any order):
+  </p><p class="indent"><tt>(</tt> [&lt;dx&gt;<tt>,</tt>&lt;dy&gt;] [<tt>r</tt>&lt;angle&gt; | <tt>m</tt>&lt;angle&gt;] [<tt>*</tt>&lt;mag&gt;] <tt>)</tt></p><p>
+  For example, &quot;(r90)&quot; specifies a rotation by 90 degree counter-clockwise.
+  &quot;(0,100.0 m45 *0.5)&quot; will shrink the layout to half the size, flip at the 
+  45 degree-axis (swap x and y axes) and finally shift the layout by 100 micron
+  upwards.
+  </p><p>
+  A detailed explanation of the transformation syntax can be found in <a href="../about/transformations.html">Transformations in KLayout</a>.
+  </p><p>
+  Transformations accumulate over the layer hierarchy. This means, that if a layer is transformed
+  and the layer is inside a group whose representative specifies a transformation as well, the
+  resulting transformation is the combination of the layer's transformation (first applied) and
+  the group representative's transformation.
+  </p><p>
+  Multiple transformations can be present. In this case, the layout is shown in multiple
+  instances.
+  </p><p>
+  A particular application is to regroup layers by layout index and assign a 
+  transformation to the group representative belonging to a certain layout
+  such that the layouts get aligned.
+  </p><p>
+  The property selector is specified in square brackets. A selector combines 
+  several expressions of the form &quot;&lt;property&gt;==value&gt;&quot; or &quot;&lt;property&gt;!=&lt;value&gt;&quot; with
+  operators &quot;&amp;&amp;&quot;, &quot;||&quot;, &quot;!&quot; and allows usage to round brackets to 
+  prioritize the evaluation of these operators:
+  </p><p class="indent"><tt>[</tt> &lt;expr&gt; <tt>]</tt></p><p>In GDS2 files, the property is always
+  named with a integer value which is written with a single hash characters (i.e.
+  &quot;#43&quot;. The value of a GDS property is always a string. A string is either
+  written as a text atom or can be enclosed in single or double quotes.
+  The following is an example for a valid property selector for GDS files:
+  </p><p class="indent"><tt>10/5 [#43==X]</tt></p><p>
+  With this source specification, the layer will show all shapes from layer 10, datatype 5 
+  which have a user property with number 43 and value string &quot;X&quot;.
+  A more complex example is this:
+  </p><p class="indent"><tt>10/5 [!(#43==X&amp;&amp;(#2==Y||#2==U))]</tt></p><p>
+  With OASIS files, the properties can be named with a string. In this case, the property
+  selector can be &quot;[prop==X]&quot; for example. In addition, the value can be a an integer or 
+  a double value. This is reflected by the choice of the value: &quot;[prop==#200]&quot; will check, 
+  if the property named &quot;prop&quot; has an integer value which is 200. In the same fashion, 
+  &quot;[prop==##0.5]&quot; checks, if the property &quot;prop&quot; has a double value and this is 0.5.
+  </p><p>
+  Property selectors combine over a layer hierarchy. This means, that if a group
+  representative specifies a property selector and a layer in this group specifies
+  a selector as well, only those shapes will be shown that meet both criteria.
+  </p><p>
+  A general description for the source notation is found here: <a href="../about/layer_sources.html">About Layer Sources</a>.
+  </p></body>

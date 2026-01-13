@@ -1,0 +1,699 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Various Topics</a> » <a href="drc_ref.html">DRC Reference</a> » DRC Reference: DRC expressions</p><h1>DRC Reference: DRC expressions</h1><a name="k_1"></a><p>
+DRC expression objects represent abstract recipes for the <a href="drc_ref_layer.html#drc">Layer#drc</a> universal DRC function.
+For example, when using a universal DRC expression like this:
+</p><p><pre>
+out = in.drc(width &lt; 2.0)
+</pre></p><p>
+&quot;width &lt; 2.0&quot; forms a DRC expression object. DRC expression objects have methods which
+manipulate or evaluate the results of this expression. In addition, DRC expressions have a
+result type, which is either polygon, edge or edge pair. The result type is defined by the
+expression generating it. In the example above, &quot;width &lt; 2.0&quot; is a DRC width check which
+renders edge pairs. To obtain polygons from these edge pairs, use the &quot;polygons&quot; method:
+</p><p><pre>
+out = in.drc((width &lt; 2.0).polygons)
+</pre></p><p>
+The following global functions are relevant for the DRC expressions:
+</p><p><ul><li><a href="drc_ref_global.html#angle">angle</a></li><li><a href="drc_ref_global.html#area">area</a></li><li><a href="drc_ref_global.html#area_ratio">area_ratio</a></li><li><a href="drc_ref_global.html#bbox_aspect_ratio">bbox_aspect_ratio</a></li><li><a href="drc_ref_global.html#bbox_height">bbox_height</a></li><li><a href="drc_ref_global.html#bbox_max">bbox_max</a></li><li><a href="drc_ref_global.html#bbox_min">bbox_min</a></li><li><a href="drc_ref_global.html#bbox_width">bbox_width</a></li><li><a href="drc_ref_global.html#corners">corners</a></li><li><a href="drc_ref_global.html#covering">covering</a></li><li><a href="drc_ref_global.html#enc">enc</a></li><li><a href="drc_ref_global.html#enclosing">enclosing</a></li><li><a href="drc_ref_global.html#extent_refs">extent_refs</a></li><li><a href="drc_ref_global.html#extents">extents</a></li><li><a href="drc_ref_global.html#foreign">foreign</a></li><li><a href="drc_ref_global.html#holes">holes</a></li><li><a href="drc_ref_global.html#hulls">hulls</a></li><li><a href="drc_ref_global.html#if_all">if_all</a></li><li><a href="drc_ref_global.html#if_any">if_any</a></li><li><a href="drc_ref_global.html#if_none">if_none</a></li><li><a href="drc_ref_global.html#inside">inside</a></li><li><a href="drc_ref_global.html#interacting">interacting</a></li><li><a href="drc_ref_global.html#iso">iso</a></li><li><a href="drc_ref_global.html#length">length</a></li><li><a href="drc_ref_global.html#middle">middle</a></li><li><a href="drc_ref_global.html#notch">notch</a></li><li><a href="drc_ref_global.html#outside">outside</a></li><li><a href="drc_ref_global.html#overlap">overlap</a></li><li><a href="drc_ref_global.html#overlapping">overlapping</a></li><li><a href="drc_ref_global.html#perimeter">perimeter</a></li><li><a href="drc_ref_global.html#primary">primary</a></li><li><a href="drc_ref_global.html#rectangles">rectangles</a></li><li><a href="drc_ref_global.html#rectilinear">rectilinear</a></li><li><a href="drc_ref_global.html#relative_height">relative_height</a></li><li><a href="drc_ref_global.html#rounded_corners">rounded_corners</a></li><li><a href="drc_ref_global.html#secondary">secondary</a></li><li><a href="drc_ref_global.html#separation">separation</a></li><li><a href="drc_ref_global.html#sep">sep</a></li><li><a href="drc_ref_global.html#sized">sized</a></li><li><a href="drc_ref_global.html#smoothed">smoothed</a></li><li><a href="drc_ref_global.html#space">space</a></li><li><a href="drc_ref_global.html#squares">squares</a></li><li><a href="drc_ref_global.html#switch">switch</a></li><li><a href="drc_ref_global.html#width">width</a></li><li><a href="drc_ref_global.html#with_holes">with_holes</a></li></ul></p><p>
+The following documentation will list the methods available for DRC expression objects.
+</p><ul><li><a href="#h2-81">&quot;!&quot; - Logical not</a></li><li><a href="#h2-101">&quot;&amp;&quot; - Boolean AND between the results of two expressions</a></li><li><a href="#h2-118">&quot;+&quot; - Boolean OR between the results of two expressions</a></li><li><a href="#h2-127">&quot;-&quot; - Boolean NOT between the results of two expressions</a></li><li><a href="#h2-157">&quot;angle&quot; - Selects edges based on their angle</a></li><li><a href="#h2-198">&quot;area&quot; - Selects the primary shape if the area is meeting the condition</a></li><li><a href="#h2-221">&quot;area_ratio&quot; - Selects the input polygon according to its area ratio (bounding box area by polygon area)</a></li><li><a href="#h2-248">&quot;area_sum&quot; - Selects the input polygons if the sum of all areas meets the condition</a></li><li><a href="#h2-262">&quot;bbox_aspect_ratio&quot; - Selects the input polygon according to the aspect ratio of the bounding box</a></li><li><a href="#h2-289">&quot;bbox_height&quot; - Selects the input polygon if its bounding box height is meeting the condition</a></li><li><a href="#h2-305">&quot;bbox_max&quot; - Selects the input polygon if its bounding box larger dimension is meeting the condition</a></li><li><a href="#h2-318">&quot;bbox_min&quot; - Selects the input polygon if its bounding box smaller dimension is meeting the condition</a></li><li><a href="#h2-342">&quot;bbox_width&quot; - Selects the input polygon if its bounding box width is meeting the condition</a></li><li><a href="#h2-358">&quot;centers&quot; - Returns the part at the center of each edge of the input</a></li><li><a href="#h2-369">&quot;corners&quot; - Selects corners of polygons</a></li><li><a href="#h2-415">&quot;count&quot; - Selects a expression result based on the number of (local) shapes</a></li><li><a href="#h2-442">&quot;covering&quot; - Selects shapes entirely covering other shapes</a></li><li><a href="#h2-470">&quot;edges&quot; - Converts the input shapes into edges</a></li><li><a href="#h2-511">&quot;end_segments&quot; - Returns the part at the end of each edge of the input</a></li><li><a href="#h2-522">&quot;extended&quot; - Returns polygons describing an area along the edges of the input</a></li><li><a href="#h2-536">&quot;extended_in&quot; - Returns polygons describing an area along the edges of the input</a></li><li><a href="#h2-550">&quot;extended_out&quot; - Returns polygons describing an area along the edges of the input</a></li><li><a href="#h2-564">&quot;extent_refs&quot; - Returns partial references to the bounding boxes of the polygons</a></li><li><a href="#h2-575">&quot;extents&quot; - Returns the bounding box of each input object</a></li><li><a href="#h2-589">&quot;first_edges&quot; - Returns the first edges of edge pairs</a></li><li><a href="#h2-602">&quot;holes&quot; - Selects all holes from the input polygons</a></li><li><a href="#h2-618">&quot;hulls&quot; - Selects all hulls from the input polygons</a></li><li><a href="#h2-637">&quot;inside&quot; - Selects shapes entirely inside other shapes</a></li><li><a href="#h2-649">&quot;interacting&quot; - Selects shapes interacting with other shapes</a></li><li><a href="#h2-668">&quot;length&quot; - Selects edges based on their length</a></li><li><a href="#h2-689">&quot;length_sum&quot; - Selects the input edges if the sum of their lengths meets the condition</a></li><li><a href="#h2-702">&quot;merged&quot; - Returns the merged input polygons, optionally selecting multi-overlap</a></li><li><a href="#h2-720">&quot;middle&quot; - Returns the centers of polygon bounding boxes</a></li><li><a href="#h2-731">&quot;outside&quot; - Selects shapes entirely outside other shapes</a></li><li><a href="#h2-743">&quot;overlapping&quot; - Selects shapes overlapping with other shapes</a></li><li><a href="#h2-762">&quot;perimeter&quot; - Selects the input polygon if the perimeter is meeting the condition</a></li><li><a href="#h2-785">&quot;perimeter_sum&quot; - Selects the input polygons if the sum of all perimeters meets the condition</a></li><li><a href="#h2-799">&quot;polygons&quot; - Converts the input shapes into polygons</a></li><li><a href="#h2-822">&quot;rectangles&quot; - Selects all polygons which are rectangles</a></li><li><a href="#h2-838">&quot;rectilinear&quot; - Selects all polygons which are rectilinear</a></li><li><a href="#h2-857">&quot;relative_height&quot; - Selects the input polygon according to the height vs. width of the bounding box</a></li><li><a href="#h2-886">&quot;rounded_corners&quot; - Applies corner rounding</a></li><li><a href="#h2-899">&quot;second_edges&quot; - Returns the second edges of edge pairs</a></li><li><a href="#h2-913">&quot;sized&quot; - Returns the sized version of the input</a></li><li><a href="#h2-927">&quot;smoothed&quot; - Applies smoothing</a></li><li><a href="#h2-941">&quot;squares&quot; - Selects all polygons which are squares</a></li><li><a href="#h2-957">&quot;start_segments&quot; - Returns the part at the beginning of each edge of the input</a></li><li><a href="#h2-968">&quot;with_holes&quot; - Selects all input polygons with the specified number of holes</a></li><li><a href="#h2-984">&quot;|&quot; - Boolean OR between the results of two expressions</a></li></ul><a name="!"></a><a name="h2-81"></a><h2>&quot;!&quot; - Logical not</h2><a name="k_2"></a><p>Usage:</p><ul><li><tt>! expression</tt></li></ul><p>
+This operator will evaluate the expression after. If this expression renders
+an empty result, the operator will return the primary shape. Otherwise it will
+return an empty result.
+</p><p>
+This operator can be used together with predicates such a &quot;rectangles&quot; to 
+invert their meaning. For example, this code selects all primary shapes which
+are not rectangles:
+</p><p><pre>
+out = in.drc(! rectangles)
+out = in.drc(! primary.rectangles)   # equivalent
+</pre></p><a name="&amp;"></a><a name="h2-101"></a><h2>&quot;&amp;&quot; - Boolean AND between the results of two expressions</h2><a name="k_3"></a><p>Usage:</p><ul><li><tt>expression &amp; expression</tt></li></ul><p>
+The &amp; operator will compute the boolean AND between the results
+of two expressions. The expression types need to be edge or polygon.
+</p><p>
+The following example computes the partial edges where width is less than 
+0.3 micrometers and space is less than 0.2 micrometers:
+</p><p><pre>
+out = in.drc((width &lt; 0.3).edges &amp; (space &lt; 0.2).edges)
+</pre></p><a name="+"></a><a name="h2-118"></a><h2>&quot;+&quot; - Boolean OR between the results of two expressions</h2><a name="k_4"></a><p>Usage:</p><ul><li><tt>expression + expression</tt></li></ul><p>
+The + operator will join the results of two expressions.
+</p><a name="-"></a><a name="h2-127"></a><h2>&quot;-&quot; - Boolean NOT between the results of two expressions</h2><a name="k_5"></a><p>Usage:</p><ul><li><tt>expression - expression</tt></li></ul><p>
+The - operator will compute the difference between the results
+of two expressions. The NOT operation is defined for polygons,
+edges and polygons subtracted from edges (first argument edge,
+second argument polygon).
+</p><p>
+CAUTION: be careful not to take secondary input for the 
+first argument. This will not render the desired results.
+Remember that the &quot;drc&quot; function will walk over all primary
+shapes and present single primaries to the NOT operation together
+with the secondaries of that single shape. So when you use
+secondary shapes as the first argument, they will not see all
+all the primaries required to compute the correct result.
+That's also why a XOR operation cannot be provided in the 
+context of a generic DRC function.
+</p><p>
+The following example will produce edge markers where the 
+width of is less then 0.3 micron but not inside polygons on 
+the &quot;waive&quot; layer:
+</p><p><pre>
+out = in.drc((width &lt; 0.3).edges - secondary(waive))
+</pre></p><a name="angle"></a><a name="h2-157"></a><h2>&quot;angle&quot; - Selects edges based on their angle</h2><a name="k_6"></a><p>Usage:</p><ul><li><tt>expression.angle (in condition)</tt></li></ul><p>
+This operation selects edges by their angle, measured against the horizontal 
+axis in the mathematical sense. 
+</p><p>
+For this measurement edges are considered without their direction.
+A horizontal edge has an angle of zero degree. A vertical one has
+an angle of 90 degrees. The angle range is from -90 (exclusive) to 90 degree (inclusive).
+</p><p>
+If the input shapes are not polygons or edge pairs, they are converted to edges 
+before the angle test is made.
+</p><p>
+For example, the following code selects all edges from the primary shape which are 45 degree
+(up) or -45 degree (down). The &quot;+&quot; operator will join the results:
+</p><p><pre>
+out = in.drc((angle == 45) + (angle == -45)) 
+out = in.drc((primary.angle == 45) + (primary.angle == -45))    # equivalent
+</pre></p><p>
+You can avoid using both 45 and -45 degree checks with the 'absolute' option.
+With this option, angles are not signed and the value is the absolute angle 
+the edge encloses with the x axis:
+</p><p><pre>
+out = in.drc(angle(absolute) == 45)
+</pre></p><p>
+Note that angle checks usually imply the need for rotation variant formation as cells which
+are placed non-rotated and rotated by 90 degree cannot be considered identical. This imposes
+a performance penalty in hierarchical mode. If possible, consider using <a href="drc_ref_drc.html#rectilinear">DRC#rectilinear</a> for
+example to detect shapes with non-manhattan geometry instead of using angle checks.
+</p><p>
+The &quot;angle&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to the method call &quot;primary.angle&quot;.
+</p><a name="area"></a><a name="h2-198"></a><h2>&quot;area&quot; - Selects the primary shape if the area is meeting the condition</h2><a name="k_7"></a><p>Usage:</p><ul><li><tt>expression.area (in condition)</tt></li></ul><p>
+This operation is used in conditions to select shapes based on their area.
+It is applicable on polygon expressions. The result will be the input 
+polygons if the area condition is met. 
+</p><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a> for more details about comparison specs.
+</p><p>
+The following example will select all polygons with an area less than 2.0 square micrometers:
+</p><p><pre>
+out = in.drc(area &lt; 2.0)
+out = in.drc(primary.area &lt; 2.0)   # equivalent
+</pre></p><p>
+The area method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.area&quot;.
+</p><a name="area_ratio"></a><a name="h2-221"></a><h2>&quot;area_ratio&quot; - Selects the input polygon according to its area ratio (bounding box area by polygon area)</h2><a name="k_8"></a><p>Usage:</p><ul><li><tt>expression.area_ratio (in condition)</tt></li></ul><p>
+This operation is used in conditions to select shapes based on their area ratio.
+The area ratio is the ratio of bounding box vs. polygon area. It's a measure how
+&quot;sparse&quot; the polygons are and how good an approximation the bounding box is. 
+The value is always larger or equal than 1. Boxes have a value of 1.
+</p><p>
+This filter is applicable on polygon expressions. The result will be the input 
+polygon if the condition is met.
+</p><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a> for more details about comparison specs.
+</p><p>
+The following example will select all polygons whose area ratio is larger than 3:
+</p><p><pre>
+out = in.drc(area_ratio &gt; 3)
+out = in.drc(primary.area_ratio &gt; 3)   # equivalent
+</pre></p><p>
+The &quot;area_ratio&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.area_ratio&quot;.
+</p><a name="area_sum"></a><a name="h2-248"></a><h2>&quot;area_sum&quot; - Selects the input polygons if the sum of all areas meets the condition</h2><a name="k_9"></a><p>Usage:</p><ul><li><tt>expression.area_sum (in condition)</tt></li></ul><p>
+Returns the input polygons if the sum of their areas meets the specified
+condition. This condition is evaluated on the total of all shapes generated in one step of the 
+&quot;drc&quot; loop. As there is a single primary in each loop iteration, &quot;primary.area_sum&quot; is
+equivalent to &quot;primary.area&quot;.
+</p><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a> for more details about comparison specs.
+</p><a name="bbox_aspect_ratio"></a><a name="h2-262"></a><h2>&quot;bbox_aspect_ratio&quot; - Selects the input polygon according to the aspect ratio of the bounding box</h2><a name="k_10"></a><p>Usage:</p><ul><li><tt>expression.bbox_aspect_ratio (in condition)</tt></li></ul><p>
+This operation is used in conditions to select shapes based on aspect ratios of their bounding boxes.
+The aspect ratio is computed by dividing the larger of width and height by the smaller of both.
+The aspect ratio is always larger or equal to 1. Square or square-boxed shapes have a
+bounding box aspect ratio of 1.
+</p><p>
+This filter is applicable on polygon expressions. The result will be the input 
+polygon if the bounding box condition is met. 
+</p><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a> for more details about comparison specs.
+</p><p>
+The following example will select all polygons whose bounding box aspect ratio is larger than 3:
+</p><p><pre>
+out = in.drc(bbox_aspect_ratio &gt; 3)
+out = in.drc(primary.bbox_aspect_ratio &gt; 3)   # equivalent
+</pre></p><p>
+The &quot;bbox_aspect_ratio&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.bbox_aspect_ratio&quot;.
+</p><a name="bbox_height"></a><a name="h2-289"></a><h2>&quot;bbox_height&quot; - Selects the input polygon if its bounding box height is meeting the condition</h2><a name="k_11"></a><p>Usage:</p><ul><li><tt>expression.bbox_height (in condition)</tt></li></ul><p>
+This operation acts similar to <a href="drc_ref_drc.html#bbox_min">DRC#bbox_min</a>, but takes the height of the shape's 
+bounding box. In general, it's more advisable to use <a href="drc_ref_drc.html#bbox_min">DRC#bbox_min</a> or <a href="drc_ref_drc.html#bbox_max">DRC#bbox_max</a>
+because bbox_height implies a certain orientation. This can imply variant formation in 
+hierarchical contexts: cells rotated by 90 degree have to be treated differently from
+ones not rotated. This usually results in a larger computation effort and larger result files.
+</p><p>
+The &quot;bbox_height&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.bbox_height&quot;.
+</p><a name="bbox_max"></a><a name="h2-305"></a><h2>&quot;bbox_max&quot; - Selects the input polygon if its bounding box larger dimension is meeting the condition</h2><a name="k_12"></a><p>Usage:</p><ul><li><tt>expression.bbox_max (in condition)</tt></li></ul><p>
+This operation acts similar to <a href="drc_ref_drc.html#bbox_min">DRC#bbox_min</a>, but takes the larger dimension of the shape's 
+bounding box.
+</p><p>
+The &quot;bbox_max&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.bbox_max&quot;.
+</p><a name="bbox_min"></a><a name="h2-318"></a><h2>&quot;bbox_min&quot; - Selects the input polygon if its bounding box smaller dimension is meeting the condition</h2><a name="k_13"></a><p>Usage:</p><ul><li><tt>expression.bbox_min (in condition)</tt></li></ul><p>
+This operation is used in conditions to select shapes based on smaller dimension of their bounding boxes.
+It is applicable on polygon expressions. The result will be the input 
+polygons if the bounding box condition is met. 
+</p><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a> for more details about comparison specs.
+</p><p>
+The following example will select all polygons whose bounding box smaller dimension is larger
+than 200 nm:
+</p><p><pre>
+out = in.drc(bbox_min &gt; 200.nm)
+out = in.drc(primary.bbox_min &gt; 200.nm)   # equivalent
+</pre></p><p>
+The &quot;bbox_min&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.bbox_min&quot;.
+</p><a name="bbox_width"></a><a name="h2-342"></a><h2>&quot;bbox_width&quot; - Selects the input polygon if its bounding box width is meeting the condition</h2><a name="k_14"></a><p>Usage:</p><ul><li><tt>expression.bbox_width (in condition)</tt></li></ul><p>
+This operation acts similar to <a href="drc_ref_drc.html#bbox_min">DRC#bbox_min</a>, but takes the width of the shape's 
+bounding box. In general, it's more advisable to use <a href="drc_ref_drc.html#bbox_min">DRC#bbox_min</a> or <a href="drc_ref_drc.html#bbox_max">DRC#bbox_max</a>
+because bbox_width implies a certain orientation. This can imply variant formation in 
+hierarchical contexts: cells rotated by 90 degree have to be treated differently from
+ones not rotated. This usually results in a larger computation effort and larger result files.
+</p><p>
+The &quot;bbox_width&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.bbox_width&quot;.
+</p><a name="centers"></a><a name="h2-358"></a><h2>&quot;centers&quot; - Returns the part at the center of each edge of the input</h2><a name="k_15"></a><p>Usage:</p><ul><li><tt>expression.centers(length)</tt></li><li><tt>expression.end_segments(length, fraction)</tt></li></ul><p>
+This method acts on edge expressions and delivers a specific part of each edge.
+See <a href="drc_ref_layer.html#centers">layer#centers</a> for details about this functionality.
+</p><a name="corners"></a><a name="h2-369"></a><h2>&quot;corners&quot; - Selects corners of polygons</h2><a name="k_16"></a><p>Usage:</p><ul><li><tt>expression.corners</tt></li><li><tt>expression.corners([ options ])</tt></li></ul><p>
+This operation acts on polygons and selects the corners of the polygons.
+It can be put into a condition to select corners by their angles. The angle of
+a corner is positive for a turn to the left if walking a polygon clockwise
+and negative for the turn to the right. Hence positive angles indicate concave
+(inner) corners, negative ones indicate convex (outer) corners.
+Angles take values between -180 and 180 degree.
+</p><p>
+When using &quot;as_dots&quot; for an option, the operation will return single-point edges at
+the selected corners. With &quot;as_boxes&quot; (the default), small (2x2 DBU) rectangles will be
+produced at each selected corner.
+</p><p>
+Another option is &quot;absolute&quot; which selects the corners by absolute angle - i.e left
+and right turns will both be considered positive angles.
+</p><p>
+Examples for use of the options are:
+</p><p><pre>
+corners(as_dots)
+corners(as_boxes, absolute)
+</pre></p><p>
+The following example selects all corners:
+</p><p><pre>
+out = in.drc(corners)
+out = in.drc(primary.corners)    # equivalent
+</pre></p><p>
+The following example selects all inner corners:
+</p><p><pre>
+out = in.drc(corners &gt; 0)
+out = in.drc(primary.corners &gt; 0)    # equivalent
+</pre></p><p>
+The &quot;corners&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.corners&quot;.
+</p><a name="count"></a><a name="h2-415"></a><h2>&quot;count&quot; - Selects a expression result based on the number of (local) shapes</h2><a name="k_17"></a><p>Usage:</p><ul><li><tt>expression.count (in condition)</tt></li></ul><p>
+This operation is used in conditions to select expression results based on their
+count. &quot;count&quot; is used as a method on a expression. It will evaluate the expression locally
+and return the original result if the shape count in the result is matching the condition.
+</p><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a> for more details about comparison specs.
+</p><p>
+Note that the expression is evaluated locally: for each primary shape, the expression is
+evaluated and the count of the resulting edge, edge pair or polygon set is taken.
+As the primary input will always have a single item (the local shape), using &quot;count&quot; on
+primary does not really make sense. It can be used on derived expressions however.
+</p><p>
+The following example selects triangles:
+</p><p><pre>
+out = in.drc(if_any(corners.count == 3))
+</pre></p><p>
+Note &quot;if_any&quot; which selects the primary shape if the argument evaluates to a non-empty
+result. Without &quot;if_any&quot; three corners are returned for each triangle.
+</p><a name="covering"></a><a name="h2-442"></a><h2>&quot;covering&quot; - Selects shapes entirely covering other shapes</h2><a name="k_18"></a><p>Usage:</p><ul><li><tt>expression.covering(other) (optionally in conditions)</tt></li><li><tt>covering(other) (optionally in conditions)</tt></li></ul><p>
+This method represents the selector of primary shapes
+which entirely cover shapes from the other layer. This version can be put into
+a condition indicating how many shapes of the other layer need to be covered.
+Use this variant within <a href="drc_ref_drc.html">DRC</a> expressions (also see <a href="drc_ref_layer.html#drc">Layer#drc</a>).
+</p><p>
+For example, the following statement selects all input shapes which entirely 
+cover shapes from the &quot;other&quot; layer:
+</p><p><pre>
+out = in.drc(covering(other))
+</pre></p><p>
+This example selects all input shapes which entire cover shapes from
+the other layer and there are more than two shapes from &quot;other&quot; inside
+primary shapes:
+</p><p><pre>
+out = in.drc(covering(other) &gt; 2)
+</pre></p><a name="edges"></a><a name="h2-470"></a><h2>&quot;edges&quot; - Converts the input shapes into edges</h2><a name="k_19"></a><p>Usage:</p><ul><li><tt>expression.edges</tt></li><li><tt>expression.edges(mode)</tt></li></ul><p>
+Polygons will be separated into edges forming their contours. Edge pairs will be 
+decomposed into individual edges.
+</p><p>
+Contrary most other operations, &quot;edges&quot; does not have a plain function equivalent
+as this is reserved for the function generating an edges layer.
+To generate the edges of the primary shapes, use &quot;primary&quot; explicit as the source
+for the edges:
+</p><p><pre>
+out = in.drc(primary.edges)
+</pre></p><p>
+The &quot;mode&quot; argument allows selecting specific edges from polygons.
+Allowed values are: &quot;convex&quot;, &quot;concave&quot;, &quot;step&quot;, &quot;step_in&quot; and &quot;step_out&quot;.
+&quot;step&quot; generates edges only if they provide a step between two other
+edges. &quot;step_in&quot; creates edges that make a step towards the inside of
+the polygon and &quot;step_out&quot; creates edges that make a step towards the
+outside:
+</p><p><pre>
+out = in.drc(primary.edges(convex))
+</pre></p><p>
+In addition, &quot;not_..&quot; variants are available which selects edges
+not qualifying for the specific mode:
+</p><p><pre>
+out = in.drc(primary.edges(not_convex))
+</pre></p><p>
+The mode argument is ignored when translating other objects than
+polygons.
+</p><a name="end_segments"></a><a name="h2-511"></a><h2>&quot;end_segments&quot; - Returns the part at the end of each edge of the input</h2><a name="k_20"></a><p>Usage:</p><ul><li><tt>expression.end_segments(length)</tt></li><li><tt>expression.end_segments(length, fraction)</tt></li></ul><p>
+This method acts on edge expressions and delivers a specific part of each edge.
+See <a href="drc_ref_layer.html#end_segments">layer#end_segments</a> for details about this functionality.
+</p><a name="extended"></a><a name="h2-522"></a><h2>&quot;extended&quot; - Returns polygons describing an area along the edges of the input</h2><a name="k_21"></a><p>Usage:</p><ul><li><tt>expression.extended([:begin =&gt; b,] [:end =&gt; e,] [:out =&gt; o,] [:in =&gt; i], [:joined =&gt; true])</tt></li><li><tt>expression.extended(b, e, o, i)</tt></li></ul><p>
+This method acts on edge expressions.
+It will create a polygon for each edge
+tracing the edge with certain offsets to the edge. &quot;o&quot; is the offset applied to the 
+outer side of the edge, &quot;i&quot; is the offset applied to the inner side of the edge.
+&quot;b&quot; is the offset applied at the beginning and &quot;e&quot; is the offset applied at the end.
+</p><a name="extended_in"></a><a name="h2-536"></a><h2>&quot;extended_in&quot; - Returns polygons describing an area along the edges of the input</h2><a name="k_22"></a><p>Usage:</p><ul><li><tt>expression.extended_in(d)</tt></li></ul><p>
+This method acts on edge expressions. Polygons are generated for 
+each edge describing the edge drawn with a certain width extending into
+the &quot;inside&quot; (the right side when looking from start to end).
+This method is basically equivalent to the <a href="#extended">extended</a> method:
+&quot;extended(0, 0, 0, dist)&quot;.
+A version extending to the outside is <a href="#extended_out">extended_out</a>.
+</p><a name="extended_out"></a><a name="h2-550"></a><h2>&quot;extended_out&quot; - Returns polygons describing an area along the edges of the input</h2><a name="k_23"></a><p>Usage:</p><ul><li><tt>expression.extended_out(d)</tt></li></ul><p>
+This method acts on edge expressions. Polygons are generated for 
+each edge describing the edge drawn with a certain width extending into
+the &quot;outside&quot; (the left side when looking from start to end).
+This method is basically equivalent to the <a href="#extended">extended</a> method:
+&quot;extended(0, 0, dist, 0)&quot;.
+A version extending to the inside is <a href="#extended_in">extended_in</a>.
+</p><a name="extent_refs"></a><a name="h2-564"></a><h2>&quot;extent_refs&quot; - Returns partial references to the bounding boxes of the polygons</h2><a name="k_24"></a><p>Usage:</p><ul><li><tt>expression.extent_refs([ options ])</tt></li></ul><p>
+The extent_refs operation acts on polygons and has the same effect than <a href="drc_ref_layer.html#extent_refs">Layer#extent_refs</a>.
+It takes the same arguments. It is available as a method on <a href="drc_ref_drc.html">DRC</a> expressions or
+as plain function, in which case it acts on the primary shapes.
+</p><a name="extents"></a><a name="h2-575"></a><h2>&quot;extents&quot; - Returns the bounding box of each input object</h2><a name="k_25"></a><p>Usage:</p><ul><li><tt>expression.extents([ enlargement ])</tt></li></ul><p>
+This method provides the same functionality as <a href="drc_ref_layer.html#extents">Layer#extents</a> and takes the same
+arguments. It returns the bounding boxes of the input objects. It acts on edge
+edge pair and polygon expressions.
+</p><p>
+The &quot;extents&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.extents&quot;.
+</p><a name="first_edges"></a><a name="h2-589"></a><h2>&quot;first_edges&quot; - Returns the first edges of edge pairs</h2><a name="k_26"></a><p>Usage:</p><ul><li><tt>expression.first_edges</tt></li></ul><p>
+This method acts on edge pair expressions and returns the first edges of the
+edge pairs delivered by the expression.
+</p><p>
+Some checks deliver symmetric edge pairs (e.g. space, width, etc.) for which the
+edges are commutable. &quot;first_edges&quot; will deliver both edges for such edge pairs.
+</p><a name="holes"></a><a name="h2-602"></a><h2>&quot;holes&quot; - Selects all holes from the input polygons</h2><a name="k_27"></a><p>Usage:</p><ul><li><tt>expression.holes</tt></li></ul><p>
+This operation can be used as a plain function in which case it acts on primary
+shapes or can be used as method on another DRC expression.
+The following example selects all holes with an area larger than 2 square micrometers:
+</p><p><pre>
+out = in.drc(holes.area &gt; 2.um)
+out = in.drc(primary.holes.area &gt; 2.um)   # equivalent
+</pre></p><a name="hulls"></a><a name="h2-618"></a><h2>&quot;hulls&quot; - Selects all hulls from the input polygons</h2><a name="k_28"></a><p>Usage:</p><ul><li><tt>expression.hulls</tt></li></ul><p>
+The hulls are the outer contours of the input polygons. By selecting hulls only,
+all holes will be closed.
+</p><p>
+This operation can be used as a plain function in which case it acts on primary
+shapes or can be used as method on another DRC expression.
+The following example closes all holes:
+</p><p><pre>
+out = in.drc(hulls)
+out = in.drc(primary.hulls)   # equivalent
+</pre></p><a name="inside"></a><a name="h2-637"></a><h2>&quot;inside&quot; - Selects shapes entirely inside other shapes</h2><a name="k_29"></a><p>Usage:</p><ul><li><tt>expression.inside(other)</tt></li><li><tt>inside(other)</tt></li></ul><p>
+This method represents the selector of primary shapes
+which are entirely inside shapes from the other layer. 
+Use this variant within <a href="drc_ref_drc.html">DRC</a> expressions (also see <a href="drc_ref_layer.html#drc">Layer#drc</a>).
+</p><a name="interacting"></a><a name="h2-649"></a><h2>&quot;interacting&quot; - Selects shapes interacting with other shapes</h2><a name="k_30"></a><p>Usage:</p><ul><li><tt>expression.interacting(other) (optionally in conditions)</tt></li><li><tt>interacting(other) (optionally in conditions)</tt></li></ul><p>
+See <a href="#covering">covering</a> for a description of the use cases for this function. 
+When using &quot;interacting&quot;, shapes are selected when the interact (overlap, touch)
+shapes from the other layer.
+</p><p>
+When using this method with a count, the operation may not render 
+the correct results if the other input is not merged. By nature of the
+generic DRC feature, only those shapes that interact with the primary shape
+will be selected. If the other input is split into multiple polygons,
+not all components may be captured and the computed interaction count
+may be incorrect.
+</p><a name="length"></a><a name="h2-668"></a><h2>&quot;length&quot; - Selects edges based on their length</h2><a name="k_31"></a><p>Usage:</p><ul><li><tt>expression.length (in condition)</tt></li></ul><p>
+This operation will select those edges which are meeting the length
+criterion. Non-edge shapes (polygons, edge pairs) will be converted to edges before.
+</p><p>
+For example, this code selects all edges from the primary shape which are longer or
+equal than 1 micrometer:
+</p><p><pre>
+out = in.drc(length &gt;= 1.um) 
+out = in.drc(primary.length &gt;= 1.um)   # equivalent
+</pre></p><p>
+The &quot;length&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.length&quot;.
+</p><a name="length_sum"></a><a name="h2-689"></a><h2>&quot;length_sum&quot; - Selects the input edges if the sum of their lengths meets the condition</h2><a name="k_32"></a><p>Usage:</p><ul><li><tt>expression.length_sum (in condition)</tt></li></ul><p>
+Returns the input edges if the sum of their lengths meets the specified
+condition. This condition is evaluated on the total of all edges generated in one step of the 
+&quot;drc&quot; loop.
+</p><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a> for more details about comparison specs.
+</p><a name="merged"></a><a name="h2-702"></a><h2>&quot;merged&quot; - Returns the merged input polygons, optionally selecting multi-overlap</h2><a name="k_33"></a><p>Usage:</p><ul><li><tt>expression.merged</tt></li><li><tt>expression.merged(min_count)</tt></li></ul><p>
+This operation will act on polygons. Without a min_count argument, the merged
+polygons will be returned.
+</p><p>
+With a min_count argument, the result will include only those parts where more
+than the given number of polygons overlap. As the primary input is merged already,
+it will always contribute as one.
+</p><p>
+The &quot;merged&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.merged&quot;.
+</p><a name="middle"></a><a name="h2-720"></a><h2>&quot;middle&quot; - Returns the centers of polygon bounding boxes</h2><a name="k_34"></a><p>Usage:</p><ul><li><tt>expression.middle([ options ])</tt></li></ul><p>
+The middle operation acts on polygons and has the same effect than <a href="drc_ref_layer.html#middle">Layer#middle</a>.
+It takes the same arguments. It is available as a method on <a href="drc_ref_drc.html">DRC</a> expressions or
+as plain function, in which case it acts on the primary shapes.
+</p><a name="outside"></a><a name="h2-731"></a><h2>&quot;outside&quot; - Selects shapes entirely outside other shapes</h2><a name="k_35"></a><p>Usage:</p><ul><li><tt>expression.outside(other)</tt></li><li><tt>outside(other)</tt></li></ul><p>
+This method represents the selector of primary shapes
+which are entirely outside shapes from the other layer. 
+Use this variant within <a href="drc_ref_drc.html">DRC</a> expressions (also see <a href="drc_ref_layer.html#drc">Layer#drc</a>).
+</p><a name="overlapping"></a><a name="h2-743"></a><h2>&quot;overlapping&quot; - Selects shapes overlapping with other shapes</h2><a name="k_36"></a><p>Usage:</p><ul><li><tt>expression.overlapping(other) (optionally in conditions)</tt></li><li><tt>overlapping(other) (optionally in conditions)</tt></li></ul><p>
+See <a href="#covering">covering</a> for a description of the use cases for this function. 
+When using &quot;overlapping&quot;, shapes are selected when the overlap
+shapes from the other layer.
+</p><p>
+When using this method with a count, the operation may not render 
+the correct results if the other input is not merged. By nature of the
+generic DRC feature, only those shapes that interact with the primary shape
+will be selected. If the other input is split into multiple polygons,
+not all components may be captured and the computed interaction count
+may be incorrect.
+</p><a name="perimeter"></a><a name="h2-762"></a><h2>&quot;perimeter&quot; - Selects the input polygon if the perimeter is meeting the condition</h2><a name="k_37"></a><p>Usage:</p><ul><li><tt>expression.perimeter (in condition)</tt></li></ul><p>
+This operation is used in conditions to select shapes based on their perimeter.
+It is applicable on polygon expressions. The result will be the input 
+polygons if the perimeter condition is met. 
+</p><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a> for more details about comparison specs.
+</p><p>
+The following example will select all polygons with a perimeter less than 10 micrometers:
+</p><p><pre>
+out = in.drc(perimeter &lt; 10.0)
+out = in.drc(primary.perimeter &lt; 10.0)   # equivalent
+</pre></p><p>
+The perimeter method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.perimeter&quot;.
+</p><a name="perimeter_sum"></a><a name="h2-785"></a><h2>&quot;perimeter_sum&quot; - Selects the input polygons if the sum of all perimeters meets the condition</h2><a name="k_38"></a><p>Usage:</p><ul><li><tt>expression.perimeter_sum (in condition)</tt></li></ul><p>
+Returns the input polygons if the sum of their perimeters meets the specified
+condition. This condition is evaluated on the total of all shapes generated in one step of the 
+&quot;drc&quot; loop. As there is a single primary in each loop iteration, &quot;primary.perimeter_sum&quot; is
+equivalent to &quot;primary.perimeter&quot;.
+</p><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a> for more details about comparison specs.
+</p><a name="polygons"></a><a name="h2-799"></a><h2>&quot;polygons&quot; - Converts the input shapes into polygons</h2><a name="k_39"></a><p>Usage:</p><ul><li><tt>expression.polygons([ enlargement ])</tt></li></ul><p>
+Generates polygons from the input shapes. Polygons stay polygons. Edges and edge pairs
+are converted to polygons. For this, the enlargement parameter will specify the 
+edge thickness or augmentation applied to edge pairs. With the default enlargement
+of zero edges will not be converted to valid polygons and degenerated edge pairs
+will not become valid polygons as well.
+</p><p>
+Contrary most other operations, &quot;polygons&quot; does not have a plain function equivalent
+as this is reserved for the function generating a polygon layer.
+</p><p>
+This method is useful for generating polygons from DRC violation markers as shown in
+the following example:
+</p><p><pre>
+out = in.drc((width &lt; 0.5.um).polygons)
+</pre></p><a name="rectangles"></a><a name="h2-822"></a><h2>&quot;rectangles&quot; - Selects all polygons which are rectangles</h2><a name="k_40"></a><p>Usage:</p><ul><li><tt>expression.rectangles</tt></li></ul><p>
+This operation can be used as a plain function in which case it acts on primary
+shapes or can be used as method on another DRC expression.
+The following example selects all rectangles:
+</p><p><pre>
+out = in.drc(rectangles)
+out = in.drc(primary.rectangles)    # equivalent
+</pre></p><a name="rectilinear"></a><a name="h2-838"></a><h2>&quot;rectilinear&quot; - Selects all polygons which are rectilinear</h2><a name="k_41"></a><p>Usage:</p><ul><li><tt>expression.rectilinear</tt></li></ul><p>
+Rectilinear polygons only have vertical and horizontal edges. Such polygons are also
+called manhattan polygons.
+</p><p>
+This operation can be used as a plain function in which case it acts on primary
+shapes or can be used as method on another DRC expression.
+The following example selects all manhattan polygons:
+</p><p><pre>
+out = in.drc(rectilinear)
+out = in.drc(primary.rectilinear)    # equivalent
+</pre></p><a name="relative_height"></a><a name="h2-857"></a><h2>&quot;relative_height&quot; - Selects the input polygon according to the height vs. width of the bounding box</h2><a name="k_42"></a><p>Usage:</p><ul><li><tt>expression.relative_height (in condition)</tt></li></ul><p>
+This operation is used in conditions to select shapes based on the ratio of bounding box
+height vs. width. The taller the shape, the larger the value. Wide polygons have a value
+below 1. A square has a relative height of 1.
+</p><p>
+This filter is applicable on polygon expressions. The result will be the input 
+polygon if the condition is met.
+</p><p>
+Don't use this method if you can use <a href="#bbox_aspect_ratio">bbox_aspect_ratio</a>, because the latter is
+isotropic and can be used hierarchically without generating rotation variants.
+</p><p>
+See <a href="drc_ref_layer.html#drc">Layer#drc</a> for more details about comparison specs.
+</p><p>
+The following example will select all polygons whose relative height is larger than 3:
+</p><p><pre>
+out = in.drc(relative_height &gt; 3)
+out = in.drc(primary.relative_height &gt; 3)   # equivalent
+</pre></p><p>
+The &quot;relative_height&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.bbox_aspect_ratio&quot;.
+</p><a name="rounded_corners"></a><a name="h2-886"></a><h2>&quot;rounded_corners&quot; - Applies corner rounding</h2><a name="k_43"></a><p>Usage:</p><ul><li><tt>expression.rounded_corners(inner, outer, n)</tt></li></ul><p>
+This operation acts on polygons and applies corner rounding to the given inner
+and outer corner radius and the number of points n per full circle. See <a href="drc_ref_layer.html#rounded_corners">Layer#rounded_corners</a> for more details.
+</p><p>
+The &quot;rounded_corners&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.rounded_corners&quot;.
+</p><a name="second_edges"></a><a name="h2-899"></a><h2>&quot;second_edges&quot; - Returns the second edges of edge pairs</h2><a name="k_44"></a><p>Usage:</p><ul><li><tt>expression.second_edges</tt></li></ul><p>
+This method acts on edge pair expressions and returns the second edges of the
+edge pairs delivered by the expression.
+</p><p>
+Some checks deliver symmetric edge pairs (e.g. space, width, etc.) for which the
+edges are commutable. &quot;second_edges&quot; will not deliver edges for such edge pairs.
+Instead, &quot;first_edges&quot; will deliver both.
+</p><a name="sized"></a><a name="h2-913"></a><h2>&quot;sized&quot; - Returns the sized version of the input</h2><a name="k_45"></a><p>Usage:</p><ul><li><tt>expression.sized(d [, mode])</tt></li><li><tt>expression.sized(dx, dy [, mode]))</tt></li></ul><p>
+This method provides the same functionality as <a href="drc_ref_layer.html#sized">Layer#sized</a> and takes the same
+arguments. It acts on polygon expressions.
+</p><p>
+The &quot;sized&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.sized&quot;.
+</p><a name="smoothed"></a><a name="h2-927"></a><h2>&quot;smoothed&quot; - Applies smoothing</h2><a name="k_46"></a><p>Usage:</p><ul><li><tt>expression.smoothed(d [, keep_hv ])</tt></li></ul><p>
+This operation acts on polygons and applies polygon smoothing with the tolerance d. 'keep_hv' indicates
+whether horizontal and vertical edges are maintained. Default is 'no' which means such edges may be distorted.
+See <a href="drc_ref_layer.html#smoothed">Layer#smoothed</a> for more details.
+</p><p>
+The &quot;smoothed&quot; method is available as a plain function or as a method on <a href="drc_ref_drc.html">DRC</a> expressions.
+The plain function is equivalent to &quot;primary.smoothed&quot;.
+</p><a name="squares"></a><a name="h2-941"></a><h2>&quot;squares&quot; - Selects all polygons which are squares</h2><a name="k_47"></a><p>Usage:</p><ul><li><tt>expression.squares</tt></li></ul><p>
+This operation can be used as a plain function in which case it acts on primary
+shapes or can be used as method on another DRC expression.
+The following example selects all squares:
+</p><p><pre>
+out = in.drc(squares)
+out = in.drc(primary.squares)    # equivalent
+</pre></p><a name="start_segments"></a><a name="h2-957"></a><h2>&quot;start_segments&quot; - Returns the part at the beginning of each edge of the input</h2><a name="k_48"></a><p>Usage:</p><ul><li><tt>expression.start_segments(length)</tt></li><li><tt>expression.start_segments(length, fraction)</tt></li></ul><p>
+This method acts on edge expressions and delivers a specific part of each edge.
+See <a href="drc_ref_layer.html#start_segments">layer#start_segments</a> for details about this functionality.
+</p><a name="with_holes"></a><a name="h2-968"></a><h2>&quot;with_holes&quot; - Selects all input polygons with the specified number of holes</h2><a name="k_49"></a><p>Usage:</p><ul><li><tt>expression.with_holes (in condition)</tt></li></ul><p>
+This operation can be used as a plain function in which case it acts on primary
+shapes or can be used as method on another DRC expression.
+The following example selects all polygons with more than 2 holes:
+</p><p><pre>
+out = in.drc(with_holes &gt; 2)
+out = in.drc(primary.with_holes &gt; 2)   # equivalent
+</pre></p><a name="|"></a><a name="h2-984"></a><h2>&quot;|&quot; - Boolean OR between the results of two expressions</h2><a name="k_50"></a><p>Usage:</p><ul><li><tt>expression | expression</tt></li></ul><p>
+The | operator will compute the boolean OR between the results of 
+two expressions. '+' is basically a synonym. Both expressions
+must render the same type.
+</p></body>

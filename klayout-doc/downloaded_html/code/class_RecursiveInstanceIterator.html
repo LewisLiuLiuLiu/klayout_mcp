@@ -1,0 +1,308 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class RecursiveInstanceIterator</p><h1>API reference - Class RecursiveInstanceIterator</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: An iterator delivering instances recursively</p><ul><li><a href="#h2-52">Public constructors</a></li><li><a href="#h2-61">Public methods</a></li><li><a href="#h2-164">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-175">Detailed description</a></li></ul><p></p><p>The iterator can be obtained from a cell and optionally a region.
+It simplifies retrieval of instances while considering
+subcells as well.
+Some options can be specified in addition, i.e. the hierarchy level to which to look into.
+The search can be confined to instances of certain cells (see <a href="#m_targets=">targets=</a>) or to certain regions. Subtrees can be selected for traversal or excluded from it (see <a href="#m_select_cells">select_cells</a>).</p><p>This is some sample code:</p><p><pre>
+# prints the effective instances of cell &quot;A&quot; as seen from the initial cell &quot;cell&quot;
+iter = cell.begin_instances_rec
+iter.targets = &quot;A&quot;
+while !iter.at_end?
+  puts &quot;Instance of #{iter.inst_cell.name} in #{cell.name}: &quot; + (iter.dtrans * iter.inst_dtrans).to_s
+  iter.next
+end
+
+# or shorter:
+cell.begin_instances_rec.each do |iter|
+  puts &quot;Instance of #{iter.inst_cell.name} in #{cell.name}: &quot; + (iter.dtrans * iter.inst_dtrans).to_s
+end
+</pre></p><p>Here, a target cell is specified which confines the search to instances of this particular cell.
+'iter.dtrans' gives us the accumulated transformation of all parents up to the top cell. 'iter.inst_dtrans' gives us the transformation from the current instance. 'iter.inst_cell' finally gives us the target cell of the current instance (which is always 'A' in our case).</p><p><a href="class_Cell.html">Cell</a> offers three methods to get these iterators: begin_instances_rec, begin_instances_rec_touching and begin_instances_rec_overlapping.
+<a href="class_Cell.html#m_begin_instances_rec">Cell#begin_instances_rec</a> will deliver a standard recursive instance iterator which starts from the given cell and iterates over all child cells. <a href="class_Cell.html#m_begin_instances_rec_touching">Cell#begin_instances_rec_touching</a> creates a RecursiveInstanceIterator which delivers the instances whose bounding boxed touch the given search box. <a href="class_Cell.html#m_begin_instances_rec_overlapping">Cell#begin_instances_rec_overlapping</a> gives an iterator which delivers all instances whose bounding box overlaps the search box.</p><p>A RecursiveInstanceIterator object can also be created directly, like this:</p><p><pre>
+iter = RBA::RecursiveInstanceIterator::new(layout, cell [, options ])
+</pre></p><p>&quot;layout&quot; is the layout object, &quot;cell&quot; the <a href="class_Cell.html">Cell</a> object of the initial cell.</p><p>The recursive instance iterator can be confined to a maximum hierarchy depth. By using <a href="#m_max_depth=">max_depth=</a>, the iterator will restrict the search depth to the given depth in the cell tree.
+In the same way, the iterator can be configured to start from a certain hierarchy depth using <a href="#m_min_depth=">min_depth=</a>. The hierarchy depth always applies to the parent of the instances iterated.</p><p>In addition, the recursive instance iterator supports selection and exclusion of subtrees. For that purpose it keeps flags per cell telling it for which cells to turn instance delivery on and off. The <a href="#m_select_cells">select_cells</a> method sets the &quot;start delivery&quot; flag while <a href="#m_unselect_cells">unselect_cells</a> sets the &quot;stop delivery&quot; flag. In effect, using <a href="#m_unselect_cells">unselect_cells</a> will exclude that cell plus the subtree from delivery. Parts of that subtree can be turned on again using <a href="#m_select_cells">select_cells</a>. For the cells selected that way, the instances of these cells and their child cells are delivered, even if their parent was unselected.</p><p>To get instances from a specific cell, i.e. &quot;MACRO&quot; plus its child cells, unselect the top cell first and the select the desired cell again:</p><p><pre>
+# deliver all instances inside &quot;MACRO&quot; and the sub-hierarchy:
+iter = RBA::RecursiveInstanceIterator::new(layout, cell)
+iter.unselect_cells(cell.cell_index)
+iter.select_cells(&quot;MACRO&quot;)
+...
+</pre></p><p>The <a href="#m_unselect_all_cells">unselect_all_cells</a> and <a href="#m_select_all_cells">select_all_cells</a> methods turn on the &quot;stop&quot; and &quot;start&quot; flag for all cells respectively. If you use <a href="#m_unselect_all_cells">unselect_all_cells</a> and use <a href="#m_select_cells">select_cells</a> for a specific cell, the iterator will deliver only the instances of the selected cell, not its children. Those are still unselected by unselect_all_cells:</p><p><pre>
+# deliver all instance inside &quot;MACRO&quot; but not of child cells:
+iter = RBA::RecursiveInstanceIterator::new(layout, cell)
+iter.unselect_all_cells
+iter.select_cells(&quot;MACRO&quot;)
+...
+</pre></p><p>Cell selection is done using cell indexes or glob pattern. Glob pattern are equivalent to the usual file name wildcards used on various command line shells. For example &quot;A*&quot; matches all cells starting with an &quot;A&quot;. The curly brace notation and character classes are supported as well. For example &quot;C{125,512}&quot; matches &quot;C125&quot; and &quot;C512&quot; and &quot;[ABC]*&quot; matches all cells starting with an &quot;A&quot;, a &quot;B&quot; or &quot;C&quot;. &quot;[^ABC]*&quot; matches all cells not starting with one of that letters.</p><p>To confine instance iteration to instances of certain cells, use the <a href="#m_targets">targets</a> feature:</p><p><pre>
+# deliver all instance of &quot;INV1&quot;:
+iter = RBA::RecursiveInstanceIterator::new(layout, cell)
+iter.targets = &quot;INV1&quot;
+...
+</pre></p><p>Targets can be specified either as lists of cell indexes or through a glob pattern.</p><p>Instances are always delivered depth-first with child instances before their parents. A default recursive instance iterator will first deliver leaf cells, followed by the parent of these cells.</p><p>When a search region is used, instances whose bounding box touch or overlap (depending on 'overlapping' flag) will be reported. The instance bounding box taken as reference is computed using all layers of the layout.</p><p>The iterator will deliver the individual elements of instance arrays, confined to the search region if one is given. Consequently the return value (<a href="#m_current_inst_element">current_inst_element</a>) is an <a href="class_InstElement.html">InstElement</a> object which is basically a combination of an <a href="class_Instance.html">Instance</a> object and information about the current array element.
+<a href="#m_inst_cell">inst_cell</a>, <a href="#m_inst_trans">inst_trans</a> and <a href="#m_inst_dtrans">inst_dtrans</a> are methods provided for convenience to access the current array member's transformation and the target cell of the current instance.</p><p>The RecursiveInstanceIterator class has been introduced in version 0.27.
+Starting with version 0.29.9, the recursive instance iterator will lock the layout it acts on while in iterating mode. While the iterator is active, the Layout object is maintained in 'under construction mode' (see <a href="class_Layout.html#m_under_construction">Layout#under_construction</a>). This is to prevent layout modifications to interfere with the iterator's operation. Specifically when coding in Ruby, pending iterators may block the Layout until the garbage collector cleans up these objects. To avoid this, call <a href="#m__destroy">_destroy</a> on the iterator when you no longer need it. The Layout is automatically unlocked when the iterator reaches the end.</p><a name="h2-52"></a><h2>Public constructors</h2><table><tr class="row0"><td>new RecursiveInstanceIterator ptr</td><td><b><a href="#method34">new</a></b></td><td>(const Layout layout,<br>const Cell cell)</td><td>Creates a recursive instance iterator.</td></tr><tr class="row1"><td>new RecursiveInstanceIterator ptr</td><td><b><a href="#method35">new</a></b></td><td>(const Layout layout,<br>const Cell cell,<br>const Box box,<br>bool overlapping = false)</td><td>Creates a recursive instance iterator with a search region.</td></tr><tr class="row0"><td>new RecursiveInstanceIterator ptr</td><td><b><a href="#method36">new</a></b></td><td>(const Layout layout,<br>const Cell cell,<br>const Region region,<br>bool overlapping)</td><td>Creates a recursive instance iterator with a search region.</td></tr></table><a name="h2-61"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method0">!=</a></b></td><td>(const RecursiveInstanceIterator other)</td><td>Comparison of iterators - inequality</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method1">==</a></b></td><td>(const RecursiveInstanceIterator other)</td><td>Comparison of iterators - equality</td></tr><tr class="row0"><td><i>[const]</i></td><td>RecursiveInstanceIterator ptr</td><td><b><a href="#method2">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method3">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method4">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method5">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method6">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method9">all_targets_enabled?</a></b></td><td></td><td>Gets a value indicating whether instances of all cells are reported</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">assign</a></b></td><td>(const RecursiveInstanceIterator other)</td><td>Assigns another object to self</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method11">at_end?</a></b></td><td></td><td>End of iterator predicate</td></tr><tr class="row0"><td><i>[const]</i></td><td>const Cell ptr</td><td><b><a href="#method12">cell</a></b></td><td></td><td>Gets the cell the current instance sits in</td></tr><tr class="row1"><td><i>[const]</i></td><td>unsigned int</td><td><b><a href="#method13">cell_index</a></b></td><td></td><td>Gets the index of the cell the current instance sits in</td></tr><tr class="row0"><td><i>[const]</i></td><td>Region</td><td><b><a href="#method14">complex_region</a></b></td><td></td><td>Gets the complex region that this iterator is using</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method15">confine_region</a></b></td><td>(const Box box_region)</td><td>Confines the region that this iterator is iterating over</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method16">confine_region</a></b></td><td>(const Region complex_region)</td><td>Confines the region that this iterator is iterating over</td></tr><tr class="row1"><td><i>[const]</i></td><td>InstElement</td><td><b><a href="#method18">current_inst_element</a></b></td><td></td><td>Gets the current instance</td></tr><tr class="row0"><td><i>[const]</i></td><td>DCplxTrans</td><td><b><a href="#method21">dtrans</a></b></td><td></td><td>Gets the accumulated transformation of the current instance parent cell to the top cell</td></tr><tr class="row1"><td><i>[const]</i></td><td>new RecursiveInstanceIterator ptr</td><td><b><a href="#method22">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row0"><td><i>[iter]</i></td><td>RecursiveInstanceIterator</td><td><b><a href="#method23">each</a></b></td><td></td><td>Native iteration</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method24">enable_all_targets</a></b></td><td></td><td>Enables 'all targets' mode in which instances of all cells are reported</td></tr><tr class="row0"><td><i>[const]</i></td><td>Cell ptr</td><td><b><a href="#method25">inst_cell</a></b></td><td></td><td>Gets the target cell of the current instance</td></tr><tr class="row1"><td><i>[const]</i></td><td>DCplxTrans</td><td><b><a href="#method26">inst_dtrans</a></b></td><td></td><td>Gets the micron-unit transformation of the current instance</td></tr><tr class="row0"><td><i>[const]</i></td><td>ICplxTrans</td><td><b><a href="#method27">inst_trans</a></b></td><td></td><td>Gets the integer-unit transformation of the current instance</td></tr><tr class="row1"><td><i>[const]</i></td><td>const Layout ptr</td><td><b><a href="#method29">layout</a></b></td><td></td><td>Gets the layout this iterator is connected to</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method30">max_depth</a></b></td><td></td><td>Gets the maximum hierarchy depth</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method31">max_depth=</a></b></td><td>(int depth)</td><td>Specifies the maximum hierarchy depth to look into</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method32">min_depth</a></b></td><td></td><td>Gets the minimum hierarchy depth</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method33">min_depth=</a></b></td><td>(int depth)</td><td>Specifies the minimum hierarchy depth to look into</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method37">next</a></b></td><td></td><td>Increments the iterator</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method38">overlapping=</a></b></td><td>(bool region)</td><td>Sets a flag indicating whether overlapping instances are selected when a region is used</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method39">overlapping?</a></b></td><td></td><td>Gets a flag indicating whether overlapping instances are selected when a region is used</td></tr><tr class="row1"><td><i>[const]</i></td><td>InstElement[]</td><td><b><a href="#method40">path</a></b></td><td></td><td>Gets the instantiation path of the instance addressed currently</td></tr><tr class="row0"><td><i>[const]</i></td><td>Box</td><td><b><a href="#method41">region</a></b></td><td></td><td>Gets the basic region that this iterator is using</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method42">region=</a></b></td><td>(const Box box_region)</td><td>Sets the rectangular region that this iterator is iterating over</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method43">region=</a></b></td><td>(const Region complex_region)</td><td>Sets the complex region that this iterator is using</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method44">reset</a></b></td><td></td><td>Resets the iterator to the initial state</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method45">reset_selection</a></b></td><td></td><td>Resets the selection to the default state</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method46">select_all_cells</a></b></td><td></td><td>Selects all cells.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method47">select_cells</a></b></td><td>(unsigned int[] cells)</td><td>Unselects the given cells.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method48">select_cells</a></b></td><td>(string cells)</td><td>Unselects the given cells.</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned int[]</td><td><b><a href="#method49">targets</a></b></td><td></td><td>Gets the list of target cells</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method50">targets=</a></b></td><td>(unsigned int[] cells)</td><td>Specifies the target cells.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method51">targets=</a></b></td><td>(string cells)</td><td>Specifies the target cells.</td></tr><tr class="row1"><td><i>[const]</i></td><td>const Cell ptr</td><td><b><a href="#method52">top_cell</a></b></td><td></td><td>Gets the top cell this iterator is connected to</td></tr><tr class="row0"><td><i>[const]</i></td><td>ICplxTrans</td><td><b><a href="#method53">trans</a></b></td><td></td><td>Gets the accumulated transformation of the current instance parent cell to the top cell</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method54">unselect_all_cells</a></b></td><td></td><td>Unselects all cells.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method55">unselect_cells</a></b></td><td>(unsigned int[] cells)</td><td>Unselects the given cells.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method56">unselect_cells</a></b></td><td>(string cells)</td><td>Unselects the given cells.</td></tr></table><a name="h2-164"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method17">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method19">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method20">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method28">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-175"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-176"></a><h3>!=</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_!="></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i>bool <b> != </b> (const <a href="class_RecursiveInstanceIterator.html">RecursiveInstanceIterator</a> other)</p><p><b>Description</b>: Comparison of iterators - inequality</p><p><p></p><p>Two iterators are not equal if they do not point to the same instance.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-182"></a><h3>==</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_=="></a><a name="k_3"></a><p><b>Signature</b>: <i>[const] </i>bool <b> == </b> (const <a href="class_RecursiveInstanceIterator.html">RecursiveInstanceIterator</a> other)</p><p><b>Description</b>: Comparison of iterators - equality</p><p><p></p><p>Two iterators are equal if they point to the same instance.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-188"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__const_cast"></a><a name="k_4"></a><p><b>Signature</b>: <i>[const] </i><a href="class_RecursiveInstanceIterator.html">RecursiveInstanceIterator</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-194"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__create"></a><a name="k_5"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-200"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__destroy"></a><a name="k_6"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-207"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__destroyed?"></a><a name="k_7"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-214"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__is_const_object?"></a><a name="k_8"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-221"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__manage"></a><a name="k_9"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-227"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__unmanage"></a><a name="k_10"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-233"></a><h3>all_targets_enabled?</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_all_targets_enabled?"></a><a name="k_11"></a><p><b>Signature</b>: <i>[const] </i>bool <b> all_targets_enabled? </b></p><p><b>Description</b>: Gets a value indicating whether instances of all cells are reported</p><p><p>
+See <a href="#m_targets=">targets=</a> for a description of the target cell concept. </p></p></td></tr><tr class="bigrow0"><td><a name="h3-239"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_assign"></a><a name="k_12"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_RecursiveInstanceIterator.html">RecursiveInstanceIterator</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow1"><td><a name="h3-243"></a><h3>at_end?</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_at_end?"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i>bool <b> at_end? </b></p><p><b>Description</b>: End of iterator predicate</p><p><p></p><p>Returns true, if the iterator is at the end of the sequence
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-249"></a><h3>cell</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_cell"></a><a name="k_14"></a><p><b>Signature</b>: <i>[const] </i>const <a href="class_Cell.html">Cell</a> ptr <b> cell </b></p><p><b>Description</b>: Gets the cell the current instance sits in</p></td></tr><tr class="bigrow1"><td><a name="h3-253"></a><h3>cell_index</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_cell_index"></a><a name="k_15"></a><p><b>Signature</b>: <i>[const] </i>unsigned int <b> cell_index </b></p><p><b>Description</b>: Gets the index of the cell the current instance sits in</p><p><p>
+This is equivalent to 'cell.cell_index'.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-259"></a><h3>complex_region</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_complex_region"></a><a name="k_16"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Region.html">Region</a><b> complex_region </b></p><p><b>Description</b>: Gets the complex region that this iterator is using</p><p><p>
+The complex region is the effective region (a <a href="class_Region.html">Region</a> object) that the iterator is selecting from the layout. This region can be a single box or a complex region.
+</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-266"></a><h3>confine_region</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_confine_region"></a><a name="k_17"></a><p><b>(1) Signature</b>: void <b> confine_region </b> (const <a href="class_Box.html">Box</a> box_region)</p><p><b>Description</b>: Confines the region that this iterator is iterating over</p><p><p>
+This method is similar to setting the region (see <a href="#m_region=">region=</a>), but will confine any region (complex or simple) already set. Essentially it does a logical AND operation between the existing and given region. Hence this method can only reduce a region, not extend it.
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_confine_region"></a><a name="k_18"></a><p><b>(2) Signature</b>: void <b> confine_region </b> (const <a href="class_Region.html">Region</a> complex_region)</p><p><b>Description</b>: Confines the region that this iterator is iterating over</p><p><p>
+This method is similar to setting the region (see <a href="#m_region=">region=</a>), but will confine any region (complex or simple) already set. Essentially it does a logical AND operation between the existing and given region. Hence this method can only reduce a region, not extend it.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-279"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_create"></a><a name="k_19"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-286"></a><h3>current_inst_element</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_current_inst_element"></a><a name="k_20"></a><p><b>Signature</b>: <i>[const] </i><a href="class_InstElement.html">InstElement</a><b> current_inst_element </b></p><p><b>Description</b>: Gets the current instance</p><p><p></p><p>This is the instance/array element the iterator currently refers to.
+This is a <a href="class_InstElement.html">InstElement</a> object representing the current instance and the array element the iterator currently points at.</p><p>See <a href="#m_inst_trans">inst_trans</a>, <a href="#m_inst_dtrans">inst_dtrans</a> and <a href="#m_inst_cell">inst_cell</a> for convenience methods to access the details of the current element.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-293"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_destroy"></a><a name="k_21"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-301"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_destroyed?"></a><a name="k_22"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-309"></a><h3>dtrans</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_dtrans"></a><a name="k_23"></a><p><b>Signature</b>: <i>[const] </i><a href="class_DCplxTrans.html">DCplxTrans</a><b> dtrans </b></p><p><b>Description</b>: Gets the accumulated transformation of the current instance parent cell to the top cell</p><p><p></p><p>This transformation represents how the current instance is seen in the top cell.
+This version returns the micron-unit transformation.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-316"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_dup"></a><a name="k_24"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_RecursiveInstanceIterator.html">RecursiveInstanceIterator</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-321"></a><h3>each</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_each"></a><a name="k_25"></a><p><b>Signature</b>: <i>[iter] </i><a href="class_RecursiveInstanceIterator.html">RecursiveInstanceIterator</a><b> each </b></p><p><b>Description</b>: Native iteration</p><p><p>
+This method enables native iteration, e.g.</p><p><pre>
+  iter = ... # RecursiveInstanceIterator
+  iter.each do |i|
+     ... i is the iterator itself
+  end
+</pre></p><p>This is slightly more convenient than the 'at_end' .. 'next' loop.</p><p>This feature has been introduced in version 0.28.
+</p></p><p><b>Python specific notes: </b><br>This method enables iteration of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-334"></a><h3>enable_all_targets</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_enable_all_targets"></a><a name="k_26"></a><p><b>Signature</b>: void <b> enable_all_targets </b></p><p><b>Description</b>: Enables 'all targets' mode in which instances of all cells are reported</p><p><p>
+See <a href="#m_targets=">targets=</a> for a description of the target cell concept. </p></p></td></tr><tr class="bigrow0"><td><a name="h3-340"></a><h3>inst_cell</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_inst_cell"></a><a name="k_27"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Cell.html">Cell</a> ptr <b> inst_cell </b></p><p><b>Description</b>: Gets the target cell of the current instance</p><p><p>
+This is the cell the current instance refers to. It is one of the <a href="#m_targets">targets</a> if a target list is given.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-347"></a><h3>inst_dtrans</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_inst_dtrans"></a><a name="k_28"></a><p><b>Signature</b>: <i>[const] </i><a href="class_DCplxTrans.html">DCplxTrans</a><b> inst_dtrans </b></p><p><b>Description</b>: Gets the micron-unit transformation of the current instance</p><p><p>
+This is the transformation of the current instance inside its parent.
+'dtrans * inst_dtrans' gives the full micron-unit transformation how the current cell is seen in the top cell.
+See also <a href="#m_inst_trans">inst_trans</a> and <a href="#m_inst_cell">inst_cell</a>.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-356"></a><h3>inst_trans</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_inst_trans"></a><a name="k_29"></a><p><b>Signature</b>: <i>[const] </i><a href="class_ICplxTrans.html">ICplxTrans</a><b> inst_trans </b></p><p><b>Description</b>: Gets the integer-unit transformation of the current instance</p><p><p>
+This is the transformation of the current instance inside its parent.
+'trans * inst_trans' gives the full transformation how the current cell is seen in the top cell.
+See also <a href="#m_inst_dtrans">inst_dtrans</a> and <a href="#m_inst_cell">inst_cell</a>.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-365"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_is_const_object?"></a><a name="k_30"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-373"></a><h3>layout</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_layout"></a><a name="k_31"></a><p><b>Signature</b>: <i>[const] </i>const <a href="class_Layout.html">Layout</a> ptr <b> layout </b></p><p><b>Description</b>: Gets the layout this iterator is connected to</p></td></tr><tr class="bigrow1"><td><a name="h3-377"></a><h3>max_depth</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_max_depth"></a><a name="k_32"></a><p><b>Signature</b>: <i>[const] </i>int <b> max_depth </b></p><p><b>Description</b>: Gets the maximum hierarchy depth</p><p><p></p><p>See <a href="#m_max_depth=">max_depth=</a> for a description of that attribute.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'max_depth'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-384"></a><h3>max_depth=</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_max_depth="></a><a name="k_33"></a><p><b>Signature</b>: void <b> max_depth= </b> (int depth)</p><p><b>Description</b>: Specifies the maximum hierarchy depth to look into</p><p><p></p><p>A depth of 0 instructs the iterator to deliver only instances from the initial cell.
+A higher depth instructs the iterator to look deeper.
+The depth must be specified before the instances are being retrieved.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'max_depth'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-393"></a><h3>min_depth</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_min_depth"></a><a name="k_34"></a><p><b>Signature</b>: <i>[const] </i>int <b> min_depth </b></p><p><b>Description</b>: Gets the minimum hierarchy depth</p><p><p></p><p>See <a href="#m_min_depth=">min_depth=</a> for a description of that attribute.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'min_depth'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-400"></a><h3>min_depth=</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_min_depth="></a><a name="k_35"></a><p><b>Signature</b>: void <b> min_depth= </b> (int depth)</p><p><b>Description</b>: Specifies the minimum hierarchy depth to look into</p><p><p></p><p>A depth of 0 instructs the iterator to deliver instances from the top level.
+1 instructs to deliver instances from the first child level.
+The minimum depth must be specified before the instances are being retrieved.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'min_depth'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td rowspan="3"><a name="h3-409"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_new"></a><a name="k_36"></a><p><b>(1) Signature</b>: <i>[static] </i>new <a href="class_RecursiveInstanceIterator.html">RecursiveInstanceIterator</a> ptr <b> new </b> (const <a href="class_Layout.html">Layout</a> layout, const <a href="class_Cell.html">Cell</a> cell)</p><p><b>Description</b>: Creates a recursive instance iterator.</p><table class="layout-table"><tr><td><b>layout</b>:</td><td>The layout which shall be iterated</td></tr><tr><td><b>cell</b>:</td><td>The initial cell which shall be iterated (including its children)</td></tr><tr><td><b>layer</b>:</td><td>The layer (index) from which the shapes are taken</td></tr></table><p><p></p><p>This constructor creates a new recursive instance iterator which delivers the instances of the given cell plus its children.
+</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_new"></a><a name="k_37"></a><p><b>(2) Signature</b>: <i>[static] </i>new <a href="class_RecursiveInstanceIterator.html">RecursiveInstanceIterator</a> ptr <b> new </b> (const <a href="class_Layout.html">Layout</a> layout, const <a href="class_Cell.html">Cell</a> cell, const <a href="class_Box.html">Box</a> box, bool overlapping = false)</p><p><b>Description</b>: Creates a recursive instance iterator with a search region.</p><table class="layout-table"><tr><td><b>layout</b>:</td><td>The layout which shall be iterated</td></tr><tr><td><b>cell</b>:</td><td>The initial cell which shall be iterated (including its children)</td></tr><tr><td><b>box</b>:</td><td>The search region</td></tr><tr><td><b>overlapping</b>:</td><td>If set to true, instances overlapping the search region are reported, otherwise touching is sufficient</td></tr></table><p><p></p><p>This constructor creates a new recursive instance iterator which delivers the instances of the given cell plus its children.</p><p>The search is confined to the region given by the &quot;box&quot; parameter. If &quot;overlapping&quot; is true, instances whose bounding box is overlapping the search region are reported. If &quot;overlapping&quot; is false, instances whose bounding box touches the search region are reported. The bounding box of instances is measured taking all layers of the target cell into account.
+</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_new"></a><a name="k_38"></a><p><b>(3) Signature</b>: <i>[static] </i>new <a href="class_RecursiveInstanceIterator.html">RecursiveInstanceIterator</a> ptr <b> new </b> (const <a href="class_Layout.html">Layout</a> layout, const <a href="class_Cell.html">Cell</a> cell, const <a href="class_Region.html">Region</a> region, bool overlapping)</p><p><b>Description</b>: Creates a recursive instance iterator with a search region.</p><table class="layout-table"><tr><td><b>layout</b>:</td><td>The layout which shall be iterated</td></tr><tr><td><b>cell</b>:</td><td>The initial cell which shall be iterated (including its children)</td></tr><tr><td><b>region</b>:</td><td>The search region</td></tr><tr><td><b>overlapping</b>:</td><td>If set to true, instances overlapping the search region are reported, otherwise touching is sufficient</td></tr></table><p><p></p><p>This constructor creates a new recursive instance iterator which delivers the instances of the given cell plus its children.</p><p>The search is confined to the region given by the &quot;region&quot; parameter. The region needs to be a rectilinear region.
+If &quot;overlapping&quot; is true, instances whose bounding box is overlapping the search region are reported. If &quot;overlapping&quot; is false, instances whose bounding box touches the search region are reported. The bounding box of instances is measured taking all layers of the target cell into account.
+</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-446"></a><h3>next</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_next"></a><a name="k_39"></a><p><b>Signature</b>: void <b> next </b></p><p><b>Description</b>: Increments the iterator</p><p><p>
+This moves the iterator to the next instance inside the search scope.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-452"></a><h3>overlapping=</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_overlapping="></a><a name="k_40"></a><p><b>Signature</b>: void <b> overlapping= </b> (bool region)</p><p><b>Description</b>: Sets a flag indicating whether overlapping instances are selected when a region is used</p><p><p></p><p>If this flag is false, instances touching the search region are returned.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'overlapping'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-459"></a><h3>overlapping?</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_overlapping?"></a><a name="k_41"></a><p><b>Signature</b>: <i>[const] </i>bool <b> overlapping? </b></p><p><b>Description</b>: Gets a flag indicating whether overlapping instances are selected when a region is used</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'overlapping'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-464"></a><h3>path</h3></td><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_path"></a><a name="k_42"></a><p><b>Signature</b>: <i>[const] </i><a href="class_InstElement.html">InstElement</a>[] <b> path </b></p><p><b>Description</b>: Gets the instantiation path of the instance addressed currently</p><p><p></p><p>This attribute is a sequence of <a href="class_InstElement.html">InstElement</a> objects describing the cell instance path from the initial cell to the current instance. The path is empty if the current instance is in the top cell.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-470"></a><h3>region</h3></td><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_region"></a><a name="k_43"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Box.html">Box</a><b> region </b></p><p><b>Description</b>: Gets the basic region that this iterator is using</p><p><p>
+The basic region is the overall box the region iterator iterates over. There may be an additional complex region that confines the region iterator. See <a href="#m_complex_region">complex_region</a> for this attribute.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'region'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-478"></a><h3>region=</h3></td><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_region="></a><a name="k_44"></a><p><b>(1) Signature</b>: void <b> region= </b> (const <a href="class_Box.html">Box</a> box_region)</p><p><b>Description</b>: Sets the rectangular region that this iterator is iterating over</p><p><p>
+See <a href="#m_region">region</a> for a description of this attribute.
+Setting a simple region will reset the complex region to a rectangle and reset the iterator to the beginning of the sequence.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'region'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_region="></a><a name="k_45"></a><p><b>(2) Signature</b>: void <b> region= </b> (const <a href="class_Region.html">Region</a> complex_region)</p><p><b>Description</b>: Sets the complex region that this iterator is using</p><p><p>
+See <a href="#m_complex_region">complex_region</a> for a description of this attribute. Setting the complex region will reset the basic region (see <a href="#m_region">region</a>) to the bounding box of the complex region and reset the iterator to the beginning of the sequence.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'region'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-493"></a><h3>reset</h3></td><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_reset"></a><a name="k_46"></a><p><b>Signature</b>: void <b> reset </b></p><p><b>Description</b>: Resets the iterator to the initial state</p></td></tr><tr class="bigrow1"><td><a name="h3-497"></a><h3>reset_selection</h3></td><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_reset_selection"></a><a name="k_47"></a><p><b>Signature</b>: void <b> reset_selection </b></p><p><b>Description</b>: Resets the selection to the default state</p><p><p></p><p>In the initial state, the top cell and its children are selected. Child cells can be switched on and off together with their sub-hierarchy using <a href="#m_select_cells">select_cells</a> and <a href="#m_unselect_cells">unselect_cells</a>.</p><p>This method will also reset the iterator.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-503"></a><h3>select_all_cells</h3></td><td style="padding-bottom: 16px"><a name="method46"></a><a name="m_select_all_cells"></a><a name="k_48"></a><p><b>Signature</b>: void <b> select_all_cells </b></p><p><b>Description</b>: Selects all cells.</p><p><p></p><p>This method will set the &quot;selected&quot; mark on all cells. The effect is that subsequent calls of <a href="#m_unselect_cells">unselect_cells</a> will unselect only the specified cells, not their children, because they are still unselected.</p><p>This method will also reset the iterator.
+</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-509"></a><h3>select_cells</h3></td><td style="padding-bottom: 16px"><a name="method47"></a><a name="m_select_cells"></a><a name="k_49"></a><p><b>(1) Signature</b>: void <b> select_cells </b> (unsigned int[] cells)</p><p><b>Description</b>: Unselects the given cells.</p><p><p></p><p>This method will sets the &quot;selected&quot; mark on the given cells. That means that these cells or their child cells are visited, unless they are marked as &quot;unselected&quot; again with the <a href="#m_unselect_cells">unselect_cells</a> method.</p><p>The cells are given as a list of cell indexes.</p><p>This method will also reset the iterator.
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method48"></a><a name="m_select_cells"></a><a name="k_50"></a><p><b>(2) Signature</b>: void <b> select_cells </b> (string cells)</p><p><b>Description</b>: Unselects the given cells.</p><p><p></p><p>This method will sets the &quot;selected&quot; mark on the given cells. That means that these cells or their child cells are visited, unless they are marked as &quot;unselected&quot; again with the <a href="#m_unselect_cells">unselect_cells</a> method.</p><p>The cells are given as a glob pattern.
+A glob pattern follows the syntax of file names on the shell (i.e. &quot;A*&quot; are all cells starting with a letter &quot;A&quot;).</p><p>This method will also reset the iterator.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-521"></a><h3>targets</h3></td><td style="padding-bottom: 16px"><a name="method49"></a><a name="m_targets"></a><a name="k_51"></a><p><b>Signature</b>: <i>[const] </i>unsigned int[] <b> targets </b></p><p><b>Description</b>: Gets the list of target cells</p><p><p>
+See <a href="#m_targets=">targets=</a> for a description of the target cell concept. This method returns a list of cell indexes of the selected target cells.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'targets'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-528"></a><h3>targets=</h3></td><td style="padding-bottom: 16px"><a name="method50"></a><a name="m_targets="></a><a name="k_52"></a><p><b>(1) Signature</b>: void <b> targets= </b> (unsigned int[] cells)</p><p><b>Description</b>: Specifies the target cells.</p><p><p></p><p>If target cells are specified, only instances of these cells are delivered. This version takes a list of cell indexes for the targets. By default, no target cell list is present and the instances of all cells are delivered by the iterator. See <a href="#m_all_targets_enabled?">all_targets_enabled?</a> and <a href="#m_enable_all_targets">enable_all_targets</a> for a description of this mode. Once a target list is specified, the iteration is confined to the cells from this list.
+The cells are given as a list of cell indexes.</p><p>This method will also reset the iterator.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'targets'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method51"></a><a name="m_targets="></a><a name="k_53"></a><p><b>(2) Signature</b>: void <b> targets= </b> (string cells)</p><p><b>Description</b>: Specifies the target cells.</p><p><p></p><p>If target cells are specified, only instances of these cells are delivered. This version takes a cell list as a glob pattern. A glob pattern follows the syntax of file names on the shell (i.e. &quot;A*&quot; are all cells starting with a letter &quot;A&quot;).
+Use the curly-bracket notation to list different cells, e.g &quot;{A,B,C}&quot; for cells A, B and C.</p><p>By default, no target cell list is present and the instances of all cells are delivered by the iterator. See <a href="#m_all_targets_enabled?">all_targets_enabled?</a> and <a href="#m_enable_all_targets">enable_all_targets</a> for a description of this mode. Once a target list is specified, the iteration is confined to the cells from this list.
+The cells are given as a list of cell indexes.</p><p>This method will also reset the iterator.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'targets'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-544"></a><h3>top_cell</h3></td><td style="padding-bottom: 16px"><a name="method52"></a><a name="m_top_cell"></a><a name="k_54"></a><p><b>Signature</b>: <i>[const] </i>const <a href="class_Cell.html">Cell</a> ptr <b> top_cell </b></p><p><b>Description</b>: Gets the top cell this iterator is connected to</p></td></tr><tr class="bigrow1"><td><a name="h3-548"></a><h3>trans</h3></td><td style="padding-bottom: 16px"><a name="method53"></a><a name="m_trans"></a><a name="k_55"></a><p><b>Signature</b>: <i>[const] </i><a href="class_ICplxTrans.html">ICplxTrans</a><b> trans </b></p><p><b>Description</b>: Gets the accumulated transformation of the current instance parent cell to the top cell</p><p><p></p><p>This transformation represents how the current instance is seen in the top cell.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-554"></a><h3>unselect_all_cells</h3></td><td style="padding-bottom: 16px"><a name="method54"></a><a name="m_unselect_all_cells"></a><a name="k_56"></a><p><b>Signature</b>: void <b> unselect_all_cells </b></p><p><b>Description</b>: Unselects all cells.</p><p><p></p><p>This method will set the &quot;unselected&quot; mark on all cells. The effect is that subsequent calls of <a href="#m_select_cells">select_cells</a> will select only the specified cells, not their children, because they are still unselected.</p><p>This method will also reset the iterator.
+</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-560"></a><h3>unselect_cells</h3></td><td style="padding-bottom: 16px"><a name="method55"></a><a name="m_unselect_cells"></a><a name="k_57"></a><p><b>(1) Signature</b>: void <b> unselect_cells </b> (unsigned int[] cells)</p><p><b>Description</b>: Unselects the given cells.</p><p><p></p><p>This method will sets the &quot;unselected&quot; mark on the given cells. That means that these cells or their child cells will not be visited, unless they are marked as &quot;selected&quot; again with the <a href="#m_select_cells">select_cells</a> method.</p><p>The cells are given as a list of cell indexes.</p><p>This method will also reset the iterator.
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method56"></a><a name="m_unselect_cells"></a><a name="k_58"></a><p><b>(2) Signature</b>: void <b> unselect_cells </b> (string cells)</p><p><b>Description</b>: Unselects the given cells.</p><p><p></p><p>This method will sets the &quot;unselected&quot; mark on the given cells. That means that these cells or their child cells will not be visited, unless they are marked as &quot;selected&quot; again with the <a href="#m_select_cells">select_cells</a> method.</p><p>The cells are given as a glob pattern.
+A glob pattern follows the syntax of file names on the shell (i.e. &quot;A*&quot; are all cells starting with a letter &quot;A&quot;).</p><p>This method will also reset the iterator.
+</p></p></td></tr></table></body>

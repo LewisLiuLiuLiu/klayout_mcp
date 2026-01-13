@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class QTime</p><h1>API reference - Class QTime</h1><property value="QtCore" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_QtCore.html">QtCore</a></p><p><b>Description</b>: Binding of QTime</p><ul><li><a href="#h2-12">Public constructors</a></li><li><a href="#h2-19">Public methods</a></li><li><a href="#h2-84">Public static methods and constants</a></li><li><a href="#h2-95">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-106">Detailed description</a></li></ul><p></p><a name="h2-12"></a><h2>Public constructors</h2><table><tr class="row0"><td>new QTime</td><td><b><a href="#method32">new</a></b></td><td></td><td>Constructor QTime::QTime()</td></tr><tr class="row1"><td>new QTime</td><td><b><a href="#method33">new</a></b></td><td>(int h,<br>int m,<br>int s = 0,<br>int ms = 0)</td><td>Constructor QTime::QTime(int h, int m, int s, int ms)</td></tr></table><a name="h2-19"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method0">!=</a></b></td><td>(const QTime other)</td><td>Method bool QTime::operator!=(const QTime &amp;other)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method1">&lt;</a></b></td><td>(const QTime other)</td><td>Method bool QTime::operator&lt;(const QTime &amp;other)</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method2">&lt;=</a></b></td><td>(const QTime other)</td><td>Method bool QTime::operator&lt;=(const QTime &amp;other)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">==</a></b></td><td>(const QTime other)</td><td>Method bool QTime::operator==(const QTime &amp;other)</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">&gt;</a></b></td><td>(const QTime other)</td><td>Method bool QTime::operator&gt;(const QTime &amp;other)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method5">&gt;=</a></b></td><td>(const QTime other)</td><td>Method bool QTime::operator&gt;=(const QTime &amp;other)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QTime ptr</td><td><b><a href="#method6">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method9">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method10">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method11">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method12">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td><i>[const]</i></td><td>QTime</td><td><b><a href="#method13">addMSecs</a></b></td><td>(int ms)</td><td>Method QTime QTime::addMSecs(int ms)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QTime</td><td><b><a href="#method14">addSecs</a></b></td><td>(int secs)</td><td>Method QTime QTime::addSecs(int secs)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method15">assign</a></b></td><td>(const QTime other)</td><td>Assigns another object to self</td></tr><tr class="row0"><td><i>[const]</i></td><td>new QTime ptr</td><td><b><a href="#method20">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method21">elapsed</a></b></td><td></td><td>Method int QTime::elapsed()</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method24">hour</a></b></td><td></td><td>Method int QTime::hour()</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method25">isNull?</a></b></td><td></td><td>Method bool QTime::isNull()</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method26">isValid?</a></b></td><td></td><td>Method bool QTime::isValid()</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method29">minute</a></b></td><td></td><td>Method int QTime::minute()</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method30">msec</a></b></td><td></td><td>Method int QTime::msec()</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method31">msecsTo</a></b></td><td>(const QTime arg1)</td><td>Method int QTime::msecsTo(const QTime &amp;)</td></tr><tr class="row0"><td></td><td>int</td><td><b><a href="#method34">restart</a></b></td><td></td><td>Method int QTime::restart()</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method35">second</a></b></td><td></td><td>Method int QTime::second()</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method36">secsTo</a></b></td><td>(const QTime arg1)</td><td>Method int QTime::secsTo(const QTime &amp;)</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method37">setHMS</a></b></td><td>(int h,<br>int m,<br>int s,<br>int ms = 0)</td><td>Method bool QTime::setHMS(int h, int m, int s, int ms)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method38">start</a></b></td><td></td><td>Method void QTime::start()</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method39">toString</a></b></td><td>(const Qt_DateFormat f = Qt::TextDate)</td><td>Method QString QTime::toString(Qt::DateFormat f)</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method40">toString</a></b></td><td>(string format)</td><td>Method QString QTime::toString(const QString &amp;format)</td></tr></table><a name="h2-84"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td></td><td>QTime</td><td><b><a href="#method17">currentTime</a></b></td><td></td><td>Static method QTime QTime::currentTime()</td></tr><tr class="row1"><td></td><td>QTime</td><td><b><a href="#method22">fromString</a></b></td><td>(string s,<br>const Qt_DateFormat f = Qt::TextDate)</td><td>Static method QTime QTime::fromString(const QString &amp;s, Qt::DateFormat f)</td></tr><tr class="row0"><td></td><td>QTime</td><td><b><a href="#method23">fromString</a></b></td><td>(string s,<br>string format)</td><td>Static method QTime QTime::fromString(const QString &amp;s, const QString &amp;format)</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method27">isValid?</a></b></td><td>(int h,<br>int m,<br>int s,<br>int ms = 0)</td><td>Static method bool QTime::isValid(int h, int m, int s, int ms)</td></tr></table><a name="h2-95"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method16">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method18">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method19">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method28">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-106"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-107"></a><h3>!=</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_!="></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i>bool <b> != </b> (const <a href="class_QTime.html">QTime</a> other)</p><p><b>Description</b>: Method bool QTime::operator!=(const QTime &amp;other)</p></td></tr><tr class="bigrow1"><td><a name="h3-111"></a><h3>&lt;</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_&lt;"></a><a name="k_3"></a><p><b>Signature</b>: <i>[const] </i>bool <b> &lt; </b> (const <a href="class_QTime.html">QTime</a> other)</p><p><b>Description</b>: Method bool QTime::operator&lt;(const QTime &amp;other)</p></td></tr><tr class="bigrow0"><td><a name="h3-115"></a><h3>&lt;=</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m_&lt;="></a><a name="k_4"></a><p><b>Signature</b>: <i>[const] </i>bool <b> &lt;= </b> (const <a href="class_QTime.html">QTime</a> other)</p><p><b>Description</b>: Method bool QTime::operator&lt;=(const QTime &amp;other)</p></td></tr><tr class="bigrow1"><td><a name="h3-119"></a><h3>==</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m_=="></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> == </b> (const <a href="class_QTime.html">QTime</a> other)</p><p><b>Description</b>: Method bool QTime::operator==(const QTime &amp;other)</p></td></tr><tr class="bigrow0"><td><a name="h3-123"></a><h3>&gt;</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m_&gt;"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> &gt; </b> (const <a href="class_QTime.html">QTime</a> other)</p><p><b>Description</b>: Method bool QTime::operator&gt;(const QTime &amp;other)</p></td></tr><tr class="bigrow1"><td><a name="h3-127"></a><h3>&gt;=</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m_&gt;="></a><a name="k_7"></a><p><b>Signature</b>: <i>[const] </i>bool <b> &gt;= </b> (const <a href="class_QTime.html">QTime</a> other)</p><p><b>Description</b>: Method bool QTime::operator&gt;=(const QTime &amp;other)</p></td></tr><tr class="bigrow0"><td><a name="h3-131"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__const_cast"></a><a name="k_8"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QTime.html">QTime</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-137"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__create"></a><a name="k_9"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-143"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__destroy"></a><a name="k_10"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-150"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m__destroyed?"></a><a name="k_11"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-157"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m__is_const_object?"></a><a name="k_12"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-164"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m__manage"></a><a name="k_13"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-170"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m__unmanage"></a><a name="k_14"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-176"></a><h3>addMSecs</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_addMSecs"></a><a name="k_15"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QTime.html">QTime</a><b> addMSecs </b> (int ms)</p><p><b>Description</b>: Method QTime QTime::addMSecs(int ms)</p></td></tr><tr class="bigrow0"><td><a name="h3-180"></a><h3>addSecs</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_addSecs"></a><a name="k_16"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QTime.html">QTime</a><b> addSecs </b> (int secs)</p><p><b>Description</b>: Method QTime QTime::addSecs(int secs)</p></td></tr><tr class="bigrow1"><td><a name="h3-184"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_assign"></a><a name="k_17"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_QTime.html">QTime</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow0"><td><a name="h3-188"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_create"></a><a name="k_18"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-195"></a><h3>currentTime</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_currentTime"></a><a name="k_19"></a><p><b>Signature</b>: <i>[static] </i><a href="class_QTime.html">QTime</a><b> currentTime </b></p><p><b>Description</b>: Static method QTime QTime::currentTime()</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-201"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_destroy"></a><a name="k_20"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-209"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_destroyed?"></a><a name="k_21"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-217"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_dup"></a><a name="k_22"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_QTime.html">QTime</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-222"></a><h3>elapsed</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_elapsed"></a><a name="k_23"></a><p><b>Signature</b>: <i>[const] </i>int <b> elapsed </b></p><p><b>Description</b>: Method int QTime::elapsed()</p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-226"></a><h3>fromString</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_fromString"></a><a name="k_24"></a><p><b>(1) Signature</b>: <i>[static] </i><a href="class_QTime.html">QTime</a><b> fromString </b> (string s, const <a href="class_Qt_DateFormat.html">Qt_DateFormat</a> f = Qt::TextDate)</p><p><b>Description</b>: Static method QTime QTime::fromString(const QString &amp;s, Qt::DateFormat f)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_fromString"></a><a name="k_25"></a><p><b>(2) Signature</b>: <i>[static] </i><a href="class_QTime.html">QTime</a><b> fromString </b> (string s, string format)</p><p><b>Description</b>: Static method QTime QTime::fromString(const QString &amp;s, const QString &amp;format)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-237"></a><h3>hour</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_hour"></a><a name="k_26"></a><p><b>Signature</b>: <i>[const] </i>int <b> hour </b></p><p><b>Description</b>: Method int QTime::hour()</p></td></tr><tr class="bigrow0"><td><a name="h3-241"></a><h3>isNull?</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_isNull?"></a><a name="k_27"></a><p><b>Signature</b>: <i>[const] </i>bool <b> isNull? </b></p><p><b>Description</b>: Method bool QTime::isNull()</p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-245"></a><h3>isValid?</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_isValid?"></a><a name="k_28"></a><p><b>(1) Signature</b>: <i>[const] </i>bool <b> isValid? </b></p><p><b>Description</b>: Method bool QTime::isValid()</p><p><b>Python specific notes: </b><br>This instance method is available as '_inst_isValid' in Python.<br></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_isValid?"></a><a name="k_29"></a><p><b>(2) Signature</b>: <i>[static] </i>bool <b> isValid? </b> (int h, int m, int s, int ms = 0)</p><p><b>Description</b>: Static method bool QTime::isValid(int h, int m, int s, int ms)</p><p><p>
+This method is static and can be called without an instance.</p></p><p><b>Python specific notes: </b><br>This class method is available as '_class_isValid' in Python.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-256"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_is_const_object?"></a><a name="k_30"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-264"></a><h3>minute</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_minute"></a><a name="k_31"></a><p><b>Signature</b>: <i>[const] </i>int <b> minute </b></p><p><b>Description</b>: Method int QTime::minute()</p></td></tr><tr class="bigrow0"><td><a name="h3-268"></a><h3>msec</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_msec"></a><a name="k_32"></a><p><b>Signature</b>: <i>[const] </i>int <b> msec </b></p><p><b>Description</b>: Method int QTime::msec()</p></td></tr><tr class="bigrow1"><td><a name="h3-272"></a><h3>msecsTo</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_msecsTo"></a><a name="k_33"></a><p><b>Signature</b>: <i>[const] </i>int <b> msecsTo </b> (const <a href="class_QTime.html">QTime</a> arg1)</p><p><b>Description</b>: Method int QTime::msecsTo(const QTime &amp;)</p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-276"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_new"></a><a name="k_34"></a><p><b>(1) Signature</b>: <i>[static] </i>new <a href="class_QTime.html">QTime</a><b> new </b></p><p><b>Description</b>: Constructor QTime::QTime()</p><p><p>
+This method creates an object of class QTime.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_new"></a><a name="k_35"></a><p><b>(2) Signature</b>: <i>[static] </i>new <a href="class_QTime.html">QTime</a><b> new </b> (int h, int m, int s = 0, int ms = 0)</p><p><b>Description</b>: Constructor QTime::QTime(int h, int m, int s, int ms)</p><p><p>
+This method creates an object of class QTime.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-289"></a><h3>restart</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_restart"></a><a name="k_36"></a><p><b>Signature</b>: int <b> restart </b></p><p><b>Description</b>: Method int QTime::restart()</p></td></tr><tr class="bigrow0"><td><a name="h3-293"></a><h3>second</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_second"></a><a name="k_37"></a><p><b>Signature</b>: <i>[const] </i>int <b> second </b></p><p><b>Description</b>: Method int QTime::second()</p></td></tr><tr class="bigrow1"><td><a name="h3-297"></a><h3>secsTo</h3></td><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_secsTo"></a><a name="k_38"></a><p><b>Signature</b>: <i>[const] </i>int <b> secsTo </b> (const <a href="class_QTime.html">QTime</a> arg1)</p><p><b>Description</b>: Method int QTime::secsTo(const QTime &amp;)</p></td></tr><tr class="bigrow0"><td><a name="h3-301"></a><h3>setHMS</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_setHMS"></a><a name="k_39"></a><p><b>Signature</b>: bool <b> setHMS </b> (int h, int m, int s, int ms = 0)</p><p><b>Description</b>: Method bool QTime::setHMS(int h, int m, int s, int ms)</p></td></tr><tr class="bigrow1"><td><a name="h3-305"></a><h3>start</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_start"></a><a name="k_40"></a><p><b>Signature</b>: void <b> start </b></p><p><b>Description</b>: Method void QTime::start()</p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-309"></a><h3>toString</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_toString"></a><a name="k_41"></a><p><b>(1) Signature</b>: <i>[const] </i>string <b> toString </b> (const <a href="class_Qt_DateFormat.html">Qt_DateFormat</a> f = Qt::TextDate)</p><p><b>Description</b>: Method QString QTime::toString(Qt::DateFormat f)</p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_toString"></a><a name="k_42"></a><p><b>(2) Signature</b>: <i>[const] </i>string <b> toString </b> (string format)</p><p><b>Description</b>: Method QString QTime::toString(const QString &amp;format)</p></td></tr></table></body>

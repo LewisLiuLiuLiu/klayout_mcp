@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="drc.html">Design Rule Check (DRC)</a> » Design Rule Checks (DRC) Basics</p><h1>Design Rule Checks (DRC) Basics</h1><a name="k_1"></a><ul><li><a href="#h2-44">Basic scripts</a></li><li><a href="#h2-174">Installing and running scripts</a></li><li><a href="#h2-237">DRC waiving flow</a></li><li><a href="#h2-280">Using KLayout as a standalone DRC engine</a></li></ul><p>
+  KLayout supports design rule checks beginning with version 0.23. The capabilities of the DRC feature 
+  include:
+  </p><ul><li>Basic DRC checks such as checks for minimum width and space.</li><li>Layer-generation methods such as boolean operations and sizing.</li><li>Extended geometrical checks such as overlap, enclosure and inside and outside checks.</li><li>Support for edge objects derived from polygons or as output from other functions.
+        Edge objects are useful to implement edge-related operations, for example selective sizing.</li><li>The capability the work with multiple input layouts.</li><li>Support for text object layers. Text objects are convenient for tagging polygons or labelling nets.</li><li>Cell filtering, local (region-constrained) operation.</li><li>A tiling approach for large layouts which can be configured to make use of multiple CPU cores.</li><li>A hierarchical option.</li></ul><p>
+  The DRC functionality is controlled by a DRC script. A DRC script is basically a piece of code which is executed in the
+  context of the DRC engine. 
+  The script language is based on KLayout's integrated Ruby interpreter and wraps the underlying object model
+  into a lean and expressive language. Script execution is immediate. That means, that 
+  it is possible to embed conditional statements or loops based on the result of a previous
+  operation. It is also possible to code low-level operations on shapes inside the script, although
+  this will be considerably slower than using the functions provided.
+  </p><p>
+  Output of the DRC script can be sent to a layout layer or a report database. The report database
+  is visualized in the marker database browser.
+  </p><a name="h2-44"></a><h2>Basic scripts</h2><p>
+  Runset writing is described in detail in <a href="drc_runsets.html">DRC Runsets</a>.
+  Here is a simple example for a DRC script:
+  </p><pre>
+report(&quot;A simple script&quot;)
+
+active = input(1, 0)
+poly = input(6, 0)
+gate = active &amp; poly
+gate.width(0.3).output(&quot;gate_width&quot;, &quot;Gate width violations&quot;)
+
+metal1 = input(17, 0)
+metal1.width(0.7).output(&quot;m1_width&quot;, &quot;M1 width violations&quot;)
+metal1.space(0.4).output(&quot;m1_space&quot;, &quot;M1 spacing violations&quot;)</pre><p>
+  This script will compute the gate poly shapes from the active and poly layers using a boolean &quot;AND&quot;.
+  The active layer has GDS layer 1, while the poly layer has GDS layer 6.
+  On this computed gate layer, the script will perform a width check for 0.3 micrometer. In addition a width and space
+  check is performed on the first metal layer, which is on GDS layer 17.
+  </p><p>
+  Let's take the script apart:
+  </p><ul><li><tt>report(&quot;A simple script&quot;)</tt><br>
+      This line will instruct the script to send output to a report database. The report database is shown in the 
+      marker database browser. The description text of the report database is given in brackets. 
+    </li><li><tt>active = input(1, 0)</tt><br>
+      This line will create an input layer. &quot;Layers&quot; are basically collections of shapes, edges or edge pairs
+      (edge pairs are objects created as output of check methods). &quot;input&quot; is a function which delivers a
+      layer object. Checks and other functions are performed on those layer objects in the spirit of object-oriented
+      programming and the underlying Ruby interpreter. &quot;active&quot; will be a variable that holds such an object. <br>
+      The parameters of the &quot;input&quot; method specify where to take the input from, in that case GDS layer 1 and database 0.
+      In that simple form, the first layout loaded into the current view is used for input.
+    </li><li><tt>poly = input(6, 0)</tt><br>
+      This line will create another input layer for poly silicon (from GDS layer 6, datatype 0).
+    </li><li><tt>gate = active &amp; poly</tt><br>
+      This line will compute the boolean &quot;AND&quot; of active and poly layers. The &quot;&amp;&quot; is the operator
+      for the boolean &quot;AND&quot; operation which computes the intersection of active and poly.
+      The result will be sent to a new layer and a new layer object is created and put into the 
+      &quot;gate&quot; variable. This layer object is a temporary one and will not appear in the output but
+      can be used in subsequent operations.
+    </li><li><tt>gate.width(0.3).output(&quot;gate_width&quot;, &quot;Gate width violations&quot;)</tt><br>
+      This line combines two operations into one statement: first is performs a width check against
+      a minimum width of 0.3 micrometer using the
+      width method on the &quot;gate&quot; layer. A &quot;method&quot; is a function performed on a specific object and
+      the notation used in the DRC script is the &quot;.&quot;. &quot;gate.width(0.3)&quot; will perform a width
+      check on the gate layer and create a new layer object with &quot;edge pairs&quot; for each violation.
+      &quot;Edge pairs&quot; are marker objects consisting of two edges or partial edges which describe where
+      two edges violate the check condition. In the simple geometrical checks, there are always two
+      edges involved in such a violation - hence such a violation is best described by a pair of edges. <br>
+      The result of the check is sent to a report database category using the &quot;output&quot; method.
+      Again this is a method called on an object, in that case the edge pair collection returned by
+      the width check. The parameters of the output method describe a formal name and a readable 
+      description of the category.
+    </li><li><tt>metal1 = input(17, 0)</tt><br>
+      As before, this statement will fetch input from GDS layer 17 and datatype 0 and create
+      a layer object representing that input.
+    </li><li><tt>metal1.width(0.7).output(&quot;m1_width&quot;, &quot;M1 width violations&quot;)</tt><br>
+      As for the gate, this statement will perform a width check (this time for 0.7 micrometer) and
+      output the violation markers to a report database category.
+    </li><li><tt>metal1.space(0.4).output(&quot;m1_space&quot;, &quot;M1 spacing violations&quot;)</tt><br>
+      And again a geometrical check: this time a space check for minimum space of 0.4 micrometer.
+    </li></ul><p>
+  The script can be written in several alternative forms. Here for example is a very brief version of
+  the gate width check:
+  </p><pre>
+(input(1, 0)*input(6, 0)).width(0.3).output(&quot;gate_width&quot;, &quot;Gate width violations&quot;)</pre><p>
+  Some aliases are provided for the boolean operation, so if you prefer object-oriented notation, you can use
+  the &quot;and&quot; method:
+  </p><pre>
+input(1, 0).and(input(6, 0)).width(0.3).output(&quot;gate_width&quot;, &quot;Gate width violations&quot;)</pre><p>
+  or the functional notation:
+  </p><pre>
+and(input(1, 0), input(6, 0)).width(0.3).output(&quot;gate_width&quot;, &quot;Gate width violations&quot;)</pre><p>
+  Dimensions can be given in different ways:
+  </p><pre>
+# floating-point (will default to micrometer)
+gate.width(0.3).output(&quot;gate_width&quot;, &quot;Gate width violations&quot;)
+
+# floating-point with unit
+gate.width(0.3.micron).output(&quot;gate_width&quot;, &quot;Gate width violations&quot;)
+gate.width(300.nm).output(&quot;gate_width&quot;, &quot;Gate width violations&quot;)
+
+# integer values will give dimensions in database units!
+gate.width(300).output(&quot;gate_width&quot;, &quot;Gate width violations&quot;)
+
+# as variable
+min_width = 300.nm
+gate.width(min_width).output(&quot;gate_width&quot;, &quot;Gate width violations&quot;)</pre><a name="h2-174"></a><h2>Installing and running scripts</h2><p>
+  To create a DRC script, choose &quot;Tools/DRC/New DRC Script&quot;. KLayout will open the 
+  Macro development IDE and create a new script. The first thing to do is to give the 
+  script a proper name. The cursor is already on the name - just enter a new name and press &quot;Enter&quot;.
+  </p><p>
+  The next step is to give the DRC script some description. Press the &quot;Properties&quot; button in the 
+  macro editor's toolbar and enter a description text - this is the text that will appear in the 
+  menu entry.
+  </p><p>
+  The DRC script will now appear in &quot;Tools/DRC&quot; with the description and selecting
+  that entry will run the script.
+  </p><p>
+  To edit the DRC script, choose &quot;Edit DRC Scripts&quot; from &quot;Tools/DRC&quot; or enter
+  the macro editor IDE and select the DRC category (the tab above the macro list).
+  </p><p>
+  DRC scripts can be shared or installed globally like normal macros. They can be put into
+  the &quot;macros&quot; folders, but the preferred way is to deploy them in a folder called &quot;drc&quot; beside
+  the &quot;macros&quot; folder. KLayout will scan various places for DRC scripts or macros, including the installation
+  path and the application folder (usually in the home directory). Both places can be used to 
+  store DRC scripts.
+  </p><p>
+  For the more experienced user, DRC scripts are basically just macros bound to a DRC interpreter instead
+  of the plain Ruby interpreter. 
+  You can create and run DRC scripts like ordinary macros.
+  Use &quot;Macros/Macro Development&quot; to enter the macro IDE and create a DRC scripts with the &quot;add macro&quot;
+  function (the &quot;+&quot; button). Choose &quot;DRC scripts&quot; as the template to use (in the &quot;General&quot; section).
+  DRC scripts are by default bound to the DRC menu, but that can be changed in the same way than for any ordinary macro.
+  </p><p>See <a href="../about/macro_editor.html">About Macro Development</a> for more details about the macro development
+  facility.</p><p>
+  By default, DRC scripts are put into the DRC category of the macro IDE. Macro categories are 
+  a way to organize macros, but do not imply a certain runtime behavior. Hence, DRC scripts can be 
+  put into any other location beside the &quot;drc&quot; folders selected by the DRC category.
+  </p><p>
+  DRC scripts can be executed in the debugger like ordinary macros and breakpoints or single-stepping can be used to 
+  debug DRC scripts. Behind the scene, the DRC commands are mapped to Ruby functions, so stepping into 
+  such commands will reveal the code behind the DRC functions.
+  </p><p>
+  DRC scripts are stored in &quot;.lydrc&quot; files in KLayout's macro format. Those are XML files containing the
+  script code in the text element. KLayout also recognizes plain text files with the extension &quot;.drc&quot;, but
+  those files are usually lacking the necessary meta-information that allow KLayout to bind them to a menu entry.
+  Hence such files can only be run from the macro IDE.
+  </p><a name="h2-237"></a><h2>DRC waiving flow</h2><p>
+  DRC waiving is a process of signing off DRC violations that cannot be avoided.
+  Usually DRC waiving is not encouraged, as manufacturability of the device cannot
+  be guaranteed if DRC violations are present. Even worse, giving a non-clean layout
+  into manufacturing may create a contamination risk that manufacturers will try 
+  to avoid. Hence, non-DRC-clean layouts are usually rejected.
+  </p><p>
+  Still there are some legit reasons for DRC waiving. Sometimes DRC rules do not apply 
+  because a specific technology option is not used by the device and corresponding 
+  DRC rules do not apply. Or, a certain DRC rule may be a recommended rule, and violating
+  it is not forbidden. In that case, a DRC violation can be waived at your own risk.
+  Waiving is not a formal process. Usually, the manufacturer will ask for a confirmation
+  if DRC violations are present. KLayout can help documenting violations and copying
+  the waivers from one DRC run to the next.
+  </p><p>
+  The DRC waiving flow of KLayout is the following:
+  </p><ul><li>In the initial step, a RDB database is created by the DRC run, using the &quot;report&quot; command with a destination file.</li><li>This report is inspected in the marker browser. You can add comments, set flags and add screenshots. This is 
+        also the time to waive DRC violations that you deem necessary to be waived. The marker browser has a &quot;waive&quot; 
+        button which sets or resets the waived flag of the selected markers.</li><li>When finished, save the edited database to a 'waiver DB' using the marker browser's 'Save As Waiver DB' feature from
+        the File menu. Technically, this will write the report database to a second file. This second file is named
+        like the original one, with a &quot;.w&quot; added to the file name.</li><li>When you run the DRC again, KLayout will find this waiver DB file and apply attributes from the waiver DB 
+        to the current report database. These attributes include the flags, images and comments.
+        This will - among the other annotations - apply the waived flag to the report database items.</li></ul><p>
+  In the waiving step, KLayout will apply attributes to items with the same value (i.e. shape), category and cell.
+  This specifically means, that when you rename a cell, waivers will no longer be applied, or - in the worst case - 
+  be applied to the wrong cell. Hence, waiving should be done late in the process, when cell names are unlikely to change.
+  </p><a name="h2-280"></a><h2>Using KLayout as a standalone DRC engine</h2><p>
+  KLayout can be used as a non-interactive DRC engine using a specific kind of 
+  DRC scripts. Since there is no &quot;current layout&quot; in standalong engine mode, those
+  DRC scripts have to specify input explicitly using the &quot;source&quot; function. The same
+  way, output has to be specified explicitly using either &quot;target&quot; to create an output layout
+  or &quot;report&quot; to create an output report database (see <a href="../about/drc_ref_global.html">DRC Reference: Global Functions</a> for 
+  details about these functions).
+  </p><p>
+  Here is an example. It reads layer 1, datatype 0 from &quot;input.gds&quot;, sizes it by 200 nanometers
+  and writes the output to &quot;out.gds&quot;, layer 10, datatype 0:
+  </p><pre>
+source(&quot;input.gds&quot;)
+target(&quot;out.gds&quot;)
+input(1, 0).sized(200.nm).output(10, 0)</pre><p>
+  Here is another example which saves the results to category &quot;sized&quot; of the
+  report database file &quot;out.lyrdb&quot;:
+  </p><pre>
+source(&quot;input.gds&quot;)
+report(&quot;Output Database&quot;, &quot;out.lyrdb&quot;)
+input(1, 0).sized(200.nm).output(&quot;sized&quot;)</pre><p>
+  To run these DRC scripts, save the scripts to a file with suffix &quot;.drc&quot; and run it
+  like shown below (replace &quot;my.drc&quot; by your file).
+  It is recommended to disable some of the features not used in that case and put KLayout 
+  into non-interactive batch mode with &quot;-b&quot;:
+  </p><pre>
+klayout -b -r my.drc</pre><p>
+  &quot;-b&quot; will disable all of the user interface functionality and puts KLayout in engine mode
+  in which no display connection is required on Unix. Implicit loading of macros from the 
+  various search locations is disabled (you can still load some with &quot;-rm&quot;) and
+  the configuration file is neither read nor written, which causes less I/O and
+  avoids write conflicts between different instances of KLayout.
+  </p></body>

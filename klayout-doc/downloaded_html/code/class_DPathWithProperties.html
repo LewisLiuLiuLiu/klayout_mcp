@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class DPathWithProperties</p><h1>API reference - Class DPathWithProperties</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: A DPath object with properties attached.</p><p><b>Class hierarchy</b>: DPathWithProperties » <a href="class_DPath.html">DPath</a></p><ul><li><a href="#h2-13">Public constructors</a></li><li><a href="#h2-20">Public methods</a></li><li><a href="#h2-77">Detailed description</a></li></ul><p>
+This class represents a combination of a DPath object an user properties. User properties are stored in form of a properties ID. Convenience methods are provided to manipulate or retrieve user properties directly.</p><p>This class has been introduced in version 0.30.</p><a name="h2-13"></a><h2>Public constructors</h2><table><tr class="row0"><td>new DPathWithProperties ptr</td><td><b><a href="#method16">new</a></b></td><td>(const DPath path,<br>unsigned long properties_id = 0)</td><td>Creates a new object from a property-less object and a properties ID.</td></tr><tr class="row1"><td>new DPathWithProperties ptr</td><td><b><a href="#method17">new</a></b></td><td>(const DPath path,<br>map&lt;variant,variant&gt; properties)</td><td>Creates a new object from a property-less object and a properties hash.</td></tr></table><a name="h2-20"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>DPathWithProperties</td><td><b><a href="#method0">*</a></b></td><td>(double f)</td><td>Scales the object by some factor</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_assign</a></b></td><td>(const DPathWithProperties other)</td><td>Assigns another object to self</td></tr><tr class="row0"><td><i>[const]</i></td><td>DPathWithProperties ptr</td><td><b><a href="#method2">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method3">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method4">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method5">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>new DPathWithProperties ptr</td><td><b><a href="#method6">_dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method7">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method9">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">delete_property</a></b></td><td>(variant key)</td><td>Deletes the user property with the given key</td></tr><tr class="row1"><td><i>[const]</i></td><td>DPath</td><td><b><a href="#method11">downcast</a></b></td><td></td><td>Gets the corresponding object without the properties</td></tr><tr class="row0"><td></td><td>DPathWithProperties</td><td><b><a href="#method12">move</a></b></td><td>(const DVector v)</td><td>Moves the object.</td></tr><tr class="row1"><td></td><td>DPathWithProperties</td><td><b><a href="#method13">move</a></b></td><td>(double dx = 0,<br>double dy = 0)</td><td>Moves the object.</td></tr><tr class="row0"><td><i>[const]</i></td><td>DPathWithProperties</td><td><b><a href="#method14">moved</a></b></td><td>(const DVector v)</td><td>Returns the moved object</td></tr><tr class="row1"><td><i>[const]</i></td><td>DPathWithProperties</td><td><b><a href="#method15">moved</a></b></td><td>(double dx = 0,<br>double dy = 0)</td><td>Returns the moved object (does not modify self)</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned long</td><td><b><a href="#method18">prop_id</a></b></td><td></td><td>Gets the properties ID associated with the object</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method19">prop_id=</a></b></td><td>(unsigned long id)</td><td>Sets the properties ID of the object</td></tr><tr class="row0"><td><i>[const]</i></td><td>variant</td><td><b><a href="#method20">properties</a></b></td><td></td><td>Gets the user properties</td></tr><tr class="row1"><td><i>[const]</i></td><td>variant</td><td><b><a href="#method21">property</a></b></td><td>(variant key)</td><td>Gets the user property with the given key</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method22">set_property</a></b></td><td>(variant key,<br>variant value)</td><td>Sets the user property with the given key to the given value</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method23">to_s</a></b></td><td></td><td>Returns a string representing the polygon</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method24">transform</a></b></td><td>(const DTrans t)</td><td>Transforms the object (in-place version)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method25">transform</a></b></td><td>(const DCplxTrans t)</td><td>Transforms the object (in-place version)</td></tr><tr class="row0"><td><i>[const]</i></td><td>DPathWithProperties</td><td><b><a href="#method26">transformed</a></b></td><td>(const DTrans t)</td><td>Returns the transformed object</td></tr><tr class="row1"><td><i>[const]</i></td><td>DPathWithProperties</td><td><b><a href="#method27">transformed</a></b></td><td>(const DCplxTrans t)</td><td>Returns the transformed object</td></tr><tr class="row0"><td><i>[const]</i></td><td>PathWithProperties</td><td><b><a href="#method28">transformed</a></b></td><td>(const VCplxTrans t)</td><td>Returns the transformed object</td></tr></table><a name="detailed"></a><a name="h2-77"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-78"></a><h3>*</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_*"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_DPathWithProperties.html">DPathWithProperties</a><b> * </b> (double f)</p><p><b>Description</b>: Scales the object by some factor</p><p><p></p><p>Returns the scaled object. All coordinates are multiplied with the given factor and, if necessary, rounded.</p></p><p><b>Python specific notes: </b><br>This method also implements '__rmul__'.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-84"></a><h3>_assign</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__assign"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _assign </b> (const <a href="class_DPathWithProperties.html">DPathWithProperties</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow0"><td><a name="h3-88"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__const_cast"></a><a name="k_4"></a><p><b>Signature</b>: <i>[const] </i><a href="class_DPathWithProperties.html">DPathWithProperties</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-94"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__create"></a><a name="k_5"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-100"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__destroy"></a><a name="k_6"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-107"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__destroyed?"></a><a name="k_7"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-114"></a><h3>_dup</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__dup"></a><a name="k_8"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_DPathWithProperties.html">DPathWithProperties</a> ptr <b> _dup </b></p><p><b>Description</b>: Creates a copy of self</p></td></tr><tr class="bigrow1"><td><a name="h3-118"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__is_const_object?"></a><a name="k_9"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-125"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__manage"></a><a name="k_10"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-131"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m__unmanage"></a><a name="k_11"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-137"></a><h3>delete_property</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_delete_property"></a><a name="k_12"></a><p><b>Signature</b>: void <b> delete_property </b> (variant key)</p><p><b>Description</b>: Deletes the user property with the given key</p><p><p>
+This method is a convenience method that deletes the property with the given key. It does nothing if no property with that key exists. Using that method is more convenient than creating a new property set with a new ID and assigning that properties ID.
+This method may change the properties ID.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-144"></a><h3>downcast</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_downcast"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i><a href="class_DPath.html">DPath</a><b> downcast </b></p><p><b>Description</b>: Gets the corresponding object without the properties</p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-148"></a><h3>move</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_move"></a><a name="k_14"></a><p><b>(1) Signature</b>: <a href="class_DPathWithProperties.html">DPathWithProperties</a><b> move </b> (const <a href="class_DVector.html">DVector</a> v)</p><p><b>Description</b>: Moves the object.</p><table class="layout-table"><tr><td><b>v</b>:</td><td>The distance to move the object.</td></tr><tr><td><b>Returns</b>:</td><td>The moved object (self).</td></tr></table><p><p></p><p>Moves the object by the given offset and returns the 
+moved object. The object is overwritten.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_move"></a><a name="k_15"></a><p><b>(2) Signature</b>: <a href="class_DPathWithProperties.html">DPathWithProperties</a><b> move </b> (double dx = 0, double dy = 0)</p><p><b>Description</b>: Moves the object.</p><table class="layout-table"><tr><td><b>dx</b>:</td><td>The x distance to move the object.</td></tr><tr><td><b>dy</b>:</td><td>The y distance to move the object.</td></tr><tr><td><b>Returns</b>:</td><td>The moved object (self).</td></tr></table><p><p></p><p>Moves the object by the given offset and returns the 
+moved object. The object is overwritten.</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-168"></a><h3>moved</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_moved"></a><a name="k_16"></a><p><b>(1) Signature</b>: <i>[const] </i><a href="class_DPathWithProperties.html">DPathWithProperties</a><b> moved </b> (const <a href="class_DVector.html">DVector</a> v)</p><p><b>Description</b>: Returns the moved object</p><table class="layout-table"><tr><td><b>v</b>:</td><td>The distance to move the object.</td></tr><tr><td><b>Returns</b>:</td><td>The moved object.</td></tr></table><p><p></p><p>Moves the object by the given offset and returns the 
+moved object. The object is not modified.</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_moved"></a><a name="k_17"></a><p><b>(2) Signature</b>: <i>[const] </i><a href="class_DPathWithProperties.html">DPathWithProperties</a><b> moved </b> (double dx = 0, double dy = 0)</p><p><b>Description</b>: Returns the moved object (does not modify self)</p><table class="layout-table"><tr><td><b>dx</b>:</td><td>The x distance to move the object.</td></tr><tr><td><b>dy</b>:</td><td>The y distance to move the object.</td></tr><tr><td><b>Returns</b>:</td><td>The moved object.</td></tr></table><p><p></p><p>Moves the object by the given offset and returns the 
+moved object. The object is not modified.</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-188"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_new"></a><a name="k_18"></a><p><b>(1) Signature</b>: <i>[static] </i>new <a href="class_DPathWithProperties.html">DPathWithProperties</a> ptr <b> new </b> (const <a href="class_DPath.html">DPath</a> path, unsigned long properties_id = 0)</p><p><b>Description</b>: Creates a new object from a property-less object and a properties ID.</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_new"></a><a name="k_19"></a><p><b>(2) Signature</b>: <i>[static] </i>new <a href="class_DPathWithProperties.html">DPathWithProperties</a> ptr <b> new </b> (const <a href="class_DPath.html">DPath</a> path, map&lt;variant,variant&gt; properties)</p><p><b>Description</b>: Creates a new object from a property-less object and a properties hash.</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-197"></a><h3>prop_id</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_prop_id"></a><a name="k_20"></a><p><b>Signature</b>: <i>[const] </i>unsigned long <b> prop_id </b></p><p><b>Description</b>: Gets the properties ID associated with the object</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'prop_id'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-202"></a><h3>prop_id=</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_prop_id="></a><a name="k_21"></a><p><b>Signature</b>: void <b> prop_id= </b> (unsigned long id)</p><p><b>Description</b>: Sets the properties ID of the object</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'prop_id'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-207"></a><h3>properties</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_properties"></a><a name="k_22"></a><p><b>Signature</b>: <i>[const] </i>variant <b> properties </b></p><p><b>Description</b>: Gets the user properties</p><p><p>
+This method is a convenience method that gets the properties of the shape as a single hash.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-214"></a><h3>property</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_property"></a><a name="k_23"></a><p><b>Signature</b>: <i>[const] </i>variant <b> property </b> (variant key)</p><p><b>Description</b>: Gets the user property with the given key</p><p><p>
+This method is a convenience method that gets the user property with the given key. If no property with that key does not exist, it will return nil. Using that method is more convenient than using the layout object and the properties ID to retrieve the property value. </p></p></td></tr><tr class="bigrow1"><td><a name="h3-220"></a><h3>set_property</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_set_property"></a><a name="k_24"></a><p><b>Signature</b>: void <b> set_property </b> (variant key, variant value)</p><p><b>Description</b>: Sets the user property with the given key to the given value</p><p><p>
+This method is a convenience method that sets the user property with the given key to the given value. If no property with that key exists, it will create one. Using that method is more convenient than creating a new property set with a new ID and assigning that properties ID.
+This method may change the properties ID. Note: GDS only supports integer keys. OASIS supports numeric and string keys.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-228"></a><h3>to_s</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_to_s"></a><a name="k_25"></a><p><b>Signature</b>: <i>[const] </i>string <b> to_s </b></p><p><b>Description</b>: Returns a string representing the polygon</p><p><b>Python specific notes: </b><br>This method is also available as 'str(object)'.<br></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-233"></a><h3>transform</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_transform"></a><a name="k_26"></a><p><b>(1) Signature</b>: void <b> transform </b> (const <a href="class_DTrans.html">DTrans</a> t)</p><p><b>Description</b>: Transforms the object (in-place version)</p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_transform"></a><a name="k_27"></a><p><b>(2) Signature</b>: void <b> transform </b> (const <a href="class_DCplxTrans.html">DCplxTrans</a> t)</p><p><b>Description</b>: Transforms the object (in-place version)</p></td></tr><tr class="bigrow0"><td rowspan="3"><a name="h3-240"></a><h3>transformed</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_transformed"></a><a name="k_28"></a><p><b>(1) Signature</b>: <i>[const] </i><a href="class_DPathWithProperties.html">DPathWithProperties</a><b> transformed </b> (const <a href="class_DTrans.html">DTrans</a> t)</p><p><b>Description</b>: Returns the transformed object</p><p><p></p><p>Returns a copy of the object, transformed by the given transformation. The result is equivalent to 'tr * self'.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_transformed"></a><a name="k_29"></a><p><b>(2) Signature</b>: <i>[const] </i><a href="class_DPathWithProperties.html">DPathWithProperties</a><b> transformed </b> (const <a href="class_DCplxTrans.html">DCplxTrans</a> t)</p><p><b>Description</b>: Returns the transformed object</p><p><p></p><p>Returns a copy of the object, transformed by the given transformation. The result is equivalent to 'tr * self'.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_transformed"></a><a name="k_30"></a><p><b>(3) Signature</b>: <i>[const] </i><a href="class_PathWithProperties.html">PathWithProperties</a><b> transformed </b> (const <a href="class_VCplxTrans.html">VCplxTrans</a> t)</p><p><b>Description</b>: Returns the transformed object</p><p><p></p><p>Returns a copy of the object, transformed by the given transformation. The result is equivalent to 'tr * self'.</p></p></td></tr></table></body>

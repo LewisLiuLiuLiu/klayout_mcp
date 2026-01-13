@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class LayerInfo</p><h1>API reference - Class LayerInfo</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: A structure encapsulating the layer properties</p><ul><li><a href="#h2-13">Public constructors</a></li><li><a href="#h2-24">Public methods</a></li><li><a href="#h2-71">Public static methods and constants</a></li><li><a href="#h2-76">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-87">Detailed description</a></li></ul><p></p><p>The layer properties describe how a layer is stored in a GDS2 or OASIS file for example. The <a href="class_LayerInfo.html">LayerInfo</a> object represents the storage properties that are attached to a layer in the database.</p><p>In general, a layer has either a layer and a datatype number (in GDS2), a name (for example in DXF or CIF) or both (in OASIS). In the latter case, the primary identification is through layer and datatype number and the name is some annotation attached to it. A <a href="class_LayerInfo.html">LayerInfo</a> object which specifies just a name returns true on <a href="#m_is_named?">is_named?</a>.
+The <a href="class_LayerInfo.html">LayerInfo</a> object can also specify an anonymous layer (use <a href="class_LayerInfo.html#m_new">LayerInfo#new</a> without arguments). Such a layer will not be stored when saving the layout. They can be employed for temporary layers for example. Use <a href="class_LayerInfo.html#m_anonymous?">LayerInfo#anonymous?</a> to test whether a layer does not have a specification.</p><p>The <a href="class_LayerInfo.html">LayerInfo</a> is used for example in <a href="class_Layout.html#m_insert_layer">Layout#insert_layer</a> to specify the properties of the new layer that will be created. The <a href="#m_is_equivalent?">is_equivalent?</a> method compares two <a href="class_LayerInfo.html">LayerInfo</a> objects using the layer and datatype numbers with a higher priority over the name.
+</p><a name="h2-13"></a><h2>Public constructors</h2><table><tr class="row0"><td>new LayerInfo ptr</td><td><b><a href="#method26">new</a></b></td><td></td><td>The default constructor.</td></tr><tr class="row1"><td>new LayerInfo ptr</td><td><b><a href="#method27">new</a></b></td><td>(int layer,<br>int datatype)</td><td>The constructor for a layer/datatype pair.</td></tr><tr class="row0"><td>new LayerInfo ptr</td><td><b><a href="#method28">new</a></b></td><td>(string name)</td><td>The constructor for a named layer.</td></tr><tr class="row1"><td>new LayerInfo ptr</td><td><b><a href="#method29">new</a></b></td><td>(int layer,<br>int datatype,<br>string name)</td><td>The constructor for a named layer with layer and datatype.</td></tr></table><a name="h2-24"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method0">!=</a></b></td><td>(const LayerInfo b)</td><td>Compares two layer info objects</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method1">==</a></b></td><td>(const LayerInfo b)</td><td>Compares two layer info objects</td></tr><tr class="row0"><td><i>[const]</i></td><td>LayerInfo ptr</td><td><b><a href="#method2">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method3">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method4">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method5">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method6">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method9">anonymous?</a></b></td><td></td><td>Returns true, if the layer has no specification (i.e. is created by the default constructor).</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">assign</a></b></td><td>(const LayerInfo other)</td><td>Assigns another object to self</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method12">datatype</a></b></td><td></td><td>Gets the datatype</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method13">datatype=</a></b></td><td>(int datatype)</td><td>Set the datatype</td></tr><tr class="row1"><td><i>[const]</i></td><td>new LayerInfo ptr</td><td><b><a href="#method16">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned long</td><td><b><a href="#method18">hash</a></b></td><td></td><td>Computes a hash value</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method20">is_equivalent?</a></b></td><td>(const LayerInfo b)</td><td>Equivalence of two layer info objects</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method21">is_named?</a></b></td><td></td><td>Returns true, if the layer is purely specified by name.</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method22">layer</a></b></td><td></td><td>Gets the layer number</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method23">layer=</a></b></td><td>(int layer)</td><td>Sets the layer number</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method24">name</a></b></td><td></td><td>Gets the layer name</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method25">name=</a></b></td><td>(string name)</td><td>Set the layer name</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method30">to_s</a></b></td><td>(bool as_target = false)</td><td>Convert the layer info object to a string</td></tr></table><a name="h2-71"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td></td><td>LayerInfo</td><td><b><a href="#method17">from_string</a></b></td><td>(string s,<br>bool as_target = false)</td><td>Create a layer info object from a string</td></tr></table><a name="h2-76"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method11">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method14">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method15">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method19">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-87"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-88"></a><h3>!=</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_!="></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i>bool <b> != </b> (const <a href="class_LayerInfo.html">LayerInfo</a> b)</p><p><b>Description</b>: Compares two layer info objects</p><table class="layout-table"><tr><td><b>Returns</b>:</td><td>True, if both are not equal</td></tr></table><p><p></p><p>This method was added in version 0.18.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-97"></a><h3>==</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_=="></a><a name="k_3"></a><p><b>Signature</b>: <i>[const] </i>bool <b> == </b> (const <a href="class_LayerInfo.html">LayerInfo</a> b)</p><p><b>Description</b>: Compares two layer info objects</p><table class="layout-table"><tr><td><b>Returns</b>:</td><td>True, if both are equal</td></tr></table><p><p></p><p>This method was added in version 0.18.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-106"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__const_cast"></a><a name="k_4"></a><p><b>Signature</b>: <i>[const] </i><a href="class_LayerInfo.html">LayerInfo</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-112"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__create"></a><a name="k_5"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-118"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__destroy"></a><a name="k_6"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-125"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__destroyed?"></a><a name="k_7"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-132"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__is_const_object?"></a><a name="k_8"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-139"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__manage"></a><a name="k_9"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-145"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__unmanage"></a><a name="k_10"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-151"></a><h3>anonymous?</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_anonymous?"></a><a name="k_11"></a><p><b>Signature</b>: <i>[const] </i>bool <b> anonymous? </b></p><p><b>Description</b>: Returns true, if the layer has no specification (i.e. is created by the default constructor).</p><table class="layout-table"><tr><td><b>Returns</b>:</td><td>True, if the layer does not have any specification.</td></tr></table><p><p></p><p>This method was added in version 0.23.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-160"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_assign"></a><a name="k_12"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_LayerInfo.html">LayerInfo</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow1"><td><a name="h3-164"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_create"></a><a name="k_13"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-171"></a><h3>datatype</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_datatype"></a><a name="k_14"></a><p><b>Signature</b>: <i>[const] </i>int <b> datatype </b></p><p><b>Description</b>: Gets the datatype</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'datatype'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-176"></a><h3>datatype=</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_datatype="></a><a name="k_15"></a><p><b>Signature</b>: void <b> datatype= </b> (int datatype)</p><p><b>Description</b>: Set the datatype</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'datatype'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-181"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_destroy"></a><a name="k_16"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-189"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_destroyed?"></a><a name="k_17"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-197"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_dup"></a><a name="k_18"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_LayerInfo.html">LayerInfo</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-202"></a><h3>from_string</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_from_string"></a><a name="k_19"></a><p><b>Signature</b>: <i>[static] </i><a href="class_LayerInfo.html">LayerInfo</a><b> from_string </b> (string s, bool as_target = false)</p><p><b>Description</b>: Create a layer info object from a string</p><table class="layout-table"><tr><td><b>The</b>:</td><td>string</td></tr><tr><td><b>Returns</b>:</td><td>The LayerInfo object</td></tr></table><p><p></p><p>If 'as_target' is true, relative specifications such as '*+1' for layer or datatype are permitted.</p><p>This method will take strings as produced by <a href="#m_to_s">to_s</a> and create a <a href="class_LayerInfo.html">LayerInfo</a> object from them. The format is either &quot;layer&quot;, &quot;layer/datatype&quot;, &quot;name&quot; or &quot;name (layer/datatype)&quot;.</p><p>This method was added in version 0.23.
+The 'as_target' argument has been added in version 0.26.5.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-213"></a><h3>hash</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_hash"></a><a name="k_20"></a><p><b>Signature</b>: <i>[const] </i>unsigned long <b> hash </b></p><p><b>Description</b>: Computes a hash value</p><p><p>
+Returns a hash value for the given layer info object. This method enables layer info objects as hash keys.</p><p>This method has been introduced in version 0.25.
+</p></p><p><b>Python specific notes: </b><br>This method is also available as 'hash(object)'.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-221"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_is_const_object?"></a><a name="k_21"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-229"></a><h3>is_equivalent?</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_is_equivalent?"></a><a name="k_22"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_equivalent? </b> (const <a href="class_LayerInfo.html">LayerInfo</a> b)</p><p><b>Description</b>: Equivalence of two layer info objects</p><table class="layout-table"><tr><td><b>Returns</b>:</td><td>True, if both are equivalent</td></tr></table><p><p></p><p>First, layer and datatype are compared. The name is of second order and used only if no layer or datatype is given for one of the operands.
+This is basically a weak comparison that reflects the search preferences. It is the basis for <a href="class_Layout.html#m_find_layer">Layout#find_layer</a>.
+Here are some examples:</p><p><pre>
+# no match as layer/datatypes or names differ:
+RBA::LayerInfo::new(1, 17).is_equivalent?(RBA::LayerInfo::new(1, 18)) -&gt; false
+RBA::LayerInfo::new('metal1').is_equivalent?(RBA::LayerInfo::new('m1')) -&gt; false
+# exact match for numbered or named layers:
+RBA::LayerInfo::new(1, 17).is_equivalent?(RBA::LayerInfo::new(1, 17)) -&gt; true
+RBA::LayerInfo::new('metal1').is_equivalent?(RBA::LayerInfo::new('metal1')) -&gt; true
+# match as names are second priority over layer/datatypes:
+RBA::LayerInfo::new(1, 17, 'metal1').is_equivalent?(RBA::LayerInfo::new(1, 17, 'm1')) -&gt; true
+# match as name matching is fallback:
+RBA::LayerInfo::new(1, 17, 'metal1').is_equivalent?(RBA::LayerInfo::new('metal1')) -&gt; true
+# no match as neither names or layer/datatypes match:
+RBA::LayerInfo::new(1, 17, 'metal1').is_equivalent?(RBA::LayerInfo::new('m1')) -&gt; false
+</pre></p><p>This method was added in version 0.18 and modified to compare non-named vs. named layers in version 0.28.11.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-253"></a><h3>is_named?</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_is_named?"></a><a name="k_23"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_named? </b></p><p><b>Description</b>: Returns true, if the layer is purely specified by name.</p><table class="layout-table"><tr><td><b>Returns</b>:</td><td>True, if no layer or datatype is given.</td></tr></table><p><p></p><p>This method was added in version 0.18.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-262"></a><h3>layer</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_layer"></a><a name="k_24"></a><p><b>Signature</b>: <i>[const] </i>int <b> layer </b></p><p><b>Description</b>: Gets the layer number</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'layer'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-267"></a><h3>layer=</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_layer="></a><a name="k_25"></a><p><b>Signature</b>: void <b> layer= </b> (int layer)</p><p><b>Description</b>: Sets the layer number</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'layer'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-272"></a><h3>name</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_name"></a><a name="k_26"></a><p><b>Signature</b>: <i>[const] </i>string <b> name </b></p><p><b>Description</b>: Gets the layer name</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'name'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-277"></a><h3>name=</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_name="></a><a name="k_27"></a><p><b>Signature</b>: void <b> name= </b> (string name)</p><p><b>Description</b>: Set the layer name</p><p><p>
+The name is set on OASIS input for example, if the layer has a name.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'name'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td rowspan="4"><a name="h3-285"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_new"></a><a name="k_28"></a><p><b>(1) Signature</b>: <i>[static] </i>new <a href="class_LayerInfo.html">LayerInfo</a> ptr <b> new </b></p><p><b>Description</b>: The default constructor.</p><p><p>
+Creates a default <a href="class_LayerInfo.html">LayerInfo</a> object.</p><p>This method was added in version 0.18.
+</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_new"></a><a name="k_29"></a><p><b>(2) Signature</b>: <i>[static] </i>new <a href="class_LayerInfo.html">LayerInfo</a> ptr <b> new </b> (int layer, int datatype)</p><p><b>Description</b>: The constructor for a layer/datatype pair.</p><table class="layout-table"><tr><td><b>layer</b>:</td><td>The layer number</td></tr><tr><td><b>datatype</b>:</td><td>The datatype number</td></tr></table><p><p>
+Creates a <a href="class_LayerInfo.html">LayerInfo</a> object representing a layer and datatype.</p><p>This method was added in version 0.18.
+</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_new"></a><a name="k_30"></a><p><b>(3) Signature</b>: <i>[static] </i>new <a href="class_LayerInfo.html">LayerInfo</a> ptr <b> new </b> (string name)</p><p><b>Description</b>: The constructor for a named layer.</p><table class="layout-table"><tr><td><b>name</b>:</td><td>The name</td></tr></table><p><p>
+Creates a <a href="class_LayerInfo.html">LayerInfo</a> object representing a named layer.</p><p>This method was added in version 0.18.
+</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_new"></a><a name="k_31"></a><p><b>(4) Signature</b>: <i>[static] </i>new <a href="class_LayerInfo.html">LayerInfo</a> ptr <b> new </b> (int layer, int datatype, string name)</p><p><b>Description</b>: The constructor for a named layer with layer and datatype.</p><table class="layout-table"><tr><td><b>layer</b>:</td><td>The layer number</td></tr><tr><td><b>datatype</b>:</td><td>The datatype number</td></tr><tr><td><b>name</b>:</td><td>The name</td></tr></table><p><p>
+Creates a <a href="class_LayerInfo.html">LayerInfo</a> object representing a named layer with layer and datatype.</p><p>This method was added in version 0.18.
+</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-326"></a><h3>to_s</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_to_s"></a><a name="k_32"></a><p><b>Signature</b>: <i>[const] </i>string <b> to_s </b> (bool as_target = false)</p><p><b>Description</b>: Convert the layer info object to a string</p><table class="layout-table"><tr><td><b>Returns</b>:</td><td>The string</td></tr></table><p><p></p><p>If 'as_target' is true, wildcard and relative specifications are formatted such such.</p><p>This method was added in version 0.18.
+The 'as_target' argument has been added in version 0.26.5.
+</p></p><p><b>Python specific notes: </b><br>This method is also available as 'str(object)'.<br></p></td></tr></table></body>

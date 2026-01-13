@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class CellView</p><h1>API reference - Class CellView</h1><property value="lay" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_lay.html">lay</a></p><p><b>Description</b>: A class describing what is shown inside a layout view</p><ul><li><a href="#h2-29">Public constructors</a></li><li><a href="#h2-34">Public methods</a></li><li><a href="#h2-131">Public static methods and constants</a></li><li><a href="#h2-136">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-147">Detailed description</a></li></ul><p></p><p>The cell view points to a specific cell within a certain layout and a hierarchical context.
+For that, first of all a layout pointer is provided. The cell itself
+is addressed by an cell_index or a cell object reference.
+The layout pointer can be nil, indicating that the cell view is invalid.</p><p>The cell is not only identified by its index or object but also 
+by the path leading to that cell. This path indicates how to find the
+cell in the hierarchical context of its parent cells. </p><p>The path is in fact composed of two parts: first in an unspecific fashion,
+just describing which parent cells are used. The target of this path
+is called the &quot;context cell&quot;. It is accessible by the <a href="#m_ctx_cell_index">ctx_cell_index</a>
+or <a href="#m_ctx_cell">ctx_cell</a> methods. In the viewer, the unspecific part of the path is
+the location of the cell in the cell tree.</p><p>Additionally the path's second part may further identify a specific instance of a certain
+subcell in the context cell. This is done through a set of <a href="class_InstElement.html">InstElement</a>
+objects. The target of this specific path is the actual cell addressed by the
+cellview. This target cell is accessible by the <a href="#m_cell_index">cell_index</a> or <a href="#m_cell">cell</a> methods.
+In the viewer, the target cell is shown in the context of the context cell.
+The hierarchy levels are counted from the context cell, which is on level 0.
+If the context path is empty, the context cell is identical with the target cell.</p><p>Starting with version 0.25, the cellview can be modified directly. This will have an immediate effect on the display. For example, the following code will select a different cell:</p><p><pre>
+cv = RBA::CellView::active
+cv.cell_name = &quot;TOP2&quot;
+</pre></p><p>See <a href="../programming/application_api.html">The Application API</a> for more details about the cellview objects.</p><a name="h2-29"></a><h2>Public constructors</h2><table><tr class="row0"><td>new CellView ptr</td><td><b><a href="#method39">new</a></b></td><td></td><td>Creates a new object of this class</td></tr></table><a name="h2-34"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method0">==</a></b></td><td>(const CellView other)</td><td>Equality: indicates whether the cellviews refer to the same one</td></tr><tr class="row1"><td><i>[const]</i></td><td>CellView ptr</td><td><b><a href="#method1">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method3">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method5">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method9">ascend</a></b></td><td></td><td>Ascends upwards in the hierarchy.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method10">assign</a></b></td><td>(const CellView other)</td><td>Assigns another object to self</td></tr><tr class="row0"><td><i>[const]</i></td><td>Cell ptr</td><td><b><a href="#method11">cell</a></b></td><td></td><td>Gets the reference to the target cell currently addressed</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method12">cell=</a></b></td><td>(Cell ptr cell)</td><td>Sets the cell by reference to a Cell object</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned int</td><td><b><a href="#method13">cell_index</a></b></td><td></td><td>Gets the target cell's index</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method14">cell_index=</a></b></td><td>(unsigned int cell_index)</td><td>Sets the path to the given cell</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method15">cell_name</a></b></td><td></td><td>Gets the name of the target cell currently addressed</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method16">cell_name=</a></b></td><td>(string cell_name)</td><td>Sets the cell by name</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method17">close</a></b></td><td></td><td>Closes this cell view</td></tr><tr class="row1"><td><i>[const]</i></td><td>DCplxTrans</td><td><b><a href="#method18">context_dtrans</a></b></td><td></td><td>Gets the accumulated transformation of the context path in micron unit space</td></tr><tr class="row0"><td><i>[const]</i></td><td>InstElement[]</td><td><b><a href="#method19">context_path</a></b></td><td></td><td>Gets the cell's context path</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method20">context_path=</a></b></td><td>(InstElement[] path)</td><td>Sets the context path explicitly</td></tr><tr class="row0"><td><i>[const]</i></td><td>ICplxTrans</td><td><b><a href="#method21">context_trans</a></b></td><td></td><td>Gets the accumulated transformation of the context path</td></tr><tr class="row1"><td><i>[const]</i></td><td>Cell ptr</td><td><b><a href="#method23">ctx_cell</a></b></td><td></td><td>Gets the reference to the context cell currently addressed</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned int</td><td><b><a href="#method24">ctx_cell_index</a></b></td><td></td><td>Gets the context cell's index</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method25">descend</a></b></td><td>(InstElement[] path)</td><td>Descends further into the hierarchy.</td></tr><tr class="row0"><td><i>[const]</i></td><td>new CellView ptr</td><td><b><a href="#method28">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method29">filename</a></b></td><td></td><td>Gets filename associated with the layout behind the cellview</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method30">hide_cell</a></b></td><td>(const Cell ptr cell)</td><td>Hides the given cell</td></tr><tr class="row1"><td><i>[const]</i></td><td>int</td><td><b><a href="#method31">index</a></b></td><td></td><td>Gets the index of this cellview in the layout view</td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method32">is_cell_hidden?</a></b></td><td>(const Cell ptr cell)</td><td>Returns true, if the given cell is hidden</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method34">is_dirty?</a></b></td><td></td><td>Gets a flag indicating whether the layout needs saving</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method35">is_valid?</a></b></td><td></td><td>Returns true, if the cellview is valid</td></tr><tr class="row1"><td><i>[const]</i></td><td>Layout ptr</td><td><b><a href="#method36">layout</a></b></td><td></td><td>Gets the reference to the layout object addressed by this view</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method37">name</a></b></td><td></td><td>Gets the unique name associated with the layout behind the cellview</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method38">name=</a></b></td><td>(string name)</td><td>sets the unique name associated with the layout behind the cellview</td></tr><tr class="row0"><td><i>[signal]</i></td><td>void</td><td><b><a href="#method40">on_technology_changed</a></b></td><td></td><td>An event indicating that the technology has changed</td></tr><tr class="row1"><td><i>[const]</i></td><td>unsigned int[]</td><td><b><a href="#method41">path</a></b></td><td></td><td>Gets the cell's unspecific part of the path leading to the context cell</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method42">path=</a></b></td><td>(unsigned int[] path)</td><td>Sets the unspecific part of the path explicitly</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method43">reset_cell</a></b></td><td></td><td>Resets the cell </td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method44">set_cell</a></b></td><td>(unsigned int cell_index)</td><td>Sets the path to the given cell</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method45">set_cell_name</a></b></td><td>(string cell_name)</td><td>Sets the cell by name</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method46">set_context_path</a></b></td><td>(InstElement[] path)</td><td>Sets the context path explicitly</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method47">set_path</a></b></td><td>(unsigned int[] path)</td><td>Sets the unspecific part of the path explicitly</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method48">show_all_cells</a></b></td><td></td><td>Makes all cells shown (cancel effects of <a href="#m_hide_cell">hide_cell</a>) for the specified cell view</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method49">show_cell</a></b></td><td>(const Cell ptr cell)</td><td>Shows the given cell (cancels the effect of <a href="#m_hide_cell">hide_cell</a>)</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method50">technology</a></b></td><td></td><td>Returns the technology name for the layout behind the given cell view</td></tr><tr class="row1"><td><i>[const]</i></td><td>void</td><td><b><a href="#method51">technology=</a></b></td><td>(string tech_name)</td><td>Sets the technology for the layout behind the given cell view</td></tr><tr class="row0"><td></td><td>LayoutView ptr</td><td><b><a href="#method52">view</a></b></td><td></td><td>Gets the view the cellview resides in</td></tr></table><a name="h2-131"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td></td><td>CellView</td><td><b><a href="#method8">active</a></b></td><td></td><td>Gets the active CellView</td></tr></table><a name="h2-136"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method22">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method26">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method27">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method33">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-147"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-148"></a><h3>==</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_=="></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i>bool <b> == </b> (const <a href="class_CellView.html">CellView</a> other)</p><p><b>Description</b>: Equality: indicates whether the cellviews refer to the same one</p><p><p>
+In version 0.25, the definition of the equality operator has been changed to reflect identity of the cellview. Before that version, identity of the cell shown was implied.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-154"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__const_cast"></a><a name="k_3"></a><p><b>Signature</b>: <i>[const] </i><a href="class_CellView.html">CellView</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-160"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__create"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-166"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroy"></a><a name="k_5"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-173"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__destroyed?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-180"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__is_const_object?"></a><a name="k_7"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-187"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__manage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-193"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__unmanage"></a><a name="k_9"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-199"></a><h3>active</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_active"></a><a name="k_10"></a><p><b>Signature</b>: <i>[static] </i><a href="class_CellView.html">CellView</a><b> active </b></p><p><b>Description</b>: Gets the active CellView</p><p><p>
+The active CellView is the one that is selected in the current layout view. This method is equivalent to
+<pre>
+RBA::LayoutView::current.active_cellview
+</pre>
+If no CellView is active, this method returns nil.</p><p>This method has been introduced in version 0.23.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-209"></a><h3>ascend</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_ascend"></a><a name="k_11"></a><p><b>Signature</b>: void <b> ascend </b></p><p><b>Description</b>: Ascends upwards in the hierarchy.</p><p><p>
+Removes one element from the specific path of the cellview with the given index. Returns the element removed.
+This method has been added in version 0.25.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-216"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_assign"></a><a name="k_12"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_CellView.html">CellView</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow1"><td><a name="h3-220"></a><h3>cell</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_cell"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Cell.html">Cell</a> ptr <b> cell </b></p><p><b>Description</b>: Gets the reference to the target cell currently addressed</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'cell'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-225"></a><h3>cell=</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_cell="></a><a name="k_14"></a><p><b>Signature</b>: void <b> cell= </b> (<a href="class_Cell.html">Cell</a> ptr cell)</p><p><b>Description</b>: Sets the cell by reference to a Cell object</p><p><p>
+Setting the cell reference to nil invalidates the cellview. This method will construct any path to this cell, not a 
+particular one. It will clear the context path
+and update the context and target cell.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'cell'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-235"></a><h3>cell_index</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_cell_index"></a><a name="k_15"></a><p><b>Signature</b>: <i>[const] </i>unsigned int <b> cell_index </b></p><p><b>Description</b>: Gets the target cell's index</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'cell_index'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-240"></a><h3>cell_index=</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_cell_index="></a><a name="k_16"></a><p><b>Signature</b>: void <b> cell_index= </b> (unsigned int cell_index)</p><p><b>Description</b>: Sets the path to the given cell</p><p><p></p><p>This method will construct any path to this cell, not a 
+particular one. It will clear the context path
+and update the context and target cell. Note that the cell is specified by its index.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'cell_index'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-249"></a><h3>cell_name</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_cell_name"></a><a name="k_17"></a><p><b>Signature</b>: <i>[const] </i>string <b> cell_name </b></p><p><b>Description</b>: Gets the name of the target cell currently addressed</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'cell_name'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-254"></a><h3>cell_name=</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_cell_name="></a><a name="k_18"></a><p><b>Signature</b>: void <b> cell_name= </b> (string cell_name)</p><p><b>Description</b>: Sets the cell by name</p><p><p></p><p>If the name is not a valid one, the cellview will become
+invalid.
+This method will construct any path to this cell, not a 
+particular one. It will clear the context path
+and update the context and target cell.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'cell_name'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-265"></a><h3>close</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_close"></a><a name="k_19"></a><p><b>Signature</b>: void <b> close </b></p><p><b>Description</b>: Closes this cell view</p><p><p></p><p>This method will close the cellview - remove it from the layout view. After this method was called, the cellview will become invalid (see <a href="#m_is_valid?">is_valid?</a>).</p><p>This method was introduced in version 0.25.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-270"></a><h3>context_dtrans</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_context_dtrans"></a><a name="k_20"></a><p><b>Signature</b>: <i>[const] </i><a href="class_DCplxTrans.html">DCplxTrans</a><b> context_dtrans </b></p><p><b>Description</b>: Gets the accumulated transformation of the context path in micron unit space</p><p><p>
+This is the transformation applied to the target cell before it is shown in the context cell
+Technically this is the product of all transformations over the context path.
+See <a href="#m_context_trans">context_trans</a> for a version delivering an integer-unit space transformation.</p><p>This method has been introduced in version 0.27.3.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-279"></a><h3>context_path</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_context_path"></a><a name="k_21"></a><p><b>Signature</b>: <i>[const] </i><a href="class_InstElement.html">InstElement</a>[] <b> context_path </b></p><p><b>Description</b>: Gets the cell's context path</p><p><p>
+The context path leads from the context cell to the target cell in a specific fashion, i.e. describing each instance in detail, not just by cell indexes. If the context and target cell are identical, the context path is empty.</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'context_path'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-286"></a><h3>context_path=</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_context_path="></a><a name="k_22"></a><p><b>Signature</b>: void <b> context_path= </b> (<a href="class_InstElement.html">InstElement</a>[] path)</p><p><b>Description</b>: Sets the context path explicitly</p><p><p></p><p>This method assumes that the unspecific part of the path 
+is established already and that the context path starts
+from the context cell.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'context_path'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-295"></a><h3>context_trans</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_context_trans"></a><a name="k_23"></a><p><b>Signature</b>: <i>[const] </i><a href="class_ICplxTrans.html">ICplxTrans</a><b> context_trans </b></p><p><b>Description</b>: Gets the accumulated transformation of the context path</p><p><p>
+This is the transformation applied to the target cell before it is shown in the context cell
+Technically this is the product of all transformations over the context path.
+See <a href="#m_context_dtrans">context_dtrans</a> for a version delivering a micron-unit space transformation.</p><p>This method has been introduced in version 0.27.3.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-304"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_create"></a><a name="k_24"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-311"></a><h3>ctx_cell</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_ctx_cell"></a><a name="k_25"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Cell.html">Cell</a> ptr <b> ctx_cell </b></p><p><b>Description</b>: Gets the reference to the context cell currently addressed</p></td></tr><tr class="bigrow0"><td><a name="h3-315"></a><h3>ctx_cell_index</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_ctx_cell_index"></a><a name="k_26"></a><p><b>Signature</b>: <i>[const] </i>unsigned int <b> ctx_cell_index </b></p><p><b>Description</b>: Gets the context cell's index</p></td></tr><tr class="bigrow1"><td><a name="h3-319"></a><h3>descend</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_descend"></a><a name="k_27"></a><p><b>Signature</b>: void <b> descend </b> (<a href="class_InstElement.html">InstElement</a>[] path)</p><p><b>Description</b>: Descends further into the hierarchy.</p><p><p>
+Adds the given path (given as an array of InstElement objects) to the specific path of the cellview with the given index. In effect, the cell addressed by the terminal of the new path components can be shown in the context of the upper cells, if the minimum hierarchy level is set to a negative value.
+The path is assumed to originate from the current cell and contain specific instances sorted from top to bottom.
+This method has been added in version 0.25.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-327"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_destroy"></a><a name="k_28"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-335"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_destroyed?"></a><a name="k_29"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-343"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_dup"></a><a name="k_30"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_CellView.html">CellView</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-348"></a><h3>filename</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_filename"></a><a name="k_31"></a><p><b>Signature</b>: <i>[const] </i>string <b> filename </b></p><p><b>Description</b>: Gets filename associated with the layout behind the cellview</p></td></tr><tr class="bigrow0"><td><a name="h3-352"></a><h3>hide_cell</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_hide_cell"></a><a name="k_32"></a><p><b>Signature</b>: void <b> hide_cell </b> (const <a href="class_Cell.html">Cell</a> ptr cell)</p><p><b>Description</b>: Hides the given cell</p><p><p></p><p>This method has been added in version 0.25.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-357"></a><h3>index</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_index"></a><a name="k_33"></a><p><b>Signature</b>: <i>[const] </i>int <b> index </b></p><p><b>Description</b>: Gets the index of this cellview in the layout view</p><p><p>
+The index will be negative if the cellview is not a valid one.
+This method has been added in version 0.25.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-365"></a><h3>is_cell_hidden?</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_is_cell_hidden?"></a><a name="k_34"></a><p><b>Signature</b>: bool <b> is_cell_hidden? </b> (const <a href="class_Cell.html">Cell</a> ptr cell)</p><p><b>Description</b>: Returns true, if the given cell is hidden</p><p><p></p><p>This method has been added in version 0.25.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-370"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_is_const_object?"></a><a name="k_35"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-378"></a><h3>is_dirty?</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_is_dirty?"></a><a name="k_36"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_dirty? </b></p><p><b>Description</b>: Gets a flag indicating whether the layout needs saving</p><p><p>
+A layout is 'dirty' if it is modified and needs saving. This method returns true in this case.</p><p>This method has been introduced in version 0.24.10.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-385"></a><h3>is_valid?</h3></td><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_is_valid?"></a><a name="k_37"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_valid? </b></p><p><b>Description</b>: Returns true, if the cellview is valid</p><p><p>
+A cellview may become invalid if the corresponding tab is closed for example.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-391"></a><h3>layout</h3></td><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_layout"></a><a name="k_38"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Layout.html">Layout</a> ptr <b> layout </b></p><p><b>Description</b>: Gets the reference to the layout object addressed by this view</p></td></tr><tr class="bigrow1"><td><a name="h3-395"></a><h3>name</h3></td><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_name"></a><a name="k_39"></a><p><b>Signature</b>: <i>[const] </i>string <b> name </b></p><p><b>Description</b>: Gets the unique name associated with the layout behind the cellview</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'name'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-400"></a><h3>name=</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_name="></a><a name="k_40"></a><p><b>Signature</b>: void <b> name= </b> (string name)</p><p><b>Description</b>: sets the unique name associated with the layout behind the cellview</p><p><p></p><p>this method has been introduced in version 0.25.</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'name'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-406"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_new"></a><a name="k_41"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_CellView.html">CellView</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new object of this class</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-411"></a><h3>on_technology_changed</h3></td><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_on_technology_changed"></a><a name="k_42"></a><p><b>Signature</b>: <i>[signal] </i>void <b> on_technology_changed </b></p><p><b>Description</b>: An event indicating that the technology has changed</p><p><p>
+This event is triggered when the CellView is attached to a different technology.</p><p>This event has been introduced in version 0.27.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'on_technology_changed'. This is the getter.<br>The object exposes a writable attribute 'on_technology_changed'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-419"></a><h3>path</h3></td><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_path"></a><a name="k_43"></a><p><b>Signature</b>: <i>[const] </i>unsigned int[] <b> path </b></p><p><b>Description</b>: Gets the cell's unspecific part of the path leading to the context cell</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'path'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-424"></a><h3>path=</h3></td><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_path="></a><a name="k_44"></a><p><b>Signature</b>: void <b> path= </b> (unsigned int[] path)</p><p><b>Description</b>: Sets the unspecific part of the path explicitly</p><p><p></p><p>Setting the unspecific part of the path will clear the context path component and
+update the context and target cell.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'path'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-432"></a><h3>reset_cell</h3></td><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_reset_cell"></a><a name="k_45"></a><p><b>Signature</b>: void <b> reset_cell </b></p><p><b>Description</b>: Resets the cell </p><p><p></p><p>The cellview will become invalid. The layout object will
+still be attached to the cellview, but no cell will be selected.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-439"></a><h3>set_cell</h3></td><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_set_cell"></a><a name="k_46"></a><p><b>Signature</b>: void <b> set_cell </b> (unsigned int cell_index)</p><p><b>Description</b>: Sets the path to the given cell</p><p><p></p><p>This method will construct any path to this cell, not a 
+particular one. It will clear the context path
+and update the context and target cell. Note that the cell is specified by its index.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'cell_index'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-448"></a><h3>set_cell_name</h3></td><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_set_cell_name"></a><a name="k_47"></a><p><b>Signature</b>: void <b> set_cell_name </b> (string cell_name)</p><p><b>Description</b>: Sets the cell by name</p><p><p></p><p>If the name is not a valid one, the cellview will become
+invalid.
+This method will construct any path to this cell, not a 
+particular one. It will clear the context path
+and update the context and target cell.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'cell_name'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-459"></a><h3>set_context_path</h3></td><td style="padding-bottom: 16px"><a name="method46"></a><a name="m_set_context_path"></a><a name="k_48"></a><p><b>Signature</b>: void <b> set_context_path </b> (<a href="class_InstElement.html">InstElement</a>[] path)</p><p><b>Description</b>: Sets the context path explicitly</p><p><p></p><p>This method assumes that the unspecific part of the path 
+is established already and that the context path starts
+from the context cell.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'context_path'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-468"></a><h3>set_path</h3></td><td style="padding-bottom: 16px"><a name="method47"></a><a name="m_set_path"></a><a name="k_49"></a><p><b>Signature</b>: void <b> set_path </b> (unsigned int[] path)</p><p><b>Description</b>: Sets the unspecific part of the path explicitly</p><p><p></p><p>Setting the unspecific part of the path will clear the context path component and
+update the context and target cell.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'path'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-476"></a><h3>show_all_cells</h3></td><td style="padding-bottom: 16px"><a name="method48"></a><a name="m_show_all_cells"></a><a name="k_50"></a><p><b>Signature</b>: void <b> show_all_cells </b></p><p><b>Description</b>: Makes all cells shown (cancel effects of <a href="#m_hide_cell">hide_cell</a>) for the specified cell view</p><p><p></p><p>This method has been added in version 0.25.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-481"></a><h3>show_cell</h3></td><td style="padding-bottom: 16px"><a name="method49"></a><a name="m_show_cell"></a><a name="k_51"></a><p><b>Signature</b>: void <b> show_cell </b> (const <a href="class_Cell.html">Cell</a> ptr cell)</p><p><b>Description</b>: Shows the given cell (cancels the effect of <a href="#m_hide_cell">hide_cell</a>)</p><p><p></p><p>This method has been added in version 0.25.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-486"></a><h3>technology</h3></td><td style="padding-bottom: 16px"><a name="method50"></a><a name="m_technology"></a><a name="k_52"></a><p><b>Signature</b>: <i>[const] </i>string <b> technology </b></p><p><b>Description</b>: Returns the technology name for the layout behind the given cell view</p><p><p>
+This method has been added in version 0.23.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'technology'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-494"></a><h3>technology=</h3></td><td style="padding-bottom: 16px"><a name="method51"></a><a name="m_technology="></a><a name="k_53"></a><p><b>Signature</b>: <i>[const] </i>void <b> technology= </b> (string tech_name)</p><p><b>Description</b>: Sets the technology for the layout behind the given cell view</p><p><p>
+According to the specification of the technology, new layer properties may be loaded or the net tracer may be reconfigured. If the layout is shown in multiple views, the technology is updated for all views.
+This method has been added in version 0.22.
+</p></p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'technology'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-503"></a><h3>view</h3></td><td style="padding-bottom: 16px"><a name="method52"></a><a name="m_view"></a><a name="k_54"></a><p><b>Signature</b>: <a href="class_LayoutView.html">LayoutView</a> ptr <b> view </b></p><p><b>Description</b>: Gets the view the cellview resides in</p><p><p>
+This reference will be nil if the cellview is not a valid one.
+This method has been added in version 0.25.
+</p></p></td></tr></table></body>

@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class PluginBase</p><h1>API reference - Class PluginBase</h1><property value="lay" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_lay.html">lay</a></p><p><b>Description</b>: The plugin base class</p><ul><li><a href="#h2-13">Public constructors</a></li><li><a href="#h2-18">Public methods</a></li><li><a href="#h2-71">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-82">Detailed description</a></li></ul><p></p><p>This class is provided as an interface to the base class implementation for various functions.
+You can use these methods in order to pass down events to the original implementation.</p><p>This class has been introduced in version 0.30.4.
+</p><a name="h2-13"></a><h2>Public constructors</h2><table><tr class="row0"><td>new PluginBase ptr</td><td><b><a href="#method26">new</a></b></td><td></td><td>Creates a new object of this class</td></tr></table><a name="h2-18"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>PluginBase ptr</td><td><b><a href="#method0">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method1">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method5">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">activated</a></b></td><td></td><td>Gets called when the plugin is activated (base class implementation)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">config_finalize</a></b></td><td></td><td>Sends the post-configuration request to the plugin (base class implementation)</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method9">configure</a></b></td><td>(string name,<br>string value)</td><td>Sends configuration requests to the plugin (base class implementation)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method11">deactivated</a></b></td><td></td><td>Gets called when the plugin is deactivated and another plugin is activated (base class implementation)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method14">drag_cancel</a></b></td><td></td><td>This method is called when some mouse dragging operation should be cancelled (base class implementation)</td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method15">enter_event</a></b></td><td>(bool prio)</td><td>Handles the enter event (base class implementation)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method16">has_tracking_position</a></b></td><td></td><td>Gets a value indicating whether the plugin provides a tracking position (base class implementation)</td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method18">key_event</a></b></td><td>(unsigned int key,<br>unsigned int buttons)</td><td>Handles the key pressed event (base class implementation)</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method19">leave_event</a></b></td><td>(bool prio)</td><td>Handles the leave event (base class implementation)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method20">menu_activated</a></b></td><td>(string symbol)</td><td>Gets called when a custom menu item is selected (base class implementation)</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method21">mouse_button_pressed_event</a></b></td><td>(const DPoint p,<br>unsigned int buttons,<br>bool prio)</td><td>Handles the mouse button pressed event (base class implementation)</td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method22">mouse_button_released_event</a></b></td><td>(const DPoint p,<br>unsigned int buttons,<br>bool prio)</td><td>Handles the mouse button release event (base class implementation)</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method23">mouse_click_event</a></b></td><td>(const DPoint p,<br>unsigned int buttons,<br>bool prio)</td><td>Handles the mouse button click event after the button has been released (base class implementation)</td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method24">mouse_double_click_event</a></b></td><td>(const DPoint p,<br>unsigned int buttons,<br>bool prio)</td><td>Handles the mouse button double-click event (base class implementation)</td></tr><tr class="row1"><td></td><td>bool</td><td><b><a href="#method25">mouse_moved_event</a></b></td><td>(const DPoint p,<br>unsigned int buttons,<br>bool prio)</td><td>Handles the mouse move event (base class implementation)</td></tr><tr class="row0"><td><i>[const]</i></td><td>DPoint</td><td><b><a href="#method27">tracking_position</a></b></td><td></td><td>Gets the tracking position (base class implementation)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method28">update</a></b></td><td></td><td>Gets called when the view has changed (base class implementation)</td></tr><tr class="row0"><td></td><td>bool</td><td><b><a href="#method29">wheel_event</a></b></td><td>(int delta,<br>bool horizontal,<br>const DPoint p,<br>unsigned int buttons,<br>bool prio)</td><td>Handles the mouse wheel event (base class implementation)</td></tr></table><a name="h2-71"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method10">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method12">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method13">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method17">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-82"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-83"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__const_cast"></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i><a href="class_PluginBase.html">PluginBase</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-89"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__create"></a><a name="k_3"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-95"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__destroy"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-102"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroyed?"></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-109"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__is_const_object?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-116"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__manage"></a><a name="k_7"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-122"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__unmanage"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-128"></a><h3>activated</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_activated"></a><a name="k_9"></a><p><b>Signature</b>: void <b> activated </b></p><p><b>Description</b>: Gets called when the plugin is activated (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_activated">Plugin#activated</a> for details.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-134"></a><h3>config_finalize</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_config_finalize"></a><a name="k_10"></a><p><b>Signature</b>: void <b> config_finalize </b></p><p><b>Description</b>: Sends the post-configuration request to the plugin (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_config_finalize">Plugin#config_finalize</a> for details.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-140"></a><h3>configure</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_configure"></a><a name="k_11"></a><p><b>Signature</b>: bool <b> configure </b> (string name, string value)</p><p><b>Description</b>: Sends configuration requests to the plugin (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_configure">Plugin#configure</a> for details.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-146"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_create"></a><a name="k_12"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-153"></a><h3>deactivated</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_deactivated"></a><a name="k_13"></a><p><b>Signature</b>: void <b> deactivated </b></p><p><b>Description</b>: Gets called when the plugin is deactivated and another plugin is activated (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_deactivated">Plugin#deactivated</a> for details.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-159"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_destroy"></a><a name="k_14"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-167"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_destroyed?"></a><a name="k_15"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-175"></a><h3>drag_cancel</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_drag_cancel"></a><a name="k_16"></a><p><b>Signature</b>: void <b> drag_cancel </b></p><p><b>Description</b>: This method is called when some mouse dragging operation should be cancelled (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_drag_cancel">Plugin#drag_cancel</a> for details.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-181"></a><h3>enter_event</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_enter_event"></a><a name="k_17"></a><p><b>Signature</b>: bool <b> enter_event </b> (bool prio)</p><p><b>Description</b>: Handles the enter event (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_enter_event">Plugin#enter_event</a> for details.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-187"></a><h3>has_tracking_position</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_has_tracking_position"></a><a name="k_18"></a><p><b>Signature</b>: <i>[const] </i>bool <b> has_tracking_position </b></p><p><b>Description</b>: Gets a value indicating whether the plugin provides a tracking position (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_has_tracking_position">Plugin#has_tracking_position</a> for details.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-193"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_is_const_object?"></a><a name="k_19"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-201"></a><h3>key_event</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_key_event"></a><a name="k_20"></a><p><b>Signature</b>: bool <b> key_event </b> (unsigned int key, unsigned int buttons)</p><p><b>Description</b>: Handles the key pressed event (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_key_event">Plugin#key_event</a> for details.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-207"></a><h3>leave_event</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_leave_event"></a><a name="k_21"></a><p><b>Signature</b>: bool <b> leave_event </b> (bool prio)</p><p><b>Description</b>: Handles the leave event (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_leave_event">Plugin#leave_event</a> for details.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-213"></a><h3>menu_activated</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_menu_activated"></a><a name="k_22"></a><p><b>Signature</b>: void <b> menu_activated </b> (string symbol)</p><p><b>Description</b>: Gets called when a custom menu item is selected (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_menu_activated">Plugin#menu_activated</a> for details.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-219"></a><h3>mouse_button_pressed_event</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_mouse_button_pressed_event"></a><a name="k_23"></a><p><b>Signature</b>: bool <b> mouse_button_pressed_event </b> (const <a href="class_DPoint.html">DPoint</a> p, unsigned int buttons, bool prio)</p><p><b>Description</b>: Handles the mouse button pressed event (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_mouse_button_pressed_event">Plugin#mouse_button_pressed_event</a> for details.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-225"></a><h3>mouse_button_released_event</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_mouse_button_released_event"></a><a name="k_24"></a><p><b>Signature</b>: bool <b> mouse_button_released_event </b> (const <a href="class_DPoint.html">DPoint</a> p, unsigned int buttons, bool prio)</p><p><b>Description</b>: Handles the mouse button release event (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_mouse_button_released_event">Plugin#mouse_button_released_event</a> for details.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-231"></a><h3>mouse_click_event</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_mouse_click_event"></a><a name="k_25"></a><p><b>Signature</b>: bool <b> mouse_click_event </b> (const <a href="class_DPoint.html">DPoint</a> p, unsigned int buttons, bool prio)</p><p><b>Description</b>: Handles the mouse button click event after the button has been released (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_mouse_click_event">Plugin#mouse_click_event</a> for details.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-237"></a><h3>mouse_double_click_event</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_mouse_double_click_event"></a><a name="k_26"></a><p><b>Signature</b>: bool <b> mouse_double_click_event </b> (const <a href="class_DPoint.html">DPoint</a> p, unsigned int buttons, bool prio)</p><p><b>Description</b>: Handles the mouse button double-click event (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_mouse_double_click_event">Plugin#mouse_double_click_event</a> for details.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-243"></a><h3>mouse_moved_event</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_mouse_moved_event"></a><a name="k_27"></a><p><b>Signature</b>: bool <b> mouse_moved_event </b> (const <a href="class_DPoint.html">DPoint</a> p, unsigned int buttons, bool prio)</p><p><b>Description</b>: Handles the mouse move event (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_mouse_moved_event">Plugin#mouse_moved_event</a> for details.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-249"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_new"></a><a name="k_28"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_PluginBase.html">PluginBase</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new object of this class</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-254"></a><h3>tracking_position</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_tracking_position"></a><a name="k_29"></a><p><b>Signature</b>: <i>[const] </i><a href="class_DPoint.html">DPoint</a><b> tracking_position </b></p><p><b>Description</b>: Gets the tracking position (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_tracking_position">Plugin#tracking_position</a> for details.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-260"></a><h3>update</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_update"></a><a name="k_30"></a><p><b>Signature</b>: void <b> update </b></p><p><b>Description</b>: Gets called when the view has changed (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_update">Plugin#update</a> for details.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-266"></a><h3>wheel_event</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_wheel_event"></a><a name="k_31"></a><p><b>Signature</b>: bool <b> wheel_event </b> (int delta, bool horizontal, const <a href="class_DPoint.html">DPoint</a> p, unsigned int buttons, bool prio)</p><p><b>Description</b>: Handles the mouse wheel event (base class implementation)</p><p><p>
+See <a href="class_Plugin.html#m_wheel_event">Plugin#wheel_event</a> for details.</p></p></td></tr></table></body>

@@ -1,0 +1,3 @@
+# KLayout Documentation
+
+KLayout 0.30.5 (2025-12-11 6ad326e80) [master] KLayout Documentation (Qt 4): Main Index # Main Index Welcome to KLayout's documentation The documentation is organized in chapters. For a brief introduction read the User Manual. 'Various Topics' is a collection of brief articles about specific topics. For Ruby programming see the 'Programming Ruby Scripts' chapter and for a complete Ruby class reference see the 'Class Index'. - [KLayout User Manual](manual/index.md) - [Various Topics](about/index.md) - [Programming scripts](programming/index.md) - [Class Index](code/index.md)

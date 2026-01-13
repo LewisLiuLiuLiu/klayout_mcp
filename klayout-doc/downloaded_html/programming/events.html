@@ -1,0 +1,421 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Programming scripts</a> » Events And Callbacks</p><h1>Events And Callbacks</h1><a name="k_1"></a><a name="k_2"></a><ul><li><a href="#h2-12">Introduction</a></li><li><a href="#h2-51">Reimplementation (Strategy Pattern)</a></li><li><a href="#h2-126">Events</a></li></ul><a name="h2-12"></a><h2>Introduction</h2><p>
+  In some places, the API requires to attach code to an event. An event could be a menu item which is selected
+  or a change of some status which might require some action. The API allows implementation of specific code which is
+  called in that case. This enables us to implement the functionality
+  behind a menu item. In this text we will refer to such functionality by the general term &quot;callback&quot;. In general
+  a callback is custom code that is called from the API in contrast to API code that is called from the custom code.
+  </p><p>
+  There are basically two ways to attach specific code to a callback:
+  </p><ul><li><b>Reimplementation</b>: some API classes provide &quot;virtual&quot; methods. &quot;virtual&quot; is a C++ term and 
+    means a method that can be overridden in a derived class. This technique is employed for example in the
+    &quot;Strategy&quot; design pattern. In strictly typed C++ this is quite a common pattern which allows definition of interfaces 
+    and concrete implementations based on those interfaces. Ruby as a dynamic language doesn't care much about
+    classes and their relationship: an object either has a method or it hasn't. So, reimplementation is just a matter
+    of providing the right method. An examples for the strategy pattern is the BrowserSource class (<a href="../code/class_BrowserSource.html">BrowserSource</a>).
+    </li><li><b>Events</b>: events allow attaching a piece of code to an event. In Ruby, such a block is &quot;Proc&quot; object, in &quot;Python&quot; it is a
+    &quot;callable&quot; object (&quot;lambda function&quot; is a term used in both languages for this kind of concept). 
+    In case the event is triggered, this attached code is executed. Multiple lambda functions can be attached to the same event and 
+    removed from the latter. Events can be cleared of attached code, where only the blocks attached from one language can be cleared
+    together - code attached from Python cannot be cleared from Ruby.
+    An example for events is the Action class (<a href="../code/class_Action.html">Action</a>) which provides both the reimplementation interface 
+    (&quot;triggered&quot; method) and the event interface (&quot;on_triggered&quot;). By the way, Qt signals are mapped to events in KLayout's Qt 
+    binding (<a href="qt_binding.html">The Qt Binding</a>).
+    </li></ul><p>
+  The &quot;Observer&quot; class which was there prior to KLayout 0.25 has been dropped in favour of the more
+  flexible events. It is no longer supported.
+  </p><a name="h2-51"></a><h2>Reimplementation (Strategy Pattern)</h2><p>
+  The BrowserSource (<a href="../code/class_BrowserSource.html">BrowserSource</a>) class is a nice example for the Strategy pattern.
+  It is used by the BrowserDialog class (<a href="../code/class_BrowserDialog.html">BrowserDialog</a>) as a kind of internal HTML server
+  which handles URL's starting with &quot;int:&quot;. For this, a script has to provide a class that reimplements the &quot;get(url)&quot;
+  method. In the following example, a BrowserSource is created that takes an URL with an integer index number and
+  delivers a HTML text with a link to the URL with the next index.
+  </p><p>
+  Here is the code.
+  This example demonstrates how the &quot;get&quot; method is reimplemented to deliver the actual text.
+  </p><pre>
+module MyMacro
+  
+  include RBA
+  
+  class MyBrowserSource &lt; BrowserSource
+    def get(url)
+      next_url = url.sub(/\d+/) { |num| (num.to_i+1).to_s }
+      &quot;This is #{url}. &lt;a href='#{next_url}'&gt;Goto next (#{next_url})&lt;/a&gt;&quot;
+    end
+  end
+  
+  dialog = BrowserDialog::new
+  dialog.source = MyBrowserSource::new
+  dialog.home = &quot;int:0&quot;
+  dialog.exec
+
+end
+</pre>
+
+  The Python version is this:
+
+  <pre>
+from pya import BrowserSource, BrowserDialog
+
+class MyBrowserSource(BrowserSource):
+  def get(self, url):
+    next_url = &quot;int:&quot; + str(int(url.split(&quot;:&quot;)[1]) + 1)
+    return f&quot;This is {url}. &lt;a href='{next_url}'&gt;Goto next ({next_url})&lt;/a&gt;&gt;&quot;
+
+dialog = BrowserDialog()
+dialog.home = &quot;int:0&quot;
+dialog.source = MyBrowserSource()
+dialog.exec_()
+</pre><p>
+  Ruby even allows reimplementation of a method without deriving a new class, because it allows
+  defining methods per instance:
+  </p><pre>
+module MyMacro
+  
+  include RBA
+  
+  source = BrowserSource::new
+  def source.get(url)
+    next_url = url.sub(/\d+/) { |num| (num.to_i+1).to_s }
+    &quot;This is #{url}. &lt;a href='#{next_url}'&gt;Goto next (#{next_url})&lt;/a&gt;&quot;
+  end
+  
+  dialog = BrowserDialog::new
+  dialog.source = source
+  dialog.home = &quot;int:0&quot;
+  dialog.exec
+
+end
+</pre><a name="h2-126"></a><h2>Events</h2><p>
+  Events are the callback variant which is the easiest one to use. Using an event it is possible
+  to directly attach a block of code to a callback. An event has a specific signature, i.e. 
+  the parameters it provides. The block can obtain this parameters by listing them in its argument list.
+  </p><p>
+  Here is a simple example that uses the parameterless &quot;on_triggered&quot; event of the Action
+  class (<a href="../code/class_Action.html">Action</a>). It puts a new entry into the tool bar and if it is 
+  clicked, it displays a message box:
+  </p><pre>
+module MyMacro
+  
+  include RBA
+  
+  action = Action::new
+  action.on_triggered do
+    MessageBox::info(&quot;A message&quot;, &quot;The action was triggered&quot;, MessageBox::Ok)
+  end
+  action.title = &quot;My Action&quot;
+  
+  Application::instance.main_window.menu.insert_item(&quot;@toolbar.end&quot;, &quot;my_action&quot;, action)
+  
+end
+</pre><p>
+  The Python version is:
+  </p><pre>
+from pya import Action, MessageBox, Application
+
+def on_triggered():
+  MessageBox.info(&quot;A message&quot;, &quot;The action was triggered&quot;, MessageBox.Ok)
+
+action = Action()
+action.on_triggered = on_triggered
+action.title = &quot;My Action&quot;
+
+Application.instance().main_window().menu().insert_item(&quot;@toolbar.end&quot;, &quot;my_action&quot;, action)
+</pre><p>
+  Specifying a block to an event will make the event only execute that block. A more flexible way of 
+  controlling the code attached to events is available through the += and -= operators:
+  </p><pre>
+module MyMacro
+
+  include RBA
+
+  code = lambda do 
+    MessageBox::info(&quot;A message&quot;, &quot;The action was triggered&quot;, MessageBox::Ok)
+  end
+
+  action = Action::new
+  action.on_triggered += code
+
+  ...
+  
+  # to remove the code from the event, use:
+  action.on_triggered -= code
+
+  # to replace all event handlers by the one given by &quot;code&quot;:
+  action.on_triggered = code
+
+  # to clear all event handlers use:
+  action.on_triggered.clear
+</pre><p>
+  Synonyms for the <tt>+=</tt> operator are <tt>add</tt> and <tt>connect</tt>. The latter makes code more familiar for PyQt users.
+  In the same way, synonyms for the <tt>-=</tt> operator are <tt>remove</tt> and <tt>disconnect</tt>.
+  </p><p>
+  If the Qt binding is available (see <a href="qt_binding.html">The Qt Binding</a>), Qt signals
+  are implemented as events. This way it's very simple to create a Qt dialog. In following example,
+  the &quot;textChanged&quot; signal of QLineEdit is attached a code block which copies the text of the 
+  input field to the label below:
+  </p><pre>
+module MyMacro
+  
+  include RBA
+  
+  dialog = QDialog::new(Application::instance.main_window)
+  layout = QVBoxLayout::new(dialog)
+  input = QLineEdit::new(dialog)
+  label = QLabel::new(dialog)
+  layout.addWidget(input)
+  layout.addWidget(label)
+
+  # implement the textChanged signal as event:
+  input.textChanged { |text| label.text = text }
+
+  dialog.exec
+
+end
+</pre><p>
+  The Python version is:
+  </p><pre>
+from pya import QDialog, QVBoxLayout, QLineEdit, QLabel, Application
+
+dialog = QDialog(Application.instance().main_window())
+layout = QVBoxLayout(dialog)
+input = QLineEdit(dialog)
+label = QLabel(dialog)
+layout.addWidget(input)
+layout.addWidget(label)
+
+def text_changed(text):
+  label.text = text
+
+# implement the textChanged signal as event:
+input.textChanged = text_changed
+
+dialog.exec_()
+</pre><p>
+  Using the += operator on the event, multiple handlers can be added to a signal:
+  </p><pre>
+module MyMacro
+  
+  include RBA
+  
+  dialog = QDialog::new(Application::instance.main_window)
+  layout = QVBoxLayout::new(dialog)
+  input = QLineEdit::new(dialog)
+  label1 = QLabel::new(dialog)
+  label2 = QLabel::new(dialog)
+  layout.addWidget(input)
+  layout.addWidget(label1)
+  layout.addWidget(label2)
+
+  # two signal consumers:
+  input.textChanged += lambda { |text| label1.text = text }
+  input.textChanged += lambda { |text| label2.text = text.reverse }
+  
+  dialog.exec
+
+end
+</pre><p>
+  with the Python version:
+  </p><pre>
+from pya import QDialog, QVBoxLayout, QLineEdit, QLabel, Application
+
+dialog = QDialog(Application.instance().main_window())
+layout = QVBoxLayout(dialog)
+input = QLineEdit(dialog)
+label1 = QLabel(dialog)
+label2 = QLabel(dialog)
+layout.addWidget(input)
+layout.addWidget(label1)
+layout.addWidget(label2)
+
+def text_changed1(text):
+  label1.text = text
+
+def text_changed2(text):
+  label2.text = text[::-1]
+
+# two signal consumers:
+input.textChanged += text_changed1
+input.textChanged += text_changed2
+
+dialog.exec_()
+</pre></body>

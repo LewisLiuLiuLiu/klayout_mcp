@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="basic.html">KLayout Basics</a> » Doing Measurements</p><h1>Doing Measurements</h1><a name="k_1"></a><a name="k_2"></a><p>
+  A measurement can be performed by clicking on the ruler icon in the 
+  toolbar and selecting &quot;Ruler&quot; from the drop-down options.
+  Left-click on a point in the layout and then left-click again to 
+  specify the second point. A ruler will be shown that indicates
+  the distance measured. 
+  </p><p>
+  A more convenient way is provided with the single-click measurement
+  ruler. Select &quot;Measure&quot; from the drop-down options of the ruler symbol.
+  In this mode, a single click will set a ruler to the specified 
+  position. This feature will look for edges in the vicinity of the 
+  ruler and set the ruler to connect the neighboring edges. The ruler
+  is attached perpendicular to the edge next to the initial point.
+  </p><p>
+  You can mark a position with a single click by selecting the &quot;Cross&quot;
+  ruler type. Clicking at a location will place such a ruler. The ruler
+  shows the x and y coordinate.
+  </p><p>
+  The &quot;Multi-Ruler&quot; allows concatenating multiple rulers into a single
+  object. Click and the first point to start such a ruler. Then click
+  on more points to add new segments to the ruler. Each segment is shown
+  as an individual ruler with tick marks and a length. Finish the sequence
+  with a double-click.
+  </p><p>
+  The &quot;Angle&quot; ruler allows angle measurements. Three clicks are required
+  to define a &quot;V&quot; like arrangement of two rulers. The angle enclosed by the two lines forming the &quot;V&quot;
+  is shown in the ruler.
+  </p><p>
+  Another special ruler, the &quot;Radius&quot; ruler is also a three-click type.
+  Specify three points to define a circle. The ruler shows the radius
+  of this circle and the circle outline.
+  </p><p>
+  Rulers can be configured in manifold ways. Use &quot;Rulers And Annotations Setup&quot; 
+  in the &quot;Edit&quot; menu to open the ruler configuration dialog. 
+  A ruler can be
+  made to snap to edges of objects by selecting &quot;Snap to edge/vertex&quot;.
+  Ruler orientations can be constrained by using the &quot;Angle Constraint&quot;
+  options. The number of rulers can be limited using the &quot;Limit 
+  number of annotations&quot; setting.
+  </p><p>
+  While drawing or moving one point of a ruler, the direction constraint
+  can be overridden with the Shift and Ctrl keys: pressing Shift while moving the
+  mouse will enforce orthogonal constraint, Ctrl will enforce diagonal constraint 
+  while pressing both will release any direction constraint.
+  </p><p>
+  All rulers can be cleared using the &quot;Clear all rulers&quot; function from the
+  &quot;Edit&quot; menu.
+  </p><p>
+  Ruler dragging can be canceled with the &quot;Esc&quot; key or using the &quot;Cancel&quot;
+  function from the &quot;Edit&quot; menu.
+  </p><p>
+  Rulers can be moved by selecting &quot;Move&quot; mode with the speedbar buttons
+  in the toolbar or &quot;Move&quot; from the &quot;Mode&quot; sub-menu in the &quot;Edit&quot; menu. Then
+  left-click and drag the ruler or the ruler end point that should be changed.
+  </p><p>
+  Rulers can be deleted selectively by selecting a ruler in &quot;Select&quot; mode and
+  pressing &quot;Delete&quot;.
+  </p><p> 
+  Rulers can be modified in a variety of ways. For example, rulers can be shown
+  as arrows. To edit the properties of a ruler, double-click the ruler or 
+  select it and use &quot;Properties&quot; from the &quot;Edit&quot; menu. 
+  See <a href="ruler_properties.html">Ruler Properties</a> for a description of the 
+  properties.
+  </p><p> 
+  Multiple templates can be configured to be available for rulers. Each template defined
+  will be shown in the &quot;Ruler&quot; mode toolbar button's drop-down menu.
+  If a template is selected, new rulers produced from this template will inherit
+  the template's properties. Templates are managed in the 
+  ruler setup page (&quot;Setup&quot; from the &quot;File&quot; menu) or &quot;Ruler And Annotation Setup&quot; from the &quot;Edit&quot; menu.
+  </p></body>

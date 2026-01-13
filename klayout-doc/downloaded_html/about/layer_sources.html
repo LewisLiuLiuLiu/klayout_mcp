@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Various Topics</a> » About Layer Sources</p><h1>About Layer Sources</h1><p>
+  KLayout implements a concept of &quot;layer views&quot;. The layer list is made up of such layer views.
+  A &quot;view&quot; is basically a specification of what is shown how.
+  The &quot;how&quot; part is given by the colors, stipples, styles etc. 
+  The &quot;what&quot; part is given by the source specification.
+  </p><p>
+  The most important part of the source specification is the layer number or name. 
+  But the source specification is much more powerful.
+  Basically the source specification offers the following capabilities:
+  </p><ul><li>Specify the layer where the shapes are taken from, either by layer and datatype or name</li><li>Transform the layout before it is drawn</li><li>Property filter: draw only shapes whose user properties match a given expression</li><li>Override the hierarchy levels on which the shapes are drawn</li></ul><a name="h2-28"></a><h2>Specifying the source layer</h2><p>
+  The source layer specifies from which actual data
+  layer to take the drawn shapes from. The most simple form of a source 
+  specification is &quot;layer/datatype&quot; (i.e. &quot;5/0&quot;) or the layer name, if an OASIS
+  layer name (or a named layer in general) is present. 
+  This specification can be enhanced by a layout index.
+  The first layout loaded in the panel is referred to which &quot;@1&quot; or by omitting 
+  this specification. The source specification &quot;10/5@2&quot; therefore refers to layer
+  10, datatype 5 of the second layout loaded in the panel.
+  </p><p>
+  Source specifications can be wildcarded. That means, either layer, datatype
+  or layout index can be specified by &quot;*&quot;. In this case, such a layer view must
+  be contained in a group and the group parent must provide the missing specifications.
+  For example, if a layer is specified &quot;10/*&quot; and the parent is specified &quot;*/5&quot;, the
+  effective layer looked for will be &quot;10/5&quot;. Unlike the behaviour for the display
+  styles, the children override (or specialize) the parent's definition in the 
+  case of the source specification.
+  </p><p>
+  For more information refer to <a href="../manual/layer_source.html">Removing And Adding Layers To The Layer Set</a>.
+  </p><a name="h2-55"></a><h2>Transforming the layout</h2><p>
+  A geometrical transformation is specified by appending a transformation in 
+  round brackets to the layer/datatype source specification.
+  </p><p>
+  For example, &quot;(r90)&quot; specifies a rotation by 90 degree counter-clockwise.
+  &quot;(0,100.0 m45 *0.5)&quot; will shrink the layout to half the size, flip at the 
+  45 degree-axis (swap x and y axes) and finally shift the layout by 100 micron
+  upwards.
+  </p><p>
+  Transformations accumulate over the layer hierarchy. This means, that if a layer is transformed
+  and the layer is inside a group whose representative specifies a transformation as well, the
+  resulting transformation is the combination of the layer's transformation (first applied) and
+  the group representative's transformation.
+  </p><p>
+  Multiple transformations can be present. In this case, the layout is shown in multiple
+  instances.
+  </p><p>
+  For more information refer to <a href="../manual/layer_source_expert.html">Transforming Views And Property Selectors</a>.
+  </p><a name="h2-85"></a><h2>Property filters</h2><p>
+  It is possible to specify a property filter. A property filter specifies an expression and only shapes
+  for which that expression applies are shown. The expression operates on user properties and the syntax
+  allows comparison of properties with a given key against a given value. Boolean operators are available. That
+  way, complex expressions can be created.
+  </p><p>
+  The property filter is specified in square brackets. For example:</p><p><tt>10/5 [#43==X]</tt></p><p>
+  With this source specification, the layer will show all shapes from layer 10, datatype 5 
+  which have a user property with number 43 and value string &quot;X&quot;.
+  </p><p>
+  For more information refer to <a href="../manual/layer_source_expert.html">Transforming Views And Property Selectors</a>.
+  </p><a name="h2-110"></a><h2>Overriding the hierarchy levels</h2><p>
+  By default, only the hierarchy levels that are selected in the hierarchy level
+  selection boxes are shown, i.e. if levels 0 to 1 are selected, just the top level 
+  shapes and instances are shown. This selection can be modified for certain layers or layer groups.
+  To specify a different hierarchy selection for a certain layer, use an optional source specification 
+  element, the hierarchy level selector.
+  </p><p> 
+  For example:
+  </p><table><tr><td><tt>#*</tt></td><td>Display all hierarchy levels</td></tr><tr><td><tt>#0..1</tt></td><td>Display top level only</td></tr><tr><td><tt>#..5</tt></td><td>Override upper level with 5</td></tr><tr><td><tt>#2..</tt></td><td>Override lower level with 2</td></tr><tr><td><tt>#..*</tt></td><td>Override upper level setting by &quot;all levels&quot;</td></tr></table><p>
+  For more information refer to <a href="../manual/explicit_hier_levels.html">Specifying Explicit Hierarchy Levels For One Layer Or A Layer Group</a>.
+  </p></body>

@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class PCellDeclaration</p><h1>API reference - Class PCellDeclaration</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: A PCell declaration providing the parameters and code to produce the PCell</p><p><b>Class hierarchy</b>: PCellDeclaration</p><ul><li><a href="#h2-24">Public constructors</a></li><li><a href="#h2-29">Public methods</a></li><li><a href="#h2-86">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-97">Detailed description</a></li></ul><p></p><p>A PCell declaration is basically the recipe of how to create a PCell layout from
+a parameter set. The declaration includes</p><p><ul><li> Parameters: names, types, default values </li><li> Layers: the layers the PCell wants to create </li><li> Code: a production callback that is called whenever a PCell is instantiated with a certain parameter set </li><li> Display name: the name that is shown for a given PCell instance </li></ul></p><p>All these declarations are implemented by deriving from the PCellDeclaration class
+and reimplementing the specific methods. Reimplementing the display_name method is 
+optional. The default implementation creates a name from the PCell name plus the 
+parameters.</p><p>By supplying the information about the layers it wants to create, KLayout is able to
+call the production callback with a defined set of the layer ID's which are already
+mapped to valid actual layout layers.</p><p>This class has been introduced in version 0.22.
+</p><a name="h2-24"></a><h2>Public constructors</h2><table><tr class="row0"><td>new PCellDeclaration ptr</td><td><b><a href="#method26">new</a></b></td><td></td><td>Creates a new object of this class</td></tr></table><a name="h2-29"></a><h2>Public methods</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method0">_assign</a></b></td><td>(const PCellDeclaration other)</td><td>Assigns another object to self</td></tr><tr class="row1"><td><i>[const]</i></td><td>PCellDeclaration ptr</td><td><b><a href="#method1">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method2">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method3">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row1"><td><i>[const]</i></td><td>new PCellDeclaration ptr</td><td><b><a href="#method5">_dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method6">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method7">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method9">assign</a></b></td><td>(const PCellDeclaration other)</td><td>Assigns another object to self</td></tr><tr class="row0"><td><i>[virtual,const]</i></td><td>void</td><td><b><a href="#method10">callback</a></b></td><td>(const Layout layout,<br>string name,<br>PCellParameterStates states)</td><td>Indicates a parameter change and allows implementing actions based on the parameter value</td></tr><tr class="row1"><td><i>[virtual,const]</i></td><td>bool</td><td><b><a href="#method11">can_create_from_shape</a></b></td><td>(const Layout layout,<br>const Shape shape,<br>unsigned int layer)</td><td>Returns true, if the PCell can be created from the given shape</td></tr><tr class="row0"><td><i>[virtual,const]</i></td><td>string</td><td><b><a href="#method12">cell_name</a></b></td><td>(variant[] parameters)</td><td>Returns a cell name used for the PCell variant</td></tr><tr class="row1"><td><i>[virtual,const]</i></td><td>variant[]</td><td><b><a href="#method13">coerce_parameters</a></b></td><td>(const Layout layout,<br>variant[] input)</td><td>Modifies the parameters to match the requirements</td></tr><tr class="row0"><td><i>[virtual,const]</i></td><td>string</td><td><b><a href="#method15">description</a></b></td><td></td><td>Gets the PCell description</td></tr><tr class="row1"><td><i>[virtual,const]</i></td><td>string</td><td><b><a href="#method18">display_text</a></b></td><td>(variant[] parameters)</td><td>Returns the display text for this PCell given a certain parameter set</td></tr><tr class="row0"><td><i>[const]</i></td><td>new PCellDeclaration ptr</td><td><b><a href="#method19">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row1"><td><i>[virtual,const]</i></td><td>LayerInfo[]</td><td><b><a href="#method20">get_layers</a></b></td><td>(variant[] parameters)</td><td>Returns a list of layer declarations</td></tr><tr class="row0"><td><i>[virtual,const]</i></td><td>PCellParameterDeclaration[]</td><td><b><a href="#method21">get_parameters</a></b></td><td></td><td>Returns a list of parameter declarations</td></tr><tr class="row1"><td><i>[const]</i></td><td>unsigned int</td><td><b><a href="#method22">id</a></b></td><td></td><td>Gets the integer ID of the PCell declaration</td></tr><tr class="row0"><td><i>[const]</i></td><td>Layout ptr</td><td><b><a href="#method24">layout</a></b></td><td></td><td>Gets the Layout object the PCell is registered in or nil if it is not registered yet.</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method25">name</a></b></td><td></td><td>Gets the name of the PCell</td></tr><tr class="row0"><td><i>[virtual,const]</i></td><td>variant[]</td><td><b><a href="#method27">parameters_from_shape</a></b></td><td>(const Layout layout,<br>const Shape shape,<br>unsigned int layer)</td><td>Gets the parameters for the PCell which can replace the given shape</td></tr><tr class="row1"><td><i>[virtual,const]</i></td><td>void</td><td><b><a href="#method28">produce</a></b></td><td>(const Layout layout,<br>unsigned int[] layer_ids,<br>variant[] parameters,<br>Cell cell)</td><td>The production callback</td></tr><tr class="row0"><td><i>[virtual,const]</i></td><td>Trans</td><td><b><a href="#method29">transformation_from_shape</a></b></td><td>(const Layout layout,<br>const Shape shape,<br>unsigned int layer)</td><td>Gets the instance transformation for the PCell which can replace the given shape</td></tr><tr class="row1"><td><i>[virtual,const]</i></td><td>ViaType[]</td><td><b><a href="#method30">via_types</a></b></td><td></td><td>Gets the via types the PCell supports - if it is a via PCell</td></tr><tr class="row0"><td><i>[virtual,const]</i></td><td>bool</td><td><b><a href="#method31">wants_lazy_evaluation</a></b></td><td></td><td>Gets a value indicating whether the PCell wants lazy evaluation</td></tr></table><a name="h2-86"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method14">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method16">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method17">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method23">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-97"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-98"></a><h3>_assign</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m__assign"></a><a name="k_2"></a><p><b>Signature</b>: void <b> _assign </b> (const <a href="class_PCellDeclaration.html">PCellDeclaration</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow1"><td><a name="h3-102"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m__const_cast"></a><a name="k_3"></a><p><b>Signature</b>: <i>[const] </i><a href="class_PCellDeclaration.html">PCellDeclaration</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-108"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m__create"></a><a name="k_4"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-114"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m__destroy"></a><a name="k_5"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-121"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m__destroyed?"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-128"></a><h3>_dup</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m__dup"></a><a name="k_7"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_PCellDeclaration.html">PCellDeclaration</a> ptr <b> _dup </b></p><p><b>Description</b>: Creates a copy of self</p></td></tr><tr class="bigrow0"><td><a name="h3-132"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__is_const_object?"></a><a name="k_8"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-139"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__manage"></a><a name="k_9"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-145"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__unmanage"></a><a name="k_10"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-151"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_assign"></a><a name="k_11"></a><p><b>Signature</b>: void <b> assign </b> (const <a href="class_PCellDeclaration.html">PCellDeclaration</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow0"><td><a name="h3-155"></a><h3>callback</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_callback"></a><a name="k_12"></a><p><b>Signature</b>: <i>[virtual,const] </i>void <b> callback </b> (const <a href="class_Layout.html">Layout</a> layout, string name, <a href="class_PCellParameterStates.html">PCellParameterStates</a> states)</p><p><b>Description</b>: Indicates a parameter change and allows implementing actions based on the parameter value</p><table class="layout-table"><tr><td><b>layout</b>:</td><td>The layout object in which the PCell will be produced</td></tr><tr><td><b>name</b>:</td><td>The name of the parameter which has changed or an empty string if all parameters need to be considered</td></tr><tr><td><b>states</b>:</td><td>A <a href="class_PCellParameterStates.html">PCellParameterStates</a> object which can be used to manipulate the parameter states</td></tr></table><p><p></p><p>This method may be reimplemented to implement parameter-specific actions upon value change or button callbacks. Whenever the value of a parameter is changed in the PCell parameter form, this method is called with the name of the parameter in 'name'. The implementation can manipulate values or states (enabled, visible) or parameters using the <a href="class_PCellParameterStates.html">PCellParameterStates</a> object passed in 'states'.</p><p>Initially, this method will be called with an empty parameter name to indicate a global change. The implementation may then consolidate all states. The initial state is build from the 'readonly' (disabled) or 'hidden' (invisible) parameter declarations.</p><p>This method is also called when a button-type parameter is present and the button is pressed. In this case the parameter name is the name of the button.</p><p>This feature has been introduced in version 0.28.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-165"></a><h3>can_create_from_shape</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_can_create_from_shape"></a><a name="k_13"></a><p><b>Signature</b>: <i>[virtual,const] </i>bool <b> can_create_from_shape </b> (const <a href="class_Layout.html">Layout</a> layout, const <a href="class_Shape.html">Shape</a> shape, unsigned int layer)</p><p><b>Description</b>: Returns true, if the PCell can be created from the given shape</p><table class="layout-table"><tr><td><b>layout</b>:</td><td>The layout the shape lives in</td></tr><tr><td><b>shape</b>:</td><td>The shape from which a PCell shall be created</td></tr><tr><td><b>layer</b>:</td><td>The layer index (in layout) of the shape</td></tr></table><p><p></p><p>KLayout offers a way to convert a shape into a PCell. To test whether the PCell can be created from a shape, it will call this method. If this method returns true, KLayout will use <a href="#m_parameters_from_shape">parameters_from_shape</a> and <a href="#m_transformation_from_shape">transformation_from_shape</a> to derive the parameters and instance transformation for the new PCell instance that will replace the shape.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-176"></a><h3>cell_name</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_cell_name"></a><a name="k_14"></a><p><b>Signature</b>: <i>[virtual,const] </i>string <b> cell_name </b> (variant[] parameters)</p><p><b>Description</b>: Returns a cell name used for the PCell variant</p><p><p>
+Reimplement this method to create a cell name the system uses for the PCell variant. By default that is the PCell name.
+This feature allows encoding the PCell parameters into the cell name for easier identification of the PCell variant in a cell tree.</p><p>This feature has been added in version 0.30.5.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-184"></a><h3>coerce_parameters</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_coerce_parameters"></a><a name="k_15"></a><p><b>Signature</b>: <i>[virtual,const] </i>variant[] <b> coerce_parameters </b> (const <a href="class_Layout.html">Layout</a> layout, variant[] input)</p><p><b>Description</b>: Modifies the parameters to match the requirements</p><table class="layout-table"><tr><td><b>layout</b>:</td><td>The layout object in which the PCell will be produced</td></tr><tr><td><b>input</b>:</td><td>The parameters before the modification</td></tr><tr><td><b>Returns</b>:</td><td>The modified parameters or an empty array, indicating that no modification was done</td></tr></table><p><p></p><p>This method can be reimplemented to change the parameter set according to some
+constraints for example. The reimplementation may modify the parameters in a way
+that they are usable for the <a href="#m_produce">produce</a> method.</p><p>The method receives a reference to the layout so it is able to verify
+the parameters against layout properties.</p><p>It can raise an exception to indicate that something is not correct.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-198"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_create"></a><a name="k_16"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-205"></a><h3>description</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_description"></a><a name="k_17"></a><p><b>Signature</b>: <i>[virtual,const] </i>string <b> description </b></p><p><b>Description</b>: Gets the PCell description</p><p><p>
+The description string is a text that gives a human-readable description of the PCell. By default, the PCell name is used for the description.</p><p>This method has been added in version 0.30.4.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-212"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_destroy"></a><a name="k_18"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-220"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_destroyed?"></a><a name="k_19"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-228"></a><h3>display_text</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_display_text"></a><a name="k_20"></a><p><b>Signature</b>: <i>[virtual,const] </i>string <b> display_text </b> (variant[] parameters)</p><p><b>Description</b>: Returns the display text for this PCell given a certain parameter set</p><p><p>
+Reimplement this method to create a distinct display text for a PCell variant with 
+the given parameter set. If this method is not implemented, a default text is created. 
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-236"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_dup"></a><a name="k_21"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_PCellDeclaration.html">PCellDeclaration</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-241"></a><h3>get_layers</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_get_layers"></a><a name="k_22"></a><p><b>Signature</b>: <i>[virtual,const] </i><a href="class_LayerInfo.html">LayerInfo</a>[] <b> get_layers </b> (variant[] parameters)</p><p><b>Description</b>: Returns a list of layer declarations</p><p><p>
+Reimplement this method to return a list of layers this PCell wants to create.
+The layer declarations are returned as a list of LayerInfo objects which are
+used as match expressions to look up the layer in the actual layout.</p><p>This method receives the PCell parameters which allows it to deduce layers
+from the parameters.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-250"></a><h3>get_parameters</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_get_parameters"></a><a name="k_23"></a><p><b>Signature</b>: <i>[virtual,const] </i><a href="class_PCellParameterDeclaration.html">PCellParameterDeclaration</a>[] <b> get_parameters </b></p><p><b>Description</b>: Returns a list of parameter declarations</p><p><p>
+Reimplement this method to return a list of parameters used in that PCell 
+implementation. A parameter declaration is a PCellParameterDeclaration object
+and defines the parameter name, type, description text and possible choices for
+the parameter value.
+</p></p></td></tr><tr class="bigrow0"><td><a name="h3-260"></a><h3>id</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_id"></a><a name="k_24"></a><p><b>Signature</b>: <i>[const] </i>unsigned int <b> id </b></p><p><b>Description</b>: Gets the integer ID of the PCell declaration</p><p><p>
+This ID is used to identify the PCell in the context of a Layout object for example</p></p></td></tr><tr class="bigrow1"><td><a name="h3-266"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_is_const_object?"></a><a name="k_25"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-274"></a><h3>layout</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_layout"></a><a name="k_26"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Layout.html">Layout</a> ptr <b> layout </b></p><p><b>Description</b>: Gets the Layout object the PCell is registered in or nil if it is not registered yet.</p><p><p>
+This attribute has been added in version 0.27.5.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-280"></a><h3>name</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_name"></a><a name="k_27"></a><p><b>Signature</b>: <i>[const] </i>string <b> name </b></p><p><b>Description</b>: Gets the name of the PCell</p></td></tr><tr class="bigrow0"><td><a name="h3-284"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_new"></a><a name="k_28"></a><p><b>Signature</b>: <i>[static] </i>new <a href="class_PCellDeclaration.html">PCellDeclaration</a> ptr <b> new </b></p><p><b>Description</b>: Creates a new object of this class</p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-289"></a><h3>parameters_from_shape</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_parameters_from_shape"></a><a name="k_29"></a><p><b>Signature</b>: <i>[virtual,const] </i>variant[] <b> parameters_from_shape </b> (const <a href="class_Layout.html">Layout</a> layout, const <a href="class_Shape.html">Shape</a> shape, unsigned int layer)</p><p><b>Description</b>: Gets the parameters for the PCell which can replace the given shape</p><table class="layout-table"><tr><td><b>layout</b>:</td><td>The layout the shape lives in</td></tr><tr><td><b>shape</b>:</td><td>The shape from which a PCell shall be created</td></tr><tr><td><b>layer</b>:</td><td>The layer index (in layout) of the shape</td></tr></table><p><p></p><p>KLayout offers a way to convert a shape into a PCell. If <a href="#m_can_create_from_shape">can_create_from_shape</a> returns true, it will use this method to derive the parameters for the PCell instance that will replace the shape. See also <a href="#m_transformation_from_shape">transformation_from_shape</a> and <a href="#m_can_create_from_shape">can_create_from_shape</a>.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-299"></a><h3>produce</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_produce"></a><a name="k_30"></a><p><b>Signature</b>: <i>[virtual,const] </i>void <b> produce </b> (const <a href="class_Layout.html">Layout</a> layout, unsigned int[] layer_ids, variant[] parameters, <a href="class_Cell.html">Cell</a> cell)</p><p><b>Description</b>: The production callback</p><table class="layout-table"><tr><td><b>layout</b>:</td><td>The layout object where the cell resides</td></tr><tr><td><b>layer_ids</b>:</td><td>A list of layer ID's which correspond to the layers declared with get_layers</td></tr><tr><td><b>parameters</b>:</td><td>A list of parameter values which correspond to the parameters declared with get_parameters</td></tr><tr><td><b>cell</b>:</td><td>The cell where the layout will be created</td></tr></table><p><p></p><p>Reimplement this method to provide the code that implements the PCell.
+The code is supposed to create the layout in the target cell using the provided 
+parameters and the layers passed in the layer_ids list.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-313"></a><h3>transformation_from_shape</h3></td><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_transformation_from_shape"></a><a name="k_31"></a><p><b>Signature</b>: <i>[virtual,const] </i><a href="class_Trans.html">Trans</a><b> transformation_from_shape </b> (const <a href="class_Layout.html">Layout</a> layout, const <a href="class_Shape.html">Shape</a> shape, unsigned int layer)</p><p><b>Description</b>: Gets the instance transformation for the PCell which can replace the given shape</p><table class="layout-table"><tr><td><b>layout</b>:</td><td>The layout the shape lives in</td></tr><tr><td><b>shape</b>:</td><td>The shape from which a PCell shall be created</td></tr><tr><td><b>layer</b>:</td><td>The layer index (in layout) of the shape</td></tr></table><p><p></p><p>KLayout offers a way to convert a shape into a PCell. If <a href="#m_can_create_from_shape">can_create_from_shape</a> returns true, it will use this method to derive the transformation for the PCell instance that will replace the shape. See also <a href="#m_parameters_from_shape">parameters_from_shape</a> and <a href="#m_can_create_from_shape">can_create_from_shape</a>.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-323"></a><h3>via_types</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_via_types"></a><a name="k_32"></a><p><b>Signature</b>: <i>[virtual,const] </i><a href="class_ViaType.html">ViaType</a>[] <b> via_types </b></p><p><b>Description</b>: Gets the via types the PCell supports - if it is a via PCell</p><p><p>
+If the returned list is non-empty, the PCell may be used as a via PCell. This method is supposed to deliver a list of via types the PCell supports. If the PCell supports vias, it is expected to accept the following parameters:</p><p><ul><li> 'via' (string): the name of the via type requested </li><li> 'w_bottom' (float): the bottom wire width in um or 0 if not specified </li><li> 'h_bottom' (float): the bottom wire height in um or 0 if not specified </li><li> 'w_top' (float): the top wire width in um or 0 if not specified </li><li> 'h_top' (float): the top wire height in um or 0 if not specified </li></ul></p><p>This method has been added in version 0.30.4.
+</p></p></td></tr><tr class="bigrow1"><td><a name="h3-336"></a><h3>wants_lazy_evaluation</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_wants_lazy_evaluation"></a><a name="k_33"></a><p><b>Signature</b>: <i>[virtual,const] </i>bool <b> wants_lazy_evaluation </b></p><p><b>Description</b>: Gets a value indicating whether the PCell wants lazy evaluation</p><p><p>
+In lazy evaluation mode, the PCell UI will not immediately update the layout when a parameter is changed. Instead, the user has to commit the changes in order to have the parameters updated. This is useful for PCells that take a long time to compute.</p><p>The default implementation will return 'false' indicating immediate updates.</p><p>This method has been added in version 0.27.6.
+</p></p></td></tr></table></body>

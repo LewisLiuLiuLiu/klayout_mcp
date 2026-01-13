@@ -1,0 +1,1005 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="drc.html">Design Rule Check (DRC)</a> » DRC Runsets</p><h1>DRC Runsets</h1><a name="k_1"></a><a name="k_2"></a><a name="k_3"></a><a name="k_4"></a><a name="k_5"></a><a name="k_6"></a><ul><li><a href="#h2-21">Runset basics</a></li><li><a href="#h2-76">Including other files</a></li><li><a href="#h2-131">Input and output</a></li><li><a href="#h2-270">Dimension specifications</a></li><li><a href="#h2-312">Objects and methods</a></li><li><a href="#h2-550">Polygon and edge layers</a></li><li><a href="#h2-619">Text collections</a></li><li><a href="#h2-665">Edge pairs and edge pair collections</a></li><li><a href="#h2-690">Raw and clean layer mode</a></li><li><a href="#h2-763">Shielding</a></li><li><a href="#h2-812">Universal DRC</a></li><li><a href="#h2-940">Logging and verbosity</a></li><li><a href="#h2-992">The tiling option</a></li><li><a href="#h2-1071">Hierarchical mode</a></li><li><a href="#h2-1179">DRC and user properties</a></li></ul><p>
+  This document will give a detailed introduction into the writing of DRC runsets. 
+  See also <a href="../about/drc_ref.html">DRC Reference</a> for a full reference of the DRC functions.
+  </p><a name="h2-21"></a><h2>Runset basics</h2><p>
+  Runsets are basically Ruby scripts running in the context of a DRC runset interpreter.
+  On that level, DRC runsets work with very few classes, specifically:
+  </p><ul><li>Layers (&quot;DRC::DRCLayer&quot; class): layers represent input from the original layout or
+        are created by functions generating information. Layers can be used as input 
+        for other methods or methods can be called in layers. 
+    </li><li>Sources (&quot;DRC::DRCSource&quot; class): sources represent layout objects from where
+        input is taken from. One default source is always provided - the default layout
+        from where the data is taken from. More layout sources can be created to specify
+        input from other layouts. Sources also carry information how to filter the 
+        input - for example cell filters or the working region (a rectangular region
+        from which the input is taken).
+    </li></ul><p>
+  Some functions are provided on global level and can be used without any object.
+  </p><p>
+  The basic elements of runsets are input and output specifications.
+  Input is specified through &quot;input&quot; method calls. &quot;input&quot; will create a layer object
+  that contains the shapes of specified layer. The results are output by calling the
+  &quot;output&quot; method on a layer object with a specification where the output shall
+  be sent to.
+  </p><p>
+  In general, the runset language is rich in alternatives - often there are more than
+  one way to achieve the same result. 
+  </p><p>
+  The script is executed in immediate mode. That is, each function will immediately
+  be executed and the results of the operations can be used in conditional expressions
+  and loops. Specifically it is possible to query whether a layer is empty and abort
+  a loop or skip some block in that case.
+  </p><p>
+  Being Ruby scripts running in KLayout's scripting engine environment, runsets can 
+  make use of KLayout's full database access layer. It is possible to manipulate 
+  geometrical data on a per-shape basis. For that purpose, methods are provided
+  to interface between the database access layer (&quot;RBA::...&quot; objects) and the
+  DRC objects (&quot;DRC::...&quot; objects). Typically however it is faster and easier to work with the 
+  DRC objects and methods.
+  </p><a name="h2-76"></a><h2>Including other files</h2><a name="k_7"></a><p>
+  The DRC script language is based on Ruby which delivers many native language
+  features. Basically, inside a script you can include another script through
+  &quot;load&quot;. This will read a file and execute the content of this file in the
+  context of the script it is loaded into.
+  </p><p>
+  Unfortunately, &quot;load&quot; creates a local context for variables. Hence it's not
+  possible for example to use &quot;load&quot; to read a file that defines variables for further 
+  use in the DRC script.
+  </p><p>
+  To overcome this problem, KLayout offers a specific extension which embeds
+  another file into the source by employing some kind of preprocessing.
+  This way, a file can be included into another one like it was pasted at 
+  this place.
+  </p><p>
+  The notation is this:
+  </p><pre>
+# %include to_include.drc
+</pre><p>
+  which will include &quot;include.drc&quot;. If no absolute path is given, this file is looked
+  up relative to the file it is included in.
+  </p><p>
+  The file name can be put in quotes as well. Expression interpolation is supported
+  (for the notation see <a href="../about/expressions.html">About Expressions</a>). Hence it is 
+  possible to access environment variables for example like this:
+  </p><pre>
+# %include $(env(&quot;HOME&quot;))/to_include.drc
+</pre><p>
+  Because Ruby does not see the original files, some internals (e.g. 
+  introspection) will report wrong file names and line numbers. In most
+  cases - for example when using &quot;__FILE__&quot; or &quot;__LINE__&quot; or when receiving stack
+  traces and errors - the file names and line numbers will correctly refer
+  to the source files before include file processing.
+  </p><a name="h2-131"></a><h2>Input and output</h2><p>
+  Input is specified with the &quot;input&quot; method or global function. &quot;input&quot; is basically 
+  a method of a source object. There is always one source object which is the 
+  first layout loaded into the current view. Using &quot;input&quot; without and source object is
+  calling that method on that default source object. As source is basically a collection
+  of multiple layers and &quot;input&quot; will select one of them.
+  </p><p>
+  &quot;input&quot; will create a layer object representing the shapes of the specified input
+  layer. There are multiple ways to specify the layer from which the input is taken.
+  One of them is by GDS layer and datatype specification:
+  </p><pre>
+# GDS layer 17, datatype 0
+l = input(17)
+
+# GDS layer 17, datatype 10
+l = input(17, 10)
+
+# By expression (here: GDS layers 1-10, datatype 0 plus layer 21, datatype 10)
+# All shapes are combined into one layer
+l = input(&quot;1-10/0&quot;, &quot;21/10&quot;)</pre><p>
+  Input can be obtained from other layouts than the default one. To do so, create
+  a source object using the &quot;layout&quot; global function:
+  </p><pre>
+# layer 17 from second layout loaded
+l = layout(&quot;@2&quot;).input(17)
+
+# layer 100, datatype 1 and 2 from &quot;other_layout.gds&quot;
+other_layout = layout(&quot;other_layout.gds&quot;)
+l1 = other_layout.input(100, 1)
+l2 = other_layout.input(100, 2)</pre><p>
+  Output is by default sent to the default layout - the first one loaded into the current view.
+  The output specification includes the layer and datatype or the layer name:
+  </p><pre>
+# send output to the default layout: layer 17, datatype 0
+l.output(17, 0)
+
+# send output to the default layout: layer named &quot;OUT&quot;
+l.output(&quot;OUT&quot;)
+
+# send output to the default layout: layer 17, datatype 0, named &quot;OUT&quot;
+l.output(17, 0, &quot;OUT&quot;)</pre><p>
+  Output can be sent to other layouts using the <a href="../about/drc_ref_global.html#target">target</a> function:
+  </p><pre>
+# send output to the second layout loaded:
+target(&quot;@2&quot;)
+
+# send output to &quot;out.gds&quot;, cell &quot;OUT_TOP&quot;
+target(&quot;out.gds&quot;, &quot;OUT_TOP&quot;)</pre><p>
+  Output can also be sent to a report database using the <a href="../about/drc_ref_global.html#report">report</a> function:
+  </p><pre>
+# send output to a report database with description &quot;Output database&quot;
+# - after the runset has finished this database will be shown
+report(&quot;Output database&quot;)
+
+# send output to a report database saved to &quot;drc.lyrdb&quot;
+report(&quot;Output database&quot;, &quot;drc.lyrdb&quot;)</pre><p>
+  When output is sent to a report database, the specification must include a formal
+  name and optionally a description. The output method will create a new category 
+  inside the report database and use the name and description for that:
+  </p><pre>
+# specify report database for output
+report(&quot;The output database&quot;)
+...
+# Send data from layer l to new category &quot;check1&quot;
+l.output(&quot;check1&quot;, &quot;The first check&quot;)</pre><p>
+  The report and target specification must appear before the actual output statements.
+  Multiple report and target specifications can be present sending output to various 
+  layouts or report databases. Note that each report or target specification will close
+  the previous one. Using the same file name for subsequent reports will not append data
+  to the file but rather overwrite the previous file.
+  </p><p>
+  Layers that have been created using &quot;output&quot; can be used for input again, but care should be
+  taken to place the input statement after the output statement. Otherwise the results will be
+  unpredictable.
+  </p><p>
+  It is possible to open &quot;side&quot; reports and targets and send layers to these
+  outputs without closing the default output. 
+  </p><p>
+  To open a &quot;side report&quot;, use <a href="../about/drc_ref_global.html#new_report">new_report</a>
+  in the same way you use &quot;report&quot;. Instead of switching the output, this function will return a 
+  new report object that can be included in the argument list of &quot;output&quot; 
+  for the layer that is to be sent to that side report:
+  </p><pre>
+# opens a new side report
+side_report = new_report(&quot;Another report&quot;)
+...
+# Send data from layer l to new category &quot;check1&quot; to the side report
+l.output(side_report, &quot;check1&quot;, &quot;The first check&quot;)</pre><p>
+  In the same way, &quot;side targets&quot; can be opened using <a href="../about/drc_ref_global.html#new_target">new_target</a>.
+  Such side targets open a way to write certain layers to other layout files.
+  This is very handy for debugging:
+  </p><pre>
+# opens a new side target for debugging
+debug_out = new_target(&quot;debug.gds&quot;)
+...
+# Send data from layer l to the debug output, layer 100/0
+l.output(debug_out, 100, 0)</pre><a name="h2-270"></a><h2>Dimension specifications</h2><p>
+  Dimension specifications are used in many places: for coordinates, for spacing and width values and as length
+  values. In all places, the following rules apply:
+  </p><ul><li>Floating-point numbers are interpreted as micron values by default.</li><li>Integer number are interpreted as database units by default (<b>Not</b> integer micron values!).</li><li>To make explicitly clear what dimensions to use, you can add a unit.</li></ul><p>Units are added using the unit methods:</p><ul><li><tt>0.1</tt>: 0.1 micrometer </li><li><tt>200</tt>: 200 <b>database units</b></li><li><tt>200.dbu</tt>: 200 database units </li><li><tt>200.nm</tt>: 200 nm </li><li><tt>2.um</tt> or <tt>2.micron</tt>: 2 micrometer </li><li><tt>0.2.mm</tt>: 0.2 millimeter </li><li><tt>1e-5.m</tt>: 1e-5 meter (10 micrometer) </li></ul><p>Area units are usually square micrometers. You can use units as well to indicate an area value in some 
+  specific measurement units:</p><ul><li><tt>0.1.um2</tt> or <tt>0.1.micron2</tt>: 0.1 square micron </li><li><tt>0.1.mm2</tt>: 0.1 square millimeter </li></ul><p>Angles are always given in degree units. You can make clear that you want to use degree by adding the 
+  degree unit method:
+  </p><ul><li><tt>45.degree</tt>: 45 degree </li></ul><a name="h2-312"></a><h2>Objects and methods</h2><p>
+  Runsets are basically scripts written in an object-oriented language. It is 
+  possible to write runsets that don't make much use of that fact, but having 
+  a notion of the underlying concepts will result in better understanding of the
+  features and how to make full use of the capabilities.
+  </p><p>
+  In KLayout's DRC language, a layer is an object that provides a couple of 
+  methods. The boolean operations are methods, the DRC functions are methods and
+  so on. Method are called &quot;on&quot; an object using the notation &quot;object.method(arguments)&quot;.
+  Many methods produce new layer objects and other methods can be called on those.
+  The following code creates a sized version of the input layer and outputs it.
+  Two method calls are involved: one sized call on the input layer returning a
+  new layer object and one output call on that object.
+  </p><pre>
+input(1, 0).sized(0.1).output(100, 0)</pre><p>
+  The size method like other methods is available in two flavors: an in-place method
+  and an out-of-place method. &quot;sized&quot; is out-of-place, meaning that the method 
+  will return a new object with the new content but not modify the object. The 
+  in-place version is &quot;size&quot; which modifies the object. Only the layer object is
+  modified, not the original layer.
+  </p><p>
+  The following is the above code written with the in-place version:
+  </p><pre>
+layer = input(1, 0)
+layer.size(0.1)
+layout.output(100, 0)</pre><p>
+  Using the in-place versions is slightly more efficient in terms of memory since 
+  with the out-of-place version, KLayout will keep the unmodified copy as long
+  as there is a chance it may be required. On the other hand the in-place version
+  may cause strange side effects since because of the definition of the copy 
+  operation: a simple copy will just copy a reference to a layer object, not the
+  object itself:
+  </p><pre>
+layer = input(1, 0)
+layer2 = layer
+layer.size(0.0)
+layer.output(100, 0)
+layer2.output(101, 0)</pre><p>
+  This code will produce the same sized output for layer 100 and 101, because the 
+  copy operation &quot;layer2 = layer&quot; will not copy the content but just a reference:
+  after sizing &quot;layer&quot;, &quot;layer2&quot; will also point to that sized layer.
+  </p><p>
+  That problem can be solved by either using the out-of-place version or by 
+  creating a deep copy with the &quot;dup&quot; function:
+  </p><pre>
+# out-of-place size:
+layer = input(1, 0)
+layer2 = layer
+layer = layer.sized(0.0)
+layer.output(100, 0)
+layer2.output(101, 0)
+
+# deep copy before size:
+layer = input(1, 0)
+layer2 = layer.dup
+layer.size(0.0)
+layer.output(100, 0)
+layer2.output(101, 0)</pre><p>
+  Some methods are provided in different flavors including function-style calls.
+  For example the width check can be written in two ways:
+  </p><pre>
+# method style:
+layer.width(0.2).output(&quot;width violations&quot;)
+
+# function style:
+w = width(layer, 0.2)
+output(w, &quot;width violations&quot;)</pre><p>
+  The function style is intended for users not familiar with the object-oriented style
+  who prefer a function notation.
+  </p><p>
+  Here is a brief overview over some of the methods available:
+  </p><ul><li>Source, input and output:<br><a href="../about/drc_ref_global.html#source">source</a>,
+      <a href="../about/drc_ref_global.html#layout">layout</a>,
+      <a href="../about/drc_ref_global.html#cell">cell</a>,
+      <a href="../about/drc_ref_global.html#select">select</a>,
+      <a href="../about/drc_ref_global.html#clip">clip</a>,
+      <a href="../about/drc_ref_global.html#input">input</a>,
+      <a href="../about/drc_ref_global.html#labels">labels</a>,
+      <a href="../about/drc_ref_global.html#polygons">polygons</a>,
+      <a href="../about/drc_ref_global.html#output">output</a>, 
+      <a href="../about/drc_ref_global.html#report">report</a>, 
+      <a href="../about/drc_ref_global.html#target">target</a></li><li>DRC functions:<br><a href="../about/drc_ref_layer.html#width">width</a>,
+      <a href="../about/drc_ref_layer.html#space">space</a>,
+      <a href="../about/drc_ref_layer.html#separation">separation (sep)</a>,
+      <a href="../about/drc_ref_layer.html#notch">notch</a>,
+      <a href="../about/drc_ref_layer.html#isolated">isolated (iso)</a>,
+      <a href="../about/drc_ref_layer.html#enclosing">enclosing (enc)</a>,
+      <a href="../about/drc_ref_layer.html#enclosed">enclosed</a>,
+      <a href="../about/drc_ref_layer.html#overlap">overlap</a></li><li>Universal DRC (see below):<br><a href="../about/drc_ref_layer.html#drc">drc</a></li><li>Boolean operations:<br><a href="../about/drc_ref_layer.html#&amp;">&amp; (and)</a>,
+      <a href="../about/drc_ref_layer.html#|">| (or)</a>,
+      <a href="../about/drc_ref_layer.html#-">- (not)</a>,
+      <a href="../about/drc_ref_layer.html#^">^ (xor)</a>,
+      <a href="../about/drc_ref_layer.html#+">+ (join)</a>,
+    </li><li>Sizing:<br><a href="../about/drc_ref_layer.html#size">size</a>,
+      <a href="../about/drc_ref_layer.html#sized">sized</a></li><li>Merging:<br><a href="../about/drc_ref_layer.html#merge">merge</a>,
+      <a href="../about/drc_ref_layer.html#merged">merged</a></li><li>Shape selections:<br><a href="../about/drc_ref_layer.html#covering">covering</a>,
+      <a href="../about/drc_ref_layer.html#in">in</a>,
+      <a href="../about/drc_ref_layer.html#inside">inside</a>,
+      <a href="../about/drc_ref_layer.html#interacting">interacting</a>,
+      <a href="../about/drc_ref_layer.html#outside">outside</a>,
+      <a href="../about/drc_ref_layer.html#overlapping">overlapping</a><br><a href="../about/drc_ref_layer.html#pull_inside">pull_inside</a>,
+      <a href="../about/drc_ref_layer.html#pull_interacting">pull_interacting</a>,
+      <a href="../about/drc_ref_layer.html#pull_overlapping">pull_overlapping</a>,
+      These methods are available as in-place operations as well:<br><a href="../about/drc_ref_layer.html#select_covering">select_covering</a>,
+      <a href="../about/drc_ref_layer.html#select_interacting">select_interacting</a>,
+      <a href="../about/drc_ref_layer.html#select_inside">select_inside</a>,
+      <a href="../about/drc_ref_layer.html#select_outside">select_outside</a>,
+      <a href="../about/drc_ref_layer.html#select_overlapping">select_overlapping</a></li><li>Filters:<br><a href="../about/drc_ref_layer.html#rectangles">rectangles</a>,
+      <a href="../about/drc_ref_layer.html#rectilinear">rectilinear</a>,
+      <a href="../about/drc_ref_layer.html#with_area">with_area</a>,
+      <a href="../about/drc_ref_layer.html#with_bbox_height">with_bbox_height</a>,
+      <a href="../about/drc_ref_layer.html#with_bbox_width">with_bbox_width</a>,
+      <a href="../about/drc_ref_layer.html#with_bbox_max">with_bbox_max</a>,
+      <a href="../about/drc_ref_layer.html#with_bbox_min">with_bbox_min</a>,
+      <a href="../about/drc_ref_layer.html#with_perimeter">with_perimeter</a><br><a href="../about/drc_ref_layer.html#with_angle">with_angle</a>,
+      <a href="../about/drc_ref_layer.html#with_length">with_length</a><br>
+      These methods are available as version selecting the opposite:<br><a href="../about/drc_ref_layer.html#non_rectangles">non_rectangles</a>,
+      <a href="../about/drc_ref_layer.html#non_rectilinear">non_rectilinear</a>,
+      <a href="../about/drc_ref_layer.html#without_area">without_area</a>,
+      <a href="../about/drc_ref_layer.html#without_bbox_height">without_bbox_height</a>,
+      <a href="../about/drc_ref_layer.html#without_bbox_width">without_bbox_width</a>,
+      <a href="../about/drc_ref_layer.html#without_bbox_max">without_bbox_max</a>,
+      <a href="../about/drc_ref_layer.html#without_bbox_min">without_bbox_min</a>,
+      <a href="../about/drc_ref_layer.html#without_perimeter">without_perimeter</a><a href="../about/drc_ref_layer.html#without_angle">without_angle</a>,
+      <a href="../about/drc_ref_layer.html#without_length">without_length</a></li><li>Text filters:<br><a href="../about/drc_ref_layer.html#texts">texts</a>,
+      <a href="../about/drc_ref_layer.html#texts_not">texts_not</a>,
+    </li><li>Transformations:<br><a href="../about/drc_ref_layer.html#moved">moved</a>,
+      <a href="../about/drc_ref_layer.html#rotated">rotated</a>,
+      <a href="../about/drc_ref_layer.html#scaled">scaled</a>,
+      <a href="../about/drc_ref_layer.html#transformed">transformed</a><br>
+      These methods are available as in-place versions as well:
+      <a href="../about/drc_ref_layer.html#move">move</a>,
+      <a href="../about/drc_ref_layer.html#rotate">rotate</a>,
+      <a href="../about/drc_ref_layer.html#scale">scale</a>,
+      <a href="../about/drc_ref_layer.html#transform">transform</a></li><li>Polygon manipulations:<br><a href="../about/drc_ref_layer.html#extents">extents</a>,
+      <a href="../about/drc_ref_layer.html#hulls">hulls</a>,
+      <a href="../about/drc_ref_layer.html#holes">holes</a></li><li>Edge manipulations:<br><a href="../about/drc_ref_layer.html#centers">centers</a>,
+      <a href="../about/drc_ref_layer.html#end_segments">end_segments</a>,
+      <a href="../about/drc_ref_layer.html#start_segments">start_segments</a>,
+      <a href="../about/drc_ref_layer.html#extended">extended</a>,
+      <a href="../about/drc_ref_layer.html#extended_in">extended_in</a>,
+      <a href="../about/drc_ref_layer.html#extended_out">extended_out</a></li><li>Information:<br><a href="../about/drc_ref_layer.html#length">length</a>,
+      <a href="../about/drc_ref_layer.html#perimeter">perimeter</a>,
+      <a href="../about/drc_ref_layer.html#area">area</a>,
+      <a href="../about/drc_ref_layer.html#polygons?">polygons?</a>,
+      <a href="../about/drc_ref_layer.html#edges?">edges?</a>,
+      <a href="../about/drc_ref_layer.html#edge_pairs?">edge_pairs?</a>,
+      <a href="../about/drc_ref_layer.html#is_box?">is_box?</a>,
+      <a href="../about/drc_ref_layer.html#is_clean?">is_clean?</a>,
+      <a href="../about/drc_ref_layer.html#is_empty?">is_empty?</a>,
+      <a href="../about/drc_ref_layer.html#is_merged?">is_merged?</a>,
+      <a href="../about/drc_ref_layer.html#is_raw?">is_raw?</a></li><li>Layer mode:<br><a href="../about/drc_ref_layer.html#raw">raw</a>,
+      <a href="../about/drc_ref_layer.html#clean">clean</a></li><li>Layer type conversions:<br><a href="../about/drc_ref_layer.html#edges">edges</a>,
+      <a href="../about/drc_ref_layer.html#first_edges">first_edges</a>,
+      <a href="../about/drc_ref_layer.html#second_edges">second_edges</a>,
+      <a href="../about/drc_ref_layer.html#polygons">polygons</a></li></ul><a name="h2-550"></a><h2>Polygon and edge layers</h2><a name="k_8"></a><a name="k_9"></a><p>
+  KLayout knows four layer types: polygon, edge, edge pair and text layers.
+  Polygon and edge layers are the basic layer types for geometrical operations.
+  </p><p>
+  Polygon layers are created from original layers using <a href="../about/drc_ref_global.html#input">input</a> or
+  <a href="../about/drc_ref_global.html#polygons">polygons</a>.
+  &quot;input&quot; will also turn texts into small polygons with a size of 2x2 DBU
+  while &quot;polygons&quot; will skip texts. For handling texts, the 
+  <a href="../about/drc_ref_global.html#labels">labels</a> method is 
+  recommended which renders a true text layer. Text layers are described
+  below.
+  </p><p>
+  Polygon layers describe objects having an area (&quot;filled objects&quot; in the drawing view).
+  Such objects can be processed with boolean operations, sized, decomposed into holes and hull, 
+  filtered by area and perimeter and so on. DRC methods such as width and spacing checks can be applied
+  to polygons in a different way than between different polygons (see <a href="../about/drc_ref_layer.html#space">space</a>,
+  <a href="../about/drc_ref_layer.html#separation">separation</a> and <a href="../about/drc_ref_layer.html#notch">notch</a> for 
+  example).
+  </p><p>
+  Polygons can be raw or merged.
+  Merged polygons consist of a hull contour and zero to many hole contours inside the hull. 
+  Merging can be ensured by putting a layer into &quot;clean&quot; mode (see <a href="../about/drc_ref_layer.html#clean">clean</a>, clean mode
+  is the default). Raw polygons
+  usually don't have such a representation and consist of a single contour folding inside to
+  form the holes. Raw polygons are formed in &quot;raw&quot; mode (see <a href="../about/drc_ref_layer.html#raw">raw</a>).
+  </p><p>
+  Egde layers can be derived from polygon layers and allow the description is individual edges (&quot;sides&quot;) of a polygon.
+  Edge layers offer DRC functions similar for polygons but in a slightly different fashion - edges are checked
+  individually, non considering the polygons they belong to. Neither do other parts of the polygons shield 
+  interactions, hence the results may be different.
+  </p><p>
+  Edges can be filtered by length and angle. <a href="../about/drc_ref_layer.html#extended">extended</a> allows 
+  erecting polygons (typically rectangles) on the edges. Edge layers are useful to perform operations on specific parts of polygons,
+  for example width or space checks confined to certain edge lengths.
+  </p><p>
+  Edges do not differentiate whether they originate from holes or hulls of the polygon. The 
+  direction of edges is always following a certain convention: when looking from the start to the end point
+  of an edge, the &quot;inside&quot; of the polygons from which the edges were derived, is to the right. In other words:
+  the edges run along the hull in clockwise direction and counterclockwise along the holes.
+  </p><p>
+  Merged edges are joined, i.e. collinear edges are merged into single edges and degenerate edges (single-point
+  edges are removed). Merged edges are present in &quot;clean&quot; mode (see <a href="../about/drc_ref_layer.html#clean">clean</a>, clean mode
+  is the default).
+  </p><p>
+  Polygons can be decomposed into edges with the <a href="../about/drc_ref_layer.html#edges">edges</a> method. 
+  Another way to generate edges is to take edges from edge pair objects which are generated by 
+  the DRC check functions.
+  </p><a name="h2-619"></a><h2>Text collections</h2><a name="k_10"></a><p>
+  Starting with version 0.27, KLayout offers support for text layers.
+  &quot;Texts&quot; are basically locations with a label, i.e. a dot with 
+  an arbitrary string attached. &quot;Text collections&quot; are collections of
+  such objects.
+  </p><p>
+  Texts can be used to select polygons or as net names in 
+  net extractions.
+  </p><p>
+  Text collections are kept in &quot;text layers&quot;. These are created
+  using the <a href="../about/drc_ref_global.html#labels">labels</a>
+  methods instead of &quot;input&quot;.
+  </p><p>
+  These operations are supported for text layers:
+  </p><ul><li>Boolean AND with a polygon layer: will select those texts
+        which are inside or at the border of a polygon.
+        <a href="../about/drc_ref_layer.html#interacting">interact</a> is a synonym for this operation.</li><li>Boolean NOT with a polygon layer: will select those texts
+        which are outside of any polygon.
+        <a href="../about/drc_ref_layer.html#not_interacting">not_interact</a> is a synonym for this operation.</li><li>As second layer for region interact: this way, polygons
+        can be selected which are tagged with certain texts.</li><li>Text filtering by string: texts can be filtered either
+        by matching against a fixed text or a glob pattern.
+        The methods provided for this purpose are: 
+        <a href="../about/drc_ref_layer.html#texts">texts</a> and
+        <a href="../about/drc_ref_layer.html#texts_not">texts_not</a></li><li><a href="../about/drc_ref_layer.html#flatten">flatten</a>
+        will flatten the hierarchy of a text layer.</li><li>Polygon or edge generation around the text's location:
+        <a href="../about/drc_ref_layer.html#polygons">polygons</a> and
+        <a href="../about/drc_ref_layer.html#edges">edges</a></li></ul><a name="h2-665"></a><h2>Edge pairs and edge pair collections</h2><a name="k_11"></a><a name="k_12"></a><p>
+  Edge pairs are objects consisting of two edges. Edge pairs are handy when discribing a DRC check violation,
+  because a violation occurs between two edges. The edge pair generated for such a violation consists of
+  the parts of both edges violation the condition. For two-layer checks, the edges originate from the 
+  original layers - edge 1 is related to input 1 and edge 2 is related to input 2.
+  </p><p>
+  Edge pair collections act like normal layers, but very few methods are defined for those.
+  Edge pairs can be decomposed into single edges (see <a href="../about/drc_ref_layer.html#edges">edges</a>,
+  <a href="../about/drc_ref_layer.html#first_edges">first_edges</a> and <a href="../about/drc_ref_layer.html#second_edges">second_edges</a>).
+  </p><p>
+  Edge pairs can be converted to polygons using <a href="../about/drc_ref_layer.html#polygons">polygons</a>. 
+  Edge pairs can have a vanishing area, for example if both edges are coincident. In order to handle such edge
+  pairs properly, an enlargement can be applied optionally. With such an enlargement, the polygon will cover 
+  a region bigger than the original edge pair by the given enlargement. 
+  </p><a name="h2-690"></a><h2>Raw and clean layer mode</h2><a name="k_13"></a><a name="k_14"></a><p>
+  KLayout's DRC engine supports two basic ways to interpret geometrical information on a layer:
+  in clean mode, polygons or edges are joined if they touch. If regions are drawn in separate
+  pieces they are effectively joined before they are used. In raw mode, every polygon or shape
+  on the input layer is considered a separate part. There are applications for both ways of
+  looking at a set of input shapes, and KLayout supports both ways.
+  </p><p>
+  Clean mode is the default - every layer generated or taken from input will be used
+  in clean mode. To switch to raw mode, use the &quot;raw&quot; method. &quot;raw mode&quot; is basically a
+  flag set on the layer object which instructs the engine not the merge polygons prior to use.
+  The raw mode flag can be reset with the &quot;clean&quot; method. 
+  </p><p>
+  Most functions implicitly merge polygons and edges in clean mode. In the documentation this
+  fact is referred to as &quot;merged semantics&quot;: if merged semantics applies for the function, 
+  coherent polygons or edges are considered one object in clean mode. 
+  In raw mode, every polygon or edge is treated as an individual object.
+  </p><p>
+  One application is the detection of overlapping areas after a size step:
+  </p><pre>
+overlaps = layer.size(0.2).raw.merged(2)</pre><p>
+  That statement has the following effect:
+  </p><p><img src="../images/drc_raw1.png"></p><p>
+  The &quot;merged&quot; method with an argument of 2 will produce output where more than two polygons overlap.
+  The size function by default creates a clean layer, but separate polygons for each input polygon, so
+  by using &quot;raw&quot;, the layer is switched into raw mode that makes the individual polygons accessible
+  without merging them into one bigger polygon.
+  </p><p> 
+  Please note that the raw or clean methods modify the state of a layer so beware of the following
+  pitfall:
+  </p><pre>
+layer = input(1, 0)
+layer.raw.sized(0.1).output(100, 0)
+
+# this check will now be done on a raw layer, since the 
+# previous raw call was putting the layer into raw mode
+layer.width(0.2).ouput(101, 0)</pre><p>
+  The following two images show the effect of raw and clean mode:
+  </p><table><tr><td><img src="../images/drc_raw2.png"></td><td><img src="../images/drc_raw3.png"></td></tr></table><a name="h2-763"></a><h2>Shielding</h2><a name="k_15"></a><p>
+  &quot;Shielding&quot; is a concept where DRC measurements do not &quot;look through&quot; layout features.
+  With shielding, a DRC violation is skipped when another feature would (fully) block
+  the violation marker's path. Shielding is available and enabled by default for the (internal or external)
+  distance-based DRC functions:
+  <a href="../about/drc_ref_layer.html#width">width</a>,
+  <a href="../about/drc_ref_layer.html#space">space</a>,
+  <a href="../about/drc_ref_layer.html#separation">separation (sep)</a>,
+  <a href="../about/drc_ref_layer.html#notch">notch</a>,
+  <a href="../about/drc_ref_layer.html#isolated">isolated (iso)</a>,
+  <a href="../about/drc_ref_layer.html#enclosing">enclosing (enc)</a> or
+  <a href="../about/drc_ref_layer.html#enclosed">enclosed</a> or
+  <a href="../about/drc_ref_layer.html#overlap">overlap</a>.
+  Shielding is turned off using the &quot;transparent&quot; option or turned on using &quot;shielded&quot;. The latter
+  is only for clarity, but is not required as shielding is enabled by default.
+  </p><p>
+  The following examples demonstrate the effect of shielding: in the right example, shielding is turned off.
+  Hence, the violation between the upper box on the right and the lower bar is no longer shielded by the
+  small bar between them and this additional violation is reported too.
+  </p><table><tr><td><img src="../images/drc_shielded1.png"></td><td><img src="../images/drc_shielded2.png"></td></tr></table><p>
+  Although shielding feels more natural, it can have an adverse effect as it is effective at zero
+  distance already. In the following example, the second layer is a subset of the first. When
+  testing the distance between second and first, the overlapping first layer shapes will block
+  the separation measurement in shielded mode. Hence, only transparent mode will render the 
+  actual distance violation. The bottom right blue box is not shielded by the overlaying red box:
+  </p><table><tr><td><img src="../images/drc_shielded3.png"></td><td><img src="../images/drc_shielded4.png"></td></tr></table><a name="h2-812"></a><h2>Universal DRC</h2><a name="k_16"></a><a name="k_17"></a><p>
+  Starting with version 0.27, the DRC language got a new feature which is &quot;universal DRC&quot;.
+  </p><p>
+  On one hand, this is a more convenient way to write DRC checks because it allows 
+  specifications using natural compare operators. For example, the following plain width check
+  </p><pre>
+...
+drc_w = input(1, 0).width(0.2)
+...</pre><p>
+  can be written as:
+  </p><pre>
+...
+drc_w = input(1, 0).drc(width &lt; 0.2)
+...</pre><p>
+  The <a href="../about/drc_ref_layer.html#drc">drc</a> method is the &quot;universal DRC&quot; method.
+  It takes an operator. In the simple case, this operator is a simple constraint of the 
+  form &quot;measurement &lt; value&quot;, but it supports a number of different variants:
+  </p><ul><li><tt>drc(</tt> measurement <tt> != </tt> value <tt>)</tt>: 
+    renders markers where the dimension is not matching the value
+  </li><li><tt>drc(</tt> measurement <tt> == </tt> value <tt>)</tt>:
+    renders markers where the dimension is matching the given value
+  </li><li><tt>drc(</tt> measurement less_op value <tt>)</tt>:
+    (&quot;less_op&quot; is <tt>&lt;</tt> or <tt>&lt;=</tt>)
+    renders markers where the dimension is less than or less or equal to the given value
+  </li><li><tt>drc(</tt> measurement greater_op value <tt>)</tt>:
+    (&quot;greater_op&quot; is <tt>&gt;</tt> or <tt>&gt;=</tt>)
+    renders markers where the dimension is greater than or greater or equal to the given value
+  </li><li><tt>drc(</tt> lower_value less_op measurement greater_op upper_value <tt>)</tt>:
+    renders markers where the dimension is between the lower and upper value
+  </li></ul><p>
+  &quot;measurement&quot; is &quot;width&quot;, &quot;notch&quot;, &quot;isolated&quot; (&quot;iso&quot;), &quot;separation&quot; (&quot;sep&quot;), &quot;overlap&quot;, &quot;enclosed&quot; or &quot;enclosuring&quot; (&quot;enc&quot;).
+  The last three checks are two-layer checks which require a second layer. The 
+  second layer is specified together with the measurement like this:
+  </p><pre>
+...
+l1 = input(1, 0)
+l2 = input(2, 0)
+drc_sep = l1.drc(separation(l2) &lt;= 0.5)
+...</pre><p>
+  Options are also specified together with the measurement and follow the same notation
+  as the plain methods. For example to specify &quot;projection&quot; metrics, use:
+  </p><pre>
+...
+drc_w = input(1, 0).drc(width(projection) &lt; 0.2)
+...</pre><p>
+  However, the universal DRC is much more than a convenient way to write checks: 
+  it offers a number of options to further process
+  the results. The functionality behind the universal DRC function is basically a kind of 
+  loop over all primary shapes (the ones from the layer the &quot;drc&quot; function is called on).
+  The operations in the drc function's brackets is executed on each of the primary shapes
+  where the neighborhood of that single shape is considered. This scheme is more efficient
+  and enables applications beyond the capabilities of the plain layer methods.
+  </p><p>
+  For example, the boolean &quot;&amp;&quot; operator implements a &quot;local&quot; boolean AND inside this 
+  loop. This allows to efficiently check for both space and width violations:
+  </p><pre>
+...
+drc_ws = input(1, 0).drc((width &lt; 0.2) &amp; (space &lt; 0.3))
+...</pre><p>
+  The boolean AND is computed between the edges on the primary shape and returns the
+  parts where both space and width violations are flagged. The boolean operation is 
+  more efficient than the plain alternative:
+  </p><pre>
+...
+drc_ws1 = input(1, 0).width(0.2).edges
+drc_ws2 = input(1, 0).space(0.3).edges
+drc_ws = drc_ws1 &amp; drc_ws2
+...</pre><p>
+  The reason is that performing the boolean computation in the local loop can be 
+  shortcut if one inputs is empty. It does not need to store a (potentially big)
+  edge set with edges as produced by the plain-method implementation. Instead it
+  will work with a temporary and local edge set only and free the memory space as
+  soon as it moves on to the next primary shape.
+  </p><p>
+  Overall, the universal DRC function is a rich feature and offers filters based on 
+  polygons or edge properties, polygon or edge manipulation operators, conditionals
+  and a lot more. For more details see the <a href="../about/drc_ref_layer.html#drc">drc function documentation</a>.
+  </p><a name="h2-940"></a><h2>Logging and verbosity</h2><a name="k_18"></a><p>
+  While the runset is executed, a log is written that lists the methods and their execution times.
+  The log is enabled using the <a href="../about/drc_ref_global.html#verbose">verbose</a> function.
+  The <a href="../about/drc_ref_global.html#log">log</a> and <a href="../about/drc_ref_global.html#info">info</a> functions 
+  allows entering additional information into the log. &quot;info&quot; will enter the message if verbose mode is enabled.
+  &quot;log&quot; will enter the message always. <a href="../about/drc_ref_global.html#silent">silent</a> is equivalent to 
+  &quot;verbose(false)&quot;.
+  </p><p>
+  The log is shown in the log window or - if the log window is not open - on the terminal on Linux-like systems.
+  </p><p>
+  The log function is useful to print result counts during processing of the runset:
+  </p><pre>
+...
+drc_w = input(1, 0).width(0.2)
+log(&quot;Number of width violations: #{drc_w.data.size}&quot;)
+...</pre><p>
+  The <a href="../about/drc_ref_global.html#error">error</a> function can be used to output error messages
+  unconditionally, formatted as an error. The log can be sent to a file instead of the log window or
+  terminal output, using the <a href="../about/drc_ref_global.html#log_file">log_file</a> function:
+  </p><pre>
+log_file(&quot;drc_log.txt&quot;)
+verbose(true)
+info(&quot;This message will be sent to the log file&quot;)
+...</pre><p>
+  The <a href="../about/drc_ref_global.html#profile">profile</a> function will collect profiling 
+  information during the DRC run. At the end of the script, the operations are printed to the log
+  output, sorted by their CPU time and approximate memory footprint. &quot;profile&quot; can be given a 
+  numerical argument indicating the number of operations to print. Lower-ranking operations are
+  skipped in that case. By default, all operations are printed.
+  </p><pre>
+# enables profiling
+profile
+...</pre><a name="h2-992"></a><h2>The tiling option</h2><a name="k_19"></a><p>
+  Tiling is a method to reduce the memory requirements for an operation. For big layouts, pulling a whole layer
+  into the engine is not a good idea - huge layouts will require a lot of memory. The tiling method cuts the 
+  layout into tiles with a given width and height and processes them individually. The tiling implementation
+  of KLayout can make use of multiple CPU cores by distributing the jobs on different cores.
+  </p><p>
+  Tiling does not come for free: some operations have a potentially infinite range. For example, selecting edges
+  by their length in clean mode basically requires to collect all pieces of the edge before the full length can
+  be computed. An edge running over a long length however may cross multiple tiles, so that the pieces within
+  one tile don't sum up to the correct length.
+  </p><p>
+  Fortunately, many operations don't have an infinite range, so that tiling can be applied successfully. These
+  are the boolean operations, sizing and DRC functions. For those operations, a border is added to the tile
+  which extends the region inside which the shapes are collected. That way, all shapes potentially participating 
+  in an operation are collected. After performing the operation, polygons and edges extending beyond the tile's original
+  boundary are clipped. Edge pairs are retained if they touch or overlap the original tile's border. That 
+  preserves the outline of the edge pairs, but may render redundant markers in the tile's border region.
+  </p><p>
+  For non-local operations such as the edge length example, a finite range can be deduced in some cases. For
+  example, if small edges are supposed to be selected, the range of the operation is limited: longer edges don't
+  contribute to the output, so it does not matter whether to take into account potential extensions of the
+  edge in neighboring tiles. Hence, the range is limited and a tile border can be given.
+  </p><p>
+  To enable tiling use the <a href="../about/drc_ref_global.html#tiles">tiles</a> function. The 
+  <a href="../about/drc_ref_global.html#threads">threads</a> function specifies the number of CPU cores
+  to use in tiling mode. <a href="../about/drc_ref_global.html#flat">flat</a> will disable tiling mode:
+  </p><pre>
+# Use a tile size of 1mm
+tiles(1.mm)
+# Use 4 CPU cores
+threads(4)
+
+... tiled operations ...
+
+# Disable tiling
+flat
+
+... non-tiled operations ...</pre><p>
+  Some operations implicitly specify a tile border. If the tile border is known (see length example above), explicit borders
+  can be set with the <a href="../about/drc_ref_global.html#tile_borders">tile_borders</a> function. 
+  <a href="../about/drc_ref_global.html#no_borders">no_borders</a> will reset the borders (the implicit borders will still be
+  in place):
+  </p><pre>
+# Use a tile border of 10 micron:
+tile_borders(10.um)
+
+... tile operations with a 10 micron border ...
+
+# Disable the border
+no_borders</pre><p>
+  A word about the tile size: typically tile dimensions in the order of millimeters is sufficient. 
+  Leading-edge technologies may require smaller tiles. The tile border should not be bigger than a few
+  percent of the tile's dimension to reduce the redundant tile overlap region. In general using tiles 
+  is a compromise between safe function and performance. Very small tiles imply some performance overhead
+  do to shape collection and potentially clipping. In addition, the clipping at the tile's borders may
+  introduce artificial polygon nodes and related snapping to the database unit grid. 
+  That may not be desired in some applications requiring a high
+  structure fidelity. Hence, small tiles should be avoided in that sense too.
+  </p><a name="h2-1071"></a><h2>Hierarchical mode</h2><a name="k_20"></a><a name="k_21"></a><p>
+  Alternatively to the tiling option, hierarchical mode is available. In hierarchical
+  mode, the DRC functions operate on subcells if their configuration allows this.
+  The algorithm will automatically detect whether an operation can be performed in 
+  a subcell. For example, a sizing operation can be done inside a subcell, if the 
+  cell's content is not connected to anything outside the cell.
+  </p><p>
+  To enable hierarchical operations, use the &quot;<a href="../about/drc_ref_global.html#deep">deep</a>&quot; statement:
+  </p><pre>
+report(&quot;deep 2&quot;)
+
+# enable deep (hierarchical) operations
+deep
+
+poly = input(3)
+
+spc = poly.space(0.5)
+spc.output(&quot;poly space &gt;0.5&quot;)
+</pre><p>
+  &quot;deep&quot; is not compatible with tiling. &quot;tiles&quot; will disable &quot;deep&quot; and vice versa. 
+  To disable deep mode, use &quot;<a href="../about/drc_ref_global.html#flat">flat</a>&quot;.
+  </p><p>
+  Deep processing is a layer property. After &quot;deep&quot; has been specified, layers derived 
+  with &quot;input&quot; are declared to be deep - i.e. hierarchical operations are enabled on 
+  them. Operations on deep layers will usually render other deep layers. 
+  This is also true for edge and edge pair layers. For example, the &quot;space&quot; operation 
+  above will render a hierarchical edge pair layer.
+  </p><p>
+  In binary operations such as boolean operations, the operation is performed 
+  hierarchically, if both involved layers are deep. A layer can be explicitly 
+  converted to a flat layer using &quot;<a href="../about/drc_ref_layer.html#flatten">flatten</a>&quot;.
+  </p><p>
+  To check whether a layer is deep, use &quot;is_deep?&quot;.
+  </p><pre>
+report(&quot;deep 2&quot;)
+
+# enable deep (hierarchical) operations
+deep
+
+poly = input(3)
+puts poly.is_deep?   # -&gt; true
+poly.flatten
+puts poly.is_deep?   # -&gt; false
+</pre><p>
+  Most operations are hierarchy enabled, with a few exceptions. Some operations - 
+  specifically the transformation operations such as &quot;move&quot;, &quot;rotate&quot; and the 
+  anisotropic sizing or the grid snap operations will generate cell variants. Such 
+  variants reflect different configurations of cells with respect to the 
+  requested operation. For example, with anisotropy (x != y), rotated cells need
+  to be treated differently from non-rotated ones.
+  In the &quot;snap&quot; feature, cell variants are created if the cell's instances are not all on-grid. 
+  Most functions need to create variants only when the same cell is instantiated with 
+  different magnification factors.
+  </p><p>
+  When writing back a layout with cell variants, new versions of cells will 
+  appear.
+  </p><p>
+  When sending the output of hierarchical operations to a report database, the markers 
+  will be listed under the cell name they appear. 
+  A sample cell instance is provided within the marker database to allow visualizing 
+  the marker in at least one context.
+  </p><a name="h3-1158"></a><h3>Limitations</h3><p>
+  Functions which require merged polygons utilize the net clustering algorithm 
+  to form the merged polygons. All connected shapes are collected and merged 
+  into a bigger polygon. This happens in the lowest possible level on the hierarchy 
+  where the shape clusters are complete. 
+  In some cases - when the shapes come from big coherent regions - this may happen on 
+  the top cell level and the resulting polygon will be very big. 
+  This will lead to poor performance.
+  </p><p>
+  The DRC's hierarchical mode will - except for cell variants in the cases mentioned - not modify the 
+  cell hierarchy. This hierarchy-preserving nature is good for certain applications, 
+  but leads to a compromise in terms of resolving hierarchically different configurations.
+  As the algorithm is not allowed to create variants in most cases, the only remaining
+  option is to propagate results from such cases into the parent cells. In the worst
+  case this will lead to flattening of the layout and loss of hierarchy.
+  </p><a name="h2-1179"></a><h2>DRC and user properties</h2><p>
+  The DRC feature has some support for user properties. User properties are sets of
+  key/value pairs attached to shapes. This is a standard feature of KLayout and GDS/OASIS.
+  The GDS format supports numerical (positive integer) keys and string values while OASIS
+  supports more types of keys and values - specifically string keys.
+  </p><p>
+  For DRC, the property set attached to a shape is regarded as a whole.
+  The DRC can act on these properties in specific ways:
+  </p><ul><li><b>Ignore properties</b>: this is the default mode</li><li><b>Use properties</b>: configure operations such as checks and some boolean operations to 
+      only consider shapes with the same or different properties</li><li><b>Map/filter</b>: change property keys/sets or remove them</li><li><b>Transfer properties</b>: through operations, e.g. &quot;size&quot; or &quot;with_...&quot; selectors</li></ul><p>
+  Specifically, DRC functions can also <b>generate</b> properties. Currently there is
+  only the &quot;nets&quot; method which attaches net identity information to shapes 
+  involved in a &quot;connect&quot; statement.
+  This feature opens a path to implementing &quot;connected&quot; or &quot;unconnected&quot; mode
+  boolean operations and DRC checks.
+  </p><p>
+  As of this writing, user property support is somewhat experimental.
+  User properties support has a huge potential, so there is more to come.
+  </p><p>
+  Currently, the following operations can be conditioned to act on shapes with same
+  or different properties:
+  </p><ul><li>Polygon boolean operations: &quot;and&quot;, &quot;not&quot; and &quot;andnot&quot;</li><li>Polygon-mode DRC checks such as &quot;separation&quot;, &quot;space&quot;, &quot;isolated&quot; etc.</li></ul><p>
+  A variety of operations can transfer properties, i.e. edge-pair-to-polygon, edge-pair-to-edges,
+  polygon-to-edges, edge-to-polygon, some filters, the &quot;size&quot; function. It is planned
+  to enable most features to transfer properties where applicable.
+  </p><p>
+  Property generation is supported currently by:
+  </p><ul><li>Reading properties from input layouts</li><li>Using the &quot;nets&quot; feature to generate net identity properties.</li></ul><p>
+  Property manipulation is supported in a very basic way: properties can be removed
+  entirely from a layer or certain property keys can be selected and optionally
+  mapped to a different key.
+  Property values cannot be manipulated currently.
+  </p><p>
+  In general, once a layer has properties, shapes with different properties are
+  regarded as non-interacting. When shapes are merged, only groups of shapes
+  with the same properties are merged into bigger chunks. This applies to polygons
+  and edges. This can have the strange consequence that after merge, still 
+  polygons may overlap. Note that this only applies to the case with properties.
+  The normal behavior is not changed.
+  </p><a name="h3-1255"></a><h3>Reading user properties</h3><p>
+  By default, user properties are not read into the shape containers. 
+  You need to enable them explicitly:
+  </p><pre>l1 = input(1, 0, enable_props)</pre><p>
+  At this point you can select certain keys from the set of properties. For example
+  to select only values with key 17 and 18 (numerical), use:
+  </p><pre>l1 = input(1, 0, select_props(17, 18))</pre><p>
+  You can also select and map keys to other keys, like this:
+  </p><pre>l1 = input(1, 0, map_props({ 17 =&gt; 1, 18 =&gt; 18 }))</pre><p>
+  This will map values with key 17 to 1 and read those from 18 while
+  maintaining the key. Values with other keys are ignored.
+  See <a href="../about/drc_ref_global.html#input">input function documentation</a>
+  for more details.
+  </p><a name="h3-1284"></a><h3>Manipulating properties</h3><p>
+  Once you have a layer with properties, you can remove them:
+  </p><pre>layer_without_properties = layer.remove_props</pre><p>
+  You can also apply <a href="../about/drc_ref_layer.html#select_props">select_props</a> or <a href="../about/drc_ref_layer.html#map_props">map_props</a> to filter values
+  with certain keys or map keys:
+  </p><pre>reduced_layer = layer.select_props(17, 18)
+reduced_layer = layer.map_props({ 17 =&gt; 1, 18 =&gt; 18 })</pre><a name="h3-1300"></a><h3>Generating properties as net identities</h3><p>
+  The most important application is to use the <a href="../about/drc_ref_layer.html#nets">nets</a> method to 
+  generate net identity properties:
+  </p><pre>connect(metal1, via1)
+connect(via1, metal2)
+
+metal1_nets = metal1.nets</pre><p>
+  By default, a unique net identifier (a tuple of circuit and net name) is generated
+  on property key 0. You can specify the key as well:
+  </p><pre>metal1_nets = metal1.nets(prop(17))</pre><p>
+  The &quot;nets&quot; function has a number of options, specifically you can filter certain
+  nets (by name or circuit + name). This makes the &quot;nets&quot; function useful for other
+  purposes too. If you do not need properties then, specify &quot;nil&quot; as the property key:
+  </p><pre>metal1_vdd_net = metal1.nets(prop(nil), &quot;VDD&quot;)</pre><a name="h3-1327"></a><h3>Using properties in checks and boolean operations</h3><p>
+  The main purpose of properties is to use them in operations.
+  To confine a boolean operation to shapes with different properties,
+  use the <a href="../about/drc_ref_global.html#props_ne">props_ne</a> keyword. To confine a boolean operation to shapes
+  with the same properties, use <a href="../about/drc_ref_global.html#props_eq">props_eq</a>:
+  </p><pre>connect(metal1, via1)
+connect(via1, metal2)
+
+metal1_nets = metal1.nets
+metal2_nets = metal2.nets
+
+metal1_over_metal2_connected = metal1_nets.and(metal2_nets, props_eq)
+metal1_over_metal2_unconnected = metal1_nets.and(metal2_nets, props_ne)</pre><p>
+  You can also instruct this operation to emit the original properties
+  on the output with <a href="../about/drc_ref_global.html#props_eq">props_copy</a>:
+  </p><pre>result_with_props = metal1_nets.and(metal2_nets, props_eq + props_copy)</pre><p>
+  Similarly, properties can participate in checks:
+  </p><pre>connect(metal1, via1)
+connect(via1, metal2)
+
+metal1_nets = metal1.nets
+metal2_nets = metal2.nets
+
+metal1_space_connected = metal1_nets.space(0.4.um, props_eq)
+metal1_space_unconnected = metal1_nets.space(1.um, props_ne)</pre><p>
+  &quot;props_eq&quot;, &quot;props_ne&quot; and &quot;props_copy&quot; are also available on the
+  generic DRC function (<a href="../about/drc_ref_layer.html#drc">drc</a>), which opens new options, e.g. 
+  detecting potential short locations (&quot;critical area&quot;) between unconnected nets:
+  </p><pre>connect(metal1, via1)
+connect(via1, metal2)
+
+metal1_nets = metal1.nets
+metal2_nets = metal2.nets
+
+critical_area = l1_nets.drc(primary.sized(0.2.um) &amp; foreign.sized(0.2.um), props_ne)</pre></body>

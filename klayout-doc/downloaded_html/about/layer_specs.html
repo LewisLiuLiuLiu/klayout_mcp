@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Various Topics</a> » About Layer Specifications</p><h1>About Layer Specifications</h1><p>
+  Layer specifications are used in various places, for example in layer mapping
+  files (<a href="layer_mapping.html">Layer Mapping Tables</a>). 
+  Layer specifications are used inside the database to give a layer a name or 
+  a number/datatype pair or both. Layer specifications are the text representation
+  of <a href="../code/class_LayerInfo.html">LayerInfo</a> objects.
+  </p><p>
+  Blanks within layer specifications are ignored and can be put between
+  the different components of the specification.
+  </p><p>
+  A simple number for the specification will indicate a layer with this layer number and a 
+  datatype of zero:
+  </p><pre>17</pre><p>will give layer 17, datatype 0.
+  </p><p>
+  A number followed by a slash and another number will indicate a layer number 
+  and datatype:
+  </p><pre>17/5</pre><p>
+  will give layer 17, datatype 5.
+  </p><p>
+  Layers can be named. Named layers are present in DXF, CIF or other formats
+  which don't use the GDS layer/datatype number scheme. Just giving a name 
+  will indicate such a layer:
+  </p><pre>METAL1</pre><p>
+  will give a named layer called &quot;METAL1&quot;.
+  </p><p>
+  If you want to use a name that is a number, use quotes:
+  </p><pre>&quot;17&quot;</pre><p>
+  will give a named layer called &quot;17&quot;.
+  </p><p>
+  If you want to use a name that includes blanks, put it into quotes
+  as well:
+  </p><pre>&quot;METAL 1&quot;</pre><p>
+  will give a named layer called &quot;METAL 1&quot; (however, such layer names are usually illegal).
+  </p><p>
+  Finally, a layer can have both a name and layer/datatype numbers.
+  In this case, add the layer/datatype number to the name in round
+  brackets:
+  </p><pre>METAL1 (17)</pre><p>
+  will give a layer named &quot;METAL1&quot; with layer 17 and datatype 0 and
+  </p><pre>METAL1 (17/5)</pre><p>
+  will give a layer named &quot;METAL1&quot; with layer 17 and datatype 5.
+  </p><h4>Layer specifications as targets</h4><p>
+  When used in a target context (e.g. for layer mapping), a layer specification
+  can use wildcards and relative layer/datatype specifications.
+  Using &quot;*&quot; instead of a layer or datatype number means to reuse the source 
+  layer or datatype number. Using &quot;+x&quot; or &quot;-x&quot; for layer or datatype number means
+  to add or subtract &quot;x&quot; from the source layer or datatype number.
+  </p></body>

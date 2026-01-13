@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class PCellDeclarationHelper</p><h1>API reference - Class PCellDeclarationHelper</h1><property value="db" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_db.html">db</a></p><p><b>Description</b>: A helper class to simplify the declaration of a PCell (Ruby version)</p><p><b>Class hierarchy</b>: PCellDeclarationHelper » <a href="class_PCellDeclaration.html">PCellDeclaration</a></p><ul><li><a href="#h2-63">Public methods</a></li><li><a href="#h2-122">Detailed description</a></li></ul><p></p><p>This class provides adds some convenience to the PCell declaration based
+on PCellDeclaration. PCellDeclaration is a C++ object which is less
+convenient to use than a Ruby-based approach. In particular this class
+simplifies the declaration and use of parameters through accessor methods
+that are created automatically from the declaration of the parameters.</p><p>The basic usage of this class is the following:</p><p><pre>
+# Derive your PCell from PCellDeclarationHelper
+class MyPCell &lt; RBA::PCellDeclarationHelper
+
+  # initalize
+  def initialize
+    super
+    # your initialization: add parameters with name, type, description and
+    # optional other values
+    param :p, TypeInt, &quot;The parameter&quot;, :default =&gt; 1
+    param :l, TypeLayer, &quot;The layer&quot;, :default =&gt; RBA::LayerInfo::new(1, 0)
+    # add other parameters ..
+  end
+
+  # reimplement display_text_impl
+  def display_text_impl
+    # implement the method here
+  end
+
+  # reimplement produce_impl
+  def produce_impl
+    # implement the method here
+  end
+
+  # optionally reimplement coerce_parameters_impl
+  def coerce_parameters_impl
+    # implement the method here
+  end
+
+end
+</pre></p><p>An implementation of <a href="#m_display_text_impl">display_text_impl</a> could look like this:</p><p><pre>
+  def display_text_impl
+    &quot;We have p=#{p}&quot;
+  end
+</pre></p><p>Because in the sample declaration above we have declared parameter &quot;p&quot; we can access the value of p inside
+the implementation simply by using the &quot;p&quot; method.</p><p>Similarily the <a href="#m_produce_impl">produce_impl</a> implementation could use code like the following. Please note that
+<a href="#m_layout">layout</a> and <a href="#m_cell">cell</a> are available to get the layout and cell. Also because we have declared a layer parameter &quot;l&quot;, 
+we can access the layer index with the &quot;l_layer&quot; method:</p><p><pre>
+  def produce_impl
+    cell.shapes(l_layer).insert(RBA::Box.new(0, 0, p*100, p*200))
+  end
+</pre></p><p>Again in this sample, we used &quot;p&quot; to access the parameter &quot;p&quot;.</p><p>The implementation of coerce_parameter_impl can make use of the parameter setters. In the case of the &quot;p&quot;
+parameter, the setter is &quot;set_p&quot;:</p><p><pre>
+  def coerce_parameter_impl
+    p &lt; 10 || set_p(10)
+  end
+</pre></p><a name="h2-63"></a><h2>Public methods</h2><table><tr class="row0"><td></td><td></td><td><b><a href="#method0">callback_impl</a></b></td><td></td><td>Provides a callback on a parameter change</td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method1">callback_impl</a></b></td><td></td><td>Provides a callback on a parameter change</td></tr><tr class="row0"><td></td><td></td><td><b><a href="#method2">can_create_from_shape_impl</a></b></td><td></td><td>Returns true if the PCell can be created from the given shape</td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method3">can_create_from_shape_impl</a></b></td><td></td><td>Returns true if the PCell can be created from the given shape</td></tr><tr class="row0"><td></td><td></td><td><b><a href="#method4">cell</a></b></td><td></td><td>Gets the reference to the current cell within <a href="#m_produce_impl">produce_impl</a></td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method5">cell</a></b></td><td></td><td>Gets the reference to the current cell within <a href="#m_produce_impl">produce_impl</a></td></tr><tr class="row0"><td></td><td></td><td><b><a href="#method6">cell_name_impl</a></b></td><td></td><td>Delivers the cell name to be used for the PCell variant</td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method7">cell_name_impl</a></b></td><td></td><td>Delivers the cell name to be used for the PCell variant</td></tr><tr class="row0"><td></td><td></td><td><b><a href="#method8">coerce_parameters_impl</a></b></td><td></td><td>Coerces the parameters</td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method9">coerce_parameters_impl</a></b></td><td></td><td>Coerces the parameters</td></tr><tr class="row0"><td></td><td></td><td><b><a href="#method10">display_text_impl</a></b></td><td></td><td>Delivers the display text</td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method11">display_text_impl</a></b></td><td></td><td>Delivers the display text</td></tr><tr class="row0"><td></td><td></td><td><b><a href="#method12">initialize</a></b></td><td></td><td>Initializes this instance</td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method13">initialize</a></b></td><td></td><td>Initializes this instance</td></tr><tr class="row0"><td></td><td></td><td><b><a href="#method14">layer</a></b></td><td></td><td>Gets the reference to the current layer index within <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a>, <a href="#m_parameters_from_shape_impl">parameters_from_shape_impl</a> and <a href="#m_transformation_from_shape_impl">transformation_from_shape_impl</a></td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method15">layer</a></b></td><td></td><td>Gets the reference to the current layer index within <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a>, <a href="#m_parameters_from_shape_impl">parameters_from_shape_impl</a> and <a href="#m_transformation_from_shape_impl">transformation_from_shape_impl</a></td></tr><tr class="row0"><td></td><td></td><td><b><a href="#method16">layout</a></b></td><td></td><td>Gets the reference to the current layout within <a href="#m_produce_impl">produce_impl</a>, <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a>, <a href="#m_parameters_from_shape_impl">parameters_from_shape_impl</a> and <a href="#m_transformation_from_shape_impl">transformation_from_shape_impl</a></td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method17">layout</a></b></td><td></td><td>Gets the reference to the current layout within <a href="#m_produce_impl">produce_impl</a>, <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a>, <a href="#m_parameters_from_shape_impl">parameters_from_shape_impl</a> and <a href="#m_transformation_from_shape_impl">transformation_from_shape_impl</a></td></tr><tr class="row0"><td></td><td></td><td><b><a href="#method18">param</a></b></td><td>(name,<br>type,<br>description,<br>...)</td><td>Declares a parameter with the given name, type and description and optional attributes.</td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method19">param</a></b></td><td>(name,<br>type,<br>description,<br>...)</td><td>Declares a parameter with the given name, type and description and optional attributes.</td></tr><tr class="row0"><td></td><td></td><td><b><a href="#method20">parameters_from_shape_impl</a></b></td><td></td><td>Sets the parameters from a shape</td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method21">parameters_from_shape_impl</a></b></td><td></td><td>Sets the parameters from a shape</td></tr><tr class="row0"><td></td><td></td><td><b><a href="#method22">produce_impl</a></b></td><td></td><td>Produces the layout</td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method23">produce_impl</a></b></td><td></td><td>Produces the layout</td></tr><tr class="row0"><td></td><td></td><td><b><a href="#method24">shape</a></b></td><td></td><td>Gets the reference to the current shape within <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a>, <a href="#m_parameters_from_shape_impl">parameters_from_shape_impl</a> and <a href="#m_transformation_from_shape_impl">transformation_from_shape_impl</a></td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method25">shape</a></b></td><td></td><td>Gets the reference to the current shape within <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a>, <a href="#m_parameters_from_shape_impl">parameters_from_shape_impl</a> and <a href="#m_transformation_from_shape_impl">transformation_from_shape_impl</a></td></tr><tr class="row0"><td></td><td></td><td><b><a href="#method26">transformation_from_shape_impl</a></b></td><td></td><td>Gets the initial PCell instance transformation when creating from a shape</td></tr><tr class="row1"><td></td><td></td><td><b><a href="#method27">transformation_from_shape_impl</a></b></td><td></td><td>Gets the initial PCell instance transformation when creating from a shape</td></tr></table><a name="detailed"></a><a name="h2-122"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td rowspan="2"><a name="h3-123"></a><h3>callback_impl</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_callback_impl"></a><a name="k_2"></a><p><b>(1) Signature</b>:  <b> callback_impl </b></p><p><b>Description</b>: Provides a callback on a parameter change</p><p><p></p><p>This method applies to user interface changes only. Whenever a parameter is changed
+on the parameter page, this method is called with the name of the parameter.</p><p>On some occasions, this method called to establish a configuration unspecifically.
+In this case, the name is an empty string - indicating &quot;all parameters may have changed&quot;.</p><p>This method can change the state of this or any other parameter. For this, the 
+state objects are supplied instead of the parameter values. For example to enable 
+parameter &quot;b&quot; when a boolean parameter &quot;a&quot; is true, use the following code:</p><p><pre>
+def callback_impl(name)
+  if name == &quot;a&quot; || name == &quot;&quot;
+    b.enabled = a.value
+  end
+end
+</pre></p><p>The &quot;enabled&quot; attribute of the <a href="class_PCellParameterState.html">PCellParameterState</a> object indicates whether the
+parameter is enabled in the user interface. &quot;a.value&quot; delivers the value of the 
+(boolean type assumed) parameter &quot;a&quot;.</p><p>Note that the above code also checks for empty name to consider the case of a
+global refresh.</p><p>Further useful attributes of the parameters are:</p><p><ul><li><b> enabled </b>: the parameter entry is grayed out if false
+  </li><li><b> readonly </b>: the parameter cannot be edited (less strict than enabled)
+  </li><li><b> visible </b>: the parameter entry is not visible if false
+  </li><li><b> icon </b>: Sets an icon in front of the parameter indicating an error or a 
+      warning (use <a href="class_PCellParameterState.html#m_WarningIcon">PCellParameterState#WarningIcon</a> or <a href="class_PCellParameterState.html#m_ErrorIcon">PCellParameterState#ErrorIcon</a>).
+  </li></ul></p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_callback_impl"></a><a name="k_3"></a><p><b>(2) Signature</b>:  <b> callback_impl </b></p><p><b>Description</b>: Provides a callback on a parameter change</p><p><p></p><p>This method applies to user interface changes only. Whenever a parameter is changed
+on the parameter page, this method is called with the name of the parameter.</p><p>On some occasions, this method called to establish a configuration unspecifically.
+In this case, the name is an empty string - indicating &quot;all parameters may have changed&quot;.</p><p>This method can change the state of this or any other parameter. For this, the 
+state objects are supplied instead of the parameter values. For example to enable 
+parameter &quot;b&quot; when a boolean parameter &quot;a&quot; is true, use the following code:</p><p><pre>
+def callback_impl(name)
+  if name == &quot;a&quot; || name == &quot;&quot;
+    b.enabled = a.value
+  end
+end
+</pre></p><p>The &quot;enabled&quot; attribute of the <a href="class_PCellParameterState.html">PCellParameterState</a> object indicates whether the
+parameter is enabled in the user interface. &quot;a.value&quot; delivers the value of the 
+(boolean type assumed) parameter &quot;a&quot;.</p><p>Note that the above code also checks for empty name to consider the case of a
+global refresh.</p><p>Further useful attributes of the parameters are:</p><p><ul><li><b> enabled </b>: the parameter entry is grayed out if false
+  </li><li><b> readonly </b>: the parameter cannot be edited (less strict than enabled)
+  </li><li><b> visible </b>: the parameter entry is not visible if false
+  </li><li><b> icon </b>: Sets an icon in front of the parameter indicating an error or a 
+      warning (use <a href="class_PCellParameterState.html#m_WarningIcon">PCellParameterState#WarningIcon</a> or <a href="class_PCellParameterState.html#m_ErrorIcon">PCellParameterState#ErrorIcon</a>).
+  </li></ul></p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-188"></a><h3>can_create_from_shape_impl</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m_can_create_from_shape_impl"></a><a name="k_4"></a><p><b>(1) Signature</b>:  <b> can_create_from_shape_impl </b></p><p><b>Description</b>: Returns true if the PCell can be created from the given shape</p><p><p></p><p>This method can be reimplemented in a PCell class.
+If the PCell can be created from the shape available through the <a href="#m_shape">shape</a> accessor (a <a href="class_Shape.html">Shape</a> object), this
+method is supposed to return true. The layout the shape lives in can be accessed with <a href="#m_layout">layout</a> and the 
+layer with <a href="#m_layer">layer</a>.</p><p>The default implementation returns false.
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method3"></a><a name="m_can_create_from_shape_impl"></a><a name="k_5"></a><p><b>(2) Signature</b>:  <b> can_create_from_shape_impl </b></p><p><b>Description</b>: Returns true if the PCell can be created from the given shape</p><p><p></p><p>This method can be reimplemented in a PCell class.
+If the PCell can be created from the shape available through the <a href="#m_shape">shape</a> accessor (a <a href="class_Shape.html">Shape</a> object), this
+method is supposed to return true. The layout the shape lives in can be accessed with <a href="#m_layout">layout</a> and the 
+layer with <a href="#m_layer">layer</a>.</p><p>The default implementation returns false.
+</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-205"></a><h3>cell</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m_cell"></a><a name="k_6"></a><p><b>(1) Signature</b>:  <b> cell </b></p><p><b>Description</b>: Gets the reference to the current cell within <a href="#m_produce_impl">produce_impl</a></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method5"></a><a name="m_cell"></a><a name="k_7"></a><p><b>(2) Signature</b>:  <b> cell </b></p><p><b>Description</b>: Gets the reference to the current cell within <a href="#m_produce_impl">produce_impl</a></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-212"></a><h3>cell_name_impl</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m_cell_name_impl"></a><a name="k_8"></a><p><b>(1) Signature</b>:  <b> cell_name_impl </b></p><p><b>Description</b>: Delivers the cell name to be used for the PCell variant</p><p><p></p><p>A PCell variant is represented in the cell tree by a placeholder cell. By
+default, the name of this cell is the PCell name. Since multiple variants
+may exist, usually a disambiguator is added to the name (e.g. &quot;..$1&quot;). </p><p>This method allows encoding the PCell parameters into that cell name, 
+so the PCell variant is easier to identify in the cell tree - for example
+in the GDS file - instead of the unspecific disambiguator.
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method7"></a><a name="m_cell_name_impl"></a><a name="k_9"></a><p><b>(2) Signature</b>:  <b> cell_name_impl </b></p><p><b>Description</b>: Delivers the cell name to be used for the PCell variant</p><p><p></p><p>A PCell variant is represented in the cell tree by a placeholder cell. By
+default, the name of this cell is the PCell name. Since multiple variants
+may exist, usually a disambiguator is added to the name (e.g. &quot;..$1&quot;). </p><p>This method allows encoding the PCell parameters into that cell name, 
+so the PCell variant is easier to identify in the cell tree - for example
+in the GDS file - instead of the unspecific disambiguator.
+</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-231"></a><h3>coerce_parameters_impl</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m_coerce_parameters_impl"></a><a name="k_10"></a><p><b>(1) Signature</b>:  <b> coerce_parameters_impl </b></p><p><b>Description</b>: Coerces the parameters</p><p><p></p><p>This method can be reimplemented in a PCell class.
+It is supposed to adjust parameters to render a consistent parameter set and to fix 
+parameter range errors. This method is called for example inside the PCell user interface to 
+compute the actual parameters when &quot;Apply&quot; is pressed.
+</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method9"></a><a name="m_coerce_parameters_impl"></a><a name="k_11"></a><p><b>(2) Signature</b>:  <b> coerce_parameters_impl </b></p><p><b>Description</b>: Coerces the parameters</p><p><p></p><p>This method can be reimplemented in a PCell class.
+It is supposed to adjust parameters to render a consistent parameter set and to fix 
+parameter range errors. This method is called for example inside the PCell user interface to 
+compute the actual parameters when &quot;Apply&quot; is pressed.
+</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-248"></a><h3>display_text_impl</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m_display_text_impl"></a><a name="k_12"></a><p><b>(1) Signature</b>:  <b> display_text_impl </b></p><p><b>Description</b>: Delivers the display text</p><p><p></p><p>This method must be reimplemented in a PCell class to identify the PCell in human-readable form.
+This text is shown in the cell tree for the PCell for example.
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method11"></a><a name="m_display_text_impl"></a><a name="k_13"></a><p><b>(2) Signature</b>:  <b> display_text_impl </b></p><p><b>Description</b>: Delivers the display text</p><p><p></p><p>This method must be reimplemented in a PCell class to identify the PCell in human-readable form.
+This text is shown in the cell tree for the PCell for example.
+</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-261"></a><h3>initialize</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m_initialize"></a><a name="k_14"></a><p><b>(1) Signature</b>:  <b> initialize </b></p><p><b>Description</b>: Initializes this instance</p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method13"></a><a name="m_initialize"></a><a name="k_15"></a><p><b>(2) Signature</b>:  <b> initialize </b></p><p><b>Description</b>: Initializes this instance</p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-268"></a><h3>layer</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_layer"></a><a name="k_16"></a><p><b>(1) Signature</b>:  <b> layer </b></p><p><b>Description</b>: Gets the reference to the current layer index within <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a>, <a href="#m_parameters_from_shape_impl">parameters_from_shape_impl</a> and <a href="#m_transformation_from_shape_impl">transformation_from_shape_impl</a></p><p><p></p><p>The object returned is the layer index within the <a href="class_Layout.html">Layout</a> object of the shape which will be converted.
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_layer"></a><a name="k_17"></a><p><b>(2) Signature</b>:  <b> layer </b></p><p><b>Description</b>: Gets the reference to the current layer index within <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a>, <a href="#m_parameters_from_shape_impl">parameters_from_shape_impl</a> and <a href="#m_transformation_from_shape_impl">transformation_from_shape_impl</a></p><p><p></p><p>The object returned is the layer index within the <a href="class_Layout.html">Layout</a> object of the shape which will be converted.
+</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-279"></a><h3>layout</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_layout"></a><a name="k_18"></a><p><b>(1) Signature</b>:  <b> layout </b></p><p><b>Description</b>: Gets the reference to the current layout within <a href="#m_produce_impl">produce_impl</a>, <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a>, <a href="#m_parameters_from_shape_impl">parameters_from_shape_impl</a> and <a href="#m_transformation_from_shape_impl">transformation_from_shape_impl</a></p><p><p></p><p>The object returned is the <a href="class_Layout.html">Layout</a> object of the shape which will be converted.
+</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_layout"></a><a name="k_19"></a><p><b>(2) Signature</b>:  <b> layout </b></p><p><b>Description</b>: Gets the reference to the current layout within <a href="#m_produce_impl">produce_impl</a>, <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a>, <a href="#m_parameters_from_shape_impl">parameters_from_shape_impl</a> and <a href="#m_transformation_from_shape_impl">transformation_from_shape_impl</a></p><p><p></p><p>The object returned is the <a href="class_Layout.html">Layout</a> object of the shape which will be converted.
+</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-290"></a><h3>param</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_param"></a><a name="k_20"></a><p><b>(1) Signature</b>:  <b> param </b> (name, type, description, ...)</p><p><b>Description</b>: Declares a parameter with the given name, type and description and optional attributes.</p><table class="layout-table"><tr><td><b>name</b>:</td><td>The name of the parameter. Must be a simple word.</td></tr><tr><td><b>type</b>:</td><td>The type. One of the Type... constants, that this class borrowed from <a href="class_PCellParameterDeclaration.html">PCellParameterDeclaration</a>.</td></tr><tr><td><b>description</b>:</td><td>The description text for this parameter</td></tr></table><p><p></p><p>Optional, named parameters are</p><p><ul><li><b>:hidden</b>: (boolean) true, if the parameter is not shown in the dialog
+  </li><li><b>:readonly</b>: (boolean) true, if the parameter cannot be edited
+  </li><li><b>:unit</b>: the unit string
+  </li><li><b>tooltip</b>: the tool tip text displayed on the edit fields and labels
+  </li><li><b>:min_value</b>: the minimum value (effective for numerical types and if no choices are present)
+  </li><li><b>:max_value</b>: the maximum value (effective for numerical types and if no choices are present)
+  </li><li><b>:default</b>: the default value
+  </li><li><b>:choices</b>: ([ [ d, v ], ... ]) choice descriptions/value for choice type
+  </li></ul></p><p>&quot;:choices&quot; must be an array of two-element arrays (description text, value) which specify one
+choice each for parameters with a choice of values. Such parameters are represented by a drop-down box.</p><p>This declaration will create accessor methods &quot;x&quot; and &quot;set_x&quot;, where &quot;x&quot; is the name of the parameter.
+If the type is TypeLayer, an accessor &quot;x_layer&quot; delivering the layer index inside <a href="#m_produce_impl">produce_impl</a> is
+created as well.
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_param"></a><a name="k_21"></a><p><b>(2) Signature</b>:  <b> param </b> (name, type, description, ...)</p><p><b>Description</b>: Declares a parameter with the given name, type and description and optional attributes.</p><table class="layout-table"><tr><td><b>name</b>:</td><td>The name of the parameter. Must be a simple word.</td></tr><tr><td><b>type</b>:</td><td>The type. One of the Type... constants, that this class borrowed from <a href="class_PCellParameterDeclaration.html">PCellParameterDeclaration</a>.</td></tr><tr><td><b>description</b>:</td><td>The description text for this parameter</td></tr></table><p><p></p><p>Optional, named parameters are</p><p><ul><li><b>:hidden</b>: (boolean) true, if the parameter is not shown in the dialog
+  </li><li><b>:readonly</b>: (boolean) true, if the parameter cannot be edited
+  </li><li><b>:unit</b>: the unit string
+  </li><li><b>tooltip</b>: the tool tip text displayed on the edit fields and labels
+  </li><li><b>:min_value</b>: the minimum value (effective for numerical types and if no choices are present)
+  </li><li><b>:max_value</b>: the maximum value (effective for numerical types and if no choices are present)
+  </li><li><b>:default</b>: the default value
+  </li><li><b>:choices</b>: ([ [ d, v ], ... ]) choice descriptions/value for choice type
+  </li></ul></p><p>&quot;:choices&quot; must be an array of two-element arrays (description text, value) which specify one
+choice each for parameters with a choice of values. Such parameters are represented by a drop-down box.</p><p>This declaration will create accessor methods &quot;x&quot; and &quot;set_x&quot;, where &quot;x&quot; is the name of the parameter.
+If the type is TypeLayer, an accessor &quot;x_layer&quot; delivering the layer index inside <a href="#m_produce_impl">produce_impl</a> is
+created as well.
+</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-367"></a><h3>parameters_from_shape_impl</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_parameters_from_shape_impl"></a><a name="k_22"></a><p><b>(1) Signature</b>:  <b> parameters_from_shape_impl </b></p><p><b>Description</b>: Sets the parameters from a shape</p><p><p></p><p>This method can be reimplemented in a PCell class.
+If <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a> returns true, this method is called to set the parameters from the 
+given shape (see <a href="#m_shape">shape</a>, <a href="#m_layout">layout</a> and <a href="#m_layer">layer</a>). Note, that for setting a layer parameter you need
+to create the <a href="class_LayerInfo.html">LayerInfo</a> object, i.e. like this:</p><p><pre>
+  set_l layout.get_info(layer)
+</pre></p><p>The default implementation does nothing. All parameters not set in this method will receive their default value.</p><p>If you use a parameter called &quot;layer&quot; for example, the parameter getter will hide the
+&quot;layer&quot; argument. Use &quot;_layer&quot; for the argument in this case (same for &quot;layout&quot;, &quot;shape&quot; or &quot;cell):</p><p><pre>
+  set_layer layout.get_info(_layer)
+</pre></p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_parameters_from_shape_impl"></a><a name="k_23"></a><p><b>(2) Signature</b>:  <b> parameters_from_shape_impl </b></p><p><b>Description</b>: Sets the parameters from a shape</p><p><p></p><p>This method can be reimplemented in a PCell class.
+If <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a> returns true, this method is called to set the parameters from the 
+given shape (see <a href="#m_shape">shape</a>, <a href="#m_layout">layout</a> and <a href="#m_layer">layer</a>). Note, that for setting a layer parameter you need
+to create the <a href="class_LayerInfo.html">LayerInfo</a> object, i.e. like this:</p><p><pre>
+  set_l layout.get_info(layer)
+</pre></p><p>The default implementation does nothing. All parameters not set in this method will receive their default value.</p><p>If you use a parameter called &quot;layer&quot; for example, the parameter getter will hide the
+&quot;layer&quot; argument. Use &quot;_layer&quot; for the argument in this case (same for &quot;layout&quot;, &quot;shape&quot; or &quot;cell):</p><p><pre>
+  set_layer layout.get_info(_layer)
+</pre></p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-394"></a><h3>produce_impl</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_produce_impl"></a><a name="k_24"></a><p><b>(1) Signature</b>:  <b> produce_impl </b></p><p><b>Description</b>: Produces the layout</p><p><p></p><p>This method must be reimplemented in a PCell class.
+Using the parameter values provided by the parameter accessor methods and the layout and cell through <a href="#m_layout">layout</a> and <a href="#m_cell">cell</a>,
+this method is supposed to produce the final layout inside the given cell.
+</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_produce_impl"></a><a name="k_25"></a><p><b>(2) Signature</b>:  <b> produce_impl </b></p><p><b>Description</b>: Produces the layout</p><p><p></p><p>This method must be reimplemented in a PCell class.
+Using the parameter values provided by the parameter accessor methods and the layout and cell through <a href="#m_layout">layout</a> and <a href="#m_cell">cell</a>,
+this method is supposed to produce the final layout inside the given cell.
+</p></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-409"></a><h3>shape</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_shape"></a><a name="k_26"></a><p><b>(1) Signature</b>:  <b> shape </b></p><p><b>Description</b>: Gets the reference to the current shape within <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a>, <a href="#m_parameters_from_shape_impl">parameters_from_shape_impl</a> and <a href="#m_transformation_from_shape_impl">transformation_from_shape_impl</a></p><p><p></p><p>The object returned is the <a href="class_Shape.html">Shape</a> object of the shape which will be converted.
+</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_shape"></a><a name="k_27"></a><p><b>(2) Signature</b>:  <b> shape </b></p><p><b>Description</b>: Gets the reference to the current shape within <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a>, <a href="#m_parameters_from_shape_impl">parameters_from_shape_impl</a> and <a href="#m_transformation_from_shape_impl">transformation_from_shape_impl</a></p><p><p></p><p>The object returned is the <a href="class_Shape.html">Shape</a> object of the shape which will be converted.
+</p></p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-420"></a><h3>transformation_from_shape_impl</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_transformation_from_shape_impl"></a><a name="k_28"></a><p><b>(1) Signature</b>:  <b> transformation_from_shape_impl </b></p><p><b>Description</b>: Gets the initial PCell instance transformation when creating from a shape</p><p><p></p><p>This method can be reimplemented in a PCell class.
+If <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a> returns true, this method is called to get the initial transformation from the 
+given shape (see <a href="#m_shape">shape</a>, <a href="#m_layout">layout</a> and <a href="#m_layer">layer</a>). </p><p>This method must return a <a href="class_Trans.html">Trans</a> object. The default implementation returns a unit transformation (no displacement, no rotation).</p></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_transformation_from_shape_impl"></a><a name="k_29"></a><p><b>(2) Signature</b>:  <b> transformation_from_shape_impl </b></p><p><b>Description</b>: Gets the initial PCell instance transformation when creating from a shape</p><p><p></p><p>This method can be reimplemented in a PCell class.
+If <a href="#m_can_create_from_shape_impl">can_create_from_shape_impl</a> returns true, this method is called to get the initial transformation from the 
+given shape (see <a href="#m_shape">shape</a>, <a href="#m_layout">layout</a> and <a href="#m_layer">layer</a>). </p><p>This method must return a <a href="class_Trans.html">Trans</a> object. The default implementation returns a unit transformation (no displacement, no rotation).</p></p></td></tr></table></body>

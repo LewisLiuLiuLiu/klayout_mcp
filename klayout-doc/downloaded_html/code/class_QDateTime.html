@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">Class Index</a> » API reference - Class QDateTime</p><h1>API reference - Class QDateTime</h1><property value="QtCore" name="module"></property><a name="k_1"></a><p><a href="../about/rba_notation.html">Notation used in Ruby API documentation</a></p><p><b>Module</b>: <a href="module_QtCore.html">QtCore</a></p><p><b>Description</b>: Binding of QDateTime</p><ul><li><a href="#h2-12">Public constructors</a></li><li><a href="#h2-23">Public methods</a></li><li><a href="#h2-114">Public static methods and constants</a></li><li><a href="#h2-125">Deprecated methods (protected, public, static, non-static and constructors)</a></li><li><a href="#h2-136">Detailed description</a></li></ul><p></p><a name="h2-12"></a><h2>Public constructors</h2><table><tr class="row0"><td>new QDateTime</td><td><b><a href="#method34">new</a></b></td><td></td><td>Constructor QDateTime::QDateTime()</td></tr><tr class="row1"><td>new QDateTime</td><td><b><a href="#method35">new</a></b></td><td>(const QDate arg1)</td><td>Constructor QDateTime::QDateTime(const QDate &amp;)</td></tr><tr class="row0"><td>new QDateTime</td><td><b><a href="#method36">new</a></b></td><td>(const QDate arg1,<br>const QTime arg2,<br>const Qt_TimeSpec spec = Qt::LocalTime)</td><td>Constructor QDateTime::QDateTime(const QDate &amp;, const QTime &amp;, Qt::TimeSpec spec)</td></tr><tr class="row1"><td>new QDateTime</td><td><b><a href="#method37">new</a></b></td><td>(const QDateTime other)</td><td>Constructor QDateTime::QDateTime(const QDateTime &amp;other)</td></tr></table><a name="h2-23"></a><h2>Public methods</h2><table><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method0">!=</a></b></td><td>(const QDateTime other)</td><td>Method bool QDateTime::operator!=(const QDateTime &amp;other)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method1">&lt;</a></b></td><td>(const QDateTime other)</td><td>Method bool QDateTime::operator&lt;(const QDateTime &amp;other)</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method2">&lt;=</a></b></td><td>(const QDateTime other)</td><td>Method bool QDateTime::operator&lt;=(const QDateTime &amp;other)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method3">==</a></b></td><td>(const QDateTime other)</td><td>Method bool QDateTime::operator==(const QDateTime &amp;other)</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method4">&gt;</a></b></td><td>(const QDateTime other)</td><td>Method bool QDateTime::operator&gt;(const QDateTime &amp;other)</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method5">&gt;=</a></b></td><td>(const QDateTime other)</td><td>Method bool QDateTime::operator&gt;=(const QDateTime &amp;other)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method6">_assign</a></b></td><td>(const QDateTime other)</td><td>Assigns another object to self</td></tr><tr class="row1"><td><i>[const]</i></td><td>QDateTime ptr</td><td><b><a href="#method7">_const_cast</a></b></td><td></td><td>Returns a non-const reference to self.</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method8">_create</a></b></td><td></td><td>Ensures the C++ object is created</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method9">_destroy</a></b></td><td></td><td>Explicitly destroys the object</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method10">_destroyed?</a></b></td><td></td><td>Returns a value indicating whether the object was already destroyed</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method11">_is_const_object?</a></b></td><td></td><td>Returns a value indicating whether the reference is a const reference</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method12">_manage</a></b></td><td></td><td>Marks the object as managed by the script side.</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method13">_unmanage</a></b></td><td></td><td>Marks the object as no longer owned by the script side.</td></tr><tr class="row0"><td><i>[const]</i></td><td>QDateTime</td><td><b><a href="#method14">addDays</a></b></td><td>(int days)</td><td>Method QDateTime QDateTime::addDays(int days)</td></tr><tr class="row1"><td><i>[const]</i></td><td>QDateTime</td><td><b><a href="#method15">addMSecs</a></b></td><td>(long long msecs)</td><td>Method QDateTime QDateTime::addMSecs(qint64 msecs)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QDateTime</td><td><b><a href="#method16">addMonths</a></b></td><td>(int months)</td><td>Method QDateTime QDateTime::addMonths(int months)</td></tr><tr class="row1"><td><i>[const]</i></td><td>QDateTime</td><td><b><a href="#method17">addSecs</a></b></td><td>(int secs)</td><td>Method QDateTime QDateTime::addSecs(int secs)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QDateTime</td><td><b><a href="#method18">addYears</a></b></td><td>(int years)</td><td>Method QDateTime QDateTime::addYears(int years)</td></tr><tr class="row1"><td></td><td>QDateTime</td><td><b><a href="#method19">assign</a></b></td><td>(const QDateTime other)</td><td>Method QDateTime &amp;QDateTime::operator=(const QDateTime &amp;other)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QDate</td><td><b><a href="#method22">date</a></b></td><td></td><td>Method QDate QDateTime::date()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method23">date=</a></b></td><td>(const QDate date)</td><td>Method void QDateTime::setDate(const QDate &amp;date)</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method24">daysTo</a></b></td><td>(const QDateTime arg1)</td><td>Method int QDateTime::daysTo(const QDateTime &amp;)</td></tr><tr class="row1"><td><i>[const]</i></td><td>new QDateTime ptr</td><td><b><a href="#method27">dup</a></b></td><td></td><td>Creates a copy of self</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method31">isNull?</a></b></td><td></td><td>Method bool QDateTime::isNull()</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method32">isValid?</a></b></td><td></td><td>Method bool QDateTime::isValid()</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method38">secsTo</a></b></td><td>(const QDateTime arg1)</td><td>Method int QDateTime::secsTo(const QDateTime &amp;)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method39">setDate</a></b></td><td>(const QDate date)</td><td>Method void QDateTime::setDate(const QDate &amp;date)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method40">setTime</a></b></td><td>(const QTime time)</td><td>Method void QDateTime::setTime(const QTime &amp;time)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method41">setTimeSpec</a></b></td><td>(const Qt_TimeSpec spec)</td><td>Method void QDateTime::setTimeSpec(Qt::TimeSpec spec)</td></tr><tr class="row0"><td></td><td>void</td><td><b><a href="#method42">setTime_t</a></b></td><td>(unsigned int secsSince1Jan1970UTC)</td><td>Method void QDateTime::setTime_t(unsigned int secsSince1Jan1970UTC)</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method43">setUtcOffset</a></b></td><td>(int seconds)</td><td>Method void QDateTime::setUtcOffset(int seconds)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QTime</td><td><b><a href="#method44">time</a></b></td><td></td><td>Method QTime QDateTime::time()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method45">time=</a></b></td><td>(const QTime time)</td><td>Method void QDateTime::setTime(const QTime &amp;time)</td></tr><tr class="row0"><td><i>[const]</i></td><td>Qt_TimeSpec</td><td><b><a href="#method46">timeSpec</a></b></td><td></td><td>Method Qt::TimeSpec QDateTime::timeSpec()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method47">timeSpec=</a></b></td><td>(const Qt_TimeSpec spec)</td><td>Method void QDateTime::setTimeSpec(Qt::TimeSpec spec)</td></tr><tr class="row0"><td><i>[const]</i></td><td>QDateTime</td><td><b><a href="#method48">toLocalTime</a></b></td><td></td><td>Method QDateTime QDateTime::toLocalTime()</td></tr><tr class="row1"><td><i>[const]</i></td><td>string</td><td><b><a href="#method49">toString</a></b></td><td>(const Qt_DateFormat f = Qt::TextDate)</td><td>Method QString QDateTime::toString(Qt::DateFormat f)</td></tr><tr class="row0"><td><i>[const]</i></td><td>string</td><td><b><a href="#method50">toString</a></b></td><td>(string format)</td><td>Method QString QDateTime::toString(const QString &amp;format)</td></tr><tr class="row1"><td><i>[const]</i></td><td>QDateTime</td><td><b><a href="#method51">toTimeSpec</a></b></td><td>(const Qt_TimeSpec spec)</td><td>Method QDateTime QDateTime::toTimeSpec(Qt::TimeSpec spec)</td></tr><tr class="row0"><td><i>[const]</i></td><td>unsigned int</td><td><b><a href="#method52">toTime_t</a></b></td><td></td><td>Method unsigned int QDateTime::toTime_t()</td></tr><tr class="row1"><td><i>[const]</i></td><td>QDateTime</td><td><b><a href="#method53">toUTC</a></b></td><td></td><td>Method QDateTime QDateTime::toUTC()</td></tr><tr class="row0"><td><i>[const]</i></td><td>int</td><td><b><a href="#method54">utcOffset</a></b></td><td></td><td>Method int QDateTime::utcOffset()</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method55">utcOffset=</a></b></td><td>(int seconds)</td><td>Method void QDateTime::setUtcOffset(int seconds)</td></tr></table><a name="h2-114"></a><h2>Public static methods and constants</h2><table><tr class="row0"><td></td><td>QDateTime</td><td><b><a href="#method21">currentDateTime</a></b></td><td></td><td>Static method QDateTime QDateTime::currentDateTime()</td></tr><tr class="row1"><td></td><td>QDateTime</td><td><b><a href="#method28">fromString</a></b></td><td>(string s,<br>const Qt_DateFormat f = Qt::TextDate)</td><td>Static method QDateTime QDateTime::fromString(const QString &amp;s, Qt::DateFormat f)</td></tr><tr class="row0"><td></td><td>QDateTime</td><td><b><a href="#method29">fromString</a></b></td><td>(string s,<br>string format)</td><td>Static method QDateTime QDateTime::fromString(const QString &amp;s, const QString &amp;format)</td></tr><tr class="row1"><td></td><td>QDateTime</td><td><b><a href="#method30">fromTime_t</a></b></td><td>(unsigned int secsSince1Jan1970UTC)</td><td>Static method QDateTime QDateTime::fromTime_t(unsigned int secsSince1Jan1970UTC)</td></tr></table><a name="h2-125"></a><h2>Deprecated methods (protected, public, static, non-static and constructors)</h2><table><tr class="row0"><td></td><td>void</td><td><b><a href="#method20">create</a></b></td><td></td><td>Use of this method is deprecated. Use _create instead</td></tr><tr class="row1"><td></td><td>void</td><td><b><a href="#method25">destroy</a></b></td><td></td><td>Use of this method is deprecated. Use _destroy instead</td></tr><tr class="row0"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method26">destroyed?</a></b></td><td></td><td>Use of this method is deprecated. Use _destroyed? instead</td></tr><tr class="row1"><td><i>[const]</i></td><td>bool</td><td><b><a href="#method33">is_const_object?</a></b></td><td></td><td>Use of this method is deprecated. Use _is_const_object? instead</td></tr></table><a name="detailed"></a><a name="h2-136"></a><h2>Detailed description</h2><table><tr class="bigrow0"><td><a name="h3-137"></a><h3>!=</h3></td><td style="padding-bottom: 16px"><a name="method0"></a><a name="m_!="></a><a name="k_2"></a><p><b>Signature</b>: <i>[const] </i>bool <b> != </b> (const <a href="class_QDateTime.html">QDateTime</a> other)</p><p><b>Description</b>: Method bool QDateTime::operator!=(const QDateTime &amp;other)</p></td></tr><tr class="bigrow1"><td><a name="h3-141"></a><h3>&lt;</h3></td><td style="padding-bottom: 16px"><a name="method1"></a><a name="m_&lt;"></a><a name="k_3"></a><p><b>Signature</b>: <i>[const] </i>bool <b> &lt; </b> (const <a href="class_QDateTime.html">QDateTime</a> other)</p><p><b>Description</b>: Method bool QDateTime::operator&lt;(const QDateTime &amp;other)</p></td></tr><tr class="bigrow0"><td><a name="h3-145"></a><h3>&lt;=</h3></td><td style="padding-bottom: 16px"><a name="method2"></a><a name="m_&lt;="></a><a name="k_4"></a><p><b>Signature</b>: <i>[const] </i>bool <b> &lt;= </b> (const <a href="class_QDateTime.html">QDateTime</a> other)</p><p><b>Description</b>: Method bool QDateTime::operator&lt;=(const QDateTime &amp;other)</p></td></tr><tr class="bigrow1"><td><a name="h3-149"></a><h3>==</h3></td><td style="padding-bottom: 16px"><a name="method3"></a><a name="m_=="></a><a name="k_5"></a><p><b>Signature</b>: <i>[const] </i>bool <b> == </b> (const <a href="class_QDateTime.html">QDateTime</a> other)</p><p><b>Description</b>: Method bool QDateTime::operator==(const QDateTime &amp;other)</p></td></tr><tr class="bigrow0"><td><a name="h3-153"></a><h3>&gt;</h3></td><td style="padding-bottom: 16px"><a name="method4"></a><a name="m_&gt;"></a><a name="k_6"></a><p><b>Signature</b>: <i>[const] </i>bool <b> &gt; </b> (const <a href="class_QDateTime.html">QDateTime</a> other)</p><p><b>Description</b>: Method bool QDateTime::operator&gt;(const QDateTime &amp;other)</p></td></tr><tr class="bigrow1"><td><a name="h3-157"></a><h3>&gt;=</h3></td><td style="padding-bottom: 16px"><a name="method5"></a><a name="m_&gt;="></a><a name="k_7"></a><p><b>Signature</b>: <i>[const] </i>bool <b> &gt;= </b> (const <a href="class_QDateTime.html">QDateTime</a> other)</p><p><b>Description</b>: Method bool QDateTime::operator&gt;=(const QDateTime &amp;other)</p></td></tr><tr class="bigrow0"><td><a name="h3-161"></a><h3>_assign</h3></td><td style="padding-bottom: 16px"><a name="method6"></a><a name="m__assign"></a><a name="k_8"></a><p><b>Signature</b>: void <b> _assign </b> (const <a href="class_QDateTime.html">QDateTime</a> other)</p><p><b>Description</b>: Assigns another object to self</p></td></tr><tr class="bigrow1"><td><a name="h3-165"></a><h3>_const_cast</h3></td><td style="padding-bottom: 16px"><a name="method7"></a><a name="m__const_cast"></a><a name="k_9"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QDateTime.html">QDateTime</a> ptr <b> _const_cast </b></p><p><b>Description</b>: Returns a non-const reference to self.</p><p><p>
+Basically, this method allows turning a const object reference to a non-const one. This method is provided as last resort to remove the constness from an object. Usually there is a good reason for a const object reference, so using this method may have undesired side effects.</p><p>This method has been introduced in version 0.29.6.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-171"></a><h3>_create</h3></td><td style="padding-bottom: 16px"><a name="method8"></a><a name="m__create"></a><a name="k_10"></a><p><b>Signature</b>: void <b> _create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-177"></a><h3>_destroy</h3></td><td style="padding-bottom: 16px"><a name="method9"></a><a name="m__destroy"></a><a name="k_11"></a><p><b>Signature</b>: void <b> _destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-184"></a><h3>_destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method10"></a><a name="m__destroyed?"></a><a name="k_12"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-191"></a><h3>_is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method11"></a><a name="m__is_const_object?"></a><a name="k_13"></a><p><b>Signature</b>: <i>[const] </i>bool <b> _is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-198"></a><h3>_manage</h3></td><td style="padding-bottom: 16px"><a name="method12"></a><a name="m__manage"></a><a name="k_14"></a><p><b>Signature</b>: void <b> _manage </b></p><p><b>Description</b>: Marks the object as managed by the script side.</p><p><p>
+After calling this method on an object, the script side will be responsible for the management of the object. This method may be called if an object is returned from a C++ function and the object is known not to be owned by any C++ instance. If necessary, the script side may delete the object if the script's reference is no longer required.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-204"></a><h3>_unmanage</h3></td><td style="padding-bottom: 16px"><a name="method13"></a><a name="m__unmanage"></a><a name="k_15"></a><p><b>Signature</b>: void <b> _unmanage </b></p><p><b>Description</b>: Marks the object as no longer owned by the script side.</p><p><p>
+Calling this method will make this object no longer owned by the script's memory management. Instead, the object must be managed in some other way. Usually this method may be called if it is known that some C++ object holds and manages this object. Technically speaking, this method will turn the script's reference into a weak reference. After the script engine decides to delete the reference, the object itself will still exist. If the object is not managed otherwise, memory leaks will occur.</p><p>Usually it's not required to call this method. It has been introduced in version 0.24.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-210"></a><h3>addDays</h3></td><td style="padding-bottom: 16px"><a name="method14"></a><a name="m_addDays"></a><a name="k_16"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QDateTime.html">QDateTime</a><b> addDays </b> (int days)</p><p><b>Description</b>: Method QDateTime QDateTime::addDays(int days)</p></td></tr><tr class="bigrow1"><td><a name="h3-214"></a><h3>addMSecs</h3></td><td style="padding-bottom: 16px"><a name="method15"></a><a name="m_addMSecs"></a><a name="k_17"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QDateTime.html">QDateTime</a><b> addMSecs </b> (long long msecs)</p><p><b>Description</b>: Method QDateTime QDateTime::addMSecs(qint64 msecs)</p></td></tr><tr class="bigrow0"><td><a name="h3-218"></a><h3>addMonths</h3></td><td style="padding-bottom: 16px"><a name="method16"></a><a name="m_addMonths"></a><a name="k_18"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QDateTime.html">QDateTime</a><b> addMonths </b> (int months)</p><p><b>Description</b>: Method QDateTime QDateTime::addMonths(int months)</p></td></tr><tr class="bigrow1"><td><a name="h3-222"></a><h3>addSecs</h3></td><td style="padding-bottom: 16px"><a name="method17"></a><a name="m_addSecs"></a><a name="k_19"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QDateTime.html">QDateTime</a><b> addSecs </b> (int secs)</p><p><b>Description</b>: Method QDateTime QDateTime::addSecs(int secs)</p></td></tr><tr class="bigrow0"><td><a name="h3-226"></a><h3>addYears</h3></td><td style="padding-bottom: 16px"><a name="method18"></a><a name="m_addYears"></a><a name="k_20"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QDateTime.html">QDateTime</a><b> addYears </b> (int years)</p><p><b>Description</b>: Method QDateTime QDateTime::addYears(int years)</p></td></tr><tr class="bigrow1"><td><a name="h3-230"></a><h3>assign</h3></td><td style="padding-bottom: 16px"><a name="method19"></a><a name="m_assign"></a><a name="k_21"></a><p><b>Signature</b>: <a href="class_QDateTime.html">QDateTime</a><b> assign </b> (const <a href="class_QDateTime.html">QDateTime</a> other)</p><p><b>Description</b>: Method QDateTime &amp;QDateTime::operator=(const QDateTime &amp;other)</p></td></tr><tr class="bigrow0"><td><a name="h3-234"></a><h3>create</h3></td><td style="padding-bottom: 16px"><a name="method20"></a><a name="m_create"></a><a name="k_22"></a><p><b>Signature</b>: void <b> create </b></p><p><b>Description</b>: Ensures the C++ object is created</p><p>Use of this method is deprecated. Use _create instead</p><p><p>
+Use this method to ensure the C++ object is created, for example to ensure that resources are allocated. Usually C++ objects are created on demand and not necessarily when the script object is created.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-241"></a><h3>currentDateTime</h3></td><td style="padding-bottom: 16px"><a name="method21"></a><a name="m_currentDateTime"></a><a name="k_23"></a><p><b>Signature</b>: <i>[static] </i><a href="class_QDateTime.html">QDateTime</a><b> currentDateTime </b></p><p><b>Description</b>: Static method QDateTime QDateTime::currentDateTime()</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-247"></a><h3>date</h3></td><td style="padding-bottom: 16px"><a name="method22"></a><a name="m_date"></a><a name="k_24"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QDate.html">QDate</a><b> date </b></p><p><b>Description</b>: Method QDate QDateTime::date()</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'date'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-252"></a><h3>date=</h3></td><td style="padding-bottom: 16px"><a name="method23"></a><a name="m_date="></a><a name="k_25"></a><p><b>Signature</b>: void <b> date= </b> (const <a href="class_QDate.html">QDate</a> date)</p><p><b>Description</b>: Method void QDateTime::setDate(const QDate &amp;date)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'date'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-257"></a><h3>daysTo</h3></td><td style="padding-bottom: 16px"><a name="method24"></a><a name="m_daysTo"></a><a name="k_26"></a><p><b>Signature</b>: <i>[const] </i>int <b> daysTo </b> (const <a href="class_QDateTime.html">QDateTime</a> arg1)</p><p><b>Description</b>: Method int QDateTime::daysTo(const QDateTime &amp;)</p></td></tr><tr class="bigrow1"><td><a name="h3-261"></a><h3>destroy</h3></td><td style="padding-bottom: 16px"><a name="method25"></a><a name="m_destroy"></a><a name="k_27"></a><p><b>Signature</b>: void <b> destroy </b></p><p><b>Description</b>: Explicitly destroys the object</p><p>Use of this method is deprecated. Use _destroy instead</p><p><p>
+Explicitly destroys the object on C++ side if it was owned by the script interpreter. Subsequent access to this object will throw an exception.
+If the object is not owned by the script, this method will do nothing.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-269"></a><h3>destroyed?</h3></td><td style="padding-bottom: 16px"><a name="method26"></a><a name="m_destroyed?"></a><a name="k_28"></a><p><b>Signature</b>: <i>[const] </i>bool <b> destroyed? </b></p><p><b>Description</b>: Returns a value indicating whether the object was already destroyed</p><p>Use of this method is deprecated. Use _destroyed? instead</p><p><p>
+This method returns true, if the object was destroyed, either explicitly or by the C++ side.
+The latter may happen, if the object is owned by a C++ object which got destroyed itself.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-277"></a><h3>dup</h3></td><td style="padding-bottom: 16px"><a name="method27"></a><a name="m_dup"></a><a name="k_29"></a><p><b>Signature</b>: <i>[const] </i>new <a href="class_QDateTime.html">QDateTime</a> ptr <b> dup </b></p><p><b>Description</b>: Creates a copy of self</p><p><b>Python specific notes: </b><br>This method also implements '__copy__' and '__deepcopy__'.<br></p></td></tr><tr class="bigrow0"><td rowspan="2"><a name="h3-282"></a><h3>fromString</h3></td><td style="padding-bottom: 16px"><a name="method28"></a><a name="m_fromString"></a><a name="k_30"></a><p><b>(1) Signature</b>: <i>[static] </i><a href="class_QDateTime.html">QDateTime</a><b> fromString </b> (string s, const <a href="class_Qt_DateFormat.html">Qt_DateFormat</a> f = Qt::TextDate)</p><p><b>Description</b>: Static method QDateTime QDateTime::fromString(const QString &amp;s, Qt::DateFormat f)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td style="padding-bottom: 16px"><a name="method29"></a><a name="m_fromString"></a><a name="k_31"></a><p><b>(2) Signature</b>: <i>[static] </i><a href="class_QDateTime.html">QDateTime</a><b> fromString </b> (string s, string format)</p><p><b>Description</b>: Static method QDateTime QDateTime::fromString(const QString &amp;s, const QString &amp;format)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow1"><td><a name="h3-293"></a><h3>fromTime_t</h3></td><td style="padding-bottom: 16px"><a name="method30"></a><a name="m_fromTime_t"></a><a name="k_32"></a><p><b>Signature</b>: <i>[static] </i><a href="class_QDateTime.html">QDateTime</a><b> fromTime_t </b> (unsigned int secsSince1Jan1970UTC)</p><p><b>Description</b>: Static method QDateTime QDateTime::fromTime_t(unsigned int secsSince1Jan1970UTC)</p><p><p>
+This method is static and can be called without an instance.</p></p></td></tr><tr class="bigrow0"><td><a name="h3-299"></a><h3>isNull?</h3></td><td style="padding-bottom: 16px"><a name="method31"></a><a name="m_isNull?"></a><a name="k_33"></a><p><b>Signature</b>: <i>[const] </i>bool <b> isNull? </b></p><p><b>Description</b>: Method bool QDateTime::isNull()</p></td></tr><tr class="bigrow1"><td><a name="h3-303"></a><h3>isValid?</h3></td><td style="padding-bottom: 16px"><a name="method32"></a><a name="m_isValid?"></a><a name="k_34"></a><p><b>Signature</b>: <i>[const] </i>bool <b> isValid? </b></p><p><b>Description</b>: Method bool QDateTime::isValid()</p></td></tr><tr class="bigrow0"><td><a name="h3-307"></a><h3>is_const_object?</h3></td><td style="padding-bottom: 16px"><a name="method33"></a><a name="m_is_const_object?"></a><a name="k_35"></a><p><b>Signature</b>: <i>[const] </i>bool <b> is_const_object? </b></p><p><b>Description</b>: Returns a value indicating whether the reference is a const reference</p><p>Use of this method is deprecated. Use _is_const_object? instead</p><p><p>
+This method returns true, if self is a const reference.
+In that case, only const methods may be called on self.</p></p></td></tr><tr class="bigrow1"><td rowspan="4"><a name="h3-315"></a><h3>new</h3></td><td style="padding-bottom: 16px"><a name="method34"></a><a name="m_new"></a><a name="k_36"></a><p><b>(1) Signature</b>: <i>[static] </i>new <a href="class_QDateTime.html">QDateTime</a><b> new </b></p><p><b>Description</b>: Constructor QDateTime::QDateTime()</p><p><p>
+This method creates an object of class QDateTime.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method35"></a><a name="m_new"></a><a name="k_37"></a><p><b>(2) Signature</b>: <i>[static] </i>new <a href="class_QDateTime.html">QDateTime</a><b> new </b> (const <a href="class_QDate.html">QDate</a> arg1)</p><p><b>Description</b>: Constructor QDateTime::QDateTime(const QDate &amp;)</p><p><p>
+This method creates an object of class QDateTime.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method36"></a><a name="m_new"></a><a name="k_38"></a><p><b>(3) Signature</b>: <i>[static] </i>new <a href="class_QDateTime.html">QDateTime</a><b> new </b> (const <a href="class_QDate.html">QDate</a> arg1, const <a href="class_QTime.html">QTime</a> arg2, const <a href="class_Qt_TimeSpec.html">Qt_TimeSpec</a> spec = Qt::LocalTime)</p><p><b>Description</b>: Constructor QDateTime::QDateTime(const QDate &amp;, const QTime &amp;, Qt::TimeSpec spec)</p><p><p>
+This method creates an object of class QDateTime.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method37"></a><a name="m_new"></a><a name="k_39"></a><p><b>(4) Signature</b>: <i>[static] </i>new <a href="class_QDateTime.html">QDateTime</a><b> new </b> (const <a href="class_QDateTime.html">QDateTime</a> other)</p><p><b>Description</b>: Constructor QDateTime::QDateTime(const QDateTime &amp;other)</p><p><p>
+This method creates an object of class QDateTime.</p></p><p><b>Python specific notes: </b><br>This method is the default initializer of the object.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-340"></a><h3>secsTo</h3></td><td style="padding-bottom: 16px"><a name="method38"></a><a name="m_secsTo"></a><a name="k_40"></a><p><b>Signature</b>: <i>[const] </i>int <b> secsTo </b> (const <a href="class_QDateTime.html">QDateTime</a> arg1)</p><p><b>Description</b>: Method int QDateTime::secsTo(const QDateTime &amp;)</p></td></tr><tr class="bigrow1"><td><a name="h3-344"></a><h3>setDate</h3></td><td style="padding-bottom: 16px"><a name="method39"></a><a name="m_setDate"></a><a name="k_41"></a><p><b>Signature</b>: void <b> setDate </b> (const <a href="class_QDate.html">QDate</a> date)</p><p><b>Description</b>: Method void QDateTime::setDate(const QDate &amp;date)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'date'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-349"></a><h3>setTime</h3></td><td style="padding-bottom: 16px"><a name="method40"></a><a name="m_setTime"></a><a name="k_42"></a><p><b>Signature</b>: void <b> setTime </b> (const <a href="class_QTime.html">QTime</a> time)</p><p><b>Description</b>: Method void QDateTime::setTime(const QTime &amp;time)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'time'. This is the setter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-354"></a><h3>setTimeSpec</h3></td><td style="padding-bottom: 16px"><a name="method41"></a><a name="m_setTimeSpec"></a><a name="k_43"></a><p><b>Signature</b>: void <b> setTimeSpec </b> (const <a href="class_Qt_TimeSpec.html">Qt_TimeSpec</a> spec)</p><p><b>Description</b>: Method void QDateTime::setTimeSpec(Qt::TimeSpec spec)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'timeSpec'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-359"></a><h3>setTime_t</h3></td><td style="padding-bottom: 16px"><a name="method42"></a><a name="m_setTime_t"></a><a name="k_44"></a><p><b>Signature</b>: void <b> setTime_t </b> (unsigned int secsSince1Jan1970UTC)</p><p><b>Description</b>: Method void QDateTime::setTime_t(unsigned int secsSince1Jan1970UTC)</p></td></tr><tr class="bigrow1"><td><a name="h3-363"></a><h3>setUtcOffset</h3></td><td style="padding-bottom: 16px"><a name="method43"></a><a name="m_setUtcOffset"></a><a name="k_45"></a><p><b>Signature</b>: void <b> setUtcOffset </b> (int seconds)</p><p><b>Description</b>: Method void QDateTime::setUtcOffset(int seconds)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'utcOffset'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-368"></a><h3>time</h3></td><td style="padding-bottom: 16px"><a name="method44"></a><a name="m_time"></a><a name="k_46"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QTime.html">QTime</a><b> time </b></p><p><b>Description</b>: Method QTime QDateTime::time()</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'time'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-373"></a><h3>time=</h3></td><td style="padding-bottom: 16px"><a name="method45"></a><a name="m_time="></a><a name="k_47"></a><p><b>Signature</b>: void <b> time= </b> (const <a href="class_QTime.html">QTime</a> time)</p><p><b>Description</b>: Method void QDateTime::setTime(const QTime &amp;time)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'time'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-378"></a><h3>timeSpec</h3></td><td style="padding-bottom: 16px"><a name="method46"></a><a name="m_timeSpec"></a><a name="k_48"></a><p><b>Signature</b>: <i>[const] </i><a href="class_Qt_TimeSpec.html">Qt_TimeSpec</a><b> timeSpec </b></p><p><b>Description</b>: Method Qt::TimeSpec QDateTime::timeSpec()</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'timeSpec'. This is the getter.<br></p></td></tr><tr class="bigrow1"><td><a name="h3-383"></a><h3>timeSpec=</h3></td><td style="padding-bottom: 16px"><a name="method47"></a><a name="m_timeSpec="></a><a name="k_49"></a><p><b>Signature</b>: void <b> timeSpec= </b> (const <a href="class_Qt_TimeSpec.html">Qt_TimeSpec</a> spec)</p><p><b>Description</b>: Method void QDateTime::setTimeSpec(Qt::TimeSpec spec)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'timeSpec'. This is the setter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-388"></a><h3>toLocalTime</h3></td><td style="padding-bottom: 16px"><a name="method48"></a><a name="m_toLocalTime"></a><a name="k_50"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QDateTime.html">QDateTime</a><b> toLocalTime </b></p><p><b>Description</b>: Method QDateTime QDateTime::toLocalTime()</p></td></tr><tr class="bigrow1"><td rowspan="2"><a name="h3-392"></a><h3>toString</h3></td><td style="padding-bottom: 16px"><a name="method49"></a><a name="m_toString"></a><a name="k_51"></a><p><b>(1) Signature</b>: <i>[const] </i>string <b> toString </b> (const <a href="class_Qt_DateFormat.html">Qt_DateFormat</a> f = Qt::TextDate)</p><p><b>Description</b>: Method QString QDateTime::toString(Qt::DateFormat f)</p></td></tr><tr class="bigrow1"><td style="padding-bottom: 16px"><a name="method50"></a><a name="m_toString"></a><a name="k_52"></a><p><b>(2) Signature</b>: <i>[const] </i>string <b> toString </b> (string format)</p><p><b>Description</b>: Method QString QDateTime::toString(const QString &amp;format)</p></td></tr><tr class="bigrow0"><td><a name="h3-399"></a><h3>toTimeSpec</h3></td><td style="padding-bottom: 16px"><a name="method51"></a><a name="m_toTimeSpec"></a><a name="k_53"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QDateTime.html">QDateTime</a><b> toTimeSpec </b> (const <a href="class_Qt_TimeSpec.html">Qt_TimeSpec</a> spec)</p><p><b>Description</b>: Method QDateTime QDateTime::toTimeSpec(Qt::TimeSpec spec)</p></td></tr><tr class="bigrow1"><td><a name="h3-403"></a><h3>toTime_t</h3></td><td style="padding-bottom: 16px"><a name="method52"></a><a name="m_toTime_t"></a><a name="k_54"></a><p><b>Signature</b>: <i>[const] </i>unsigned int <b> toTime_t </b></p><p><b>Description</b>: Method unsigned int QDateTime::toTime_t()</p></td></tr><tr class="bigrow0"><td><a name="h3-407"></a><h3>toUTC</h3></td><td style="padding-bottom: 16px"><a name="method53"></a><a name="m_toUTC"></a><a name="k_55"></a><p><b>Signature</b>: <i>[const] </i><a href="class_QDateTime.html">QDateTime</a><b> toUTC </b></p><p><b>Description</b>: Method QDateTime QDateTime::toUTC()</p></td></tr><tr class="bigrow1"><td><a name="h3-411"></a><h3>utcOffset</h3></td><td style="padding-bottom: 16px"><a name="method54"></a><a name="m_utcOffset"></a><a name="k_56"></a><p><b>Signature</b>: <i>[const] </i>int <b> utcOffset </b></p><p><b>Description</b>: Method int QDateTime::utcOffset()</p><p><b>Python specific notes: </b><br>The object exposes a readable attribute 'utcOffset'. This is the getter.<br></p></td></tr><tr class="bigrow0"><td><a name="h3-416"></a><h3>utcOffset=</h3></td><td style="padding-bottom: 16px"><a name="method55"></a><a name="m_utcOffset="></a><a name="k_57"></a><p><b>Signature</b>: void <b> utcOffset= </b> (int seconds)</p><p><b>Description</b>: Method void QDateTime::setUtcOffset(int seconds)</p><p><b>Python specific notes: </b><br>The object exposes a writable attribute 'utcOffset'. This is the setter.<br></p></td></tr></table></body>

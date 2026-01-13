@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>KLayout Documentation</title>
+  <link rel="stylesheet" type="text/css" href="format.css"/>
+  <style>
+
+body,p,h1,h2,h3,h4,li,ul,td,div,span {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+tt,pre {
+  font-family: Lucidatypewriter, Andale Mono, Courier, monospace;
+}
+
+tt {
+  font-weight: normal;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid;
+  border-width: 1px;
+}
+
+a.img-link:hover {
+  border: none;
+}
+
+a.img-link img {
+  border-color: #378eb2;
+  padding: 1px;
+}
+
+a.img-link:hover img {
+  border-color: #378eb2;
+  padding: 0px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+a:visited {
+  color: #378eb2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body,p,ul,ol,td,li {
+  font-size: 11pt;
+}
+
+large {
+  font-size: 16pt;
+}
+
+small {
+  font-size: 8pt;
+}
+
+p,img,h4,h3 {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+pre,tt {
+  font-size: 11pt;
+}
+
+table.body {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.content {
+  background-color: white;
+  vertical-align: top;
+  padding: 0.5cm;
+  position: absolute;
+  margin: 0;
+  left: 220px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  color: #303030;
+}
+
+table.text {
+  margin-left: 5mm;
+}
+
+td.text {
+  padding: 2mm;
+  vertical-align: top;
+}
+
+img.img-link,img.img-link:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  padding: 3px;
+}
+
+img.img-overview,img.img-overview:hover {
+  border-width: 1px;
+  border-color: #fff8c0;
+  margin: 0;
+}
+
+td.img-title,p.img-title {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  font-size: 12pt;
+}
+
+td.img-subscript,p.img-subscript {
+  font-size: 11pt;
+  color: black;
+  margin-left: 0;
+  margin-bottom: 2px;
+  padding-bottom: 5px;
+}
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #b2844f;
+  padding-right: 0.5cm;
+  padding-top: 1mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 32pt;
+}
+
+h2 {
+  font-family: Palatino Linotype, Book Antiqua;
+  border-bottom-width: 0.25mm;
+  border-bottom-color: #b2844f;
+  border-bottom-style: solid;
+  padding-top: 3mm;
+  padding-bottom: 1mm;
+  font-weight: normal;
+  font-size: 18pt;
+  clear: both;
+}
+
+h3 {
+  font-family: Palatino Linotype, Book Antiqua;
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+h4 {
+  padding-top: 2mm;
+  padding-bottom: 1mm;
+  margin-bottom: 0mm;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+  </style>
+</head>
+<body>
+<small>KLayout 0.30.5 (2025-12-11 6ad326e80) [master] </small>
+<p class="navigator"><b>KLayout Documentation (Qt 4): </b><a href="../index.html">Main Index</a> » <a href="index.html">KLayout User Manual</a> » <a href="basic.html">KLayout Basics</a> » Selecting Rulers, Shapes Or Instances</p><h1>Selecting Rulers, Shapes Or Instances</h1><a name="k_1"></a><a name="k_2"></a><a name="k_3"></a><p>
+  Rulers, images, shapes or instances can be selected by either clicking on the shape, instance, ruler or image in &quot;Select&quot; mode or
+  by dragging a selection rectangle with the left mouse button pressed. In this case,
+  all objects inside the selection rectangle will be selected.
+  </p><p>
+  Pressing the Shift key in addition to selecting shapes, instances or other objects will extend the current
+  selection. Pressing Ctrl key will remove the given objects from the selection.
+  </p><p>
+  For layout objects (shapes and instances), it is possible to select the objects through the hierarchy or 
+  on the level of the current cell only (top level objects only). By default, objects are selected through the 
+  hierarchy. That means, objects in child cells can be selected. By extending the selection over multiple
+  instances of a cell, the same object can be selected multiple times. While editing objects inside a 
+  child cell may be a desirable feature, this can lead to confusing effects in the end. Hence, it may
+  to more intuitive to only work on top level, i.e. on the current cell. To enable this mode, check
+  the &quot;Select Top Level Objects Only&quot; menu item in the &quot;View&quot; menu or the same in the edit mode options 
+  dialog (F3).
+  </p><p>
+  In top-level only mode, instances of cells are selected only if the cells have a visual appearance. 
+  This is the case, if they contain at least one shape on a visible layer for example. If they
+  are empty with respect to the visible layers, they cannot be selected. If the cell's box is shown, because
+  the hierarchy levels shown are confined a sufficiently small interval, the cell instances will always be selected.
+  </p><p>
+  Images and rulers are simple objects not embedded in a hierarchy and can be selected by clicking at them or enclosing them in
+  the selection box.
+  </p><p>
+  Object properties can be inspected or edited (if allowed) by opening the properties dialog.
+  To edit or inspect the properties of selected objects, choose &quot;Properties&quot; from the &quot;Edit&quot; menu.
+  A dialog will open which shows the properties for the first selected object. To proceed to the next object 
+  push the &quot;Next&quot; button, to go back to the previous object push the &quot;Previous&quot; button. 
+  </p><p>
+  Depending on the application mode, the properties of the selected objects may be edited too. 
+  To apply changes to the current object, choose &quot;Apply&quot;. To apply the changes and close the dialog,
+  choose &quot;Ok&quot;. To apply the changes to the current object and all other selected objects of the same kind, choose &quot;Apply To All&quot;
+  (if applicable). To close the dialog without applying any changes, choose &quot;Cancel&quot;.
+  </p><p>
+  &quot;Apply To All&quot; will try to apply the changes in some smart way to other objects. For example, for
+  boxes, and change of the box dimensions will be applied in the same way (same shift in the four directions)
+  than for the current object. If the width of a path has been changed, the same width will be applied
+  to all other paths and so forth. 
+  </p><p>
+  For shapes and instances, the &quot;User properties&quot; can be edited too. &quot;User properties&quot; are arbitrary
+  properties attached to shapes and instances. They consist of a key (preferably a number for GDS2 compatibility)
+  and a value (preferably a string in GDS2). Multiple properties of that kind can be attached to one
+  object. User properties can be edited by pushing the &quot;User Properties&quot; button which will open a
+  dialog that allows editing of the properties. If this dialog is closed with &quot;Ok&quot;, the user properties
+  will be kept, but applied to the layout object only after pressing &quot;Apply&quot;/&quot;Ok&quot; or &quot;Apply To All&quot;.
+  The latter will apply the new properties to all other shapes of the same kind.
+  </p><p>
+  Finally, for shapes and instances, the &quot;Instantiation&quot; button will show the instantiation path of
+  the shapes or instances.
+  </p><p>
+  The layer of a shape cannot be changed through the properties dialog. To move a shape to a
+  different layer, use &quot;Change Layer&quot; from the &quot;Selection&quot; sub-menu in &quot;Edit&quot;.
+  </p></body>
