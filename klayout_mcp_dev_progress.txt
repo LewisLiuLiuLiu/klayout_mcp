@@ -1,0 +1,92 @@
+# KLayout MCP Server Development Progress
+
+## Project Goal
+Build a local MCP (Model Context Protocol) Server that exposes KLayout's 2000+ APIs through 4-6 meta-tools, enabling AI agents to interact with KLayout programmatically.
+
+## Architecture Overview
+- **Transport**: stdio (standard input/output)
+- **Protocol**: MCP (Model Context Protocol)
+- **Core Components**:
+  1. API Index System - Search and discover KLayout APIs
+  2. Document Store - Chunked documentation for context-efficient loading
+  3. Handle Registry - Manage KLayout object references (Layout, Cell, etc.)
+  4. API Invoker - Reflection-based API execution
+  5. Security Layer - Path validation and sandboxing
+  6. MCP Tools - 4-6 meta-tools exposing functionality
+
+## MCP Tools (Meta-Tools)
+1. `search_klayout_api(query)` - Search APIs by keyword
+2. `describe_klayout_api(name)` - Get detailed API documentation
+3. `call_klayout_api(name, args)` - Execute API calls
+4. `search_klayout_docs(query)` - Search general documentation
+
+## Current Status
+
+### Session 1 (2026-01-14)
+**Status**: INITIALIZATION COMPLETE
+
+**Completed**:
+- ✅ Analyzed existing codebase
+- ✅ Reviewed KLayout documentation structure (2000+ API classes in markdown)
+- ✅ Created comprehensive task list (30 tasks) in klayout_mcp_task_list.json
+- ✅ Set up project directory structure:
+  - src/index/ - API indexing and search
+  - src/docs/ - Document storage and chunking
+  - src/invoker/ - API invocation and handle management
+  - src/security/ - Security and sandboxing
+  - src/tools/ - MCP tool implementations
+  - tests/ - Unit and integration tests
+  - scripts/ - Build and utility scripts
+  - docs/ - Documentation
+- ✅ Created klayout_mcp_dev_progress.txt (this file)
+
+**Existing Infrastructure**:
+- Basic server.py with FastMCP setup
+- Docker configuration (Dockerfile, docker-compose.yml)
+- KLayout documentation in markdown format (klayout-doc/)
+- Dependencies: mcp[cli]>=0.1.0, pydantic>=2.0.0, markdown-it-py>=3.0.0
+
+**Next Steps** (for next session):
+1. Start implementing infrastructure (T001-T004)
+2. Build API index system from markdown docs
+3. Test index building with sample APIs
+
+## Development Notes
+
+### Key Design Decisions
+1. **Meta-tools approach**: Instead of creating 2000+ individual tools, use 4-6 meta-tools that dynamically call KLayout APIs
+2. **Dynamic loading**: Load documentation on-demand to keep AI context lightweight
+3. **Handle registry**: Maintain references to KLayout objects (Layout, Cell) across API calls
+4. **Security**: Implement path validation and sandboxing for file operations
+
+### Important Files
+- `klayout_mcp_task_list.json` - Complete task breakdown (30 tasks)
+- `src/server.py` - Main MCP server entry point
+- `klayout-doc/markdown_docs/code/` - API documentation source
+- `requirements.txt` - Python dependencies
+
+### Dependencies
+- mcp[cli]>=0.1.0 - MCP framework
+- pydantic>=2.0.0 - Data validation
+- markdown-it-py>=3.0.0 - Markdown parsing
+- python-frontmatter>=1.0.0 - Frontmatter extraction
+- pytest - Testing (to be added)
+- pytest-cov - Coverage (to be added)
+
+## Task Progress
+- Pending: 30/30 tasks
+- In Progress: 0/30 tasks
+- Completed: 0/30 tasks
+
+## Known Issues / Risks
+- None identified yet
+
+## Questions for Future Sessions
+- Should we cache compiled API index or rebuild on startup?
+- How to handle KLayout object lifecycle (when to clean up handles)?
+- Should we support async API calls?
+
+---
+**Last Updated**: 2026-01-14
+**Session**: 1 of N
+**Status**: Ready for implementation phase
