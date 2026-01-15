@@ -28,6 +28,10 @@ BASE_SYSTEM_PROMPT = """You are an expert Python developer building a KLayout MC
 Your task is to implement code that enables AI agents to interact with KLayout's 2000+ APIs
 through a lightweight MCP interface using only 4-6 meta-tools.
 
+IMPORTANT - File Operations:
+- To modify existing files: use the Edit tool
+- To create new files: use the write_file tool
+
 Key principles:
 - Write clean, well-documented Python code
 - Use type hints consistently (from typing import ...)
@@ -135,7 +139,7 @@ def get_agent_options(
         approval_mode=ApprovalMode.AUTO_EDIT,  # Auto-execute tools
         session_settings=settings,
         hooks=get_security_hooks(),
-        timeout=120.0,  # 2 minute timeout for long operations
+        timeout=300.0,  # 5 minute timeout for long operations
         log_level="INFO",
         auto_start_process=True,
     )

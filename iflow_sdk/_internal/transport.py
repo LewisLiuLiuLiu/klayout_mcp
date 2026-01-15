@@ -66,8 +66,8 @@ class WebSocketTransport:
             self.websocket = await asyncio.wait_for(
                 websockets.connect(
                     self.url,
-                    ping_interval=None,  # We'll handle ping/pong if needed
-                    ping_timeout=None,
+                    ping_interval=20,  # Send ping every 20 seconds to keep connection alive
+                    ping_timeout=60,   # Wait up to 60 seconds for pong response
                     max_size=10 * 1024 * 1024,  # 10MB limit for large messages
                 ),
                 timeout=self.timeout,

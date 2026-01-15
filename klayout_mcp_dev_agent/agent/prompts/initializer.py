@@ -126,6 +126,15 @@ The next agent will continue from here with a fresh context window.
 
 ---
 
+## TOOL USAGE
+
+**To modify existing files, use the `Edit` tool.**
+**To create new files, use the `write_file` tool.**
+
+Other available tools: read_file, Shell, list_directory, Search, glob
+
+---
+
 **Remember:** You are SETTING UP the development plan, not implementing features yet.
 Focus on creating a comprehensive, well-organized task list.
 """

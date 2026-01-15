@@ -41,6 +41,15 @@ This is a FRESH context window - you have no memory of previous sessions.
 
 ---
 
+## CRITICAL: AVAILABLE TOOLS
+
+**To modify existing files, use the `Edit` tool.**
+**To create new files, use the `write_file` tool.**
+
+Other available tools: read_file, run_shell_command, list_directory, Search, glob
+
+---
+
 ### STEP 1: GET YOUR BEARINGS (MANDATORY)
 
 Start by orienting yourself:
