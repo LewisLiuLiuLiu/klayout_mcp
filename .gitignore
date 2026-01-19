@@ -16,4 +16,4 @@ klayout_mcp_task_list.json
 
 # 其他
 docs/
-data/
+data/.pytest_cache/
