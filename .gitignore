@@ -2,7 +2,7 @@
 autonomous-coding/
 klayout_mcp_dev_agent/
 iflow_sdk/
-scripts/
+
 
 # Docker 相关
 Dockerfile
@@ -16,4 +16,4 @@ klayout_mcp_task_list.json
 
 # 其他
 docs/
-data/.pytest_cache/
+
