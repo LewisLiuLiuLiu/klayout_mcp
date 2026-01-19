@@ -1,0 +1,19 @@
+# 构建和开发辅助工具
+autonomous-coding/
+klayout_mcp_dev_agent/
+iflow_sdk/
+scripts/
+
+# Docker 相关
+Dockerfile
+docker-compose.yml
+.dockerignore
+daemon.json
+
+# 开发进度文件
+klayout_mcp_dev_progress.txt
+klayout_mcp_task_list.json
+
+# 其他
+docs/
+data/
