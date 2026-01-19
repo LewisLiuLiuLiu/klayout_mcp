@@ -4,12 +4,13 @@ A Model Context Protocol (MCP) server that exposes 2000+ KLayout APIs through in
 
 ## Features
 
-- **Comprehensive API Coverage**: Access to 1,348 KLayout classes and thousands of methods
-- **Meta-Tool Architecture**: 7 well-designed tools that dynamically access all APIs
-- **Dual-Mode Support**: Works with both KLayout GUI (pya) and standalone (klayout.db) modes
+- **Comprehensive API Coverage**: Access to 1,348 KLayout classes and 41,449+ methods
+- **Meta-Tool Architecture**: 7 intelligent tools that dynamically handle 2000+ APIs without creating individual tool definitions
+- **Dual-Mode Support**: Works with both KLayout GUI (`pya`) and standalone (`klayout.db`) modes
+- **Smart API Search**: Fast keyword-based search with relevance ranking and filtering
 - **Security Sandbox**: Protects against dangerous API calls and resource exhaustion
 - **Flexible Output**: Supports both JSON and Markdown response formats
-- **Object Handle Management**: Persistent object references across API calls
+- **Object Handle Management**: Persistent object references with lifecycle management across API calls
 
 ## Installation
 
@@ -41,11 +42,12 @@ python -c "import klayout.db; print('KLayout installed successfully')"
 ### Run the MCP Server
 
 ```bash
-cd src
-python server.py
+python src/server.py
 ```
 
 The server runs with stdio transport by default, suitable for integration with MCP clients.
+
+**Note**: Make sure `python` command is available in your PATH. The server requires Python 3.8+.
 
 ### Configure with Claude Desktop
 
@@ -267,46 +269,52 @@ call_klayout_api(operation="constructor", class_name="Region")
 
 ```
 klayout_mcp/
-├── src/
-│   ├── server.py           # Main MCP server
+├── src/                    # Core MCP server implementation
+│   ├── server.py           # Main MCP server entry point
 │   ├── models.py           # Pydantic input/output models
 │   ├── formatters.py       # Response formatters (JSON/Markdown)
-│   ├── index/              # API index and search
-│   │   ├── api_index.py
-│   │   └── index_builder.py
-│   ├── docs/               # Documentation store
-│   │   ├── document_store.py
-│   │   └── doc_chunker.py
-│   ├── invoker/            # API invocation engine
-│   │   ├── api_invoker.py
-│   │   ├── handle_registry.py
-│   │   ├── klayout_compat.py
-│   │   └── parameter_parser.py
+│   ├── index/              # API index and search engine
+│   │   ├── api_index.py    # Index loader and search logic
+│   │   └── index_builder.py # Index generation from docs
+│   ├── docs/               # Documentation store and retrieval
+│   │   ├── document_store.py # Document storage and search
+│   │   └── doc_chunker.py    # Document chunking for search
+│   ├── invoker/            # Dynamic API invocation engine
+│   │   ├── api_invoker.py    # Core invocation logic
+│   │   ├── handle_registry.py # Object lifecycle management
+│   │   ├── klayout_compat.py  # Dual-mode (pya/db) compatibility
+│   │   └── parameter_parser.py # Parameter type conversion
 │   ├── security/           # Security sandbox
-│   │   ├── sandbox.py
-│   │   └── path_validator.py
-│   └── tools/              # Tool implementations
-│       ├── search_api.py
-│       ├── describe_api.py
-│       ├── call_api.py
-│       ├── manage_handles.py
-│       └── search_docs.py
+│   │   ├── sandbox.py        # API call filtering and limits
+│   │   └── path_validator.py # Path traversal prevention
+│   └── tools/              # MCP tool implementations (7 tools)
+│       ├── search_api.py     # search_klayout_api
+│       ├── describe_api.py   # describe_klayout_api
+│       ├── call_api.py       # call_klayout_api
+│       ├── manage_handles.py # klayout_manage_handles
+│       └── search_docs.py    # search_klayout_docs + status/test tools
 ├── data/
-│   └── api_index.json      # Pre-built API index (39MB)
-├── klayout-doc/
-│   └── markdown_docs/      # KLayout documentation (1,348 files)
+│   └── api_index.json      # Pre-built API index (39MB, 1348 classes)
+├── klayout-doc/            # KLayout documentation source
+│   ├── markdown_docs/      # Parsed markdown docs (1,348 files)
+│   └── downloaded_html/    # Original HTML documentation
+├── scripts/                # Build and maintenance scripts
+│   └── build_index.py      # API index builder from markdown docs
 ├── tests/
-│   └── test_e2e.py         # End-to-end tests
-├── requirements.txt
-└── README.md
+│   └── test_e2e.py         # End-to-end integration tests
+├── requirements.txt        # Python dependencies
+├── LICENSE                 # MIT License
+└── README.md               # This file
 ```
 
 ## API Statistics
 
 - **Total Classes**: 1,348
-- **Modules**: db, lay, tl, rdb, pex
-- **Index Size**: 39MB (pre-built JSON)
-- **Documentation Files**: 1,348 markdown files
+- **Total Methods**: 41,449+
+- **Modules**: `db` (database), `lay` (layout view), `tl` (tools), `rdb` (report database), `pex` (parameter extraction)
+- **Index Size**: ~39MB (pre-built JSON)
+- **Documentation Files**: 1,348 markdown files + HTML source
+- **Meta-Tools**: 7 intelligent tools handling all 2000+ APIs dynamically
 
 ## Security
 
@@ -324,10 +332,18 @@ The server includes a security sandbox that:
 pytest tests/ -v
 ```
 
-### Build API Index
+### Rebuild API Index (Optional)
+
+The project includes a pre-built API index in `data/api_index.json`. You only need to rebuild it if:
+- KLayout version is updated
+- Documentation parsing logic is modified
+- You want to use custom documentation
 
 ```bash
-python -m src.index.index_builder
+python scripts/build_index.py
+
+# Or with custom paths:
+python scripts/build_index.py klayout-doc/markdown_docs data/api_index.json
 ```
 
 ### Type Checking
