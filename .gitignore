@@ -1,19 +1,65 @@
-# 构建和开发辅助工具
-autonomous-coding/
-klayout_mcp_dev_agent/
-iflow_sdk/
+# IDE and Editor configurations
+.qoder/
+.iflow/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+PIPFILE.lock
 
-# Docker 相关
-Dockerfile
-docker-compose.yml
-.dockerignore
-daemon.json
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
 
-# 开发进度文件
-klayout_mcp_dev_progress.txt
-klayout_mcp_task_list.json
+# Testing
+.pytest_cache/
+.coverage
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
 
-# 其他
-docs/
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
