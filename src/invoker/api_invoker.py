@@ -3,16 +3,20 @@ API Invoker - Reflection-based KLayout API execution
 
 This module provides the ability to dynamically call KLayout APIs
 using Python reflection mechanisms.
+
+Supports both 'pya' (inside KLayout GUI) and 'klayout.db' (standalone) modes
+through the KLayoutCompat compatibility layer.
 """
 
 import importlib
 import traceback
 import time
-from typing import Dict, List, Optional, Any, Callable
+from typing import Dict, List, Optional, Any, Callable, Tuple
 from dataclasses import dataclass
 
 from .handle_registry import HandleRegistry
 from .parameter_parser import ParameterParser
+from .klayout_compat import get_klayout_compat, KLayoutCompat
 
 
 @dataclass
@@ -66,31 +70,26 @@ class APIInvoker:
     Executes KLayout API calls using reflection.
     
     Features:
-    - Dynamic module/class loading
-    - Constructor invocation
+    - Dynamic module/class loading via KLayoutCompat
+    - Constructor invocation with positional and keyword arguments
     - Instance method invocation
     - Static method invocation
     - Automatic result registration in HandleRegistry
+    - Supports both 'pya' and standalone 'klayout.db' modes
     """
-    
-    # KLayout module mappings
-    KLAYOUT_MODULES = {
-        'db': 'klayout.db',
-        'lay': 'klayout.lay', 
-        'rdb': 'klayout.rdb',
-        'tl': 'klayout.tl',
-        'lib': 'klayout.lib',
-    }
     
     # Types that should be registered as handles
     HANDLE_TYPES = {
         'Layout', 'Cell', 'Instance', 'Box', 'DBox', 'Point', 'DPoint',
-        'Edge', 'DEdge', 'Path', 'DPath', 'Polygon', 'DPolygon',
-        'Region', 'Edges', 'EdgePairs', 'Texts',
-        'Trans', 'DTrans', 'CplxTrans', 'DCplxTrans', 'ICplxTrans',
-        'LayerInfo', 'RecursiveShapeIterator', 'Shapes',
+        'Vector', 'DVector', 'Edge', 'DEdge', 'EdgePair', 'DEdgePair',
+        'Path', 'DPath', 'Polygon', 'DPolygon', 'SimplePolygon', 'DSimplePolygon',
+        'Text', 'DText', 'Region', 'Edges', 'EdgePairs', 'Texts',
+        'Trans', 'DTrans', 'CplxTrans', 'DCplxTrans', 'ICplxTrans', 'VCplxTrans',
+        'LayerInfo', 'RecursiveShapeIterator', 'RecursiveInstanceIterator', 'Shapes',
         'LayoutView', 'CellView', 'LayerProperties',
-        'Technology', 'Library',
+        'Technology', 'Library', 'PCellDeclaration',
+        'CellInstArray', 'LayerMapping', 'ShapeProcessor',
+        'ReportDatabase', 'RdbCategory', 'RdbItem', 'RdbCell',
     }
     
     def __init__(self, registry: HandleRegistry, 
@@ -105,6 +104,7 @@ class APIInvoker:
         self.registry = registry
         self.sandbox = sandbox
         self.parser = ParameterParser(registry)
+        self._compat: KLayoutCompat = get_klayout_compat()
         self._module_cache: Dict[str, Any] = {}
     
     def invoke_constructor(self, class_name: str, module: str,
@@ -326,19 +326,18 @@ class APIInvoker:
             )
     
     def _get_class(self, class_name: str, module: str) -> Optional[type]:
-        """Get a class from a KLayout module."""
-        # Map module name to full module path
-        module_path = self.KLAYOUT_MODULES.get(module, f'klayout.{module}')
+        """
+        Get a class from a KLayout module using the compatibility layer.
         
-        # Try to import and cache the module
-        if module_path not in self._module_cache:
-            try:
-                self._module_cache[module_path] = importlib.import_module(module_path)
-            except ImportError:
-                return None
-        
-        mod = self._module_cache[module_path]
-        return getattr(mod, class_name, None)
+        Args:
+            class_name: Name of the class
+            module: Module name (db, lay, tl, rdb, lib)
+            
+        Returns:
+            The class or None if not found
+        """
+        # Use KLayoutCompat for unified access
+        return self._compat.get_class(class_name, module)
     
     def _should_register(self, type_name: str, obj: Any) -> bool:
         """Determine if an object should be registered as a handle."""
@@ -359,14 +358,8 @@ class APIInvoker:
         # Register handle if appropriate
         handle = None
         if result is not None and self._should_register(result_type, result):
-            # Determine module from result type
-            module = 'db'  # Default
-            result_module = type(result).__module__
-            for mod_name, mod_path in self.KLAYOUT_MODULES.items():
-                if mod_path in result_module:
-                    module = mod_name
-                    break
-            
+            # Determine module from result type using compatibility layer
+            module = self._compat.get_object_module(result) or 'db'
             handle = self.registry.register(result, result_type, module=module)
         
         return InvokeResult(
@@ -402,9 +395,32 @@ class APIInvoker:
         return sorted(methods)
     
     def check_klayout_available(self) -> bool:
-        """Check if KLayout modules are available."""
-        try:
-            import klayout.db
-            return True
-        except ImportError:
-            return False
+        """
+        Check if KLayout modules are available.
+        
+        Returns:
+            True if KLayout (pya or standalone) is available
+        """
+        return self._compat.is_available
+    
+    def get_klayout_status(self) -> Dict[str, Any]:
+        """
+        Get detailed status of KLayout module availability.
+        
+        Returns:
+            Dictionary with status information including mode and loaded modules
+        """
+        return self._compat.get_status()
+    
+    def get_module_for_class(self, class_name: str) -> str:
+        """
+        Get the module name for a given class.
+        
+        Args:
+            class_name: Name of the class
+            
+        Returns:
+            Module name (db, lay, tl, rdb, lib)
+        """
+        return self._compat.get_module_for_class(class_name)
+

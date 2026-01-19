@@ -3,6 +3,8 @@ Handle Registry - Manage KLayout object references
 
 This module provides lifecycle management for KLayout objects,
 allowing them to be referenced by unique handles across API calls.
+
+Supports objects from both 'pya' (KLayout GUI) and 'klayout.db' (standalone) modes.
 """
 
 import uuid
@@ -49,6 +51,7 @@ class HandleRegistry:
     - Automatic expiration of unused handles
     - Thread-safe operations
     - Weak reference option for memory efficiency
+    - Supports both pya and standalone klayout.db objects
     """
     
     def __init__(self, 
@@ -342,3 +345,44 @@ class HandleRegistry:
         with self._lock:
             handle_id = self._aliases.get(handle_or_alias, handle_or_alias)
             return handle_id in self._handles
+    
+    @staticmethod
+    def is_klayout_object(obj: Any) -> bool:
+        """
+        Check if an object is a KLayout object.
+        
+        Supports both pya (KLayout GUI) and standalone klayout.db modes.
+        
+        Args:
+            obj: Object to check
+            
+        Returns:
+            True if the object is from KLayout modules
+        """
+        if obj is None:
+            return False
+        
+        obj_module = type(obj).__module__
+        
+        # Check pya mode (inside KLayout GUI)
+        if obj_module == 'pya':
+            return True
+        
+        # Check standalone mode (klayout.db, klayout.lay, etc.)
+        if obj_module.startswith('klayout.'):
+            return True
+        
+        return False
+    
+    @staticmethod
+    def get_object_type_name(obj: Any) -> str:
+        """
+        Get the type name for a KLayout object.
+        
+        Args:
+            obj: KLayout object
+            
+        Returns:
+            Type name (e.g., 'Box', 'Layout')
+        """
+        return type(obj).__name__

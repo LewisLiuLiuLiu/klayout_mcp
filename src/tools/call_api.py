@@ -2,12 +2,14 @@
 Call API Tool - Execute KLayout API calls
 
 This tool provides the ability to execute KLayout API calls.
+Supports both 'pya' and standalone 'klayout.db' modes.
 """
 
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 
 from ..invoker.api_invoker import APIInvoker
 from ..invoker.handle_registry import HandleRegistry
+from ..invoker.klayout_compat import get_klayout_compat
 from ..security.sandbox import Sandbox
 
 
@@ -31,6 +33,7 @@ class CallAPITool:
         self.invoker = invoker
         self.registry = registry
         self.sandbox = sandbox
+        self._compat = get_klayout_compat()
     
     def call(self, operation: str, class_name: str,
              method_name: Optional[str] = None,
@@ -83,21 +86,17 @@ class CallAPITool:
         return result.to_dict()
     
     def _guess_module(self, class_name: str) -> str:
-        """Guess the module for a class based on naming conventions."""
-        # Common class prefixes for different modules
-        lay_classes = {'LayoutView', 'LayerProperties', 'CellView', 'Application', 'MainWindow'}
-        tl_classes = {'Progress', 'AbsoluteProgress', 'Logger'}
-        rdb_classes = {'ReportDatabase', 'RdbCategory', 'RdbItem'}
+        """
+        Guess the module for a class based on the compatibility layer's class map.
         
-        if class_name in lay_classes:
-            return 'lay'
-        if class_name in tl_classes:
-            return 'tl'
-        if class_name in rdb_classes:
-            return 'rdb'
-        
-        # Default to db module
-        return 'db'
+        Args:
+            class_name: Name of the class
+            
+        Returns:
+            Module name (db, lay, tl, rdb, lib)
+        """
+        # Use the compatibility layer's comprehensive class-to-module mapping
+        return self._compat.get_module_for_class(class_name)
     
     def create_object(self, class_name: str,
                       params: Optional[Dict[str, Any]] = None,
