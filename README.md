@@ -19,18 +19,34 @@ A Model Context Protocol (MCP) server that exposes 2000+ KLayout APIs through in
 - Python 3.8+
 - KLayout (standalone package or GUI)
 
-### ⚠️ Important: Installation Methods
+### Installation Methods
 
-This server requires data files to function fully:
+All installation methods include the required data files:
 - `data/api_index.json` (39MB) - Required for `search_klayout_api`
 - `klayout-doc/markdown_docs/` (~5MB) - Required for `search_klayout_docs`
 
-#### ✅ Recommended: Clone and Editable Install
-
-**This is the only method that guarantees all features work correctly.**
+#### ✅ Method 1: Direct Install from Git (Quickest)
 
 ```bash
-# Clone the repository (includes all data files)
+# Install directly without cloning
+uv pip install git+https://github.com/YOUR_USERNAME/klayout_mcp
+
+# With standalone KLayout support
+uv pip install "git+https://github.com/YOUR_USERNAME/klayout_mcp[standalone]"
+
+# With all features
+uv pip install "git+https://github.com/YOUR_USERNAME/klayout_mcp[all]"
+```
+
+**Pros:**
+- ✅ Quick and easy (one command)
+- ✅ All features work correctly
+- ✅ Data files included automatically
+
+#### ✅ Method 2: Clone and Editable Install (Recommended for Development)
+
+```bash
+# Clone the repository
 git clone https://github.com/YOUR_USERNAME/klayout_mcp.git
 cd klayout_mcp
 
@@ -45,17 +61,11 @@ uv pip install -e ".[all]"
 pip install -e ".[all]"
 ```
 
-#### ❌ Not Recommended: Direct pip install from Git
-
-```bash
-# DON'T DO THIS - Data files will be missing!
-uv pip install git+https://github.com/YOUR_USERNAME/klayout_mcp
-```
-
-**Why not recommended?**
-- ❌ `search_klayout_api` will fail (missing `data/api_index.json`)
-- ❌ `search_klayout_docs` will fail (missing `klayout-doc/markdown_docs/`)
-- ✅ Only `call_klayout_api` and `klayout_manage_handles` will work
+**Pros:**
+- ✅ Easy to update (`git pull`)
+- ✅ Can modify code
+- ✅ Run tests and scripts
+- ✅ All features work correctly
 
 #### Installation Options
 
@@ -76,25 +86,15 @@ uv pip install -e ".[all]"
 ### Verify Installation
 
 ```bash
-# Check data files are accessible
-python -c "
-from src.server import INDEX_PATH, DOCS_PATH
-print(f'API Index: {INDEX_PATH}')
-print(f'  Exists: {INDEX_PATH.exists()}')
-print(f'Docs Path: {DOCS_PATH}')
-print(f'  Exists: {DOCS_PATH.exists()}')
-"
+# Quick check - verify data files are accessible
+python -c "from src.server import INDEX_PATH, DOCS_PATH; print(f'API Index: {INDEX_PATH.exists()}, Docs: {DOCS_PATH.exists()}')"
 
-# Expected output:
-# API Index: /path/to/klayout_mcp/data/api_index.json
-#   Exists: True
-# Docs Path: /path/to/klayout_mcp/klayout-doc/markdown_docs
-#   Exists: True
+# Expected: API Index: True, Docs: True
 
-# Test KLayout availability
+# Test KLayout availability (optional)
 python -c "import klayout.db; print('KLayout installed successfully')"
 
-# Run verification suite
+# Run full verification suite (if installed from source)
 python scripts/verify_mcp.py
 ```
 
