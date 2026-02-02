@@ -269,3 +269,160 @@ class ErrorResponse(BaseModel):
     suggestion: Optional[str] = Field(None, description="Suggested action to resolve the error")
     available_options: Optional[List[str]] = Field(None, description="Available options if applicable")
     documentation_link: Optional[str] = Field(None, description="Link to relevant documentation")
+
+
+# ============================================================================
+# Additional Response Models for Output Schemas
+# ============================================================================
+
+class MethodParameter(BaseModel):
+    """Parameter information for a method."""
+    name: str = Field(..., description="Parameter name")
+    type: str = Field(..., description="Parameter type")
+    description: Optional[str] = Field(None, description="Parameter description")
+    default: Optional[Any] = Field(None, description="Default value if optional")
+
+
+class MethodInfo(BaseModel):
+    """Information about a class method."""
+    name: str = Field(..., description="Method name")
+    signature: Optional[str] = Field(None, description="Method signature")
+    description: Optional[str] = Field(None, description="Method description")
+    return_type: Optional[str] = Field(None, description="Return type")
+    return_description: Optional[str] = Field(None, description="Return value description")
+    parameters: List[MethodParameter] = Field(default_factory=list, description="Method parameters")
+
+
+class ClassDescriptionResponse(BaseModel):
+    """Response model for describe_klayout_api when describing a class."""
+    success: bool
+    name: str = Field(..., description="Class name")
+    module: str = Field(..., description="Module name")
+    description: Optional[str] = Field(None, description="Class description")
+    constructors: List[MethodInfo] = Field(default_factory=list, description="Constructor methods")
+    methods: List[MethodInfo] = Field(default_factory=list, description="Instance methods")
+    static_methods: List[MethodInfo] = Field(default_factory=list, description="Static methods")
+    deprecated_methods: List[MethodInfo] = Field(default_factory=list, description="Deprecated methods")
+    examples: List[str] = Field(default_factory=list, description="Code examples")
+    base_classes: List[str] = Field(default_factory=list, description="Base/inherited classes")
+
+
+class MethodDescriptionResponse(BaseModel):
+    """Response model for describe_klayout_api when describing a method."""
+    success: bool
+    class_name: str = Field(..., description="Parent class name")
+    method_info: MethodInfo = Field(..., description="Method details")
+
+
+class CallAPIResponse(BaseModel):
+    """Response model for call_klayout_api."""
+    success: bool
+    return_type: str = Field(..., description="Type of the returned value")
+    execution_time_ms: float = Field(..., description="Execution time in milliseconds")
+    handle: Optional[str] = Field(None, description="Object handle if return value is a complex object")
+    value: Any = Field(None, description="Return value (primitive) or string representation")
+    alias: Optional[str] = Field(None, description="Alias assigned to the handle")
+    error: Optional[str] = Field(None, description="Error message if failed")
+    traceback: Optional[str] = Field(None, description="Stack trace if failed")
+    suggestion: Optional[str] = Field(None, description="Suggestion for fixing the error")
+
+
+class HandleInfo(BaseModel):
+    """Information about a registered handle."""
+    id: str = Field(..., description="Handle ID")
+    type: str = Field(..., description="Object type/class name")
+    module: Optional[str] = Field(None, description="Module name")
+    alias: Optional[str] = Field(None, description="Alias name if set")
+    created_at: Optional[str] = Field(None, description="Creation timestamp")
+
+
+class ManageHandlesResponse(BaseModel):
+    """Response model for klayout_manage_handles."""
+    success: bool
+    action: Optional[str] = Field(None, description="Action that was performed")
+    handles: List[HandleInfo] = Field(default_factory=list, description="List of handles (for list action)")
+    total: Optional[int] = Field(None, description="Total number of handles")
+    filter_type: Optional[str] = Field(None, description="Filter applied")
+    handle: Optional[HandleInfo] = Field(None, description="Single handle info (for get action)")
+    released: Optional[bool] = Field(None, description="Whether handle was released")
+    aliased: Optional[bool] = Field(None, description="Whether alias was set")
+    error: Optional[str] = Field(None, description="Error message if failed")
+    error_code: Optional[str] = Field(None, description="Error code")
+    suggestion: Optional[str] = Field(None, description="Suggestion for fixing the error")
+    content: Optional[str] = Field(None, description="Markdown formatted content")
+
+
+class DocSearchResult(BaseModel):
+    """A single documentation search result."""
+    title: str = Field(..., description="Document title")
+    snippet: str = Field(..., description="Text snippet")
+    source: Optional[str] = Field(None, description="Source file/topic")
+    score: Optional[float] = Field(None, description="Relevance score")
+
+
+class SearchDocsResponse(BaseModel):
+    """Response model for search_klayout_docs."""
+    success: bool
+    query: str = Field(default="", description="Search query")
+    topic: Optional[str] = Field(None, description="Topic filter")
+    results: List[DocSearchResult] = Field(default_factory=list, description="Search results")
+    total: int = Field(default=0, description="Total number of results")
+    documentation: Optional[str] = Field(None, description="Full documentation (for topic lookup)")
+    topics: Optional[List[str]] = Field(None, description="List of available topics")
+    error: Optional[str] = Field(None, description="Error message if failed")
+    error_code: Optional[str] = Field(None, description="Error code")
+    suggestion: Optional[str] = Field(None, description="Suggestion for fixing the error")
+    content: Optional[str] = Field(None, description="Markdown formatted content")
+
+
+class TestImportResponse(BaseModel):
+    """Response model for klayout_test_import."""
+    success: bool
+    mode: str = Field(..., description="KLayout mode: 'pya', 'standalone', or 'unavailable'")
+    message: Optional[str] = Field(None, description="Success message")
+    test_result: Optional[str] = Field(None, description="Test execution result")
+    available_modules: List[str] = Field(default_factory=list, description="List of available modules")
+    error: Optional[str] = Field(None, description="Error message if failed")
+    suggestion: Optional[str] = Field(None, description="Suggestion for fixing")
+    troubleshooting: Optional[List[str]] = Field(None, description="List of troubleshooting steps")
+
+
+class KLayoutStatus(BaseModel):
+    """KLayout availability status."""
+    available: bool = Field(..., description="Whether KLayout is available")
+    mode: str = Field(..., description="Mode: 'pya', 'standalone', or 'unavailable'")
+    modules_loaded: List[str] = Field(default_factory=list, description="List of loaded modules")
+
+
+class IndexStatus(BaseModel):
+    """API index status."""
+    loaded: bool = Field(..., description="Whether index is loaded")
+    stats: Optional[Dict[str, Any]] = Field(None, description="Index statistics")
+
+
+class DocumentationStatus(BaseModel):
+    """Documentation availability status."""
+    available: bool = Field(..., description="Whether documentation is available")
+
+
+class HandleStats(BaseModel):
+    """Handle registry statistics."""
+    total: int = Field(default=0, description="Total number of active handles")
+    by_type: Optional[Dict[str, int]] = Field(None, description="Handle count by type")
+
+
+class HealthStatus(BaseModel):
+    """Server health status."""
+    status: str = Field(..., description="Health status: 'healthy' or 'degraded'")
+    issues: List[str] = Field(default_factory=list, description="List of issues if degraded")
+
+
+class ServerStatusResponse(BaseModel):
+    """Response model for klayout_get_status."""
+    success: bool
+    server_name: str = Field(..., description="Server name")
+    klayout: KLayoutStatus = Field(..., description="KLayout status")
+    index: IndexStatus = Field(..., description="API index status")
+    documentation: DocumentationStatus = Field(..., description="Documentation status")
+    handles: HandleStats = Field(..., description="Handle statistics")
+    health: HealthStatus = Field(..., description="Health status")

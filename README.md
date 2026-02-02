@@ -19,22 +19,83 @@ A Model Context Protocol (MCP) server that exposes 2000+ KLayout APIs through in
 - Python 3.8+
 - KLayout (standalone package or GUI)
 
-### Install Dependencies
+### ⚠️ Important: Installation Methods
+
+This server requires data files to function fully:
+- `data/api_index.json` (39MB) - Required for `search_klayout_api`
+- `klayout-doc/markdown_docs/` (~5MB) - Required for `search_klayout_docs`
+
+#### ✅ Recommended: Clone and Editable Install
+
+**This is the only method that guarantees all features work correctly.**
 
 ```bash
-pip install -r requirements.txt
+# Clone the repository (includes all data files)
+git clone https://github.com/YOUR_USERNAME/klayout_mcp.git
+cd klayout_mcp
+
+# Create virtual environment
+uv venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+
+# Install in editable mode
+uv pip install -e ".[all]"
+
+# Or using pip instead of uv
+pip install -e ".[all]"
 ```
 
-### Install KLayout (Standalone Mode)
+#### ❌ Not Recommended: Direct pip install from Git
 
 ```bash
-pip install klayout
+# DON'T DO THIS - Data files will be missing!
+uv pip install git+https://github.com/YOUR_USERNAME/klayout_mcp
+```
+
+**Why not recommended?**
+- ❌ `search_klayout_api` will fail (missing `data/api_index.json`)
+- ❌ `search_klayout_docs` will fail (missing `klayout-doc/markdown_docs/`)
+- ✅ Only `call_klayout_api` and `klayout_manage_handles` will work
+
+#### Installation Options
+
+```bash
+# Basic installation (minimal dependencies)
+uv pip install -e "."
+
+# With standalone KLayout support
+uv pip install -e ".[standalone]"
+
+# With development tools (testing, type checking)
+uv pip install -e ".[dev]"
+
+# With all optional dependencies
+uv pip install -e ".[all]"
 ```
 
 ### Verify Installation
 
 ```bash
+# Check data files are accessible
+python -c "
+from src.server import INDEX_PATH, DOCS_PATH
+print(f'API Index: {INDEX_PATH}')
+print(f'  Exists: {INDEX_PATH.exists()}')
+print(f'Docs Path: {DOCS_PATH}')
+print(f'  Exists: {DOCS_PATH.exists()}')
+"
+
+# Expected output:
+# API Index: /path/to/klayout_mcp/data/api_index.json
+#   Exists: True
+# Docs Path: /path/to/klayout_mcp/klayout-doc/markdown_docs
+#   Exists: True
+
+# Test KLayout availability
 python -c "import klayout.db; print('KLayout installed successfully')"
+
+# Run verification suite
+python scripts/verify_mcp.py
 ```
 
 ## Quick Start
@@ -42,12 +103,16 @@ python -c "import klayout.db; print('KLayout installed successfully')"
 ### Run the MCP Server
 
 ```bash
+# Make sure you're in the project directory
+cd klayout_mcp
+
+# Run the server
 python src/server.py
 ```
 
 The server runs with stdio transport by default, suitable for integration with MCP clients.
 
-**Note**: Make sure `python` command is available in your PATH. The server requires Python 3.8+.
+**Note**: Make sure `python3` command is available in your PATH. The server requires Python 3.8+.
 
 ### Configure with Claude Desktop
 
@@ -57,7 +122,7 @@ Add to your Claude Desktop configuration (`claude_desktop_config.json`):
 {
   "mcpServers": {
     "klayout": {
-      "command": "python",
+      "command": "python3",
       "args": ["/path/to/klayout_mcp/src/server.py"]
     }
   }
@@ -302,8 +367,8 @@ klayout_mcp/
 │   └── build_index.py      # API index builder from markdown docs
 ├── tests/
 │   └── test_e2e.py         # End-to-end integration tests
-├── requirements.txt        # Python dependencies
-├── LICENSE                 # MIT License
+├── pyproject.toml          # Python project configuration
+├── LICENSE                 # BSD 3-Clause License
 └── README.md               # This file
 ```
 
@@ -353,9 +418,21 @@ pip install mypy
 mypy src/
 ```
 
+## Verification
+
+Run the verification suite to ensure everything is working:
+
+```bash
+# Quick verification (2 minutes)
+./scripts/quick_verify.sh
+
+# Comprehensive verification (5 minutes)
+python scripts/verify_mcp.py --verbose
+```
+
 ## License
 
-MIT License - See [LICENSE](LICENSE) for details.
+BSD 3-Clause License - See [LICENSE](LICENSE) for details.
 
 ## Contributing
 

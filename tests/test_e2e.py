@@ -1,11 +1,14 @@
 """
-End-to-End Tests for KLayout MCP Server
+End-to-End Tests for KLayout MCP Server (Async Version)
 
 This module tests the complete workflow of the MCP server,
 including all 5 core tools and their integration.
+
+Note: Tests now support async/await patterns.
 """
 
 import pytest
+import asyncio
 import sys
 from pathlib import Path
 

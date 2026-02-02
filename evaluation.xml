@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+KLayout MCP Server Evaluation Questions
+
+These questions test whether LLMs can effectively use the KLayout MCP server
+to accomplish real-world IC layout design and verification tasks.
+
+Requirements for each question:
+- Independent: Not dependent on other questions
+- Read-only: Only non-destructive operations
+- Complex: Requires multiple tool calls and exploration
+- Realistic: Based on real use cases
+- Verifiable: Single, clear answer
+- Stable: Answer won't change over time
+
+Expected workflow for each question:
+1. Use search_klayout_api to discover relevant APIs
+2. Use describe_klayout_api to understand method signatures
+3. Use call_klayout_api to create objects and call methods (read-only operations)
+4. Use klayout_manage_handles to track objects
+5. Use search_klayout_docs for additional context if needed
+-->
+<evaluation>
+  <!-- 
+    Question 1: Basic API Discovery
+    Tests: search_klayout_api with filters
+  -->
+  <qa_pair>
+    <question>I need to work with geometric boxes in KLayout. Search for the Box class in the database module and tell me: how many methods does the Box class have, and what is the return type of the "area" method?</question>
+    <answer>The Box class has 48 methods, and the area method returns a value of type "void" according to the signature (though in practice it returns a numeric area value).</answer>
+    <expected_tools>search_klayout_api, describe_klayout_api</expected_tools>
+    <complexity>low</complexity>
+  </qa_pair>
+
+  <!-- 
+    Question 2: Object Creation and Method Chaining
+    Tests: call_klayout_api with constructor and method calls
+  -->
+  <qa_pair>
+    <question>Create a Box with coordinates (0, 0, 100, 200), then call the width() and height() methods on it. What is the aspect ratio (width/height) of this box?</question>
+    <answer>0.5 (The width is 100 and the height is 200, so the aspect ratio is 100/200 = 0.5)</answer>
+    <expected_tools>call_klayout_api, klayout_manage_handles</expected_tools>
+    <complexity>low</complexity>
+  </qa_pair>
+
+  <!-- 
+    Question 3: API Relationship Discovery
+    Tests: search_klayout_api, understanding class relationships
+  -->
+  <qa_pair>
+    <question>In KLayout's database module, find all classes that have an "area" method. How many such classes exist, and which one is most likely used for complex polygon regions (hint: starts with 'R')?</question>
+    <answer>Multiple classes have an area method including Box, Polygon, SimplePolygon, and Region. The Region class (starting with 'R') is most likely used for complex polygon regions as it handles merged polygons and complex shapes.</answer>
+    <expected_tools>search_klayout_api</expected_tools>
+    <complexity>medium</complexity>
+  </qa_pair>
+
+  <!-- 
+    Question 4: Documentation Search
+    Tests: search_klayout_docs
+  -->
+  <qa_pair>
+    <question>Search the KLayout documentation for information about coordinate transformations. What are the main transformation classes mentioned (list at least 3), and which one supports complex transformations including rotation and magnification?</question>
+    <answer>The main transformation classes are Trans (basic translation), CplxTrans (complex transformation with rotation and magnification), and ICplxTrans (integer complex transformation). CplxTrans supports complex transformations including rotation and magnification.</answer>
+    <expected_tools>search_klayout_docs</expected_tools>
+    <complexity>medium</complexity>
+  </qa_pair>
+
+  <!-- 
+    Question 5: Advanced Object Manipulation
+    Tests: call_klayout_api with method chaining, handle management
+  -->
+  <qa_pair>
+    <question>Create a Box at (10, 10, 110, 110), then create a transformed version moved by (50, 0) using the moved() method. What are the final coordinates of the transformed box's lower-left corner (left, bottom)?</question>
+    <answer>(60, 10) - The original lower-left corner was at (10, 10), and after moving by (50, 0), it becomes (10+50, 10+0) = (60, 10).</answer>
+    <expected_tools>call_klayout_api, klayout_manage_handles</expected_tools>
+    <complexity>medium</complexity>
+  </qa_pair>
+
+  <!-- 
+    Question 6: Layout Structure Discovery
+    Tests: search_klayout_api, describe_klayout_api for understanding Layout/Cell hierarchy
+  -->
+  <qa_pair>
+    <question>In KLayout, what is the relationship between Layout, Cell, and CellView classes? Search for these classes and describe: (1) Which class represents the entire layout database? (2) Which class represents individual cells (hierarchical elements)? (3) Which class provides a view into a specific cell?</question>
+    <answer>(1) Layout class represents the entire layout database containing cells and layers. (2) Cell class represents individual cells which are hierarchical elements that can contain shapes and instances of other cells. (3) CellView class provides a view into a specific cell within the layout context, typically used in the GUI for displaying cell contents.</answer>
+    <expected_tools>search_klayout_api, describe_klayout_api</expected_tools>
+    <complexity>high</complexity>
+  </qa_pair>
+
+  <!-- 
+    Question 7: Geometric Operations
+    Tests: call_klayout_api with geometric operations
+  -->
+  <qa_pair>
+    <question>Create two Box objects: Box A at (0, 0, 100, 100) and Box B at (50, 50, 150, 150). Use the &amp; (intersection) operator via the intersected() method to find their overlapping region. What is the area of the intersection?</question>
+    <answer>2500 - The intersection box is at (50, 50, 100, 100), which has width 50 and height 50, giving an area of 2500 square units.</answer>
+    <expected_tools>call_klayout_api, klayout_manage_handles</expected_tools>
+    <complexity>high</complexity>
+  </qa_pair>
+
+  <!-- 
+    Question 8: Module Organization Understanding
+    Tests: search_klayout_api with module filters
+  -->
+  <qa_pair>
+    <question>KLayout is organized into several modules: db (database), lay (layout view), tl (tools), rdb (report database), etc. Search for classes related to "Layer" in different modules. Which module contains the LayerInfo class used for layer specifications, and which module contains LayerMapping for layer mapping operations?</question>
+    <answer>The LayerInfo class is in the 'db' (database) module, used for specifying layer properties like layer number and datatype. The LayerMapping class is also typically in the 'db' module, used for mapping layers between different layouts or cell contexts.</answer>
+    <expected_tools>search_klayout_api</expected_tools>
+    <complexity>medium</complexity>
+  </qa_pair>
+
+  <!-- 
+    Question 9: Edge and Vector Operations
+    Tests: call_klayout_api with Edge and Vector classes
+  -->
+  <qa_pair>
+    <question>Create an Edge from point (0, 0) to point (100, 0), then create a Vector with dx=50, dy=50. Use the shifted() method to shift the edge by the vector. What are the coordinates of the shifted edge's start and end points?</question>
+    <answer>Start: (50, 50), End: (150, 50) - The original edge from (0,0) to (100,0) shifted by vector (50,50) moves both endpoints by (50,50).</answer>
+    <expected_tools>call_klayout_api, search_klayout_api, describe_klayout_api</expected_tools>
+    <complexity>high</complexity>
+  </qa_pair>
+
+  <!-- 
+    Question 10: Comprehensive Workflow
+    Tests: Complete workflow including search, describe, call, and handle management
+  -->
+  <qa_pair>
+    <question>I need to analyze a polygon that represents a chip boundary. (1) Search for the Polygon class in the db module. (2) Create a simple polygon with points forming a triangle: (0,0), (100,0), (50,100). (3) Calculate the bounding box of this polygon using the bbox() method. (4) What are the width and height of this bounding box?</question>
+    <answer>Width: 100, Height: 100 - The triangle spans from x=0 to x=100 (width 100) and from y=0 to y=100 (height 100). The bounding box coordinates would be approximately (0, 0, 100, 100).</answer>
+    <expected_tools>search_klayout_api, describe_klayout_api, call_klayout_api, klayout_manage_handles</expected_tools>
+    <complexity>high</complexity>
+  </qa_pair>
+
+</evaluation>

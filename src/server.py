@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-KLayout MCP Server (klayout_mcp)
+KLayout MCP Server (klayout_mcp) - Async Version with Context Support
 Model Context Protocol server for KLayout API
 
 This server exposes 2000+ KLayout APIs through 7 meta-tools:
@@ -11,13 +11,21 @@ This server exposes 2000+ KLayout APIs through 7 meta-tools:
 - search_klayout_docs: Search general documentation
 - klayout_test_import: Test KLayout availability
 - klayout_get_status: Get server status information
+
+Features:
+- Async/await support for non-blocking operations
+- Context parameter for progress reporting and logging
+- Structured output with automatic JSON Schema generation
 """
 
+import asyncio
 import sys
 from pathlib import Path
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, Union, Tuple
+from contextlib import asynccontextmanager
 
 from mcp.server import FastMCP
+from mcp.server.fastmcp import Context
 
 # Add src to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -26,7 +34,11 @@ from src.models import (
     SearchAPIInput, DescribeAPIInput, CallAPIInput,
     ManageHandlesInput, SearchDocsInput,
     ResponseFormat, OperationType, HandleAction,
-    PaginationInfo
+    PaginationInfo,
+    # Response models for output schemas
+    SearchAPIResponse, ClassDescriptionResponse, MethodDescriptionResponse,
+    CallAPIResponse, ManageHandlesResponse, SearchDocsResponse,
+    TestImportResponse, ServerStatusResponse
 )
 from src.formatters import ResponseFormatter, ErrorHelper
 from src.index.api_index import APIIndex
@@ -40,11 +52,56 @@ from src.tools.describe_api import DescribeAPITool
 from src.tools.call_api import CallAPITool
 from src.tools.manage_handles import ManageHandlesTool
 from src.tools.search_docs import SearchDocsTool
+from src import resources as klayout_resources
 
 # Configuration
-PROJECT_ROOT = Path(__file__).parent.parent
-INDEX_PATH = PROJECT_ROOT / "data" / "api_index.json"
-DOCS_PATH = PROJECT_ROOT / "klayout-doc" / "markdown_docs"
+def _find_data_path() -> Tuple[Path, Path]:
+    """
+    Find data paths - works both in development and after installation.
+    
+    Search order:
+    1. Development: project_root/data/ and project_root/klayout-doc/
+    2. Installed: package_dir/data/ and package_dir/klayout-doc/
+    3. Installed (site-packages): site_packages/data/ and site_packages/klayout-doc/
+    """
+    # Start from current file location
+    current_file = Path(__file__).resolve()
+    
+    # Try development layout first (src/server.py -> project_root)
+    dev_root = current_file.parent.parent
+    dev_index = dev_root / "data" / "api_index.json"
+    dev_docs = dev_root / "klayout-doc" / "markdown_docs"
+    
+    if dev_index.exists() and dev_docs.exists():
+        return dev_index, dev_docs
+    
+    # Try installed layout (site-packages/klayout_mcp/data/)
+    # When installed, files are in the same directory as the package
+    pkg_root = current_file.parent
+    pkg_index = pkg_root / "data" / "api_index.json"
+    pkg_docs = pkg_root / "klayout-doc" / "markdown_docs"
+    
+    if pkg_index.exists() or pkg_docs.exists():
+        return pkg_index, pkg_docs
+    
+    # Try to find in site-packages root
+    try:
+        import site
+        for site_path in site.getsitepackages():
+            site_root = Path(site_path)
+            site_index = site_root / "data" / "api_index.json"
+            site_docs = site_root / "klayout-doc" / "markdown_docs"
+            if site_index.exists() or site_docs.exists():
+                return site_index, site_docs
+    except Exception:
+        pass
+    
+    # Fallback to development paths (will show warnings later if not found)
+    return dev_index, dev_docs
+
+
+INDEX_PATH, DOCS_PATH = _find_data_path()
+PROJECT_ROOT = INDEX_PATH.parent.parent
 
 # Create MCP server instance with Python naming convention
 mcp = FastMCP(name="klayout_mcp")
@@ -63,26 +120,48 @@ _call_api: Optional[CallAPITool] = None
 _manage_handles: Optional[ManageHandlesTool] = None
 _search_docs: Optional[SearchDocsTool] = None
 
+# Lock for thread-safe initialization
+_init_lock: Optional[asyncio.Lock] = None
 
-def _init_components():
-    """Initialize all components on first use."""
+
+async def _init_components_async() -> None:
+    """Initialize all components on first use (async version)."""
     global _api_index, _doc_store, _registry, _invoker, _sandbox
     global _search_api, _describe_api, _call_api, _manage_handles, _search_docs
+    global _init_lock
     
+    # Create lock if not exists
+    if _init_lock is None:
+        _init_lock = asyncio.Lock()
+    
+    # Double-check with lock
     if _api_index is None:
-        # Initialize core components
-        _api_index = APIIndex(str(INDEX_PATH)) if INDEX_PATH.exists() else APIIndex()
-        _doc_store = DocumentStore(str(DOCS_PATH)) if DOCS_PATH.exists() else None
-        _registry = HandleRegistry()
-        _sandbox = Sandbox()
-        _invoker = APIInvoker(_registry, _sandbox)
-        
-        # Initialize tools
-        _search_api = SearchAPITool(_api_index)
-        _describe_api = DescribeAPITool(_api_index, _doc_store) if _doc_store else None
-        _call_api = CallAPITool(_invoker, _registry, _sandbox)
-        _manage_handles = ManageHandlesTool(_registry)
-        _search_docs = SearchDocsTool(_doc_store) if _doc_store else None
+        async with _init_lock:
+            if _api_index is None:
+                loop = asyncio.get_event_loop()
+                
+                # Initialize core components (potentially I/O bound)
+                _api_index = await loop.run_in_executor(
+                    None, 
+                    lambda: APIIndex(str(INDEX_PATH)) if INDEX_PATH.exists() else APIIndex()
+                )
+                _doc_store = await loop.run_in_executor(
+                    None,
+                    lambda: DocumentStore(str(DOCS_PATH)) if DOCS_PATH.exists() else None
+                )
+                _registry = HandleRegistry()
+                _sandbox = Sandbox()
+                _invoker = APIInvoker(_registry, _sandbox)
+                
+                # Initialize tools
+                _search_api = SearchAPITool(_api_index)
+                _describe_api = DescribeAPITool(_api_index, _doc_store) if _doc_store else None
+                _call_api = CallAPITool(_invoker, _registry, _sandbox)
+                _manage_handles = ManageHandlesTool(_registry)
+                _search_docs = SearchDocsTool(_doc_store) if _doc_store else None
+                
+                # Set resources references
+                klayout_resources.set_resources(_api_index, _doc_store, _registry)
 
 
 # ============================================================================
@@ -96,9 +175,10 @@ def _init_components():
         "destructiveHint": False,
         "idempotentHint": True,
         "openWorldHint": False
-    }
+    },
+    structured_output=True
 )
-def search_klayout_api(params: SearchAPIInput) -> Dict[str, Any]:
+async def search_klayout_api(params: SearchAPIInput, ctx: Context) -> SearchAPIResponse:
     """
     Search KLayout APIs by keyword. Find classes and methods matching your query.
     
@@ -111,26 +191,36 @@ def search_klayout_api(params: SearchAPIInput) -> Dict[str, Any]:
         - Find geometry methods: query="area", search_type="method"  
         - Search in database module: query="polygon", module="db"
     """
-    _init_components()
+    await ctx.report_progress(0.1, "Initializing components...")
+    await _init_components_async()
     
     if not _api_index or not _api_index.is_loaded():
+        await ctx.report_progress(1.0, "Failed - index not loaded")
         return ErrorHelper.index_not_loaded()
+    
+    await ctx.report_progress(0.3, f"Searching for '{params.query}'...")
     
     # Convert enum values to strings for the underlying tool
     module_str = params.module.value if params.module else None
     type_str = params.search_type.value if params.search_type else None
     
     # Perform search with extended limit to calculate total
-    # Get more results than needed to determine total
-    all_results = _search_api.search(
-        query=params.query,
-        module=module_str,
-        search_type=type_str,
-        limit=1000  # Get all results for pagination info
+    loop = asyncio.get_event_loop()
+    all_results = await loop.run_in_executor(
+        None,
+        lambda: _search_api.search(
+            query=params.query,
+            module=module_str,
+            search_type=type_str,
+            limit=1000  # Get all results for pagination info
+        )
     )
     
     if not all_results.get("success", False):
+        await ctx.report_progress(1.0, "Search failed")
         return all_results
+    
+    await ctx.report_progress(0.7, "Processing results...")
     
     all_items = all_results.get("results", [])
     total = len(all_items)
@@ -156,6 +246,7 @@ def search_klayout_api(params: SearchAPIInput) -> Dict[str, Any]:
             f"Remove filters (module/search_type)",
             f"Check spelling of '{params.query}'"
         ]
+        await ctx.log_warning(f"No results found for query: {params.query}")
     
     # Format response based on requested format
     result = ResponseFormatter.format_search_results(
@@ -168,6 +259,9 @@ def search_klayout_api(params: SearchAPIInput) -> Dict[str, Any]:
     
     if suggestions:
         result["suggestions"] = suggestions
+    
+    await ctx.report_progress(1.0, f"Found {total} results")
+    await ctx.log_info(f"Search completed", {"query": params.query, "total": total})
     
     return result
 
@@ -183,9 +277,10 @@ def search_klayout_api(params: SearchAPIInput) -> Dict[str, Any]:
         "destructiveHint": False,
         "idempotentHint": True,
         "openWorldHint": False
-    }
+    },
+    structured_output=True
 )
-def describe_klayout_api(params: DescribeAPIInput) -> Dict[str, Any]:
+async def describe_klayout_api(params: DescribeAPIInput, ctx: Context) -> Union[ClassDescriptionResponse, MethodDescriptionResponse]:
     """
     Get detailed documentation for a KLayout API class or method.
     
@@ -198,35 +293,54 @@ def describe_klayout_api(params: DescribeAPIInput) -> Dict[str, Any]:
         - Describe specific method: class_name="Box", method_name="area"
         - Get examples: class_name="Layout", include_examples=True
     """
-    _init_components()
+    await ctx.report_progress(0.1, "Initializing...")
+    await _init_components_async()
     
     if _describe_api is None:
+        await ctx.report_progress(1.0, "Failed - documentation not available")
         return ErrorHelper.documentation_not_available()
+    
+    await ctx.report_progress(0.4, f"Looking up {params.class_name}...")
+    
+    loop = asyncio.get_event_loop()
     
     if params.method_name:
         # Describe specific method
-        result = _describe_api.describe_method(params.class_name, params.method_name)
+        await ctx.report_progress(0.6, f"Fetching method {params.method_name}...")
+        result = await loop.run_in_executor(
+            None,
+            lambda: _describe_api.describe_method(params.class_name, params.method_name)
+        )
         
         if not result.get("success", False):
             # Check if class exists
             class_data = _api_index.get_class(params.class_name) if _api_index else None
             if not class_data:
+                await ctx.log_error(f"Class not found: {params.class_name}")
                 return ErrorHelper.class_not_found(params.class_name)
+            await ctx.log_warning(f"Method not found: {params.class_name}.{params.method_name}")
             return ErrorHelper.method_not_found(params.class_name, params.method_name)
         
+        await ctx.report_progress(1.0, "Complete")
         return ResponseFormatter.format_method_description(
             result, params.class_name, params.response_format
         )
     else:
         # Describe entire class
-        result = _describe_api.describe_class(
-            params.class_name, 
-            include_examples=params.include_examples
+        await ctx.report_progress(0.6, "Fetching class documentation...")
+        result = await loop.run_in_executor(
+            None,
+            lambda: _describe_api.describe_class(
+                params.class_name, 
+                include_examples=params.include_examples
+            )
         )
         
         if not result.get("success", False):
+            await ctx.log_error(f"Class not found: {params.class_name}")
             return ErrorHelper.class_not_found(params.class_name)
         
+        await ctx.report_progress(1.0, "Complete")
         return ResponseFormatter.format_class_description(result, params.response_format)
 
 
@@ -241,9 +355,10 @@ def describe_klayout_api(params: DescribeAPIInput) -> Dict[str, Any]:
         "destructiveHint": True,
         "idempotentHint": False,
         "openWorldHint": False
-    }
+    },
+    structured_output=True
 )
-def call_klayout_api(params: CallAPIInput) -> Dict[str, Any]:
+async def call_klayout_api(params: CallAPIInput, ctx: Context) -> CallAPIResponse:
     """
     Execute a KLayout API call dynamically.
     
@@ -264,12 +379,16 @@ def call_klayout_api(params: CallAPIInput) -> Dict[str, Any]:
         operation="method", class_name="Box", method_name="area",
         handle="box_abc123"
     """
-    _init_components()
+    await ctx.report_progress(0.1, "Initializing...")
+    await _init_components_async()
     
     # Check KLayout availability
     compat = get_klayout_compat()
     if not compat.is_available:
+        await ctx.report_progress(1.0, "Failed - KLayout not available")
         return ErrorHelper.klayout_not_available()
+    
+    await ctx.report_progress(0.3, "Validating parameters...")
     
     # Validate operation-specific requirements
     operation = params.operation.value
@@ -280,14 +399,27 @@ def call_klayout_api(params: CallAPIInput) -> Dict[str, Any]:
     if operation == "method" and not params.handle:
         return ErrorHelper.missing_parameter("handle", operation)
     
-    # Execute the call
-    result = _call_api.call(
-        operation=operation,
-        class_name=params.class_name,
-        method_name=params.method_name,
-        handle=params.handle,
-        params=params.params
+    await ctx.report_progress(0.5, f"Executing {params.class_name}.{params.method_name or '__init__'}...")
+    await ctx.log_info("API call started", {
+        "operation": operation,
+        "class": params.class_name,
+        "method": params.method_name
+    })
+    
+    # Execute the call in thread pool (since KLayout API calls may be CPU-bound)
+    loop = asyncio.get_event_loop()
+    result = await loop.run_in_executor(
+        None,
+        lambda: _call_api.call(
+            operation=operation,
+            class_name=params.class_name,
+            method_name=params.method_name,
+            handle=params.handle,
+            params=params.params
+        )
     )
+    
+    await ctx.report_progress(0.8, "Processing result...")
     
     # Enhance error messages
     if not result.get("success", False):
@@ -295,35 +427,47 @@ def call_klayout_api(params: CallAPIInput) -> Dict[str, Any]:
         
         if "not found" in error_msg.lower():
             if "class" in error_msg.lower():
+                await ctx.log_error(f"Class not found: {params.class_name}")
                 return ErrorHelper.class_not_found(params.class_name)
             elif "method" in error_msg.lower():
+                await ctx.log_error(f"Method not found: {params.method_name}")
                 return ErrorHelper.method_not_found(params.class_name, params.method_name or "")
             elif "handle" in error_msg.lower():
+                await ctx.log_error(f"Handle not found: {params.handle}")
                 return ErrorHelper.handle_not_found(params.handle or "")
         
         if "blocked" in error_msg.lower():
+            await ctx.log_warning(f"Blocked API call: {params.class_name}.{params.method_name or '__init__'}")
             return ErrorHelper.api_blocked(params.class_name, params.method_name or "__init__")
         
         # Return original error with suggestions
         result["suggestion"] = "Check parameter types and values. Use describe_klayout_api to see method signatures."
+        await ctx.log_error("API call failed", {"error": error_msg})
+    else:
+        await ctx.log_info("API call successful", {
+            "return_type": result.get("return_type"),
+            "has_handle": result.get("handle") is not None
+        })
     
+    await ctx.report_progress(1.0, "Complete")
     return result
 
 
 # ============================================================================
-# MCP Tool 4: klayout_manage_handles (renamed from manage_handles)
+# MCP Tool 4: klayout_manage_handles
 # ============================================================================
 @mcp.tool(
     name="klayout_manage_handles",
     annotations={
         "title": "Manage KLayout Handles",
-        "readOnlyHint": False,  # Can modify (release handles)
-        "destructiveHint": True,  # release_all is destructive
+        "readOnlyHint": False,
+        "destructiveHint": True,
         "idempotentHint": False,
         "openWorldHint": False
-    }
+    },
+    structured_output=True
 )
-def klayout_manage_handles(params: ManageHandlesInput) -> Dict[str, Any]:
+async def klayout_manage_handles(params: ManageHandlesInput, ctx: Context) -> ManageHandlesResponse:
     """
     Manage KLayout object handles created by call_klayout_api.
     
@@ -341,7 +485,8 @@ def klayout_manage_handles(params: ManageHandlesInput) -> Dict[str, Any]:
         - Release a handle: action="release", handle="box_abc123"
         - Set alias: action="alias", handle="box_abc123", alias="my_box"
     """
-    _init_components()
+    await ctx.report_progress(0.2, "Initializing...")
+    await _init_components_async()
     
     action = params.action.value
     
@@ -362,16 +507,23 @@ def klayout_manage_handles(params: ManageHandlesInput) -> Dict[str, Any]:
             "suggestion": "Provide an alias name (e.g., alias='my_box')"
         }
     
+    await ctx.report_progress(0.5, f"Performing '{action}' action...")
+    
     # Execute action
-    result = _manage_handles.manage(
-        action=action,
-        handle=params.handle,
-        alias=params.alias,
-        filter_type=params.filter_type
+    loop = asyncio.get_event_loop()
+    result = await loop.run_in_executor(
+        None,
+        lambda: _manage_handles.manage(
+            action=action,
+            handle=params.handle,
+            alias=params.alias,
+            filter_type=params.filter_type
+        )
     )
     
     # Format list results
     if action == "list" and result.get("success"):
+        await ctx.report_progress(1.0, f"Found {result.get('total', 0)} handles")
         return ResponseFormatter.format_handles_list(
             handles=result.get("handles", []),
             filter_type=params.filter_type,
@@ -380,8 +532,10 @@ def klayout_manage_handles(params: ManageHandlesInput) -> Dict[str, Any]:
     
     # Enhance error for handle not found
     if not result.get("success") and "not found" in result.get("error", "").lower():
+        await ctx.log_warning(f"Handle not found: {params.handle}")
         return ErrorHelper.handle_not_found(params.handle or "")
     
+    await ctx.report_progress(1.0, "Complete")
     return result
 
 
@@ -396,9 +550,10 @@ def klayout_manage_handles(params: ManageHandlesInput) -> Dict[str, Any]:
         "destructiveHint": False,
         "idempotentHint": True,
         "openWorldHint": False
-    }
+    },
+    structured_output=True
 )
-def search_klayout_docs(params: SearchDocsInput) -> Dict[str, Any]:
+async def search_klayout_docs(params: SearchDocsInput, ctx: Context) -> SearchDocsResponse:
     """
     Search KLayout general documentation and tutorials.
     
@@ -413,16 +568,25 @@ def search_klayout_docs(params: SearchDocsInput) -> Dict[str, Any]:
         - Get topic overview: query="", topic="transformations"
         - Search within topic: query="rotation", topic="transformations"
     """
-    _init_components()
+    await ctx.report_progress(0.2, "Initializing...")
+    await _init_components_async()
     
     if _search_docs is None:
+        await ctx.report_progress(1.0, "Failed - documentation not available")
         return ErrorHelper.documentation_not_available()
+    
+    await ctx.report_progress(0.4, "Searching documentation...")
+    
+    loop = asyncio.get_event_loop()
     
     # Handle different search modes
     if params.topic and not params.query:
-        result = _search_docs.get_topic(params.topic)
+        result = await loop.run_in_executor(None, lambda: _search_docs.get_topic(params.topic))
     elif params.topic:
-        result = _search_docs.search_topic(params.topic, params.query)
+        result = await loop.run_in_executor(
+            None, 
+            lambda: _search_docs.search_topic(params.topic, params.query)
+        )
     else:
         if not params.query:
             return {
@@ -431,10 +595,18 @@ def search_klayout_docs(params: SearchDocsInput) -> Dict[str, Any]:
                 "error_code": "MISSING_QUERY",
                 "suggestion": "Provide a search query or specify a topic"
             }
-        result = _search_docs.search(params.query, limit=params.limit)
+        result = await loop.run_in_executor(
+            None,
+            lambda: _search_docs.search(params.query, limit=params.limit)
+        )
     
     if not result.get("success", False):
+        await ctx.report_progress(1.0, "Search failed")
         return result
+    
+    total = len(result.get("results", []))
+    await ctx.report_progress(1.0, f"Found {total} results")
+    await ctx.log_info("Documentation search complete", {"query": params.query, "topic": params.topic, "total": total})
     
     return ResponseFormatter.format_docs_results(
         results=result.get("results", []),
@@ -455,9 +627,10 @@ def search_klayout_docs(params: SearchDocsInput) -> Dict[str, Any]:
         "destructiveHint": False,
         "idempotentHint": True,
         "openWorldHint": False
-    }
+    },
+    structured_output=True
 )
-def klayout_test_import() -> Dict[str, Any]:
+async def klayout_test_import(ctx: Context) -> TestImportResponse:
     """
     Test if KLayout module is properly imported and available.
     
@@ -468,9 +641,13 @@ def klayout_test_import() -> Dict[str, Any]:
     
     Use this tool to diagnose KLayout installation issues.
     """
+    await ctx.report_progress(0.3, "Checking KLayout availability...")
+    
     compat = get_klayout_compat()
     
     if not compat.is_available:
+        await ctx.report_progress(1.0, "KLayout not available")
+        await ctx.log_error("KLayout import failed")
         return {
             "success": False,
             "mode": "unavailable",
@@ -484,9 +661,12 @@ def klayout_test_import() -> Dict[str, Any]:
         }
     
     try:
+        await ctx.report_progress(0.6, "Testing KLayout functionality...")
+        
         # Test by creating a simple object
         Box = compat.get_class('Box', 'db')
         if Box is None:
+            await ctx.report_progress(1.0, "Test failed")
             return {
                 "success": False,
                 "mode": compat.mode,
@@ -496,6 +676,9 @@ def klayout_test_import() -> Dict[str, Any]:
         
         box = Box(0, 0, 10, 10)
         
+        await ctx.report_progress(1.0, "KLayout working correctly")
+        await ctx.log_info(f"KLayout test passed", {"mode": compat.mode})
+        
         return {
             "success": True,
             "mode": compat.mode,
@@ -504,6 +687,8 @@ def klayout_test_import() -> Dict[str, Any]:
             "available_modules": compat.get_status().get("modules_loaded", [])
         }
     except Exception as e:
+        await ctx.report_progress(1.0, "Test failed")
+        await ctx.log_error(f"KLayout test error: {e}")
         return {
             "success": False,
             "mode": compat.mode,
@@ -523,9 +708,10 @@ def klayout_test_import() -> Dict[str, Any]:
         "destructiveHint": False,
         "idempotentHint": True,
         "openWorldHint": False
-    }
+    },
+    structured_output=True
 )
-def klayout_get_status() -> Dict[str, Any]:
+async def klayout_get_status(ctx: Context) -> ServerStatusResponse:
     """
     Get comprehensive KLayout MCP server status information.
     
@@ -536,7 +722,10 @@ def klayout_get_status() -> Dict[str, Any]:
     - Active handle count
     - Server health information
     """
-    _init_components()
+    await ctx.report_progress(0.3, "Initializing...")
+    await _init_components_async()
+    
+    await ctx.report_progress(0.6, "Gathering status information...")
     
     compat = get_klayout_compat()
     
@@ -581,6 +770,9 @@ def klayout_get_status() -> Dict[str, Any]:
     if not _doc_store:
         result["health"]["issues"].append("Documentation not available")
     
+    await ctx.report_progress(1.0, "Complete")
+    await ctx.log_info("Status check completed", {"health": result["health"]["status"]})
+    
     return result
 
 
@@ -595,16 +787,18 @@ def klayout_get_status() -> Dict[str, Any]:
         "destructiveHint": True,
         "idempotentHint": False,
         "openWorldHint": False
-    }
+    },
+    structured_output=True
 )
-def manage_handles_deprecated(params: ManageHandlesInput) -> Dict[str, Any]:
+async def manage_handles_deprecated(params: ManageHandlesInput, ctx: Context) -> ManageHandlesResponse:
     """
     [DEPRECATED] Use klayout_manage_handles instead.
     
     This tool is deprecated and will be removed in a future version.
     Please use klayout_manage_handles for handle management.
     """
-    result = klayout_manage_handles(params)
+    await ctx.log_warning("Deprecated tool 'manage_handles' called, use 'klayout_manage_handles'")
+    result = await klayout_manage_handles(params, ctx)
     result["_deprecation_warning"] = "This tool is deprecated. Use 'klayout_manage_handles' instead."
     return result
 
@@ -617,13 +811,15 @@ def manage_handles_deprecated(params: ManageHandlesInput) -> Dict[str, Any]:
         "destructiveHint": False,
         "idempotentHint": True,
         "openWorldHint": False
-    }
+    },
+    structured_output=True
 )
-def test_klayout_import_deprecated() -> Dict[str, Any]:
+async def test_klayout_import_deprecated(ctx: Context) -> TestImportResponse:
     """
     [DEPRECATED] Use klayout_test_import instead.
     """
-    result = klayout_test_import()
+    await ctx.log_warning("Deprecated tool 'test_klayout_import' called, use 'klayout_test_import'")
+    result = await klayout_test_import(ctx)
     result["_deprecation_warning"] = "This tool is deprecated. Use 'klayout_test_import' instead."
     return result
 
@@ -636,20 +832,92 @@ def test_klayout_import_deprecated() -> Dict[str, Any]:
         "destructiveHint": False,
         "idempotentHint": True,
         "openWorldHint": False
-    }
+    },
+    structured_output=True
 )
-def get_klayout_version_deprecated() -> Dict[str, Any]:
+async def get_klayout_version_deprecated(ctx: Context) -> ServerStatusResponse:
     """
     [DEPRECATED] Use klayout_get_status instead.
     """
-    result = klayout_get_status()
+    await ctx.log_warning("Deprecated tool 'get_klayout_version' called, use 'klayout_get_status'")
+    result = await klayout_get_status(ctx)
     result["_deprecation_warning"] = "This tool is deprecated. Use 'klayout_get_status' instead."
     return result
 
 
 # ============================================================================
+# MCP Resources (async version with Context)
+# ============================================================================
+
+@mcp.resource("klayout://docs/{class_name}")
+async def get_class_doc_resource(class_name: str, ctx: Context) -> str:
+    """
+    Get full documentation for a KLayout class.
+    
+    Use this resource to quickly access class documentation without searching.
+    """
+    await ctx.log_info(f"Accessing class documentation: {class_name}")
+    await _init_components_async()
+    return klayout_resources.get_class_documentation(class_name)
+
+
+@mcp.resource("klayout://docs/{class_name}/{method_name}")
+async def get_method_doc_resource(class_name: str, method_name: str, ctx: Context) -> str:
+    """
+    Get documentation for a specific method.
+    
+    Access detailed method documentation including parameters and return types.
+    """
+    await ctx.log_info(f"Accessing method documentation: {class_name}.{method_name}")
+    await _init_components_async()
+    return klayout_resources.get_method_documentation(class_name, method_name)
+
+
+@mcp.resource("klayout://api/classes")
+async def list_classes_resource(ctx: Context) -> str:
+    """
+    List all available KLayout API classes.
+    
+    Returns a JSON list of all 1,348+ available classes.
+    """
+    await ctx.log_debug("Listing all API classes")
+    await _init_components_async()
+    return klayout_resources.list_all_classes()
+
+
+@mcp.resource("klayout://api/modules")
+async def list_modules_resource(ctx: Context) -> str:
+    """
+    List all available KLayout modules.
+    
+    Modules include: db (database), lay (layout view), tl (tools), 
+    rdb (report database), pex (parasitic extraction).
+    """
+    await ctx.log_debug("Listing all API modules")
+    await _init_components_async()
+    return klayout_resources.list_modules()
+
+
+@mcp.resource("klayout://status")
+async def get_status_resource(ctx: Context) -> str:
+    """
+    Get KLayout MCP server status.
+    
+    Check server health, KLayout availability, and loaded components.
+    """
+    await ctx.log_debug("Accessing server status resource")
+    await _init_components_async()
+    return klayout_resources.get_server_status()
+
+
+# ============================================================================
 # Main entry point
 # ============================================================================
-if __name__ == "__main__":
+def main() -> None:
+    """Main entry point for the MCP server."""
     # Run MCP server with stdio transport
     mcp.run(transport='stdio')
+
+
+if __name__ == "__main__":
+    main()
