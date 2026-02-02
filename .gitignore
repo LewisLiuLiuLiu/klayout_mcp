@@ -1,6 +1,7 @@
 # IDE and Editor configurations
 .qoder/
 .iflow/
+.agents/
 .vscode/
 .idea/
 *.swp
